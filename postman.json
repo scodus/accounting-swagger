@@ -55,8 +55,18 @@
 									"type": "text"
 								},
 								{
+									"key": "code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "opening_balance",
+									"value": "",
+									"type": "text"
+								},
+								{
 									"key": "status",
-									"value": "active",
+									"value": "asdf",
 									"type": "text"
 								}
 							]
@@ -109,6 +119,16 @@
 								},
 								{
 									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "opening_balance",
 									"value": "",
 									"type": "text"
 								},

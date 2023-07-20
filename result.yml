@@ -1,7 +1,16 @@
 openapi: 3.0.0
 info:
-  title: accounting
-  version: 1.0.0
+  title: Swagger
+  description: Swagger
+  version: '1.0'
+  x-logo:
+    url: https://github.com/joolfe/logoBanner.png
+    backgroundColor: '#FFFFFF'
+    altText: logo
+  termsOfService: '#'
+  license:
+    name: MIT
+    url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
 components:
@@ -47,9 +56,13 @@ paths:
                   type: string
                 parent_id:
                   type: string
+                code:
+                  type: string
+                opening_balance:
+                  type: string
                 status:
                   type: string
-                  example: active
+                  example: asdf
       security:
         - bearerAuth: []
       parameters:
@@ -113,6 +126,10 @@ paths:
                   type: string
                   example: descriptionedit
                 parent_id:
+                  type: string
+                code:
+                  type: string
+                opening_balance:
                   type: string
                 status:
                   type: string
