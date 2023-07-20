@@ -1805,13 +1805,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                email:
-                  type: string
-                  example: admin@admin.com
-                password:
-                  type: string
-                  example: P@ssw0rd
       security:
         - noauthAuth: []
       parameters:
