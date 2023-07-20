@@ -912,29 +912,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "amount",
-									"value": "20000",
-									"type": "text"
-								},
-								{
-									"key": "narration",
-									"value": "asdfasdfds",
-									"type": "text"
-								},
-								{
-									"key": "date",
-									"value": "2022-01-01",
-									"type": "text"
-								},
-								{
-									"key": "date_bs",
-									"value": "3a21f3as1df",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 20000,\n    \"narration\": \"asdfasdfds\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"3a21f3as1df\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 1,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 1,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/journal-voucher",

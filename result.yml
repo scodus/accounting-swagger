@@ -512,22 +512,21 @@ paths:
       summary: store
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                amount:
-                  type: integer
-                  example: '20000'
-                narration:
-                  type: string
-                  example: asdfasdfds
-                date:
-                  type: string
-                  example: '2022-01-01'
-                date_bs:
-                  type: string
-                  example: 3a21f3as1df
+              example:
+                amount: 20000
+                narration: asdfasdfds
+                date: '2022-01-01'
+                date_bs: 3a21f3as1df
+                ledgers:
+                  - account_head_id: 1
+                    dr_amount: 1000
+                    remarks: ''
+                  - account_head_id: 1
+                    dr_amount: 1000
+                    remarks: ''
       security:
         - bearerAuth: []
       parameters:
