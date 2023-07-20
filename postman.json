@@ -202,7 +202,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "14"
 								}
 							]
 						}
@@ -913,7 +913,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 20000,\n    \"narration\": \"asdfasdfds\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"3a21f3as1df\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 1,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 1,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"amount\": 20000,\n    \"narration\": \"narration\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"note\"\n    \"ledgers\": [\n        {\n            \"account_head_id\": 1,\n            \"cr_amount\": 1000,\n            \"dr_amount\": \"\",\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 1,\n            \"cr_amount\": \"\",\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

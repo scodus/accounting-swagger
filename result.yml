@@ -168,7 +168,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '14'
       responses:
         '200':
           description: Successful response
@@ -515,18 +515,28 @@ paths:
           application/json:
             schema:
               type: object
-              example:
-                amount: 20000
-                narration: asdfasdfds
-                date: '2022-01-01'
-                date_bs: 3a21f3as1df
-                ledgers:
-                  - account_head_id: 1
-                    dr_amount: 1000
-                    remarks: ''
-                  - account_head_id: 1
-                    dr_amount: 1000
-                    remarks: ''
+              example: |-
+                {
+                    "amount": 20000,
+                    "narration": "narration",
+                    "date": "2022-01-01",
+                    "date_bs": "string nepali date",
+                    "note": "note"
+                    "ledgers": [
+                        {
+                            "account_head_id": 1,
+                            "cr_amount": 1000,
+                            "dr_amount": "",
+                            "remarks": ""
+                        },
+                        {
+                            "account_head_id": 1,
+                            "cr_amount": "",
+                            "dr_amount": 1000,
+                            "remarks": ""
+                        }
+                    ]
+                }
       security:
         - bearerAuth: []
       parameters:
