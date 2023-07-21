@@ -13,6 +13,7 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
+  - url: http://{{live_url}}
 components:
   securitySchemes:
     bearerAuth:
@@ -515,28 +516,18 @@ paths:
           application/json:
             schema:
               type: object
-              example: |-
-                {
-                    "amount": 20000,
-                    "narration": "narration",
-                    "date": "2022-01-01",
-                    "date_bs": "string nepali date",
-                    "note": "note"
-                    "ledgers": [
-                        {
-                            "account_head_id": 1,
-                            "cr_amount": 1000,
-                            "dr_amount": "",
-                            "remarks": ""
-                        },
-                        {
-                            "account_head_id": 1,
-                            "cr_amount": "",
-                            "dr_amount": 1000,
-                            "remarks": ""
-                        }
-                    ]
-                }
+              example:
+                reference: '123'
+                date: '2022-01-01'
+                date_bs: string nepali date
+                note: ''
+                ledgers:
+                  - account_head_id: 1
+                    cr_amount: 1000
+                    remarks: ''
+                  - account_head_id: 1
+                    dr_amount: 1000
+                    remarks: ''
       security:
         - bearerAuth: []
       parameters:
@@ -1186,9 +1177,18 @@ paths:
                 name:
                   type: string
                   example: bank name
+                account_number:
+                  type: string
+                address:
+                  type: string
+                swift_code:
+                  type: string
                 status:
                   type: string
                   example: active
+                image:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -1245,9 +1245,18 @@ paths:
                 name:
                   type: string
                   example: bank name edit
+                image:
+                  type: string
+                  format: binary
+                account_number:
+                  type: string
+                address:
+                  type: string
+                swift_code:
+                  type: string
                 status:
                   type: string
-                  example: active
+                  example: status
                 _method:
                   type: string
                   example: patch

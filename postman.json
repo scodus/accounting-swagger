@@ -913,7 +913,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 20000,\n    \"narration\": \"narration\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"note\"\n    \"ledgers\": [\n        {\n            \"account_head_id\": 1,\n            \"cr_amount\": 1000,\n            \"dr_amount\": \"\",\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 1,\n            \"cr_amount\": \"\",\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 1,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 1,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -921,9 +921,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/journal-voucher",
+							"raw": "{{live_url}}/api/journal-voucher",
 							"host": [
-								"{{url}}"
+								"{{live_url}}"
 							],
 							"path": [
 								"api",
@@ -2135,9 +2135,29 @@
 									"type": "text"
 								},
 								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "swift_code",
+									"value": "",
+									"type": "text"
+								},
+								{
 									"key": "status",
 									"value": "active",
 									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
 								}
 							]
 						},
@@ -2178,8 +2198,28 @@
 									"type": "text"
 								},
 								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "swift_code",
+									"value": "",
+									"type": "text"
+								},
+								{
 									"key": "status",
-									"value": "active",
+									"value": "status",
 									"type": "text"
 								},
 								{
