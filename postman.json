@@ -51,7 +51,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "",
+									"value": "15",
 									"type": "text"
 								},
 								{
@@ -262,6 +262,46 @@
 									"key": "search_keyword",
 									"value": ""
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list tree",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account-head-tree",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account-head-tree"
 							]
 						}
 					},
@@ -2135,6 +2175,11 @@
 									"type": "text"
 								},
 								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-06-22 14-55-32.png"
+								},
+								{
 									"key": "account_number",
 									"value": "",
 									"type": "text"
@@ -2155,9 +2200,19 @@
 									"type": "text"
 								},
 								{
-									"key": "image",
-									"type": "file",
-									"src": []
+									"key": "account_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
 								}
 							]
 						},
@@ -2194,13 +2249,13 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "bank name edit",
+									"value": "bank name edits",
 									"type": "text"
 								},
 								{
 									"key": "image",
 									"type": "file",
-									"src": []
+									"src": "/home/user--49/Downloads/IMG_8325.jpg"
 								},
 								{
 									"key": "account_number",
@@ -2242,7 +2297,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "28"
 								}
 							]
 						}
@@ -2532,7 +2587,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "15"
 								}
 							]
 						}
@@ -2577,7 +2632,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "15"
 								}
 							]
 						}
@@ -2683,7 +2738,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "14"
 								}
 							]
 						}
@@ -2822,7 +2877,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "19"
 								}
 							]
 						}
@@ -2867,7 +2922,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "19"
 								}
 							]
 						}
@@ -2973,7 +3028,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "19"
 								}
 							]
 						}
@@ -3112,7 +3167,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "16"
 								}
 							]
 						}
@@ -3157,7 +3212,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "19"
 								}
 							]
 						}
@@ -3263,7 +3318,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "16"
 								}
 							]
 						}
