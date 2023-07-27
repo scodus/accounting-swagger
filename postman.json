@@ -1011,7 +1011,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 1,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 1,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 3,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1019,9 +1019,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{live_url}}/api/journal-voucher",
+							"raw": "{{url}}/api/journal-voucher",
 							"host": [
-								"{{live_url}}"
+								"{{url}}"
 							],
 							"path": [
 								"api",
@@ -3386,6 +3386,62 @@
 			]
 		},
 		{
+			"name": "report",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_head_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/report?start_date=2023-07-24&end_date=2023-07-28",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2023-07-24"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-07-28"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "login",
 			"event": [
 				{
@@ -3483,38 +3539,6 @@
 						{
 							"key": "refresh_token",
 							"value": "def50200120a4df2e1fcf4b305cbb1dd229d836d7a2ad4de9e54f814da369fc1b3afa3384041cd255203ddc39783cf7c83c41ff15b0155256e617e72b91a5a6932ac7539a9c072ccbd68b2243bc904fa955794d182e2a10661a49225d25a094f549c4a6d025886ffb19edfd03b960034a873da064e37d856bece985a909918703721da5b85de607481a15ef56bbced07b8c5d1d456d3642e1a9031a45577b4c9e4014af2985ab4b4c0b545592baa0d09b7fec66476e70502715686d19c52c700bd8fd0dbbb2c3652cada1eea89e9d9156cff6d31e24bb274afe1d67a0b459bfbc7343a14af62576751ff1e67fc670169a1e4eff7f028e0a0a479532058bca54fc5f74b77b7649124ea202621d40e558e4892546f04f43b7027bedd1c1efeda6701168ee22efb3b53ac500cbb081282d933471c5fa8cfe51138f45540cebbb2eaaaa08e53b5b526985bbf5be867bd22ac63b89ec4de78dfa4a52b5899a0530e4eea7f5223bbf6b624905bb83bf8fa0932a6d8ce224a603f7a3dff87ed5cc5e6158a97ddee1b1c6f"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "test",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/api/report/:account_head_id",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"report",
-						":account_head_id"
-					],
-					"variable": [
-						{
-							"key": "account_head_id",
-							"value": "2"
 						}
 					]
 				}
