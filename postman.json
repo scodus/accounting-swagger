@@ -51,7 +51,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "15",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -1011,7 +1011,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 3,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 5,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 5,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1564,24 +1564,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "accounting firm",
-									"type": "text"
-								},
-								{
-									"key": "admin_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"accounting firm\",\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963@gmail.com\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/accounting-firm",
@@ -1612,29 +1601,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "accounting firm edit",
-									"type": "text"
-								},
-								{
-									"key": "admin_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"accounting firm\",\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963@gmail.com\"\n    },\n    \"_method\": \"patch\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/accounting-firm/:id",
@@ -1834,29 +1807,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "company",
-									"type": "text"
-								},
-								{
-									"key": "accounting_firm_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "admin_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"accounting firm\",\n    \"accounting_firm_id\": 1,\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963@gmail.com\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -1887,34 +1844,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "company",
-									"type": "text"
-								},
-								{
-									"key": "accounting_firm_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "admin_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"accounting firm\",\n    \"accounting_firm_id\": 1,\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963s@gmail.com\"\n    },\n    \"_method\": \"patch\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/company/:id",
@@ -2082,6 +2018,49 @@
 									"key": "id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [\n        1,\n        2\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/update-company-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"update-company-user"
 							]
 						}
 					},
@@ -3386,6 +3365,876 @@
 			]
 		},
 		{
+			"name": "product category",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "account_type",
+									"value": "Asset",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-07-28 15-49-52.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product-category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title edit",
+									"type": "text"
+								},
+								{
+									"key": "account_type",
+									"value": "Asset",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description edit",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product-category?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-category"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "unit",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "symbol",
+									"value": "T",
+									"type": "text"
+								},
+								{
+									"key": "factor",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/unit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title edit",
+									"type": "text"
+								},
+								{
+									"key": "symbol",
+									"value": "TE",
+									"type": "text"
+								},
+								{
+									"key": "factor",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/unit/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/unit/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/unit?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unit"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/unit/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "sku",
+									"value": "T0982345jhwer",
+									"type": "text"
+								},
+								{
+									"key": "product_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-07-26 10-58-37.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "title edit",
+									"type": "text"
+								},
+								{
+									"key": "sku",
+									"value": "T0982345jhwer",
+									"type": "text"
+								},
+								{
+									"key": "product_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "report",
 			"item": [
 				{
@@ -3417,9 +4266,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/report?start_date=2023-07-24&end_date=2023-07-28",
+							"raw": "{{live_url}}/api/report?start_date=2023-07-22&end_date=2023-07-25",
 							"host": [
-								"{{url}}"
+								"{{live_url}}"
 							],
 							"path": [
 								"api",
@@ -3428,11 +4277,11 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2023-07-24"
+									"value": "2023-07-22"
 								},
 								{
 									"key": "end_date",
-									"value": "2023-07-28"
+									"value": "2023-07-25"
 								}
 							]
 						}
@@ -3540,6 +4389,44 @@
 							"key": "refresh_token",
 							"value": "def50200120a4df2e1fcf4b305cbb1dd229d836d7a2ad4de9e54f814da369fc1b3afa3384041cd255203ddc39783cf7c83c41ff15b0155256e617e72b91a5a6932ac7539a9c072ccbd68b2243bc904fa955794d182e2a10661a49225d25a094f549c4a6d025886ffb19edfd03b960034a873da064e37d856bece985a909918703721da5b85de607481a15ef56bbced07b8c5d1d456d3642e1a9031a45577b4c9e4014af2985ab4b4c0b545592baa0d09b7fec66476e70502715686d19c52c700bd8fd0dbbb2c3652cada1eea89e9d9156cff6d31e24bb274afe1d67a0b459bfbc7343a14af62576751ff1e67fc670169a1e4eff7f028e0a0a479532058bca54fc5f74b77b7649124ea202621d40e558e4892546f04f43b7027bedd1c1efeda6701168ee22efb3b53ac500cbb081282d933471c5fa8cfe51138f45540cebbb2eaaaa08e53b5b526985bbf5be867bd22ac63b89ec4de78dfa4a52b5899a0530e4eea7f5223bbf6b624905bb83bf8fa0932a6d8ce224a603f7a3dff87ed5cc5e6158a97ddee1b1c6f"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "P@ssw0rd",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/reset-password",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"reset-password"
 					]
 				}
 			},
