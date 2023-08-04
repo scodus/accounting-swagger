@@ -1011,7 +1011,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 5,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 5,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 3,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 8,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1564,13 +1564,54 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"accounting firm\",\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963@gmail.com\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_phone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "vat_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/accounting-firm",
@@ -1601,13 +1642,59 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"accounting firm\",\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963@gmail.com\"\n    },\n    \"_method\": \"patch\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name edit",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_phone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "vat_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/accounting-firm/:id",
@@ -1667,7 +1754,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -1779,6 +1866,102 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/update-accounting-firm-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"update-accounting-firm-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-user/:accounting_firm_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-user",
+								":accounting_firm_id"
+							],
+							"variable": [
+								{
+									"key": "accounting_firm_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1807,13 +1990,64 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"accounting firm\",\n    \"accounting_firm_id\": 1,\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963@gmail.com\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_phone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "vat_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "accounting_firm_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/company",
@@ -1844,13 +2078,69 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"accounting firm\",\n    \"accounting_firm_id\": 1,\n    \"admin_id\": \"\",\n    \"status\": \"active\",\n    \"user\": {\n        \"name\": \"user\",\n        \"email\": \"tomnjerry8963s@gmail.com\"\n    },\n    \"_method\": \"patch\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name edit",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_phone",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "vat_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "accounting_firm_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/company/:id",
@@ -2061,6 +2351,59 @@
 							"path": [
 								"api",
 								"update-company-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-user/:company_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-user",
+								":company_id"
+							],
+							"variable": [
+								{
+									"key": "company_id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -4247,26 +4590,10 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "account_head_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "start_date",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "end_date",
-									"value": "",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{live_url}}/api/report?start_date=2023-07-22&end_date=2023-07-25",
+							"raw": "{{live_url}}/api/report?start_date=2023-07-22&end_date=2023-08-07",
 							"host": [
 								"{{live_url}}"
 							],
@@ -4281,7 +4608,42 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2023-07-25"
+									"value": "2023-08-07"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "balance sheet",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/balance-sheet?start_date=2023-07-22&end_date=2023-08-08",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"balance-sheet"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2023-07-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-08-08"
 								}
 							]
 						}
@@ -4321,8 +4683,26 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "admin@admin.com",
+							"value": "superadmin@superadmin.com",
 							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "accountingfirm@accountingfirm.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "company@company.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "admin@admin.com",
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "password",
@@ -4427,6 +4807,58 @@
 					"path": [
 						"api",
 						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "role list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admin_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/role",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"role"
 					]
 				}
 			},

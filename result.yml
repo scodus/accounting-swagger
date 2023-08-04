@@ -568,10 +568,10 @@ paths:
                 date_bs: string nepali date
                 note: ''
                 ledgers:
-                  - account_head_id: 5
+                  - account_head_id: 3
                     cr_amount: 1000
                     remarks: ''
-                  - account_head_id: 5
+                  - account_head_id: 8
                     dr_amount: 1000
                     remarks: ''
       security:
@@ -866,16 +866,30 @@ paths:
       summary: store
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                name: accounting firm
-                admin_id: ''
-                status: active
-                user:
-                  name: user
-                  email: tomnjerry8963@gmail.com
+              properties:
+                name:
+                  type: string
+                  example: name
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                primary_phone:
+                  type: string
+                vat_number:
+                  type: string
+                start_date:
+                  type: string
+                status:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -925,17 +939,33 @@ paths:
       summary: update
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                name: accounting firm
-                admin_id: ''
-                status: active
-                user:
-                  name: user
-                  email: tomnjerry8963@gmail.com
-                _method: patch
+              properties:
+                name:
+                  type: string
+                  example: name edit
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                primary_phone:
+                  type: string
+                vat_number:
+                  type: string
+                start_date:
+                  type: string
+                status:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: patch
       security:
         - bearerAuth: []
       parameters:
@@ -967,7 +997,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -996,6 +1026,56 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/update-accounting-firm-user:
+    post:
+      tags:
+        - accounting firm
+      summary: update user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting-firm-user/{accounting_firm_id}:
+    get:
+      tags:
+        - accounting firm
+      summary: user list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/company:
     post:
       tags:
@@ -1003,17 +1083,35 @@ paths:
       summary: store
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                name: accounting firm
-                accounting_firm_id: 1
-                admin_id: ''
-                status: active
-                user:
-                  name: user
-                  email: tomnjerry8963@gmail.com
+              properties:
+                name:
+                  type: string
+                  example: name
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                primary_phone:
+                  type: string
+                vat_number:
+                  type: string
+                pan_number:
+                  type: string
+                start_date:
+                  type: string
+                accounting_firm_id:
+                  type: integer
+                  example: '1'
+                status:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -1063,18 +1161,38 @@ paths:
       summary: update
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                name: accounting firm
-                accounting_firm_id: 1
-                admin_id: ''
-                status: active
-                user:
-                  name: user
-                  email: tomnjerry8963s@gmail.com
-                _method: patch
+              properties:
+                name:
+                  type: string
+                  example: name edit
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                primary_phone:
+                  type: string
+                vat_number:
+                  type: string
+                pan_number:
+                  type: string
+                start_date:
+                  type: string
+                accounting_firm_id:
+                  type: integer
+                  example: '1'
+                status:
+                  type: string
+                _method:
+                  type: string
+                  example: patch
+                logo:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -1158,6 +1276,30 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company-user/{company_id}:
+    get:
+      tags:
+        - company
+      summary: user list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2332,7 +2474,28 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-07-25'
+          example: '2023-08-07'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/balance-sheet:
+    get:
+      tags:
+        - report
+      summary: balance sheet
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-07-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2023-08-08'
       responses:
         '200':
           description: Successful response
@@ -2419,6 +2582,24 @@ paths:
                   type: string
                   example: >-
                     MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/role:
+    get:
+      tags:
+        - default
+      summary: role list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
