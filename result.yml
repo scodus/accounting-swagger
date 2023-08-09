@@ -27,6 +27,7 @@ tags:
   - name: fishal year
   - name: opening balance
   - name: journal voucher
+  - name: Invoice
   - name: ledger
   - name: accounting firm
   - name: company
@@ -56,12 +57,11 @@ paths:
                   example: test
                 account_type:
                   type: string
-                  example: Asset
+                  example: Assets
                 description:
                   type: string
                 parent_id:
-                  type: integer
-                  example: '2'
+                  type: string
                 code:
                   type: string
                 opening_balance:
@@ -106,6 +106,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: parent_id
+          in: query
+          schema:
+            type: integer
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -127,7 +132,7 @@ paths:
                   example: testedit
                 account_type:
                   type: string
-                  example: Asset
+                  example: Assets
                 description:
                   type: string
                   example: descriptionedit
@@ -151,7 +156,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '12'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -702,6 +707,161 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/invoice:
+    post:
+      tags:
+        - Invoice
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                invoice_number: '142365'
+                customer_id: 34
+                reference_number: '21345'
+                invoice_date: '2023-01-01'
+                due_date: '2023-01-30'
+                note: ''
+                status: ''
+                products:
+                  - product_id: 1
+                    account_head_id: 26
+                    quantity: 3
+                    rate: 100
+                    discount: ''
+                    tax: 13
+                    amount: 300
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Invoice
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/invoice/{id}:
+    post:
+      tags:
+        - Invoice
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                invoice_number: '142365'
+                customer_id: 34
+                reference_number: 2asdasd1345
+                invoice_date: '2023-01-01'
+                due_date: '2023-01-30'
+                note: ''
+                status: ''
+                products:
+                  - product_id: 1
+                    account_head_id: 26
+                    quantity: 3
+                    rate: 30
+                    discount: ''
+                    tax: 13
+                    amount: 400
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Invoice
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Invoice
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/ledger:
     post:
       tags:
@@ -1030,7 +1190,36 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: update user
+      summary: update users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 1
+                user:
+                  name: name
+                  email: nameemail@email.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/remove-accounting-firm-user:
+    post:
+      tags:
+        - accounting firm
+      summary: remove users
       requestBody:
         content:
           application/json:
@@ -1281,6 +1470,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/remove-company-user:
+    post:
+      tags:
+        - company
+      summary: remove users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id:
+                  - 1
+                  - 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/company-user/{company_id}:
     get:
       tags:
@@ -1330,6 +1547,25 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user-accounting-firm/{user_id}:
+    get:
+      tags:
+        - users
+      summary: user company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
       responses:
         '200':
           description: Successful response

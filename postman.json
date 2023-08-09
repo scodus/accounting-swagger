@@ -41,7 +41,7 @@
 								},
 								{
 									"key": "account_type",
-									"value": "Asset",
+									"value": "Assets",
 									"type": "text"
 								},
 								{
@@ -51,7 +51,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "2",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -109,7 +109,7 @@
 								},
 								{
 									"key": "account_type",
-									"value": "Asset",
+									"value": "Assets",
 									"type": "text"
 								},
 								{
@@ -157,7 +157,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "12"
+									"value": "1"
 								}
 							]
 						}
@@ -237,7 +237,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_id=24",
 							"host": [
 								"{{url}}"
 							],
@@ -261,6 +261,10 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "parent_id",
+									"value": "24"
 								}
 							]
 						}
@@ -1250,6 +1254,249 @@
 			]
 		},
 		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 300\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"2asdasd1345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 30,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 400\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "ledger",
 			"item": [
 				{
@@ -1868,7 +2115,50 @@
 					"response": []
 				},
 				{
-					"name": "update user",
+					"name": "update users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 1,\n    \"user\": {\n        \"name\": \"name\",\n        \"email\": \"nameemail@email.com\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/update-accounting-firm-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"update-accounting-firm-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove users",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1898,13 +2188,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/update-accounting-firm-user",
+							"raw": "{{url}}/api/remove-accounting-firm-user",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"update-accounting-firm-user"
+								"remove-accounting-firm-user"
 							]
 						}
 					},
@@ -2357,6 +2647,49 @@
 					"response": []
 				},
 				{
+					"name": "remove users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [\n        1,\n        2\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/remove-company-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"remove-company-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "user list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -2466,6 +2799,100 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user accounting firm",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user-accounting-firm/:user_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-accounting-firm",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user-accounting-firm/:user_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-accounting-firm",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "6"
 								}
 							]
 						}
@@ -4684,13 +5111,13 @@
 						{
 							"key": "email",
 							"value": "superadmin@superadmin.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "email",
