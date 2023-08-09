@@ -237,7 +237,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_id=24",
+							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_slug=",
 							"host": [
 								"{{url}}"
 							],
@@ -263,8 +263,8 @@
 									"value": ""
 								},
 								{
-									"key": "parent_id",
-									"value": "24"
+									"key": "parent_slug",
+									"value": ""
 								}
 							]
 						}

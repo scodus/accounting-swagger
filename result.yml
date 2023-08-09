@@ -106,11 +106,10 @@ paths:
           in: query
           schema:
             type: string
-        - name: parent_id
+        - name: parent_slug
           in: query
           schema:
-            type: integer
-          example: '24'
+            type: string
       responses:
         '200':
           description: Successful response
