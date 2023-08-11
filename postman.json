@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "520e390f-2f8c-41df-b0aa-8b05a441c62e",
+		"_postman_id": "26c26f40-9b87-41d1-add8-2b3b369e2b53",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26991656",
-		"_collection_link": "https://speeding-desert-956145.postman.co/workspace/My-Workspace~cb5541aa-31f4-435f-8735-904ca5c6b8e4/collection/26991656-520e390f-2f8c-41df-b0aa-8b05a441c62e?action=share&creator=26991656&source=collection_link"
+		"_collection_link": "https://speeding-desert-956145.postman.co/workspace/My-Workspace~cb5541aa-31f4-435f-8735-904ca5c6b8e4/collection/26991656-26c26f40-9b87-41d1-add8-2b3b369e2b53?action=share&creator=26991656&source=collection_link"
 	},
 	"item": [
 		{
@@ -1328,7 +1328,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -1339,7 +1339,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -1399,6 +1399,126 @@
 							"variable": [
 								{
 									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "invoice_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "receiver_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "received_date",
+									"value": "2023-01-01",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "payment_mode",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payment?invoice_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment"
+							],
+							"query": [
+								{
+									"key": "invoice_id",
 									"value": "1"
 								}
 							]

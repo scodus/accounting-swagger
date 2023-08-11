@@ -28,6 +28,7 @@ tags:
   - name: opening balance
   - name: journal voucher
   - name: Invoice
+  - name: payment
   - name: ledger
   - name: accounting firm
   - name: company
@@ -733,8 +734,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -833,6 +833,63 @@ paths:
           schema:
             type: integer
           required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/payment:
+    post:
+      tags:
+        - payment
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                invoice_id:
+                  type: integer
+                  example: '1'
+                receiver_id:
+                  type: integer
+                  example: '3'
+                received_date:
+                  type: string
+                  example: '2023-01-01'
+                amount:
+                  type: integer
+                  example: '200'
+                payment_mode:
+                  type: string
+                note:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - payment
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: invoice_id
+          in: query
+          schema:
+            type: integer
           example: '1'
       responses:
         '200':
