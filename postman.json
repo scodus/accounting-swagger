@@ -237,7 +237,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_slug=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=1&no_sub_account_head=",
 							"host": [
 								"{{url}}"
 							],
@@ -248,7 +248,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -265,104 +265,16 @@
 								{
 									"key": "parent_slug",
 									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list tree",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/account-head-tree",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"account-head-tree"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list without sub",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{admin_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/account-head-without-sub?paginate=&page=&limit=&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"account-head-without-sub"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": ""
 								},
 								{
-									"key": "page",
-									"value": ""
+									"key": "tree_view",
+									"value": "1",
+									"description": "1|0"
 								},
 								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
+									"key": "no_sub_account_head",
+									"value": "",
+									"description": "1|0"
 								}
 							]
 						}
@@ -1279,7 +1191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3184,7 +3096,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{live_url}}/api/bank?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{live_url}}/api/bank?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{live_url}}"
 							],
@@ -3195,7 +3107,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -4757,6 +4669,11 @@
 									"type": "text"
 								},
 								{
+									"key": "is_service",
+									"value": "1",
+									"type": "text"
+								},
+								{
 									"key": "status",
 									"value": "",
 									"type": "text"
@@ -4817,6 +4734,11 @@
 								{
 									"key": "tax",
 									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "is_service",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -4924,7 +4846,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=1",
 							"host": [
 								"{{url}}"
 							],
@@ -4935,7 +4857,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -4948,6 +4870,10 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": "1"
 								}
 							]
 						}
