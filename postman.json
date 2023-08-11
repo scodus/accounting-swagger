@@ -1191,7 +1191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4670,7 +4670,7 @@
 								},
 								{
 									"key": "is_service",
-									"value": "1",
+									"value": "",
 									"type": "text"
 								},
 								{

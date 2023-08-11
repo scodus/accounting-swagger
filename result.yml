@@ -700,6 +700,7 @@ paths:
                     rate: 100
                     discount: ''
                     tax: 13
+                    description: description
                     amount: 300
                   - product_id: 2
                     account_head_id: 26
@@ -707,6 +708,7 @@ paths:
                     rate: 100
                     discount: ''
                     tax: 13
+                    description: description
                     amount: 300
       security:
         - bearerAuth: []
@@ -2534,8 +2536,7 @@ paths:
                   type: integer
                   example: '11'
                 is_service:
-                  type: integer
-                  example: '1'
+                  type: string
                 status:
                   type: string
                 image:
