@@ -751,6 +751,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: integer
+          example: '34'
       responses:
         '200':
           description: Successful response

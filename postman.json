@@ -1374,7 +1374,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=&status=",
+							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=&status=&customer_id=34",
 							"host": [
 								"{{url}}"
 							],
@@ -1402,6 +1402,10 @@
 								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "customer_id",
+									"value": "34"
 								}
 							]
 						}
