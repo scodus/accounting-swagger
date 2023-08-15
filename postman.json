@@ -1191,7 +1191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 3,\n            \"rate\": 100,\n            \"discount\": \"\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1244,6 +1244,52 @@
 								"api",
 								"invoice",
 								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "Approved",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								":id",
+								"update-status"
 							],
 							"variable": [
 								{
@@ -1433,39 +1479,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "invoice_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "receiver_id",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "received_date",
-									"value": "2023-01-01",
-									"type": "text"
-								},
-								{
-									"key": "amount",
-									"value": "200",
-									"type": "text"
-								},
-								{
-									"key": "payment_mode",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "note",
-									"value": "",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\":\"200\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/payment",
@@ -4966,7 +4986,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=1",
+							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=",
 							"host": [
 								"{{url}}"
 							],
@@ -4993,7 +5013,7 @@
 								},
 								{
 									"key": "is_service",
-									"value": "1"
+									"value": ""
 								}
 							]
 						}

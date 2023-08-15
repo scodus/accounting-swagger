@@ -697,17 +697,17 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 26
-                    quantity: 3
-                    rate: 100
-                    discount: ''
+                    quantity: 10
+                    rate: 10
+                    discount: '10'
                     tax: 13
                     description: description
                     amount: 300
                   - product_id: 2
                     account_head_id: 26
-                    quantity: 3
-                    rate: 100
-                    discount: ''
+                    quantity: 10
+                    rate: 10
+                    discount: '10'
                     tax: 13
                     description: description
                     amount: 300
@@ -839,6 +839,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/invoice/{id}/update-status:
+    post:
+      tags:
+        - Invoice
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: Approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/payment:
     post:
       tags:
@@ -846,26 +874,21 @@ paths:
       summary: store
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                invoice_id:
-                  type: integer
-                  example: '1'
-                receiver_id:
-                  type: integer
-                  example: '3'
-                received_date:
-                  type: string
-                  example: '2023-01-01'
-                amount:
-                  type: integer
-                  example: '200'
-                payment_mode:
-                  type: string
-                note:
-                  type: string
+              example:
+                customer_id: 34
+                receiver_id: '8'
+                received_date: '2023-01-01'
+                amount: '200'
+                payment_mode: ''
+                payment_reference: ''
+                tds: ''
+                note: ''
+                payment_allocation:
+                  - invoice_id: 1
+                    allocated_amount: 200
       security:
         - bearerAuth: []
       parameters:
@@ -2638,8 +2661,7 @@ paths:
         - name: is_service
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
       responses:
         '200':
           description: Successful response
