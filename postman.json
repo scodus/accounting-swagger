@@ -1374,7 +1374,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=&status=",
 							"host": [
 								"{{url}}"
 							],
@@ -1397,6 +1397,10 @@
 								},
 								{
 									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
 									"value": ""
 								}
 							]
