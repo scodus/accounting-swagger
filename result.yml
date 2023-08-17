@@ -28,8 +28,8 @@ tags:
   - name: opening balance
   - name: journal voucher
   - name: Invoice
-  - name: payment
-  - name: quick payment
+  - name: sale payment
+  - name: quick receipt
   - name: ledger
   - name: accounting firm
   - name: company
@@ -876,10 +876,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment:
+  /api/sales-payment:
     post:
       tags:
-        - payment
+        - sale payment
       summary: store
       requestBody:
         content:
@@ -913,7 +913,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - payment
+        - sale payment
       summary: list
       security:
         - bearerAuth: []
@@ -927,10 +927,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/{id}/update-status:
+  /api/sales-payment/{id}/update-status:
     post:
       tags:
-        - payment
+        - sale payment
       summary: update status
       requestBody:
         content:
@@ -955,10 +955,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/{id}:
+  /api/sales-payment/{id}:
     get:
       tags:
-        - payment
+        - sale payment
       summary: show
       security:
         - bearerAuth: []
@@ -979,10 +979,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/quick-payment:
+  /api/quick-receipt:
     post:
       tags:
-        - quick payment
+        - quick receipt
       summary: store
       requestBody:
         content:
@@ -990,31 +990,21 @@ paths:
             schema:
               type: object
               example:
-                customer_id: 34
                 receiver_id: '8'
                 received_date: '2023-01-01'
                 amount: '200'
                 payment_mode: ''
                 payment_reference: ''
-                tds: ''
                 note: ''
-                products:
-                  - product_id: 1
-                    account_head_id: 26
-                    quantity: 10
-                    rate: 10
-                    discount: '10'
+                accounts:
+                  - account_head_id: 34
                     tax: 13
-                    description: description
                     amount: 300
-                  - product_id: 2
-                    account_head_id: 26
-                    quantity: 10
-                    rate: 10
-                    discount: '10'
+                    description: description
+                  - account_head_id: 3
                     tax: 13
-                    description: description
                     amount: 300
+                    description: description
       security:
         - bearerAuth: []
       parameters:
@@ -1030,7 +1020,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - quick payment
+        - quick receipt
       summary: list
       security:
         - bearerAuth: []
@@ -1045,10 +1035,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/quick-payment/{id}/update-status:
+  /api/quick-receipt/{id}/update-status:
     post:
       tags:
-        - quick payment
+        - quick receipt
       summary: update status
       requestBody:
         content:
@@ -1073,10 +1063,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/quick-payment/{id}:
+  /api/quick-receipt/{id}:
     get:
       tags:
-        - quick payment
+        - quick receipt
       summary: show
       security:
         - bearerAuth: []

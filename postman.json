@@ -1463,7 +1463,7 @@
 			]
 		},
 		{
-			"name": "payment",
+			"name": "sale payment",
 			"item": [
 				{
 					"name": "store",
@@ -1496,13 +1496,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/payment",
+							"raw": "{{url}}/api/sales-payment",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"payment"
+								"sales-payment"
 							]
 						}
 					},
@@ -1536,13 +1536,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/payment?invoice_id=",
+							"raw": "{{url}}/api/sales-payment?invoice_id=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"payment"
+								"sales-payment"
 							],
 							"query": [
 								{
@@ -1580,13 +1580,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/payment/:id/update-status",
+							"raw": "{{url}}/api/sales-payment/:id/update-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"payment",
+								"sales-payment",
 								":id",
 								"update-status"
 							],
@@ -1629,13 +1629,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/payment/:id",
+							"raw": "{{url}}/api/sales-payment/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"payment",
+								"sales-payment",
 								":id"
 							],
 							"variable": [
@@ -1651,7 +1651,7 @@
 			]
 		},
 		{
-			"name": "quick payment",
+			"name": "quick receipt",
 			"item": [
 				{
 					"name": "store",
@@ -1676,7 +1676,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\":\"200\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\":\"200\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1684,13 +1684,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment",
+							"raw": "{{url}}/api/quick-receipt",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"quick-payment"
+								"quick-receipt"
 							]
 						}
 					},
@@ -1724,13 +1724,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment?invoice_id=1",
+							"raw": "{{url}}/api/quick-receipt?invoice_id=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"quick-payment"
+								"quick-receipt"
 							],
 							"query": [
 								{
@@ -1768,13 +1768,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment/:id/update-status",
+							"raw": "{{url}}/api/quick-receipt/:id/update-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"quick-payment",
+								"quick-receipt",
 								":id",
 								"update-status"
 							],
@@ -1817,13 +1817,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment/:id",
+							"raw": "{{url}}/api/quick-receipt/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"quick-payment",
+								"quick-receipt",
 								":id"
 							],
 							"variable": [
