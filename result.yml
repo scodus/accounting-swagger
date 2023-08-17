@@ -992,7 +992,6 @@ paths:
               example:
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                amount: '200'
                 payment_mode: ''
                 payment_reference: ''
                 note: ''

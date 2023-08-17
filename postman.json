@@ -1676,7 +1676,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\":\"200\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
