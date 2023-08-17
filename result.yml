@@ -955,6 +955,30 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/payment/{id}:
+    get:
+      tags:
+        - payment
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/quick-payment:
     post:
       tags:
@@ -1038,6 +1062,30 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/quick-payment/{id}:
+    get:
+      tags:
+        - quick payment
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: id
           in: path
           schema:
