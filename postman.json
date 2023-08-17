@@ -4,7 +4,7 @@
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26991656",
-		"_collection_link": "https://speeding-desert-956145.postman.co/workspace/My-Workspace~cb5541aa-31f4-435f-8735-904ca5c6b8e4/collection/26991656-26c26f40-9b87-41d1-add8-2b3b369e2b53?action=share&creator=26991656&source=collection_link"
+		"_collection_link": "https://speeding-desert-956145.postman.co/workspace/My-Workspace~cb5541aa-31f4-435f-8735-904ca5c6b8e4/collection/26991656-26c26f40-9b87-41d1-add8-2b3b369e2b53?action=share&source=collection_link&creator=26991656"
 	},
 	"item": [
 		{
@@ -1553,6 +1553,52 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "Approved",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/payment/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1641,6 +1687,52 @@
 							"query": [
 								{
 									"key": "invoice_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "Approved",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
 									"value": "1"
 								}
 							]

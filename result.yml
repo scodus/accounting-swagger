@@ -927,6 +927,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/payment/{id}/update-status:
+    post:
+      tags:
+        - payment
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: Approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/quick-payment:
     post:
       tags:
@@ -987,6 +1015,34 @@ paths:
           in: query
           schema:
             type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/quick-payment/{id}/update-status:
+    post:
+      tags:
+        - quick payment
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: Approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
           example: '1'
       responses:
         '200':
