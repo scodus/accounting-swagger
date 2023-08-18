@@ -1374,7 +1374,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
+							"raw": "{{url}}/api/invoice?paginate=&page=&limit=&search_keyword=&status=&customer_id=34",
 							"host": [
 								"{{url}}"
 							],
@@ -1405,7 +1405,7 @@
 								},
 								{
 									"key": "customer_id",
-									"value": ""
+									"value": "34"
 								}
 							]
 						}
@@ -1488,7 +1488,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\":\"200\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\":\"200\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 203.4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1728,7 +1728,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-receipt?status=draft",
+							"raw": "{{url}}/api/quick-receipt?status=",
 							"host": [
 								"{{url}}"
 							],
@@ -1739,7 +1739,7 @@
 							"query": [
 								{
 									"key": "status",
-									"value": "draft"
+									"value": ""
 								}
 							]
 						}
@@ -1766,7 +1766,7 @@
 							"formdata": [
 								{
 									"key": "status",
-									"value": "Approved",
+									"value": "paid",
 									"type": "text"
 								}
 							]
@@ -1833,7 +1833,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -1911,13 +1911,13 @@
 								},
 								{
 									"key": "payment_mode_name",
-									"value": "esewa",
+									"value": "khalti",
 									"type": "text"
 								},
 								{
 									"key": "logo",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-04 09-54-45.png"
+									"src": []
 								}
 							]
 						},
@@ -1976,6 +1976,57 @@
 									"key": "group",
 									"value": "",
 									"description": "general || payment-mode"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/site-setting/:key/:value",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-setting",
+								":key",
+								":value"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "payment_mode_name"
+								},
+								{
+									"key": "value",
+									"value": "khalti",
+									"description": "nullable"
 								}
 							]
 						}
