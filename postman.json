@@ -1536,7 +1536,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment?invoice_id=",
+							"raw": "{{url}}/api/sales-payment?invoice_id=&status=",
 							"host": [
 								"{{url}}"
 							],
@@ -1547,6 +1547,10 @@
 							"query": [
 								{
 									"key": "invoice_id",
+									"value": ""
+								},
+								{
+									"key": "status",
 									"value": ""
 								}
 							]
@@ -1574,7 +1578,7 @@
 							"formdata": [
 								{
 									"key": "status",
-									"value": "Approved",
+									"value": "approved",
 									"type": "text"
 								}
 							]
@@ -1676,7 +1680,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1724,7 +1728,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-receipt?invoice_id=1",
+							"raw": "{{url}}/api/quick-receipt?status=draft",
 							"host": [
 								"{{url}}"
 							],
@@ -1734,8 +1738,8 @@
 							],
 							"query": [
 								{
-									"key": "invoice_id",
-									"value": "1"
+									"key": "status",
+									"value": "draft"
 								}
 							]
 						}
@@ -1829,7 +1833,149 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "site setting",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company_legal_name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "company_display_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "registration_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_vat_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email_address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "contact_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "website",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "payment_mode_name",
+									"value": "esewa",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-04 09-54-45.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/site-setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-setting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/site-setting/:group",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"site-setting",
+								":group"
+							],
+							"variable": [
+								{
+									"key": "group",
+									"value": "",
+									"description": "general || payment-mode"
 								}
 							]
 						}

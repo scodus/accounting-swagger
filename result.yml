@@ -30,6 +30,7 @@ tags:
   - name: Invoice
   - name: sale payment
   - name: quick receipt
+  - name: site setting
   - name: ledger
   - name: accounting firm
   - name: company
@@ -922,6 +923,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -940,7 +945,7 @@ paths:
               properties:
                 status:
                   type: string
-                  example: Approved
+                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -997,7 +1002,6 @@ paths:
                 note: ''
                 accounts:
                   - account_head_id: 34
-                    tax: 13
                     amount: 300
                     description: description
                   - account_head_id: 3
@@ -1024,11 +1028,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: invoice_id
+        - name: status
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: draft
       responses:
         '200':
           description: Successful response
@@ -1080,7 +1084,73 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-setting:
+    post:
+      tags:
+        - site setting
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                company_legal_name:
+                  type: string
+                  example: test
+                company_display_name:
+                  type: string
+                registration_number:
+                  type: string
+                pan_vat_number:
+                  type: string
+                email_address:
+                  type: string
+                contact_number:
+                  type: string
+                website:
+                  type: string
+                address:
+                  type: string
+                payment_mode_name:
+                  type: string
+                  example: esewa
+                logo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-setting/{group}:
+    get:
+      tags:
+        - site setting
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: group
+          in: path
+          schema:
+            type: string
+          required: true
+          description: general || payment-mode
       responses:
         '200':
           description: Successful response
