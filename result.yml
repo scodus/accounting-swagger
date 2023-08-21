@@ -112,12 +112,12 @@ paths:
           in: query
           schema:
             type: string
+          example: cash-and-bank
         - name: tree_view
           in: query
           schema:
-            type: integer
+            type: string
           description: 1|0
-          example: '1'
         - name: no_sub_account_head
           in: query
           schema:
@@ -713,6 +713,7 @@ paths:
                     tax: 13
                     description: description
                     amount: 300
+                document: []
       security:
         - bearerAuth: []
       parameters:
@@ -756,8 +757,7 @@ paths:
         - name: customer_id
           in: query
           schema:
-            type: integer
-          example: '34'
+            type: string
       responses:
         '200':
           description: Successful response
@@ -777,7 +777,7 @@ paths:
                 _method: patch
                 invoice_number: '142365'
                 customer_id: 34
-                reference_number: 2asdasd1345
+                reference_number: '21345'
                 invoice_date: '2023-01-01'
                 due_date: '2023-01-30'
                 note: ''
@@ -785,11 +785,20 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 26
-                    quantity: 3
-                    rate: 30
-                    discount: ''
+                    quantity: 20
+                    rate: 10
+                    discount: '10'
                     tax: 13
-                    amount: 400
+                    description: description
+                    amount: 300
+                  - product_id: 2
+                    account_head_id: 26
+                    quantity: 20
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    description: description
+                    amount: 300
       security:
         - bearerAuth: []
       parameters:
@@ -878,6 +887,36 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/invoice/{invoice_id}/file/{file_id}:
+    delete:
+      tags:
+        - Invoice
+      summary: file delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: invoice_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+        - name: file_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/sales-payment:
     post:
       tags:
@@ -892,14 +931,14 @@ paths:
                 customer_id: 34
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                amount: '200'
+                amount: 3.4
                 payment_mode: ''
                 payment_reference: ''
                 tds: ''
                 note: ''
                 payment_allocation:
                   - invoice_id: 1
-                    allocated_amount: 203.4
+                    allocated_amount: 200
       security:
         - bearerAuth: []
       parameters:
@@ -1121,6 +1160,12 @@ paths:
                 payment_mode_name:
                   type: string
                   example: khalti
+                payment_mode_name[0]:
+                  type: string
+                  example: khalti
+                payment_mode_name[1]:
+                  type: string
+                  example: esewa
                 logo:
                   type: string
                   format: binary
@@ -1151,6 +1196,7 @@ paths:
             type: string
           required: true
           description: general || payment-mode
+          example: payment-mode
       responses:
         '200':
           description: Successful response
