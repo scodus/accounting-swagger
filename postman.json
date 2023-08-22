@@ -1191,7 +1191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ],\n    \"document\": []\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1347,7 +1347,64 @@
 					"response": []
 				},
 				{
-					"name": "file delete",
+					"name": "store document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "document[0]",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-04 09-54-45.png"
+								},
+								{
+									"key": "document[1]",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-20 17-11-11.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/:id/document",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								":id",
+								"document"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete document",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1372,7 +1429,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice/:invoice_id/file/:file_id",
+							"raw": "{{url}}/api/invoice/:invoice_id/document/:document_id",
 							"host": [
 								"{{url}}"
 							],
@@ -1380,8 +1437,8 @@
 								"api",
 								"invoice",
 								":invoice_id",
-								"file",
-								":file_id"
+								"document",
+								":document_id"
 							],
 							"variable": [
 								{
@@ -1389,8 +1446,8 @@
 									"value": "1"
 								},
 								{
-									"key": "file_id",
-									"value": "6"
+									"key": "document_id",
+									"value": "7"
 								}
 							]
 						}
@@ -1884,7 +1941,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -3584,7 +3641,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-06-22 14-55-32.png"
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-04 09-54-45.png"
 								},
 								{
 									"key": "account_number",
@@ -3608,11 +3665,6 @@
 								},
 								{
 									"key": "account_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "account_type",
 									"value": "",
 									"type": "text"
 								},

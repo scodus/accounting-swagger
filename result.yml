@@ -713,7 +713,6 @@ paths:
                     tax: 13
                     description: description
                     amount: 300
-                document: []
       security:
         - bearerAuth: []
       parameters:
@@ -887,11 +886,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/invoice/{invoice_id}/file/{file_id}:
+  /api/invoice/{id}/document:
+    post:
+      tags:
+        - Invoice
+      summary: store document
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                document[0]:
+                  type: string
+                  format: binary
+                document[1]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/invoice/{invoice_id}/document/{document_id}:
     delete:
       tags:
         - Invoice
-      summary: file delete
+      summary: delete document
       security:
         - bearerAuth: []
       parameters:
@@ -906,12 +941,12 @@ paths:
             type: integer
           required: true
           example: '1'
-        - name: file_id
+        - name: document_id
           in: path
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -1123,7 +1158,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -1993,8 +2028,6 @@ paths:
                   type: string
                   example: active
                 account_name:
-                  type: string
-                account_type:
                   type: string
                 price:
                   type: string
