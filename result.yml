@@ -13,7 +13,6 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
-  - url: http://{{live_url}}
 components:
   securitySchemes:
     bearerAuth:
@@ -31,6 +30,7 @@ tags:
   - name: sale payment
   - name: quick receipt
   - name: site setting
+  - name: cash account
   - name: ledger
   - name: accounting firm
   - name: company
@@ -168,7 +168,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '36'
       responses:
         '200':
           description: Successful response
@@ -191,7 +191,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '14'
+          example: '36'
       responses:
         '200':
           description: Successful response
@@ -700,9 +700,9 @@ paths:
                   - product_id: 1
                     account_head_id: 26
                     quantity: 10
-                    rate: 10
+                    rate: '10'
                     discount: '10'
-                    tax: 13
+                    tax: 0
                     description: description
                     amount: 300
                   - product_id: 2
@@ -1059,6 +1059,29 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    delete:
+      tags:
+        - sale payment
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/quick-receipt:
     post:
       tags:
@@ -1158,7 +1181,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1263,6 +1286,24 @@ paths:
           required: true
           description: nullable
           example: khalti
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-account:
+    get:
+      tags:
+        - cash account
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_head_id
+          in: query
+          schema:
+            type: integer
+          example: '34'
       responses:
         '200':
           description: Successful response
@@ -2085,22 +2126,26 @@ paths:
               properties:
                 name:
                   type: string
-                  example: bank name edits
-                image:
-                  type: string
-                  format: binary
+                  example: bank name edit
                 account_number:
                   type: string
                 address:
                   type: string
                 swift_code:
                   type: string
+                account_name:
+                  type: string
+                price:
+                  type: string
                 status:
                   type: string
-                  example: status
+                  example: active
                 _method:
                   type: string
                   example: patch
+                image:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -2109,7 +2154,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '35'
       responses:
         '200':
           description: Successful response
@@ -2132,7 +2177,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '35'
       responses:
         '200':
           description: Successful response
@@ -2155,7 +2200,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '35'
       responses:
         '200':
           description: Successful response
@@ -2210,8 +2255,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -2266,7 +2310,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '15'
+          example: '37'
       responses:
         '200':
           description: Successful response
@@ -2289,7 +2333,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '15'
+          example: '37'
       responses:
         '200':
           description: Successful response
@@ -2312,7 +2356,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '14'
+          example: '37'
       responses:
         '200':
           description: Successful response
@@ -2367,8 +2411,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -2423,7 +2466,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '19'
+          example: '34'
       responses:
         '200':
           description: Successful response
@@ -2446,7 +2489,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '19'
+          example: '36'
       responses:
         '200':
           description: Successful response
@@ -2469,7 +2512,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '19'
+          example: '34'
       responses:
         '200':
           description: Successful response
@@ -2580,7 +2623,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '16'
+          example: '39'
       responses:
         '200':
           description: Successful response
@@ -2603,7 +2646,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '19'
+          example: '39'
       responses:
         '200':
           description: Successful response
@@ -2626,7 +2669,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '16'
+          example: '39'
       responses:
         '200':
           description: Successful response
@@ -3121,7 +3164,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-08-07'
+          example: '2023-08-21'
       responses:
         '200':
           description: Successful response
@@ -3142,7 +3185,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-08-08'
+          example: '2023-08-22'
       responses:
         '200':
           description: Successful response

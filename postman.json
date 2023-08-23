@@ -157,7 +157,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "36"
 								}
 							]
 						}
@@ -202,7 +202,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "14"
+									"value": "36"
 								}
 							]
 						}
@@ -1191,7 +1191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 34,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1759,6 +1759,51 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-payment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-payment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1941,7 +1986,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -2145,6 +2190,57 @@
 									"key": "value",
 									"value": "khalti",
 									"description": "nullable"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cash account",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-account?account_head_id=34",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-account"
+							],
+							"query": [
+								{
+									"key": "account_head_id",
+									"value": "34"
 								}
 							]
 						}
@@ -3641,7 +3737,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-04 09-54-45.png"
+									"src": []
 								},
 								{
 									"key": "account_number",
@@ -3708,13 +3804,8 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "bank name edits",
+									"value": "bank name edit",
 									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/home/user--49/Downloads/IMG_8325.jpg"
 								},
 								{
 									"key": "account_number",
@@ -3732,14 +3823,29 @@
 									"type": "text"
 								},
 								{
+									"key": "account_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"type": "text"
+								},
+								{
 									"key": "status",
-									"value": "status",
+									"value": "active",
 									"type": "text"
 								},
 								{
 									"key": "_method",
 									"value": "patch",
 									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Downloads/IMG_8325.jpg"
 								}
 							]
 						},
@@ -3756,7 +3862,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "35"
 								}
 							]
 						}
@@ -3801,7 +3907,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "35"
 								}
 							]
 						}
@@ -3907,7 +4013,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "35"
 								}
 							]
 						}
@@ -4046,7 +4152,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "15"
+									"value": "37"
 								}
 							]
 						}
@@ -4091,7 +4197,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "15"
+									"value": "37"
 								}
 							]
 						}
@@ -4126,7 +4232,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/employee?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -4137,7 +4243,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -4197,7 +4303,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "14"
+									"value": "37"
 								}
 							]
 						}
@@ -4336,7 +4442,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "19"
+									"value": "34"
 								}
 							]
 						}
@@ -4381,7 +4487,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "19"
+									"value": "36"
 								}
 							]
 						}
@@ -4416,7 +4522,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/customer?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/customer?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -4427,7 +4533,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -4487,7 +4593,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "19"
+									"value": "34"
 								}
 							]
 						}
@@ -4626,7 +4732,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "39"
 								}
 							]
 						}
@@ -4671,7 +4777,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "19"
+									"value": "39"
 								}
 							]
 						}
@@ -4777,7 +4883,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "39"
 								}
 							]
 						}
@@ -5686,9 +5792,9 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{live_url}}/api/report?start_date=2023-07-22&end_date=2023-08-07",
+							"raw": "{{url}}/api/report?start_date=2023-07-22&end_date=2023-08-21",
 							"host": [
-								"{{live_url}}"
+								"{{url}}"
 							],
 							"path": [
 								"api",
@@ -5701,7 +5807,7 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2023-08-07"
+									"value": "2023-08-21"
 								}
 							]
 						}
@@ -5721,7 +5827,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/balance-sheet?start_date=2023-07-22&end_date=2023-08-08",
+							"raw": "{{url}}/api/balance-sheet?start_date=2023-07-22&end_date=2023-08-22",
 							"host": [
 								"{{url}}"
 							],
@@ -5736,7 +5842,7 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2023-08-08"
+									"value": "2023-08-22"
 								}
 							]
 						}
