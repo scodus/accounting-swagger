@@ -964,15 +964,17 @@ paths:
               type: object
               example:
                 customer_id: 34
-                receiver_id: '8'
+                receiver_id: 8
                 received_date: '2023-01-01'
-                amount: 150
+                amount: 300
                 payment_mode: ''
                 payment_reference: ''
                 tds: ''
                 note: ''
                 payment_allocation:
                   - invoice_id: 1
+                    allocated_amount: 150
+                  - invoice_id: 2
                     allocated_amount: 150
       security:
         - bearerAuth: []
@@ -1022,14 +1024,16 @@ paths:
                 customer_id: 34
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                amount: 180
+                amount: 400
                 payment_mode: ''
                 payment_reference: ''
                 tds: ''
                 note: ''
                 payment_allocation:
                   - invoice_id: 1
-                    allocated_amount: 180
+                    allocated_amount: 200
+                  - invoice_id: 2
+                    allocated_amount: 200
       security:
         - bearerAuth: []
       parameters:
@@ -1398,7 +1402,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/cash-account:
+  /api/account:
     get:
       tags:
         - cash account
@@ -2887,7 +2891,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2933,7 +2937,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response

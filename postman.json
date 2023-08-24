@@ -1596,7 +1596,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 150,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1639,7 +1639,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 180,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 180\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2374,13 +2374,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/cash-account?account_head_id=34",
+							"raw": "{{url}}/api/account?account_head_id=34",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"cash-account"
+								"account"
 							],
 							"query": [
 								{
@@ -5092,7 +5092,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-07-28 15-49-52.png"
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-22 16-11-56.png"
 								}
 							]
 						},
@@ -5172,7 +5172,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -5323,7 +5323,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
