@@ -28,9 +28,9 @@ tags:
   - name: journal voucher
   - name: Invoice
   - name: sale payment
-  - name: bill payment
   - name: quick receipt
   - name: bill
+  - name: bill payment
   - name: site setting
   - name: company
   - name: cash account
@@ -1123,43 +1123,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bill-payment:
-    post:
-      tags:
-        - bill payment
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                customer_id: 34
-                receiver_id: 8
-                received_date: '2023-01-01'
-                amount: 300
-                payment_mode: ''
-                payment_reference: ''
-                tds: ''
-                note: ''
-                payment_allocation:
-                  - invoice_id: 1
-                    allocated_amount: 150
-                  - invoice_id: 2
-                    allocated_amount: 150
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/quick-receipt:
     post:
       tags:
@@ -1599,6 +1562,43 @@ paths:
             type: integer
           required: true
           example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill-payment:
+    post:
+      tags:
+        - bill payment
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customer_id: 34
+                receiver_id: 8
+                received_date: '2023-01-01'
+                amount: 300
+                payment_mode: ''
+                payment_reference: ''
+                tds: ''
+                note: ''
+                payment_allocation:
+                  - invoice_id: 1
+                    allocated_amount: 150
+                  - invoice_id: 2
+                    allocated_amount: 150
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
