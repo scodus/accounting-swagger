@@ -1873,7 +1873,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 35,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 35,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 35,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 35,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 35,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2447,7 +2447,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
+							"raw": "{{url}}/api/purchase-bill?paginate=&page=&limit=&search_keyword=&status=&vendor_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -2477,7 +2477,7 @@
 									"value": ""
 								},
 								{
-									"key": "customer_id",
+									"key": "vendor_id",
 									"value": ""
 								}
 							]
@@ -2768,7 +2768,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -2808,6 +2808,289 @@
 							"path": [
 								"api",
 								"purchase-payment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quick payment",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vendor_id\": 36,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 35,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 35,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 36,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"amount\": 200,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 200,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment?status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "paid",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment",
 								":id"
 							],
 							"variable": [
