@@ -2131,7 +2131,7 @@
 			]
 		},
 		{
-			"name": "bill",
+			"name": "purchase bill",
 			"item": [
 				{
 					"name": "store",
@@ -2164,13 +2164,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/bill",
+							"raw": "{{url}}/api/purchase-bill",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill"
+								"purchase-bill"
 							]
 						}
 					},
@@ -2201,13 +2201,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/bill/:id",
+							"raw": "{{url}}/api/purchase-bill/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill",
+								"purchase-bill",
 								":id"
 							],
 							"variable": [
@@ -2246,13 +2246,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/bill/:id/update-status",
+							"raw": "{{url}}/api/purchase-bill/:id/update-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill",
+								"purchase-bill",
 								":id",
 								"update-status"
 							],
@@ -2292,13 +2292,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/bill/:id",
+							"raw": "{{url}}/api/purchase-bill/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill",
+								"purchase-bill",
 								":id"
 							],
 							"variable": [
@@ -2348,13 +2348,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/bill/:id/document",
+							"raw": "{{url}}/api/purchase-bill/:id/document",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill",
+								"purchase-bill",
 								":id",
 								"document"
 							],
@@ -2394,20 +2394,20 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/bill/:bill_id/document/:document_id",
+							"raw": "{{url}}/api/purchase-bill/:purchase_bill_id/document/:document_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill",
-								":bill_id",
+								"purchase-bill",
+								":purchase_bill_id",
 								"document",
 								":document_id"
 							],
 							"variable": [
 								{
-									"key": "bill_id",
+									"key": "purchase_bill_id",
 									"value": ""
 								},
 								{
@@ -2447,13 +2447,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/bill?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
+							"raw": "{{url}}/api/purchase-bill?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill"
+								"purchase-bill"
 							],
 							"query": [
 								{
@@ -2514,13 +2514,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/bill/:id",
+							"raw": "{{url}}/api/purchase-bill/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill",
+								"purchase-bill",
 								":id"
 							],
 							"variable": [
@@ -2536,7 +2536,7 @@
 			]
 		},
 		{
-			"name": "bill payment",
+			"name": "purchase payment",
 			"item": [
 				{
 					"name": "store",

@@ -29,8 +29,8 @@ tags:
   - name: Invoice
   - name: sale payment
   - name: quick receipt
-  - name: bill
-  - name: bill payment
+  - name: purchase bill
+  - name: purchase payment
   - name: site setting
   - name: company
   - name: cash account
@@ -987,7 +987,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - bill payment
+        - purchase payment
       summary: list
       security:
         - bearerAuth: []
@@ -1008,7 +1008,7 @@ paths:
   /api/sales-payment/{id}:
     post:
       tags:
-        - bill payment
+        - purchase payment
       summary: update
       requestBody:
         content:
@@ -1051,7 +1051,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - bill payment
+        - purchase payment
       summary: show
       security:
         - bearerAuth: []
@@ -1074,7 +1074,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - bill payment
+        - purchase payment
       summary: delete
       security:
         - bearerAuth: []
@@ -1098,7 +1098,7 @@ paths:
   /api/sales-payment/{id}/update-status:
     post:
       tags:
-        - bill payment
+        - purchase payment
       summary: update status
       requestBody:
         content:
@@ -1294,10 +1294,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bill:
+  /api/purchase-bill:
     post:
       tags:
-        - bill
+        - purchase bill
       summary: store
       requestBody:
         content:
@@ -1344,7 +1344,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - bill
+        - purchase bill
       summary: list
       security:
         - bearerAuth: []
@@ -1378,10 +1378,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bill/{id}:
+  /api/purchase-bill/{id}:
     post:
       tags:
-        - bill
+        - purchase bill
       summary: update
       requestBody:
         content:
@@ -1430,7 +1430,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - bill
+        - purchase bill
       summary: delete
       security:
         - bearerAuth: []
@@ -1453,7 +1453,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - bill
+        - purchase bill
       summary: show
       security:
         - bearerAuth: []
@@ -1474,10 +1474,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bill/{id}/update-status:
+  /api/purchase-bill/{id}/update-status:
     post:
       tags:
-        - bill
+        - purchase bill
       summary: update status
       requestBody:
         content:
@@ -1502,10 +1502,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bill/{id}/document:
+  /api/purchase-bill/{id}/document:
     post:
       tags:
-        - bill
+        - purchase bill
       summary: store document
       requestBody:
         content:
@@ -1538,10 +1538,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bill/{bill_id}/document/{document_id}:
+  /api/purchase-bill/{purchase_bill_id}/document/{document_id}:
     delete:
       tags:
-        - bill
+        - purchase bill
       summary: delete document
       security:
         - bearerAuth: []
@@ -1551,7 +1551,7 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: bill_id
+        - name: purchase_bill_id
           in: path
           schema:
             type: string
@@ -1570,7 +1570,7 @@ paths:
   /api/bill-payment:
     post:
       tags:
-        - bill payment
+        - purchase payment
       summary: store
       requestBody:
         content:
