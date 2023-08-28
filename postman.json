@@ -2561,7 +2561,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
+							"raw": "{\n    \"vendor_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"is_single_bill_payment\": 0,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2569,13 +2569,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/bill-payment",
+							"raw": "{{url}}/api/purchase-payment",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bill-payment"
+								"purchase-payment"
 							]
 						}
 					},
@@ -2604,7 +2604,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200\n        }\n    ]\n}\n\n",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 100\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 100\n        }\n    ]\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2612,13 +2612,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment/:id",
+							"raw": "{{url}}/api/purchase-payment/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sales-payment",
+								"purchase-payment",
 								":id"
 							],
 							"variable": [
@@ -2659,17 +2659,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment?invoice_id=&status=",
+							"raw": "{{url}}/api/purchase-payment?bill_id=&status=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sales-payment"
+								"purchase-payment"
 							],
 							"query": [
 								{
-									"key": "invoice_id",
+									"key": "bill_id",
 									"value": ""
 								},
 								{
@@ -2707,13 +2707,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment/:id/update-status",
+							"raw": "{{url}}/api/purchase-payment/:id/update-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sales-payment",
+								"purchase-payment",
 								":id",
 								"update-status"
 							],
@@ -2756,13 +2756,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment/:id",
+							"raw": "{{url}}/api/purchase-payment/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sales-payment",
+								"purchase-payment",
 								":id"
 							],
 							"variable": [
@@ -2801,13 +2801,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment/:id",
+							"raw": "{{url}}/api/purchase-payment/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sales-payment",
+								"purchase-payment",
 								":id"
 							],
 							"variable": [
