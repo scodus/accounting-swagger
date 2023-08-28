@@ -27,13 +27,14 @@ tags:
   - name: opening balance
   - name: journal voucher
   - name: Invoice
+  - name: bill
   - name: sale payment
   - name: quick receipt
   - name: site setting
+  - name: company
   - name: cash account
   - name: ledger
   - name: accounting firm
-  - name: company
   - name: users
   - name: bank
   - name: employee
@@ -396,13 +397,13 @@ paths:
               properties:
                 account_head_id:
                   type: integer
-                  example: '1'
+                  example: '35'
                 fiscal_year_id:
                   type: integer
                   example: '1'
                 amount:
                   type: integer
-                  example: '9999'
+                  example: '200000'
       security:
         - bearerAuth: []
       parameters:
@@ -456,15 +457,9 @@ paths:
             schema:
               type: object
               properties:
-                account_head_id:
-                  type: integer
-                  example: '1'
-                fiscal_year_id:
-                  type: integer
-                  example: '1'
                 amount:
                   type: integer
-                  example: '9999'
+                  example: '100000'
                 _method:
                   type: string
                   example: patch
@@ -690,7 +685,7 @@ paths:
               type: object
               example:
                 invoice_number: '142365'
-                customer_id: 34
+                customer_id: 35
                 reference_number: '21345'
                 invoice_date: '2023-01-01'
                 due_date: '2023-01-30'
@@ -775,7 +770,7 @@ paths:
               example:
                 _method: patch
                 invoice_number: '142365'
-                customer_id: 34
+                customer_id: 35
                 reference_number: '21345'
                 invoice_date: '2023-01-01'
                 due_date: '2023-01-30'
@@ -941,6 +936,279 @@ paths:
             type: integer
           required: true
           example: '1'
+        - name: document_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill:
+    post:
+      tags:
+        - bill
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                bill_number: ''
+                vendor_id: 36
+                reference_number: '21345'
+                bill_date: '2023-01-01'
+                due_date: '2023-01-30'
+                note: ''
+                status: ''
+                products:
+                  - product_id: 1
+                    account_head_id: 26
+                    quantity: 10
+                    rate: '10'
+                    discount: '10'
+                    tax: 0
+                    description: description
+                    amount: 300
+                  - product_id: 2
+                    account_head_id: 26
+                    quantity: 10
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    description: description
+                    amount: 300
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - bill
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill/{id}:
+    post:
+      tags:
+        - bill
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                invoice_number: '142365'
+                customer_id: 34
+                reference_number: '21345'
+                invoice_date: '2023-01-01'
+                due_date: '2023-01-30'
+                note: ''
+                status: ''
+                products:
+                  - product_id: 1
+                    account_head_id: 26
+                    quantity: 20
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    description: description
+                    amount: 300
+                  - product_id: 2
+                    account_head_id: 26
+                    quantity: 20
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    description: description
+                    amount: 300
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - bill
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - bill
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill/{id}/update-status:
+    post:
+      tags:
+        - bill
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: Approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill/{id}/document:
+    post:
+      tags:
+        - bill
+      summary: store document
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                document[0]:
+                  type: string
+                  format: binary
+                document[1]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill/{bill_id}/document/{document_id}:
+    delete:
+      tags:
+        - bill
+      summary: delete document
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: bill_id
+          in: path
+          schema:
+            type: string
+          required: true
         - name: document_id
           in: path
           schema:
@@ -1144,10 +1412,10 @@ paths:
                 payment_reference: ''
                 note: ''
                 accounts:
-                  - account_head_id: 34
+                  - account_head_id: 35
                     amount: 300
                     description: description
-                  - account_head_id: 3
+                  - account_head_id: 35
                     tax: 13
                     amount: 300
                     description: description
@@ -1402,6 +1670,263 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/company:
+    post:
+      tags:
+        - company
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                primary_phone:
+                  type: string
+                vat_number:
+                  type: string
+                pan_number:
+                  type: string
+                start_date:
+                  type: string
+                accounting_firm_id:
+                  type: integer
+                  example: '1'
+                status:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - company
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company/{id}:
+    post:
+      tags:
+        - company
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name edit
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                primary_phone:
+                  type: string
+                vat_number:
+                  type: string
+                pan_number:
+                  type: string
+                start_date:
+                  type: string
+                accounting_firm_id:
+                  type: integer
+                  example: '1'
+                status:
+                  type: string
+                _method:
+                  type: string
+                  example: patch
+                logo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - company
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - company
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/update-company-user:
+    post:
+      tags:
+        - company
+      summary: update users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id:
+                  - 1
+                  - 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/remove-company-user:
+    post:
+      tags:
+        - company
+      summary: remove users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id:
+                  - 1
+                  - 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company-user/{company_id}:
+    get:
+      tags:
+        - company
+      summary: user list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/account:
     get:
       tags:
@@ -1414,7 +1939,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '34'
+          example: '25'
       responses:
         '200':
           description: Successful response
@@ -1823,263 +2348,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/company:
-    post:
-      tags:
-        - company
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: name
-                short_name:
-                  type: string
-                address:
-                  type: string
-                primary_email:
-                  type: string
-                primary_phone:
-                  type: string
-                vat_number:
-                  type: string
-                pan_number:
-                  type: string
-                start_date:
-                  type: string
-                accounting_firm_id:
-                  type: integer
-                  example: '1'
-                status:
-                  type: string
-                logo:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - company
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/company/{id}:
-    post:
-      tags:
-        - company
-      summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: name edit
-                short_name:
-                  type: string
-                address:
-                  type: string
-                primary_email:
-                  type: string
-                primary_phone:
-                  type: string
-                vat_number:
-                  type: string
-                pan_number:
-                  type: string
-                start_date:
-                  type: string
-                accounting_firm_id:
-                  type: integer
-                  example: '1'
-                status:
-                  type: string
-                _method:
-                  type: string
-                  example: patch
-                logo:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - company
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - company
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/update-company-user:
-    post:
-      tags:
-        - company
-      summary: update users
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                company_id: 1
-                user_id:
-                  - 1
-                  - 2
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/remove-company-user:
-    post:
-      tags:
-        - company
-      summary: remove users
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                company_id: 1
-                user_id:
-                  - 1
-                  - 2
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/company-user/{company_id}:
-    get:
-      tags:
-        - company
-      summary: user list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/user:
     get:
       tags:
@@ -2257,15 +2525,17 @@ paths:
                 image:
                   type: string
                   format: binary
+                opening_balance:
+                  type: integer
+                  example: '200000'
       security:
         - bearerAuth: []
       parameters:
         - name: id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '35'
       responses:
         '200':
           description: Successful response
@@ -3041,7 +3311,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -3208,7 +3478,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -3231,7 +3501,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -3254,7 +3524,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -3296,7 +3566,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-08-22'
+          example: '2024-08-22'
       responses:
         '200':
           description: Successful response
@@ -3401,6 +3671,16 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test:
+    get:
+      tags:
+        - default
+      summary: test
       responses:
         '200':
           description: Successful response
