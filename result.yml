@@ -98,7 +98,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -111,11 +112,11 @@ paths:
           in: query
           schema:
             type: string
+          example: customer
         - name: parent_slug
           in: query
           schema:
             type: string
-          example: cash-and-bank
         - name: tree_view
           in: query
           schema:
@@ -689,8 +690,8 @@ paths:
                 invoice_number: '142365'
                 customer_id: 35
                 reference_number: '21345'
-                invoice_date: '2023-01-01'
-                due_date: '2023-01-30'
+                invoice_date: '2023-08-01'
+                due_date: '2023-08-30'
                 note: ''
                 status: ''
                 products:
@@ -774,7 +775,7 @@ paths:
                 invoice_number: '142365'
                 customer_id: 35
                 reference_number: '21345'
-                invoice_date: '2023-01-01'
+                invoice_date: '2023-08-01'
                 due_date: '2023-01-30'
                 note: ''
                 status: ''
@@ -962,7 +963,7 @@ paths:
               example:
                 customer_id: 34
                 receiver_id: 8
-                received_date: '2023-01-01'
+                received_date: '2023-08-01'
                 amount: 300
                 payment_mode: ''
                 payment_reference: ''
@@ -1020,7 +1021,7 @@ paths:
                 _method: patch
                 customer_id: 34
                 receiver_id: '8'
-                received_date: '2023-01-01'
+                received_date: '2023-08-01'
                 amount: 400
                 payment_mode: ''
                 payment_reference: ''
@@ -1216,7 +1217,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2042,8 +2043,10 @@ paths:
                   type: string
                 primary_email:
                   type: string
+                  example: email@email
                 primary_phone:
-                  type: string
+                  type: integer
+                  example: '123123'
                 vat_number:
                   type: string
                 pan_number:
@@ -2081,8 +2084,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -2120,17 +2122,16 @@ paths:
                   type: string
                 primary_email:
                   type: string
+                  example: email@email
                 primary_phone:
-                  type: string
+                  type: integer
+                  example: '2588965'
                 vat_number:
                   type: string
                 pan_number:
                   type: string
                 start_date:
                   type: string
-                accounting_firm_id:
-                  type: integer
-                  example: '1'
                 status:
                   type: string
                 _method:
@@ -2212,8 +2213,7 @@ paths:
               example:
                 company_id: 1
                 user_id:
-                  - 1
-                  - 2
+                  - 4
       security:
         - bearerAuth: []
       parameters:
@@ -2240,8 +2240,7 @@ paths:
               example:
                 company_id: 1
                 user_id:
-                  - 1
-                  - 2
+                  - 4
       security:
         - bearerAuth: []
       parameters:
@@ -2474,8 +2473,10 @@ paths:
                   type: string
                 primary_email:
                   type: string
+                  example: email@email.com
                 primary_phone:
-                  type: string
+                  type: integer
+                  example: '9876543210'
                 vat_number:
                   type: string
                 start_date:
@@ -2547,8 +2548,10 @@ paths:
                   type: string
                 primary_email:
                   type: string
+                  example: email@email.com
                 primary_phone:
-                  type: string
+                  type: integer
+                  example: '4312879789897'
                 vat_number:
                   type: string
                 start_date:
@@ -2592,7 +2595,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2625,7 +2628,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: update users
+      summary: update user
       requestBody:
         content:
           application/json:
@@ -2633,10 +2636,8 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                user_id: 1
-                user:
-                  name: name
-                  email: nameemail@email.com
+                user_id:
+                  - 3
       security:
         - bearerAuth: []
       parameters:
@@ -2654,7 +2655,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: remove users
+      summary: remove user
       requestBody:
         content:
           application/json:
@@ -2662,7 +2663,8 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                user_id: 1
+                user_id:
+                  - 3
       security:
         - bearerAuth: []
       parameters:
@@ -2680,7 +2682,7 @@ paths:
     get:
       tags:
         - accounting firm
-      summary: user list
+      summary: list user
       security:
         - bearerAuth: []
       parameters:
@@ -2689,6 +2691,22 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
         - name: accounting_firm_id
           in: path
           schema:
