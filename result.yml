@@ -25,6 +25,7 @@ tags:
   - name: account head
   - name: fishal year
   - name: opening balance
+  - name: ledger
   - name: journal voucher
   - name: Invoice
   - name: sale payment
@@ -35,7 +36,6 @@ tags:
   - name: site setting
   - name: company
   - name: cash account
-  - name: ledger
   - name: accounting firm
   - name: users
   - name: bank
@@ -71,7 +71,8 @@ paths:
                 code:
                   type: string
                 opening_balance:
-                  type: string
+                  type: integer
+                  example: '2000'
                 status:
                   type: string
                   example: asdf
@@ -83,6 +84,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -95,11 +101,15 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: paginate
-          in: query
+        - name: company-id
+          in: header
           schema:
             type: integer
           example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
         - name: page
           in: query
           schema:
@@ -112,7 +122,6 @@ paths:
           in: query
           schema:
             type: string
-          example: customer
         - name: parent_slug
           in: query
           schema:
@@ -121,12 +130,13 @@ paths:
           in: query
           schema:
             type: string
-          description: 1|0
+          description: 1 || 0
         - name: no_sub_account_head
           in: query
           schema:
-            type: string
-          description: 1|0
+            type: integer
+          description: 1 || 0
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -167,6 +177,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -190,12 +205,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '36'
+          example: '37'
       responses:
         '200':
           description: Successful response
@@ -213,12 +233,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '1111'
       responses:
         '200':
           description: Successful response
@@ -526,6 +551,42 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/ledger:
+    get:
+      tags:
+        - ledger
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: account_head_id
+          in: query
+          schema:
+            type: integer
+          example: '26'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/journal-voucher:
     post:
       tags:
@@ -556,6 +617,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -568,6 +634,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -619,6 +690,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -642,6 +718,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -665,6 +746,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -695,7 +781,7 @@ paths:
                 note: ''
                 status: ''
                 products:
-                  - product_id: 1
+                  - product_id: 3
                     account_head_id: 26
                     quantity: 10
                     rate: '10'
@@ -703,7 +789,7 @@ paths:
                     tax: 0
                     description: description
                     amount: 300
-                  - product_id: 2
+                  - product_id: 4
                     account_head_id: 26
                     quantity: 10
                     rate: 10
@@ -719,6 +805,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -731,6 +822,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -799,6 +895,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -822,6 +923,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -845,6 +951,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -869,16 +980,21 @@ paths:
               properties:
                 status:
                   type: string
-                  example: Approved
+                  example: unpaid
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -909,6 +1025,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -933,6 +1054,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: invoice_id
           in: path
           schema:
@@ -982,6 +1108,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -994,6 +1125,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: invoice_id
           in: query
           schema:
@@ -1040,6 +1176,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1063,6 +1204,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1086,6 +1232,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1114,6 +1265,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1158,6 +1314,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1170,6 +1331,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: status
           in: query
           schema:
@@ -1212,6 +1378,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1235,6 +1406,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1258,6 +1434,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1286,6 +1467,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1340,6 +1526,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1352,6 +1543,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -1420,6 +1616,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1443,6 +1644,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1466,6 +1672,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1494,6 +1705,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1530,6 +1746,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1554,6 +1775,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: purchase_bill_id
           in: path
           schema:
@@ -1603,6 +1829,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1615,6 +1846,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: bill_id
           in: query
           schema:
@@ -1661,6 +1897,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1684,12 +1925,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1707,6 +1953,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1735,6 +1986,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1779,6 +2035,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1791,6 +2052,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: status
           in: query
           schema:
@@ -1834,6 +2100,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1857,6 +2128,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1880,6 +2156,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1908,6 +2189,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -1947,9 +2233,6 @@ paths:
                   type: string
                 address:
                   type: string
-                payment_mode_name:
-                  type: string
-                  example: khalti
                 payment_mode_name[0]:
                   type: string
                   example: khalti
@@ -2171,7 +2454,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2258,7 +2541,7 @@ paths:
     get:
       tags:
         - company
-      summary: user list
+      summary: list user
       security:
         - bearerAuth: []
       parameters:
@@ -2267,12 +2550,46 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
         - name: company_id
           in: path
           schema:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company-admin:
+    get:
+      tags:
+        - company
+      summary: assign admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -2291,163 +2608,6 @@ paths:
           schema:
             type: integer
           example: '25'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/ledger:
-    post:
-      tags:
-        - ledger
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                journal_voucher_id:
-                  type: integer
-                  example: '1'
-                cr_amount:
-                  type: integer
-                  example: '9999'
-                dr_amount:
-                  type: integer
-                  example: '9999'
-                remarks:
-                  type: string
-                  example: remarks
-                account_head_id:
-                  type: integer
-                  example: '1'
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - ledger
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/ledger/{id}:
-    post:
-      tags:
-        - ledger
-      summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                journal_voucher_id:
-                  type: integer
-                  example: '1'
-                cr_amount:
-                  type: integer
-                  example: '9999'
-                dr_amount:
-                  type: integer
-                  example: '9999'
-                remarks:
-                  type: string
-                  example: remarks
-                account_head_id:
-                  type: integer
-                  example: '1'
-                _method:
-                  type: string
-                  example: patch
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - ledger
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - ledger
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2718,6 +2878,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting-firm-admin:
+    get:
+      tags:
+        - accounting firm
+      summary: assign admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/user:
     get:
       tags:
@@ -2820,7 +2998,8 @@ paths:
                 account_name:
                   type: string
                 price:
-                  type: string
+                  type: integer
+                  example: '5000'
       security:
         - bearerAuth: []
       parameters:
@@ -2829,6 +3008,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2841,6 +3025,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -2885,7 +3074,8 @@ paths:
                 account_name:
                   type: string
                 price:
-                  type: string
+                  type: integer
+                  example: '200000'
                 status:
                   type: string
                   example: active
@@ -2895,17 +3085,20 @@ paths:
                 image:
                   type: string
                   format: binary
-                opening_balance:
-                  type: integer
-                  example: '200000'
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
-            type: string
+            type: integer
           required: true
+          example: '39'
       responses:
         '200':
           description: Successful response
@@ -2923,12 +3116,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '35'
+          example: '37'
       responses:
         '200':
           description: Successful response
@@ -2946,12 +3144,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '35'
+          example: '40'
       responses:
         '200':
           description: Successful response
@@ -2991,6 +3194,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3003,6 +3211,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -3056,6 +3269,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3079,6 +3297,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3102,6 +3325,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3147,6 +3375,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3159,6 +3392,16 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -3212,6 +3455,16 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3235,6 +3488,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3258,6 +3516,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3303,6 +3566,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3315,11 +3583,20 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: paginate
-          in: query
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
           schema:
             type: integer
           example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
         - name: page
           in: query
           schema:
@@ -3369,6 +3646,16 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3392,6 +3679,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3415,6 +3707,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3461,6 +3758,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3473,11 +3775,20 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: paginate
-          in: query
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
           schema:
             type: integer
           example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
         - name: page
           in: query
           schema:
@@ -3526,12 +3837,22 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3549,12 +3870,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3572,12 +3898,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3613,6 +3944,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3625,6 +3961,16 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -3676,6 +4022,16 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3699,6 +4055,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3722,6 +4083,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
@@ -3752,7 +4118,7 @@ paths:
                   example: T0982345jhwer
                 product_category_id:
                   type: integer
-                  example: '1'
+                  example: '2'
                 tax:
                   type: integer
                   example: '11'
@@ -3771,6 +4137,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3783,6 +4154,16 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -3827,7 +4208,7 @@ paths:
                   example: T0982345jhwer
                 product_category_id:
                   type: integer
-                  example: '1'
+                  example: '2'
                 tax:
                   type: integer
                   example: '11'
@@ -3843,12 +4224,22 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3866,12 +4257,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3889,12 +4285,17 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3906,6 +4307,16 @@ paths:
         - report
       summary: list
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: start_date
           in: query
           schema:
@@ -3927,11 +4338,21 @@ paths:
         - report
       summary: balance sheet
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2023-07-22'
+          example: '2023-10-22'
         - name: end_date
           in: query
           schema:

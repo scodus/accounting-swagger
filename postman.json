@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd3aab41-725c-4b51-b4aa-135ea401efa2",
+		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26417274"
@@ -27,6 +27,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -60,7 +65,7 @@
 								},
 								{
 									"key": "opening_balance",
-									"value": "",
+									"value": "2000",
 									"type": "text"
 								},
 								{
@@ -97,7 +102,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -182,6 +193,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -201,7 +217,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "36"
+									"value": "37"
 								}
 							]
 						}
@@ -225,7 +241,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -236,7 +258,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=customer&parent_slug=&tree_view=&no_sub_account_head=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=1",
 							"host": [
 								"{{url}}"
 							],
@@ -247,7 +269,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -259,7 +281,7 @@
 								},
 								{
 									"key": "search_keyword",
-									"value": "customer"
+									"value": ""
 								},
 								{
 									"key": "parent_slug",
@@ -268,12 +290,12 @@
 								{
 									"key": "tree_view",
 									"value": "",
-									"description": "1|0"
+									"description": "1 || 0"
 								},
 								{
 									"key": "no_sub_account_head",
-									"value": "",
-									"description": "1|0"
+									"value": "1",
+									"description": "1 || 0"
 								}
 							]
 						}
@@ -302,6 +324,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -321,7 +348,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "1111"
 								}
 							]
 						}
@@ -891,6 +918,75 @@
 			]
 		},
 		{
+			"name": "ledger",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/ledger?paginate=1&page=&limit=&account_head_id=26",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"ledger"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "account_head_id",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "journal voucher",
 			"item": [
 				{
@@ -911,6 +1007,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -950,7 +1051,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -1020,6 +1127,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1063,7 +1175,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -1126,6 +1244,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1176,11 +1299,16 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 3,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 4,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1214,7 +1342,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
@@ -1258,13 +1392,19 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "status",
-									"value": "Approved",
+									"value": "unpaid",
 									"type": "text"
 								}
 							]
@@ -1283,7 +1423,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -1308,6 +1448,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -1353,6 +1498,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -1411,6 +1561,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1460,7 +1615,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -1531,6 +1692,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1581,6 +1747,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1623,6 +1794,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -1672,7 +1848,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -1719,7 +1901,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -1773,6 +1961,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1817,6 +2010,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -1868,6 +2066,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1910,6 +2113,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -1959,7 +2167,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -2002,7 +2216,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -2056,6 +2276,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2100,6 +2325,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -2151,6 +2381,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2189,7 +2424,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"142365\",\n    \"vendor_id\": 34,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400\n        }\n    ]\n}",
@@ -2233,7 +2474,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -2284,6 +2531,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2328,6 +2580,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -2386,6 +2643,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2435,7 +2697,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -2506,6 +2774,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2556,6 +2829,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2598,6 +2876,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -2647,7 +2930,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -2694,7 +2983,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -2748,6 +3043,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2767,7 +3067,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -2792,6 +3092,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -2843,6 +3148,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2885,6 +3195,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -2934,7 +3249,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -2977,7 +3298,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -3031,6 +3358,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -3075,6 +3407,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -3169,11 +3506,6 @@
 								{
 									"key": "address",
 									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "payment_mode_name",
-									"value": "khalti",
 									"type": "text"
 								},
 								{
@@ -3537,7 +3869,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -3737,7 +4069,7 @@
 					"response": []
 				},
 				{
-					"name": "user list",
+					"name": "list user",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -3770,7 +4102,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/company-user/:company_id",
+							"raw": "{{url}}/api/company-user/:company_id?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -3779,11 +4111,75 @@
 								"company-user",
 								":company_id"
 							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							],
 							"variable": [
 								{
 									"key": "company_id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assign admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-admin"
 							]
 						}
 					},
@@ -3834,296 +4230,6 @@
 								{
 									"key": "account_head_id",
 									"value": "25"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "ledger",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "journal_voucher_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "cr_amount",
-									"value": "9999",
-									"type": "text"
-								},
-								{
-									"key": "dr_amount",
-									"value": "9999",
-									"type": "text"
-								},
-								{
-									"key": "remarks",
-									"value": "remarks",
-									"type": "text"
-								},
-								{
-									"key": "account_head_id",
-									"value": "1",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/ledger",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"ledger"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "journal_voucher_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "cr_amount",
-									"value": "9999",
-									"type": "text"
-								},
-								{
-									"key": "dr_amount",
-									"value": "9999",
-									"type": "text"
-								},
-								{
-									"key": "remarks",
-									"value": "remarks",
-									"type": "text"
-								},
-								{
-									"key": "account_head_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/ledger/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"ledger",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/ledger/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"ledger",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/ledger?paginate=1&page=&limit=&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"ledger"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/ledger/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"ledger",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
 								}
 							]
 						}
@@ -4616,6 +4722,52 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "assign admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-admin"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -4846,6 +4998,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -4888,7 +5045,7 @@
 								},
 								{
 									"key": "price",
-									"value": "",
+									"value": "5000",
 									"type": "text"
 								}
 							]
@@ -4920,7 +5077,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -4970,7 +5133,7 @@
 									"src": "/home/user--49/Downloads/IMG_8325.jpg"
 								},
 								{
-									"key": "opening_balance",
+									"key": "price",
 									"value": "200000",
 									"type": "text"
 								}
@@ -4989,7 +5152,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "39"
 								}
 							]
 						}
@@ -5015,6 +5178,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5034,7 +5202,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "35"
+									"value": "37"
 								}
 							]
 						}
@@ -5058,7 +5226,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -5121,6 +5295,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5140,7 +5319,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "35"
+									"value": "40"
 								}
 							]
 						}
@@ -5170,6 +5349,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -5230,7 +5414,13 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -5305,6 +5495,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5348,7 +5543,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -5411,6 +5612,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5460,6 +5666,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -5520,7 +5731,18 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -5595,6 +5817,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5638,7 +5865,18 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -5701,6 +5939,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5750,6 +5993,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -5810,7 +6058,18 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -5885,6 +6144,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5928,7 +6192,18 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -5939,7 +6214,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/vendor?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/vendor?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -5950,7 +6225,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -5990,6 +6265,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -6040,6 +6320,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -6105,7 +6390,18 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -6154,7 +6450,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -6180,6 +6476,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6199,7 +6500,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -6223,7 +6524,18 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -6234,7 +6546,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product-category?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/product-category?paginate=&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -6245,7 +6557,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -6286,6 +6598,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6305,7 +6622,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -6335,6 +6652,11 @@
 							{
 								"key": "Accept",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
 								"type": "text"
 							}
 						],
@@ -6390,7 +6712,18 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -6460,6 +6793,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6503,7 +6841,18 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -6566,6 +6915,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6616,6 +6970,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6633,7 +6992,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -6686,7 +7045,18 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -6702,7 +7072,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -6740,7 +7110,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -6766,6 +7136,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6785,7 +7160,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -6809,7 +7184,18 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -6876,6 +7262,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6895,7 +7286,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -6914,7 +7305,18 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -6949,13 +7351,24 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/balance-sheet?start_date=2023-07-22&end_date=2024-08-22",
+							"raw": "{{url}}/api/balance-sheet?start_date=2023-10-22&end_date=2024-08-22",
 							"host": [
 								"{{url}}"
 							],
@@ -6966,7 +7379,7 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2023-07-22"
+									"value": "2023-10-22"
 								},
 								{
 									"key": "end_date",
