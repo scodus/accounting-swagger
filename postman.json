@@ -65,7 +65,7 @@
 								},
 								{
 									"key": "opening_balance",
-									"value": "2000",
+									"value": "500000",
 									"type": "text"
 								},
 								{
@@ -114,7 +114,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "testedit",
+									"value": "Cash in hand",
 									"type": "text"
 								},
 								{
@@ -124,7 +124,7 @@
 								},
 								{
 									"key": "description",
-									"value": "descriptionedit",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -139,7 +139,7 @@
 								},
 								{
 									"key": "opening_balance",
-									"value": "",
+									"value": "500000",
 									"type": "text"
 								},
 								{
@@ -167,7 +167,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "36"
+									"value": "42"
 								}
 							]
 						}
@@ -258,7 +258,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=1",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=",
 							"host": [
 								"{{url}}"
 							],
@@ -294,7 +294,7 @@
 								},
 								{
 									"key": "no_sub_account_head",
-									"value": "1",
+									"value": "",
 									"description": "1 || 0"
 								}
 							]
@@ -954,13 +954,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/ledger?paginate=1&page=&limit=&account_head_id=26",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&account_head_id=38",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"ledger"
+								"account-head-ledger"
 							],
 							"query": [
 								{
@@ -977,7 +977,7 @@
 								},
 								{
 									"key": "account_head_id",
-									"value": "26"
+									"value": "38"
 								}
 							]
 						}
@@ -5134,7 +5134,7 @@
 								},
 								{
 									"key": "price",
-									"value": "200000",
+									"value": "500000",
 									"type": "text"
 								}
 							]
@@ -5152,7 +5152,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "39"
+									"value": "38"
 								}
 							]
 						}
@@ -7288,6 +7288,181 @@
 									"key": "id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transfer",
+			"item": [
+				{
+					"name": "account head amount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/account-head-amount?slug=cash-in-hand",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account-head-amount"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "cash-in-hand"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deposite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_head_id",
+									"value": "38",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100000",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/deposite",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"deposite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_head_id",
+									"value": "38",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100000",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/withdraw",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"withdraw"
 							]
 						}
 					},
