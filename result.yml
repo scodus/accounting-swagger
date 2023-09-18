@@ -76,7 +76,6 @@ paths:
                   example: '500000'
                 status:
                   type: string
-                  example: asdf
       security:
         - bearerAuth: []
       parameters:
@@ -187,7 +186,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '42'
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -781,7 +780,7 @@ paths:
                 note: ''
                 status: ''
                 products:
-                  - product_id: 3
+                  - product_id: 1
                     account_head_id: 26
                     quantity: 10
                     rate: '10'
@@ -789,7 +788,7 @@ paths:
                     tax: 0
                     description: description
                     amount: 300
-                  - product_id: 4
+                  - product_id: 2
                     account_head_id: 26
                     quantity: 10
                     rate: 10
@@ -994,7 +993,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1503,7 +1502,7 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 26
+                    account_head_id: 32
                     quantity: 10
                     rate: '10'
                     discount: '10'
@@ -1511,7 +1510,7 @@ paths:
                     description: description
                     amount: 300
                   - product_id: 2
-                    account_head_id: 26
+                    account_head_id: 32
                     quantity: 10
                     rate: 10
                     discount: '10'
@@ -1598,7 +1597,7 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 26
+                    account_head_id: 32
                     quantity: 20
                     rate: 10
                     discount: '10'
@@ -1606,7 +1605,7 @@ paths:
                     description: description
                     amount: 400
                   - product_id: 2
-                    account_head_id: 26
+                    account_head_id: 32
                     quantity: 20
                     rate: 10
                     discount: '10'
@@ -4295,7 +4294,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -4318,7 +4317,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '5'
         - name: slug
           in: query
           schema:
@@ -4455,6 +4454,37 @@ paths:
           schema:
             type: string
           example: '2023-10-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sale-register:
+    get:
+      tags:
+        - report
+      summary: sale register
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-01-22'
         - name: end_date
           in: query
           schema:
