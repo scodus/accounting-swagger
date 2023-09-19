@@ -5767,6 +5767,11 @@
 									"type": "text"
 								},
 								{
+									"key": "pan_number",
+									"value": "90817234",
+									"type": "text"
+								},
+								{
 									"key": "status",
 									"value": "active",
 									"type": "text"
@@ -5791,7 +5796,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "34"
+									"value": "35"
 								}
 							]
 						}
@@ -7589,7 +7594,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/sale-register?start_date=2023-01-22&end_date=2024-08-22",
+							"raw": "{{url}}/api/sale-register?paginate=1&page=&limit=&start_date=2023-01-22&end_date=2024-08-22",
 							"host": [
 								"{{url}}"
 							],
@@ -7598,6 +7603,76 @@
 								"sale-register"
 							],
 							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2023-01-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase register",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/purchase-register?paginate=&page=&limit=&start_date=2023-01-22&end_date=2024-08-22",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"purchase-register"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
 								{
 									"key": "start_date",
 									"value": "2023-01-22"
