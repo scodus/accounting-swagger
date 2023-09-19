@@ -44,6 +44,7 @@ tags:
   - name: vendor
   - name: product category
   - name: unit
+  - name: quotation
   - name: product
   - name: transfer
   - name: report
@@ -4101,6 +4102,206 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/quotation:
+    post:
+      tags:
+        - quotation
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                quotation_date: '2023-08-01'
+                expiry_date: '2023-08-30'
+                vendor_id: 35
+                quotation_number: ''
+                credit_term: ''
+                note: ''
+                status: ''
+                products:
+                  - product_id: 1
+                    quantity: 10
+                    rate: '10'
+                    discount: '10'
+                    tax: 0
+                    amount: 300
+                  - product_id: 2
+                    quantity: 10
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    amount: 300
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - quotation
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/quotation/{id}:
+    post:
+      tags:
+        - quotation
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                quotation_date: '2023-08-01'
+                expiry_date: '2023-08-30'
+                vendor_id: 35
+                quotation_number: ''
+                credit_term: ''
+                note: ''
+                status: ''
+                products:
+                  - product_id: 1
+                    quantity: 100
+                    rate: '100'
+                    discount: '100'
+                    tax: 0
+                    amount: 9900
+                  - product_id: 2
+                    quantity: 100
+                    rate: 100
+                    discount: '100'
+                    tax: 13
+                    amount: 9900
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - quotation
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - quotation
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/product:
     post:
       tags:
@@ -4410,6 +4611,8 @@ paths:
       tags:
         - report
       summary: list
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -4441,6 +4644,8 @@ paths:
       tags:
         - report
       summary: balance sheet
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -4472,6 +4677,8 @@ paths:
       tags:
         - report
       summary: sale register
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -4516,6 +4723,8 @@ paths:
       tags:
         - report
       summary: purchase register
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -4530,7 +4739,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
