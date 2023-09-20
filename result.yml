@@ -4117,7 +4117,7 @@ paths:
               example:
                 quotation_date: '2023-08-01'
                 expiry_date: '2023-08-30'
-                vendor_id: 35
+                customer_id: 35
                 quotation_number: ''
                 credit_term: ''
                 note: ''
@@ -4206,7 +4206,7 @@ paths:
                 _method: patch
                 quotation_date: '2023-08-01'
                 expiry_date: '2023-08-30'
-                vendor_id: 35
+                customer_id: 35
                 quotation_number: ''
                 credit_term: ''
                 note: ''

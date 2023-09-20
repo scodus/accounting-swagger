@@ -6984,7 +6984,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"vendor_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"amount\": 100\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"amount\": 100\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7032,7 +7032,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"vendor_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 100,\n            \"rate\": \"100\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"amount\": 10000\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"discount\": \"100\",\n            \"tax\": 13,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 100,\n            \"rate\": \"100\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"amount\": 10000\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"discount\": \"100\",\n            \"tax\": 13,\n            \"amount\": 10000\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
