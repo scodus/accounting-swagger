@@ -45,6 +45,8 @@ tags:
   - name: product category
   - name: unit
   - name: quotation
+  - name: sales order
+  - name: purchase order
   - name: product
   - name: transfer
   - name: report
@@ -4126,13 +4128,13 @@ paths:
                     rate: '10'
                     discount: '10'
                     tax: 0
-                    amount: 300
+                    amount: 100
                   - product_id: 2
                     quantity: 10
                     rate: 10
                     discount: '10'
                     tax: 13
-                    amount: 300
+                    amount: 100
       security:
         - bearerAuth: []
       parameters:
@@ -4215,13 +4217,13 @@ paths:
                     rate: '100'
                     discount: '100'
                     tax: 0
-                    amount: 9900
+                    amount: 10000
                   - product_id: 2
                     quantity: 100
                     rate: 100
                     discount: '100'
                     tax: 13
-                    amount: 9900
+                    amount: 10000
       security:
         - bearerAuth: []
       parameters:
@@ -4240,7 +4242,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '30'
       responses:
         '200':
           description: Successful response
@@ -4297,6 +4299,473 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/quotation/{id}/update-status:
+    post:
+      tags:
+        - quotation
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-order:
+    post:
+      tags:
+        - sales order
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                order_date: '2023-08-01'
+                delivery_date: '2023-08-30'
+                customer_id: 35
+                order_number: ''
+                reference: ''
+                note: ''
+                products:
+                  - product_id: 1
+                    quantity: 10
+                    rate: '10'
+                    discount: '10'
+                    tax: 0
+                    amount: 100
+                  - product_id: 2
+                    quantity: 10
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    amount: 100
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - sales order
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-order/{id}:
+    post:
+      tags:
+        - sales order
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                order_date: '2023-08-01'
+                delivery_date: '2023-08-30'
+                customer_id: 35
+                order_number: ''
+                reference: ''
+                note: ''
+                products:
+                  - product_id: 1
+                    quantity: 100
+                    rate: '100'
+                    discount: '100'
+                    tax: 0
+                    amount: 10000
+                  - product_id: 2
+                    quantity: 100
+                    rate: 100
+                    discount: '100'
+                    tax: 13
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - sales order
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - purchase order
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-order/{id}/update-status:
+    post:
+      tags:
+        - sales order
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-order:
+    post:
+      tags:
+        - purchase order
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                vendor_id: 35
+                credit_term: ''
+                order_date: '2023-08-01'
+                reference: ''
+                order_number: ''
+                note: ''
+                products:
+                  - product_id: 1
+                    quantity: 10
+                    rate: '10'
+                    discount: '10'
+                    tax: 0
+                    amount: 100
+                  - product_id: 2
+                    quantity: 10
+                    rate: 10
+                    discount: '10'
+                    tax: 13
+                    amount: 100
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - purchase order
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-order/{id}:
+    post:
+      tags:
+        - purchase order
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                vendor_id: 35
+                credit_term: ''
+                order_date: '2023-08-01'
+                reference: ''
+                order_number: ''
+                note: ''
+                products:
+                  - product_id: 1
+                    quantity: 100
+                    rate: '100'
+                    discount: '100'
+                    tax: 0
+                    amount: 10000
+                  - product_id: 2
+                    quantity: 100
+                    rate: 100
+                    discount: '100'
+                    tax: 13
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - purchase order
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-order/{id}/update-status:
+    post:
+      tags:
+        - purchase order
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
