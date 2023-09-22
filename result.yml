@@ -2956,20 +2956,35 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/user-accounting-firm/{user_id}:
-    get:
+    post:
       tags:
         - users
-      summary: user company
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                email:
+                  type: string
+                  example: name@email.com
       security:
         - bearerAuth: []
       parameters:
-        - name: user_id
-          in: path
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
           schema:
             type: integer
-          required: true
-          example: '6'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2994,6 +3009,25 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user-accounting-firm/{user_id}:
+    get:
+      tags:
+        - users
+      summary: user company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
       responses:
         '200':
           description: Successful response
