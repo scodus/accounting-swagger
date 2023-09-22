@@ -4567,6 +4567,49 @@
 					"response": []
 				},
 				{
+					"name": "create user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user\": {\n        \"name\": \"tomnjerry\",\n        \"email\": \"tomnjerry8963@gmail.com\" \n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/create-accounting-firm-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"create-accounting-firm-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update user",
 					"request": {
 						"auth": {
