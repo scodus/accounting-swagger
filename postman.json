@@ -114,7 +114,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Cash in hand",
+									"value": "test edit",
 									"type": "text"
 								},
 								{
@@ -167,7 +167,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "43"
+									"value": "39"
 								}
 							]
 						}
@@ -217,7 +217,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "37"
+									"value": "39"
 								}
 							]
 						}
@@ -954,7 +954,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&account_head_id=38",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&account_head_id=34",
 							"host": [
 								"{{url}}"
 							],
@@ -977,7 +977,7 @@
 								},
 								{
 									"key": "account_head_id",
-									"value": "38"
+									"value": "34"
 								}
 							]
 						}
@@ -3983,6 +3983,54 @@
 					"response": []
 				},
 				{
+					"name": "create user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"tomnjerry\",\n    \"email\": \"tomnjerry8963@gmail.com\",\n    \"company_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/create-company-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"create-company-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update users",
 					"request": {
 						"auth": {
@@ -4005,7 +4053,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [4]\n}",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [9]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4048,7 +4096,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [4]\n}",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [9]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4165,7 +4213,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 4\n}",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 9\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4589,7 +4637,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user\": {\n        \"name\": \"tomnjerry\",\n        \"email\": \"tomnjerry8963@gmail.com\" \n    }\n}",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"name\": \"tomnjerry\",\n    \"email\": \"tomnjerrys8963@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4792,7 +4840,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 3\n}",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4845,7 +4893,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/user?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/user?paginate=1&page=&limit=&search_keyword=&role=accountingfirm",
 							"host": [
 								"{{url}}"
 							],
@@ -4869,6 +4917,10 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "role",
+									"value": "accountingfirm"
 								}
 							]
 						}
@@ -5017,7 +5069,7 @@
 							"variable": [
 								{
 									"key": "user_id",
-									"value": "6"
+									"value": "1"
 								}
 							]
 						}
@@ -8394,6 +8446,236 @@
 			]
 		},
 		{
+			"name": "role",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "invoice maker",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/role/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"role",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/role?paginate=&page=&limit=&search_keyword=&is_service=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"role"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/role/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"role",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "transfer",
 			"item": [
 				{
@@ -8661,7 +8943,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/balance-sheet?start_date=2023-10-22&end_date=2024-08-22",
+							"raw": "{{url}}/api/balance-sheet?start_date=2023-1-22&end_date=2024-08-22",
 							"host": [
 								"{{url}}"
 							],
@@ -8672,7 +8954,7 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2023-10-22"
+									"value": "2023-1-22"
 								},
 								{
 									"key": "end_date",
