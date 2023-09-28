@@ -49,6 +49,7 @@ tags:
   - name: purchase order
   - name: product
   - name: role
+  - name: permission
   - name: transfer
   - name: report
 paths:
@@ -2613,10 +2614,18 @@ paths:
           content:
             application/json: {}
   /api/company-admin:
-    get:
+    post:
       tags:
         - company
       summary: assign admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id: 9
       security:
         - bearerAuth: []
       parameters:
@@ -2941,10 +2950,18 @@ paths:
           content:
             application/json: {}
   /api/accounting-firm-admin:
-    get:
+    post:
       tags:
         - accounting firm
       summary: assign admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 2
       security:
         - bearerAuth: []
       parameters:
@@ -3065,6 +3082,39 @@ paths:
             type: integer
           required: true
           example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/assign-permission:
+    post:
+      tags:
+        - users
+      summary: assign permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: 2
+                permissions:
+                  - accountingfirm-user-list
+                  - accountingfirm-user-create
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -5173,6 +5223,100 @@ paths:
             type: integer
           required: true
           example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/permission/{type}:
+    get:
+      tags:
+        - permission
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: accountingfirm | company
+          example: accountingfirm
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/permission:
+    post:
+      tags:
+        - permission
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: invoice maker
+                type:
+                  type: string
+                  example: accountingfirm
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/permission/{id}:
+    delete:
+      tags:
+        - permission
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '125'
       responses:
         '200':
           description: Successful response
