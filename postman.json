@@ -1756,7 +1756,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 191.70,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 191.70,\n            \"tds\": 41.70\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1804,7 +1804,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200\n        }\n    ]\n}\n\n",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200,\n            \"td\": \"\"\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200,\n            \"tds\": \"\"\n        }\n    ]\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2390,7 +2390,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 36,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 36,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2433,7 +2433,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"142365\",\n    \"vendor_id\": 34,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"142365\",\n    \"vendor_id\": 34,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2838,7 +2838,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"is_single_bill_payment\": 0,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
+							"raw": "{\n    \"vendor_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"is_single_bill_payment\": 0,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2886,7 +2886,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"tds\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 100\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 100\n        }\n    ]\n}\n\n",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 100\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 100\n        }\n    ]\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5112,54 +5112,6 @@
 									"key": "user_id",
 									"value": "6"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "assign permission",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"user_id\":2,\n    \"permissions\": [\"accountingfirm-user-list\", \"accountingfirm-user-create\"]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/assign-permission",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"assign-permission"
 							]
 						}
 					},
@@ -8882,6 +8834,54 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "assign permission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":2,\n    \"permissions\": [\"accountingfirm-user-list\", \"accountingfirm-user-create\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/assign-permission",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assign-permission"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -9104,6 +9104,62 @@
 							"path": [
 								"api",
 								"report"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2023-07-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-08-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "trial balance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/trial-balance?start_date=2023-07-22&end_date=2023-08-21",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"trial-balance"
 							],
 							"query": [
 								{
