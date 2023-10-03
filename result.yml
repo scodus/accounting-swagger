@@ -2253,6 +2253,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2266,6 +2271,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: group
           in: path
           schema:
@@ -2291,6 +2301,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: key
           in: path
           schema:
@@ -2302,8 +2317,7 @@ paths:
           schema:
             type: string
           required: true
-          description: nullable
-          example: khalti
+          description: required if key is payment_mode_name else nullable
       responses:
         '200':
           description: Successful response
