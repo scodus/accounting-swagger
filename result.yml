@@ -114,7 +114,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -141,6 +142,14 @@ paths:
           schema:
             type: string
           description: 1 || 0
+        - name: no_customer
+          in: query
+          schema:
+            type: string
+        - name: no_vendor
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1508,9 +1517,9 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 32
-                    quantity: 10
-                    rate: '10'
-                    discount: '10'
+                    quantity: 100
+                    rate: '9'
+                    discount: '100'
                     tax: 0
                     description: description
                     amount: 300
@@ -1720,7 +1729,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2245,6 +2254,10 @@ paths:
                 logo:
                   type: string
                   format: binary
+                rate_type:
+                  type: string
+                  description: FIFO || WA
+                  example: WA
       security:
         - bearerAuth: []
       parameters:
@@ -4927,6 +4940,26 @@ paths:
                   type: string
                 status:
                   type: string
+                re_order_point:
+                  type: string
+                initial_quantity_on_hand:
+                  type: string
+                barcode_number:
+                  type: string
+                entry_number:
+                  type: string
+                sale_rate:
+                  type: string
+                sale_account:
+                  type: string
+                sale_note:
+                  type: string
+                purchase_rate:
+                  type: string
+                purchase_account:
+                  type: string
+                purchase_note:
+                  type: string
                 image:
                   type: string
                   format: binary
@@ -5022,6 +5055,26 @@ paths:
                 _method:
                   type: string
                   example: patch
+                re_order_point:
+                  type: string
+                initial_quantity_on_hand:
+                  type: string
+                barcode_number:
+                  type: string
+                entry_number:
+                  type: string
+                sale_rate:
+                  type: string
+                sale_account:
+                  type: string
+                sale_note:
+                  type: string
+                purchase_rate:
+                  type: string
+                purchase_account:
+                  type: string
+                purchase_note:
+                  type: string
       security:
         - bearerAuth: []
       parameters:

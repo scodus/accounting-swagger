@@ -258,7 +258,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=",
+							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=",
 							"host": [
 								"{{url}}"
 							],
@@ -269,7 +269,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -296,6 +296,14 @@
 									"key": "no_sub_account_head",
 									"value": "",
 									"description": "1 || 0"
+								},
+								{
+									"key": "no_customer",
+									"value": ""
+								},
+								{
+									"key": "no_vendor",
+									"value": ""
 								}
 							]
 						}
@@ -2390,7 +2398,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 36,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 36,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2505,7 +2513,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -3527,6 +3535,12 @@
 									"key": "logo",
 									"type": "file",
 									"src": "/home/user--49/Downloads/364220281_244322438467200_8229686066159110954_n.jpg"
+								},
+								{
+									"key": "rate_type",
+									"value": "WA",
+									"description": "FIFO || WA",
+									"type": "text"
 								}
 							]
 						},
@@ -8172,6 +8186,56 @@
 									"type": "text"
 								},
 								{
+									"key": "re_order_point",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "initial_quantity_on_hand",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "barcode_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "entry_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_note",
+									"value": "",
+									"type": "text"
+								},
+								{
 									"key": "image",
 									"type": "file",
 									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-23 17-34-17.png"
@@ -8253,6 +8317,56 @@
 								{
 									"key": "_method",
 									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "re_order_point",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "initial_quantity_on_hand",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "barcode_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "entry_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_note",
+									"value": "",
 									"type": "text"
 								}
 							]
