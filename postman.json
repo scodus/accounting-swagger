@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26417274",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
+		"_exporter_id": "30419631",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
 	},
 	"item": [
 		{
@@ -5630,7 +5630,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": []
+									"src": "/home/user--49/Pictures/meshuggah.jpg"
 								},
 								{
 									"key": "account_number",
@@ -9984,12 +9984,12 @@
 							"formdata": [
 								{
 									"key": "cheque_from",
-									"value": "2010",
+									"value": "2050",
 									"type": "text"
 								},
 								{
 									"key": "cheque_to",
-									"value": "2011",
+									"value": "2060",
 									"type": "text"
 								},
 								{
@@ -10093,49 +10093,6 @@
 									"key": "id",
 									"value": "39"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/bank-cheque:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bank-cheque:id"
 							]
 						}
 					},
@@ -10294,6 +10251,58 @@
 			"name": "cheque",
 			"item": [
 				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "assigned",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/cheque/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cheque",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -10439,9 +10448,73 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment cheque",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cheque_from",
+									"value": "2050",
+									"type": "text"
+								},
+								{
+									"key": "cheque_to",
+									"value": "2060",
+									"type": "text"
+								},
+								{
+									"key": "bank_id",
+									"value": "39",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/payment-cheque",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment-cheque"
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"name": "update status",
+					"name": "update",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -10465,27 +10538,505 @@
 							"mode": "formdata",
 							"formdata": [
 								{
+									"key": "name",
+									"value": "test edit",
+									"type": "text"
+								},
+								{
+									"key": "account_type",
+									"value": "Assets",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "opening_balance",
+									"value": "500000",
+									"type": "text"
+								},
+								{
 									"key": "status",
-									"value": "assigned",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/cheque/:id/update-status",
+							"raw": "{{url}}/api/payment-cheque/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"cheque",
-								":id",
-								"update-status"
+								"payment-cheque",
+								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "7"
+									"value": "39"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payment-cheque?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment-cheque"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "parent_slug",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "tree_view",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "no_sub_account_head",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "no_customer",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "no_vendor",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "fiscal_year_id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/payment-cheque/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment-cheque",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "receipt cheque",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cheque_from",
+									"value": "2050",
+									"type": "text"
+								},
+								{
+									"key": "cheque_to",
+									"value": "2060",
+									"type": "text"
+								},
+								{
+									"key": "bank_id",
+									"value": "39",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/receipt-cheque",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"receipt-cheque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test edit",
+									"type": "text"
+								},
+								{
+									"key": "account_type",
+									"value": "Assets",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "opening_balance",
+									"value": "500000",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/receipt-cheque/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"receipt-cheque",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "39"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/receipt-cheque?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"receipt-cheque"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "parent_slug",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "tree_view",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "no_sub_account_head",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "no_customer",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "no_vendor",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "fiscal_year_id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/receipt-cheque/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"receipt-cheque",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
 								}
 							]
 						}
