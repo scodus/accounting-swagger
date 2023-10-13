@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30419631",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
+		"_exporter_id": "26417274",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
 	},
 	"item": [
 		{
@@ -5509,7 +5509,7 @@
 					"response": []
 				},
 				{
-					"name": "user accounting firm",
+					"name": "user accounting firm list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -5549,7 +5549,7 @@
 					"response": []
 				},
 				{
-					"name": "user company",
+					"name": "user company list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -9989,7 +9989,7 @@
 								},
 								{
 									"key": "cheque_to",
-									"value": "2015",
+									"value": "2011",
 									"type": "text"
 								},
 								{
@@ -10287,259 +10287,12 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "assigned",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/cheque/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cheque",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
 		{
 			"name": "cheque",
 			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "cheque_from",
-									"value": "1000",
-									"type": "text"
-								},
-								{
-									"key": "cheque_to",
-									"value": "1005",
-									"type": "text"
-								},
-								{
-									"key": "bank_id",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/cheque",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cheque"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "test edit",
-									"type": "text"
-								},
-								{
-									"key": "account_type",
-									"value": "Assets",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "parent_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "code",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "opening_balance",
-									"value": "500000",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/cheque/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cheque",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "39"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/cheque/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cheque",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "39"
-								}
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "list",
 					"protocolProfileBehavior": {
@@ -10574,7 +10327,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/cheque?paginate=1&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
+							"raw": "{{url}}/api/cheque?paginate=1&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -10601,27 +10354,33 @@
 								},
 								{
 									"key": "parent_slug",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "tree_view",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "no_sub_account_head",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "no_customer",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "no_vendor",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "fiscal_year_id",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -10674,7 +10433,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1111"
+									"value": "7"
 								}
 							]
 						}
@@ -10726,7 +10485,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "7"
 								}
 							]
 						}

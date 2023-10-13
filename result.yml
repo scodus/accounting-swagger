@@ -12,8 +12,7 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://accounting.scodus.com
-    description: Base URL
+  - url: http://{{url}}
 components:
   securitySchemes:
     bearerAuth:
@@ -3452,7 +3451,7 @@ paths:
     get:
       tags:
         - users
-      summary: user accounting firm
+      summary: user accounting firm list
       security:
         - bearerAuth: []
       responses:
@@ -3464,7 +3463,7 @@ paths:
     get:
       tags:
         - users
-      summary: user company
+      summary: user company list
       security:
         - bearerAuth: []
       responses:
@@ -6060,7 +6059,7 @@ paths:
                   example: '2010'
                 cheque_to:
                   type: integer
-                  example: '2015'
+                  example: '2011'
                 bank_id:
                   type: integer
                   example: '39'
@@ -6218,76 +6217,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/cheque/{id}/update-status:
-    post:
-      tags:
-        - cheque
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                status:
-                  type: string
-                  example: assigned
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/cheque:
-    post:
-      tags:
-        - cheque
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                cheque_from:
-                  type: integer
-                  example: '1000'
-                cheque_to:
-                  type: integer
-                  example: '1005'
-                bank_id:
-                  type: string
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     get:
       tags:
         - cheque
@@ -6317,114 +6247,12 @@ paths:
           in: query
           schema:
             type: string
-        - name: parent_slug
-          in: query
-          schema:
-            type: string
-        - name: tree_view
-          in: query
-          schema:
-            type: string
-        - name: no_sub_account_head
-          in: query
-          schema:
-            type: string
-        - name: no_customer
-          in: query
-          schema:
-            type: string
-        - name: no_vendor
-          in: query
-          schema:
-            type: string
-        - name: fiscal_year_id
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
   /api/cheque/{id}:
-    post:
-      tags:
-        - cheque
-      summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: test edit
-                account_type:
-                  type: string
-                  example: Assets
-                description:
-                  type: string
-                parent_id:
-                  type: string
-                code:
-                  type: string
-                opening_balance:
-                  type: integer
-                  example: '500000'
-                status:
-                  type: string
-                  example: active
-                _method:
-                  type: string
-                  example: patch
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '39'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - cheque
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '39'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     get:
       tags:
         - cheque
@@ -6447,7 +6275,40 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1111'
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cheque/{id}/update-status:
+    post:
+      tags:
+        - cheque
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: assigned
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
       responses:
         '200':
           description: Successful response
