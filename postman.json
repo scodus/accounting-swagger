@@ -2638,7 +2638,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -5933,7 +5933,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "40"
+									"value": "39"
 								}
 							]
 						}
@@ -8607,7 +8607,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -8684,12 +8684,14 @@
 								{
 									"key": "inventory",
 									"value": "",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "sale_purchase",
 									"value": "",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -9984,17 +9986,17 @@
 							"formdata": [
 								{
 									"key": "cheque_from",
-									"value": "2050",
+									"value": "2076",
 									"type": "text"
 								},
 								{
 									"key": "cheque_to",
-									"value": "2060",
+									"value": "2076",
 									"type": "text"
 								},
 								{
 									"key": "bank_id",
-									"value": "39",
+									"value": "38",
 									"type": "text"
 								}
 							]
@@ -10037,43 +10039,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "test edit",
-									"type": "text"
-								},
-								{
-									"key": "account_type",
-									"value": "Assets",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "parent_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "code",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "opening_balance",
-									"value": "500000",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
 									"key": "_method",
 									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "cheque_from",
+									"value": "2055",
+									"type": "text"
+								},
+								{
+									"key": "cheque_to",
+									"value": "2059",
 									"type": "text"
 								}
 							]
@@ -10091,7 +10068,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "39"
+									"value": "8"
 								}
 							]
 						}
@@ -10484,18 +10461,33 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "cheque_from",
-									"value": "2050",
-									"type": "text"
-								},
-								{
-									"key": "cheque_to",
-									"value": "2060",
-									"type": "text"
-								},
-								{
 									"key": "bank_id",
 									"value": "39",
+									"type": "text"
+								},
+								{
+									"key": "cheque_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "entry_date",
+									"value": "2023-10-13",
+									"type": "text"
+								},
+								{
+									"key": "payment_date",
+									"value": "2023-10-13",
+									"type": "text"
+								},
+								{
+									"key": "party_name",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1000",
 									"type": "text"
 								}
 							]
@@ -10538,43 +10530,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "test edit",
-									"type": "text"
-								},
-								{
-									"key": "account_type",
-									"value": "Assets",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "parent_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "code",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "opening_balance",
-									"value": "500000",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
 									"key": "_method",
 									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "bank_id",
+									"value": "39",
+									"type": "text"
+								},
+								{
+									"key": "cheque_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "entry_date",
+									"value": "2023-10-13",
+									"type": "text"
+								},
+								{
+									"key": "payment_date",
+									"value": "2023-10-13",
+									"type": "text"
+								},
+								{
+									"key": "party_name",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1000",
 									"type": "text"
 								}
 							]
@@ -10739,7 +10726,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "4"
+									"value": "25"
 								}
 							]
 						}
@@ -10781,18 +10768,33 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "cheque_from",
-									"value": "2050",
+									"key": "bank_name",
+									"value": "ABC",
 									"type": "text"
 								},
 								{
-									"key": "cheque_to",
-									"value": "2060",
+									"key": "cheque_number",
+									"value": "1010",
 									"type": "text"
 								},
 								{
-									"key": "bank_id",
-									"value": "39",
+									"key": "entry_date",
+									"value": "2023-10-13",
+									"type": "text"
+								},
+								{
+									"key": "payment_date",
+									"value": "2023-10-13",
+									"type": "text"
+								},
+								{
+									"key": "party_name",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "2000",
 									"type": "text"
 								}
 							]
@@ -10835,43 +10837,33 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "test edit",
+									"key": "bank_name",
+									"value": "ABC",
 									"type": "text"
 								},
 								{
-									"key": "account_type",
-									"value": "Assets",
+									"key": "cheque_number",
+									"value": "1010",
 									"type": "text"
 								},
 								{
-									"key": "description",
-									"value": "",
+									"key": "entry_date",
+									"value": "2023-10-13",
 									"type": "text"
 								},
 								{
-									"key": "parent_id",
-									"value": "",
+									"key": "payment_date",
+									"value": "2023-10-13",
 									"type": "text"
 								},
 								{
-									"key": "code",
-									"value": "",
+									"key": "party_name",
+									"value": "2",
 									"type": "text"
 								},
 								{
-									"key": "opening_balance",
-									"value": "500000",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
+									"key": "amount",
+									"value": "2000",
 									"type": "text"
 								}
 							]

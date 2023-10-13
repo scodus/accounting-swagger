@@ -1845,7 +1845,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3659,7 +3659,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '40'
+          example: '39'
       responses:
         '200':
           description: Successful response
@@ -5293,7 +5293,7 @@ paths:
                   example: T0982345jhwer
                 product_category_id:
                   type: integer
-                  example: '2'
+                  example: '1'
                 tax:
                   type: integer
                   example: '11'
@@ -6059,13 +6059,13 @@ paths:
               properties:
                 cheque_from:
                   type: integer
-                  example: '2050'
+                  example: '2076'
                 cheque_to:
                   type: integer
-                  example: '2060'
+                  example: '2076'
                 bank_id:
                   type: integer
-                  example: '39'
+                  example: '38'
       security:
         - bearerAuth: []
       parameters:
@@ -6129,27 +6129,15 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                  example: test edit
-                account_type:
-                  type: string
-                  example: Assets
-                description:
-                  type: string
-                parent_id:
-                  type: string
-                code:
-                  type: string
-                opening_balance:
-                  type: integer
-                  example: '500000'
-                status:
-                  type: string
-                  example: active
                 _method:
                   type: string
                   example: patch
+                cheque_from:
+                  type: integer
+                  example: '2055'
+                cheque_to:
+                  type: integer
+                  example: '2059'
       security:
         - bearerAuth: []
       parameters:
@@ -6163,7 +6151,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '39'
+          example: '8'
       responses:
         '200':
           description: Successful response
@@ -6305,15 +6293,24 @@ paths:
             schema:
               type: object
               properties:
-                cheque_from:
-                  type: integer
-                  example: '2050'
-                cheque_to:
-                  type: integer
-                  example: '2060'
                 bank_id:
                   type: integer
                   example: '39'
+                cheque_id:
+                  type: integer
+                  example: '1'
+                entry_date:
+                  type: string
+                  example: '2023-10-13'
+                payment_date:
+                  type: string
+                  example: '2023-10-13'
+                party_name:
+                  type: integer
+                  example: '1'
+                amount:
+                  type: integer
+                  example: '1000'
       security:
         - bearerAuth: []
       parameters:
@@ -6377,27 +6374,27 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                  example: test edit
-                account_type:
-                  type: string
-                  example: Assets
-                description:
-                  type: string
-                parent_id:
-                  type: string
-                code:
-                  type: string
-                opening_balance:
-                  type: integer
-                  example: '500000'
-                status:
-                  type: string
-                  example: active
                 _method:
                   type: string
                   example: patch
+                bank_id:
+                  type: integer
+                  example: '39'
+                cheque_id:
+                  type: integer
+                  example: '1'
+                entry_date:
+                  type: string
+                  example: '2023-10-13'
+                payment_date:
+                  type: string
+                  example: '2023-10-13'
+                party_name:
+                  type: integer
+                  example: '1'
+                amount:
+                  type: integer
+                  example: '1000'
       security:
         - bearerAuth: []
       parameters:
@@ -6439,7 +6436,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '25'
       responses:
         '200':
           description: Successful response
@@ -6456,15 +6453,24 @@ paths:
             schema:
               type: object
               properties:
-                cheque_from:
+                bank_name:
+                  type: string
+                  example: ABC
+                cheque_number:
                   type: integer
-                  example: '2050'
-                cheque_to:
+                  example: '1010'
+                entry_date:
+                  type: string
+                  example: '2023-10-13'
+                payment_date:
+                  type: string
+                  example: '2023-10-13'
+                party_name:
                   type: integer
-                  example: '2060'
-                bank_id:
+                  example: '2'
+                amount:
                   type: integer
-                  example: '39'
+                  example: '2000'
       security:
         - bearerAuth: []
       parameters:
@@ -6528,27 +6534,24 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                bank_name:
                   type: string
-                  example: test edit
-                account_type:
-                  type: string
-                  example: Assets
-                description:
-                  type: string
-                parent_id:
-                  type: string
-                code:
-                  type: string
-                opening_balance:
+                  example: ABC
+                cheque_number:
                   type: integer
-                  example: '500000'
-                status:
+                  example: '1010'
+                entry_date:
                   type: string
-                  example: active
-                _method:
+                  example: '2023-10-13'
+                payment_date:
                   type: string
-                  example: patch
+                  example: '2023-10-13'
+                party_name:
+                  type: integer
+                  example: '2'
+                amount:
+                  type: integer
+                  example: '2000'
       security:
         - bearerAuth: []
       parameters:
