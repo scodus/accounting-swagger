@@ -3505,9 +3505,6 @@ paths:
                 price:
                   type: integer
                   example: '5000'
-                fiscal_year_id:
-                  type: integer
-                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -3554,6 +3551,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: cheque_status
+          in: query
+          schema:
+            type: string
+          example: assigned
       responses:
         '200':
           description: Successful response
@@ -6137,10 +6139,10 @@ paths:
                   example: patch
                 cheque_from:
                   type: integer
-                  example: '40'
+                  example: '200'
                 cheque_to:
                   type: integer
-                  example: '50'
+                  example: '205'
       security:
         - bearerAuth: []
       parameters:
@@ -6154,7 +6156,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '20'
+          example: '5'
       responses:
         '200':
           description: Successful response

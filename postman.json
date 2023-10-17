@@ -5630,7 +5630,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/meshuggah.jpg"
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-10-16 14-03-31.png"
 								},
 								{
 									"key": "account_number",
@@ -5660,11 +5660,6 @@
 								{
 									"key": "price",
 									"value": "5000",
-									"type": "text"
-								},
-								{
-									"key": "fiscal_year_id",
-									"value": "1",
 									"type": "text"
 								}
 							]
@@ -5862,7 +5857,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/bank?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/bank?paginate=&page=&limit=&search_keyword=&cheque_status=assigned",
 							"host": [
 								"{{url}}"
 							],
@@ -5886,6 +5881,10 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "cheque_status",
+									"value": "assigned"
 								}
 							]
 						}
@@ -10050,12 +10049,12 @@
 								},
 								{
 									"key": "cheque_from",
-									"value": "40",
+									"value": "200",
 									"type": "text"
 								},
 								{
 									"key": "cheque_to",
-									"value": "50",
+									"value": "205",
 									"type": "text"
 								}
 							]
@@ -10073,7 +10072,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "20"
+									"value": "5"
 								}
 							]
 						}
