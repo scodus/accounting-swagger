@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30419631",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
+		"_exporter_id": "26417274",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
 	},
 	"item": [
 		{
@@ -3301,7 +3301,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 300,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"is_single_bill_payment\": 0,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 150\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 150\n        }\n    ]\n}",
+							"raw": "{\n  \"amount\": 1000,\n  \"receiver_id\": \"38\",\n  \"vendor_id\": \"218\",\n  \"received_date\": \"2023-10-17\",\n  \"payment_mode\": \"khalti\",\n  \"payment_allocation\": [\n    {\n      \"bill_id\": 3,\n      \"allocated_amount\": \"1000\"\n    },\n    {\n      \"bill_id\": 2,\n      \"allocated_amount\": \"\"\n    }\n  ],\n  \"is_single_bill_payment\": 0,\n  \"id\": null\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6960,11 +6960,6 @@
 									"type": "text"
 								},
 								{
-									"key": "account_type",
-									"value": "Asset",
-									"type": "text"
-								},
-								{
 									"key": "description",
 									"value": "description",
 									"type": "text"
@@ -8611,7 +8606,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "1",
+									"value": "42",
 									"type": "text"
 								},
 								{
@@ -8696,6 +8691,11 @@
 									"value": "",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "unit_id",
+									"value": "6",
+									"type": "text"
 								}
 							]
 						},
@@ -8823,6 +8823,11 @@
 								},
 								{
 									"key": "purchase_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "unit_id",
 									"value": "",
 									"type": "text"
 								}
@@ -9990,7 +9995,7 @@
 							"formdata": [
 								{
 									"key": "cheque_from",
-									"value": "10",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -10049,12 +10054,12 @@
 								},
 								{
 									"key": "cheque_from",
-									"value": "200",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "cheque_to",
-									"value": "205",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -10072,7 +10077,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "5"
+									"value": "4"
 								}
 							]
 						}
@@ -10676,6 +10681,56 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/payment-cheque/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment-cheque",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "37"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -10948,6 +11003,56 @@
 								{
 									"key": "id",
 									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/receipt-cheque/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"receipt-cheque",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "37"
 								}
 							]
 						}
