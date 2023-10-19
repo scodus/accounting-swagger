@@ -75,11 +75,12 @@ paths:
                   example: test
                 account_type:
                   type: string
-                  example: Assets
+                  example: Assetsd
                 description:
                   type: string
                 parent_id:
-                  type: string
+                  type: integer
+                  example: '28'
                 code:
                   type: string
                 opening_balance:
@@ -574,6 +575,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -618,7 +623,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -646,7 +651,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -674,7 +679,40 @@ paths:
           schema:
             type: integer
           required: true
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/journal-voucher/{id}/update-status:
+    post:
+      tags:
+        - journal voucher
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
           example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -707,7 +745,7 @@ paths:
                     tax: 0
                     description: description
                     amount: 300
-                  - product_id: 2
+                  - product_id: 3
                     account_head_id: 26
                     quantity: 25
                     rate: 10
@@ -5293,7 +5331,7 @@ paths:
                   example: T0982345jhwer
                 product_category_id:
                   type: integer
-                  example: '42'
+                  example: '1'
                 tax:
                   type: integer
                   example: '11'
@@ -5325,12 +5363,12 @@ paths:
                   type: string
                   format: binary
                 inventory:
-                  type: string
+                  type: integer
+                  example: '1'
                 sale_purchase:
                   type: string
                 unit_id:
-                  type: integer
-                  example: '6'
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -6749,11 +6787,41 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/test:
+  /api/account-head-tree:
     get:
       tags:
         - default
       summary: test
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: parent_slug
+          in: query
+          schema:
+            type: string
+          example: sales-goods
       responses:
         '200':
           description: Successful response
