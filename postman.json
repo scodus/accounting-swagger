@@ -862,34 +862,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "amount",
-									"value": "200000",
-									"type": "text"
-								},
-								{
-									"key": "narration",
-									"value": "asdfasdfds",
-									"type": "text"
-								},
-								{
-									"key": "date",
-									"value": "2022-01-01",
-									"type": "text"
-								},
-								{
-									"key": "date_bs",
-									"value": "3a21f3as1df",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"reference\": \"123\",\n    \"date\": \"2022-01-01\",\n    \"date_bs\": \"string nepali date\",\n    \"note\": \"\",\n    \"ledgers\": [\n        {\n            \"account_head_id\": 3,\n            \"cr_amount\": 1000,\n            \"remarks\": \"\"\n        },\n        {\n            \"account_head_id\": 8,\n            \"dr_amount\": 1000,\n            \"remarks\": \"\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/journal-voucher/:id",
@@ -904,7 +883,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "9"
+									"value": "12"
 								}
 							]
 						}
