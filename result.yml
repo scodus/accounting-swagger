@@ -75,12 +75,11 @@ paths:
                   example: test
                 account_type:
                   type: string
-                  example: Assetsd
+                  example: Assets
                 description:
                   type: string
                 parent_id:
-                  type: integer
-                  example: '28'
+                  type: string
                 code:
                   type: string
                 opening_balance:
@@ -213,7 +212,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '39'
+          example: '40'
       responses:
         '200':
           description: Successful response
@@ -620,7 +619,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '12'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1657,7 +1656,7 @@ paths:
               type: object
               example:
                 bill_number: ''
-                vendor_id: 36
+                vendor_id: 38
                 reference_number: '21345'
                 bill_date: '2023-01-01'
                 due_date: '2023-01-30'
@@ -1666,19 +1665,11 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 32
+                    account_head_id: 36
                     quantity: 100
                     rate: '9'
                     discount: '100'
                     tax: 0
-                    description: description
-                    amount: 300
-                  - product_id: 2
-                    account_head_id: 32
-                    quantity: 100
-                    rate: 10
-                    discount: '10'
-                    tax: 13
                     description: description
                     amount: 300
       security:
@@ -2213,14 +2204,12 @@ paths:
               example:
                 amount: 1000
                 receiver_id: '38'
-                vendor_id: '218'
+                vendor_id: '36'
                 received_date: '2023-10-17'
                 payment_mode: khalti
                 payment_allocation:
-                  - bill_id: 3
+                  - bill_id: 16
                     allocated_amount: '1000'
-                  - bill_id: 2
-                    allocated_amount: ''
                 is_single_bill_payment: 0
                 id: null
       security:
@@ -2278,18 +2267,16 @@ paths:
               type: object
               example:
                 _method: patch
-                vendor_id: 34
-                receiver_id: '8'
+                vendor_id: 38
+                receiver_id: '3'
                 received_date: '2023-01-01'
-                amount: 200
+                amount: 1000
                 payment_mode: ''
                 payment_reference: ''
                 note: ''
                 payment_allocation:
-                  - bill_id: 1
-                    allocated_amount: 100
-                  - bill_id: 2
-                    allocated_amount: 100
+                  - bill_id: 16
+                    allocated_amount: 1000
       security:
         - bearerAuth: []
       parameters:
@@ -2720,6 +2707,7 @@ paths:
             type: string
           required: true
           description: required if key is payment_mode_name else nullable
+          example: cheque
       responses:
         '200':
           description: Successful response
@@ -4370,7 +4358,8 @@ paths:
                   type: string
                   example: description edit
                 parent_id:
-                  type: string
+                  type: integer
+                  example: '2'
                 status:
                   type: string
                   example: active
@@ -6174,10 +6163,10 @@ paths:
                   example: patch
                 cheque_from:
                   type: integer
-                  example: '1'
+                  example: '20'
                 cheque_to:
                   type: integer
-                  example: '3'
+                  example: '10000'
       security:
         - bearerAuth: []
       parameters:
@@ -6338,13 +6327,13 @@ paths:
                   example: '39'
                 cheque_id:
                   type: integer
-                  example: '6'
+                  example: '21'
                 entry_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2023-11-02'
                 payment_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2023-11-02'
                 party_name:
                   type: integer
                   example: '40'
@@ -6395,6 +6384,26 @@ paths:
           schema:
             type: string
         - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: cheque_number
+          in: query
+          schema:
+            type: string
+        - name: party_name
+          in: query
+          schema:
+            type: string
+        - name: bank_id
+          in: query
+          schema:
+            type: string
+        - name: voucher_number
+          in: query
+          schema:
+            type: string
+        - name: cheque_status
           in: query
           schema:
             type: string
@@ -6583,6 +6592,22 @@ paths:
           schema:
             type: string
         - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: cheque_number
+          in: query
+          schema:
+            type: string
+        - name: party_name
+          in: query
+          schema:
+            type: string
+        - name: bank_name
+          in: query
+          schema:
+            type: string
+        - name: voucher_number
           in: query
           schema:
             type: string
@@ -6784,7 +6809,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account-head-tree:
+  /api/test:
     get:
       tags:
         - default
@@ -6797,28 +6822,6 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: parent_slug
-          in: query
-          schema:
-            type: string
-          example: sales-goods
       responses:
         '200':
           description: Successful response

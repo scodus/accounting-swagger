@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26417274",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
+		"_exporter_id": "30419631",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
 	},
 	"item": [
 		{
@@ -46,7 +46,7 @@
 								},
 								{
 									"key": "account_type",
-									"value": "Assetsd",
+									"value": "Assets",
 									"type": "text"
 								},
 								{
@@ -56,7 +56,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "28",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -168,7 +168,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "39"
+									"value": "40"
 								}
 							]
 						}
@@ -883,7 +883,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "12"
+									"value": "1"
 								}
 							]
 						}
@@ -2558,7 +2558,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 36,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 36,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3336,7 +3336,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"amount\": 1000,\n  \"receiver_id\": \"38\",\n  \"vendor_id\": \"218\",\n  \"received_date\": \"2023-10-17\",\n  \"payment_mode\": \"khalti\",\n  \"payment_allocation\": [\n    {\n      \"bill_id\": 3,\n      \"allocated_amount\": \"1000\"\n    },\n    {\n      \"bill_id\": 2,\n      \"allocated_amount\": \"\"\n    }\n  ],\n  \"is_single_bill_payment\": 0,\n  \"id\": null\n}",
+							"raw": "{\n  \"amount\": 1000,\n  \"receiver_id\": \"38\",\n  \"vendor_id\": \"36\",\n  \"received_date\": \"2023-10-17\",\n  \"payment_mode\": \"khalti\",\n  \"payment_allocation\": [\n    {\n      \"bill_id\": 16,\n      \"allocated_amount\": \"1000\"\n    }\n  ],\n  \"is_single_bill_payment\": 0,\n  \"id\": null\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3384,7 +3384,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 1,\n            \"allocated_amount\": 100\n        },\n        {\n            \"bill_id\": 2,\n            \"allocated_amount\": 100\n        }\n    ]\n}\n\n",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 38,\n    \"receiver_id\": \"3\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 1000,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 16,\n            \"allocated_amount\": 1000\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4149,7 +4149,7 @@
 								},
 								{
 									"key": "value",
-									"value": "",
+									"value": "cheque",
 									"description": "required if key is payment_mode_name else nullable"
 								}
 							]
@@ -7075,7 +7075,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "",
+									"value": "2",
 									"type": "text"
 								},
 								{
@@ -10094,12 +10094,12 @@
 								},
 								{
 									"key": "cheque_from",
-									"value": "1",
+									"value": "20",
 									"type": "text"
 								},
 								{
 									"key": "cheque_to",
-									"value": "3",
+									"value": "10000",
 									"type": "text"
 								}
 							]
@@ -10486,17 +10486,17 @@
 								},
 								{
 									"key": "cheque_id",
-									"value": "6",
+									"value": "21",
 									"type": "text"
 								},
 								{
 									"key": "entry_date",
-									"value": "2023-10-13",
+									"value": "2023-11-02",
 									"type": "text"
 								},
 								{
 									"key": "payment_date",
-									"value": "2023-10-13",
+									"value": "2023-11-02",
 									"type": "text"
 								},
 								{
@@ -10639,7 +10639,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/payment-cheque?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/payment-cheque?paginate=1&page=&limit=&search_keyword=&cheque_number=&party_name=&bank_id=&voucher_number&cheque_status=",
 							"host": [
 								"{{url}}"
 							],
@@ -10662,6 +10662,26 @@
 								},
 								{
 									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "cheque_number",
+									"value": ""
+								},
+								{
+									"key": "party_name",
+									"value": ""
+								},
+								{
+									"key": "bank_id",
+									"value": ""
+								},
+								{
+									"key": "voucher_number",
+									"value": null
+								},
+								{
+									"key": "cheque_status",
 									"value": ""
 								}
 							]
@@ -10966,7 +10986,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/receipt-cheque?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/receipt-cheque?paginate=1&page=&limit=&search_keyword=&cheque_number=&party_name=&bank_name=&voucher_number=",
 							"host": [
 								"{{url}}"
 							],
@@ -10990,6 +11010,27 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "cheque_number",
+									"value": ""
+								},
+								{
+									"key": "party_name",
+									"value": ""
+								},
+								{
+									"key": "bank_name",
+									"value": ""
+								},
+								{
+									"key": "voucher_number",
+									"value": ""
+								},
+								{
+									"key": "cheque_status",
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -11341,35 +11382,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/api/account-head-tree?paginate=1&page=&limit=&search_keyword=&parent_slug=sales-goods",
+					"raw": "{{url}}/api/test",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"account-head-tree"
-					],
-					"query": [
-						{
-							"key": "paginate",
-							"value": "1"
-						},
-						{
-							"key": "page",
-							"value": ""
-						},
-						{
-							"key": "limit",
-							"value": ""
-						},
-						{
-							"key": "search_keyword",
-							"value": ""
-						},
-						{
-							"key": "parent_slug",
-							"value": "sales-goods"
-						}
+						"test"
 					]
 				}
 			},
