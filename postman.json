@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26417274",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
+		"_exporter_id": "30419631",
+		"_collection_link": "https://nrna-team.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30036842"
 	},
 	"item": [
 		{
@@ -10923,7 +10923,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/payment-cheque?paginate=1&page=&limit=&search_keyword=&cheque_number=&party_name=&bank_id=&voucher_number&cheque_status=",
+							"raw": "{{url}}/api/payment-cheque?paginate=1&page=&limit=&search_keyword=&cheque_number=&party_name=&bank_id=&cheque_status=",
 							"host": [
 								"{{url}}"
 							],
@@ -10961,12 +10961,13 @@
 									"value": ""
 								},
 								{
-									"key": "voucher_number",
-									"value": null
-								},
-								{
 									"key": "cheque_status",
 									"value": ""
+								},
+								{
+									"key": "voucher_number",
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -11270,7 +11271,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/receipt-cheque?paginate=1&page=&limit=&search_keyword=&cheque_number=&party_name=&bank_name=&voucher_number=&cheque_status=",
+							"raw": "{{url}}/api/receipt-cheque?paginate=1&page=&limit=&search_keyword=&cheque_number=&party_name=&bank_name=&cheque_status=",
 							"host": [
 								"{{url}}"
 							],
@@ -11308,12 +11309,13 @@
 									"value": ""
 								},
 								{
-									"key": "voucher_number",
+									"key": "cheque_status",
 									"value": ""
 								},
 								{
-									"key": "cheque_status",
-									"value": ""
+									"key": "voucher_number",
+									"value": "",
+									"disabled": true
 								}
 							]
 						}

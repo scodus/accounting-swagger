@@ -6573,10 +6573,6 @@ paths:
           in: query
           schema:
             type: string
-        - name: voucher_number
-          in: query
-          schema:
-            type: string
         - name: cheque_status
           in: query
           schema:
@@ -6778,10 +6774,6 @@ paths:
           schema:
             type: string
         - name: bank_name
-          in: query
-          schema:
-            type: string
-        - name: voucher_number
           in: query
           schema:
             type: string
