@@ -50,7 +50,7 @@ tags:
   - name: sales order
   - name: purchase order
   - name: product
-  - name: ware house
+  - name: warehouse
   - name: role
   - name: permission
   - name: transfer
@@ -5553,7 +5553,7 @@ paths:
   /api/warehouse:
     post:
       tags:
-        - ware house
+        - warehouse
       summary: store
       requestBody:
         content:
@@ -5586,7 +5586,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - ware house
+        - warehouse
       summary: list
       security:
         - bearerAuth: []
@@ -5629,7 +5629,7 @@ paths:
   /api/warehouse/{id}:
     post:
       tags:
-        - ware house
+        - warehouse
       summary: update
       requestBody:
         content:
@@ -5669,7 +5669,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - ware house
+        - warehouse
       summary: delete
       security:
         - bearerAuth: []
@@ -5697,7 +5697,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - ware house
+        - warehouse
       summary: show
       security:
         - bearerAuth: []
@@ -5707,6 +5707,39 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/warehouse/{id}/update-status:
+    post:
+      tags:
+        - warehouse
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: inactive
+      security:
+        - bearerAuth: []
+      parameters:
         - name: company-id
           in: header
           schema:
@@ -6564,7 +6597,8 @@ paths:
         - name: cheque_number
           in: query
           schema:
-            type: string
+            type: integer
+          example: '2056'
         - name: party_name
           in: query
           schema:
