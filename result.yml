@@ -4656,12 +4656,8 @@ paths:
                     rate: '10'
                     discount: '10'
                     tax: 0
-                    amount: 100
-                  - product_id: 2
-                    quantity: 10
-                    rate: 10
-                    discount: '10'
-                    tax: 13
+                    account_head_id: 1
+                    descrition: ''
                     amount: 100
       security:
         - bearerAuth: []
@@ -4859,7 +4855,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '30'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4888,12 +4884,7 @@ paths:
                     rate: '10'
                     discount: '10'
                     tax: 0
-                    amount: 100
-                  - product_id: 2
-                    quantity: 10
-                    rate: 10
-                    discount: '10'
-                    tax: 13
+                    account_head_id: 1
                     amount: 100
       security:
         - bearerAuth: []
@@ -5119,12 +5110,7 @@ paths:
                     rate: '10'
                     discount: '10'
                     tax: 0
-                    amount: 100
-                  - product_id: 2
-                    quantity: 10
-                    rate: 10
-                    discount: '10'
-                    tax: 13
+                    account_head_id: 1
                     amount: 100
       security:
         - bearerAuth: []
@@ -5317,8 +5303,7 @@ paths:
                   type: string
                   example: T0982345jhwer
                 product_category_id:
-                  type: integer
-                  example: '1'
+                  type: string
                 tax:
                   type: integer
                   example: '11'
@@ -5328,7 +5313,27 @@ paths:
                   type: string
                 re_order_point:
                   type: string
-                initial_quantity_on_hand:
+                warehouse_inventory[0][initial_quantity_on_hand]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[0][cost_per_unit]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][warehouse_id]:
+                  type: string
+                warehouse_inventory[1][initial_quantity_on_hand]:
+                  type: integer
+                  example: '50'
+                warehouse_inventory[1][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[1][cost_per_unit]:
+                  type: integer
+                  example: '110'
+                warehouse_inventory[1][warehouse_id]:
                   type: string
                 barcode_number:
                   type: string
@@ -5346,9 +5351,6 @@ paths:
                   type: string
                 purchase_note:
                   type: string
-                image:
-                  type: string
-                  format: binary
                 inventory:
                   type: integer
                   example: '1'
@@ -5356,6 +5358,9 @@ paths:
                   type: string
                 unit_id:
                   type: string
+                image:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -5434,8 +5439,7 @@ paths:
                   type: string
                   example: T0982345jhwer
                 product_category_id:
-                  type: integer
-                  example: '2'
+                  type: string
                 tax:
                   type: integer
                   example: '11'
@@ -5450,7 +5454,30 @@ paths:
                   example: patch
                 re_order_point:
                   type: string
-                initial_quantity_on_hand:
+                multiple_warehouse:
+                  type: integer
+                  example: '1'
+                warehouse_inventory[0][initial_quantity_on_hand]:
+                  type: integer
+                  example: '155'
+                warehouse_inventory[0][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[0][cost_per_unit]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][warehouse_id]:
+                  type: string
+                warehouse_inventory[1][initial_quantity_on_hand]:
+                  type: integer
+                  example: '45'
+                warehouse_inventory[1][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[1][cost_per_unit]:
+                  type: integer
+                  example: '110'
+                warehouse_inventory[1][warehouse_id]:
                   type: string
                 barcode_number:
                   type: string
@@ -5488,7 +5515,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '90'
       responses:
         '200':
           description: Successful response
@@ -5565,7 +5592,6 @@ paths:
                 location: warehouse1 location
                 contact_person: ''
                 phone: ''
-                status: ''
       security:
         - bearerAuth: []
       parameters:
@@ -5642,7 +5668,6 @@ paths:
                 location: warehouse1 location
                 contact_person: ''
                 phone: ''
-                status: ''
       security:
         - bearerAuth: []
       parameters:

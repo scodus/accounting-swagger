@@ -7632,7 +7632,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"amount\": 100\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7752,7 +7752,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "30"
+									"value": "1"
 								}
 							]
 						}
@@ -7964,7 +7964,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"order_date\": \"2023-08-01\",\n    \"delivery_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"order_number\": \"\",\n    \"reference\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"amount\": 100\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"order_date\": \"2023-08-01\",\n    \"delivery_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"order_number\": \"\",\n    \"reference\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8296,7 +8296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 35,\n    \"credit_term\": \"\",\n    \"order_date\": \"2023-08-01\",\n    \"reference\": \"\",\n    \"order_number\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"amount\": 100\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"vendor_id\": 35,\n    \"credit_term\": \"\",\n    \"order_date\": \"2023-08-01\",\n    \"reference\": \"\",\n    \"order_number\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8641,7 +8641,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "1",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -8666,7 +8666,42 @@
 									"type": "text"
 								},
 								{
-									"key": "initial_quantity_on_hand",
+									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][cost_per_unit]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][warehouse_id]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][cost_per_unit]",
+									"value": "110",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][warehouse_id]",
 									"value": "",
 									"type": "text"
 								},
@@ -8711,11 +8746,6 @@
 									"type": "text"
 								},
 								{
-									"key": "image",
-									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-23 17-34-17.png"
-								},
-								{
 									"key": "inventory",
 									"value": "",
 									"type": "text",
@@ -8736,6 +8766,11 @@
 									"key": "inventory",
 									"value": "1",
 									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-23 17-34-17.png"
 								}
 							]
 						},
@@ -8793,7 +8828,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "2",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -8822,7 +8857,47 @@
 									"type": "text"
 								},
 								{
-									"key": "initial_quantity_on_hand",
+									"key": "multiple_warehouse",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
+									"value": "155",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][cost_per_unit]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][warehouse_id]",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][cost_per_unit]",
+									"value": "110",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][warehouse_id]",
 									"value": "",
 									"type": "text"
 								},
@@ -8886,7 +8961,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "90"
 								}
 							]
 						}
@@ -9102,7 +9177,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\",\n    \"status\": \"\"\n}",
+							"raw": "{\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -9150,7 +9225,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\",\n    \"status\": \"\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
