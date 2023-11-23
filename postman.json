@@ -2724,6 +2724,363 @@
 			]
 		},
 		{
+			"name": "document",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title",
+									"type": "text"
+								},
+								{
+									"key": "particulars",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "assign_to",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "remarks",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documents[0]",
+									"type": "file",
+									"src": "/home/user--49/Pictures/meshuggah.jpg"
+								},
+								{
+									"key": "documents[1]",
+									"type": "file",
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-11-22 17-34-07.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/document",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "title edit",
+									"type": "text"
+								},
+								{
+									"key": "particulars",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "assign_to",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "remarks",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "documents[0]",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "documents[1]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/document/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "16"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/document/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/document?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/document/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "employee",
 			"item": [
 				{
@@ -3371,7 +3728,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 10,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"adjustment_type\": \"value\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": \"\",\n            \"adjusted_quantity\": \"\",\n            \"adjust_value\": 100,\n            \"adjusted_value\": 500\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5165,22 +5522,26 @@
 								{
 									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
 									"value": "50",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[1][as_of_date]",
 									"value": "2022-01-01",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[1][cost_per_unit]",
 									"value": "110",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[1][warehouse_id]",
-									"value": "1",
-									"type": "text"
+									"value": "2",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "barcode_number",

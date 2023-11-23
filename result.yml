@@ -30,6 +30,7 @@ tags:
   - name: cheque
   - name: company
   - name: customer
+  - name: document
   - name: employee
   - name: fishal year
   - name: inventory adjustment
@@ -1570,6 +1571,205 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/document:
+    post:
+      tags:
+        - document
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: title
+                particulars:
+                  type: string
+                type:
+                  type: string
+                assign_to:
+                  type: string
+                remarks:
+                  type: string
+                status:
+                  type: string
+                documents[0]:
+                  type: string
+                  format: binary
+                documents[1]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - document
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/document/{id}:
+    post:
+      tags:
+        - document
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                title:
+                  type: string
+                  example: title edit
+                particulars:
+                  type: string
+                type:
+                  type: string
+                assign_to:
+                  type: string
+                remarks:
+                  type: string
+                status:
+                  type: string
+                documents[0]:
+                  type: string
+                  format: binary
+                documents[1]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - document
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '25'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - document
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/employee:
     post:
       tags:
@@ -1925,7 +2125,7 @@ paths:
             schema:
               type: object
               example:
-                adjustment_type: quantity
+                adjustment_type: value
                 date: '2022-01-01'
                 reference_number: qwe
                 reason: ''
@@ -1934,10 +2134,10 @@ paths:
                 products:
                   - product_id: 1
                     warehouse_id: 1
-                    adjust_quantity: 10
-                    adjusted_quantity: 10
-                    adjust_value: ''
-                    adjusted_value: ''
+                    adjust_quantity: ''
+                    adjusted_quantity: ''
+                    adjust_value: 100
+                    adjusted_value: 500
       security:
         - bearerAuth: []
       parameters:
@@ -3067,7 +3267,7 @@ paths:
                   example: '110'
                 warehouse_inventory[1][warehouse_id]:
                   type: integer
-                  example: '1'
+                  example: '2'
                 barcode_number:
                   type: string
                 entry_number:
