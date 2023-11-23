@@ -10729,6 +10729,11 @@
 									"value": "WA",
 									"description": "FIFO || WA",
 									"type": "text"
+								},
+								{
+									"key": "multiple_warehouse",
+									"value": "1",
+									"type": "text"
 								}
 							]
 						},
@@ -10791,8 +10796,8 @@
 							"variable": [
 								{
 									"key": "group",
-									"value": "payment-mode",
-									"description": "general || payment-mode"
+									"value": "warehouse",
+									"description": "general || payment-mode || warehouse"
 								}
 							]
 						}

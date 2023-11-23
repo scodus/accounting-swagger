@@ -6524,6 +6524,9 @@ paths:
                   type: string
                   description: FIFO || WA
                   example: WA
+                multiple_warehouse:
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -6560,8 +6563,8 @@ paths:
           schema:
             type: string
           required: true
-          description: general || payment-mode
-          example: payment-mode
+          description: general || payment-mode || warehouse
+          example: warehouse
       responses:
         '200':
           description: Successful response
