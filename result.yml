@@ -1584,9 +1584,9 @@ paths:
               properties:
                 title:
                   type: string
-                  example: title
                 particulars:
                   type: string
+                  example: title
                 type:
                   type: string
                 assign_to:
@@ -1671,11 +1671,9 @@ paths:
                 _method:
                   type: string
                   example: patch
-                title:
-                  type: string
-                  example: title edit
                 particulars:
                   type: string
+                  example: title edit
                 type:
                   type: string
                 assign_to:
@@ -1708,7 +1706,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '16'
+          example: '24'
       responses:
         '200':
           description: Successful response
