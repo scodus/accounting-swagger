@@ -4835,7 +4835,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fiscal_year_id\": 1,\n    \"account_heads\":  [\n        {\n            \"account_head_id\": 1,\n            \"amount\":200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"account_head_id\": 2,\n            \"amount\":200000,\n            \"type\": \"cr\"\n        }\n    ]\n}",
+							"raw": "{\n    \"account_heads\": [\n        {\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"dr\"\n        },\n        {\n            \"account_head_id\": 2,\n            \"amount\": 200000,\n            \"type\": \"dr\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10671,7 +10671,7 @@
 							"formdata": [
 								{
 									"key": "company_legal_name",
-									"value": "test",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -10711,22 +10711,17 @@
 								},
 								{
 									"key": "payment_mode_name[0]",
-									"value": "khalti",
-									"type": "text"
-								},
-								{
-									"key": "payment_mode_name[1]",
 									"value": "esewa",
 									"type": "text"
 								},
 								{
-									"key": "logo",
-									"type": "file",
-									"src": "/home/user--49/Downloads/364220281_244322438467200_8229686066159110954_n.jpg"
+									"key": "payment_mode_name[1]",
+									"value": "khalti",
+									"type": "text"
 								},
 								{
 									"key": "rate_type",
-									"value": "WA",
+									"value": "",
 									"description": "FIFO || WA",
 									"type": "text"
 								},
@@ -10734,6 +10729,11 @@
 									"key": "multiple_warehouse",
 									"value": "1",
 									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/home/user--49/Downloads/364220281_244322438467200_8229686066159110954_n.jpg"
 								}
 							]
 						},

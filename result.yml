@@ -2858,14 +2858,16 @@ paths:
             schema:
               type: object
               example:
-                fiscal_year_id: 1
                 account_heads:
                   - account_head_id: 1
                     amount: 200000
-                    type: cr
+                    type: dr
                   - account_head_id: 2
                     amount: 200000
-                    type: cr
+                    type: dr
+                  - account_head_id: 3
+                    amount: 0
+                    type: dr
       security:
         - bearerAuth: []
       parameters:
@@ -6496,7 +6498,6 @@ paths:
               properties:
                 company_legal_name:
                   type: string
-                  example: test
                 company_display_name:
                   type: string
                 registration_number:
@@ -6513,20 +6514,19 @@ paths:
                   type: string
                 payment_mode_name[0]:
                   type: string
-                  example: khalti
+                  example: esewa
                 payment_mode_name[1]:
                   type: string
-                  example: esewa
-                logo:
-                  type: string
-                  format: binary
+                  example: khalti
                 rate_type:
                   type: string
                   description: FIFO || WA
-                  example: WA
                 multiple_warehouse:
                   type: integer
                   example: '1'
+                logo:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
