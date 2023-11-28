@@ -1952,13 +1952,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/document/:id",
+							"raw": "{{url}}/api/comment/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"document",
+								"comment",
 								":id"
 							],
 							"variable": [
