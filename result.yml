@@ -1086,16 +1086,43 @@ paths:
             application/json: {}
     get:
       tags:
-        - default
-      summary: test
+        - comment
+      summary: list
       security:
         - bearerAuth: []
       parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: company-id
           in: header
           schema:
             type: integer
           example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: document_id
+          in: query
+          schema:
+            type: integer
+          example: '31'
       responses:
         '200':
           description: Successful response
@@ -7611,6 +7638,24 @@ paths:
                   type: string
                   example: >-
                     MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test:
+    get:
+      tags:
+        - default
+      summary: test
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

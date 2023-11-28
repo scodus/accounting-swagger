@@ -12754,13 +12754,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/api/comment",
+					"raw": "{{url}}/api/test",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"comment"
+						"test"
 					]
 				}
 			},
