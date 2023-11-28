@@ -62,6 +62,7 @@ tags:
   - name: unit
   - name: vendor
   - name: warehouse
+  - name: Folder
 paths:
   /api/accounting-firm:
     post:
@@ -1753,6 +1754,9 @@ paths:
                 documents[1]:
                   type: string
                   format: binary
+                transaction_date:
+                  type: string
+                  example: '2022-01-01'
       security:
         - bearerAuth: []
       parameters:
@@ -1915,6 +1919,44 @@ paths:
             type: integer
           required: true
           example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/document/{id}/update-status:
+    post:
+      tags:
+        - document
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: complete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '33'
       responses:
         '200':
           description: Successful response
@@ -7552,6 +7594,286 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder:
+    get:
+      tags:
+        - Folder
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Folder
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Sub Folder 1
+                parent_id: 1
+                company_id: null
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{id}:
+    get:
+      tags:
+        - Folder
+      summary: get single folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/store-files:
+    post:
+      tags:
+        - Folder
+      summary: store file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                  description: nullable
+                  example: np1
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-media/{id}:
+    get:
+      tags:
+        - Folder
+      summary: get private media
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-company-folders:
+    get:
+      tags:
+        - Folder
+      summary: get company folders
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folderId}:
+    delete:
+      tags:
+        - Folder
+      summary: Delete folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: folderId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}/rename:
+    delete:
+      tags:
+        - Folder
+      summary: Delete File
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: fileId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '42'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - Folder
+      summary: Rename File
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: string
+        - name: fileId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename Folder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: string
+        - name: folder_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-logo/2:
+    get:
+      tags:
+        - Folder
+      summary: Get Logo
       responses:
         '200':
           description: Successful response
