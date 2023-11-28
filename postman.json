@@ -1799,6 +1799,254 @@
 			]
 		},
 		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "document_id",
+									"value": "31",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "check check 1 2 3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/comment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "document_id",
+									"value": "31",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "check check 1 2 3 4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/comment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/document/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"document",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/comment?paginate=1&page=&limit=&search_keyword=&document_id=31",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "document_id",
+									"value": "31"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "company",
 			"item": [
 				{
@@ -2894,7 +3142,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "24"
+									"value": "61"
 								}
 							]
 						}
@@ -4835,7 +5083,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account_heads\": [\n        {\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"dr\"\n        },\n        {\n            \"account_head_id\": 2,\n            \"amount\": 200000,\n            \"type\": \"dr\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
+							"raw": "{\n    \"account_heads\": [\n        {\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"account_head_id\": 2,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5603,7 +5851,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-23 17-34-17.png"
+									"src": []
 								}
 							]
 						},
@@ -12506,13 +12754,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/api/test",
+					"raw": "{{url}}/api/comment",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"test"
+						"comment"
 					]
 				}
 			},

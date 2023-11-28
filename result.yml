@@ -28,6 +28,7 @@ tags:
   - name: bank cheque
   - name: cash account
   - name: cheque
+  - name: comment
   - name: company
   - name: customer
   - name: document
@@ -1048,6 +1049,213 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/comment:
+    post:
+      tags:
+        - comment
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                document_id:
+                  type: integer
+                  example: '31'
+                body:
+                  type: string
+                  example: check check 1 2 3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - default
+      summary: test
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/comment/{id}:
+    post:
+      tags:
+        - comment
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                document_id:
+                  type: integer
+                  example: '31'
+                body:
+                  type: string
+                  example: check check 1 2 3 4
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '62'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/document/{id}:
+    delete:
+      tags:
+        - document
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '25'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - document
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                particulars:
+                  type: string
+                  example: title edit
+                type:
+                  type: string
+                assign_to:
+                  type: string
+                remarks:
+                  type: string
+                status:
+                  type: string
+                documents[0]:
+                  type: string
+                  format: binary
+                documents[1]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '61'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - document
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/company:
     post:
       tags:
@@ -1652,117 +1860,6 @@ paths:
           in: query
           schema:
             type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/document/{id}:
-    post:
-      tags:
-        - document
-      summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                _method:
-                  type: string
-                  example: patch
-                particulars:
-                  type: string
-                  example: title edit
-                type:
-                  type: string
-                assign_to:
-                  type: string
-                remarks:
-                  type: string
-                status:
-                  type: string
-                documents[0]:
-                  type: string
-                  format: binary
-                documents[1]:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '24'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - document
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '25'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - document
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
       responses:
         '200':
           description: Successful response
@@ -2861,10 +2958,10 @@ paths:
                 account_heads:
                   - account_head_id: 1
                     amount: 200000
-                    type: dr
+                    type: cr
                   - account_head_id: 2
                     amount: 200000
-                    type: dr
+                    type: cr
                   - account_head_id: 3
                     amount: 0
                     type: dr
@@ -7486,24 +7583,6 @@ paths:
                   type: string
                   example: >-
                     MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/test:
-    get:
-      tags:
-        - default
-      summary: test
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
       responses:
         '200':
           description: Successful response
