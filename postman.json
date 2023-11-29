@@ -3243,7 +3243,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/document?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/document?paginate=&page=&limit=&search_keyword=&status=complete",
 							"host": [
 								"{{url}}"
 							],
@@ -3267,6 +3267,10 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "complete"
 								}
 							]
 						}
@@ -12614,7 +12618,7 @@
 					"response": []
 				},
 				{
-					"name": "get single folder",
+					"name": "single",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -12703,6 +12707,98 @@
 					"response": []
 				},
 				{
+					"name": "Delete folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AccountingFirmId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:folderId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folderId"
+							],
+							"variable": [
+								{
+									"key": "folderId",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "AccountingFirmId",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Edited Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "store file",
 					"request": {
 						"auth": {
@@ -12734,7 +12830,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/August/Downloads/Compressed/test-images/1.jpg"
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/Animation_Layout.png"
 								},
 								{
 									"key": "name",
@@ -12764,6 +12860,99 @@
 								{
 									"key": "folder_id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "AccountingFirmId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Name e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/file/:fileId/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":fileId",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AccountingFirmId",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/file/:fileId/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":fileId",
+								""
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "3"
 								}
 							]
 						}
@@ -12851,7 +13040,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete folder",
+					"name": "get folder id from company id",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -12863,7 +13052,7 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "GET",
 						"header": [
 							{
 								"key": "AccountingFirmId",
@@ -12872,163 +13061,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/folder/:folderId",
+							"raw": "{{url}}/api/folder/:company_id/folder-id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"folder",
-								":folderId"
+								":company_id",
+								"folder-id"
 							],
 							"variable": [
 								{
-									"key": "folderId",
+									"key": "company_id",
 									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete File",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "AccountingFirmId",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/file/:fileId/rename",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"file",
-								":fileId",
-								"rename"
-							],
-							"variable": [
-								{
-									"key": "fileId",
-									"value": "42"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Rename Folder",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "AccountingFirmId",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Edited Name\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/folder/:folder_id/rename",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder",
-								":folder_id",
-								"rename"
-							],
-							"variable": [
-								{
-									"key": "folder_id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Rename File",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "AccountingFirmId",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Edited Name\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/file/:fileId/rename",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"file",
-								":fileId",
-								"rename"
-							],
-							"variable": [
-								{
-									"key": "fileId",
-									"value": null
 								}
 							]
 						}
@@ -13041,14 +13087,20 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/get-logo/1",
+							"raw": "{{url}}/api/get-logo/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"get-logo",
-								"1"
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
 							]
 						}
 					},

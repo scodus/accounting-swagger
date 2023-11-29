@@ -1808,6 +1808,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: complete
       responses:
         '200':
           description: Successful response
@@ -7652,7 +7657,7 @@ paths:
     get:
       tags:
         - Folder
-      summary: get single folder
+      summary: single
       security:
         - bearerAuth: []
       parameters:
@@ -7667,6 +7672,59 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folderId}:
+    delete:
+      tags:
+        - Folder
+      summary: Delete folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: folderId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '18'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename Folder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: string
+        - name: folder_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -7712,6 +7770,61 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename File
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Name e
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: fileId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}/:
+    delete:
+      tags:
+        - Folder
+      summary: Delete File
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: AccountingFirmId
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: fileId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -7764,11 +7877,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/folder/{folderId}:
-    delete:
+  /api/folder/{company_id}/folder-id:
+    get:
       tags:
         - Folder
-      summary: Delete folder
+      summary: get folder id from company id
       security:
         - bearerAuth: []
       parameters:
@@ -7777,7 +7890,7 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: folderId
+        - name: company_id
           in: path
           schema:
             type: integer
@@ -7788,92 +7901,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/file/{fileId}/rename:
-    delete:
-      tags:
-        - Folder
-      summary: Delete File
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: AccountingFirmId
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: fileId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '42'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    patch:
-      tags:
-        - Folder
-      summary: Rename File
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: Edited Name
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: AccountingFirmId
-          in: header
-          schema:
-            type: string
-        - name: fileId
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{folder_id}/rename:
-    patch:
-      tags:
-        - Folder
-      summary: Rename Folder
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: Edited Name
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: AccountingFirmId
-          in: header
-          schema:
-            type: string
-        - name: folder_id
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/get-logo/1:
+  /api/get-logo/{id}:
     get:
       tags:
         - Folder
       summary: Get Logo
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
       responses:
         '200':
           description: Successful response
