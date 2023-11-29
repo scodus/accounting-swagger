@@ -7612,7 +7612,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7643,7 +7643,7 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7661,7 +7661,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7671,7 +7671,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '19'
       responses:
         '200':
           description: Successful response
@@ -7685,7 +7685,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7716,7 +7716,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: string
@@ -7759,7 +7759,7 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7790,7 +7790,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7814,7 +7814,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7843,7 +7843,7 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7867,7 +7867,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7885,7 +7885,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: AccountingFirmId
+        - name: accounting_firm_id
           in: header
           schema:
             type: integer
@@ -7905,7 +7905,7 @@ paths:
     get:
       tags:
         - Folder
-      summary: Get Logo
+      summary: Get logo
       parameters:
         - name: id
           in: path

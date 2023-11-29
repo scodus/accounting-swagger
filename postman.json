@@ -12599,7 +12599,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12633,7 +12633,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12651,7 +12651,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "19"
 								}
 							]
 						}
@@ -12679,7 +12679,7 @@
 								"type": "text"
 							},
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12722,7 +12722,7 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12763,7 +12763,7 @@
 						"method": "PATCH",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "",
 								"type": "text"
 							}
@@ -12819,7 +12819,7 @@
 								"type": "text"
 							},
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12882,7 +12882,7 @@
 						"method": "PATCH",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12933,7 +12933,7 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12980,7 +12980,7 @@
 								"type": "text"
 							},
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -13021,7 +13021,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -13055,7 +13055,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "AccountingFirmId",
+								"key": "accounting_firm_id",
 								"value": "1",
 								"type": "text"
 							}
@@ -13082,7 +13082,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Logo",
+					"name": "Get logo",
 					"request": {
 						"method": "GET",
 						"header": [],
