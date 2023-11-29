@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26417274",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
+		"_exporter_id": "30419631",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
 	},
 	"item": [
 		{
@@ -3147,7 +3147,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "61"
+									"value": "38"
 								}
 							]
 						}
@@ -3319,7 +3319,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "30"
 								}
 							]
 						}
@@ -4307,7 +4307,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 28,\n            \"quantity\": 25,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13041,14 +13041,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/get-logo/2",
+							"raw": "{{url}}/api/get-logo/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"get-logo",
-								"2"
+								"1"
 							]
 						}
 					},

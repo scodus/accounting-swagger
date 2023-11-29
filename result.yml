@@ -1862,7 +1862,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '61'
+          example: '38'
       responses:
         '200':
           description: Successful response
@@ -1918,7 +1918,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '30'
       responses:
         '200':
           description: Successful response
@@ -2506,8 +2506,8 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 28
-                    quantity: 25
+                    account_head_id: 29
+                    quantity: 10
                     rate: '10'
                     discount: '10'
                     tax: 0
@@ -7869,7 +7869,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/get-logo/2:
+  /api/get-logo/1:
     get:
       tags:
         - Folder
