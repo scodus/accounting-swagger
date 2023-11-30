@@ -10652,7 +10652,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_id\": ,\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13148,20 +13148,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/bug/:id",
+							"raw": "{{url}}/api/bug",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"bug",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
+								"bug"
 							]
 						}
 					},
