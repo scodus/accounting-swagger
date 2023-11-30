@@ -2576,19 +2576,12 @@ paths:
           in: query
           schema:
             type: string
-        - name: multiple_status[0]
-          in: query
-          schema:
-            type: string
-          description: |+
-
-          example: unpaid
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/invoice/{id}:
+  /api/sale-return/{id}:
     post:
       tags:
         - invoice
@@ -2645,6 +2638,40 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/invoice/{id}/update-status:
+    post:
+      tags:
+        - invoice
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: unpaid
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/invoice/{id}:
     delete:
       tags:
         - invoice
@@ -2675,7 +2702,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - sale return
+        - invoice
       summary: show
       security:
         - bearerAuth: []
@@ -2696,39 +2723,6 @@ paths:
             type: integer
           required: true
           example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/invoice/{id}/update-status:
-    post:
-      tags:
-        - invoice
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                status:
-                  type: string
-                  example: unpaid
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
       responses:
         '200':
           description: Successful response
@@ -6488,7 +6482,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sale-return:
+  /api/sales-return:
     post:
       tags:
         - sale return
@@ -6507,8 +6501,9 @@ paths:
                 products:
                   - product_id: 8
                     account_head_id: 29
-                    quantity: 100
-                    rate: '10'
+                    quantity: 5
+                    rate: 10
+                    tax: 0
                     description: description
                     amount: 100
                     warehouse_id: 1
@@ -6571,7 +6566,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sale-return/{id}:
+  /api/sales-return/{id}:
     post:
       tags:
         - sale return
@@ -6583,30 +6578,20 @@ paths:
               type: object
               example:
                 _method: patch
-                invoice_number: '142365'
-                customer_id: 35
+                invoice_id: 10
+                customer_id: 40
                 reference_number: '21345'
-                invoice_date: '2023-08-01'
-                due_date: '2023-01-30'
+                sales_return_date: '2023-08-01'
                 note: ''
-                status: ''
                 products:
-                  - product_id: 1
-                    account_head_id: 26
-                    quantity: 20
+                  - product_id: 8
+                    account_head_id: 29
+                    quantity: 3
                     rate: 10
-                    discount: '10'
-                    tax: 13
+                    tax: 0
                     description: description
-                    amount: 300
-                  - product_id: 2
-                    account_head_id: 26
-                    quantity: 20
-                    rate: 10
-                    discount: '10'
-                    tax: 13
-                    description: description
-                    amount: 300
+                    amount: 100
+                    warehouse_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -6620,7 +6605,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '8'
       responses:
         '200':
           description: Successful response
@@ -6648,13 +6633,41 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '8'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/sale-return/{id}/update-status:
+    get:
+      tags:
+        - sale return
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-return/{id}/update-status:
     post:
       tags:
         - sale return
@@ -6667,7 +6680,7 @@ paths:
               properties:
                 status:
                   type: string
-                  example: unpaid
+                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -6681,7 +6694,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '8'
       responses:
         '200':
           description: Successful response
@@ -7615,11 +7628,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -7635,9 +7654,8 @@ paths:
             schema:
               type: object
               example:
-                name: Sub Folder 1
-                parent_id: 1
-                company_id: null
+                name: Folder 1
+                parent_id: null
       security:
         - bearerAuth: []
       parameters:
@@ -7646,11 +7664,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -7664,17 +7688,22 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '2'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '19'
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -7688,11 +7717,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: folderId
           in: path
           schema:
@@ -7719,10 +7754,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
           schema:
             type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
+          schema:
+            type: integer
+          example: '3'
         - name: folder_id
           in: path
           schema:
@@ -7762,11 +7804,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: folder_id
           in: path
           schema:
@@ -7793,11 +7841,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: fileId
           in: path
           schema:
@@ -7817,11 +7871,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: fileId
           in: path
           schema:
@@ -7846,11 +7906,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: id
           in: path
           schema:
@@ -7866,15 +7932,9 @@ paths:
     get:
       tags:
         - Folder
-      summary: get company folders
+      summary: get company folders {{dont use}}
       security:
         - bearerAuth: []
-      parameters:
-        - name: Accounting-firm-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -7884,15 +7944,21 @@ paths:
     get:
       tags:
         - Folder
-      summary: get folder id from company id
+      summary: get folder id from company id {{dont use}}
       security:
         - bearerAuth: []
       parameters:
-        - name: Accounting-firm-id
-          in: header
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: company_id
           in: path
           schema:
@@ -7908,7 +7974,7 @@ paths:
     get:
       tags:
         - Folder
-      summary: Get logo
+      summary: Get logo {{dont use}}
       parameters:
         - name: id
           in: path
@@ -8100,7 +8166,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '33'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -8168,6 +8234,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: bug_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response

@@ -4362,13 +4362,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice/:id",
+							"raw": "{{url}}/api/sale-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"invoice",
+								"sale-return",
 								":id"
 							],
 							"variable": [
@@ -4635,7 +4635,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&multiple_status[0]=unpaid",
+							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -4670,8 +4670,9 @@
 								},
 								{
 									"key": "multiple_status[0]",
-									"value": "unpaid",
-									"description": "\n"
+									"value": "",
+									"description": "\n",
+									"disabled": true
 								}
 							]
 						}
@@ -10661,7 +10662,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 10,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\": 100,\n            \"rate\": \"10\",\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_id\": 10,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\": 5,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10669,13 +10670,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sale-return",
+							"raw": "{{url}}/api/sales-return",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sale-return"
+								"sales-return"
 							]
 						}
 					},
@@ -10704,7 +10705,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_id\": 10,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\": 3,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10712,19 +10713,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sale-return/:id",
+							"raw": "{{url}}/api/sales-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sale-return",
+								"sales-return",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "8"
 								}
 							]
 						}
@@ -10757,26 +10758,26 @@
 							"formdata": [
 								{
 									"key": "status",
-									"value": "unpaid",
+									"value": "approved",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/sale-return/:id/update-status",
+							"raw": "{{url}}/api/sales-return/:id/update-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sale-return",
+								"sales-return",
 								":id",
 								"update-status"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "8"
 								}
 							]
 						}
@@ -10814,19 +10815,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/sale-return/:id",
+							"raw": "{{url}}/api/sales-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sale-return",
+								"sales-return",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "8"
 								}
 							]
 						}
@@ -10867,13 +10868,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sale-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
+							"raw": "{{url}}/api/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sale-return"
+								"sales-return"
 							],
 							"query": [
 								{
@@ -10939,13 +10940,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice/:id",
+							"raw": "{{url}}/api/sales-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"invoice",
+								"sales-return",
 								":id"
 							],
 							"variable": [
@@ -12610,17 +12611,29 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/folder",
+							"raw": "{{url}}/api/folder?model_type=accounting_firm&model_id=2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"folder"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "2"
+								}
 							]
 						}
 					},
@@ -12644,11 +12657,12 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/folder/:id",
+							"raw": "{{url}}/api/folder/:id?model_type=accounting_firm&model_id=2",
 							"host": [
 								"{{url}}"
 							],
@@ -12657,10 +12671,20 @@
 								"folder",
 								":id"
 							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm"
+								},
+								{
+									"key": "model_id",
+									"value": "2"
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "19"
+									"value": "24"
 								}
 							]
 						}
@@ -12690,12 +12714,13 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Sub Folder 1\",\r\n    \"parent_id\":1,   \r\n    \"company_id\": null\r\n}",
+							"raw": "{\r\n    \"name\": \"Folder 1\",\r\n    \"parent_id\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12703,13 +12728,24 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/folder",
+							"raw": "{{url}}/api/folder?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"folder"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -12733,11 +12769,12 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/folder/:folderId",
+							"raw": "{{url}}/api/folder/:folderId?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -12745,6 +12782,17 @@
 								"api",
 								"folder",
 								":folderId"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -12774,7 +12822,8 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -12787,7 +12836,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/folder/:folder_id/rename",
+							"raw": "{{url}}/api/folder/:folder_id/rename?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -12796,6 +12845,17 @@
 								"folder",
 								":folder_id",
 								"rename"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -12830,7 +12890,8 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -12855,7 +12916,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/folder/:folder_id/store-files",
+							"raw": "{{url}}/api/folder/:folder_id/store-files?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -12864,6 +12925,17 @@
 								"folder",
 								":folder_id",
 								"store-files"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -12893,7 +12965,8 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -12906,7 +12979,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/file/:fileId/rename",
+							"raw": "{{url}}/api/file/:fileId/rename?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -12915,6 +12988,17 @@
 								"file",
 								":fileId",
 								"rename"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -12944,11 +13028,12 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/file/:fileId/",
+							"raw": "{{url}}/api/file/:fileId/?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -12957,6 +13042,17 @@
 								"file",
 								":fileId",
 								""
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -12991,11 +13087,12 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/get-media/:id",
+							"raw": "{{url}}/api/get-media/:id?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -13003,6 +13100,17 @@
 								"api",
 								"get-media",
 								":id"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -13015,7 +13123,7 @@
 					"response": []
 				},
 				{
-					"name": "get company folders",
+					"name": "get company folders {{dont use}}",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -13032,7 +13140,8 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -13049,7 +13158,7 @@
 					"response": []
 				},
 				{
-					"name": "get folder id from company id",
+					"name": "get folder id from company id {{dont use}}",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -13066,11 +13175,12 @@
 							{
 								"key": "Accounting-firm-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/folder/:company_id/folder-id",
+							"raw": "{{url}}/api/folder/:company_id/folder-id?model_type=accounting_firm&model_id=3",
 							"host": [
 								"{{url}}"
 							],
@@ -13079,6 +13189,17 @@
 								"folder",
 								":company_id",
 								"folder-id"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "3"
+								}
 							],
 							"variable": [
 								{
@@ -13091,7 +13212,7 @@
 					"response": []
 				},
 				{
-					"name": "Get logo",
+					"name": "Get logo {{dont use}}",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -13436,7 +13557,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "33"
+									"value": "2"
 								}
 							]
 						}
@@ -13632,7 +13753,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/bug-feedback?paginate=&page=&limit=&search_keyword=&status=",
+							"raw": "{{url}}/api/bug-feedback?paginate=&page=&limit=&search_keyword=&status=&bug_id=2",
 							"host": [
 								"{{url}}"
 							],
@@ -13660,6 +13781,10 @@
 								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "bug_id",
+									"value": "2"
 								}
 							]
 						}
