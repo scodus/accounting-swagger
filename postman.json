@@ -10652,7 +10652,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12599,7 +12599,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12633,7 +12633,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12679,7 +12679,7 @@
 								"type": "text"
 							},
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12722,7 +12722,7 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12763,7 +12763,7 @@
 						"method": "PATCH",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "",
 								"type": "text"
 							}
@@ -12819,7 +12819,7 @@
 								"type": "text"
 							},
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12882,7 +12882,7 @@
 						"method": "PATCH",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12933,7 +12933,7 @@
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -12980,7 +12980,7 @@
 								"type": "text"
 							},
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -13021,7 +13021,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -13055,7 +13055,7 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "accounting_firm_id",
+								"key": "Accounting-firm-id",
 								"value": "1",
 								"type": "text"
 							}
@@ -13100,6 +13100,341 @@
 								{
 									"key": "id",
 									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bug",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "dsfasdfa",
+									"type": "text"
+								},
+								{
+									"key": "screenshot",
+									"type": "file",
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/bannerImage-min.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "abc def ",
+									"type": "text"
+								},
+								{
+									"key": "screenshot",
+									"type": "file",
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/aboutUsBanner-min.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bug?paginate=&page=&limit=&search_keyword=&status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "in_progress",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "33"
 								}
 							]
 						}
