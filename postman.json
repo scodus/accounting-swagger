@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30419631",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
+		"_exporter_id": "26417274",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
 	},
 	"item": [
 		{
@@ -4635,7 +4635,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&multiple_status[0]=&multiple_status[1]=",
+							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&multiple_status[0]=unpaid",
 							"host": [
 								"{{url}}"
 							],
@@ -4670,12 +4670,8 @@
 								},
 								{
 									"key": "multiple_status[0]",
-									"value": "",
+									"value": "unpaid",
 									"description": "\n"
-								},
-								{
-									"key": "multiple_status[1]",
-									"value": ""
 								}
 							]
 						}
@@ -6984,7 +6980,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid",
+							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=paid",
 							"host": [
 								"{{url}}"
 							],
@@ -7019,10 +7015,6 @@
 								},
 								{
 									"key": "multiple_status[0]",
-									"value": "draft"
-								},
-								{
-									"key": "multiple_status[1]",
 									"value": "paid"
 								}
 							]

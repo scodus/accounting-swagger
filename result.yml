@@ -2582,10 +2582,7 @@ paths:
             type: string
           description: |+
 
-        - name: multiple_status[1]
-          in: query
-          schema:
-            type: string
+          example: unpaid
       responses:
         '200':
           description: Successful response
@@ -3995,11 +3992,6 @@ paths:
           schema:
             type: string
         - name: multiple_status[0]
-          in: query
-          schema:
-            type: string
-          example: draft
-        - name: multiple_status[1]
           in: query
           schema:
             type: string
