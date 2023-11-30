@@ -64,6 +64,7 @@ tags:
   - name: warehouse
   - name: Folder
   - name: Bug
+  - name: Bug Feedback
 paths:
   /api/accounting-firm:
     post:
@@ -2575,6 +2576,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: multiple_status[0]
+          in: query
+          schema:
+            type: string
+          description: |+
+
+        - name: multiple_status[1]
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -3983,6 +3994,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: multiple_status[0]
+          in: query
+          schema:
+            type: string
+          example: draft
+        - name: multiple_status[1]
+          in: query
+          schema:
+            type: string
+          example: paid
       responses:
         '200':
           description: Successful response
@@ -6485,29 +6506,20 @@ paths:
           application/json:
             schema:
               type: object
-              example: |-
-                {
-                    "invoice_id": ,
-                    "customer_id": 35,
-                    "reference_number": "21345",
-                    "invoice_date": "2023-08-01",
-                    "due_date": "2023-08-30",
-                    "note": "",
-                    "status":"",
-                    "products": [
-                        {
-                            "product_id": 1,
-                            "account_head_id": 26,
-                            "quantity": 10,
-                            "rate": "10",
-                            "discount": "10",
-                            "tax": 0,
-                            "description": "description",
-                            "amount": 300,
-                            "warehouse_id": 1
-                        }
-                    ]
-                }
+              example:
+                invoice_id: 10
+                customer_id: 40
+                reference_number: '21345'
+                sales_return_date: '2023-08-01'
+                note: ''
+                products:
+                  - product_id: 8
+                    account_head_id: 29
+                    quantity: 100
+                    rate: '10'
+                    description: description
+                    amount: 100
+                    warehouse_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -8097,6 +8109,155 @@ paths:
             type: integer
           required: true
           example: '33'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug-feedback:
+    post:
+      tags:
+        - Bug Feedback
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: dsfasdfa
+                bug_id:
+                  type: integer
+                  example: '3'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Bug Feedback
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug-feedback/{id}:
+    post:
+      tags:
+        - Bug Feedback
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                comment:
+                  type: string
+                  example: 'abc def '
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Bug Feedback
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Bug Feedback
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
