@@ -7611,7 +7611,7 @@ paths:
           schema:
             type: string
           description: type:accounting_firm,company
-          example: accounting_firm
+          example: company
         - name: model_id
           in: query
           schema:
@@ -7628,12 +7628,16 @@ paths:
       summary: store
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                name: Sub Folder 3
-                parent_id: 24
+              properties:
+                name:
+                  type: string
+                  example: Sub Folder 3
+                parent_id:
+                  type: integer
+                  example: '24'
       security:
         - bearerAuth: []
       parameters:
@@ -7653,6 +7657,30 @@ paths:
           schema:
             type: integer
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-firm-company-folders:
+    get:
+      tags:
+        - Folder
+      summary: get firm->company folders
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -7900,18 +7928,6 @@ paths:
             type: integer
           required: true
           example: '12'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/get-company-folders:
-    get:
-      tags:
-        - Folder
-      summary: get company folders {{dont use}}
-      security:
-        - bearerAuth: []
       responses:
         '200':
           description: Successful response

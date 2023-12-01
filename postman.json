@@ -3,8 +3,8 @@
 		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26417274",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
+		"_exporter_id": "30419631",
+		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
 	},
 	"item": [
 		{
@@ -12616,13 +12616,59 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/folder?model_type=accounting_firm&model_id=1",
+							"raw": "{{url}}/api/folder?model_type=company&model_id=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"folder"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "company",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get firm->company folders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/get-firm-company-folders?model_type=accounting_firm&model_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-firm-company-folders"
 							],
 							"query": [
 								{
@@ -12719,13 +12765,19 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Sub Folder 3\",\r\n    \"parent_id\": 24\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sub Folder 3",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "24",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/api/folder?model_type=accounting_firm&model_id=2",
@@ -13118,41 +13170,6 @@
 									"key": "id",
 									"value": "12"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get company folders {{dont use}}",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/get-company-folders",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"get-company-folders"
 							]
 						}
 					},
@@ -13880,14 +13897,7 @@
 						{
 							"key": "email",
 							"value": "company@company.com",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "email",
-							"value": "admin@admin.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "email",
@@ -13898,7 +13908,8 @@
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "password",
