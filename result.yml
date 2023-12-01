@@ -4741,31 +4741,20 @@ paths:
             schema:
               type: object
               example:
-                bill_number: ''
-                vendor_id: 36
+                bill_id: 1
+                vendor_id: 42
                 reference_number: '21345'
-                bill_date: '2023-01-01'
-                due_date: '2023-01-30'
+                purchase_return_date: '2023-08-01'
                 note: ''
-                tds: ''
-                status: ''
                 products:
-                  - product_id: 1
-                    account_head_id: 32
-                    quantity: 100
-                    rate: '9'
-                    discount: '100'
+                  - product_id: 8
+                    account_head_id: 29
+                    quantity: 5
+                    rate: 10
                     tax: 0
                     description: description
-                    amount: 300
-                  - product_id: 2
-                    account_head_id: 32
-                    quantity: 10
-                    rate: 10
-                    discount: '10'
-                    tax: 13
-                    description: description
-                    amount: 300
+                    amount: 100
+                    warehouse_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -4837,31 +4826,20 @@ paths:
               type: object
               example:
                 _method: patch
-                bill_number: '142365'
-                vendor_id: 34
+                bill_id: 1
+                vendor_id: 42
                 reference_number: '21345'
-                bill_date: '2023-01-01'
-                due_date: '2023-01-30'
+                purchase_return_date: '2023-08-01'
                 note: ''
-                tds: ''
-                status: ''
                 products:
-                  - product_id: 1
-                    account_head_id: 32
-                    quantity: 20
+                  - product_id: 8
+                    account_head_id: 29
+                    quantity: 4
                     rate: 10
-                    discount: '10'
-                    tax: 13
+                    tax: 0
                     description: description
-                    amount: 400
-                  - product_id: 2
-                    account_head_id: 32
-                    quantity: 20
-                    rate: 10
-                    discount: '10'
-                    tax: 13
-                    description: description
-                    amount: 400
+                    amount: 100
+                    warehouse_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -4875,7 +4853,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -4950,7 +4928,7 @@ paths:
               properties:
                 status:
                   type: string
-                  example: unpaid
+                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -4964,7 +4942,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -7638,7 +7616,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -7654,8 +7632,8 @@ paths:
             schema:
               type: object
               example:
-                name: Folder 1
-                parent_id: null
+                name: Sub Folder 3
+                parent_id: 24
       security:
         - bearerAuth: []
       parameters:
@@ -7674,7 +7652,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '3'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -7727,13 +7705,13 @@ paths:
           in: query
           schema:
             type: integer
-          example: '3'
+          example: '2'
         - name: folderId
           in: path
           schema:
             type: integer
           required: true
-          example: '18'
+          example: '29'
       responses:
         '200':
           description: Successful response
@@ -7786,16 +7764,15 @@ paths:
             schema:
               type: object
               properties:
+                _method:
+                  type: string
+                  example: PUT
                 file:
                   type: string
                   format: binary
                 name:
                   type: string
                   description: nullable
-                  example: np1
-                _method:
-                  type: string
-                  example: PUT
       security:
         - bearerAuth: []
       parameters:
@@ -7814,13 +7791,13 @@ paths:
           in: query
           schema:
             type: integer
-          example: '3'
+          example: '1'
         - name: folder_id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -7851,13 +7828,13 @@ paths:
           in: query
           schema:
             type: integer
-          example: '3'
+          example: '2'
         - name: fileId
           in: path
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '12'
       responses:
         '200':
           description: Successful response
@@ -7881,13 +7858,13 @@ paths:
           in: query
           schema:
             type: integer
-          example: '3'
+          example: '2'
         - name: fileId
           in: path
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '14'
       responses:
         '200':
           description: Successful response
@@ -7916,13 +7893,13 @@ paths:
           in: query
           schema:
             type: integer
-          example: '3'
+          example: '2'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '12'
       responses:
         '200':
           description: Successful response
