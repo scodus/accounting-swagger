@@ -26,6 +26,8 @@ tags:
   - name: account head
   - name: bank
   - name: bank cheque
+  - name: Bug
+  - name: Bug Feedback
   - name: cash account
   - name: cheque
   - name: comment
@@ -34,6 +36,7 @@ tags:
   - name: document
   - name: employee
   - name: fishal year
+  - name: Folder
   - name: inventory adjustment
   - name: invoice
   - name: journal voucher
@@ -62,9 +65,6 @@ tags:
   - name: unit
   - name: vendor
   - name: warehouse
-  - name: Folder
-  - name: Bug
-  - name: Bug Feedback
 paths:
   /api/accounting-firm:
     post:
@@ -596,7 +596,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1111'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -932,6 +932,342 @@ paths:
             type: integer
           required: true
           example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug:
+    post:
+      tags:
+        - Bug
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: bug 1
+                screenshot:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Bug
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug/{id}:
+    post:
+      tags:
+        - Bug
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                description:
+                  type: string
+                  example: bug 1 e
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Bug
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Bug
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug/{id}/update-status:
+    post:
+      tags:
+        - Bug
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: in_progress
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug-feedback:
+    post:
+      tags:
+        - Bug Feedback
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: dsfasdfa
+                bug_id:
+                  type: integer
+                  example: '3'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Bug Feedback
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: bug_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bug-feedback/{id}:
+    post:
+      tags:
+        - Bug Feedback
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                comment:
+                  type: string
+                  example: 'abc def '
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Bug Feedback
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Bug Feedback
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2313,6 +2649,290 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/folder:
+    get:
+      tags:
+        - Folder
+      summary: index
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Folder
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Sub Folder 3
+                parent_id:
+                  type: integer
+                  example: '57'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-firm-company-folders:
+    get:
+      tags:
+        - Folder
+      summary: get firm->company folders
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: model_type
+          in: query
+          schema:
+            type: string
+          description: type:accounting_firm,company
+          example: accounting_firm
+        - name: model_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{id}:
+    get:
+      tags:
+        - Folder
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '63'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folderId}:
+    delete:
+      tags:
+        - Folder
+      summary: Delete folder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: folderId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '29'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename Folder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Edited Name
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: folder_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{folder_id}/store-files:
+    post:
+      tags:
+        - Folder
+      summary: store file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                file:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+                  description: nullable
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: folder_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '24'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}/rename:
+    patch:
+      tags:
+        - Folder
+      summary: Rename File
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Name e
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: fileId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{fileId}/:
+    delete:
+      tags:
+        - Folder
+      summary: Delete File
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: fileId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '14'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-media/{id}:
+    get:
+      tags:
+        - Folder
+      summary: get private media
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/folder/{company_id}/folder-id:
+    get:
+      tags:
+        - Folder
+      summary: get folder id from company id {{dont use}}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/get-logo/{id}:
+    get:
+      tags:
+        - Folder
+      summary: Get logo {{dont use}}
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/inventory-adjustment:
     post:
       tags:
@@ -2324,19 +2944,19 @@ paths:
             schema:
               type: object
               example:
-                adjustment_type: value
+                adjustment_type: quantity
                 date: '2022-01-01'
                 reference_number: qwe
                 reason: ''
                 account_head_id: 1
                 description: ''
                 products:
-                  - product_id: 1
+                  - product_id: 2
                     warehouse_id: 1
-                    adjust_quantity: ''
-                    adjusted_quantity: ''
-                    adjust_value: 100
-                    adjusted_value: 500
+                    adjust_quantity: 10
+                    adjusted_quantity: 90
+                    adjust_value: ''
+                    adjusted_value: ''
       security:
         - bearerAuth: []
       parameters:
@@ -3602,7 +4222,8 @@ paths:
                   type: integer
                   example: '100'
                 warehouse_inventory[0][warehouse_id]:
-                  type: string
+                  type: integer
+                  example: '1'
                 warehouse_inventory[1][initial_quantity_on_hand]:
                   type: integer
                   example: '45'
@@ -3613,7 +4234,8 @@ paths:
                   type: integer
                   example: '110'
                 warehouse_inventory[1][warehouse_id]:
-                  type: string
+                  type: integer
+                  example: '1'
                 barcode_number:
                   type: string
                 entry_number:
@@ -3650,7 +4272,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '90'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -5898,12 +6520,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-07-22'
+          example: '2022-07-22'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2023-08-21'
+          example: '2024-08-21'
       responses:
         '200':
           description: Successful response
@@ -6471,13 +7093,14 @@ paths:
             schema:
               type: object
               example:
-                invoice_id: 10
+                invoice_id: 1
                 customer_id: 40
                 reference_number: '21345'
                 sales_return_date: '2023-08-01'
                 note: ''
+                receiver_id: 3
                 products:
-                  - product_id: 8
+                  - product_id: 1
                     account_head_id: 29
                     quantity: 5
                     rate: 10
@@ -7031,7 +7654,7 @@ paths:
               properties:
                 title:
                   type: string
-                  example: title
+                  example: test
                 symbol:
                   type: string
                   example: T
@@ -7083,7 +7706,8 @@ paths:
         - name: page
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
@@ -7598,727 +8222,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/folder:
-    get:
-      tags:
-        - Folder
-      summary: index
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: company
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    post:
-      tags:
-        - Folder
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: Sub Folder 3
-                parent_id:
-                  type: integer
-                  example: '24'
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/get-firm-company-folders:
-    get:
-      tags:
-        - Folder
-      summary: get firm->company folders
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{id}:
-    get:
-      tags:
-        - Folder
-      summary: single
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '24'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{folderId}:
-    delete:
-      tags:
-        - Folder
-      summary: Delete folder
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-        - name: folderId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '29'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{folder_id}/rename:
-    patch:
-      tags:
-        - Folder
-      summary: Rename Folder
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: Edited Name
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '3'
-        - name: folder_id
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{folder_id}/store-files:
-    post:
-      tags:
-        - Folder
-      summary: store file
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                _method:
-                  type: string
-                  example: PUT
-                file:
-                  type: string
-                  format: binary
-                name:
-                  type: string
-                  description: nullable
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: folder_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '24'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/file/{fileId}/rename:
-    patch:
-      tags:
-        - Folder
-      summary: Rename File
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: Name e
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-        - name: fileId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '12'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/file/{fileId}/:
-    delete:
-      tags:
-        - Folder
-      summary: Delete File
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-        - name: fileId
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '14'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/get-media/{id}:
-    get:
-      tags:
-        - Folder
-      summary: get private media
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '12'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/folder/{company_id}/folder-id:
-    get:
-      tags:
-        - Folder
-      summary: get folder id from company id {{dont use}}
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: model_type
-          in: query
-          schema:
-            type: string
-          description: type:accounting_firm,company
-          example: accounting_firm
-        - name: model_id
-          in: query
-          schema:
-            type: integer
-          example: '3'
-        - name: company_id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/get-logo/{id}:
-    get:
-      tags:
-        - Folder
-      summary: Get logo {{dont use}}
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '4'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/bug:
-    post:
-      tags:
-        - Bug
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                  example: dsfasdfa
-                screenshot:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Bug
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: paginate
-          in: query
-          schema:
-            type: string
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/bug/{id}:
-    post:
-      tags:
-        - Bug
-      summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                _method:
-                  type: string
-                  example: patch
-                description:
-                  type: string
-                  example: 'abc def '
-                screenshot:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Bug
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '5'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Bug
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/bug/{id}/update-status:
-    post:
-      tags:
-        - Bug
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                status:
-                  type: string
-                  example: in_progress
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/bug-feedback:
-    post:
-      tags:
-        - Bug Feedback
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                comment:
-                  type: string
-                  example: dsfasdfa
-                bug_id:
-                  type: integer
-                  example: '3'
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Bug Feedback
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: paginate
-          in: query
-          schema:
-            type: string
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-        - name: bug_id
-          in: query
-          schema:
-            type: integer
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/bug-feedback/{id}:
-    post:
-      tags:
-        - Bug Feedback
-      summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                _method:
-                  type: string
-                  example: patch
-                comment:
-                  type: string
-                  example: 'abc def '
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - Bug Feedback
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '5'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - Bug Feedback
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/login:
     post:
       tags:
@@ -8332,7 +8235,6 @@ paths:
               properties:
                 email:
                   type: string
-                  example: accountingfirm@accountingfirm.com
                 password:
                   type: string
                   example: P@ssw0rd

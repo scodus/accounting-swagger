@@ -936,7 +936,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1111"
+									"value": "1"
 								}
 							]
 						}
@@ -1565,6 +1565,604 @@
 								{
 									"key": "id",
 									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bug",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "bug 1",
+									"type": "text"
+								},
+								{
+									"key": "screenshot",
+									"type": "file",
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/@ nepaL AT un.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "bug 1 e",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bug?paginate=&page=&limit=&search_keyword=&status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "in_progress",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bug Feedback",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "comment",
+									"value": "dsfasdfa",
+									"type": "text"
+								},
+								{
+									"key": "bug_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug-feedback",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug-feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "abc def ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/bug-feedback/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug-feedback",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/bug-feedback/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug-feedback",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bug-feedback?paginate=&page=&limit=&search_keyword=&status=&bug_id=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug-feedback"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "bug_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/bug-feedback/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bug-feedback",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
 								}
 							]
 						}
@@ -3036,7 +3634,7 @@
 								{
 									"key": "documents[0]",
 									"type": "file",
-									"src": "/home/user--49/Pictures/meshuggah.jpg"
+									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-12-01 09-35-37.png"
 								},
 								{
 									"key": "documents[1]",
@@ -4007,6 +4605,587 @@
 			]
 		},
 		{
+			"name": "Folder",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder?model_type=accounting_firm&model_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get firm->company folders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/get-firm-company-folders?model_type=accounting_firm&model_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-firm-company-folders"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company"
+								},
+								{
+									"key": "model_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "63"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sub Folder 3",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "57",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder"
+							],
+							"query": [
+								{
+									"key": "model_type",
+									"value": "accounting_firm",
+									"description": "type:accounting_firm,company",
+									"disabled": true
+								},
+								{
+									"key": "model_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:folderId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folderId"
+							],
+							"variable": [
+								{
+									"key": "folderId",
+									"value": "29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename Folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Edited Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/@ nepaL AT un.png"
+								},
+								{
+									"key": "name",
+									"value": "",
+									"description": "nullable",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/folder/:folder_id/store-files",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":folder_id",
+								"store-files"
+							],
+							"variable": [
+								{
+									"key": "folder_id",
+									"value": "24"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Name e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/file/:fileId/rename",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":fileId",
+								"rename"
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/file/:fileId/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"file",
+								":fileId",
+								""
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "14"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get private media",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/get-media/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-media",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get folder id from company id {{dont use}}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accounting-firm-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/folder/:company_id/folder-id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"folder",
+								":company_id",
+								"folder-id"
+							],
+							"variable": [
+								{
+									"key": "company_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get logo {{dont use}}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/get-logo/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-logo",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "inventory adjustment",
 			"item": [
 				{
@@ -4037,7 +5216,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"adjustment_type\": \"value\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": \"\",\n            \"adjusted_quantity\": \"\",\n            \"adjust_value\": 100,\n            \"adjusted_value\": 500\n        }\n    ]\n}",
+							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 90,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6012,27 +7191,32 @@
 								{
 									"key": "multiple_warehouse",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
 									"value": "155",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[0][as_of_date]",
 									"value": "2022-01-01",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[0][cost_per_unit]",
 									"value": "100",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[0][warehouse_id]",
-									"value": "",
-									"type": "text"
+									"value": "1",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
@@ -6051,7 +7235,7 @@
 								},
 								{
 									"key": "warehouse_inventory[1][warehouse_id]",
-									"value": "",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -6114,7 +7298,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "90"
+									"value": "2"
 								}
 							]
 						}
@@ -9534,7 +10718,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/trial-balance?start_date=2023-07-22&end_date=2023-08-21",
+							"raw": "{{url}}/api/trial-balance?start_date=2022-07-22&end_date=2024-08-21",
 							"host": [
 								"{{url}}"
 							],
@@ -9545,11 +10729,11 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2023-07-22"
+									"value": "2022-07-22"
 								},
 								{
 									"key": "end_date",
-									"value": "2023-08-21"
+									"value": "2024-08-21"
 								}
 							]
 						}
@@ -10662,7 +11846,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 10,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\": 5,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_id\": 1,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 5,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11644,7 +12828,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "title",
+									"value": "test",
 									"type": "text"
 								},
 								{
@@ -11842,7 +13026,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/unit?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/unit?paginate=1&page=1&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -11857,7 +13041,7 @@
 								},
 								{
 									"key": "page",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "limit",
@@ -12591,1275 +13775,6 @@
 			]
 		},
 		{
-			"name": "Folder",
-			"item": [
-				{
-					"name": "index",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/folder?model_type=company&model_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "company",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get firm->company folders",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/get-firm-company-folders?model_type=accounting_firm&model_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"get-firm-company-folders"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/folder/:id?model_type=accounting_firm&model_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder",
-								":id"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm"
-								},
-								{
-									"key": "model_id",
-									"value": "2"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "24"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Sub Folder 3",
-									"type": "text"
-								},
-								{
-									"key": "parent_id",
-									"value": "24",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/folder?model_type=accounting_firm&model_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete folder",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/folder/:folderId?model_type=accounting_firm&model_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder",
-								":folderId"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "2"
-								}
-							],
-							"variable": [
-								{
-									"key": "folderId",
-									"value": "29"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Rename Folder",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Edited Name\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/folder/:folder_id/rename?model_type=accounting_firm&model_id=3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder",
-								":folder_id",
-								"rename"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "3"
-								}
-							],
-							"variable": [
-								{
-									"key": "folder_id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store file",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/C:/Users/August/Downloads/Compressed/test-images/@ nepaL AT un.png"
-								},
-								{
-									"key": "name",
-									"value": "",
-									"description": "nullable",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/folder/:folder_id/store-files?model_type=accounting_firm&model_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder",
-								":folder_id",
-								"store-files"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "1"
-								}
-							],
-							"variable": [
-								{
-									"key": "folder_id",
-									"value": "24"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Rename File",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Name e\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/file/:fileId/rename?model_type=accounting_firm&model_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"file",
-								":fileId",
-								"rename"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "2"
-								}
-							],
-							"variable": [
-								{
-									"key": "fileId",
-									"value": "12"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete File",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/file/:fileId/?model_type=accounting_firm&model_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"file",
-								":fileId",
-								""
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "2"
-								}
-							],
-							"variable": [
-								{
-									"key": "fileId",
-									"value": "14"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get private media",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/get-media/:id?model_type=accounting_firm&model_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"get-media",
-								":id"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "2"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "12"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get folder id from company id {{dont use}}",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accounting-firm-id",
-								"value": "1",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/folder/:company_id/folder-id?model_type=accounting_firm&model_id=3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"folder",
-								":company_id",
-								"folder-id"
-							],
-							"query": [
-								{
-									"key": "model_type",
-									"value": "accounting_firm",
-									"description": "type:accounting_firm,company"
-								},
-								{
-									"key": "model_id",
-									"value": "3"
-								}
-							],
-							"variable": [
-								{
-									"key": "company_id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get logo {{dont use}}",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/get-logo/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"get-logo",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "4"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Bug",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "description",
-									"value": "dsfasdfa",
-									"type": "text"
-								},
-								{
-									"key": "screenshot",
-									"type": "file",
-									"src": "/C:/Users/August/Downloads/Compressed/test-images/bannerImage-min.png"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/bug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "abc def ",
-									"type": "text"
-								},
-								{
-									"key": "screenshot",
-									"type": "file",
-									"src": "/C:/Users/August/Downloads/Compressed/test-images/aboutUsBanner-min.png"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/bug/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/bug/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "5"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/bug?paginate=&page=&limit=&search_keyword=&status=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": ""
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/bug/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "in_progress",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/bug/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Bug Feedback",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "comment",
-									"value": "dsfasdfa",
-									"type": "text"
-								},
-								{
-									"key": "bug_id",
-									"value": "3",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/bug-feedback",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug-feedback"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
-								},
-								{
-									"key": "comment",
-									"value": "abc def ",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/bug-feedback/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug-feedback",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/bug-feedback/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug-feedback",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "5"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/bug-feedback?paginate=&page=&limit=&search_keyword=&status=&bug_id=2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug-feedback"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": ""
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								},
-								{
-									"key": "bug_id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/bug-feedback/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"bug-feedback",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "login",
 			"event": [
 				{
@@ -13897,7 +13812,8 @@
 						{
 							"key": "email",
 							"value": "company@company.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "email",
@@ -13908,13 +13824,18 @@
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "password",
 							"value": "P@ssw0rd",
 							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
