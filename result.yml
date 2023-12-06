@@ -8240,7 +8240,8 @@ paths:
                 date: 20220-01-01
                 from_warehouse_id: 1
                 to_warehouse_id: 2
-                product_id: 1
+                products:
+                  - product_id: 1
                 quantity: 10
                 remarks: remarks
       security:

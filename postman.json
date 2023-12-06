@@ -13804,7 +13804,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"date\": \"20220-01-01\",\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"product_id\": 1,\n    \"quantity\": 10,\n    \"remarks\": \"remarks\"\n}",
+							"raw": "{\n    \"date\": \"20220-01-01\",\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"products\": [\n        {\n            \"product_id\": 1\n        }\n    ],\n    \"quantity\": 10,\n    \"remarks\": \"remarks\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
