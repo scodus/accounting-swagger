@@ -65,6 +65,7 @@ tags:
   - name: unit
   - name: vendor
   - name: warehouse
+  - name: warehouse transfer
 paths:
   /api/accounting-firm:
     post:
@@ -2662,7 +2663,7 @@ paths:
           schema:
             type: string
           description: type:accounting_firm,company
-          example: accounting_firm
+          example: company
         - name: model_id
           in: query
           schema:
@@ -2688,7 +2689,7 @@ paths:
                   example: Sub Folder 3
                 parent_id:
                   type: integer
-                  example: '57'
+                  example: '66'
       security:
         - bearerAuth: []
       parameters:
@@ -2809,6 +2810,7 @@ paths:
                 name:
                   type: string
                   description: nullable
+                  example: d
       security:
         - bearerAuth: []
       parameters:
@@ -2822,7 +2824,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '24'
+          example: '57'
       responses:
         '200':
           description: Successful response
@@ -2891,7 +2893,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '12'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -3134,9 +3136,9 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 29
-                    quantity: 10
+                    quantity: 100
                     rate: '10'
-                    discount: '10'
+                    discount: ''
                     tax: 0
                     description: description
                     amount: 300
@@ -3285,7 +3287,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '30'
       responses:
         '200':
           description: Successful response
@@ -4544,7 +4546,7 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 36
+                    account_head_id: 37
                     quantity: 100
                     rate: '9'
                     discount: '100'
@@ -4758,7 +4760,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -5363,15 +5365,16 @@ paths:
             schema:
               type: object
               example:
-                bill_id: 1
-                vendor_id: 42
+                bill_id: 5
+                vendor_id: 38
                 reference_number: '21345'
                 purchase_return_date: '2023-08-01'
                 note: ''
+                receiver_id: 3
                 products:
-                  - product_id: 8
+                  - product_id: 1
                     account_head_id: 29
-                    quantity: 5
+                    quantity: 15
                     rate: 10
                     tax: 0
                     description: description
@@ -5564,7 +5567,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '15'
       responses:
         '200':
           description: Successful response
@@ -7093,7 +7096,7 @@ paths:
             schema:
               type: object
               example:
-                invoice_id: 1
+                invoice_id: 30
                 customer_id: 40
                 reference_number: '21345'
                 sales_return_date: '2023-08-01'
@@ -7179,13 +7182,14 @@ paths:
               type: object
               example:
                 _method: patch
-                invoice_id: 10
+                invoice_id: 1
                 customer_id: 40
                 reference_number: '21345'
                 sales_return_date: '2023-08-01'
                 note: ''
+                receiver_id: 3
                 products:
-                  - product_id: 8
+                  - product_id: 2
                     account_head_id: 29
                     quantity: 3
                     rate: 10
@@ -7206,7 +7210,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '8'
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -7295,7 +7299,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '8'
+          example: '21'
       responses:
         '200':
           description: Successful response
@@ -8192,7 +8196,7 @@ paths:
   /api/warehouse/{id}/update-status:
     post:
       tags:
-        - warehouse
+        - warehouse transfer
       summary: update status
       requestBody:
         content:
@@ -8206,6 +8210,112 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/warehouse-transfer:
+    post:
+      tags:
+        - warehouse transfer
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                date: 20220-01-01
+                from: 1
+                to: 2
+                product_id: 1
+                quantity: 10
+                remarks: remarks
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - warehouse transfer
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/warehouse-transfer/{id}:
+    get:
+      tags:
+        - warehouse transfer
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: company-id
           in: header
           schema:
