@@ -8242,7 +8242,7 @@ paths:
                 to_warehouse_id: 2
                 products:
                   - product_id: 1
-                quantity: 10
+                    quantity: 10
                 remarks: remarks
       security:
         - bearerAuth: []
