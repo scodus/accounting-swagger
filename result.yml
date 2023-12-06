@@ -2663,7 +2663,7 @@ paths:
           schema:
             type: string
           description: type:accounting_firm,company
-          example: company
+          example: accounting_firm
         - name: model_id
           in: query
           schema:
@@ -4760,7 +4760,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -5365,7 +5365,7 @@ paths:
             schema:
               type: object
               example:
-                bill_id: 5
+                bill_id: 6
                 vendor_id: 38
                 reference_number: '21345'
                 purchase_return_date: '2023-08-01'
@@ -5567,7 +5567,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '15'
+          example: '16'
       responses:
         '200':
           description: Successful response
@@ -8238,8 +8238,8 @@ paths:
               type: object
               example:
                 date: 20220-01-01
-                from: 1
-                to: 2
+                from_warehouse_id: 1
+                to_warehouse_id: 2
                 product_id: 1
                 quantity: 10
                 remarks: remarks
