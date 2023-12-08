@@ -2740,7 +2740,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '63'
+          example: '64'
       responses:
         '200':
           description: Successful response
@@ -3136,7 +3136,7 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 29
-                    quantity: 100
+                    quantity: 165
                     rate: '10'
                     discount: ''
                     tax: 0
@@ -8196,7 +8196,7 @@ paths:
   /api/warehouse/{id}/update-status:
     post:
       tags:
-        - warehouse transfer
+        - warehouse
       summary: update status
       requestBody:
         content:
@@ -8305,6 +8305,48 @@ paths:
           content:
             application/json: {}
   /api/warehouse-transfer/{id}:
+    post:
+      tags:
+        - warehouse transfer
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                date: 20220-01-01
+                from_warehouse_id: 1
+                to_warehouse_id: 2
+                products:
+                  - product_id: 1
+                    quantity: 15
+                remarks: remarks
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '28'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     get:
       tags:
         - warehouse transfer
@@ -8328,6 +8370,39 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/warehouse-transfer/{id}/update-status:
+    post:
+      tags:
+        - warehouse transfer
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '28'
       responses:
         '200':
           description: Successful response
