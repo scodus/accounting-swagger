@@ -35,6 +35,7 @@ tags:
   - name: customer
   - name: document
   - name: employee
+  - name: expense
   - name: fishal year
   - name: Folder
   - name: inventory adjustment
@@ -2482,6 +2483,256 @@ paths:
             type: integer
           required: true
           example: '37'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/expense:
+    post:
+      tags:
+        - expense
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  example: '2022-01-01'
+                expense_account_id:
+                  type: integer
+                  example: '33'
+                paid_account_id:
+                  type: integer
+                  example: '3'
+                vendor_id:
+                  type: integer
+                  example: '41'
+                amount:
+                  type: integer
+                  example: '2000'
+                reference:
+                  type: string
+                remarks:
+                  type: string
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - expense
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/expense/{id}:
+    post:
+      tags:
+        - expense
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  example: '2022-01-01'
+                expense_account_id:
+                  type: integer
+                  example: '33'
+                paid_account_id:
+                  type: integer
+                  example: '3'
+                vendor_id:
+                  type: integer
+                  example: '41'
+                amount:
+                  type: integer
+                  example: '1500'
+                reference:
+                  type: string
+                remarks:
+                  type: string
+                files[0]:
+                  type: string
+                  format: binary
+                files[1]:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - expense
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '25'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - expense
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/expense/{id}/update-status:
+    post:
+      tags:
+        - expense
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '21'
       responses:
         '200':
           description: Successful response
