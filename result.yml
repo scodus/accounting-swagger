@@ -46,6 +46,7 @@ tags:
   - name: payment cheque
   - name: permission
   - name: product
+  - name: prefix
   - name: product category
   - name: purchase bill
   - name: purchase order
@@ -3912,11 +3913,11 @@ paths:
           in: query
           schema:
             type: string
-        - name: account_head_id
+        - name: slug
           in: query
           schema:
-            type: integer
-          example: '34'
+            type: string
+          example: cash-in-hand-2
       responses:
         '200':
           description: Successful response
@@ -4345,6 +4346,7 @@ paths:
                   example: '2'
                 barcode_number:
                   type: string
+                  example: asd
                 entry_number:
                   type: string
                 sale_rate:
@@ -4362,6 +4364,9 @@ paths:
                 inventory:
                   type: integer
                   example: '1'
+                inventory_type:
+                  type: string
+                  example: something
                 sale_purchase:
                   type: string
                 unit_id:
@@ -4424,6 +4429,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: inventory
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -4442,71 +4451,143 @@ paths:
               properties:
                 name:
                   type: string
-                  example: title edit
+                  example: ' test3'
+                slug:
+                  type: string
+                  example: ' test3'
                 sku:
                   type: string
-                  example: T0982345jhwer
+                  example: ' test3'
                 product_category_id:
                   type: string
+                  example: ' '
+                product_category:
+                  type: string
+                  example: ' '
                 tax:
-                  type: integer
-                  example: '11'
+                  type: string
+                  example: ' 0'
                 is_service:
-                  type: integer
-                  example: '1'
+                  type: string
+                  example: ' 0'
+                unit:
+                  type: string
+                  example: ' '
                 status:
                   type: string
-                  example: active
-                _method:
-                  type: string
-                  example: patch
+                  example: ' '
                 re_order_point:
                   type: string
+                  example: ' '
+                description:
+                  type: string
+                  example: ' '
                 multiple_warehouse:
-                  type: integer
-                  example: '1'
-                warehouse_inventory[0][initial_quantity_on_hand]:
-                  type: integer
-                  example: '155'
-                warehouse_inventory[0][as_of_date]:
                   type: string
-                  example: '2022-01-01'
-                warehouse_inventory[0][cost_per_unit]:
-                  type: integer
-                  example: '100'
-                warehouse_inventory[0][warehouse_id]:
-                  type: integer
-                  example: '1'
-                warehouse_inventory[1][initial_quantity_on_hand]:
-                  type: integer
-                  example: '45'
-                warehouse_inventory[1][as_of_date]:
-                  type: string
-                  example: '2022-01-01'
-                warehouse_inventory[1][cost_per_unit]:
-                  type: integer
-                  example: '110'
-                warehouse_inventory[1][warehouse_id]:
-                  type: integer
-                  example: '1'
+                  example: ' 1'
                 barcode_number:
                   type: string
+                  example: ' '
                 entry_number:
                   type: string
+                  example: ' '
                 sale_rate:
                   type: string
+                  example: ' '
                 sale_account:
                   type: string
+                  example: ' '
                 sale_note:
                   type: string
+                  example: ' '
                 purchase_rate:
                   type: string
+                  example: ' '
                 purchase_account:
                   type: string
+                  example: ' '
                 purchase_note:
                   type: string
+                  example: ' '
+                inventory:
+                  type: string
+                  example: ' 1'
+                sales_purchase:
+                  type: string
+                  example: ' 0'
+                created_at:
+                  type: string
+                  example: ' 2023-12-11 07:35:20'
+                updated_at:
+                  type: string
+                  example: ' 2023-12-11 07:36:01'
+                image:
+                  type: string
+                  example: ' '
+                thumbnail_image:
+                  type: string
+                  example: ' '
+                quantity_on_hand:
+                  type: string
+                  example: ' 33'
+                calculated_cost:
+                  type: integer
+                  example: '11'
+                calculated_warehouse_inventory:
+                  type: string
+                  example: '[object Object]'
+                total_amount:
+                  type: number
+                  example: '121.00'
+                can_inventory_edit:
+                  type: boolean
+                  example: 'true'
+                inventory_type:
+                  type: string
+                  example: batch
                 unit_id:
                   type: string
+                logo:
+                  type: string
+                _method:
+                  type: string
+                  example: ' PATCH'
+                warehouse_inventory[0][initial_quantity_on_hand]:
+                  type: integer
+                  example: '11'
+                warehouse_inventory[0][as_of_date]:
+                  type: string
+                  example: '2023-12-11'
+                warehouse_inventory[0][cost_per_unit]:
+                  type: integer
+                  example: '11'
+                warehouse_inventory[0][warehouse_id]:
+                  type: integer
+                  example: '3'
+                warehouse_inventory[0][warehouse_name]:
+                  type: string
+                  example: default warehouse
+                warehouse_inventory[0][remaining_quantity]:
+                  type: integer
+                  example: '11'
+                warehouse_inventory[1][initial_quantity_on_hand]:
+                  type: integer
+                  example: '22'
+                warehouse_inventory[1][as_of_date]:
+                  type: string
+                  example: '2023-12-12'
+                warehouse_inventory[1][cost_per_unit]:
+                  type: integer
+                  example: '22'
+                warehouse_inventory[1][warehouse_id]:
+                  type: integer
+                  example: '3'
+                warehouse_inventory[1][warehouse_name]:
+                  type: string
+                  example: default warehouse
+                warehouse_inventory[1][remaining_quantity]:
+                  type: integer
+                  example: '22'
       security:
         - bearerAuth: []
       parameters:
@@ -4525,7 +4606,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '28'
       responses:
         '200':
           description: Successful response
@@ -4581,7 +4662,115 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/prefix/{slug}:
+    post:
+      tags:
+        - prefix
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                next_number:
+                  type: integer
+                  example: '2'
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: service
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - prefix
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: service
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/prefix:
+    get:
+      tags:
+        - prefix
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -8382,7 +8571,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response

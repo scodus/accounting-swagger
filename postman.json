@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
+		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26417274",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=26417274"
+		"_exporter_id": "31745190"
 	},
 	"item": [
 		{
@@ -6698,7 +6697,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&account_head_id=34",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&slug=cash-in-hand-2",
 							"host": [
 								"{{url}}"
 							],
@@ -6720,8 +6719,8 @@
 									"value": ""
 								},
 								{
-									"key": "account_head_id",
-									"value": "34"
+									"key": "slug",
+									"value": "cash-in-hand-2"
 								}
 							]
 						}
@@ -7461,7 +7460,7 @@
 								},
 								{
 									"key": "barcode_number",
-									"value": "",
+									"value": "asd",
 									"type": "text"
 								},
 								{
@@ -7501,9 +7500,13 @@
 								},
 								{
 									"key": "inventory",
-									"value": "",
-									"type": "text",
-									"disabled": true
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "inventory_type",
+									"value": "something",
+									"type": "text"
 								},
 								{
 									"key": "sale_purchase",
@@ -7514,11 +7517,6 @@
 								{
 									"key": "unit_id",
 									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "inventory",
-									"value": "1",
 									"type": "text"
 								},
 								{
@@ -7572,137 +7570,237 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "title edit",
+									"value": " test3",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": " test3",
 									"type": "text"
 								},
 								{
 									"key": "sku",
-									"value": "T0982345jhwer",
+									"value": " test3",
 									"type": "text"
 								},
 								{
 									"key": "product_category_id",
-									"value": "",
+									"value": " ",
+									"type": "text"
+								},
+								{
+									"key": "product_category",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "tax",
-									"value": "11",
+									"value": " 0",
 									"type": "text"
 								},
 								{
 									"key": "is_service",
-									"value": "1",
+									"value": " 0",
+									"type": "text"
+								},
+								{
+									"key": "unit",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "status",
-									"value": "active",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "re_order_point",
-									"value": "",
+									"value": " ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "multiple_warehouse",
-									"value": "1",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
-									"value": "155",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "warehouse_inventory[0][as_of_date]",
-									"value": "2022-01-01",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "warehouse_inventory[0][cost_per_unit]",
-									"value": "100",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "warehouse_inventory[0][warehouse_id]",
-									"value": "1",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
-									"value": "45",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][as_of_date]",
-									"value": "2022-01-01",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][cost_per_unit]",
-									"value": "110",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][warehouse_id]",
-									"value": "1",
+									"value": " 1",
 									"type": "text"
 								},
 								{
 									"key": "barcode_number",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "entry_number",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "sale_rate",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "sale_account",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "sale_note",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "purchase_rate",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "purchase_account",
-									"value": "",
+									"value": " ",
 									"type": "text"
 								},
 								{
 									"key": "purchase_note",
-									"value": "",
+									"value": " ",
+									"type": "text"
+								},
+								{
+									"key": "inventory",
+									"value": " 1",
+									"type": "text"
+								},
+								{
+									"key": "sales_purchase",
+									"value": " 0",
+									"type": "text"
+								},
+								{
+									"key": "created_at",
+									"value": " 2023-12-11 07:35:20",
+									"type": "text"
+								},
+								{
+									"key": "updated_at",
+									"value": " 2023-12-11 07:36:01",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": " ",
+									"type": "text"
+								},
+								{
+									"key": "thumbnail_image",
+									"value": " ",
+									"type": "text"
+								},
+								{
+									"key": "quantity_on_hand",
+									"value": " 33",
+									"type": "text"
+								},
+								{
+									"key": "calculated_cost",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "calculated_warehouse_inventory",
+									"value": "[object Object]",
+									"type": "text"
+								},
+								{
+									"key": "total_amount",
+									"value": "121.00",
+									"type": "text"
+								},
+								{
+									"key": "can_inventory_edit",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "inventory_type",
+									"value": "batch",
 									"type": "text"
 								},
 								{
 									"key": "unit_id",
 									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": " PATCH",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][as_of_date]",
+									"value": "2023-12-11",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][cost_per_unit]",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][warehouse_id]",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][warehouse_name]",
+									"value": "default warehouse",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][remaining_quantity]",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][as_of_date]",
+									"value": "2023-12-12",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][cost_per_unit]",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][warehouse_id]",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][warehouse_name]",
+									"value": "default warehouse",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][remaining_quantity]",
+									"value": "22",
 									"type": "text"
 								}
 							]
@@ -7720,7 +7818,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "28"
 								}
 							]
 						}
@@ -7816,7 +7914,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=",
+							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=&inventory",
 							"host": [
 								"{{url}}"
 							],
@@ -7844,6 +7942,10 @@
 								{
 									"key": "is_service",
 									"value": ""
+								},
+								{
+									"key": "inventory",
+									"value": null
 								}
 							]
 						}
@@ -7896,7 +7998,195 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prefix",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "next_number",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "service"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "service"
 								}
 							]
 						}
@@ -13959,7 +14249,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -14520,7 +14810,8 @@
 						{
 							"key": "email",
 							"value": "company@company.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "email",
@@ -14531,8 +14822,7 @@
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "password",
