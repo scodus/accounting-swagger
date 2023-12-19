@@ -37,6 +37,7 @@ tags:
   - name: employee
   - name: expense
   - name: fishal year
+  - name: fixed assets
   - name: Folder
   - name: inventory adjustment
   - name: invoice
@@ -62,6 +63,7 @@ tags:
   - name: sale payment
   - name: sale return
   - name: site setting
+  - name: tax pool type
   - name: transfer
   - name: users
   - name: unit
@@ -517,13 +519,13 @@ paths:
                   type: string
                 parent_id:
                   type: integer
-                  example: '47'
+                  example: '80'
                 code:
                   type: string
-                  example: nruFLiDE2wX
+                  example: nruFLiDE2wXs
                 opening_balance:
                   type: integer
-                  example: '500000'
+                  example: '300000'
                 status:
                   type: string
                   example: active
@@ -543,7 +545,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '48'
+          example: '80'
       responses:
         '200':
           description: Successful response
@@ -571,7 +573,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '39'
+          example: '40'
       responses:
         '200':
           description: Successful response
@@ -599,7 +601,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '40'
       responses:
         '200':
           description: Successful response
@@ -624,15 +626,19 @@ paths:
                   format: binary
                 account_number:
                   type: string
+                  example: a2134dsf
                 address:
                   type: string
+                  example: asdfasdf
                 swift_code:
                   type: string
+                  example: zxcvzxcv
                 status:
                   type: string
                   example: active
                 account_name:
                   type: string
+                  example: asdfasdfasdf
                 price:
                   type: integer
                   example: '5000'
@@ -2522,6 +2528,9 @@ paths:
                 files[0]:
                   type: string
                   format: binary
+                files[1]:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -2639,7 +2648,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '42'
       responses:
         '200':
           description: Successful response
@@ -2695,7 +2704,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '42'
       responses:
         '200':
           description: Successful response
@@ -2733,7 +2742,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '42'
       responses:
         '200':
           description: Successful response
@@ -2897,6 +2906,184 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/fixed-assets:
+    post:
+      tags:
+        - fixed assets
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: test
+                parent_id:
+                  type: integer
+                  example: '11'
+                audit_depreciation:
+                  type: integer
+                  example: '11'
+                tax_pool_type_id:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - fixed assets
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: parent_id
+          in: query
+          schema:
+            type: integer
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/fixed-assets/{id}:
+    post:
+      tags:
+        - fixed assets
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: test edit
+                audit_depreciation:
+                  type: integer
+                  example: '9'
+                tax_pool_type_id:
+                  type: integer
+                  example: '2'
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '43'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - fixed assets
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '41'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - fixed assets
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -7866,6 +8053,40 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/tax-pool-type:
+    get:
+      tags:
+        - tax pool type
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/account-head-amount:
     get:
       tags:
@@ -8209,7 +8430,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -8933,7 +9154,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/test:
+  /api/account-head-without-sub:
     get:
       tags:
         - default

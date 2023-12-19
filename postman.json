@@ -702,17 +702,17 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "47",
+									"value": "80",
 									"type": "text"
 								},
 								{
 									"key": "code",
-									"value": "nruFLiDE2wX",
+									"value": "nruFLiDE2wXs",
 									"type": "text"
 								},
 								{
 									"key": "opening_balance",
-									"value": "500000",
+									"value": "300000",
 									"type": "text"
 								},
 								{
@@ -740,7 +740,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "48"
+									"value": "80"
 								}
 							]
 						}
@@ -790,7 +790,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "39"
+									"value": "40"
 								}
 							]
 						}
@@ -935,7 +935,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "40"
 								}
 							]
 						}
@@ -988,17 +988,17 @@
 								},
 								{
 									"key": "account_number",
-									"value": "",
+									"value": "a2134dsf",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "",
+									"value": "asdfasdf",
 									"type": "text"
 								},
 								{
 									"key": "swift_code",
-									"value": "",
+									"value": "zxcvzxcv",
 									"type": "text"
 								},
 								{
@@ -1008,7 +1008,7 @@
 								},
 								{
 									"key": "account_name",
-									"value": "",
+									"value": "asdfasdfasdf",
 									"type": "text"
 								},
 								{
@@ -4373,7 +4373,12 @@
 								{
 									"key": "files[0]",
 									"type": "file",
-									"src": "/home/user--49/Downloads/IMG20231208144612.jpg"
+									"src": []
+								},
+								{
+									"key": "files[1]",
+									"type": "file",
+									"src": []
 								}
 							]
 						},
@@ -4484,7 +4489,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "42"
 								}
 							]
 						}
@@ -4660,7 +4665,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "42"
 								}
 							]
 						}
@@ -4717,7 +4722,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "42"
 								}
 							]
 						}
@@ -5018,6 +5023,312 @@
 								{
 									"key": "id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fixed assets",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "audit_depreciation",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "tax_pool_type_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-assets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test edit",
+									"type": "text"
+								},
+								{
+									"key": "audit_depreciation",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "tax_pool_type_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-assets/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-assets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-assets/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-assets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "41"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-assets?paginate=1&page=&limit=&search_keyword=&parent_id=11",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-assets"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "parent_id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-assets/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-assets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
 								}
 							]
 						}
@@ -13083,6 +13394,75 @@
 			]
 		},
 		{
+			"name": "tax pool type",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tax-pool-type?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tax-pool-type"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "transfer",
 			"item": [
 				{
@@ -13642,7 +14022,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "3"
 								}
 							]
 						}
@@ -14992,6 +15372,9 @@
 		},
 		{
 			"name": "test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -15011,14 +15394,18 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
-					"raw": "{{url}}/api/test",
+					"raw": "{{url}}/api/account-head-without-sub",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"test"
+						"account-head-without-sub"
 					]
 				}
 			},
