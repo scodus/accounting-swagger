@@ -831,7 +831,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=sales&tree_view=1&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -842,7 +842,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -858,11 +858,11 @@
 								},
 								{
 									"key": "parent_slug",
-									"value": ""
+									"value": "sales"
 								},
 								{
 									"key": "tree_view",
-									"value": "",
+									"value": "1",
 									"description": "1 || 0"
 								},
 								{
@@ -936,6 +936,473 @@
 								{
 									"key": "id",
 									"value": "40"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "assets",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asset1",
+									"type": "text"
+								},
+								{
+									"key": "manufacture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warranty",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "expiry_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "additional_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "serial",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "useful_year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_method",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salvage_value",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_expense_amount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "accumulated_depreciation_amount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/assets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asset1edit",
+									"type": "text"
+								},
+								{
+									"key": "manufacture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warranty",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "expiry_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "additional_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "serial",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "useful_year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_method",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salvage_value",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_expense_amount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "accumulated_depreciation_amount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/assets/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/assets/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/assets?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/assets/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
 								}
 							]
 						}
@@ -4373,12 +4840,12 @@
 								{
 									"key": "files[0]",
 									"type": "file",
-									"src": []
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
 								},
 								{
 									"key": "files[1]",
 									"type": "file",
-									"src": []
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
 								}
 							]
 						},
@@ -4489,7 +4956,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "42"
+									"value": "2"
 								}
 							]
 						}
@@ -4539,7 +5006,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "25"
+									"value": "1"
 								}
 							]
 						}
@@ -4665,7 +5132,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "42"
+									"value": "2"
 								}
 							]
 						}
@@ -4722,7 +5189,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "42"
+									"value": "1"
 								}
 							]
 						}
@@ -14561,7 +15028,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
+							"raw": "{\n    \"name\": \"warehouse3\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14609,7 +15076,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"warehouse2\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14679,7 +15146,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "5"
 								}
 							]
 						}
@@ -14945,7 +15412,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"date\": \"20220-01-01\",\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 15\n        }\n    ],\n    \"remarks\": \"remarks\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"date\": \"20220-01-01\",\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 5\n        }\n    ],\n    \"remarks\": \"remarks\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14965,7 +15432,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "2"
 								}
 							]
 						}
@@ -15091,7 +15558,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -15143,7 +15610,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "2"
 								}
 							]
 						}
@@ -15151,6 +15618,51 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "delete file",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/file/:filename",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"file",
+						":filename"
+					],
+					"variable": [
+						{
+							"key": "filename",
+							"value": "a7ae29da5d45cf3c3cb30d587cc994e8.jpg"
+						}
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "login",
@@ -15372,9 +15884,6 @@
 		},
 		{
 			"name": "test",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -15386,7 +15895,7 @@
 						}
 					]
 				},
-				"method": "GET",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "company-id",
@@ -15399,13 +15908,14 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/account-head-without-sub",
+					"raw": "{{url}}/api/file/a7ae29da5d45cf3c3cb30d587cc994e8.jpg",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"account-head-without-sub"
+						"file",
+						"a7ae29da5d45cf3c3cb30d587cc994e8.jpg"
 					]
 				}
 			},

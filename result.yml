@@ -24,6 +24,7 @@ components:
 tags:
   - name: accounting firm
   - name: account head
+  - name: assets
   - name: bank
   - name: bank cheque
   - name: Bug
@@ -451,8 +452,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -469,11 +469,13 @@ paths:
           in: query
           schema:
             type: string
+          example: sales
         - name: tree_view
           in: query
           schema:
-            type: string
+            type: integer
           description: 1 || 0
+          example: '1'
         - name: no_sub_account_head
           in: query
           schema:
@@ -602,6 +604,242 @@ paths:
             type: integer
           required: true
           example: '40'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/assets:
+    post:
+      tags:
+        - assets
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: asset1
+                manufacture:
+                  type: string
+                category:
+                  type: string
+                warranty:
+                  type: string
+                location:
+                  type: string
+                expiry_date:
+                  type: string
+                description:
+                  type: string
+                additional_info:
+                  type: string
+                model:
+                  type: string
+                serial:
+                  type: string
+                asset_id:
+                  type: string
+                purchase_price:
+                  type: string
+                useful_year:
+                  type: string
+                depreciation_start_date:
+                  type: string
+                depreciation_method:
+                  type: string
+                salvage_value:
+                  type: string
+                asset_account:
+                  type: string
+                depreciation_expense_amount:
+                  type: string
+                accumulated_depreciation_amount:
+                  type: string
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - assets
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/assets/{id}:
+    post:
+      tags:
+        - assets
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: asset1edit
+                manufacture:
+                  type: string
+                category:
+                  type: string
+                warranty:
+                  type: string
+                location:
+                  type: string
+                expiry_date:
+                  type: string
+                description:
+                  type: string
+                additional_info:
+                  type: string
+                model:
+                  type: string
+                serial:
+                  type: string
+                asset_id:
+                  type: string
+                purchase_price:
+                  type: string
+                useful_year:
+                  type: string
+                depreciation_start_date:
+                  type: string
+                depreciation_method:
+                  type: string
+                salvage_value:
+                  type: string
+                asset_account:
+                  type: string
+                depreciation_expense_amount:
+                  type: string
+                accumulated_depreciation_amount:
+                  type: string
+                _method:
+                  type: string
+                  example: patch
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - assets
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - assets
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -2648,7 +2886,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '42'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2676,7 +2914,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '25'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2704,7 +2942,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '42'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2742,7 +2980,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '42'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -8694,7 +8932,7 @@ paths:
             schema:
               type: object
               example:
-                name: warehouse1
+                name: warehouse3
                 location: warehouse1 location
                 contact_person: ''
                 phone: ''
@@ -8770,7 +9008,7 @@ paths:
               type: object
               example:
                 _method: patch
-                name: warehouse1
+                name: warehouse2
                 location: warehouse1 location
                 contact_person: ''
                 phone: ''
@@ -8820,7 +9058,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -8982,7 +9220,7 @@ paths:
                 to_warehouse_id: 2
                 products:
                   - product_id: 1
-                    quantity: 15
+                    quantity: 5
                 remarks: remarks
       security:
         - bearerAuth: []
@@ -9002,7 +9240,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -9030,7 +9268,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -9063,7 +9301,31 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{filename}:
+    delete:
+      tags:
+        - default
+      summary: delete file
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: filename
+          in: path
+          schema:
+            type: string
+          required: true
+          example: a7ae29da5d45cf3c3cb30d587cc994e8.jpg
       responses:
         '200':
           description: Successful response
@@ -9154,8 +9416,8 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/account-head-without-sub:
-    get:
+  /api/file/a7ae29da5d45cf3c3cb30d587cc994e8.jpg:
+    delete:
       tags:
         - default
       summary: test
