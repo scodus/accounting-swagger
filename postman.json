@@ -15740,7 +15740,117 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "superadmin@superadmin.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "company@company.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "rowolo9548@bnovel.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "accountingfirm@accountingfirm.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 07:55:02 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 07:55:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.2-1ubuntu2.14"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"login successful\",\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YWU0NTY5Ni0xYmQyLTQyMjQtOWI3Zi00NGE5NDg2ZWE0ZjUiLCJqdGkiOiIzNzZiM2FkMmVkYjZhOTI0Mzk0MjIzNmNkMDgwZjc2NTA1MDcwMTMyNTYyODA2MjliYTlkNmE5NDc4YzMzMWQ5M2IyOTkxNzBmOTY2MTNmMCIsImlhdCI6MTcwMzA1ODkwMi40MzE5MzMsIm5iZiI6MTcwMzA1ODkwMi40MzE5MzYsImV4cCI6MTcwNDM1NDkwMi4zOTg1NzgsInN1YiI6IjIiLCJzY29wZXMiOlsiKiJdfQ.SqlOHKz4da_OdybnKdNzqdhLZ6IQiM5E1X7XKYX5nBiZTo0u0aoYaK5y2VBlBb994fLC5HvGqy_um5L9b5B772ryMrGbUwf7oVadw4e7y-W_lA711o9k1MgMzIQ_PWhMI_d7PuTzkzuW24P3hSr65YdPphxxte5bdwqA64NolN_A5YhF5BRt3ymZFBEK6gcYLhVU0SyOKB6rSI4pIYEXhHyVBVwTXYx6Iq2sQWCqMHGJFhKaM5RU3CI74Y02ZwhTTK5JIHlu1xmJ4dc5qDO5MNy4FSOlovxZineSl4kS-6hUhsx88yCalGZFKMyyqlp1fR-DK37ruBxYIt1zFGZ5j0RL-tC5pSjjCx6wJX4oUBKNrdTcS_cm5imxSRkNF79Yg2x6FJ_8w56-F5Wzwyf3OqPpb02YmKPtD4o1jZPq-uxluTvyZtpxFyBpjZ12z-xmCBNd2VVFRi6kBQ8i3bOYJzLo4fXhALEcH7uZ2uAfhj2w-7tqHScUX4z6hM3-NhpuykoMcMYy_YKgm-Redl6hRdlnMeb2tVzIh4hJEa2xLXpP7QcuKqZ5-KWHibWi7NXQJJ7VlaQSd2Aq68hKf9xreilxv0M04853cRSAizxXJV9BdhQadJqVjX0blc712mMMEo9NtiY_6QS7wzPW7UxLgR-mH4JhZX2ZTo3ngK6N4S8\",\n        \"user\": {\n            \"id\": 2,\n            \"name\": \"accounting firm user\",\n            \"email\": \"accountingfirm@accountingfirm.com\",\n            \"role\": [\n                \"accountingfirm\"\n            ],\n            \"permissions\": [],\n            \"accounting_firms\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"accountingfirm1\",\n                    \"slug\": \"accountingfirm1\"\n                }\n            ],\n            \"companies\": []\n        },\n        \"refresh_token\": \"def502004a973426a9338666655c4547ee307101fd92cf0952b0aac3cd3571eb49fa95bf024b11b1c59f25fcf7fa2db28cf2b0657ed595899367ee79a5485cd92281e0d1a7cdd5fcdd93928be6267b6bcef3b79b72b83d0a2ad7cb191023fa5317b65f188811be115104785d57421c1730193c440dac503dfc344fdda07c6075dc02b71854ca649cd660673145cf658a6cb7ec85773f485c52f5e2643d024ebd1d01bcc111d7a8bdc30245b2bbf2514eb20945a2b3071bb3ee762341a3ba81303873b40d4bc0506b162e753a893cfed8585c2435582fb833c1db6396599ec463b8b37ffec2de4c32678ba16227440cac4daa187b36aa30dee7987a12eed7bd994d25ecbe9725782da8505cc2fb4a26c01fc66533efb8610947320f00101e6bd0654f0209b3251302e25d5965fbf7b63cdd6407c24819a63e496ca7b23caac1624269ab52373ec18fc4c350b1197e844fe4fc467ff38f3f5f158cc1bfb7f2da101c794217c8cd77329c273fd80fa5db41a18e9224d7d231894fbc24047f24260d6e9f06a084de0d\",\n        \"expires_in\": 1296000\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "refresh token",
