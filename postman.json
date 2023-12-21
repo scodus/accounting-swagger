@@ -945,7 +945,7 @@
 			]
 		},
 		{
-			"name": "assets",
+			"name": "asset",
 			"item": [
 				{
 					"name": "store",
@@ -1079,13 +1079,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/assets",
+							"raw": "{{url}}/api/asset",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets"
+								"asset"
 							]
 						}
 					},
@@ -1223,13 +1223,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/assets/:id",
+							"raw": "{{url}}/api/asset/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets",
+								"asset",
 								":id"
 							],
 							"variable": [
@@ -1273,13 +1273,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/assets/:id",
+							"raw": "{{url}}/api/asset/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets",
+								"asset",
 								":id"
 							],
 							"variable": [
@@ -1326,13 +1326,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/assets?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/asset?paginate=1&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets"
+								"asset"
 							],
 							"query": [
 								{
@@ -1390,13 +1390,385 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/assets/:id",
+							"raw": "{{url}}/api/asset/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets",
+								"asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "asset category",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "assetcategory1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/asset-category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asset1edit",
+									"type": "text"
+								},
+								{
+									"key": "manufacture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warranty",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "expiry_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "additional_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "serial",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "useful_year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_method",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salvage_value",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_expense_amount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "accumulated_depreciation_amount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/assets-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/assets-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/assets-category?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets-category"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/assets-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"assets-category",
 								":id"
 							],
 							"variable": [
@@ -5499,7 +5871,7 @@
 			]
 		},
 		{
-			"name": "fixed assets",
+			"name": "fixed asset",
 			"item": [
 				{
 					"name": "store",
@@ -5553,13 +5925,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/fixed-assets",
+							"raw": "{{url}}/api/fixed-asset",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"fixed-assets"
+								"fixed-asset"
 							]
 						}
 					},
@@ -5612,13 +5984,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/fixed-assets/:id",
+							"raw": "{{url}}/api/fixed-asset/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"fixed-assets",
+								"fixed-asset",
 								":id"
 							],
 							"variable": [
@@ -5662,13 +6034,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/fixed-assets/:id",
+							"raw": "{{url}}/api/fixed-asset/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"fixed-assets",
+								"fixed-asset",
 								":id"
 							],
 							"variable": [
@@ -5715,13 +6087,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/fixed-assets?paginate=1&page=&limit=&search_keyword=&parent_id=11",
+							"raw": "{{url}}/api/fixed-asset?paginate=1&page=&limit=&search_keyword=&parent_id=11",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"fixed-assets"
+								"fixed-asset"
 							],
 							"query": [
 								{
@@ -5783,13 +6155,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/fixed-assets/:id",
+							"raw": "{{url}}/api/fixed-asset/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"fixed-assets",
+								"fixed-asset",
 								":id"
 							],
 							"variable": [

@@ -24,7 +24,8 @@ components:
 tags:
   - name: accounting firm
   - name: account head
-  - name: assets
+  - name: asset
+  - name: asset category
   - name: bank
   - name: bank cheque
   - name: Bug
@@ -38,7 +39,7 @@ tags:
   - name: employee
   - name: expense
   - name: fishal year
-  - name: fixed assets
+  - name: fixed asset
   - name: Folder
   - name: inventory adjustment
   - name: invoice
@@ -609,10 +610,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/assets:
+  /api/asset:
     post:
       tags:
-        - assets
+        - asset
       summary: store
       requestBody:
         content:
@@ -682,7 +683,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - assets
+        - asset
       summary: list
       security:
         - bearerAuth: []
@@ -714,10 +715,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/assets/{id}:
+  /api/asset/{id}:
     post:
       tags:
-        - assets
+        - asset
       summary: update
       requestBody:
         content:
@@ -791,7 +792,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - assets
+        - asset
       summary: delete
       security:
         - bearerAuth: []
@@ -819,7 +820,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - assets
+        - asset
       summary: show
       security:
         - bearerAuth: []
@@ -840,6 +841,204 @@ paths:
             type: integer
           required: true
           example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/asset-category:
+    post:
+      tags:
+        - asset category
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: assetcategory1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/assets-category/{id}:
+    post:
+      tags:
+        - asset category
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: asset1edit
+                manufacture:
+                  type: string
+                category:
+                  type: string
+                warranty:
+                  type: string
+                location:
+                  type: string
+                expiry_date:
+                  type: string
+                description:
+                  type: string
+                additional_info:
+                  type: string
+                model:
+                  type: string
+                serial:
+                  type: string
+                asset_id:
+                  type: string
+                purchase_price:
+                  type: string
+                useful_year:
+                  type: string
+                depreciation_start_date:
+                  type: string
+                depreciation_method:
+                  type: string
+                salvage_value:
+                  type: string
+                asset_account:
+                  type: string
+                depreciation_expense_amount:
+                  type: string
+                accumulated_depreciation_amount:
+                  type: string
+                _method:
+                  type: string
+                  example: patch
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - asset category
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - asset category
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/assets-category:
+    get:
+      tags:
+        - asset category
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -3149,10 +3348,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/fixed-assets:
+  /api/fixed-asset:
     post:
       tags:
-        - fixed assets
+        - fixed asset
       summary: store
       requestBody:
         content:
@@ -3192,7 +3391,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - fixed assets
+        - fixed asset
       summary: list
       security:
         - bearerAuth: []
@@ -3229,10 +3428,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/fixed-assets/{id}:
+  /api/fixed-asset/{id}:
     post:
       tags:
-        - fixed assets
+        - fixed asset
       summary: update
       requestBody:
         content:
@@ -3273,7 +3472,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - fixed assets
+        - fixed asset
       summary: delete
       security:
         - bearerAuth: []
@@ -3301,7 +3500,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - fixed assets
+        - fixed asset
       summary: show
       security:
         - bearerAuth: []
