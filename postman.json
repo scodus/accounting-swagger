@@ -790,7 +790,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "40"
+									"value": "43"
 								}
 							]
 						}
@@ -1445,7 +1445,32 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "assetcategory1",
+									"value": "assetcategory",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][name]",
+									"value": "size",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][type]",
+									"value": "option",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][0]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][1]",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][2]",
+									"value": "8",
 									"type": "text"
 								}
 							]
@@ -1489,97 +1514,27 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "asset1edit",
+									"value": "assetcategory1edit",
 									"type": "text"
 								},
 								{
-									"key": "manufacture",
-									"value": "",
+									"key": "fields[0][name]",
+									"value": "size",
 									"type": "text"
 								},
 								{
-									"key": "category",
-									"value": "",
+									"key": "fields[0][type]",
+									"value": "option",
 									"type": "text"
 								},
 								{
-									"key": "warranty",
-									"value": "",
+									"key": "fields[0][option][0]",
+									"value": "6",
 									"type": "text"
 								},
 								{
-									"key": "location",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "expiry_date",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "additional_info",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "model",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "serial",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "asset_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "purchase_price",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "useful_year",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "depreciation_start_date",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "depreciation_method",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "salvage_value",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "asset_account",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "depreciation_expense_amount",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "accumulated_depreciation_amount",
-									"value": "",
+									"key": "fields[0][option][1]",
+									"value": "7",
 									"type": "text"
 								},
 								{
@@ -1595,19 +1550,19 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/assets-category/:id",
+							"raw": "{{url}}/api/asset-category/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets-category",
+								"asset-category",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "7"
+									"value": "1"
 								}
 							]
 						}
@@ -1645,13 +1600,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/assets-category/:id",
+							"raw": "{{url}}/api/asset-category/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets-category",
+								"asset-category",
 								":id"
 							],
 							"variable": [
@@ -1698,13 +1653,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/assets-category?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/asset-category?paginate=1&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets-category"
+								"asset-category"
 							],
 							"query": [
 								{
@@ -1762,19 +1717,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/assets-category/:id",
+							"raw": "{{url}}/api/asset-category/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"assets-category",
+								"asset-category",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "7"
+									"value": "1"
 								}
 							]
 						}
@@ -7880,6 +7835,347 @@
 			]
 		},
 		{
+			"name": "location",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "location1",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/location",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "location1edit",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "asdasdasd",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/location?paginate=1&page=&limit=&search_keyword=&status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "opening balance",
 			"item": [
 				{
@@ -8492,6 +8788,194 @@
 			]
 		},
 		{
+			"name": "prefix",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "next_number",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "service"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "service"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "product",
 			"item": [
 				{
@@ -9018,7 +9502,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -9149,194 +9633,6 @@
 								{
 									"key": "id",
 									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "prefix",
-			"item": [
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "next_number",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/prefix/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"prefix",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "service"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/prefix?paginate=&page=&limit=&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"prefix"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": ""
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/prefix/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"prefix",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "service"
 								}
 							]
 						}
@@ -14911,7 +15207,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "9"
 								}
 							]
 						}
