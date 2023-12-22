@@ -1427,7 +1427,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "assetcategory1",
+									"value": "assetcategory4",
 									"type": "text"
 								},
 								{
@@ -6727,7 +6727,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 90,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 18,\n            \"warehouse_id\": 2,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 90,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6742,106 +6742,6 @@
 							"path": [
 								"api",
 								"inventory-adjustment"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 10,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/inventory-adjustment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"inventory-adjustment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/inventory-adjustment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"inventory-adjustment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -9645,7 +9545,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "title edit",
+									"value": "title 2",
 									"type": "text"
 								},
 								{
@@ -9660,7 +9560,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "2",
+									"value": "",
 									"type": "text"
 								},
 								{
