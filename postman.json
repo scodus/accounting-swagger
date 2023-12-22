@@ -613,7 +613,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "test",
+									"value": "Accumulated Depreciation",
 									"type": "text"
 								},
 								{
@@ -628,7 +628,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "1",
+									"value": "54",
 									"type": "text"
 								},
 								{
@@ -987,7 +987,7 @@
 									"type": "text"
 								},
 								{
-									"key": "category",
+									"key": "asset_category_id",
 									"value": "",
 									"type": "text"
 								},
@@ -997,8 +997,8 @@
 									"type": "text"
 								},
 								{
-									"key": "location",
-									"value": "",
+									"key": "location_id",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -1012,28 +1012,33 @@
 									"type": "text"
 								},
 								{
-									"key": "additional_info",
+									"key": "has_additional_info",
 									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "model",
-									"value": "",
+									"key": "additional_info[0][size]",
+									"value": "6",
 									"type": "text"
 								},
 								{
-									"key": "serial",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "asset_id",
-									"value": "",
+									"key": "additional_info[0][qwe]",
+									"value": "6",
 									"type": "text"
 								},
 								{
 									"key": "purchase_price",
-									"value": "",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "purchase_date",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "52",
 									"type": "text"
 								},
 								{
@@ -1043,32 +1048,19 @@
 								},
 								{
 									"key": "depreciation_start_date",
-									"value": "",
+									"value": "2023-01-01",
 									"type": "text"
 								},
 								{
-									"key": "depreciation_method",
-									"value": "",
+									"key": "depreciation_account_id",
+									"value": "57",
+									"description": "child of Depreciation account under non current account. use slug 'depreciation'",
 									"type": "text"
 								},
 								{
-									"key": "salvage_value",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "asset_account",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "depreciation_expense_amount",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "accumulated_depreciation_amount",
-									"value": "",
+									"key": "accumulated_depreciation_account_id",
+									"value": "56",
+									"description": "child of Accumulated Depreciation account under indirect expense. use slug 'accumulated-depreciation'",
 									"type": "text"
 								},
 								{
@@ -1126,7 +1118,7 @@
 									"type": "text"
 								},
 								{
-									"key": "category",
+									"key": "asset_category_id",
 									"value": "",
 									"type": "text"
 								},
@@ -1136,8 +1128,8 @@
 									"type": "text"
 								},
 								{
-									"key": "location",
-									"value": "",
+									"key": "location_id",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -1151,28 +1143,33 @@
 									"type": "text"
 								},
 								{
-									"key": "additional_info",
+									"key": "has_additional_info",
 									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "model",
-									"value": "",
+									"key": "additional_info[0][size]",
+									"value": "6",
 									"type": "text"
 								},
 								{
-									"key": "serial",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "asset_id",
-									"value": "",
+									"key": "additional_info[0][qwe]",
+									"value": "6",
 									"type": "text"
 								},
 								{
 									"key": "purchase_price",
-									"value": "",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "purchase_date",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "52",
 									"type": "text"
 								},
 								{
@@ -1182,32 +1179,17 @@
 								},
 								{
 									"key": "depreciation_start_date",
-									"value": "",
+									"value": "2023-01-01",
 									"type": "text"
 								},
 								{
-									"key": "depreciation_method",
-									"value": "",
+									"key": "depreciation_account_id",
+									"value": "57",
 									"type": "text"
 								},
 								{
-									"key": "salvage_value",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "asset_account",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "depreciation_expense_amount",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "accumulated_depreciation_amount",
-									"value": "",
+									"key": "accumulated_depreciation_account_id",
+									"value": "56",
 									"type": "text"
 								},
 								{
@@ -1235,7 +1217,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "7"
+									"value": "1"
 								}
 							]
 						}
@@ -1445,7 +1427,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "assetcategory",
+									"value": "assetcategory1",
 									"type": "text"
 								},
 								{
@@ -1778,7 +1760,10 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-10-16 14-03-31.png"
+									"src": [
+										"/home/user--49/Pictures/Screenshots/Screenshot from 2023-10-16 14-03-31.png",
+										"/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
+									]
 								},
 								{
 									"key": "account_number",
@@ -9014,12 +8999,12 @@
 								},
 								{
 									"key": "sku",
-									"value": "T0982345jhwer",
+									"value": "T0982345jhwerssssss",
 									"type": "text"
 								},
 								{
 									"key": "product_category_id",
-									"value": "",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -9156,7 +9141,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": []
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
 								}
 							]
 						},
@@ -9204,163 +9189,144 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": " test3",
-									"type": "text"
-								},
-								{
-									"key": "slug",
-									"value": " test3",
+									"value": "titleedit",
 									"type": "text"
 								},
 								{
 									"key": "sku",
-									"value": " test3",
+									"value": "T0982345jhwerss",
 									"type": "text"
 								},
 								{
 									"key": "product_category_id",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "product_category",
-									"value": " ",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "tax",
-									"value": " 0",
-									"type": "text"
-								},
-								{
-									"key": "is_service",
-									"value": " 0",
-									"type": "text"
-								},
-								{
-									"key": "unit",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "re_order_point",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "multiple_warehouse",
-									"value": " 1",
-									"type": "text"
-								},
-								{
-									"key": "barcode_number",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "entry_number",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "sale_rate",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "sale_account",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "sale_note",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "purchase_rate",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "purchase_account",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "purchase_note",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "inventory",
-									"value": " 1",
-									"type": "text"
-								},
-								{
-									"key": "sales_purchase",
-									"value": " 0",
-									"type": "text"
-								},
-								{
-									"key": "created_at",
-									"value": " 2023-12-11 07:35:20",
-									"type": "text"
-								},
-								{
-									"key": "updated_at",
-									"value": " 2023-12-11 07:36:01",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "thumbnail_image",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "quantity_on_hand",
-									"value": " 33",
-									"type": "text"
-								},
-								{
-									"key": "calculated_cost",
 									"value": "11",
 									"type": "text"
 								},
 								{
-									"key": "calculated_warehouse_inventory",
-									"value": "[object Object]",
+									"key": "is_service",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "total_amount",
-									"value": "121.00",
+									"key": "re_order_point",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "can_inventory_edit",
-									"value": "true",
+									"key": "multiple_warehouse",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][cost_per_unit]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][warehouse_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
+									"value": "50",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_inventory[1][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_inventory[1][cost_per_unit]",
+									"value": "110",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_inventory[1][warehouse_id]",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "barcode_number",
+									"value": "asd",
+									"type": "text"
+								},
+								{
+									"key": "entry_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "inventory",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "inventory_type",
-									"value": "batch",
+									"value": "something",
 									"type": "text"
+								},
+								{
+									"key": "sale_purchase",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "unit_id",
@@ -9368,73 +9334,8 @@
 									"type": "text"
 								},
 								{
-									"key": "logo",
-									"value": "",
-									"type": "text"
-								},
-								{
 									"key": "_method",
-									"value": " PATCH",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][as_of_date]",
-									"value": "2023-12-11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][cost_per_unit]",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][warehouse_id]",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][warehouse_name]",
-									"value": "default warehouse",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][remaining_quantity]",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][as_of_date]",
-									"value": "2023-12-12",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][cost_per_unit]",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][warehouse_id]",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][warehouse_name]",
-									"value": "default warehouse",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][remaining_quantity]",
-									"value": "22",
+									"value": "PATCH",
 									"type": "text"
 								}
 							]
@@ -9452,7 +9353,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "7"
 								}
 							]
 						}
@@ -9502,7 +9403,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "7"
 								}
 							]
 						}
@@ -9632,7 +9533,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "17"
 								}
 							]
 						}

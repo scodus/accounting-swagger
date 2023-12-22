@@ -405,7 +405,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: test
+                  example: Accumulated Depreciation
                 account_type:
                   type: string
                   example: Assets
@@ -413,7 +413,7 @@ paths:
                   type: string
                 parent_id:
                   type: integer
-                  example: '1'
+                  example: '54'
                 code:
                   type: string
                 opening_balance:
@@ -627,40 +627,51 @@ paths:
                   example: asset1
                 manufacture:
                   type: string
-                category:
+                asset_category_id:
                   type: string
                 warranty:
                   type: string
-                location:
-                  type: string
+                location_id:
+                  type: integer
+                  example: '1'
                 expiry_date:
                   type: string
                 description:
                   type: string
-                additional_info:
+                has_additional_info:
                   type: string
-                model:
-                  type: string
-                serial:
-                  type: string
-                asset_id:
-                  type: string
+                additional_info[0][size]:
+                  type: integer
+                  example: '6'
+                additional_info[0][qwe]:
+                  type: integer
+                  example: '6'
                 purchase_price:
+                  type: integer
+                  example: '1500'
+                purchase_date:
                   type: string
+                  example: '2022-01-01'
+                asset_id:
+                  type: integer
+                  example: '52'
                 useful_year:
                   type: string
                 depreciation_start_date:
                   type: string
-                depreciation_method:
-                  type: string
-                salvage_value:
-                  type: string
-                asset_account:
-                  type: string
-                depreciation_expense_amount:
-                  type: string
-                accumulated_depreciation_amount:
-                  type: string
+                  example: '2023-01-01'
+                depreciation_account_id:
+                  type: integer
+                  description: >-
+                    child of Depreciation account under non current account. use
+                    slug 'depreciation'
+                  example: '57'
+                accumulated_depreciation_account_id:
+                  type: integer
+                  description: >-
+                    child of Accumulated Depreciation account under indirect
+                    expense. use slug 'accumulated-depreciation'
+                  example: '56'
                 files[0]:
                   type: string
                   format: binary
@@ -732,40 +743,45 @@ paths:
                   example: asset1edit
                 manufacture:
                   type: string
-                category:
+                asset_category_id:
                   type: string
                 warranty:
                   type: string
-                location:
-                  type: string
+                location_id:
+                  type: integer
+                  example: '1'
                 expiry_date:
                   type: string
                 description:
                   type: string
-                additional_info:
+                has_additional_info:
                   type: string
-                model:
-                  type: string
-                serial:
-                  type: string
-                asset_id:
-                  type: string
+                additional_info[0][size]:
+                  type: integer
+                  example: '6'
+                additional_info[0][qwe]:
+                  type: integer
+                  example: '6'
                 purchase_price:
+                  type: integer
+                  example: '1500'
+                purchase_date:
                   type: string
+                  example: '2022-01-01'
+                asset_id:
+                  type: integer
+                  example: '52'
                 useful_year:
                   type: string
                 depreciation_start_date:
                   type: string
-                depreciation_method:
-                  type: string
-                salvage_value:
-                  type: string
-                asset_account:
-                  type: string
-                depreciation_expense_amount:
-                  type: string
-                accumulated_depreciation_amount:
-                  type: string
+                  example: '2023-01-01'
+                depreciation_account_id:
+                  type: integer
+                  example: '57'
+                accumulated_depreciation_account_id:
+                  type: integer
+                  example: '56'
                 _method:
                   type: string
                   example: patch
@@ -785,7 +801,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '7'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -860,7 +876,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: assetcategory
+                  example: assetcategory1
                 fields[0][name]:
                   type: string
                   example: size
@@ -5215,9 +5231,10 @@ paths:
                   example: title
                 sku:
                   type: string
-                  example: T0982345jhwer
+                  example: T0982345jhwerssssss
                 product_category_id:
-                  type: string
+                  type: integer
+                  example: '1'
                 tax:
                   type: integer
                   example: '11'
@@ -5361,143 +5378,79 @@ paths:
               properties:
                 name:
                   type: string
-                  example: ' test3'
-                slug:
-                  type: string
-                  example: ' test3'
+                  example: titleedit
                 sku:
                   type: string
-                  example: ' test3'
+                  example: T0982345jhwerss
                 product_category_id:
-                  type: string
-                  example: ' '
-                product_category:
-                  type: string
-                  example: ' '
+                  type: integer
+                  example: '1'
                 tax:
-                  type: string
-                  example: ' 0'
-                is_service:
-                  type: string
-                  example: ' 0'
-                unit:
-                  type: string
-                  example: ' '
-                status:
-                  type: string
-                  example: ' '
-                re_order_point:
-                  type: string
-                  example: ' '
-                description:
-                  type: string
-                  example: ' '
-                multiple_warehouse:
-                  type: string
-                  example: ' 1'
-                barcode_number:
-                  type: string
-                  example: ' '
-                entry_number:
-                  type: string
-                  example: ' '
-                sale_rate:
-                  type: string
-                  example: ' '
-                sale_account:
-                  type: string
-                  example: ' '
-                sale_note:
-                  type: string
-                  example: ' '
-                purchase_rate:
-                  type: string
-                  example: ' '
-                purchase_account:
-                  type: string
-                  example: ' '
-                purchase_note:
-                  type: string
-                  example: ' '
-                inventory:
-                  type: string
-                  example: ' 1'
-                sales_purchase:
-                  type: string
-                  example: ' 0'
-                created_at:
-                  type: string
-                  example: ' 2023-12-11 07:35:20'
-                updated_at:
-                  type: string
-                  example: ' 2023-12-11 07:36:01'
-                image:
-                  type: string
-                  example: ' '
-                thumbnail_image:
-                  type: string
-                  example: ' '
-                quantity_on_hand:
-                  type: string
-                  example: ' 33'
-                calculated_cost:
                   type: integer
                   example: '11'
-                calculated_warehouse_inventory:
+                is_service:
                   type: string
-                  example: '[object Object]'
-                total_amount:
-                  type: number
-                  example: '121.00'
-                can_inventory_edit:
-                  type: boolean
-                  example: 'true'
+                status:
+                  type: string
+                re_order_point:
+                  type: string
+                multiple_warehouse:
+                  type: integer
+                  example: '1'
+                warehouse_inventory[0][initial_quantity_on_hand]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[0][cost_per_unit]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][warehouse_id]:
+                  type: integer
+                  example: '1'
+                warehouse_inventory[1][initial_quantity_on_hand]:
+                  type: integer
+                  example: '50'
+                warehouse_inventory[1][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[1][cost_per_unit]:
+                  type: integer
+                  example: '110'
+                warehouse_inventory[1][warehouse_id]:
+                  type: integer
+                  example: '2'
+                barcode_number:
+                  type: string
+                  example: asd
+                entry_number:
+                  type: string
+                sale_rate:
+                  type: string
+                sale_account:
+                  type: string
+                sale_note:
+                  type: string
+                purchase_rate:
+                  type: string
+                purchase_account:
+                  type: string
+                purchase_note:
+                  type: string
+                inventory:
+                  type: integer
+                  example: '1'
                 inventory_type:
                   type: string
-                  example: batch
-                unit_id:
+                  example: something
+                sale_purchase:
                   type: string
-                logo:
+                unit_id:
                   type: string
                 _method:
                   type: string
-                  example: ' PATCH'
-                warehouse_inventory[0][initial_quantity_on_hand]:
-                  type: integer
-                  example: '11'
-                warehouse_inventory[0][as_of_date]:
-                  type: string
-                  example: '2023-12-11'
-                warehouse_inventory[0][cost_per_unit]:
-                  type: integer
-                  example: '11'
-                warehouse_inventory[0][warehouse_id]:
-                  type: integer
-                  example: '3'
-                warehouse_inventory[0][warehouse_name]:
-                  type: string
-                  example: default warehouse
-                warehouse_inventory[0][remaining_quantity]:
-                  type: integer
-                  example: '11'
-                warehouse_inventory[1][initial_quantity_on_hand]:
-                  type: integer
-                  example: '22'
-                warehouse_inventory[1][as_of_date]:
-                  type: string
-                  example: '2023-12-12'
-                warehouse_inventory[1][cost_per_unit]:
-                  type: integer
-                  example: '22'
-                warehouse_inventory[1][warehouse_id]:
-                  type: integer
-                  example: '3'
-                warehouse_inventory[1][warehouse_name]:
-                  type: string
-                  example: default warehouse
-                warehouse_inventory[1][remaining_quantity]:
-                  type: integer
-                  example: '22'
+                  example: PATCH
       security:
         - bearerAuth: []
       parameters:
@@ -5516,7 +5469,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -5544,7 +5497,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -5572,7 +5525,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '17'
       responses:
         '200':
           description: Successful response
