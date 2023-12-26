@@ -37,6 +37,7 @@ tags:
   - name: customer
   - name: document
   - name: employee
+  - name: employee tax deduction
   - name: expense
   - name: fishal year
   - name: fixed asset
@@ -2769,21 +2770,49 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                fullname:
                   type: string
-                  example: employee name
+                  example: employee1
+                date_of_birth:
+                  type: string
+                gender:
+                  type: string
                 email:
                   type: string
-                  example: employee@employee.com
-                phone:
-                  type: integer
-                  example: '98724658796'
                 address:
                   type: string
-                  example: employee address
-                status:
+                contact_info:
                   type: string
-                  example: active
+                citizenship_number:
+                  type: string
+                pan_number:
+                  type: string
+                emergency_number:
+                  type: string
+                emergency_contact_info:
+                  type: string
+                emergency_relation:
+                  type: string
+                department:
+                  type: string
+                designation:
+                  type: string
+                work_location:
+                  type: string
+                date_of_hire:
+                  type: string
+                account_holder_name:
+                  type: string
+                bank_name:
+                  type: string
+                account_number:
+                  type: string
+                branch_name:
+                  type: string
+                salary:
+                  type: string
+                allowance:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -2846,21 +2875,50 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                fullname:
                   type: string
-                  example: employee name edit
+                  example: employee1edit
+                date_of_birth:
+                  type: string
+                gender:
+                  type: string
                 email:
                   type: string
-                  example: employee@employee.com
-                phone:
-                  type: integer
-                  example: '12431234'
                 address:
                   type: string
-                  example: employee address edit
-                status:
+                contact_info:
                   type: string
-                  example: active
+                citizenship_number:
+                  type: string
+                pan_number:
+                  type: string
+                emergency_number:
+                  type: string
+                emergency_contact_info:
+                  type: string
+                emergency_relation:
+                  type: string
+                department:
+                  type: string
+                designation:
+                  type: string
+                work_location:
+                  type: string
+                date_of_hire:
+                  type: string
+                account_holder_name:
+                  type: string
+                bank_name:
+                  type: string
+                account_number:
+                  type: string
+                branch_name:
+                  type: string
+                salary:
+                  type: integer
+                  example: '65000'
+                allowance:
+                  type: string
                 _method:
                   type: string
                   example: patch
@@ -2877,7 +2935,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '37'
+          example: '68'
       responses:
         '200':
           description: Successful response
@@ -2933,7 +2991,44 @@ paths:
           schema:
             type: integer
           required: true
-          example: '37'
+          example: '67'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/employee-tax-deduction:
+    post:
+      tags:
+        - employee tax deduction
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                month: 1
+                employees:
+                  - employee_id: 67
+                    deduction: 1500
+                    tds: 10
+                  - employee_id: 68
+                    deduction: 2000
+                    tds: 10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

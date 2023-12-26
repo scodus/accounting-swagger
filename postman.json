@@ -4801,28 +4801,108 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "employee name",
+									"key": "fullname",
+									"value": "employee1",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "employee@employee.com",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "98724658796",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "employee address",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "status",
-									"value": "active",
+									"key": "contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "citizenship_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_relation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "designation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "work_location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "date_of_hire",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "allowance",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -4865,28 +4945,108 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "employee name edit",
+									"key": "fullname",
+									"value": "employee1edit",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "employee@employee.com",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12431234",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "employee address edit",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "status",
-									"value": "active",
+									"key": "contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "citizenship_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_relation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "designation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "work_location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "date_of_hire",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "65000",
+									"type": "text"
+								},
+								{
+									"key": "allowance",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -4909,7 +5069,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "37"
+									"value": "68"
 								}
 							]
 						}
@@ -5076,8 +5236,61 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "37"
+									"value": "67"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee tax deduction",
+			"item": [
+				{
+					"name": "store/update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"month\": 1,\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"deduction\": 1500,\n            \"tds\": 10\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 2000,\n            \"tds\": 10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/employee-tax-deduction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-tax-deduction"
 							]
 						}
 					},
