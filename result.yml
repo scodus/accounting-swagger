@@ -37,6 +37,7 @@ tags:
   - name: customer
   - name: document
   - name: employee
+  - name: employee summary
   - name: employee tax deduction
   - name: expense
   - name: fishal year
@@ -2787,7 +2788,7 @@ paths:
                   type: string
                 pan_number:
                   type: string
-                emergency_number:
+                emergency_name:
                   type: string
                 emergency_contact_info:
                   type: string
@@ -2867,7 +2868,7 @@ paths:
   /api/employee/{id}:
     post:
       tags:
-        - employee
+        - employee summary
       summary: update
       requestBody:
         content:
@@ -2971,7 +2972,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - employee
+        - employee summary
       summary: show
       security:
         - bearerAuth: []
@@ -2992,6 +2993,40 @@ paths:
             type: integer
           required: true
           example: '67'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/employee-summary:
+    get:
+      tags:
+        - employee summary
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -4572,7 +4607,7 @@ paths:
           in: query
           schema:
             type: string
-          example: cash-in-hand-2
+          example: cash-in-hand
       responses:
         '200':
           description: Successful response

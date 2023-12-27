@@ -4841,7 +4841,7 @@
 									"type": "text"
 								},
 								{
-									"key": "emergency_number",
+									"key": "emergency_name",
 									"value": "",
 									"type": "text"
 								},
@@ -4985,7 +4985,7 @@
 									"type": "text"
 								},
 								{
-									"key": "emergency_number",
+									"key": "emergency_name",
 									"value": "",
 									"type": "text"
 								},
@@ -5167,6 +5167,284 @@
 							"path": [
 								"api",
 								"employee"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/employee/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "67"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee summary",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullname",
+									"value": "employee1edit",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "citizenship_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_relation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "designation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "work_location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "date_of_hire",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "65000",
+									"type": "text"
+								},
+								{
+									"key": "allowance",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/employee/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/employee-summary?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary"
 							],
 							"query": [
 								{
@@ -7903,7 +8181,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&slug=cash-in-hand-2",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&slug=cash-in-hand",
 							"host": [
 								"{{url}}"
 							],
@@ -7926,7 +8204,7 @@
 								},
 								{
 									"key": "slug",
-									"value": "cash-in-hand-2"
+									"value": "cash-in-hand"
 								}
 							]
 						}
