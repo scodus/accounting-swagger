@@ -4897,7 +4897,7 @@
 								},
 								{
 									"key": "salary",
-									"value": "",
+									"value": "65000",
 									"type": "text"
 								},
 								{
@@ -5069,7 +5069,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "67"
+									"value": "43"
 								}
 							]
 						}
@@ -5160,7 +5160,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=1",
 							"host": [
 								"{{url}}"
 							],
@@ -5171,7 +5171,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -5184,6 +5184,14 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "payroll",
+									"value": "1"
+								},
+								{
+									"key": "month",
+									"value": "1"
 								}
 							]
 						}
@@ -5249,7 +5257,7 @@
 			"name": "employee summary",
 			"item": [
 				{
-					"name": "update",
+					"name": "store",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -5273,132 +5281,30 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "fullname",
-									"value": "employee1edit",
+									"key": "month",
+									"value": "1",
 									"type": "text"
 								},
 								{
-									"key": "date_of_birth",
-									"value": "",
+									"key": "employee_id",
+									"value": "43",
 									"type": "text"
 								},
 								{
-									"key": "gender",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "address",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "contact_info",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "citizenship_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "pan_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "emergency_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "emergency_contact_info",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "emergency_relation",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "department",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "designation",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "work_location",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "date_of_hire",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "account_holder_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "bank_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "account_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "branch_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "salary",
-									"value": "65000",
-									"type": "text"
-								},
-								{
-									"key": "allowance",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
+									"key": "status",
+									"value": "paid",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/employee/:id",
+							"raw": "{{url}}/api/employee-summary",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"employee",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "68"
-								}
+								"employee-summary"
 							]
 						}
 					},
@@ -5437,7 +5343,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": 1,\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"deduction\": 1500,\n            \"tds\": 10\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 2000,\n            \"tds\": 10\n        }\n    ]\n}",
+							"raw": "{\n    \"month\": 2,\n    \"employees\": [\n        {\n            \"employee_id\": 43,\n            \"deduction\": 1500,\n            \"tds\": 10\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

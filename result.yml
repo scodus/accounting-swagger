@@ -2811,7 +2811,8 @@ paths:
                 branch_name:
                   type: string
                 salary:
-                  type: string
+                  type: integer
+                  example: '65000'
                 allowance:
                   type: string
       security:
@@ -2847,7 +2848,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -2860,6 +2862,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: payroll
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2868,7 +2880,7 @@ paths:
   /api/employee/{id}:
     post:
       tags:
-        - employee summary
+        - employee
       summary: update
       requestBody:
         content:
@@ -2893,7 +2905,7 @@ paths:
                   type: string
                 pan_number:
                   type: string
-                emergency_number:
+                emergency_name:
                   type: string
                 emergency_contact_info:
                   type: string
@@ -2936,7 +2948,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '68'
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -2998,6 +3010,39 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/employee-summary:
+    post:
+      tags:
+        - employee summary
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                month:
+                  type: integer
+                  example: '1'
+                employee_id:
+                  type: integer
+                  example: '43'
+                status:
+                  type: string
+                  example: paid
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/employee-tax-deduction:
     post:
       tags:
@@ -3009,13 +3054,10 @@ paths:
             schema:
               type: object
               example:
-                month: 1
+                month: 2
                 employees:
-                  - employee_id: 67
+                  - employee_id: 43
                     deduction: 1500
-                    tds: 10
-                  - employee_id: 68
-                    deduction: 2000
                     tds: 10
       security:
         - bearerAuth: []
