@@ -4904,6 +4904,21 @@
 									"key": "allowance",
 									"value": "",
 									"type": "text"
+								},
+								{
+									"key": "citizenship[0]",
+									"type": "file",
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
+								},
+								{
+									"key": "citizenship[1]",
+									"type": "file",
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2023-12-19 11-22-26.png"
+								},
+								{
+									"key": "citizenship[2]",
+									"type": "file",
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
 								}
 							]
 						},
@@ -5160,7 +5175,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=1",
+							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=1&year=2022",
 							"host": [
 								"{{url}}"
 							],
@@ -5192,6 +5207,10 @@
 								{
 									"key": "month",
 									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2022"
 								}
 							]
 						}
@@ -5286,6 +5305,11 @@
 									"type": "text"
 								},
 								{
+									"key": "year",
+									"value": "2022",
+									"type": "text"
+								},
+								{
 									"key": "employee_id",
 									"value": "43",
 									"type": "text"
@@ -5343,7 +5367,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": 2,\n    \"employees\": [\n        {\n            \"employee_id\": 43,\n            \"deduction\": 1500,\n            \"tds\": 10\n        }\n    ]\n}",
+							"raw": "{\n    \"month\": 1,\n    \"year\": 2022,\n    \"employees\": [\n        {\n            \"employee_id\": 43,\n            \"deduction\": 1500,\n            \"tds\": 10\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

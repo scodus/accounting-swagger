@@ -2815,6 +2815,15 @@ paths:
                   example: '65000'
                 allowance:
                   type: string
+                citizenship[0]:
+                  type: string
+                  format: binary
+                citizenship[1]:
+                  type: string
+                  format: binary
+                citizenship[2]:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -2872,6 +2881,11 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2022'
       responses:
         '200':
           description: Successful response
@@ -3024,6 +3038,9 @@ paths:
                 month:
                   type: integer
                   example: '1'
+                year:
+                  type: integer
+                  example: '2022'
                 employee_id:
                   type: integer
                   example: '43'
@@ -3054,7 +3071,8 @@ paths:
             schema:
               type: object
               example:
-                month: 2
+                month: 1
+                year: 2022
                 employees:
                   - employee_id: 43
                     deduction: 1500
