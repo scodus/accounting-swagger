@@ -5175,7 +5175,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=1&year=2022",
+							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=&year=&date=2022-01",
 							"host": [
 								"{{url}}"
 							],
@@ -5206,11 +5206,15 @@
 								},
 								{
 									"key": "month",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "year",
-									"value": "2022"
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": "2022-01"
 								}
 							]
 						}
@@ -5301,12 +5305,17 @@
 							"formdata": [
 								{
 									"key": "month",
-									"value": "1",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "year",
-									"value": "2022",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2022-01",
 									"type": "text"
 								},
 								{
@@ -5367,7 +5376,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": 1,\n    \"year\": 2022,\n    \"employees\": [\n        {\n            \"employee_id\": 43,\n            \"deduction\": 1500,\n            \"tds\": 10\n        }\n    ]\n}",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2022-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 43,\n            \"deduction\": 1500,\n            \"tds\": 10\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

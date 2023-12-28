@@ -2879,13 +2879,16 @@ paths:
         - name: month
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: year
           in: query
           schema:
-            type: integer
-          example: '2022'
+            type: string
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: 2022-01
       responses:
         '200':
           description: Successful response
@@ -3036,11 +3039,12 @@ paths:
               type: object
               properties:
                 month:
-                  type: integer
-                  example: '1'
+                  type: string
                 year:
-                  type: integer
-                  example: '2022'
+                  type: string
+                date:
+                  type: string
+                  example: 2022-01
                 employee_id:
                   type: integer
                   example: '43'
@@ -3071,8 +3075,9 @@ paths:
             schema:
               type: object
               example:
-                month: 1
-                year: 2022
+                month: ''
+                year: ''
+                date: 2022-01
                 employees:
                   - employee_id: 43
                     deduction: 1500
