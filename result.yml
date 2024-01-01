@@ -32,6 +32,7 @@ tags:
   - name: cheque
   - name: comment
   - name: company
+  - name: company > package subscription
   - name: customer
   - name: document
   - name: employee
@@ -44,8 +45,6 @@ tags:
   - name: ledger
   - name: opening balance
   - name: package
-  - name: period-price
-  - name: package-company
   - name: payment cheque
   - name: permission
   - name: product
@@ -1539,6 +1538,111 @@ paths:
             type: integer
           required: true
           example: '25'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company/{id}/subscribe-package:
+    post:
+      tags:
+        - company > package subscription
+      summary: subscribe package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                package_id: 1
+                period: 30
+                price: null
+                user: null
+                transaction: null
+                product: null
+                storage: null
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company/{id}/modify-package:
+    post:
+      tags:
+        - company > package subscription
+      summary: modify package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                package_id: 1
+                period: 30
+                price: null
+                user: 100
+                transaction: null
+                product: null
+                storage: null
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company/{id}/unsubscribe-package:
+    post:
+      tags:
+        - company > package subscription
+      summary: unsubscribe package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                package_id: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3970,23 +4074,19 @@ paths:
             schema:
               type: object
               example:
-                name: test1
+                name: test2
                 user: 3
                 transaction: 12
                 product: 8
                 storage: 10
                 period_prices:
-                  - id: null
-                    period: 30
+                  - period: 30
                     price: 1000
-                  - id: null
-                    period: 90
+                  - period: 90
                     price: 2800
-                  - id: null
-                    period: 180
+                  - period: 180
                     price: 5200
-                  - id: null
-                    period: 365
+                  - period: 365
                     price: 10000
       security:
         - bearerAuth: []
@@ -4025,6 +4125,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: in:active,inactive
       responses:
         '200':
           description: Successful response
@@ -4042,30 +4147,23 @@ paths:
               type: object
               example:
                 _method: patch
-                name: test1 edit
-                user: 3
+                name: test4 edit
+                user: 4
                 transaction: 10
                 product: 9
                 storage: 11
                 period_prices:
-                  - id: 1
+                  - id: 13
                     period: 30
                     price: 1001
-                  - id: 2
+                  - id: 14
                     period: 90
                     price: 2801
-                  - id: 3
+                  - id: 15
                     period: 180
                     price: 5201
-                  - id: 4
-                    period: 365
+                  - period: 365
                     price: 10001
-                  - id: 5
-                    period: 36
-                    price: 100
-                  - id: 5
-                    period: 36
-                    price: 100
       security:
         - bearerAuth: []
       parameters:
@@ -4074,7 +4172,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -4120,73 +4218,17 @@ paths:
           schema:
             type: integer
           required: true
-          example: '8'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/period-price:
-    post:
-      tags:
-        - period-price
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                package_id: 1
-                period: 30
-                price: 1000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - period-price
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
           example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/period-price/{id}:
+  /api/package/{id}/status:
     post:
       tags:
-        - period-price
-      summary: update
+        - package
+      summary: update status
       requestBody:
         content:
           application/json:
@@ -4194,9 +4236,7 @@ paths:
               type: object
               example:
                 _method: patch
-                package_id: 30
-                period: 30
-                price: 1001
+                status: active
       security:
         - bearerAuth: []
       parameters:
@@ -4205,188 +4245,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - period-price
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - period-price
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '7'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package-company:
-    post:
-      tags:
-        - package-company
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                package_id: 1
-                company_id: 1
-                period: 1
-                price: 1
-                user: 1
-                transaction: 1
-                product: 1
-                storage: 1
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - package-company
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package-company/{id}:
-    post:
-      tags:
-        - package-company
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                package_id: 1
-                company_id: 1
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - package-company
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - package-company
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '7'
+          example: '3'
       responses:
         '200':
           description: Successful response
