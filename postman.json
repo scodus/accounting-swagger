@@ -5355,7 +5355,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 1500,\n            \"tds\": 10\n        }\n    ]\n}",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"note\": \"hello i am under the water.\"\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 1500,\n            \"tds\": 100,\n            \"note\": \"hello i am under the water.\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

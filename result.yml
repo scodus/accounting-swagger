@@ -3082,9 +3082,11 @@ paths:
                 date: 2024-01
                 employees:
                   - employee_id: 67
+                    note: hello i am under the water.
                   - employee_id: 68
                     deduction: 1500
-                    tds: 10
+                    tds: 100
+                    note: hello i am under the water.
       security:
         - bearerAuth: []
       parameters:
