@@ -24,6 +24,8 @@ components:
 tags:
   - name: accounting firm
   - name: account head
+  - name: asset
+  - name: asset category
   - name: bank
   - name: bank cheque
   - name: Bug
@@ -32,21 +34,24 @@ tags:
   - name: cheque
   - name: comment
   - name: company
-  - name: company > package subscription
   - name: customer
   - name: document
   - name: employee
+  - name: employee summary
+  - name: employee tax deduction
   - name: expense
-  - name: fiscal year
+  - name: fishal year
+  - name: fixed asset
   - name: Folder
   - name: inventory adjustment
   - name: invoice
   - name: journal voucher
   - name: ledger
+  - name: location
   - name: opening balance
-  - name: package
   - name: payment cheque
   - name: permission
+  - name: prefix
   - name: product
   - name: product category
   - name: purchase bill
@@ -63,6 +68,7 @@ tags:
   - name: sale payment
   - name: sale return
   - name: site setting
+  - name: tax pool type
   - name: transfer
   - name: users
   - name: unit
@@ -401,7 +407,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: test
+                  example: Accumulated Depreciation
                 account_type:
                   type: string
                   example: Assets
@@ -409,7 +415,7 @@ paths:
                   type: string
                 parent_id:
                   type: integer
-                  example: '1'
+                  example: '54'
                 code:
                   type: string
                 opening_balance:
@@ -450,8 +456,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -468,11 +473,13 @@ paths:
           in: query
           schema:
             type: string
+          example: sales
         - name: tree_view
           in: query
           schema:
-            type: string
+            type: integer
           description: 1 || 0
+          example: '1'
         - name: no_sub_account_head
           in: query
           schema:
@@ -518,13 +525,13 @@ paths:
                   type: string
                 parent_id:
                   type: integer
-                  example: '47'
+                  example: '80'
                 code:
                   type: string
-                  example: nruFLiDE2wX
+                  example: nruFLiDE2wXs
                 opening_balance:
                   type: integer
-                  example: '500000'
+                  example: '300000'
                 status:
                   type: string
                   example: active
@@ -544,7 +551,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '48'
+          example: '80'
       responses:
         '200':
           description: Successful response
@@ -572,7 +579,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '39'
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -581,6 +588,446 @@ paths:
     get:
       tags:
         - account head
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '40'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/asset:
+    post:
+      tags:
+        - asset
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: asset1
+                manufacture:
+                  type: string
+                asset_category_id:
+                  type: string
+                warranty:
+                  type: string
+                location_id:
+                  type: integer
+                  example: '1'
+                expiry_date:
+                  type: string
+                description:
+                  type: string
+                has_additional_info:
+                  type: string
+                additional_info[size]:
+                  type: integer
+                  example: '6'
+                additional_info[qwe]:
+                  type: integer
+                  example: '62'
+                purchase_price:
+                  type: integer
+                  example: '1500'
+                purchase_date:
+                  type: string
+                  example: '2022-01-01'
+                asset_id:
+                  type: integer
+                  example: '52'
+                useful_year:
+                  type: string
+                depreciation_start_date:
+                  type: string
+                  example: '2023-01-01'
+                depreciation_account_id:
+                  type: integer
+                  description: >-
+                    child of Depreciation account under non current account. use
+                    slug 'depreciation'
+                  example: '56'
+                accumulated_depreciation_account_id:
+                  type: integer
+                  description: >-
+                    child of Accumulated Depreciation account under indirect
+                    expense. use slug 'accumulated-depreciation'
+                  example: '57'
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - asset
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/asset/{id}:
+    post:
+      tags:
+        - asset
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: asset1edit
+                manufacture:
+                  type: string
+                asset_category_id:
+                  type: string
+                warranty:
+                  type: string
+                location_id:
+                  type: integer
+                  example: '1'
+                expiry_date:
+                  type: string
+                description:
+                  type: string
+                has_additional_info:
+                  type: string
+                additional_info[size]:
+                  type: integer
+                  example: '6'
+                additional_info[qwe]:
+                  type: integer
+                  example: '6'
+                purchase_price:
+                  type: integer
+                  example: '1500'
+                purchase_date:
+                  type: string
+                  example: '2022-01-01'
+                asset_id:
+                  type: integer
+                  example: '52'
+                useful_year:
+                  type: string
+                depreciation_start_date:
+                  type: string
+                  example: '2023-01-01'
+                depreciation_account_id:
+                  type: integer
+                  example: '57'
+                accumulated_depreciation_account_id:
+                  type: integer
+                  example: '56'
+                _method:
+                  type: string
+                  example: patch
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - asset
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - asset
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/asset-category:
+    post:
+      tags:
+        - asset category
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: assetcategory4
+                fields[0][name]:
+                  type: string
+                  example: size
+                fields[0][type]:
+                  type: string
+                  example: option
+                fields[0][option][0]:
+                  type: integer
+                  example: '6'
+                fields[0][option][1]:
+                  type: integer
+                  example: '7'
+                fields[0][option][2]:
+                  type: integer
+                  example: '8'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - asset category
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/asset-category/{id}:
+    post:
+      tags:
+        - asset category
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: assetcategory1edit
+                fields[0][name]:
+                  type: string
+                  example: size
+                fields[0][type]:
+                  type: string
+                  example: option
+                fields[0][option][0]:
+                  type: integer
+                  example: '6'
+                fields[0][option][1]:
+                  type: integer
+                  example: '7'
+                _method:
+                  type: string
+                  example: patch
+                files[0]:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - asset category
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - asset category
       summary: show
       security:
         - bearerAuth: []
@@ -625,15 +1072,19 @@ paths:
                   format: binary
                 account_number:
                   type: string
+                  example: a2134dsf
                 address:
                   type: string
+                  example: asdfasdf
                 swift_code:
                   type: string
+                  example: zxcvzxcv
                 status:
                   type: string
                   example: active
                 account_name:
                   type: string
+                  example: asdfasdfasdf
                 price:
                   type: integer
                   example: '5000'
@@ -1405,7 +1856,7 @@ paths:
               properties:
                 document_id:
                   type: integer
-                  example: '31'
+                  example: '1'
                 body:
                   type: string
                   example: check check 1 2 3
@@ -1465,7 +1916,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '31'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1487,7 +1938,7 @@ paths:
                   example: patch
                 document_id:
                   type: integer
-                  example: '31'
+                  example: '1'
                 body:
                   type: string
                   example: check check 1 2 3 4
@@ -1532,111 +1983,6 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '25'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/company/{id}/subscribe-package:
-    post:
-      tags:
-        - company > package subscription
-      summary: subscribe package
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                package_id: 1
-                period: 30
-                price: null
-                user: null
-                transaction: null
-                product: null
-                storage: null
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/company/{id}/modify-package:
-    post:
-      tags:
-        - company > package subscription
-      summary: modify package
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                package_id: 1
-                period: 30
-                price: null
-                user: 100
-                transaction: null
-                product: null
-                storage: null
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/company/{id}/unsubscribe-package:
-    post:
-      tags:
-        - company > package subscription
-      summary: unsubscribe package
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                package_id: 1
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: id
           in: path
           schema:
@@ -2425,21 +2771,59 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                fullname:
                   type: string
-                  example: employee name
+                  example: employee1
+                date_of_birth:
+                  type: string
+                gender:
+                  type: string
                 email:
                   type: string
-                  example: employee@employee.com
-                phone:
-                  type: integer
-                  example: '98724658796'
                 address:
                   type: string
-                  example: employee address
-                status:
+                contact_info:
                   type: string
-                  example: active
+                citizenship_number:
+                  type: string
+                pan_number:
+                  type: string
+                emergency_name:
+                  type: string
+                emergency_contact_info:
+                  type: string
+                emergency_relation:
+                  type: string
+                department:
+                  type: string
+                designation:
+                  type: string
+                work_location:
+                  type: string
+                date_of_hire:
+                  type: string
+                account_holder_name:
+                  type: string
+                bank_name:
+                  type: string
+                account_number:
+                  type: string
+                branch_name:
+                  type: string
+                salary:
+                  type: integer
+                  example: '6500'
+                allowance:
+                  type: string
+                citizenship[0]:
+                  type: string
+                  format: binary
+                citizenship[1]:
+                  type: string
+                  format: binary
+                citizenship[2]:
+                  type: string
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -2473,7 +2857,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -2486,6 +2871,24 @@ paths:
           in: query
           schema:
             type: string
+        - name: payroll
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: month
+          in: query
+          schema:
+            type: string
+        - name: year
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: 2022-01
       responses:
         '200':
           description: Successful response
@@ -2502,21 +2905,50 @@ paths:
             schema:
               type: object
               properties:
-                name:
+                fullname:
                   type: string
-                  example: employee name edit
+                  example: employee1edit
+                date_of_birth:
+                  type: string
+                gender:
+                  type: string
                 email:
                   type: string
-                  example: employee@employee.com
-                phone:
-                  type: integer
-                  example: '12431234'
                 address:
                   type: string
-                  example: employee address edit
-                status:
+                contact_info:
                   type: string
-                  example: active
+                citizenship_number:
+                  type: string
+                pan_number:
+                  type: string
+                emergency_name:
+                  type: string
+                emergency_contact_info:
+                  type: string
+                emergency_relation:
+                  type: string
+                department:
+                  type: string
+                designation:
+                  type: string
+                work_location:
+                  type: string
+                date_of_hire:
+                  type: string
+                account_holder_name:
+                  type: string
+                bank_name:
+                  type: string
+                account_number:
+                  type: string
+                branch_name:
+                  type: string
+                salary:
+                  type: integer
+                  example: '65000'
+                allowance:
+                  type: string
                 _method:
                   type: string
                   example: patch
@@ -2533,7 +2965,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '37'
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -2589,7 +3021,83 @@ paths:
           schema:
             type: integer
           required: true
-          example: '37'
+          example: '67'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/employee-summary:
+    post:
+      tags:
+        - employee summary
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                month: ''
+                year: ''
+                date: 2024-01
+                employee_id:
+                  - 59
+                  - 60
+                  - 61
+                  - 62
+                  - 63
+                  - 64
+                  - 65
+                  - 66
+                  - 67
+                  - 68
+                status: paid
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/employee-tax-deduction:
+    post:
+      tags:
+        - employee tax deduction
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                month: ''
+                year: ''
+                date: 2024-01
+                employees:
+                  - employee_id: 67
+                  - employee_id: 68
+                    deduction: 1500
+                    tds: 10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2626,6 +3134,9 @@ paths:
                 remarks:
                   type: string
                 files[0]:
+                  type: string
+                  format: binary
+                files[1]:
                   type: string
                   format: binary
       security:
@@ -2745,7 +3256,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2773,7 +3284,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '25'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2801,7 +3312,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2839,7 +3350,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2848,7 +3359,7 @@ paths:
   /api/fiscal-year:
     post:
       tags:
-        - fiscal year
+        - fishal year
       summary: store
       requestBody:
         content:
@@ -2889,7 +3400,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - fiscal year
+        - fishal year
       summary: list
       security:
         - bearerAuth: []
@@ -2919,7 +3430,7 @@ paths:
   /api/fiscal-year/{id}:
     post:
       tags:
-        - fiscal year
+        - fishal year
       summary: update
       requestBody:
         content:
@@ -2964,7 +3475,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - fiscal year
+        - fishal year
       summary: delete
       security:
         - bearerAuth: []
@@ -2987,7 +3498,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - fiscal year
+        - fishal year
       summary: show
       security:
         - bearerAuth: []
@@ -3003,6 +3514,184 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/fixed-asset:
+    post:
+      tags:
+        - fixed asset
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: test
+                parent_id:
+                  type: integer
+                  example: '11'
+                audit_depreciation:
+                  type: integer
+                  example: '11'
+                tax_pool_type_id:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - fixed asset
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: parent_id
+          in: query
+          schema:
+            type: integer
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/fixed-asset/{id}:
+    post:
+      tags:
+        - fixed asset
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: test edit
+                audit_depreciation:
+                  type: integer
+                  example: '9'
+                tax_pool_type_id:
+                  type: integer
+                  example: '2'
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '43'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - fixed asset
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '41'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - fixed asset
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -3311,8 +4000,8 @@ paths:
                 account_head_id: 1
                 description: ''
                 products:
-                  - product_id: 2
-                    warehouse_id: 1
+                  - product_id: 18
+                    warehouse_id: 2
                     adjust_quantity: 10
                     adjusted_quantity: 90
                     adjust_value: ''
@@ -3374,77 +4063,6 @@ paths:
           content:
             application/json: {}
   /api/inventory-adjustment/{id}:
-    post:
-      tags:
-        - inventory adjustment
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                adjustment_type: quantity
-                date: '2022-01-01'
-                reference_number: qwe
-                reason: ''
-                account_head_id: 1
-                description: ''
-                products:
-                  - product_id: 1
-                    warehouse_id: 1
-                    adjust_quantity: 10
-                    adjusted_quantity: 10
-                    adjust_value: ''
-                    adjusted_value: ''
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - inventory adjustment
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     get:
       tags:
         - inventory adjustment
@@ -4019,11 +4637,198 @@ paths:
           in: query
           schema:
             type: string
-        - name: account_head_id
+        - name: slug
+          in: query
+          schema:
+            type: string
+          example: cash-in-hand
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/location:
+    post:
+      tags:
+        - location
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: location1
+                phone_number:
+                  type: string
+                address:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                zipcode:
+                  type: string
+                country:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - location
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
           in: query
           schema:
             type: integer
-          example: '34'
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/location/{id}:
+    post:
+      tags:
+        - location
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: location1edit
+                phone_number:
+                  type: string
+                address:
+                  type: string
+                  example: asdasdasd
+                city:
+                  type: string
+                state:
+                  type: string
+                zipcode:
+                  type: string
+                country:
+                  type: string
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - location
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - location
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4058,194 +4863,6 @@ paths:
           schema:
             type: string
           example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package:
-    post:
-      tags:
-        - package
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: test2
-                user: 3
-                transaction: 12
-                product: 8
-                storage: 10
-                period_prices:
-                  - period: 30
-                    price: 1000
-                  - period: 90
-                    price: 2800
-                  - period: 180
-                    price: 5200
-                  - period: 365
-                    price: 10000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - package
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-          description: in:active,inactive
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package/{id}:
-    post:
-      tags:
-        - package
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                name: test4 edit
-                user: 4
-                transaction: 10
-                product: 9
-                storage: 11
-                period_prices:
-                  - id: 13
-                    period: 30
-                    price: 1001
-                  - id: 14
-                    period: 90
-                    price: 2801
-                  - id: 15
-                    period: 180
-                    price: 5201
-                  - period: 365
-                    price: 10001
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '4'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - package
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - package
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package/{id}/status:
-    post:
-      tags:
-        - package
-      summary: update status
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                status: active
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
       responses:
         '200':
           description: Successful response
@@ -4583,6 +5200,114 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/prefix/{slug}:
+    post:
+      tags:
+        - prefix
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                next_number:
+                  type: integer
+                  example: '2'
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: service
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - prefix
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: service
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/prefix:
+    get:
+      tags:
+        - prefix
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/product:
     post:
       tags:
@@ -4599,9 +5324,10 @@ paths:
                   example: title
                 sku:
                   type: string
-                  example: T0982345jhwer
+                  example: T0982345jhwerssssss
                 product_category_id:
-                  type: string
+                  type: integer
+                  example: '1'
                 tax:
                   type: integer
                   example: '11'
@@ -4657,7 +5383,10 @@ paths:
                   type: string
                 inventory:
                   type: integer
-                  example: '0'
+                  example: '1'
+                inventory_type:
+                  type: string
+                  example: something
                 sale_purchase:
                   type: string
                 unit_id:
@@ -4742,143 +5471,79 @@ paths:
               properties:
                 name:
                   type: string
-                  example: ' test3'
-                slug:
-                  type: string
-                  example: ' test3'
+                  example: titleedit
                 sku:
                   type: string
-                  example: ' test3'
+                  example: T0982345jhwerss
                 product_category_id:
-                  type: string
-                  example: ' '
-                product_category:
-                  type: string
-                  example: ' '
+                  type: integer
+                  example: '1'
                 tax:
-                  type: string
-                  example: ' 0'
-                is_service:
-                  type: string
-                  example: ' 0'
-                unit:
-                  type: string
-                  example: ' '
-                status:
-                  type: string
-                  example: ' '
-                re_order_point:
-                  type: string
-                  example: ' '
-                description:
-                  type: string
-                  example: ' '
-                multiple_warehouse:
-                  type: string
-                  example: ' 1'
-                barcode_number:
-                  type: string
-                  example: ' '
-                entry_number:
-                  type: string
-                  example: ' '
-                sale_rate:
-                  type: string
-                  example: ' '
-                sale_account:
-                  type: string
-                  example: ' '
-                sale_note:
-                  type: string
-                  example: ' '
-                purchase_rate:
-                  type: string
-                  example: ' '
-                purchase_account:
-                  type: string
-                  example: ' '
-                purchase_note:
-                  type: string
-                  example: ' '
-                inventory:
-                  type: string
-                  example: ' 1'
-                sales_purchase:
-                  type: string
-                  example: ' 0'
-                created_at:
-                  type: string
-                  example: ' 2023-12-11 07:35:20'
-                updated_at:
-                  type: string
-                  example: ' 2023-12-11 07:36:01'
-                image:
-                  type: string
-                  example: ' '
-                thumbnail_image:
-                  type: string
-                  example: ' '
-                quantity_on_hand:
-                  type: string
-                  example: ' 33'
-                calculated_cost:
                   type: integer
                   example: '11'
-                calculated_warehouse_inventory:
+                is_service:
                   type: string
-                  example: '[object Object]'
-                total_amount:
-                  type: number
-                  example: '121.00'
-                can_inventory_edit:
-                  type: boolean
-                  example: 'true'
+                status:
+                  type: string
+                re_order_point:
+                  type: string
+                multiple_warehouse:
+                  type: integer
+                  example: '1'
+                warehouse_inventory[0][initial_quantity_on_hand]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[0][cost_per_unit]:
+                  type: integer
+                  example: '100'
+                warehouse_inventory[0][warehouse_id]:
+                  type: integer
+                  example: '1'
+                warehouse_inventory[1][initial_quantity_on_hand]:
+                  type: integer
+                  example: '50'
+                warehouse_inventory[1][as_of_date]:
+                  type: string
+                  example: '2022-01-01'
+                warehouse_inventory[1][cost_per_unit]:
+                  type: integer
+                  example: '110'
+                warehouse_inventory[1][warehouse_id]:
+                  type: integer
+                  example: '2'
+                barcode_number:
+                  type: string
+                  example: asd
+                entry_number:
+                  type: string
+                sale_rate:
+                  type: string
+                sale_account:
+                  type: string
+                sale_note:
+                  type: string
+                purchase_rate:
+                  type: string
+                purchase_account:
+                  type: string
+                purchase_note:
+                  type: string
+                inventory:
+                  type: integer
+                  example: '1'
                 inventory_type:
                   type: string
-                  example: batch
-                unit_id:
+                  example: something
+                sale_purchase:
                   type: string
-                logo:
+                unit_id:
                   type: string
                 _method:
                   type: string
-                  example: ' PATCH'
-                warehouse_inventory[0][initial_quantity_on_hand]:
-                  type: integer
-                  example: '11'
-                warehouse_inventory[0][as_of_date]:
-                  type: string
-                  example: '2023-12-11'
-                warehouse_inventory[0][cost_per_unit]:
-                  type: integer
-                  example: '11'
-                warehouse_inventory[0][warehouse_id]:
-                  type: integer
-                  example: '3'
-                warehouse_inventory[0][warehouse_name]:
-                  type: string
-                  example: default warehouse
-                warehouse_inventory[0][remaining_quantity]:
-                  type: integer
-                  example: '11'
-                warehouse_inventory[1][initial_quantity_on_hand]:
-                  type: integer
-                  example: '22'
-                warehouse_inventory[1][as_of_date]:
-                  type: string
-                  example: '2023-12-12'
-                warehouse_inventory[1][cost_per_unit]:
-                  type: integer
-                  example: '22'
-                warehouse_inventory[1][warehouse_id]:
-                  type: integer
-                  example: '3'
-                warehouse_inventory[1][warehouse_name]:
-                  type: string
-                  example: default warehouse
-                warehouse_inventory[1][remaining_quantity]:
-                  type: integer
-                  example: '22'
+                  example: PATCH
       security:
         - bearerAuth: []
       parameters:
@@ -4897,7 +5562,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -4925,7 +5590,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -4953,7 +5618,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '17'
       responses:
         '200':
           description: Successful response
@@ -5052,7 +5717,7 @@ paths:
               properties:
                 title:
                   type: string
-                  example: title edit
+                  example: title 2
                 account_type:
                   type: string
                   example: Asset
@@ -5060,8 +5725,7 @@ paths:
                   type: string
                   example: description edit
                 parent_id:
-                  type: integer
-                  example: '2'
+                  type: string
                 status:
                   type: string
                   example: active
@@ -8049,6 +8713,40 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/tax-pool-type:
+    get:
+      tags:
+        - tax pool type
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/account-head-amount:
     get:
       tags:
@@ -8392,7 +9090,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -8420,7 +9118,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -8656,7 +9354,7 @@ paths:
             schema:
               type: object
               example:
-                name: warehouse1
+                name: warehouse3
                 location: warehouse1 location
                 contact_person: ''
                 phone: ''
@@ -8732,7 +9430,7 @@ paths:
               type: object
               example:
                 _method: patch
-                name: warehouse1
+                name: warehouse2
                 location: warehouse1 location
                 contact_person: ''
                 phone: ''
@@ -8782,7 +9480,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -8944,7 +9642,7 @@ paths:
                 to_warehouse_id: 2
                 products:
                   - product_id: 1
-                    quantity: 15
+                    quantity: 5
                 remarks: remarks
       security:
         - bearerAuth: []
@@ -8964,7 +9662,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -8992,7 +9690,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -9025,7 +9723,31 @@ paths:
           schema:
             type: integer
           required: true
-          example: '28'
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/file/{filename}:
+    delete:
+      tags:
+        - default
+      summary: delete file
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: filename
+          in: path
+          schema:
+            type: string
+          required: true
+          example: a7ae29da5d45cf3c3cb30d587cc994e8.jpg
       responses:
         '200':
           description: Successful response
@@ -9057,9 +9779,68 @@ paths:
           example: application/json
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 20 Dec 2023 07:55:02 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: login successful
+                data:
+                  access_token: >-
+                    eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YWU0NTY5Ni0xYmQyLTQyMjQtOWI3Zi00NGE5NDg2ZWE0ZjUiLCJqdGkiOiIzNzZiM2FkMmVkYjZhOTI0Mzk0MjIzNmNkMDgwZjc2NTA1MDcwMTMyNTYyODA2MjliYTlkNmE5NDc4YzMzMWQ5M2IyOTkxNzBmOTY2MTNmMCIsImlhdCI6MTcwMzA1ODkwMi40MzE5MzMsIm5iZiI6MTcwMzA1ODkwMi40MzE5MzYsImV4cCI6MTcwNDM1NDkwMi4zOTg1NzgsInN1YiI6IjIiLCJzY29wZXMiOlsiKiJdfQ.SqlOHKz4da_OdybnKdNzqdhLZ6IQiM5E1X7XKYX5nBiZTo0u0aoYaK5y2VBlBb994fLC5HvGqy_um5L9b5B772ryMrGbUwf7oVadw4e7y-W_lA711o9k1MgMzIQ_PWhMI_d7PuTzkzuW24P3hSr65YdPphxxte5bdwqA64NolN_A5YhF5BRt3ymZFBEK6gcYLhVU0SyOKB6rSI4pIYEXhHyVBVwTXYx6Iq2sQWCqMHGJFhKaM5RU3CI74Y02ZwhTTK5JIHlu1xmJ4dc5qDO5MNy4FSOlovxZineSl4kS-6hUhsx88yCalGZFKMyyqlp1fR-DK37ruBxYIt1zFGZ5j0RL-tC5pSjjCx6wJX4oUBKNrdTcS_cm5imxSRkNF79Yg2x6FJ_8w56-F5Wzwyf3OqPpb02YmKPtD4o1jZPq-uxluTvyZtpxFyBpjZ12z-xmCBNd2VVFRi6kBQ8i3bOYJzLo4fXhALEcH7uZ2uAfhj2w-7tqHScUX4z6hM3-NhpuykoMcMYy_YKgm-Redl6hRdlnMeb2tVzIh4hJEa2xLXpP7QcuKqZ5-KWHibWi7NXQJJ7VlaQSd2Aq68hKf9xreilxv0M04853cRSAizxXJV9BdhQadJqVjX0blc712mMMEo9NtiY_6QS7wzPW7UxLgR-mH4JhZX2ZTo3ngK6N4S8
+                  user:
+                    id: 2
+                    name: accounting firm user
+                    email: accountingfirm@accountingfirm.com
+                    role:
+                      - accountingfirm
+                    permissions: []
+                    accounting_firms:
+                      - id: 1
+                        name: accountingfirm1
+                        slug: accountingfirm1
+                    companies: []
+                  refresh_token: >-
+                    def502004a973426a9338666655c4547ee307101fd92cf0952b0aac3cd3571eb49fa95bf024b11b1c59f25fcf7fa2db28cf2b0657ed595899367ee79a5485cd92281e0d1a7cdd5fcdd93928be6267b6bcef3b79b72b83d0a2ad7cb191023fa5317b65f188811be115104785d57421c1730193c440dac503dfc344fdda07c6075dc02b71854ca649cd660673145cf658a6cb7ec85773f485c52f5e2643d024ebd1d01bcc111d7a8bdc30245b2bbf2514eb20945a2b3071bb3ee762341a3ba81303873b40d4bc0506b162e753a893cfed8585c2435582fb833c1db6396599ec463b8b37ffec2de4c32678ba16227440cac4daa187b36aa30dee7987a12eed7bd994d25ecbe9725782da8505cc2fb4a26c01fc66533efb8610947320f00101e6bd0654f0209b3251302e25d5965fbf7b63cdd6407c24819a63e496ca7b23caac1624269ab52373ec18fc4c350b1197e844fe4fc467ff38f3f5f158cc1bfb7f2da101c794217c8cd77329c273fd80fa5db41a18e9224d7d231894fbc24047f24260d6e9f06a084de0d
+                  expires_in: 1296000
   /api/refresh-token/{refresh_token}:
     post:
       tags:
