@@ -5084,7 +5084,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "43"
+									"value": "67"
 								}
 							]
 						}
@@ -5302,7 +5302,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employee_id\": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68],\n    \"status\": \"paid\"\n}",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employee_id\": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68],\n    \"status\": \"paid\",\n    \"paid_account_id\": 69\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5355,7 +5355,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"note\": \"hello i am under the water.\"\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 1500,\n            \"tds\": 100,\n            \"note\": \"hello i am under the water.\"\n        }\n    ]\n}",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"deduction\": 2000,\n            \"tds\": 500,\n            \"note\": \"hello i am under the water.\"\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 1500,\n            \"tds\": 500,\n            \"note\": \"hello i am under the water.\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -9012,19 +9012,19 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/prefix/:slug",
+							"raw": "{{url}}/api/prefix/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"prefix",
-								":slug"
+								":id"
 							],
 							"variable": [
 								{
-									"key": "slug",
-									"value": "service"
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -9134,19 +9134,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/prefix/:slug",
+							"raw": "{{url}}/api/prefix/:account_head_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"prefix",
-								":slug"
+								":account_head_id"
 							],
 							"variable": [
 								{
-									"key": "slug",
-									"value": "service"
+									"key": "account_head_id",
+									"value": ""
 								}
 							]
 						}

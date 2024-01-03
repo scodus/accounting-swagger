@@ -2965,7 +2965,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '43'
+          example: '67'
       responses:
         '200':
           description: Successful response
@@ -3053,6 +3053,7 @@ paths:
                   - 67
                   - 68
                 status: paid
+                paid_account_id: 69
       security:
         - bearerAuth: []
       parameters:
@@ -3082,10 +3083,12 @@ paths:
                 date: 2024-01
                 employees:
                   - employee_id: 67
+                    deduction: 2000
+                    tds: 500
                     note: hello i am under the water.
                   - employee_id: 68
                     deduction: 1500
-                    tds: 100
+                    tds: 500
                     note: hello i am under the water.
       security:
         - bearerAuth: []
@@ -5202,7 +5205,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/prefix/{slug}:
+  /api/prefix/{id}:
     post:
       tags:
         - prefix
@@ -5232,40 +5235,12 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: slug
+        - name: id
           in: path
-          schema:
-            type: string
-          required: true
-          example: service
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - prefix
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
           schema:
             type: integer
-          example: '1'
-        - name: slug
-          in: path
-          schema:
-            type: string
           required: true
-          example: service
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -5305,6 +5280,34 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/prefix/{account_head_id}:
+    get:
+      tags:
+        - prefix
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: account_head_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
