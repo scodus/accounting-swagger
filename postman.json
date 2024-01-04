@@ -2673,7 +2673,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"package_id\": 1,\n    \"period\": 30,\n    \"price\": null, //-1 for unlimited | null for company user\n    \"user\": null,//-1 for unlimited | null for company user\n    \"transaction\": null,//-1 for unlimited | null for company user\n    \"product\": null,//-1 for unlimited | null for company user\n    \"storage\": null//-1 for unlimited | null for company user\n}",
+									"raw": "{\n    \"package_id\": 3,\n    \"period\": 29,\n    \"price\": 100, //-1 for unlimited | null for company user\n    \"user\": 3,//-1 for unlimited | null for company user\n    \"transaction\": 2,//-1 for unlimited | null for company user\n    \"product\": 1,//-1 for unlimited | null for company user\n    \"storage\": 1//-1 for unlimited | null for company user\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2775,7 +2775,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"package_id\": 1\n}",
+									"raw": "{\n    \"package_id\": 3\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3173,7 +3173,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"tomnjerry\",\n    \"email\": \"tomnjerry8963@gmail.com\",\n    \"company_id\": 1\n}",
+							"raw": "{\n    \"name\": \"augx\",\n    \"email\": \"augxdeveloper@gmail.com\",\n    \"company_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -15067,7 +15067,7 @@
 						},
 						{
 							"key": "email",
-							"value": "company@company.com",
+							"value": "company1@company.com",
 							"type": "text",
 							"disabled": true
 						},
@@ -15090,7 +15090,7 @@
 						},
 						{
 							"key": "email",
-							"value": "",
+							"value": "augxdeveloper@gmail.com",
 							"type": "text",
 							"disabled": true
 						}
