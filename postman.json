@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "13615e78-1bc0-4e83-bbad-62d116fe0755",
+		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30419631",
-		"_collection_link": "https://interstellar-flare-54658.postman.co/workspace/My-Workspace~89c66d58-6cd3-4095-8341-97bf285c1779/collection/26417274-13615e78-1bc0-4e83-bbad-62d116fe0755?action=share&source=collection_link&creator=30419631"
+		"_exporter_id": "32125242",
+		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=32125242"
 	},
 	"item": [
 		{
@@ -614,7 +614,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "test",
+									"value": "Accumulated Depreciation",
 									"type": "text"
 								},
 								{
@@ -629,7 +629,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "1",
+									"value": "54",
 									"type": "text"
 								},
 								{
@@ -703,17 +703,17 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "47",
+									"value": "80",
 									"type": "text"
 								},
 								{
 									"key": "code",
-									"value": "nruFLiDE2wX",
+									"value": "nruFLiDE2wXs",
 									"type": "text"
 								},
 								{
 									"key": "opening_balance",
-									"value": "500000",
+									"value": "300000",
 									"type": "text"
 								},
 								{
@@ -741,7 +741,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "48"
+									"value": "80"
 								}
 							]
 						}
@@ -791,7 +791,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "39"
+									"value": "43"
 								}
 							]
 						}
@@ -832,7 +832,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=1&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=sales&tree_view=1&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -843,7 +843,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -859,11 +859,11 @@
 								},
 								{
 									"key": "parent_slug",
-									"value": ""
+									"value": "sales"
 								},
 								{
 									"key": "tree_view",
-									"value": "",
+									"value": "1",
 									"description": "1 || 0"
 								},
 								{
@@ -936,6 +936,782 @@
 							"variable": [
 								{
 									"key": "id",
+									"value": "40"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "asset",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asset1",
+									"type": "text"
+								},
+								{
+									"key": "manufacture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_category_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warranty",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "location_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "expiry_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "has_additional_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "additional_info[size]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "additional_info[qwe]",
+									"value": "62",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "purchase_date",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "52",
+									"type": "text"
+								},
+								{
+									"key": "useful_year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_start_date",
+									"value": "2023-01-01",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_account_id",
+									"value": "56",
+									"description": "child of Depreciation account under non current account. use slug 'depreciation'",
+									"type": "text"
+								},
+								{
+									"key": "accumulated_depreciation_account_id",
+									"value": "57",
+									"description": "child of Accumulated Depreciation account under indirect expense. use slug 'accumulated-depreciation'",
+									"type": "text"
+								},
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/asset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asset1edit",
+									"type": "text"
+								},
+								{
+									"key": "manufacture",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "asset_category_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "warranty",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "location_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "expiry_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "has_additional_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "additional_info[size]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "additional_info[qwe]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "purchase_price",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "purchase_date",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "asset_id",
+									"value": "52",
+									"type": "text"
+								},
+								{
+									"key": "useful_year",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_start_date",
+									"value": "2023-01-01",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_account_id",
+									"value": "57",
+									"type": "text"
+								},
+								{
+									"key": "accumulated_depreciation_account_id",
+									"value": "56",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/asset/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/asset/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/asset?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/asset/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "asset category",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "assetcategory4",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][name]",
+									"value": "size",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][type]",
+									"value": "option",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][0]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][1]",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][2]",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/asset-category",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "assetcategory1edit",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][name]",
+									"value": "size",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][type]",
+									"value": "option",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][0]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "fields[0][option][1]",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/asset-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/asset-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/asset-category?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset-category"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/asset-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"asset-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
 									"value": "1"
 								}
 							]
@@ -985,21 +1761,24 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-10-16 14-03-31.png"
+									"src": [
+										"/home/user--49/Pictures/Screenshots/Screenshot from 2023-10-16 14-03-31.png",
+										"/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
+									]
 								},
 								{
 									"key": "account_number",
-									"value": "",
+									"value": "a2134dsf",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "",
+									"value": "asdfasdf",
 									"type": "text"
 								},
 								{
 									"key": "swift_code",
-									"value": "",
+									"value": "zxcvzxcv",
 									"type": "text"
 								},
 								{
@@ -1009,7 +1788,7 @@
 								},
 								{
 									"key": "account_name",
-									"value": "",
+									"value": "asdfasdfasdf",
 									"type": "text"
 								},
 								{
@@ -2430,7 +3209,7 @@
 							"formdata": [
 								{
 									"key": "document_id",
-									"value": "31",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -2489,7 +3268,7 @@
 								},
 								{
 									"key": "document_id",
-									"value": "31",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -2562,7 +3341,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "25"
+									"value": "1"
 								}
 							]
 						}
@@ -2608,7 +3387,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/comment?paginate=1&page=&limit=&search_keyword=&document_id=31",
+							"raw": "{{url}}/api/comment?paginate=1&page=&limit=&search_keyword=&document_id=1",
 							"host": [
 								"{{url}}"
 							],
@@ -2635,7 +3414,7 @@
 								},
 								{
 									"key": "document_id",
-									"value": "31"
+									"value": "1"
 								}
 							]
 						}
@@ -3173,7 +3952,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"augx\",\n    \"email\": \"augxdeveloper@gmail.com\",\n    \"company_id\": 1\n}",
+							"raw": "{\n    \"name\": \"tomnjerry\",\n    \"email\": \"tomnjerry8963@gmail.com\",\n    \"company_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3792,7 +4571,10 @@
 								{
 									"key": "documents[0]",
 									"type": "file",
-									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-12-01 09-35-37.png"
+									"src": [
+										"/home/user--49/Pictures/Screenshots/Screenshot from 2023-12-01 09-35-37.png",
+										"/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
+									]
 								},
 								{
 									"key": "documents[1]",
@@ -4178,29 +4960,124 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "employee name",
+									"key": "fullname",
+									"value": "employee1",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "employee@employee.com",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "98724658796",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "employee address",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "status",
-									"value": "active",
+									"key": "contact_info",
+									"value": "",
 									"type": "text"
+								},
+								{
+									"key": "citizenship_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_relation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "designation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "work_location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "date_of_hire",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "6500",
+									"type": "text"
+								},
+								{
+									"key": "allowance",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "citizenship[0]",
+									"type": "file",
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
+								},
+								{
+									"key": "citizenship[1]",
+									"type": "file",
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2023-12-19 11-22-26.png"
+								},
+								{
+									"key": "citizenship[2]",
+									"type": "file",
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
 								}
 							]
 						},
@@ -4242,28 +5119,108 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "name",
-									"value": "employee name edit",
+									"key": "fullname",
+									"value": "employee1edit",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "employee@employee.com",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "12431234",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "employee address edit",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "status",
-									"value": "active",
+									"key": "contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "citizenship_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_contact_info",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "emergency_relation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "designation",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "work_location",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "date_of_hire",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_holder_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "account_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "65000",
+									"type": "text"
+								},
+								{
+									"key": "allowance",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -4286,7 +5243,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "37"
+									"value": "67"
 								}
 							]
 						}
@@ -4377,7 +5334,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=&year=&date=2022-01",
 							"host": [
 								"{{url}}"
 							],
@@ -4388,7 +5345,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -4401,6 +5358,22 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "payroll",
+									"value": "1"
+								},
+								{
+									"key": "month",
+									"value": ""
+								},
+								{
+									"key": "year",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": "2022-01"
 								}
 							]
 						}
@@ -4453,8 +5426,109 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "37"
+									"value": "67"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee summary",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employee_id\": [59, 60, 61, 62, 63, 64, 65, 66, 67, 68],\n    \"status\": \"paid\",\n    \"paid_account_id\": 69\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/employee-summary",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee tax deduction",
+			"item": [
+				{
+					"name": "store/update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"deduction\": 2000,\n            \"tds\": 500,\n            \"note\": \"hello i am under the water.\"\n        },\n        {\n            \"employee_id\": 68,\n            \"deduction\": 1500,\n            \"tds\": 500,\n            \"note\": \"hello i am under the water.\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/employee-tax-deduction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-tax-deduction"
 							]
 						}
 					},
@@ -4532,7 +5606,12 @@
 								{
 									"key": "files[0]",
 									"type": "file",
-									"src": "/home/user--49/Downloads/IMG20231208144612.jpg"
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
+								},
+								{
+									"key": "files[1]",
+									"type": "file",
+									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
 								}
 							]
 						},
@@ -4643,7 +5722,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "2"
 								}
 							]
 						}
@@ -4693,7 +5772,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "25"
+									"value": "1"
 								}
 							]
 						}
@@ -4819,7 +5898,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "2"
 								}
 							]
 						}
@@ -4876,7 +5955,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "1"
 								}
 							]
 						}
@@ -4886,7 +5965,7 @@
 			]
 		},
 		{
-			"name": "fiscal year",
+			"name": "fishal year",
 			"item": [
 				{
 					"name": "store",
@@ -5177,6 +6256,312 @@
 								{
 									"key": "id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fixed asset",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "audit_depreciation",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "tax_pool_type_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-asset",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-asset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test edit",
+									"type": "text"
+								},
+								{
+									"key": "audit_depreciation",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "tax_pool_type_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-asset/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-asset/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "41"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-asset?paginate=1&page=&limit=&search_keyword=&parent_id=11",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-asset"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "parent_id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/fixed-asset/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fixed-asset",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
 								}
 							]
 						}
@@ -5796,7 +7181,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 90,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 18,\n            \"warehouse_id\": 2,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 90,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5811,106 +7196,6 @@
 							"path": [
 								"api",
 								"inventory-adjustment"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"warehouse_id\": 1,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 10,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/inventory-adjustment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"inventory-adjustment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/inventory-adjustment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"inventory-adjustment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -6856,7 +8141,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&account_head_id=34",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&slug=cash-in-hand",
 							"host": [
 								"{{url}}"
 							],
@@ -6878,8 +8163,349 @@
 									"value": ""
 								},
 								{
-									"key": "account_head_id",
-									"value": "34"
+									"key": "slug",
+									"value": "cash-in-hand"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "location",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "location1",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/location",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "location1edit",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "asdasdasd",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "zipcode",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/location?paginate=1&page=&limit=&search_keyword=&status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -7794,6 +9420,198 @@
 			]
 		},
 		{
+			"name": "prefix",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "next_number",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix?paginate=&page=&limit=&search_keyword=&group=charts-of-accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "group",
+									"value": "charts-of-accounts"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/prefix/:account_head_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prefix",
+								":account_head_id"
+							],
+							"variable": [
+								{
+									"key": "account_head_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "product",
 			"item": [
 				{
@@ -7832,12 +9650,12 @@
 								},
 								{
 									"key": "sku",
-									"value": "T0982345jhwer",
+									"value": "T0982345jhwerssssss",
 									"type": "text"
 								},
 								{
 									"key": "product_category_id",
-									"value": "",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -7952,7 +9770,12 @@
 								},
 								{
 									"key": "inventory",
-									"value": "0",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "inventory_type",
+									"value": "something",
 									"type": "text"
 								},
 								{
@@ -7969,7 +9792,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": []
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
 								}
 							]
 						},
@@ -8017,163 +9840,144 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": " test3",
-									"type": "text"
-								},
-								{
-									"key": "slug",
-									"value": " test3",
+									"value": "titleedit",
 									"type": "text"
 								},
 								{
 									"key": "sku",
-									"value": " test3",
+									"value": "T0982345jhwerss",
 									"type": "text"
 								},
 								{
 									"key": "product_category_id",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "product_category",
-									"value": " ",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "tax",
-									"value": " 0",
-									"type": "text"
-								},
-								{
-									"key": "is_service",
-									"value": " 0",
-									"type": "text"
-								},
-								{
-									"key": "unit",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "re_order_point",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "multiple_warehouse",
-									"value": " 1",
-									"type": "text"
-								},
-								{
-									"key": "barcode_number",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "entry_number",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "sale_rate",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "sale_account",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "sale_note",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "purchase_rate",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "purchase_account",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "purchase_note",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "inventory",
-									"value": " 1",
-									"type": "text"
-								},
-								{
-									"key": "sales_purchase",
-									"value": " 0",
-									"type": "text"
-								},
-								{
-									"key": "created_at",
-									"value": " 2023-12-11 07:35:20",
-									"type": "text"
-								},
-								{
-									"key": "updated_at",
-									"value": " 2023-12-11 07:36:01",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "thumbnail_image",
-									"value": " ",
-									"type": "text"
-								},
-								{
-									"key": "quantity_on_hand",
-									"value": " 33",
-									"type": "text"
-								},
-								{
-									"key": "calculated_cost",
 									"value": "11",
 									"type": "text"
 								},
 								{
-									"key": "calculated_warehouse_inventory",
-									"value": "[object Object]",
+									"key": "is_service",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "total_amount",
-									"value": "121.00",
+									"key": "re_order_point",
+									"value": "",
 									"type": "text"
 								},
 								{
-									"key": "can_inventory_edit",
-									"value": "true",
+									"key": "multiple_warehouse",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][cost_per_unit]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[0][warehouse_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
+									"value": "50",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_inventory[1][as_of_date]",
+									"value": "2022-01-01",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_inventory[1][cost_per_unit]",
+									"value": "110",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_inventory[1][warehouse_id]",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "barcode_number",
+									"value": "asd",
+									"type": "text"
+								},
+								{
+									"key": "entry_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sale_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_rate",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_account",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "purchase_note",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "inventory",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "inventory_type",
-									"value": "batch",
+									"value": "something",
 									"type": "text"
+								},
+								{
+									"key": "sale_purchase",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "unit_id",
@@ -8181,73 +9985,8 @@
 									"type": "text"
 								},
 								{
-									"key": "logo",
-									"value": "",
-									"type": "text"
-								},
-								{
 									"key": "_method",
-									"value": " PATCH",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][initial_quantity_on_hand]",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][as_of_date]",
-									"value": "2023-12-11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][cost_per_unit]",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][warehouse_id]",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][warehouse_name]",
-									"value": "default warehouse",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[0][remaining_quantity]",
-									"value": "11",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][initial_quantity_on_hand]",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][as_of_date]",
-									"value": "2023-12-12",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][cost_per_unit]",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][warehouse_id]",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][warehouse_name]",
-									"value": "default warehouse",
-									"type": "text"
-								},
-								{
-									"key": "warehouse_inventory[1][remaining_quantity]",
-									"value": "22",
+									"value": "PATCH",
 									"type": "text"
 								}
 							]
@@ -8265,7 +10004,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "7"
 								}
 							]
 						}
@@ -8315,7 +10054,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "7"
 								}
 							]
 						}
@@ -8445,7 +10184,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "4"
+									"value": "17"
 								}
 							]
 						}
@@ -8557,7 +10296,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "title edit",
+									"value": "title 2",
 									"type": "text"
 								},
 								{
@@ -8572,7 +10311,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "2",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -13342,6 +15081,75 @@
 			]
 		},
 		{
+			"name": "tax pool type",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tax-pool-type?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tax-pool-type"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "transfer",
 			"item": [
 				{
@@ -13901,7 +15709,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "3"
 								}
 							]
 						}
@@ -13951,7 +15759,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "9"
 								}
 							]
 						}
@@ -14440,7 +16248,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
+							"raw": "{\n    \"name\": \"warehouse3\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14488,7 +16296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"warehouse1\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"warehouse2\",\n    \"location\": \"warehouse1 location\",\n    \"contact_person\": \"\",\n    \"phone\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14558,7 +16366,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "5"
 								}
 							]
 						}
@@ -14824,7 +16632,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"date\": \"20220-01-01\",\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 15\n        }\n    ],\n    \"remarks\": \"remarks\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"date\": \"20220-01-01\",\n    \"from_warehouse_id\": 1,\n    \"to_warehouse_id\": 2,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 5\n        }\n    ],\n    \"remarks\": \"remarks\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14844,7 +16652,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "2"
 								}
 							]
 						}
@@ -14970,7 +16778,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -15022,7 +16830,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "28"
+									"value": "2"
 								}
 							]
 						}
@@ -15030,6 +16838,51 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "delete file",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/file/:filename",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"file",
+						":filename"
+					],
+					"variable": [
+						{
+							"key": "filename",
+							"value": "a7ae29da5d45cf3c3cb30d587cc994e8.jpg"
+						}
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "login",
@@ -15063,11 +16916,12 @@
 						{
 							"key": "email",
 							"value": "superadmin@superadmin.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "email",
-							"value": "company1@company.com",
+							"value": "company@company.com",
 							"type": "text",
 							"disabled": true
 						},
@@ -15080,8 +16934,7 @@
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "password",
@@ -15090,7 +16943,7 @@
 						},
 						{
 							"key": "email",
-							"value": "augxdeveloper@gmail.com",
+							"value": "",
 							"type": "text",
 							"disabled": true
 						}
@@ -15107,7 +16960,117 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "superadmin@superadmin.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "company@company.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "rowolo9548@bnovel.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "accountingfirm@accountingfirm.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 07:55:02 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 20 Dec 2023 07:55:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.2-1ubuntu2.14"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"login successful\",\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YWU0NTY5Ni0xYmQyLTQyMjQtOWI3Zi00NGE5NDg2ZWE0ZjUiLCJqdGkiOiIzNzZiM2FkMmVkYjZhOTI0Mzk0MjIzNmNkMDgwZjc2NTA1MDcwMTMyNTYyODA2MjliYTlkNmE5NDc4YzMzMWQ5M2IyOTkxNzBmOTY2MTNmMCIsImlhdCI6MTcwMzA1ODkwMi40MzE5MzMsIm5iZiI6MTcwMzA1ODkwMi40MzE5MzYsImV4cCI6MTcwNDM1NDkwMi4zOTg1NzgsInN1YiI6IjIiLCJzY29wZXMiOlsiKiJdfQ.SqlOHKz4da_OdybnKdNzqdhLZ6IQiM5E1X7XKYX5nBiZTo0u0aoYaK5y2VBlBb994fLC5HvGqy_um5L9b5B772ryMrGbUwf7oVadw4e7y-W_lA711o9k1MgMzIQ_PWhMI_d7PuTzkzuW24P3hSr65YdPphxxte5bdwqA64NolN_A5YhF5BRt3ymZFBEK6gcYLhVU0SyOKB6rSI4pIYEXhHyVBVwTXYx6Iq2sQWCqMHGJFhKaM5RU3CI74Y02ZwhTTK5JIHlu1xmJ4dc5qDO5MNy4FSOlovxZineSl4kS-6hUhsx88yCalGZFKMyyqlp1fR-DK37ruBxYIt1zFGZ5j0RL-tC5pSjjCx6wJX4oUBKNrdTcS_cm5imxSRkNF79Yg2x6FJ_8w56-F5Wzwyf3OqPpb02YmKPtD4o1jZPq-uxluTvyZtpxFyBpjZ12z-xmCBNd2VVFRi6kBQ8i3bOYJzLo4fXhALEcH7uZ2uAfhj2w-7tqHScUX4z6hM3-NhpuykoMcMYy_YKgm-Redl6hRdlnMeb2tVzIh4hJEa2xLXpP7QcuKqZ5-KWHibWi7NXQJJ7VlaQSd2Aq68hKf9xreilxv0M04853cRSAizxXJV9BdhQadJqVjX0blc712mMMEo9NtiY_6QS7wzPW7UxLgR-mH4JhZX2ZTo3ngK6N4S8\",\n        \"user\": {\n            \"id\": 2,\n            \"name\": \"accounting firm user\",\n            \"email\": \"accountingfirm@accountingfirm.com\",\n            \"role\": [\n                \"accountingfirm\"\n            ],\n            \"permissions\": [],\n            \"accounting_firms\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"accountingfirm1\",\n                    \"slug\": \"accountingfirm1\"\n                }\n            ],\n            \"companies\": []\n        },\n        \"refresh_token\": \"def502004a973426a9338666655c4547ee307101fd92cf0952b0aac3cd3571eb49fa95bf024b11b1c59f25fcf7fa2db28cf2b0657ed595899367ee79a5485cd92281e0d1a7cdd5fcdd93928be6267b6bcef3b79b72b83d0a2ad7cb191023fa5317b65f188811be115104785d57421c1730193c440dac503dfc344fdda07c6075dc02b71854ca649cd660673145cf658a6cb7ec85773f485c52f5e2643d024ebd1d01bcc111d7a8bdc30245b2bbf2514eb20945a2b3071bb3ee762341a3ba81303873b40d4bc0506b162e753a893cfed8585c2435582fb833c1db6396599ec463b8b37ffec2de4c32678ba16227440cac4daa187b36aa30dee7987a12eed7bd994d25ecbe9725782da8505cc2fb4a26c01fc66533efb8610947320f00101e6bd0654f0209b3251302e25d5965fbf7b63cdd6407c24819a63e496ca7b23caac1624269ab52373ec18fc4c350b1197e844fe4fc467ff38f3f5f158cc1bfb7f2da101c794217c8cd77329c273fd80fa5db41a18e9224d7d231894fbc24047f24260d6e9f06a084de0d\",\n        \"expires_in\": 1296000\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "refresh token",
@@ -15251,6 +17214,9 @@
 		},
 		{
 			"name": "test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -15270,6 +17236,10 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
 					"raw": "{{url}}/api/test",
 					"host": [
