@@ -3452,7 +3452,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"package_id\": 3,\n    \"period\": 29,\n    \"price\": 100, //-1 for unlimited | null for company user\n    \"user\": 3,//-1 for unlimited | null for company user\n    \"transaction\": 2,//-1 for unlimited | null for company user\n    \"product\": 1,//-1 for unlimited | null for company user\n    \"storage\": 1//-1 for unlimited | null for company user\n}",
+									"raw": "{\n    \"package_id\": 1,\n    \"period\": 30,\n    \"price\": 1001, //-1 for unlimited | null for company user\n    \"user\": 1,//-1 for unlimited | null for company user\n    \"transaction\": 10,//-1 for unlimited | null for company user\n    \"product\": 10,//-1 for unlimited | null for company user\n    \"storage\": 1//-1 for unlimited | null for company user\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3503,7 +3503,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"package_id\": 1,\n    \"period\": 30,\n    \"price\": null, //-1 for unlimited | null for company user\n    \"user\": 100,//-1 for unlimited | null for company user\n    \"transaction\": null,//-1 for unlimited | null for company user\n    \"product\": null,//-1 for unlimited | null for company user\n    \"storage\": null//-1 for unlimited | null for company user\n}",
+									"raw": "{\n    \"package_id\": 3,\n    \"period\": 30,\n    \"price\": 1001, //-1 for unlimited | null for company user\n    \"user\": 1,//-1 for unlimited | null for company user\n    \"transaction\": 10,//-1 for unlimited | null for company user\n    \"product\": 10,//-1 for unlimited | null for company user\n    \"storage\": 1//-1 for unlimited | null for company user\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -16916,8 +16916,7 @@
 						{
 							"key": "email",
 							"value": "superadmin@superadmin.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "email",
@@ -16934,7 +16933,8 @@
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "password",

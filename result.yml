@@ -2007,12 +2007,12 @@ paths:
             schema:
               type: object
               example:
-                package_id: 3
-                period: 29
-                price: 100
-                user: 3
-                transaction: 2
-                product: 1
+                package_id: 1
+                period: 30
+                price: 1001
+                user: 1
+                transaction: 10
+                product: 10
                 storage: 1
       security:
         - bearerAuth: []
@@ -2044,13 +2044,13 @@ paths:
             schema:
               type: object
               example:
-                package_id: 1
+                package_id: 3
                 period: 30
-                price: null
-                user: 100
-                transaction: null
-                product: null
-                storage: null
+                price: 1001
+                user: 1
+                transaction: 10
+                product: 10
+                storage: 1
       security:
         - bearerAuth: []
       parameters:
