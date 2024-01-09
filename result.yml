@@ -8,11 +8,16 @@ info:
     backgroundColor: '#FFFFFF'
     altText: logo
   termsOfService: '#'
+  contact:
+    name: Scodus
+    url: https://scodus.com
+    email: scodusnp@gmail.com
   license:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: http://{{url}}
+  - url: https://accounting.scodus.com/
+    description: accounting software server
 components:
   securitySchemes:
     bearerAuth:
@@ -409,7 +414,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Accumulated Depreciation
+                  example: asdssddds
                 account_type:
                   type: string
                   example: Assets
@@ -417,7 +422,7 @@ paths:
                   type: string
                 parent_id:
                   type: integer
-                  example: '54'
+                  example: '33'
                 code:
                   type: string
                 opening_balance:
@@ -2046,11 +2051,11 @@ paths:
               example:
                 package_id: 3
                 period: 30
-                price: 1001
-                user: 1
-                transaction: 10
-                product: 10
-                storage: 1
+                price: 1011
+                user: 11
+                transaction: 12
+                product: 13
+                storage: 14
       security:
         - bearerAuth: []
       parameters:
@@ -2081,7 +2086,7 @@ paths:
             schema:
               type: object
               example:
-                package_id: 3
+                package_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -3845,10 +3850,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Sub Folder 3
+                  example: AF1sub1
                 parent_id:
                   type: integer
-                  example: '66'
+                  example: '2'
       security:
         - bearerAuth: []
       parameters:
@@ -3899,7 +3904,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '64'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -3935,15 +3940,16 @@ paths:
             schema:
               type: object
               example:
-                name: Edited Name
+                name: AF1sub
       security:
         - bearerAuth: []
       parameters:
         - name: folder_id
           in: path
           schema:
-            type: string
+            type: integer
           required: true
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -4223,14 +4229,14 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 29
-                    quantity: 165
+                    account_head_id: 31
+                    quantity: 1
                     rate: '10'
                     discount: ''
                     tax: 0
                     description: description
                     amount: 300
-                    warehouse_id: 1
+                    warehouse_id: 4
       security:
         - bearerAuth: []
       parameters:
@@ -4375,7 +4381,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '30'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -5070,16 +5076,17 @@ paths:
                 product: 9
                 storage: 11
                 period_prices:
-                  - id: 13
+                  - id: 32
                     period: 30
                     price: 1001
-                  - id: 14
+                  - id: 33
                     period: 90
                     price: 2801
-                  - id: 15
+                  - id: 34
                     period: 180
                     price: 5201
-                  - period: 365
+                  - id: 35
+                    period: 180
                     price: 10001
       security:
         - bearerAuth: []
@@ -5087,9 +5094,8 @@ paths:
         - name: id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '4'
       responses:
         '200':
           description: Successful response
@@ -5373,11 +5379,85 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/permission/{type}:
+  /api/permission:
     get:
       tags:
         - permission
       summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: accountingfirm|company
+          example: accountingfirm
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/permission/{id}:
+    get:
+      tags:
+        - permission
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '200'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/permission-by-type/{type}:
+    get:
+      tags:
+        - permission
+      summary: list by type
       security:
         - bearerAuth: []
       parameters:
@@ -5396,72 +5476,8 @@ paths:
           schema:
             type: string
           required: true
-          description: accountingfirm | company
+          description: accountingfirm|company
           example: accountingfirm
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/permission:
-    post:
-      tags:
-        - permission
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: invoice maker
-                type:
-                  type: string
-                  example: accountingfirm
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/permission/{id}:
-    delete:
-      tags:
-        - permission
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '125'
       responses:
         '200':
           description: Successful response
@@ -5471,7 +5487,7 @@ paths:
     post:
       tags:
         - permission
-      summary: assign permission
+      summary: assign permission to user
       requestBody:
         content:
           application/json:
@@ -5631,8 +5647,7 @@ paths:
                   type: string
                   example: T0982345jhwerssssss
                 product_category_id:
-                  type: integer
-                  example: '1'
+                  type: string
                 tax:
                   type: integer
                   example: '11'
@@ -5656,7 +5671,7 @@ paths:
                   example: '100'
                 warehouse_inventory[0][warehouse_id]:
                   type: integer
-                  example: '1'
+                  example: '4'
                 warehouse_inventory[1][initial_quantity_on_hand]:
                   type: integer
                   example: '50'
@@ -5923,7 +5938,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '17'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -6138,14 +6153,14 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    account_head_id: 37
+                    account_head_id: 40
                     quantity: 100
                     rate: '9'
                     discount: '100'
                     tax: 0
                     description: description
                     amount: 300
-                    warehouse_id: 1
+                    warehouse_id: 4
       security:
         - bearerAuth: []
       parameters:
@@ -6205,7 +6220,7 @@ paths:
           in: query
           schema:
             type: string
-          example: paid
+          example: unpaid
       responses:
         '200':
           description: Successful response
@@ -6319,7 +6334,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -6352,7 +6367,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -6458,7 +6473,7 @@ paths:
                     tax: 0
                     account_head_id: 1
                     amount: 100
-                    warehouse_id: 1
+                    warehouse_id: 4
       security:
         - bearerAuth: []
       parameters:
@@ -6957,7 +6972,7 @@ paths:
             schema:
               type: object
               example:
-                bill_id: 6
+                bill_id: 3
                 vendor_id: 38
                 reference_number: '21345'
                 purchase_return_date: '2023-08-01'
@@ -6965,13 +6980,13 @@ paths:
                 receiver_id: 3
                 products:
                   - product_id: 1
-                    account_head_id: 29
+                    account_head_id: 32
                     quantity: 15
                     rate: 10
                     tax: 0
                     description: description
                     amount: 100
-                    warehouse_id: 1
+                    warehouse_id: 4
       security:
         - bearerAuth: []
       parameters:
@@ -7618,7 +7633,7 @@ paths:
                     account_head_id: 1
                     descrition: ''
                     amount: 100
-                    warehouse_id: 1
+                    warehouse_id: 4
       security:
         - bearerAuth: []
       parameters:
@@ -8252,37 +8267,6 @@ paths:
           content:
             application/json: {}
   /api/role:
-    post:
-      tags:
-        - role
-      summary: store
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: invoice maker
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     get:
       tags:
         - default
@@ -8301,34 +8285,6 @@ paths:
           content:
             application/json: {}
   /api/role/{id}:
-    delete:
-      tags:
-        - role
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     get:
       tags:
         - role
@@ -8352,6 +8308,32 @@ paths:
             type: integer
           required: true
           example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/role/{id}/assign-permission:
+    post:
+      tags:
+        - role
+      summary: role<assign permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                permissions:
+                  - accountingfirm-user-list
+                  - accountingfirm-user-create
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -8382,7 +8364,7 @@ paths:
                     tax: 0
                     account_head_id: 1
                     amount: 100
-                    warehouse_id: 1
+                    warehouse_id: 4
       security:
         - bearerAuth: []
       parameters:
@@ -8467,7 +8449,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '9'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -9271,6 +9253,58 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/user/{id}/assign-permission:
+    post:
+      tags:
+        - users
+      summary: user<assign permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                permissions:
+                  - accountingfirm-user-list
+                  - accountingfirm-user-create
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/{id}/assign-role:
+    post:
+      tags:
+        - users
+      summary: user<assign role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                roles:
+                  - superadmin
+                  - admin
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/unit:
     post:
       tags:
@@ -9813,7 +9847,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -10071,6 +10105,7 @@ paths:
               properties:
                 email:
                   type: string
+                  example: company2admin@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd

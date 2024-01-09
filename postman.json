@@ -614,7 +614,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Accumulated Depreciation",
+									"value": "asdssddds",
 									"type": "text"
 								},
 								{
@@ -629,7 +629,7 @@
 								},
 								{
 									"key": "parent_id",
-									"value": "54",
+									"value": "33",
 									"type": "text"
 								},
 								{
@@ -3503,7 +3503,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"package_id\": 3,\n    \"period\": 30,\n    \"price\": 1001, //-1 for unlimited | null for company user\n    \"user\": 1,//-1 for unlimited | null for company user\n    \"transaction\": 10,//-1 for unlimited | null for company user\n    \"product\": 10,//-1 for unlimited | null for company user\n    \"storage\": 1//-1 for unlimited | null for company user\n}",
+									"raw": "{\n    \"package_id\": 3,\n    \"period\": 30,\n    \"price\": 1011, //-1 for unlimited | null for company user\n    \"user\": 11,//-1 for unlimited | null for company user\n    \"transaction\": 12,//-1 for unlimited | null for company user\n    \"product\": 13,//-1 for unlimited | null for company user\n    \"storage\": 14//-1 for unlimited | null for company user\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3554,7 +3554,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"package_id\": 3\n}",
+									"raw": "{\n    \"package_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6700,7 +6700,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "64"
+									"value": "2"
 								}
 							]
 						}
@@ -6739,12 +6739,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Sub Folder 3",
+									"value": "AF1sub1",
 									"type": "text"
 								},
 								{
 									"key": "parent_id",
-									"value": "66",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -6841,7 +6841,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Edited Name\"\n}",
+							"raw": "{\n  \"name\": \"AF1sub\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6862,7 +6862,7 @@
 							"variable": [
 								{
 									"key": "folder_id",
-									"value": null
+									"value": "11"
 								}
 							]
 						}
@@ -7355,7 +7355,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 165,\n            \"rate\": \"10\",\n            \"discount\": \"\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 31,\n            \"quantity\": 1,\n            \"rate\": \"10\",\n            \"discount\": \"\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7470,7 +7470,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "30"
+									"value": "3"
 								}
 							]
 						}
@@ -8625,7 +8625,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"id\":13,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":14,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":15,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"period\": 365,\n            \"price\": 10001\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 180,\n            \"price\": 10001\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8645,7 +8645,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "4"
+									"value": ""
 								}
 							]
 						}
@@ -9245,82 +9245,50 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/permission/:type",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"permission",
-								":type"
-							],
-							"variable": [
-								{
-									"key": "type",
-									"value": "accountingfirm",
-									"description": "accountingfirm | company"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "invoice maker",
-									"type": "text"
-								},
-								{
-									"key": "type",
-									"value": "accountingfirm",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/permission",
+							"raw": "{{url}}/api/permission?paginate=0&page=&limit=&search_keyword=&type=accountingfirm&category",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"permission"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "0"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": "accountingfirm",
+									"description": "accountingfirm|company"
+								},
+								{
+									"key": "category",
+									"value": null
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "delete",
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -9332,16 +9300,11 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
 								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
 								"type": "text"
 							}
 						],
@@ -9362,7 +9325,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "125"
+									"value": "200"
 								}
 							]
 						}
@@ -9370,7 +9333,66 @@
 					"response": []
 				},
 				{
-					"name": "assign permission",
+					"name": "list by type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/permission-by-type/:type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"permission-by-type",
+								":type"
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "accountingfirm",
+									"description": "accountingfirm|company"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assign permission to user",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -9397,7 +9419,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\":2,\n    \"permissions\": [\"accountingfirm-user-list\", \"accountingfirm-user-create\"]\n}",
+							"raw": "{\n    \"user_id\": 2,\n    \"permissions\": [\n        \"accountingfirm-user-list\",\n        \"accountingfirm-user-create\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -9655,7 +9677,7 @@
 								},
 								{
 									"key": "product_category_id",
-									"value": "1",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -9701,7 +9723,7 @@
 								},
 								{
 									"key": "warehouse_inventory[0][warehouse_id]",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								},
 								{
@@ -10184,7 +10206,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "17"
+									"value": "1"
 								}
 							]
 						}
@@ -10551,7 +10573,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 37,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 40,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10666,7 +10688,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6"
+									"value": "3"
 								}
 							]
 						}
@@ -10875,7 +10897,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=paid",
+							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=unpaid",
 							"host": [
 								"{{url}}"
 							],
@@ -10910,7 +10932,7 @@
 								},
 								{
 									"key": "multiple_status[0]",
-									"value": "paid"
+									"value": "unpaid"
 								}
 							]
 						}
@@ -10963,7 +10985,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -11003,7 +11025,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 35,\n    \"credit_term\": \"\",\n    \"order_date\": \"2023-08-01\",\n    \"reference\": \"\",\n    \"order_number\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"vendor_id\": 35,\n    \"credit_term\": \"\",\n    \"order_date\": \"2023-08-01\",\n    \"reference\": \"\",\n    \"order_number\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -11654,7 +11676,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_id\": 6,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 15,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_id\": 3,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 15,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12634,7 +12656,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13648,105 +13670,6 @@
 			"name": "role",
 			"item": [
 				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "invoice maker",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/role",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"role"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/role/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"role",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -13871,6 +13794,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "role<assign permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"permissions\": [\n        \"accountingfirm-user-list\",\n        \"accountingfirm-user-create\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/role/:id/assign-permission",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"role",
+								":id",
+								"assign-permission"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -13905,7 +13863,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"order_date\": \"2023-08-01\",\n    \"delivery_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"order_number\": \"\",\n    \"reference\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"order_date\": \"2023-08-01\",\n    \"delivery_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"order_number\": \"\",\n    \"reference\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14025,7 +13983,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "9"
+									"value": "1"
 								}
 							]
 						}
@@ -15570,6 +15528,101 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "user<assign permission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"permissions\": [\n        \"accountingfirm-user-list\",\n        \"accountingfirm-user-create\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/:id/assign-permission",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								":id",
+								"assign-permission"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user<assign role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"roles\": [\n        \"superadmin\",\n        \"admin\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/:id/assign-role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								":id",
+								"assign-role"
+							],
+							"query": [
+								{
+									"key": "Accept",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "company-id",
+									"value": "1",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -16492,7 +16545,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "4"
 								}
 							]
 						}
@@ -16943,7 +16996,13 @@
 						},
 						{
 							"key": "email",
-							"value": "",
+							"value": "augxdeveloper@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "company2admin@gmail.com",
 							"type": "text",
 							"disabled": true
 						}
