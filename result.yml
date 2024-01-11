@@ -27,6 +27,7 @@ components:
       type: http
       scheme: noauth
 tags:
+  - name: admin apis
   - name: accounting firm
   - name: account head
   - name: asset
@@ -2254,7 +2255,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -5494,7 +5495,7 @@ paths:
             schema:
               type: object
               example:
-                user_id: 2
+                user_id: 4
                 permissions:
                   - accountingfirm-user-list
                   - accountingfirm-user-create
@@ -8333,7 +8334,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -9223,7 +9224,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -9267,13 +9268,15 @@ paths:
                 permissions:
                   - accountingfirm-user-list
                   - accountingfirm-user-create
+      security:
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -9291,15 +9294,18 @@ paths:
               type: object
               example:
                 roles:
-                  - superadmin
                   - admin
+                  - accountingfirm
+                  - company
+      security:
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -10250,6 +10256,57 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/register:
+    post:
+      tags:
+        - default
+      summary: register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: integer
+                  example: '0000'
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/resend-account-verification-mail:
+    post:
+      tags:
+        - default
+      summary: resend account verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+      security:
+        - noauthAuth: []
       responses:
         '200':
           description: Successful response
