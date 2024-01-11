@@ -2168,7 +2168,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -2181,6 +2182,54 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company-by-user:
+    post:
+      tags:
+        - company
+      summary: store by user
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                short_name:
+                  type: string
+                address:
+                  type: string
+                primary_email:
+                  type: string
+                  example: email@email
+                primary_phone:
+                  type: integer
+                  example: '123123'
+                vat_number:
+                  type: string
+                pan_number:
+                  type: string
+                start_date:
+                  type: string
+                status:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response

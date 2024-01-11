@@ -3680,6 +3680,95 @@
 					"response": []
 				},
 				{
+					"name": "store by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "short_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "primary_email",
+									"value": "email@email",
+									"type": "text"
+								},
+								{
+									"key": "primary_phone",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "vat_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/company-by-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update",
 					"request": {
 						"auth": {
@@ -3750,7 +3839,10 @@
 								{
 									"key": "logo",
 									"type": "file",
-									"src": []
+									"src": [
+										"/home/bikash/Downloads/9-2-free-free-download-png.png",
+										"/home/bikash/Downloads/ExDqYU_VIAE8nOj.jpeg"
+									]
 								}
 							]
 						},
@@ -3847,7 +3939,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/company?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/company?paginate=1&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -3858,7 +3950,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -17008,8 +17100,7 @@
 						{
 							"key": "email",
 							"value": "accountingfirm@accountingfirm.com",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "password",
@@ -17019,7 +17110,8 @@
 						{
 							"key": "email",
 							"value": "augxdeveloper@gmail.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "email",
