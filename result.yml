@@ -42,6 +42,7 @@ tags:
   - name: company
   - name: company > package subscription
   - name: customer
+  - name: depreciation
   - name: document
   - name: employee
   - name: employee summary
@@ -2145,6 +2146,8 @@ paths:
                 logo:
                   type: string
                   format: binary
+                website:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -2200,21 +2203,25 @@ paths:
               properties:
                 name:
                   type: string
-                  example: name
+                  example: augx comapany 1
                 short_name:
                   type: string
+                  example: ac1
                 address:
                   type: string
+                  example: ktm
                 primary_email:
                   type: string
-                  example: email@email
+                  example: augx@company.com
                 primary_phone:
                   type: integer
-                  example: '123123'
+                  example: '9876543210'
                 vat_number:
-                  type: string
+                  type: integer
+                  example: '00'
                 pan_number:
-                  type: string
+                  type: integer
+                  example: '01'
                 start_date:
                   type: string
                 status:
@@ -2674,6 +2681,34 @@ paths:
             type: integer
           required: true
           example: '34'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/depreciation:
+    post:
+      tags:
+        - depreciation
+      summary: depreciation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -9273,7 +9308,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -10296,7 +10331,7 @@ paths:
     get:
       tags:
         - default
-      summary: test
+      summary: test 2
       security:
         - bearerAuth: []
       parameters:
