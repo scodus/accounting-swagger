@@ -3663,6 +3663,11 @@
 									"key": "logo",
 									"type": "file",
 									"src": []
+								},
+								{
+									"key": "website",
+									"value": "",
+									"type": "text"
 								}
 							]
 						},
@@ -3705,37 +3710,37 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "name",
+									"value": "augx comapany 1",
 									"type": "text"
 								},
 								{
 									"key": "short_name",
-									"value": "",
+									"value": "ac1",
 									"type": "text"
 								},
 								{
 									"key": "address",
-									"value": "",
+									"value": "ktm",
 									"type": "text"
 								},
 								{
 									"key": "primary_email",
-									"value": "email@email",
+									"value": "augx@company.com",
 									"type": "text"
 								},
 								{
 									"key": "primary_phone",
-									"value": "123123",
+									"value": "9876543210",
 									"type": "text"
 								},
 								{
 									"key": "vat_number",
-									"value": "",
+									"value": "00",
 									"type": "text"
 								},
 								{
 									"key": "pan_number",
-									"value": "",
+									"value": "01",
 									"type": "text"
 								},
 								{
@@ -3751,7 +3756,7 @@
 								{
 									"key": "logo",
 									"type": "file",
-									"src": []
+									"src": "/home/bikash/Downloads/9-2-free-free-download-png.png"
 								}
 							]
 						},
@@ -4592,6 +4597,54 @@
 									"key": "id",
 									"value": "34"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "depreciation",
+			"item": [
+				{
+					"name": "depreciation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/depreciation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"depreciation"
 							]
 						}
 					},
@@ -15481,7 +15534,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "4"
+									"value": "2"
 								}
 							]
 						}
@@ -17386,6 +17439,47 @@
 		},
 		{
 			"name": "test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test 2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
