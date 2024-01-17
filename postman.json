@@ -1052,184 +1052,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "4"
+											"value": "1"
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "create user",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 4,\n    \"name\": \"rivabak\",\n    \"email\": \"rivabak595@tanlanav.com\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/create-accounting-firm-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"create-accounting-firm-user"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "assign user",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 4,\n    \"user_id\": 11\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/assign-accounting-firm-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"assign-accounting-firm-user"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update user",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": [\n        3\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/update-accounting-firm-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"update-accounting-firm-user"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "remove user",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": [\n        3\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/remove-accounting-firm-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"remove-accounting-firm-user"
 									]
 								}
 							},
@@ -1329,57 +1153,19 @@
 									}
 								],
 								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 2\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/accounting-firm-admin",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"accounting-firm-admin"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "transfer admin",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
+									"mode": "formdata",
+									"formdata": [
 										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
+											"key": "accounting_firm_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
 										}
 									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 2\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
 								},
 								"url": {
 									"raw": "{{url}}/api/admin/accounting-firm-admin",
@@ -2582,7 +2368,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company?paginate=1&page=&limit=&search_keyword=&search_keyword_short_name&status=",
+									"raw": "{{url}}/api/admin/company?paginate=1&page=&limit=&search_keyword=&search_keyword_short_name=&status=",
 									"host": [
 										"{{url}}"
 									],
@@ -2610,7 +2396,7 @@
 										},
 										{
 											"key": "search_keyword_short_name",
-											"value": null
+											"value": ""
 										},
 										{
 											"key": "status",
@@ -2663,143 +2449,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "1"
+											"value": "2"
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "create user",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "company-id",
-										"value": "1",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"tomnjerry\",\n    \"email\": \"tomnjerry8963@gmail.com\",\n    \"company_id\": 1\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/create-company-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"create-company-user"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update users",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [9]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/update-company-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"update-company-user"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "remove users",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": [9]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/remove-company-user",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"remove-company-user"
 									]
 								}
 							},
@@ -2899,13 +2550,19 @@
 									}
 								],
 								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 9\n}",
-									"options": {
-										"raw": {
-											"language": "json"
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
 										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{url}}/api/admin/company-admin",
@@ -4373,7 +4030,7 @@
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "P@ssw0rd1",
 									"type": "text"
 								},
 								{
@@ -4725,12 +4382,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "voyokis250",
+									"value": "dadedil246@",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "voyokis250@konican.com",
+									"value": "dadedil246@konican.com",
 									"type": "text"
 								},
 								{
@@ -4789,12 +4446,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "voyokis250@konican.com",
+									"value": "dadedil246@konican.com",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "994373",
+									"value": "220532",
 									"type": "text"
 								}
 							]
@@ -4843,7 +4500,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "voyokis250@konican.com",
+									"value": "dadedil246@konican.com",
 									"type": "text"
 								}
 							]
@@ -4892,7 +4549,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "voyokis250@konican.com",
+									"value": "dadedil246@konican.com",
 									"type": "text"
 								}
 							]
@@ -4941,12 +4598,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "voyokis250@konican.com",
+									"value": "dadedil246@konican.com",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "642083",
+									"value": "463284",
 									"type": "text"
 								}
 							]
@@ -4995,7 +4652,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "voyokis250@konican.com",
+									"value": "dadedil246@konican.com",
 									"type": "text"
 								},
 								{
@@ -5010,7 +4667,7 @@
 								},
 								{
 									"key": "token",
-									"value": "642083",
+									"value": "463284",
 									"type": "text"
 								}
 							]

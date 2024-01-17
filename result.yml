@@ -564,114 +564,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/create-accounting-firm-user:
-    post:
-      tags:
-        - admin apis > Accounting Firm
-      summary: create user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                accounting_firm_id: 4
-                name: rivabak
-                email: rivabak595@tanlanav.com
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/assign-accounting-firm-user:
-    post:
-      tags:
-        - admin apis > Accounting Firm
-      summary: assign user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                accounting_firm_id: 4
-                user_id: 11
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/update-accounting-firm-user:
-    post:
-      tags:
-        - admin apis > Accounting Firm
-      summary: update user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                accounting_firm_id: 1
-                user_id:
-                  - 3
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/remove-accounting-firm-user:
-    post:
-      tags:
-        - admin apis > Accounting Firm
-      summary: remove user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                accounting_firm_id: 1
-                user_id:
-                  - 3
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -721,15 +614,17 @@ paths:
     post:
       tags:
         - admin apis > Accounting Firm
-      summary: transfer admin
+      summary: assign admin
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                accounting_firm_id: 1
-                user_id: 2
+              properties:
+                accounting_firm_id:
+                  type: string
+                email:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -1418,7 +1313,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -1450,92 +1345,6 @@ paths:
             type: integer
           required: true
           example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/create-company-user:
-    post:
-      tags:
-        - admin apis > Company
-      summary: create user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: tomnjerry
-                email: tomnjerry8963@gmail.com
-                company_id: 1
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/update-company-user:
-    post:
-      tags:
-        - company
-      summary: update users
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                company_id: 1
-                user_id:
-                  - 9
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/remove-company-user:
-    post:
-      tags:
-        - company
-      summary: remove users
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                company_id: 1
-                user_id:
-                  - 9
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: Successful response
@@ -1588,12 +1397,14 @@ paths:
       summary: assign admin
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                company_id: 1
-                user_id: 9
+              properties:
+                company_id:
+                  type: string
+                email:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -2383,7 +2194,7 @@ paths:
                   example: 0000@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: P@ssw0rd1
       security:
         - noauthAuth: []
       parameters:
@@ -2529,10 +2340,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: voyokis250
+                  example: dadedil246@
                 email:
                   type: string
-                  example: voyokis250@konican.com
+                  example: dadedil246@konican.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2559,10 +2370,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: voyokis250@konican.com
+                  example: dadedil246@konican.com
                 token:
                   type: integer
-                  example: '994373'
+                  example: '220532'
       security:
         - noauthAuth: []
       responses:
@@ -2583,7 +2394,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: voyokis250@konican.com
+                  example: dadedil246@konican.com
       security:
         - noauthAuth: []
       responses:
@@ -2604,7 +2415,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: voyokis250@konican.com
+                  example: dadedil246@konican.com
       security:
         - noauthAuth: []
       responses:
@@ -2625,10 +2436,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: voyokis250@konican.com
+                  example: dadedil246@konican.com
                 token:
                   type: integer
-                  example: '642083'
+                  example: '463284'
       security:
         - noauthAuth: []
       responses:
@@ -2649,7 +2460,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: voyokis250@konican.com
+                  example: dadedil246@konican.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2658,7 +2469,7 @@ paths:
                   example: P@ssw0rd
                 token:
                   type: integer
-                  example: '642083'
+                  example: '463284'
       security:
         - noauthAuth: []
       responses:
@@ -4964,6 +4775,60 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/update-company-user:
+    post:
+      tags:
+        - company
+      summary: update users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id:
+                  - 9
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/remove-company-user:
+    post:
+      tags:
+        - company
+      summary: remove users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id:
+                  - 9
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
