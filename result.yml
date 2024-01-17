@@ -179,28 +179,68 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/reset-password:
+  /api/admin/user-detail:
+    get:
+      tags:
+        - admin apis > Auth
+      summary: user detail
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/update-user-detail:
     post:
       tags:
         - admin apis > Auth
-      summary: reset password
+      summary: update user detail
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                email:
+                name:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: P@ssw0rd
+                image:
+                  type: string
+                  format: binary
+                delete_image:
+                  type: boolean
+                  description: true|false
+                  example: 'true'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/change-password:
+    post:
+      tags:
+        - admin apis > Auth
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: string
+                  example: P@ssw0rd
                 password:
                   type: string
+                  example: P@ssw0rd1
                 password_confirmation:
                   type: string
-                token:
-                  type: string
+                  example: P@ssw0rd1
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -315,6 +355,33 @@ paths:
                 email:
                   type: string
                   example: yamaki9115@regapts.com
+                token:
+                  type: string
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/reset-password:
+    post:
+      tags:
+        - admin apis > Auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
                 token:
                   type: string
       security:
@@ -2382,28 +2449,68 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/reset-password:
+  /api/user-detail:
+    get:
+      tags:
+        - Auth
+      summary: user detail
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/update-user-detail:
     post:
       tags:
         - Auth
-      summary: reset password
+      summary: update user detail
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                email:
+                name:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: 000n
+                image:
+                  type: string
+                  format: binary
+                delete_image:
+                  type: boolean
+                  description: true|false
+                  example: 'true'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/change-password:
+    post:
+      tags:
+        - Auth
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: string
+                  example: P@ssw0rd1
                 password:
                   type: string
+                  example: P@ssw0rd
                 password_confirmation:
                   type: string
-                token:
-                  type: string
+                  example: P@ssw0rd
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -2421,11 +2528,11 @@ paths:
               type: object
               properties:
                 name:
-                  type: integer
-                  example: '0000'
+                  type: string
+                  example: voyokis250
                 email:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: voyokis250@konican.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2452,9 +2559,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: voyokis250@konican.com
                 token:
-                  type: string
+                  type: integer
+                  example: '994373'
       security:
         - noauthAuth: []
       responses:
@@ -2475,7 +2583,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: voyokis250@konican.com
       security:
         - noauthAuth: []
       responses:
@@ -2496,7 +2604,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: voyokis250@konican.com
       security:
         - noauthAuth: []
       responses:
@@ -2517,9 +2625,40 @@ paths:
               properties:
                 email:
                   type: string
-                  example: yamaki9115@regapts.com
+                  example: voyokis250@konican.com
                 token:
+                  type: integer
+                  example: '642083'
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
                   type: string
+                  example: voyokis250@konican.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                token:
+                  type: integer
+                  example: '642083'
       security:
         - noauthAuth: []
       responses:

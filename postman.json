@@ -172,39 +172,205 @@
 							"response": []
 						},
 						{
-							"name": "reset password",
+							"name": "user detail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
-								"method": "POST",
-								"header": [],
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"body": {
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "password",
+											"key": "old_password",
 											"value": "P@ssw0rd",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "P@ssw0rd1",
 											"type": "text"
 										},
 										{
 											"key": "password_confirmation",
-											"value": "P@ssw0rd",
-											"type": "text"
-										},
-										{
-											"key": "token",
-											"value": "MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe",
+											"value": "P@ssw0rd1",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/reset-password",
+									"raw": "{{url}}/api/admin/user-detail",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"admin",
-										"reset-password"
+										"user-detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update user detail",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "P@ssw0rd",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "delete_image",
+											"value": "true",
+											"description": "true|false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/update-user-detail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"update-user-detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "old_password",
+											"value": "P@ssw0rd",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "P@ssw0rd1",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "P@ssw0rd1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/change-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"change-password"
 									]
 								}
 							},
@@ -4202,7 +4368,8 @@
 								{
 									"key": "email",
 									"value": "accountingfirm@accountingfirm.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
@@ -4224,8 +4391,7 @@
 								{
 									"key": "email",
 									"value": "0000@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -4343,13 +4509,166 @@
 					"response": []
 				},
 				{
-					"name": "reset password",
+					"name": "user detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/user-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
+								{
+									"key": "name",
+									"value": "000n",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/bikash/Downloads/9-2-free-free-download-png.png"
+								},
+								{
+									"key": "delete_image",
+									"value": "true",
+									"description": "true|false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/update-user-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"update-user-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "P@ssw0rd1",
+									"type": "text"
+								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
@@ -4359,22 +4678,17 @@
 									"key": "password_confirmation",
 									"value": "P@ssw0rd",
 									"type": "text"
-								},
-								{
-									"key": "token",
-									"value": "MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe",
-									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/reset-password",
+							"raw": "{{url}}/api/change-password",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"reset-password"
+								"change-password"
 							]
 						}
 					},
@@ -4411,12 +4725,12 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "0000",
+									"value": "voyokis250",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "yamaki9115@regapts.com",
+									"value": "voyokis250@konican.com",
 									"type": "text"
 								},
 								{
@@ -4475,12 +4789,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "yamaki9115@regapts.com",
+									"value": "voyokis250@konican.com",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "",
+									"value": "994373",
 									"type": "text"
 								}
 							]
@@ -4529,7 +4843,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "yamaki9115@regapts.com",
+									"value": "voyokis250@konican.com",
 									"type": "text"
 								}
 							]
@@ -4578,7 +4892,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "yamaki9115@regapts.com",
+									"value": "voyokis250@konican.com",
 									"type": "text"
 								}
 							]
@@ -4627,12 +4941,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "yamaki9115@regapts.com",
+									"value": "voyokis250@konican.com",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "",
+									"value": "642083",
 									"type": "text"
 								}
 							]
@@ -4681,22 +4995,22 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "yamaki9115@regapts.com",
+									"value": "voyokis250@konican.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "",
+									"value": "P@ssw0rd",
 									"type": "text"
 								},
 								{
 									"key": "password_confirmation",
-									"value": "",
+									"value": "P@ssw0rd",
 									"type": "text"
 								},
 								{
 									"key": "token",
-									"value": "",
+									"value": "642083",
 									"type": "text"
 								}
 							]
