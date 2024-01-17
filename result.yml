@@ -30,8 +30,16 @@ tags:
   - name: admin apis
   - name: admin apis > Auth
   - name: admin apis > Accounting Firm
+  - name: admin apis > Bug
+  - name: admin apis > Bug Feedback
   - name: admin apis > Company
   - name: admin apis > Company > Package Subscription
+  - name: admin apis > Fiscal Year
+  - name: admin apis > Package
+  - name: admin apis > Permission
+  - name: admin apis > Role
+  - name: admin apis > User
+  - name: Auth
   - name: accounting firm
   - name: account head
   - name: asset
@@ -52,7 +60,7 @@ tags:
   - name: employee summary
   - name: employee tax deduction
   - name: expense
-  - name: fishal year
+  - name: fiscal year
   - name: fixed asset
   - name: Folder
   - name: inventory adjustment
@@ -182,16 +190,17 @@ paths:
             schema:
               type: object
               properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
                 password:
                   type: string
-                  example: P@ssw0rd
                 password_confirmation:
                   type: string
-                  example: P@ssw0rd
                 token:
                   type: string
-                  example: >-
-                    MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe
+      security:
+        - noauthAuth: []
       responses:
         '200':
           description: Successful response
@@ -227,11 +236,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/resend-account-verification-mail:
+  /api/admin/account-verification:
     post:
       tags:
         - admin apis > Auth
-      summary: resend account verification
+      summary: account verification
       requestBody:
         content:
           multipart/form-data:
@@ -241,6 +250,73 @@ paths:
                 email:
                   type: string
                   example: yamaki9115@regapts.com
+                token:
+                  type: string
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/resend-account-verification-mail:
+    post:
+      tags:
+        - admin apis > Auth
+      summary: resend account verification mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/reset-password-mail:
+    post:
+      tags:
+        - admin apis > Auth
+      summary: reset password  mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/reset-password-otp-verification:
+    post:
+      tags:
+        - admin apis > Auth
+      summary: reset password otp verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                token:
+                  type: string
       security:
         - noauthAuth: []
       responses:
@@ -315,6 +391,14 @@ paths:
           schema:
             type: string
         - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: search_keyword_short_name
+          in: query
+          schema:
+            type: string
+        - name: status
           in: query
           schema:
             type: string
@@ -592,6 +676,342 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/bug:
+    post:
+      tags:
+        - admin apis > Bug
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: bug 1
+                screenshot:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - admin apis > Bug
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/bug/{id}:
+    post:
+      tags:
+        - admin apis > Bug
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                description:
+                  type: string
+                  example: bug 1 e
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - admin apis > Bug
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - admin apis > Bug
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/bug/{id}/update-status:
+    post:
+      tags:
+        - admin apis > Bug
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: in_progress
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/bug-feedback:
+    post:
+      tags:
+        - admin apis > Bug Feedback
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: dsfasdfa
+                bug_id:
+                  type: integer
+                  example: '3'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - admin apis > Bug Feedback
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: bug_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/bug-feedback/{id}:
+    post:
+      tags:
+        - admin apis > Bug Feedback
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                comment:
+                  type: string
+                  example: 'abc def '
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - admin apis > Bug Feedback
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - admin apis > Bug Feedback
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/company/{id}/subscribe-package:
     post:
       tags:
@@ -771,6 +1191,10 @@ paths:
           schema:
             type: string
         - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: search_keyword_short_name
           in: query
           schema:
             type: string
@@ -1116,6 +1540,993 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/fiscal-year:
+    post:
+      tags:
+        - admin apis > Fiscal Year
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: test
+                from:
+                  type: string
+                  example: '2022-01-01'
+                to:
+                  type: string
+                  example: '2022-01-31'
+                from_bs:
+                  type: string
+                  example: 3a21f3as1df
+                to_bs:
+                  type: string
+                  example: 3asd1f3asd2f1
+                status:
+                  type: string
+                  example: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - admin apis > Fiscal Year
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/fiscal-year/{id}:
+    post:
+      tags:
+        - admin apis > Fiscal Year
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: testedit
+                from:
+                  type: string
+                  example: '2022-01-01'
+                to:
+                  type: string
+                  example: '2022-01-31'
+                from_bs:
+                  type: string
+                  example: 3a21f3as1df
+                to_bs:
+                  type: string
+                  example: 3asd1f3asd2f1
+                status:
+                  type: string
+                  example: active
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - admin apis > Fiscal Year
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - admin apis > Fiscal Year
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/package:
+    post:
+      tags:
+        - package
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: test2
+                user: 3
+                transaction: 12
+                product: 8
+                storage: 10
+                period_prices:
+                  - period: 30
+                    price: 1000
+                  - period: 90
+                    price: 2800
+                  - period: 180
+                    price: 5200
+                  - period: 365
+                    price: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - package
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: in:active,inactive
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/package/{id}:
+    post:
+      tags:
+        - package
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                name: test4 edit
+                user: 4
+                transaction: 10
+                product: 9
+                storage: 11
+                period_prices:
+                  - id: 32
+                    period: 30
+                    price: 1001
+                  - id: 33
+                    period: 90
+                    price: 2801
+                  - id: 34
+                    period: 180
+                    price: 5201
+                  - id: 35
+                    period: 180
+                    price: 10001
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - package
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - package
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/package/{id}/status:
+    post:
+      tags:
+        - package
+      summary: update status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                status: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/permission:
+    get:
+      tags:
+        - admin apis > Permission
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: accountingfirm|company
+          example: accountingfirm
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/permission/{id}:
+    get:
+      tags:
+        - admin apis > Permission
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '200'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/permission-by-type/{type}:
+    get:
+      tags:
+        - admin apis > Permission
+      summary: list by type
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: accountingfirm|company
+          example: accountingfirm
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/assign-permission:
+    post:
+      tags:
+        - admin apis > Permission
+      summary: assign permission to user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: 4
+                permissions:
+                  - accountingfirm-user-list
+                  - accountingfirm-user-create
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/role:
+    get:
+      tags:
+        - admin apis > Role
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/role/{id}:
+    get:
+      tags:
+        - admin apis > Role
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/role/{id}/assign-permission:
+    post:
+      tags:
+        - admin apis > Role
+      summary: role<assign permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                permissions:
+                  - accountingfirm-user-list
+                  - accountingfirm-user-create
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user:
+    get:
+      tags:
+        - admin apis > User
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: role
+          in: query
+          schema:
+            type: string
+          example: superadmin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - admin apis > User
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                email:
+                  type: string
+                  example: name@email.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{id}:
+    get:
+      tags:
+        - admin apis > User
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-accounting-firm-list:
+    get:
+      tags:
+        - admin apis > User
+      summary: user accounting firm list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-company-list:
+    get:
+      tags:
+        - admin apis > User
+      summary: user company list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{id}/assign-permission:
+    post:
+      tags:
+        - admin apis > User
+      summary: user<assign permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                permissions:
+                  - accountingfirm-user-list
+                  - accountingfirm-user-create
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{id}/assign-role:
+    post:
+      tags:
+        - admin apis > User
+      summary: user<assign role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                roles:
+                  - admin
+                  - accountingfirm
+                  - company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Auth
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: 0000@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/logout:
+    post:
+      tags:
+        - Auth
+      summary: logout
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/refresh-token/{refresh_token}:
+    post:
+      tags:
+        - Auth
+      summary: refresh token
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: refresh_token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '{{refresh_token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+                token:
+                  type: string
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/register:
+    post:
+      tags:
+        - Auth
+      summary: register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: integer
+                  example: '0000'
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/account-verification:
+    post:
+      tags:
+        - Auth
+      summary: account verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                token:
+                  type: string
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/resend-account-verification-mail:
+    post:
+      tags:
+        - Auth
+      summary: resend account verification mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password-mail:
+    post:
+      tags:
+        - Auth
+      summary: reset password  mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password-otp-verification:
+    post:
+      tags:
+        - Auth
+      summary: reset password otp verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: yamaki9115@regapts.com
+                token:
+                  type: string
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting-firm:
     post:
       tags:
@@ -1183,6 +2594,14 @@ paths:
           schema:
             type: string
         - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: search_keyword_short_name
+          in: query
+          schema:
+            type: string
+        - name: status
           in: query
           schema:
             type: string
@@ -3216,6 +4635,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: search_keyword_short_name
+          in: query
+          schema:
+            type: string
         - name: status
           in: query
           schema:
@@ -4542,7 +5965,7 @@ paths:
   /api/fiscal-year:
     post:
       tags:
-        - fishal year
+        - fiscal year
       summary: store
       requestBody:
         content:
@@ -4583,7 +6006,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - fishal year
+        - fiscal year
       summary: list
       security:
         - bearerAuth: []
@@ -4613,7 +6036,7 @@ paths:
   /api/fiscal-year/{id}:
     post:
       tags:
-        - fishal year
+        - fiscal year
       summary: update
       requestBody:
         content:
@@ -4658,7 +6081,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - fishal year
+        - fiscal year
       summary: delete
       security:
         - bearerAuth: []
@@ -4681,7 +6104,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - fishal year
+        - fiscal year
       summary: show
       security:
         - bearerAuth: []
@@ -6052,194 +7475,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/package:
-    post:
-      tags:
-        - package
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: test2
-                user: 3
-                transaction: 12
-                product: 8
-                storage: 10
-                period_prices:
-                  - period: 30
-                    price: 1000
-                  - period: 90
-                    price: 2800
-                  - period: 180
-                    price: 5200
-                  - period: 365
-                    price: 10000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - package
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-          description: in:active,inactive
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package/{id}:
-    post:
-      tags:
-        - package
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                name: test4 edit
-                user: 4
-                transaction: 10
-                product: 9
-                storage: 11
-                period_prices:
-                  - id: 32
-                    period: 30
-                    price: 1001
-                  - id: 33
-                    period: 90
-                    price: 2801
-                  - id: 34
-                    period: 180
-                    price: 5201
-                  - id: 35
-                    period: 180
-                    price: 10001
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - package
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - package
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/package/{id}/status:
-    post:
-      tags:
-        - package
-      summary: update status
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                status: active
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/payment-cheque:
     post:
       tags:
@@ -7281,12 +8516,23 @@ paths:
         - name: vendor_id
           in: query
           schema:
-            type: string
+            type: integer
+          example: '824'
         - name: multiple_status[0]
           in: query
           schema:
             type: string
           example: unpaid
+        - name: multiple_status[1]
+          in: query
+          schema:
+            type: string
+          example: paid
+        - name: multiple_status[2]
+          in: query
+          schema:
+            type: string
+          example: partial
       responses:
         '200':
           description: Successful response
@@ -11139,6 +12385,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/test:
+    get:
+      tags:
+        - default
+      summary: test 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/file/{filename}:
     delete:
       tags:
@@ -11158,183 +12422,6 @@ paths:
             type: string
           required: true
           example: a7ae29da5d45cf3c3cb30d587cc994e8.jpg
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/login:
-    post:
-      tags:
-        - default
-      summary: login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: 0000@gmail.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/logout:
-    post:
-      tags:
-        - default
-      summary: logout
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/refresh-token/{refresh_token}:
-    post:
-      tags:
-        - default
-      summary: refresh token
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: refresh_token
-          in: path
-          schema:
-            type: string
-          required: true
-          example: '{{refresh_token}}'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/reset-password:
-    post:
-      tags:
-        - default
-      summary: reset password
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-                token:
-                  type: string
-                  example: >-
-                    MgetSkpVrO0Ej9T64bJONVvilRkG1sxAM5WXpnQewPz7xymbYdBg7keXPWr31Mpe
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/test:
-    get:
-      tags:
-        - default
-      summary: test 2
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/register:
-    post:
-      tags:
-        - default
-      summary: register
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: integer
-                  example: '0000'
-                email:
-                  type: string
-                  example: yamaki9115@regapts.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/resend-account-verification-mail:
-    post:
-      tags:
-        - default
-      summary: resend account verification
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: yamaki9115@regapts.com
-      security:
-        - noauthAuth: []
       responses:
         '200':
           description: Successful response
