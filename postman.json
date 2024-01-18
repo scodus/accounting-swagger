@@ -1132,7 +1132,7 @@
 							"response": []
 						},
 						{
-							"name": "assign admin",
+							"name": "assign or update admin",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1168,14 +1168,14 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/accounting-firm-admin",
+									"raw": "{{url}}/api/admin/accounting-firm-assign-update-admin",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"admin",
-										"accounting-firm-admin"
+										"accounting-firm-assign-update-admin"
 									]
 								}
 							},
@@ -2529,7 +2529,7 @@
 							"response": []
 						},
 						{
-							"name": "assign admin",
+							"name": "assign or update admin",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -2565,14 +2565,14 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company-admin",
+									"raw": "{{url}}/api/admin/company-assign-update-admin",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"admin",
-										"company-admin"
+										"company-assign-update-admin"
 									]
 								}
 							},
@@ -2919,12 +2919,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/package",
+									"raw": "{{url}}/api/admin/package",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"package"
 									]
 								}
@@ -2956,12 +2957,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/package/:id",
+									"raw": "{{url}}/api/admin/package/:id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"package",
 										":id"
 									],
@@ -3000,12 +3002,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/package/:id/status",
+									"raw": "{{url}}/api/admin/package/:id/status",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"package",
 										":id",
 										"status"
@@ -3046,12 +3049,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/package/:id",
+									"raw": "{{url}}/api/admin/package/:id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"package",
 										":id"
 									],
@@ -3093,12 +3097,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/package?paginate=1&page=&limit=&search_keyword=&status=",
+									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=0",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"package"
 									],
 									"query": [
@@ -3122,6 +3127,11 @@
 											"key": "status",
 											"value": "",
 											"description": "in:active,inactive"
+										},
+										{
+											"key": "is_trial",
+											"value": "0",
+											"description": "1|0"
 										}
 									]
 								}
@@ -3157,12 +3167,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/package/:id",
+									"raw": "{{url}}/api/admin/package/:id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"package",
 										":id"
 									],
