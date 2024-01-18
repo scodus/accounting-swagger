@@ -4036,12 +4036,11 @@
 								{
 									"key": "email",
 									"value": "accountingfirm@accountingfirm.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd1",
+									"value": "P@ssw0rd",
 									"type": "text"
 								},
 								{
@@ -4059,7 +4058,8 @@
 								{
 									"key": "email",
 									"value": "0000@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
