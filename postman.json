@@ -898,6 +898,58 @@
 							"response": []
 						},
 						{
+							"name": "update status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "patch",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm/:id/status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm",
+										":id",
+										"status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "delete",
 							"request": {
 								"auth": {
@@ -971,7 +1023,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/accounting-firm?paginate=1&page=&limit=&search_keyword=&search_keyword_short_name&status",
+									"raw": "{{url}}/api/admin/accounting-firm?paginate=1&page=&limit=&search_keyword=&search_keyword_short_name=&status",
 									"host": [
 										"{{url}}"
 									],
@@ -999,7 +1051,7 @@
 										},
 										{
 											"key": "search_keyword_short_name",
-											"value": null
+											"value": ""
 										},
 										{
 											"key": "status",
@@ -1060,7 +1112,7 @@
 							"response": []
 						},
 						{
-							"name": "list user",
+							"name": "list accountingfirm users",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -2457,7 +2509,7 @@
 							"response": []
 						},
 						{
-							"name": "list user",
+							"name": "list company users",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -2911,7 +2963,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"test2\",\n    \"user\": 3,//-1 for unlimited\n    \"transaction\": 12,//-1 for unlimited\n    \"product\": 8,//-1 for unlimited\n    \"storage\": 10,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"period\": 30,\n            \"price\": 1000\n        },\n        {\n            \"period\": 90,\n            \"price\": 2800\n        },\n        {\n            \"period\": 180,\n            \"price\": 5200\n        },\n        {\n            \"period\": 365,\n            \"price\": 10000\n        }\n    ]\n}",
+									"raw": "{\n    \"name\": \"test2\",\n    \"user\": 3,//-1 for unlimited\n    \"transaction\": 12,//-1 for unlimited\n    \"product\": 8,//-1 for unlimited\n    \"storage\": 10,//-1 for unlimited\n    \"is_trial\":0,//1|0\n    \"period_prices\": [\n        {\n            \"period\": 30,\n            \"price\": 1000\n        },\n        {\n            \"period\": 90,\n            \"price\": 2800\n        },\n        {\n            \"period\": 180,\n            \"price\": 5200\n        },\n        {\n            \"period\": 365,\n            \"price\": 10000\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2949,7 +3001,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 180,\n            \"price\": 10001\n        }\n    ]\n}",
+									"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"is_trial\":0,//1|0\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 180,\n            \"price\": 10001\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3631,7 +3683,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/user?paginate=1&page=&limit=&search_keyword=&role=superadmin",
+									"raw": "{{url}}/api/admin/user?paginate=1&page=&limit=&search_keyword=&role=&admin_panel_users=",
 									"host": [
 										"{{url}}"
 									],
@@ -3659,12 +3711,13 @@
 										},
 										{
 											"key": "role",
-											"value": "superadmin"
+											"value": "",
+											"description": "role_name:superadmin,admin,accoutningfirm,company etc."
 										},
 										{
-											"key": "roles[0]",
-											"value": "superadmin",
-											"disabled": true
+											"key": "admin_panel_users",
+											"value": "",
+											"description": "1|0"
 										},
 										{
 											"key": "roles[1]",
@@ -3763,6 +3816,16 @@
 											"key": "email",
 											"value": "name@email.com",
 											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "status",
+											"value": "",
+											"type": "text"
 										}
 									]
 								},
@@ -3775,6 +3838,124 @@
 										"api",
 										"admin",
 										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										},
+										{
+											"key": "_method",
+											"value": "patch",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/user/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "_method",
+											"value": "patch",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/user/:id/status",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user",
+										":id",
+										"status"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "11"
+										}
 									]
 								}
 							},
@@ -5531,7 +5712,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=sales&tree_view=1&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=ca&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -5554,15 +5735,15 @@
 								},
 								{
 									"key": "search_keyword",
-									"value": ""
+									"value": "ca"
 								},
 								{
 									"key": "parent_slug",
-									"value": "sales"
+									"value": ""
 								},
 								{
 									"key": "tree_view",
-									"value": "1",
+									"value": "",
 									"description": "1 || 0"
 								},
 								{
@@ -9581,7 +9762,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "25"
+									"value": "3"
 								}
 							]
 						}

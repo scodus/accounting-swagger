@@ -570,11 +570,42 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/accounting-firm/{id}/status:
+    post:
+      tags:
+        - admin apis > Accounting Firm
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: active
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/accounting-firm-user/{accounting_firm_id}:
     get:
       tags:
         - admin apis > Accounting Firm
-      summary: list user
+      summary: list accountingfirm users
       security:
         - bearerAuth: []
       parameters:
@@ -1354,7 +1385,7 @@ paths:
     get:
       tags:
         - admin apis > Company
-      summary: list user
+      summary: list company users
       security:
         - bearerAuth: []
       parameters:
@@ -1597,6 +1628,7 @@ paths:
                 transaction: 12
                 product: 8
                 storage: 10
+                is_trial: 0
                 period_prices:
                   - period: 30
                     price: 1000
@@ -1676,6 +1708,7 @@ paths:
                 transaction: 10
                 product: 9
                 storage: 11
+                is_trial: 0
                 period_prices:
                   - id: 32
                     period: 30
@@ -2039,7 +2072,12 @@ paths:
           in: query
           schema:
             type: string
-          example: superadmin
+          description: role_name:superadmin,admin,accoutningfirm,company etc.
+        - name: admin_panel_users
+          in: query
+          schema:
+            type: string
+          description: 1|0
       responses:
         '200':
           description: Successful response
@@ -2061,6 +2099,11 @@ paths:
                 email:
                   type: string
                   example: name@email.com
+                image:
+                  type: string
+                  format: binary
+                status:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -2098,6 +2141,74 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - admin apis > User
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: active
+                _method:
+                  type: string
+                  example: patch
+                name:
+                  type: string
+                email:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{id}/status:
+    post:
+      tags:
+        - admin apis > User
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                status:
+                  type: string
+                  example: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -2884,17 +2995,16 @@ paths:
           in: query
           schema:
             type: string
+          example: ca
         - name: parent_slug
           in: query
           schema:
             type: string
-          example: sales
         - name: tree_view
           in: query
           schema:
-            type: integer
+            type: string
           description: 1 || 0
-          example: '1'
         - name: no_sub_account_head
           in: query
           schema:
@@ -5299,7 +5409,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '25'
+          example: '3'
       responses:
         '200':
           description: Successful response
