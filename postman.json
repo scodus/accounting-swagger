@@ -10795,7 +10795,7 @@
 								{
 									"key": "date",
 									"value": "2024-01",
-									"description": "date_format:Y-m"
+									"description": "date format: Y-m"
 								}
 							]
 						}

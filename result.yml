@@ -5937,7 +5937,7 @@ paths:
           in: query
           schema:
             type: string
-          description: date_format:Y-m
+          description: 'date format: Y-m'
           example: 2024-01
       responses:
         '200':
