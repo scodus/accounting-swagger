@@ -3,8 +3,8 @@
 		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32125242",
-		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=32125242"
+		"_exporter_id": "31745190",
+		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=31745190"
 	},
 	"item": [
 		{
@@ -2501,7 +2501,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "2"
+											"value": "1"
 										}
 									]
 								}
@@ -3001,7 +3001,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"is_trial\":0,//1|0\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 180,\n            \"price\": 10001\n        }\n    ]\n}",
+									"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"is_trial\":1,//1|0\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 365,\n            \"price\": 10001\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3022,7 +3022,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": ""
+											"value": "4"
 										}
 									]
 								}
@@ -3149,7 +3149,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=0",
+									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=",
 									"host": [
 										"{{url}}"
 									],
@@ -3182,7 +3182,7 @@
 										},
 										{
 											"key": "is_trial",
-											"value": "0",
+											"value": "",
 											"description": "1|0"
 										}
 									]
@@ -4227,8 +4227,7 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -5345,7 +5344,50 @@
 					"response": []
 				},
 				{
-					"name": "list user",
+					"name": "assign admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list accountingfirm user",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -5416,7 +5458,7 @@
 					"response": []
 				},
 				{
-					"name": "assign admin",
+					"name": "assign or update user",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -5437,22 +5479,126 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 2\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "accounting_firm_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/api/accounting-firm-admin",
+							"raw": "{{url}}/api/accounting-firm-assign-update-user",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"accounting-firm-admin"
+								"accounting-firm-assign-update-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accept admin invitation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "accounting_firm_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/accpet-admin-invitation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accpet-admin-invitation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accept user invitation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "accounting_firm_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/accept-user-invitation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accept-user-invitation"
 							]
 						}
 					},
@@ -9038,7 +9184,50 @@
 					"response": []
 				},
 				{
-					"name": "list user",
+					"name": "assign admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list company user",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -9109,7 +9298,7 @@
 					"response": []
 				},
 				{
-					"name": "assign admin",
+					"name": "assign or update user",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -9130,22 +9319,28 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 9\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/api/company-admin",
+							"raw": "{{url}}/api/company-assign-update-user",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"company-admin"
+								"company-assign-update-user"
 							]
 						}
 					},
@@ -9304,7 +9499,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "35"
+									"value": "58"
 								}
 							]
 						}
@@ -9476,7 +9671,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "34"
+									"value": "58"
 								}
 							]
 						}
@@ -9502,6 +9697,52 @@
 							]
 						},
 						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/depreciation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"depreciation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -10361,7 +10602,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=&year=&date=2022-01",
+							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=&month=&year=&date=",
 							"host": [
 								"{{url}}"
 							],
@@ -10388,7 +10629,7 @@
 								},
 								{
 									"key": "payroll",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "month",
@@ -10400,7 +10641,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2022-01"
+									"value": ""
 								}
 							]
 						}
@@ -10503,6 +10744,59 @@
 							"path": [
 								"api",
 								"employee-summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payroll header data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payroll-header-data?date=2024-01",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payroll-header-data"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-01",
+									"description": "date_format:Y-m"
+								}
 							]
 						}
 					},
@@ -19945,6 +20239,17 @@
 									"key": "logo",
 									"type": "file",
 									"src": "/home/user--49/Downloads/364220281_244322438467200_8229686066159110954_n.jpg"
+								},
+								{
+									"key": "allow_negative_amount",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "depreciation_option",
+									"value": "financial_audit_depreciation",
+									"description": "Tax Depreciation || Financial Audit Depreciation",
+									"type": "text"
 								}
 							]
 						},
@@ -20007,7 +20312,7 @@
 							"variable": [
 								{
 									"key": "group",
-									"value": "warehouse",
+									"value": "general",
 									"description": "general || payment-mode || warehouse"
 								}
 							]

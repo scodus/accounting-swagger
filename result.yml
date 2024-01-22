@@ -1344,7 +1344,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1683,9 +1683,8 @@ paths:
         - name: is_trial
           in: query
           schema:
-            type: integer
+            type: string
           description: 1|0
-          example: '0'
       responses:
         '200':
           description: Successful response
@@ -1708,7 +1707,7 @@ paths:
                 transaction: 10
                 product: 9
                 storage: 11
-                is_trial: 0
+                is_trial: 1
                 period_prices:
                   - id: 32
                     period: 30
@@ -1720,7 +1719,7 @@ paths:
                     period: 180
                     price: 5201
                   - id: 35
-                    period: 180
+                    period: 365
                     price: 10001
       security:
         - bearerAuth: []
@@ -1728,8 +1727,9 @@ paths:
         - name: id
           in: path
           schema:
-            type: string
+            type: integer
           required: true
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -2854,11 +2854,37 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting-firm-admin:
+    post:
+      tags:
+        - accounting firm
+      summary: assign admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting-firm-user/{accounting_firm_id}:
     get:
       tags:
         - accounting firm
-      summary: list user
+      summary: list accountingfirm user
       security:
         - bearerAuth: []
       parameters:
@@ -2894,19 +2920,77 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/accounting-firm-admin:
+  /api/accounting-firm-assign-update-user:
     post:
       tags:
         - accounting firm
-      summary: assign admin
+      summary: assign or update user
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                accounting_firm_id: 1
-                user_id: 2
+              properties:
+                accounting_firm_id:
+                  type: string
+                email:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accpet-admin-invitation:
+    post:
+      tags:
+        - accounting firm
+      summary: accept admin invitation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                accounting_firm_id:
+                  type: string
+                email:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accept-user-invitation:
+    post:
+      tags:
+        - accounting firm
+      summary: accept user invitation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                accounting_firm_id:
+                  type: string
+                email:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -4950,11 +5034,37 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/company-admin:
+    post:
+      tags:
+        - company
+      summary: assign admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id: 9
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/company-user/{company_id}:
     get:
       tags:
         - company
-      summary: list user
+      summary: list company user
       security:
         - bearerAuth: []
       parameters:
@@ -4990,19 +5100,21 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/company-admin:
+  /api/company-assign-update-user:
     post:
       tags:
         - company
-      summary: assign admin
+      summary: assign or update user
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                company_id: 1
-                user_id: 9
+              properties:
+                company_id:
+                  type: string
+                email:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -5148,7 +5260,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '35'
+          example: '58'
       responses:
         '200':
           description: Successful response
@@ -5204,7 +5316,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '34'
+          example: '58'
       responses:
         '200':
           description: Successful response
@@ -5220,6 +5332,28 @@ paths:
           multipart/form-data:
             schema:
               type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - depreciation
+      summary: list
       security:
         - bearerAuth: []
       parameters:
@@ -5595,8 +5729,7 @@ paths:
         - name: payroll
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: month
           in: query
           schema:
@@ -5609,7 +5742,6 @@ paths:
           in: query
           schema:
             type: string
-          example: 2022-01
       responses:
         '200':
           description: Successful response
@@ -5783,6 +5915,30 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/payroll-header-data:
+    get:
+      tags:
+        - employee summary
+      summary: payroll header data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: date_format:Y-m
+          example: 2024-01
       responses:
         '200':
           description: Successful response
@@ -11541,6 +11697,13 @@ paths:
                 logo:
                   type: string
                   format: binary
+                allow_negative_amount:
+                  type: integer
+                  example: '1'
+                depreciation_option:
+                  type: string
+                  description: Tax Depreciation || Financial Audit Depreciation
+                  example: financial_audit_depreciation
       security:
         - bearerAuth: []
       parameters:
@@ -11578,7 +11741,7 @@ paths:
             type: string
           required: true
           description: general || payment-mode || warehouse
-          example: warehouse
+          example: general
       responses:
         '200':
           description: Successful response
