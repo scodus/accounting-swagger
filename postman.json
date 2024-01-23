@@ -3,8 +3,8 @@
 		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31745190",
-		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=31745190"
+		"_exporter_id": "32125242",
+		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=32125242"
 	},
 	"item": [
 		{
@@ -1205,19 +1205,13 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "accounting_firm_id",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "",
-											"type": "text"
+									"mode": "raw",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "{{url}}/api/admin/accounting-firm-assign-update-admin",
@@ -2602,19 +2596,13 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "company_id",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "",
-											"type": "text"
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "{{url}}/api/admin/company-assign-update-admin",
@@ -3424,7 +3412,7 @@
 									"variable": [
 										{
 											"key": "type",
-											"value": "accountingfirm",
+											"value": "company",
 											"description": "accountingfirm|company"
 										}
 									]
@@ -4227,13 +4215,13 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "company2admin@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -4875,6 +4863,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "accept invitation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "hd3BgPpgZfQa7QgILb6e0c2kyvJ6V7TJq4UZ5pQDLeit22ukwnCeDdNuyqoVNtqRhKo9OsBh2np6hODmmw5BZHXZvg6MDzCeKrWqXZTd6kW9rbhHed1gUsFBZTOm31DN",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "nirag38142@wuzak.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/accept-invitation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accept-invitation"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -5479,19 +5526,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "accounting_firm_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/accounting-firm-assign-update-user",
@@ -5501,104 +5542,6 @@
 							"path": [
 								"api",
 								"accounting-firm-assign-update-user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "accept admin invitation",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "accounting_firm_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/accpet-admin-invitation",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"accpet-admin-invitation"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "accept user invitation",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "accounting_firm_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/accept-user-invitation",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"accept-user-invitation"
 							]
 						}
 					},
@@ -9319,19 +9262,13 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "company_id",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/api/company-assign-update-user",
