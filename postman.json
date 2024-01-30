@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "admin apis",
+			"name": "ADMIN APIS",
 			"item": [
 				{
 					"name": "Auth",
@@ -377,6 +377,53 @@
 							"response": []
 						},
 						{
+							"name": "delete user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/delete-user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"delete-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "register",
 							"event": [
 								{
@@ -711,6 +758,72 @@
 										"api",
 										"admin",
 										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accept-reject invitation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "token",
+											"value": "PeyfLqAvAGkF997eQg6E71Lm2IJEPXYHHzsPUPOvrpyy2KqjDuzeog7u77rEZaHYFea1spJypZOxMYa0UMVc2JnU54QeK51fItLEX4gUrW6Iq8DmGXGvs8WbVxvoHH1y",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "dimitab801@giratex.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "P@ssw0rd",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "P@ssw0rd",
+											"type": "text"
+										},
+										{
+											"key": "is_accepted",
+											"value": "true",
+											"description": "true|false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accept-invitation",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accept-invitation"
 									]
 								}
 							},
@@ -1206,7 +1319,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"raw": "{\n    \"accounting_firm_id\": 4,\n    \"email\": \"hewan45884@cubene.com\"\n    ,\"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1222,6 +1335,79 @@
 										"api",
 										"admin",
 										"accounting-firm-assign-update-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list accountingfirm admin invitations",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm-user/:accounting_firm_id/invitations?paginate=&page=&limit=&search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm-user",
+										":accounting_firm_id",
+										"invitations"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "accounting_firm_id",
+											"value": "4"
+										}
 									]
 								}
 							},
@@ -2597,7 +2783,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
+									"raw": "{\n    \"company_id\": 1,\n    \"email\": \"hewan45884@cubene.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2613,6 +2799,78 @@
 										"api",
 										"admin",
 										"company-assign-update-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list company admin invitations",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company-user/:company_id?paginate=&page=&limit=&search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company-user",
+										":company_id"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "company_id",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -3137,7 +3395,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=",
+									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=1&is_trial_by_accounting_firm=0",
 									"host": [
 										"{{url}}"
 									],
@@ -3170,7 +3428,12 @@
 										},
 										{
 											"key": "is_trial",
-											"value": "",
+											"value": "1",
+											"description": "1|0"
+										},
+										{
+											"key": "is_trial_by_accounting_firm",
+											"value": "0",
 											"description": "1|0"
 										}
 									]
@@ -3950,6 +4213,47 @@
 							"response": []
 						},
 						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/user/:id/delete",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user",
+										":id",
+										"delete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "user accounting firm list",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -4163,49 +4467,24 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()",
-									"pm.environment.set('token', response.data.access_token)"
+									"pm.environment.set('token', response.data.access_token)",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "email",
-									"value": "superadmin@superadmin.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "company@company.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "rowolo9548@bnovel.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
 									"value": "accountingfirm@accountingfirm.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
@@ -4220,14 +4499,8 @@
 								},
 								{
 									"key": "email",
-									"value": "company2admin@gmail.com",
+									"value": "daded27440@rentaen.com",
 									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "0000@gmail.com",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -4246,40 +4519,9 @@
 				},
 				{
 					"name": "logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"header": [],
 						"url": {
 							"raw": "{{url}}/api/logout",
 							"host": [
@@ -4295,35 +4537,9 @@
 				},
 				{
 					"name": "refresh token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const response = pm.response.json()",
-									"pm.environment.set('token', response.data.access_token)",
-									"pm.environment.set('refresh_token', response.data.refresh_token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"header": [],
 						"url": {
 							"raw": "{{url}}/api/refresh-token/:refresh_token",
 							"host": [
@@ -4337,7 +4553,7 @@
 							"variable": [
 								{
 									"key": "refresh_token",
-									"value": "{{refresh_token}}"
+									"value": ""
 								}
 							]
 						}
@@ -4525,6 +4741,52 @@
 							"path": [
 								"api",
 								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/delete-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"delete-user"
 							]
 						}
 					},
@@ -4865,7 +5127,7 @@
 					"response": []
 				},
 				{
-					"name": "accept invitation",
+					"name": "accept-reject invitation",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -4890,12 +5152,12 @@
 							"formdata": [
 								{
 									"key": "token",
-									"value": "hd3BgPpgZfQa7QgILb6e0c2kyvJ6V7TJq4UZ5pQDLeit22ukwnCeDdNuyqoVNtqRhKo9OsBh2np6hODmmw5BZHXZvg6MDzCeKrWqXZTd6kW9rbhHed1gUsFBZTOm31DN",
+									"value": "jVRbNDicfvdNO3ERhQ32FRQRFuzzs0aUi4lkuHCWprQEFdXMHWKBZrGm2TRhJxzCU7dp6kG13UYVeGTZVLiuC1wvclUZQoJKIJxGtUfNymLaOcr2DLkrt2fyCQ7LqVmb",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "nirag38142@wuzak.com",
+									"value": "daded27440@rentaen.com",
 									"type": "text"
 								},
 								{
@@ -4906,6 +5168,12 @@
 								{
 									"key": "password_confirmation",
 									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "is_accepted",
+									"value": "true",
+									"description": "true|false",
 									"type": "text"
 								}
 							]
@@ -5527,6 +5795,121 @@
 						],
 						"body": {
 							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"hewan45884@cubene.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-assign-update-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-assign-update-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list accountingfirm user invitations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-user/:accounting_firm_id/invitations?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-user",
+								":accounting_firm_id",
+								"invitations"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "accounting_firm_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user permissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
 							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 							"options": {
 								"raw": {
@@ -5542,6 +5925,82 @@
 							"path": [
 								"api",
 								"accounting-firm-assign-update-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unassign user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-assign-update-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-assign-update-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accounting firm dashboard",
+			"item": [
+				{
+					"name": "dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-dashboard"
 							]
 						}
 					},
@@ -9263,7 +9722,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
+							"raw": "{\n    \"company_id\": 2,\n    \"email\": \"fepoto2542@tsderp.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -9278,6 +9737,116 @@
 							"path": [
 								"api",
 								"company-assign-update-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list company user invitations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-user/:company_id?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-user",
+								":company_id"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "company_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "company dashboard",
+			"item": [
+				{
+					"name": "dashboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/company-dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-dashboard"
 							]
 						}
 					},
@@ -16942,7 +17511,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_id\": 3,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 15,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 4\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_id\": 1,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -16985,7 +17554,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_id\": 1,\n    \"vendor_id\": 42,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\":4,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_id\": 1,\n    \"vendor_id\": 42,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\":4,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19461,7 +20030,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 191.70,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 191.70,\n            \"tds\": 41.70\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 10,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 10,\n            \"tds\": \n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19780,7 +20349,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 30,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 5,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"invoice_id\": 3,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19823,7 +20392,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_id\": 1,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 29,\n            \"quantity\": 3,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_id\": 1,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 29,\n            \"quantity\": 3,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"

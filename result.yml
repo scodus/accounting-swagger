@@ -27,20 +27,21 @@ components:
       type: http
       scheme: bearer
 tags:
-  - name: admin apis
-  - name: admin apis > Auth
-  - name: admin apis > Accounting Firm
-  - name: admin apis > Bug
-  - name: admin apis > Bug Feedback
-  - name: admin apis > Company
-  - name: admin apis > Company > Package Subscription
-  - name: admin apis > Fiscal Year
-  - name: admin apis > Package
-  - name: admin apis > Permission
-  - name: admin apis > Role
-  - name: admin apis > User
+  - name: ADMIN APIS
+  - name: ADMIN APIS > Auth
+  - name: ADMIN APIS > Accounting Firm
+  - name: ADMIN APIS > Bug
+  - name: ADMIN APIS > Bug Feedback
+  - name: ADMIN APIS > Company
+  - name: ADMIN APIS > Company > Package Subscription
+  - name: ADMIN APIS > Fiscal Year
+  - name: ADMIN APIS > Package
+  - name: ADMIN APIS > Permission
+  - name: ADMIN APIS > Role
+  - name: ADMIN APIS > User
   - name: Auth
   - name: accounting firm
+  - name: accounting firm dashboard
   - name: account head
   - name: asset
   - name: asset category
@@ -53,6 +54,7 @@ tags:
   - name: comment
   - name: company
   - name: company > package subscription
+  - name: company dashboard
   - name: customer
   - name: depreciation
   - name: document
@@ -100,7 +102,7 @@ paths:
   /api/admin/login:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: login
       requestBody:
         content:
@@ -130,7 +132,7 @@ paths:
   /api/admin/logout:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: logout
       requestBody:
         content:
@@ -153,7 +155,7 @@ paths:
   /api/admin/refresh-token/{refresh_token}:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: refresh token
       requestBody:
         content:
@@ -182,7 +184,7 @@ paths:
   /api/admin/user-detail:
     get:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: user detail
       security:
         - bearerAuth: []
@@ -194,7 +196,7 @@ paths:
   /api/admin/update-user-detail:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: update user detail
       requestBody:
         content:
@@ -222,7 +224,7 @@ paths:
   /api/admin/change-password:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: change password
       requestBody:
         content:
@@ -246,10 +248,22 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/delete-user:
+    delete:
+      tags:
+        - ADMIN APIS > Auth
+      summary: delete user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/register:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: register
       requestBody:
         content:
@@ -279,7 +293,7 @@ paths:
   /api/admin/account-verification:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: account verification
       requestBody:
         content:
@@ -302,7 +316,7 @@ paths:
   /api/admin/resend-account-verification-mail:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: resend account verification mail
       requestBody:
         content:
@@ -323,7 +337,7 @@ paths:
   /api/admin/reset-password-mail:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: reset password  mail
       requestBody:
         content:
@@ -344,7 +358,7 @@ paths:
   /api/admin/reset-password-otp-verification:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: reset password otp verification
       requestBody:
         content:
@@ -367,7 +381,7 @@ paths:
   /api/admin/reset-password:
     post:
       tags:
-        - admin apis > Auth
+        - ADMIN APIS > Auth
       summary: reset password
       requestBody:
         content:
@@ -391,10 +405,51 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/accept-invitation:
+    post:
+      tags:
+        - ADMIN APIS > Auth
+      summary: accept-reject invitation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: >-
+                    PeyfLqAvAGkF997eQg6E71Lm2IJEPXYHHzsPUPOvrpyy2KqjDuzeog7u77rEZaHYFea1spJypZOxMYa0UMVc2JnU54QeK51fItLEX4gUrW6Iq8DmGXGvs8WbVxvoHH1y
+                email:
+                  type: string
+                  example: dimitab801@giratex.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                is_accepted:
+                  type: boolean
+                  description: true|false
+                  example: 'true'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/accounting-firm:
     post:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: store
       requestBody:
         content:
@@ -439,7 +494,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: list
       security:
         - bearerAuth: []
@@ -477,7 +532,7 @@ paths:
   /api/admin/accounting-firm/{id}:
     post:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: update
       requestBody:
         content:
@@ -526,7 +581,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: delete
       security:
         - bearerAuth: []
@@ -549,7 +604,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: show
       security:
         - bearerAuth: []
@@ -573,7 +628,7 @@ paths:
   /api/admin/accounting-firm/{id}/status:
     post:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: update status
       requestBody:
         content:
@@ -604,7 +659,7 @@ paths:
   /api/admin/accounting-firm-user/{accounting_firm_id}:
     get:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: list accountingfirm users
       security:
         - bearerAuth: []
@@ -644,7 +699,7 @@ paths:
   /api/admin/accounting-firm-assign-update-admin:
     post:
       tags:
-        - admin apis > Accounting Firm
+        - ADMIN APIS > Accounting Firm
       summary: assign or update admin
       requestBody:
         content:
@@ -652,8 +707,8 @@ paths:
             schema:
               type: object
               example:
-                accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                accounting_firm_id: 4
+                email: hewan45884@cubene.com
                 permissions:
                   - view-accountingfirm-dashboard
       security:
@@ -669,10 +724,50 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/accounting-firm-user/{accounting_firm_id}/invitations:
+    get:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: list accountingfirm admin invitations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/bug:
     post:
       tags:
-        - admin apis > Bug
+        - ADMIN APIS > Bug
       summary: store
       requestBody:
         content:
@@ -701,7 +796,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Bug
+        - ADMIN APIS > Bug
       summary: list
       security:
         - bearerAuth: []
@@ -739,7 +834,7 @@ paths:
   /api/admin/bug/{id}:
     post:
       tags:
-        - admin apis > Bug
+        - ADMIN APIS > Bug
       summary: update
       requestBody:
         content:
@@ -774,7 +869,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - admin apis > Bug
+        - ADMIN APIS > Bug
       summary: delete
       security:
         - bearerAuth: []
@@ -797,7 +892,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Bug
+        - ADMIN APIS > Bug
       summary: show
       security:
         - bearerAuth: []
@@ -821,7 +916,7 @@ paths:
   /api/admin/bug/{id}/update-status:
     post:
       tags:
-        - admin apis > Bug
+        - ADMIN APIS > Bug
       summary: update status
       requestBody:
         content:
@@ -854,7 +949,7 @@ paths:
   /api/admin/bug-feedback:
     post:
       tags:
-        - admin apis > Bug Feedback
+        - ADMIN APIS > Bug Feedback
       summary: store
       requestBody:
         content:
@@ -883,7 +978,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Bug Feedback
+        - ADMIN APIS > Bug Feedback
       summary: list
       security:
         - bearerAuth: []
@@ -926,7 +1021,7 @@ paths:
   /api/admin/bug-feedback/{id}:
     post:
       tags:
-        - admin apis > Bug Feedback
+        - ADMIN APIS > Bug Feedback
       summary: update
       requestBody:
         content:
@@ -961,7 +1056,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - admin apis > Bug Feedback
+        - ADMIN APIS > Bug Feedback
       summary: delete
       security:
         - bearerAuth: []
@@ -984,7 +1079,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Bug Feedback
+        - ADMIN APIS > Bug Feedback
       summary: show
       security:
         - bearerAuth: []
@@ -1008,7 +1103,7 @@ paths:
   /api/admin/company/{id}/subscribe-package:
     post:
       tags:
-        - admin apis > Company > Package Subscription
+        - ADMIN APIS > Company > Package Subscription
       summary: subscribe package
       requestBody:
         content:
@@ -1045,7 +1140,7 @@ paths:
   /api/admin/company/{id}/modify-package:
     post:
       tags:
-        - admin apis > Company > Package Subscription
+        - ADMIN APIS > Company > Package Subscription
       summary: modify package
       requestBody:
         content:
@@ -1082,7 +1177,7 @@ paths:
   /api/admin/company/{id}/unsubscribe-package:
     post:
       tags:
-        - admin apis > Company > Package Subscription
+        - ADMIN APIS > Company > Package Subscription
       summary: unsubscribe package
       requestBody:
         content:
@@ -1113,7 +1208,7 @@ paths:
   /api/admin/company:
     post:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: store
       requestBody:
         content:
@@ -1165,7 +1260,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: list
       security:
         - bearerAuth: []
@@ -1203,7 +1298,7 @@ paths:
   /api/admin/company-by-user:
     post:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: store by user
       requestBody:
         content:
@@ -1255,7 +1350,7 @@ paths:
   /api/admin/company/{id}:
     post:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: update
       requestBody:
         content:
@@ -1306,7 +1401,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: delete
       security:
         - bearerAuth: []
@@ -1329,7 +1424,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: show
       security:
         - bearerAuth: []
@@ -1353,7 +1448,7 @@ paths:
   /api/admin/company/{id}/status:
     post:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: update status
       requestBody:
         content:
@@ -1384,8 +1479,8 @@ paths:
   /api/admin/company-user/{company_id}:
     get:
       tags:
-        - admin apis > Company
-      summary: list company users
+        - ADMIN APIS > Company
+      summary: list company admin invitations
       security:
         - bearerAuth: []
       parameters:
@@ -1424,7 +1519,7 @@ paths:
   /api/admin/company-assign-update-admin:
     post:
       tags:
-        - admin apis > Company
+        - ADMIN APIS > Company
       summary: assign or update admin
       requestBody:
         content:
@@ -1433,7 +1528,7 @@ paths:
               type: object
               example:
                 company_id: 1
-                email: nirag38142@wuzak.com
+                email: hewan45884@cubene.com
                 permissions:
                   - view-company-dashboard
       security:
@@ -1452,7 +1547,7 @@ paths:
   /api/admin/fiscal-year:
     post:
       tags:
-        - admin apis > Fiscal Year
+        - ADMIN APIS > Fiscal Year
       summary: store
       requestBody:
         content:
@@ -1493,7 +1588,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Fiscal Year
+        - ADMIN APIS > Fiscal Year
       summary: list
       security:
         - bearerAuth: []
@@ -1523,7 +1618,7 @@ paths:
   /api/admin/fiscal-year/{id}:
     post:
       tags:
-        - admin apis > Fiscal Year
+        - ADMIN APIS > Fiscal Year
       summary: update
       requestBody:
         content:
@@ -1568,7 +1663,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - admin apis > Fiscal Year
+        - ADMIN APIS > Fiscal Year
       summary: delete
       security:
         - bearerAuth: []
@@ -1591,7 +1686,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Fiscal Year
+        - ADMIN APIS > Fiscal Year
       summary: show
       security:
         - bearerAuth: []
@@ -1615,7 +1710,7 @@ paths:
   /api/admin/package:
     post:
       tags:
-        - admin apis > Package
+        - ADMIN APIS > Package
       summary: store
       requestBody:
         content:
@@ -1653,7 +1748,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Package
+        - ADMIN APIS > Package
       summary: list
       security:
         - bearerAuth: []
@@ -1683,8 +1778,15 @@ paths:
         - name: is_trial
           in: query
           schema:
-            type: string
+            type: integer
           description: 1|0
+          example: '1'
+        - name: is_trial_by_accounting_firm
+          in: query
+          schema:
+            type: integer
+          description: 1|0
+          example: '0'
       responses:
         '200':
           description: Successful response
@@ -1693,7 +1795,7 @@ paths:
   /api/admin/package/{id}:
     post:
       tags:
-        - admin apis > Package
+        - ADMIN APIS > Package
       summary: update
       requestBody:
         content:
@@ -1737,7 +1839,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - admin apis > Package
+        - ADMIN APIS > Package
       summary: delete
       security:
         - bearerAuth: []
@@ -1760,7 +1862,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - admin apis > Package
+        - ADMIN APIS > Package
       summary: show
       security:
         - bearerAuth: []
@@ -1784,7 +1886,7 @@ paths:
   /api/admin/package/{id}/status:
     post:
       tags:
-        - admin apis > Package
+        - ADMIN APIS > Package
       summary: update status
       requestBody:
         content:
@@ -1811,7 +1913,7 @@ paths:
   /api/admin/permission:
     get:
       tags:
-        - admin apis > Permission
+        - ADMIN APIS > Permission
       summary: list
       security:
         - bearerAuth: []
@@ -1861,7 +1963,7 @@ paths:
   /api/admin/permission/{id}:
     get:
       tags:
-        - admin apis > Permission
+        - ADMIN APIS > Permission
       summary: show
       security:
         - bearerAuth: []
@@ -1885,7 +1987,7 @@ paths:
   /api/admin/permission-by-type/{type}:
     get:
       tags:
-        - admin apis > Permission
+        - ADMIN APIS > Permission
       summary: list by type
       security:
         - bearerAuth: []
@@ -1915,7 +2017,7 @@ paths:
   /api/admin/assign-permission:
     post:
       tags:
-        - admin apis > Permission
+        - ADMIN APIS > Permission
       summary: assign permission to user
       requestBody:
         content:
@@ -1948,7 +2050,7 @@ paths:
   /api/admin/role:
     get:
       tags:
-        - admin apis > Role
+        - ADMIN APIS > Role
       summary: list
       security:
         - bearerAuth: []
@@ -1991,7 +2093,7 @@ paths:
   /api/admin/role/{id}:
     get:
       tags:
-        - admin apis > Role
+        - ADMIN APIS > Role
       summary: show
       security:
         - bearerAuth: []
@@ -2020,7 +2122,7 @@ paths:
   /api/admin/role/{id}/assign-permission:
     post:
       tags:
-        - admin apis > Role
+        - ADMIN APIS > Role
       summary: role<assign permission
       requestBody:
         content:
@@ -2046,7 +2148,7 @@ paths:
   /api/admin/user:
     get:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: list
       security:
         - bearerAuth: []
@@ -2085,7 +2187,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: store
       requestBody:
         content:
@@ -2125,7 +2227,7 @@ paths:
   /api/admin/user/{id}:
     get:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: show
       security:
         - bearerAuth: []
@@ -2148,7 +2250,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: update
       requestBody:
         content:
@@ -2186,7 +2288,7 @@ paths:
   /api/admin/user/{id}/status:
     post:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: update status
       requestBody:
         content:
@@ -2214,10 +2316,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/user/{id}/delete:
+    delete:
+      tags:
+        - ADMIN APIS > User
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/user-accounting-firm-list:
     get:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: user accounting firm list
       security:
         - bearerAuth: []
@@ -2229,7 +2349,7 @@ paths:
   /api/admin/user-company-list:
     get:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: user company list
       security:
         - bearerAuth: []
@@ -2241,7 +2361,7 @@ paths:
   /api/admin/user/{id}/assign-permission:
     post:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: user<assign permission
       requestBody:
         content:
@@ -2269,7 +2389,7 @@ paths:
   /api/admin/user/{id}/assign-role:
     post:
       tags:
-        - admin apis > User
+        - ADMIN APIS > User
       summary: user<assign role
       requestBody:
         content:
@@ -2308,18 +2428,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: 0000@gmail.com
+                  example: daded27440@rentaen.com
                 password:
                   type: string
                   example: P@ssw0rd
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
       responses:
         '200':
           description: Successful response
@@ -2331,18 +2443,7 @@ paths:
         - Auth
       summary: logout
       requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
+        content: {}
       responses:
         '200':
           description: Successful response
@@ -2354,24 +2455,13 @@ paths:
         - Auth
       summary: refresh token
       requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - noauthAuth: []
+        content: {}
       parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: refresh_token
           in: path
           schema:
             type: string
           required: true
-          example: '{{refresh_token}}'
       responses:
         '200':
           description: Successful response
@@ -2437,6 +2527,18 @@ paths:
                 password_confirmation:
                   type: string
                   example: P@ssw0rd
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/delete-user:
+    delete:
+      tags:
+        - Auth
+      summary: delete user
       security:
         - bearerAuth: []
       responses:
@@ -2598,7 +2700,7 @@ paths:
     post:
       tags:
         - Auth
-      summary: accept invitation
+      summary: accept-reject invitation
       requestBody:
         content:
           multipart/form-data:
@@ -2608,16 +2710,20 @@ paths:
                 token:
                   type: string
                   example: >-
-                    hd3BgPpgZfQa7QgILb6e0c2kyvJ6V7TJq4UZ5pQDLeit22ukwnCeDdNuyqoVNtqRhKo9OsBh2np6hODmmw5BZHXZvg6MDzCeKrWqXZTd6kW9rbhHed1gUsFBZTOm31DN
+                    jVRbNDicfvdNO3ERhQ32FRQRFuzzs0aUi4lkuHCWprQEFdXMHWKBZrGm2TRhJxzCU7dp6kG13UYVeGTZVLiuC1wvclUZQoJKIJxGtUfNymLaOcr2DLkrt2fyCQ7LqVmb
                 email:
                   type: string
-                  example: nirag38142@wuzak.com
+                  example: daded27440@rentaen.com
                 password:
                   type: string
                   example: P@ssw0rd
                 password_confirmation:
                   type: string
                   example: P@ssw0rd
+                is_accepted:
+                  type: boolean
+                  description: true|false
+                  example: 'true'
       security:
         - bearerAuth: []
       parameters:
@@ -2961,7 +3067,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: assign or update user
+      summary: unassign user
       requestBody:
         content:
           application/json:
@@ -2970,8 +3076,6 @@ paths:
               example:
                 accounting_firm_id: 1
                 email: nirag38142@wuzak.com
-                permissions:
-                  - view-accountingfirm-dashboard
       security:
         - bearerAuth: []
       parameters:
@@ -2980,6 +3084,58 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting-firm-user/{accounting_firm_id}/invitations:
+    get:
+      tags:
+        - accounting firm
+      summary: list accountingfirm user invitations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting-firm-dashboard:
+    get:
+      tags:
+        - accounting firm dashboard
+      summary: dashboard
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -5045,7 +5201,7 @@ paths:
     get:
       tags:
         - company
-      summary: list company user
+      summary: list company user invitations
       security:
         - bearerAuth: []
       parameters:
@@ -5092,8 +5248,8 @@ paths:
             schema:
               type: object
               example:
-                company_id: 1
-                email: nirag38142@wuzak.com
+                company_id: 2
+                email: fepoto2542@tsderp.com
                 permissions:
                   - view-company-dashboard
       security:
@@ -5104,6 +5260,24 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company-dashboard:
+    get:
+      tags:
+        - company dashboard
+      summary: dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -9729,7 +9903,7 @@ paths:
             schema:
               type: object
               example:
-                bill_id: 3
+                bill_id: 1
                 vendor_id: 38
                 reference_number: '21345'
                 purchase_return_date: '2023-08-01'
@@ -9738,12 +9912,13 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 32
-                    quantity: 15
-                    rate: 10
+                    quantity: 100
+                    rate: 100
                     tax: 0
                     description: description
                     amount: 100
-                    warehouse_id: 4
+                    warehouse_id: 1
+                discount: 100
       security:
         - bearerAuth: []
       parameters:
@@ -9829,6 +10004,7 @@ paths:
                     description: description
                     amount: 100
                     warehouse_id: 1
+                discount: 100
       security:
         - bearerAuth: []
       parameters:
@@ -11222,18 +11398,23 @@ paths:
           application/json:
             schema:
               type: object
-              example:
-                customer_id: 34
-                receiver_id: 8
-                received_date: '2023-08-01'
-                amount: 191.7
-                payment_mode: ''
-                payment_reference: ''
-                note: ''
-                payment_allocation:
-                  - invoice_id: 1
-                    allocated_amount: 191.7
-                    tds: 41.7
+              example: |-
+                {
+                    "customer_id": 34,
+                    "receiver_id": 8,
+                    "received_date": "2023-08-01",
+                    "amount": 10,
+                    "payment_mode": "",
+                    "payment_reference": "",
+                    "note": "",
+                    "payment_allocation": [
+                        {
+                            "invoice_id": 1,
+                            "allocated_amount": 10,
+                            "tds": 
+                        }
+                    ]
+                }
       security:
         - bearerAuth: []
       parameters:
@@ -11427,7 +11608,7 @@ paths:
             schema:
               type: object
               example:
-                invoice_id: 30
+                invoice_id: 3
                 customer_id: 40
                 reference_number: '21345'
                 sales_return_date: '2023-08-01'
@@ -11436,12 +11617,13 @@ paths:
                 products:
                   - product_id: 1
                     account_head_id: 29
-                    quantity: 5
-                    rate: 10
+                    quantity: 100
+                    rate: 100
                     tax: 0
                     description: description
-                    amount: 100
+                    amount: 1000
                     warehouse_id: 1
+                discount: 100
       security:
         - bearerAuth: []
       parameters:
@@ -11528,6 +11710,7 @@ paths:
                     description: description
                     amount: 100
                     warehouse_id: 1
+                discount: 100
       security:
         - bearerAuth: []
       parameters:
