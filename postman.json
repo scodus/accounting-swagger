@@ -764,17 +764,10 @@
 							"response": []
 						},
 						{
-							"name": "accept-reject invitation",
+							"name": "invitation accept-reject",
 							"request": {
 								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
+									"type": "noauth"
 								},
 								"method": "POST",
 								"header": [
@@ -824,6 +817,101 @@
 										"api",
 										"admin",
 										"accept-invitation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my invitations",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/my-invitations",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"my-invitations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my invitation accept-reject",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"value": "jVRbNDicfvdNO3ERhQ32FRQRFuzzs0aUi4lkuHCWprQEFdXMHWKBZrGm2TRhJxzCU7dp6kG13UYVeGTZVLiuC1wvclUZQoJKIJxGtUfNymLaOcr2DLkrt2fyCQ7LqVmb",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "is_accepted",
+											"value": "true",
+											"description": "true|false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/my-invitations/:id/accept-reject",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"my-invitations",
+										":id",
+										"accept-reject"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -4492,15 +4580,15 @@
 									"type": "text"
 								},
 								{
-									"key": "email",
+									"key": "emailz",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "daded27440@rentaen.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -5127,17 +5215,10 @@
 					"response": []
 				},
 				{
-					"name": "accept-reject invitation",
+					"name": "invitation accept-reject",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [
@@ -5186,6 +5267,116 @@
 							"path": [
 								"api",
 								"accept-invitation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my invitations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/my-invitations?paginate=1&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"my-invitations"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my invitations accept-reject",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "jVRbNDicfvdNO3ERhQ32FRQRFuzzs0aUi4lkuHCWprQEFdXMHWKBZrGm2TRhJxzCU7dp6kG13UYVeGTZVLiuC1wvclUZQoJKIJxGtUfNymLaOcr2DLkrt2fyCQ7LqVmb",
+									"type": "text"
+								},
+								{
+									"key": "is_accepted",
+									"value": "true",
+									"description": "true|false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/my-invitation/:id/accept-reject",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"my-invitation",
+								":id",
+								"accept-reject"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "42"
+								}
 							]
 						}
 					},
@@ -5888,49 +6079,6 @@
 					"response": []
 				},
 				{
-					"name": "user permissions",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/accounting-firm-assign-update-user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"accounting-firm-assign-update-user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "unassign user",
 					"request": {
 						"auth": {
@@ -5961,13 +6109,56 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/accounting-firm-assign-update-user",
+							"raw": "{{url}}/api/accounting-firm-unassign-user",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"accounting-firm-assign-update-user"
+								"accounting-firm-unassign-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user permissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-user-permission",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-user-permission"
 							]
 						}
 					},
@@ -9722,7 +9913,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 2,\n    \"email\": \"fepoto2542@tsderp.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
+							"raw": "{\n    \"company_id\": 11,\n    \"email\": \"daded27440@rentaen.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -9776,19 +9967,20 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/company-user/:company_id?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/company-user/:company_id/invitations?paginate=1&page=&limit=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"company-user",
-								":company_id"
+								":company_id",
+								"invitations"
 							],
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -9808,6 +10000,92 @@
 									"key": "company_id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unassign user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-unassign-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-unassign-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user permissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-user-permission",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-user-permission"
 							]
 						}
 					},
@@ -14393,183 +14671,6 @@
 			"name": "package",
 			"item": [
 				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"test2\",\n    \"user\": 3,//-1 for unlimited\n    \"transaction\": 12,//-1 for unlimited\n    \"product\": 8,//-1 for unlimited\n    \"storage\": 10,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"period\": 30,\n            \"price\": 1000\n        },\n        {\n            \"period\": 90,\n            \"price\": 2800\n        },\n        {\n            \"period\": 180,\n            \"price\": 5200\n        },\n        {\n            \"period\": 365,\n            \"price\": 10000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/package",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"package"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 180,\n            \"price\": 10001\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/package/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"package",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"status\": \"active\"//in:active,inactive\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/package/:id/status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"package",
-								":id",
-								"status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/package/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"package",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -14597,7 +14698,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/package?paginate=1&page=&limit=&search_keyword=&status=",
+							"raw": "{{url}}/api/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=1&is_trial_by_accounting_firm=0",
 							"host": [
 								"{{url}}"
 							],
@@ -14626,6 +14727,16 @@
 									"key": "status",
 									"value": "",
 									"description": "in:active,inactive"
+								},
+								{
+									"key": "is_trial",
+									"value": "1",
+									"description": "1|0"
+								},
+								{
+									"key": "is_trial_by_accounting_firm",
+									"value": "0",
+									"description": "1|0"
 								}
 							]
 						}
@@ -17511,7 +17622,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_id\": 1,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
+							"raw": "{\n    \"bill_id\": 1,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17554,7 +17665,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_id\": 1,\n    \"vendor_id\": 42,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\":4,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_id\": 1,\n    \"vendor_id\": 42,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 8,\n            \"account_head_id\": 29,\n            \"quantity\":4,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -20349,7 +20460,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 3,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
+							"raw": "{\n    \"invoice_id\": 3,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -20392,7 +20503,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_id\": 1,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 29,\n            \"quantity\": 3,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"discount\": 100\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_id\": 1,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 29,\n            \"quantity\": 3,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
