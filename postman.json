@@ -3,8 +3,8 @@
 		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32125242",
-		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=32125242"
+		"_exporter_id": "31745190",
+		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=31745190"
 	},
 	"item": [
 		{
@@ -18708,7 +18708,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": [1, 2, 3]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18756,7 +18756,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 100,\n            \"rate\": \"100\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"amount\": 10000,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"discount\": \"100\",\n            \"tax\": 13,\n            \"amount\": 10000,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": [3]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18776,7 +18776,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "30"
+									"value": "8"
 								}
 							]
 						}

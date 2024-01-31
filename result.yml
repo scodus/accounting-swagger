@@ -10812,7 +10812,10 @@ paths:
                     descrition: ''
                     amount: 100
                     warehouse_id: 1
-                document_id: ''
+                document_id:
+                  - 1
+                  - 2
+                  - 3
       security:
         - bearerAuth: []
       parameters:
@@ -10891,20 +10894,16 @@ paths:
                 status: ''
                 products:
                   - product_id: 1
-                    quantity: 100
-                    rate: '100'
-                    discount: '100'
+                    quantity: 10
+                    rate: '10'
+                    discount: '10'
                     tax: 0
-                    amount: 10000
+                    account_head_id: 1
+                    descrition: ''
+                    amount: 100
                     warehouse_id: 1
-                  - product_id: 2
-                    quantity: 100
-                    rate: 100
-                    discount: '100'
-                    tax: 13
-                    amount: 10000
-                    warehouse_id: 1
-                document_id: ''
+                document_id:
+                  - 3
       security:
         - bearerAuth: []
       parameters:
@@ -10923,7 +10922,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '30'
+          example: '8'
       responses:
         '200':
           description: Successful response
