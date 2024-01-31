@@ -459,6 +459,22 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -814,6 +830,34 @@ paths:
             type: integer
           required: true
           example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-admin-permission-update:
+    post:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: admin permission update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                email: nirag38142@wuzak.com
+                permissions:
+                  - view-accountingfirm-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
@@ -1586,6 +1630,34 @@ paths:
                 email: hewan45884@cubene.com
                 permissions:
                   - view-company-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-admin-permission-update:
+    post:
+      tags:
+        - ADMIN APIS > Company
+      summary: admin permission update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                email: nirag38142@wuzak.com
+                permissions:
+                  - view-accountingfirm-dashboard
       security:
         - bearerAuth: []
       parameters:
@@ -2811,8 +2883,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -3288,11 +3359,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/accounting-firm-user-permission:
+  /api/accounting-firm-user-permission-update:
     post:
       tags:
         - accounting firm
-      summary: user permissions
+      summary: user permission update
       requestBody:
         content:
           application/json:
@@ -5519,11 +5590,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/company-user-permission:
+  /api/company-user-permission-update:
     post:
       tags:
         - company
-      summary: user permissions
+      summary: user permission update
       requestBody:
         content:
           application/json:
@@ -7439,6 +7510,7 @@ paths:
                     description: description
                     amount: 300
                     warehouse_id: 4
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -7537,6 +7609,7 @@ paths:
                     description: description
                     amount: 300
                     warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -9246,6 +9319,7 @@ paths:
                     description: description
                     amount: 300
                     warehouse_id: 4
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -9361,6 +9435,7 @@ paths:
                     description: description
                     amount: 400
                     warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -9570,6 +9645,7 @@ paths:
                     account_head_id: 1
                     amount: 100
                     warehouse_id: 4
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -9660,6 +9736,7 @@ paths:
                     tax: 13
                     amount: 10000
                     warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -9806,6 +9883,7 @@ paths:
                     tax: 13
                     amount: 10000
                     warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -10084,6 +10162,7 @@ paths:
                     amount: 100
                     warehouse_id: 1
                 additional_discount: 100
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -10170,6 +10249,7 @@ paths:
                     amount: 100
                     warehouse_id: 1
                 additional_discount: 100
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -10731,7 +10811,8 @@ paths:
                     account_head_id: 1
                     descrition: ''
                     amount: 100
-                    warehouse_id: 4
+                    warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -10823,6 +10904,7 @@ paths:
                     tax: 13
                     amount: 10000
                     warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -11462,7 +11544,8 @@ paths:
                     tax: 0
                     account_head_id: 1
                     amount: 100
-                    warehouse_id: 4
+                    warehouse_id: 1
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -11789,6 +11872,7 @@ paths:
                     amount: 1000
                     warehouse_id: 1
                 additional_discount: 100
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
@@ -11876,6 +11960,7 @@ paths:
                     amount: 100
                     warehouse_id: 1
                 additional_discount: 100
+                document_id: ''
       security:
         - bearerAuth: []
       parameters:
