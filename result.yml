@@ -34,6 +34,7 @@ tags:
   - name: ADMIN APIS > Bug Feedback
   - name: ADMIN APIS > Company
   - name: ADMIN APIS > Company > Package Subscription
+  - name: ADMIN APIS > Dashboard
   - name: ADMIN APIS > Fiscal Year
   - name: ADMIN APIS > Package
   - name: ADMIN APIS > Permission
@@ -1671,6 +1672,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/dashboard:
+    get:
+      tags:
+        - ADMIN APIS > Dashboard
+      summary: dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/fiscal-year:
     post:
       tags:
@@ -1845,12 +1858,11 @@ paths:
             schema:
               type: object
               example:
-                name: test2
+                name: Trial Package By Accounting Firm
                 user: 3
                 transaction: 12
                 product: 8
                 storage: 10
-                is_trial: 0
                 period_prices:
                   - period: 30
                     price: 1000
@@ -1860,6 +1872,9 @@ paths:
                     price: 5200
                   - period: 365
                     price: 10000
+                is_trial: false
+                is_trial_by_accounting_firm: false
+                is_recommended: false
       security:
         - bearerAuth: []
       parameters:
@@ -1905,15 +1920,18 @@ paths:
         - name: is_trial
           in: query
           schema:
-            type: integer
-          description: 1|0
-          example: '1'
+            type: string
+          description: true|false
         - name: is_trial_by_accounting_firm
           in: query
           schema:
-            type: integer
-          description: 1|0
-          example: '0'
+            type: string
+          description: true|false
+        - name: is_recommended
+          in: query
+          schema:
+            type: string
+          description: true|false
       responses:
         '200':
           description: Successful response
@@ -1936,7 +1954,6 @@ paths:
                 transaction: 10
                 product: 9
                 storage: 11
-                is_trial: 1
                 period_prices:
                   - id: 32
                     period: 30
@@ -1950,6 +1967,9 @@ paths:
                   - id: 35
                     period: 365
                     price: 10001
+                is_trial: false
+                is_trial_by_accounting_firm: false
+                is_recommended: false
       security:
         - bearerAuth: []
       parameters:
@@ -5898,21 +5918,25 @@ paths:
                   example: title
                 type:
                   type: string
+                  example: quotation
+                type_id:
+                  type: integer
+                  example: '1'
                 assign_to:
                   type: string
                 remarks:
                   type: string
                 status:
                   type: string
+                transaction_date:
+                  type: string
+                  example: '2022-01-01'
                 documents[0]:
                   type: string
                   format: binary
                 documents[1]:
                   type: string
                   format: binary
-                transaction_date:
-                  type: string
-                  example: '2022-01-01'
       security:
         - bearerAuth: []
       parameters:
@@ -8294,15 +8318,21 @@ paths:
         - name: is_trial
           in: query
           schema:
-            type: integer
-          description: 1|0
-          example: '1'
+            type: boolean
+          description: true|false
+          example: 'false'
         - name: is_trial_by_accounting_firm
           in: query
           schema:
-            type: integer
-          description: 1|0
-          example: '0'
+            type: boolean
+          description: true|false
+          example: 'false'
+        - name: is_recommended
+          in: query
+          schema:
+            type: boolean
+          description: true|false
+          example: 'false'
       responses:
         '200':
           description: Successful response
@@ -8817,7 +8847,7 @@ paths:
                   type: string
                 multiple_warehouse:
                   type: integer
-                  example: '1'
+                  example: '0'
                 warehouse_inventory[0][initial_quantity_on_hand]:
                   type: integer
                   example: '100'
@@ -8861,7 +8891,7 @@ paths:
                   type: string
                 inventory:
                   type: integer
-                  example: '1'
+                  example: '0'
                 inventory_type:
                   type: string
                   example: something
@@ -10813,9 +10843,8 @@ paths:
                     amount: 100
                     warehouse_id: 1
                 document_id:
-                  - 1
-                  - 2
                   - 3
+                  - 4
       security:
         - bearerAuth: []
       parameters:
@@ -13273,7 +13302,25 @@ paths:
     get:
       tags:
         - default
-      summary: test 2
+      summary: test no auth
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test-auth:
+    get:
+      tags:
+        - default
+      summary: test auth
       security:
         - bearerAuth: []
       parameters:
@@ -13281,7 +13328,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '11'
       responses:
         '200':
           description: Successful response

@@ -3073,6 +3073,40 @@
 					]
 				},
 				{
+					"name": "Dashboard",
+					"item": [
+						{
+							"name": "dashboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/admin/dashboard",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Fiscal Year",
 					"item": [
 						{
@@ -3403,7 +3437,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"test2\",\n    \"user\": 3,//-1 for unlimited\n    \"transaction\": 12,//-1 for unlimited\n    \"product\": 8,//-1 for unlimited\n    \"storage\": 10,//-1 for unlimited\n    \"is_trial\":0,//1|0\n    \"period_prices\": [\n        {\n            \"period\": 30,\n            \"price\": 1000\n        },\n        {\n            \"period\": 90,\n            \"price\": 2800\n        },\n        {\n            \"period\": 180,\n            \"price\": 5200\n        },\n        {\n            \"period\": 365,\n            \"price\": 10000\n        }\n    ]\n}",
+									"raw": "{\n    \"name\": \"Trial Package By Accounting Firm\",\n    \"user\": 3,//-1 for unlimited\n    \"transaction\": 12,//-1 for unlimited\n    \"product\": 8,//-1 for unlimited\n    \"storage\": 10,//-1 for unlimited\n     \"period_prices\": [\n        {\n            \"period\": 30,\n            \"price\": 1000\n        },\n        {\n            \"period\": 90,\n            \"price\": 2800\n        },\n        {\n            \"period\": 180,\n            \"price\": 5200\n        },\n        {\n            \"period\": 365,\n            \"price\": 10000\n        }\n    ],\n    \"is_trial\":false,//true|false\n    \"is_trial_by_accounting_firm\":false,//true|false\n    \"is_recommended\":false//true|false\n   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3441,7 +3475,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"is_trial\":1,//1|0\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 365,\n            \"price\": 10001\n        }\n    ]\n}",
+									"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"test4 edit\",\n    \"user\": 4,//-1 for unlimited \n    \"transaction\": 10,//-1 for unlimited\n    \"product\": 9,//-1 for unlimited\n    \"storage\": 11,//-1 for unlimited\n    \"period_prices\": [\n        {\n            \"id\":32,\n            \"period\": 30,\n            \"price\": 1001\n        },\n        {\n            \"id\":33,\n            \"period\": 90,\n            \"price\": 2801\n        },\n        {\n            \"id\":34,\n            \"period\": 180,\n            \"price\": 5201\n        },\n        {\n            \"id\":35,\n            \"period\": 365,\n            \"price\": 10001\n        }\n    ],\n    \"is_trial\":false,//true|false\n    \"is_trial_by_accounting_firm\":false,//true|false\n    \"is_recommended\":false//true|false\n\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3589,7 +3623,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=1&is_trial_by_accounting_firm=0",
+									"raw": "{{url}}/api/admin/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=&is_trial_by_accounting_firm=&is_recommended=",
 									"host": [
 										"{{url}}"
 									],
@@ -3622,13 +3656,18 @@
 										},
 										{
 											"key": "is_trial",
-											"value": "1",
-											"description": "1|0"
+											"value": "",
+											"description": "true|false"
 										},
 										{
 											"key": "is_trial_by_accounting_firm",
-											"value": "0",
-											"description": "1|0"
+											"value": "",
+											"description": "true|false"
+										},
+										{
+											"key": "is_recommended",
+											"value": "",
+											"description": "true|false"
 										}
 									]
 								}
@@ -10708,7 +10747,12 @@
 								},
 								{
 									"key": "type",
-									"value": "",
+									"value": "quotation",
+									"type": "text"
+								},
+								{
+									"key": "type_id",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -10727,22 +10771,19 @@
 									"type": "text"
 								},
 								{
+									"key": "transaction_date",
+									"value": "2022-01-01",
+									"type": "text"
+								},
+								{
 									"key": "documents[0]",
 									"type": "file",
-									"src": [
-										"/home/user--49/Pictures/Screenshots/Screenshot from 2023-12-01 09-35-37.png",
-										"/home/user123/Pictures/Screenshots/Screenshot from 2023-12-21 12-32-29.png"
-									]
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2024-01-26 12-11-32.png"
 								},
 								{
 									"key": "documents[1]",
 									"type": "file",
 									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-11-22 17-34-07.png"
-								},
-								{
-									"key": "transaction_date",
-									"value": "2022-01-01",
-									"type": "text"
 								}
 							]
 						},
@@ -14804,7 +14845,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=1&is_trial_by_accounting_firm=0",
+							"raw": "{{url}}/api/package?paginate=1&page=&limit=&search_keyword=&status=&is_trial=false&is_trial_by_accounting_firm=false&is_recommended=false",
 							"host": [
 								"{{url}}"
 							],
@@ -14836,13 +14877,18 @@
 								},
 								{
 									"key": "is_trial",
-									"value": "1",
-									"description": "1|0"
+									"value": "false",
+									"description": "true|false"
 								},
 								{
 									"key": "is_trial_by_accounting_firm",
-									"value": "0",
-									"description": "1|0"
+									"value": "false",
+									"description": "true|false"
+								},
+								{
+									"key": "is_recommended",
+									"value": "false",
+									"description": "true|false"
 								}
 							]
 						}
@@ -15747,7 +15793,7 @@
 								},
 								{
 									"key": "multiple_warehouse",
-									"value": "1",
+									"value": "0",
 									"type": "text"
 								},
 								{
@@ -15836,7 +15882,7 @@
 								},
 								{
 									"key": "inventory",
-									"value": "1",
+									"value": "0",
 									"type": "text"
 								},
 								{
@@ -18708,7 +18754,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": [1, 2, 3]\n}",
+							"raw": "{\n    \"quotation_date\": \"2023-08-01\",\n    \"expiry_date\": \"2023-08-30\",\n    \"customer_id\": 35,\n    \"quotation_number\": \"\",\n    \"credit_term\": \"\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"descrition\": \"\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": [3, 4]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23069,20 +23115,13 @@
 			"response": []
 		},
 		{
-			"name": "test 2",
+			"name": "test no auth",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [
@@ -23104,6 +23143,47 @@
 					"path": [
 						"api",
 						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test auth",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "company-id",
+						"value": "11",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/test-auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"test-auth"
 					]
 				}
 			},
