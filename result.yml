@@ -63,6 +63,7 @@ tags:
   - name: employee summary
   - name: employee tax deduction
   - name: expense
+  - name: excel sample
   - name: fiscal year
   - name: fixed asset
   - name: Folder
@@ -848,7 +849,7 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 50
                 permissions:
                   - view-accountingfirm-dashboard
       security:
@@ -864,7 +865,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/accounting-firm-unassign-admin:
+  /api/admin/accounting-firm-unassign-admin:
     post:
       tags:
         - ADMIN APIS > Accounting Firm
@@ -876,7 +877,7 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 50
       security:
         - bearerAuth: []
       parameters:
@@ -1682,7 +1683,7 @@ paths:
               type: object
               example:
                 company_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 10
                 permissions:
                   - view-accountingfirm-dashboard
       security:
@@ -1698,7 +1699,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/company-unassign-admin:
+  /api/admin/company-unassign-admin:
     post:
       tags:
         - ADMIN APIS > Company
@@ -1710,7 +1711,7 @@ paths:
               type: object
               example:
                 company_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 10
       security:
         - bearerAuth: []
       parameters:
@@ -3420,9 +3421,9 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: daded27440@rentaen.com
+                user_id: 50
                 permissions:
-                  - view-accountingfirm-dashboard
+                  - accountingfirm-user-view
       security:
         - bearerAuth: []
       parameters:
@@ -3448,7 +3449,7 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: dadedil246@konican.com
+                user_id: 50
       security:
         - bearerAuth: []
       parameters:
@@ -5651,7 +5652,7 @@ paths:
               type: object
               example:
                 company_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 10
                 permissions:
                   - view-accountingfirm-dashboard
       security:
@@ -5684,7 +5685,7 @@ paths:
               type: object
               example:
                 company_id: 11
-                email: daded27440@rentaen.com
+                user_id: daded27440@rentaen.com
       security:
         - bearerAuth: []
       parameters:
@@ -6830,6 +6831,36 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/excel-sample/{type}:
+    get:
+      tags:
+        - excel sample
+      summary: sample
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: customer || vendor
+          example: customer
       responses:
         '200':
           description: Successful response
@@ -13339,30 +13370,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sample/{type}:
-    get:
-      tags:
-        - default
-      summary: test
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: type
-          in: path
-          schema:
-            type: string
-          required: true
-          example: quotation
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/test:
     get:
       tags:
@@ -13388,12 +13395,6 @@ paths:
       summary: test auth
       security:
         - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '11'
       responses:
         '200':
           description: Successful response

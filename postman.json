@@ -1542,7 +1542,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1586,7 +1586,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\"   \n}",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1594,12 +1594,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/accounting-firm-unassign-admin",
+									"raw": "{{url}}/api/admin/accounting-firm-unassign-admin",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"accounting-firm-unassign-admin"
 									]
 								}
@@ -3092,7 +3093,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3136,7 +3137,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\"   \n}",
+									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10   \n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3144,12 +3145,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/company-unassign-admin",
+									"raw": "{{url}}/api/admin/company-unassign-admin",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
+										"admin",
 										"company-unassign-admin"
 									]
 								}
@@ -4731,13 +4733,13 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "daded27440@rentaen.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -6335,7 +6337,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"daded27440@rentaen.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    // \"email\": \"daded27440@rentaen.com\",\n    \"user_id\":50,\n    \"permissions\" : [\n        \"accountingfirm-user-view\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6378,7 +6380,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\":1,\n    \"email\": \"dadedil246@konican.com\"   \n}",
+							"raw": "{\n    \"accounting_firm_id\":1,\n    // \"email\": \"dadedil246@konican.com\",\n    \"user_id\":50   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10267,7 +10269,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10315,7 +10317,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 11,\n    \"email\": \"daded27440@rentaen.com\"   \n}",
+							"raw": "{\n    \"company_id\": 11,\n    \"user_id\": \"daded27440@rentaen.com\"   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12307,6 +12309,65 @@
 								{
 									"key": "id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "excel sample",
+			"item": [
+				{
+					"name": "sample",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/excel-sample/:type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"excel-sample",
+								":type"
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "customer",
+									"description": "customer || vendor"
 								}
 							]
 						}
@@ -23121,20 +23182,13 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/sample/:type",
+					"raw": "{{url}}/api/test",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"sample",
-						":type"
-					],
-					"variable": [
-						{
-							"key": "type",
-							"value": "quotation"
-						}
+						"test"
 					]
 				}
 			},
@@ -23200,7 +23254,8 @@
 					{
 						"key": "company-id",
 						"value": "11",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
