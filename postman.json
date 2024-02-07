@@ -3,8 +3,8 @@
 		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32125242",
-		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=32125242"
+		"_exporter_id": "31745190",
+		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=31745190"
 	},
 	"item": [
 		{
@@ -1542,7 +1542,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1558,50 +1558,6 @@
 										"api",
 										"admin",
 										"accounting-firm-admin-permission-update"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "unassign  admin",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50   \n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/accounting-firm-unassign-admin",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"accounting-firm-unassign-admin"
 									]
 								}
 							},
@@ -3093,7 +3049,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3109,50 +3065,6 @@
 										"api",
 										"admin",
 										"company-admin-permission-update"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "unassign admin",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10   \n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/company-unassign-admin",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"company-unassign-admin"
 									]
 								}
 							},
@@ -4575,6 +4487,88 @@
 							"response": []
 						},
 						{
+							"name": "user accounting firm list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/user-accounting-firm-list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user-accounting-firm-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user company list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/user-company-list",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user-company-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "user<assign permission",
 							"request": {
 								"auth": {
@@ -4731,7 +4725,7 @@
 									"type": "text"
 								},
 								{
-									"key": "email",
+									"key": "emailz",
 									"value": "augxdeveloper@gmail.com",
 									"type": "text",
 									"disabled": true
@@ -4833,11 +4827,6 @@
 								"value": "application/json",
 								"type": "text",
 								"disabled": true
-							},
-							{
-								"key": "company-id",
-								"value": "11",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -4852,86 +4841,6 @@
 							"path": [
 								"api",
 								"user-detail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user accounting firm list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/user-accounting-firm-list",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user-accounting-firm-list"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user company list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/user-company-list",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user-company-list"
 							]
 						}
 					},
@@ -6315,49 +6224,6 @@
 					"response": []
 				},
 				{
-					"name": "user permission update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\": 1,\n    // \"email\": \"daded27440@rentaen.com\",\n    \"user_id\":50,\n    \"permissions\" : [\n        \"accountingfirm-user-view\"\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/accounting-firm-user-permission-update",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"accounting-firm-user-permission-update"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "unassign user",
 					"request": {
 						"auth": {
@@ -6380,7 +6246,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accounting_firm_id\":1,\n    // \"email\": \"dadedil246@konican.com\",\n    \"user_id\":50   \n}",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\"   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6395,6 +6261,49 @@
 							"path": [
 								"api",
 								"accounting-firm-unassign-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user permission update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-user-permission-update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-user-permission-update"
 							]
 						}
 					},
@@ -10242,54 +10151,6 @@
 					"response": []
 				},
 				{
-					"name": "user permission update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/company-user-permission-update",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"company-user-permission-update"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "unassign user",
 					"request": {
 						"auth": {
@@ -10308,16 +10169,11 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "11",
-								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_id\": 11,\n    \"user_id\": \"daded27440@rentaen.com\"   \n}",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\"   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -10332,6 +10188,49 @@
 							"path": [
 								"api",
 								"company-unassign-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user permission update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\": 1,\n    \"email\": \"nirag38142@wuzak.com\",\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/company-user-permission-update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company-user-permission-update"
 							]
 						}
 					},
@@ -12309,65 +12208,6 @@
 								{
 									"key": "id",
 									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "excel sample",
-			"item": [
-				{
-					"name": "sample",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/excel-sample/:type",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"excel-sample",
-								":type"
-							],
-							"variable": [
-								{
-									"key": "type",
-									"value": "customer",
-									"description": "customer || vendor"
 								}
 							]
 						}
@@ -15922,7 +15762,7 @@
 								},
 								{
 									"key": "sku",
-									"value": "T0982345jhwersssssssd",
+									"value": "T0982345jhwerssssss",
 									"type": "text"
 								},
 								{
@@ -15973,7 +15813,7 @@
 								},
 								{
 									"key": "warehouse_inventory[0][warehouse_id]",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								},
 								{
@@ -21719,6 +21559,86 @@
 					"response": []
 				},
 				{
+					"name": "user accounting firm list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user-accounting-firm-list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-accounting-firm-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user company list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user-company-list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-company-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "user<assign permission",
 					"request": {
 						"auth": {
@@ -23212,13 +23132,8 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"permissions\" : [\n        \"view-company-dashboard\",\n        \"company-view\",\n        \"company-update\"\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"mode": "formdata",
+					"formdata": []
 				},
 				"url": {
 					"raw": "{{url}}/api/test",
@@ -23254,8 +23169,7 @@
 					{
 						"key": "company-id",
 						"value": "11",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
