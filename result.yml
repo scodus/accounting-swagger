@@ -63,6 +63,7 @@ tags:
   - name: employee summary
   - name: employee tax deduction
   - name: expense
+  - name: excel sample
   - name: fiscal year
   - name: fixed asset
   - name: Folder
@@ -848,9 +849,35 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 50
                 permissions:
                   - view-accountingfirm-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-unassign-admin:
+    post:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: unassign  admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 50
       security:
         - bearerAuth: []
       parameters:
@@ -1655,10 +1682,36 @@ paths:
             schema:
               type: object
               example:
-                accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                company_id: 1
+                user_id: 10
                 permissions:
                   - view-accountingfirm-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-unassign-admin:
+    post:
+      tags:
+        - ADMIN APIS > Company
+      summary: unassign admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id: 10
       security:
         - bearerAuth: []
       parameters:
@@ -2481,30 +2534,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/user-accounting-firm-list:
-    get:
-      tags:
-        - ADMIN APIS > User
-      summary: user accounting firm list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/user-company-list:
-    get:
-      tags:
-        - ADMIN APIS > User
-      summary: user company list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/admin/user/{id}/assign-permission:
     post:
       tags:
@@ -2575,13 +2604,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: daded27440@rentaen.com
+                  example: tomnjerry8963@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
-                emailz:
-                  type: string
-                  example: augxdeveloper@gmail.com
       responses:
         '200':
           description: Successful response
@@ -2622,6 +2648,36 @@ paths:
       tags:
         - Auth
       summary: user detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user-accounting-firm-list:
+    get:
+      tags:
+        - Auth
+      summary: user accounting firm list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user-company-list:
+    get:
+      tags:
+        - Auth
+      summary: user company list
       security:
         - bearerAuth: []
       responses:
@@ -3353,11 +3409,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/accounting-firm-unassign-user:
+  /api/accounting-firm-user-permission-update:
     post:
       tags:
         - accounting firm
-      summary: unassign user
+      summary: user permission update
       requestBody:
         content:
           application/json:
@@ -3365,7 +3421,9 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                user_id: 50
+                permissions:
+                  - accountingfirm-user-view
       security:
         - bearerAuth: []
       parameters:
@@ -3379,11 +3437,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/accounting-firm-user-permission-update:
+  /api/accounting-firm-unassign-user:
     post:
       tags:
         - accounting firm
-      summary: user permission update
+      summary: unassign user
       requestBody:
         content:
           application/json:
@@ -3391,9 +3449,7 @@ paths:
               type: object
               example:
                 accounting_firm_id: 1
-                email: nirag38142@wuzak.com
-                permissions:
-                  - view-accountingfirm-dashboard
+                user_id: 50
       security:
         - bearerAuth: []
       parameters:
@@ -3430,24 +3486,26 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                  example: asdssddds
                 account_type:
                   type: string
                   example: Assets
-                description:
-                  type: string
-                parent_id:
-                  type: integer
-                  example: '33'
                 code:
                   type: string
+                description:
+                  type: string
+                  example: test
+                name:
+                  type: string
+                  example: test2
                 opening_balance:
                   type: integer
-                  example: '500000'
+                  example: '0'
+                parent_id:
+                  type: integer
+                  example: '45'
                 status:
                   type: string
+                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -5584,32 +5642,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/company-unassign-user:
-    post:
-      tags:
-        - company
-      summary: unassign user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                accounting_firm_id: 1
-                email: nirag38142@wuzak.com
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/company-user-permission-update:
     post:
       tags:
@@ -5621,10 +5653,10 @@ paths:
             schema:
               type: object
               example:
-                accounting_firm_id: 1
-                email: nirag38142@wuzak.com
+                company_id: 11
+                user_id: 47
                 permissions:
-                  - view-accountingfirm-dashboard
+                  - company-user-view
       security:
         - bearerAuth: []
       parameters:
@@ -5633,6 +5665,42 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/company-unassign-user:
+    post:
+      tags:
+        - company
+      summary: unassign user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 11
+                user_id: daded27440@rentaen.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -5733,6 +5801,38 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer-import:
+    post:
+      tags:
+        - customer
+      summary: import
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  example: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -6765,6 +6865,36 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/excel-sample/{type}:
+    get:
+      tags:
+        - excel sample
+      summary: sample
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: customer || vendor
+          example: customer
       responses:
         '200':
           description: Successful response
@@ -8833,7 +8963,7 @@ paths:
                   example: title
                 sku:
                   type: string
-                  example: T0982345jhwerssssss
+                  example: T0982345jhwersssssssd
                 product_category_id:
                   type: string
                 tax:
@@ -8859,7 +8989,7 @@ paths:
                   example: '100'
                 warehouse_inventory[0][warehouse_id]:
                   type: integer
-                  example: '4'
+                  example: '1'
                 warehouse_inventory[1][initial_quantity_on_hand]:
                   type: integer
                   example: '50'
@@ -12454,30 +12584,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/user-accounting-firm-list:
-    get:
-      tags:
-        - users
-      summary: user accounting firm list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/user-company-list:
-    get:
-      tags:
-        - users
-      summary: user company list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/user/{id}/assign-permission:
     post:
       tags:
@@ -12798,6 +12904,38 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor-import:
+    post:
+      tags:
+        - vendor
+      summary: import
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  example: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -13298,13 +13436,54 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/draft-items:
+    get:
+      tags:
+        - default
+      summary: draft items
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/test:
     get:
       tags:
         - default
-      summary: test no auth
+      summary: test
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       parameters:
         - name: company-id
           in: header
@@ -13323,12 +13502,36 @@ paths:
       summary: test auth
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test-no-auth-check:
+    get:
+      tags:
+        - default
+      summary: test no auth check
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test-auth-check:
+    get:
+      tags:
+        - default
+      summary: test auth check
+      security:
+        - bearerAuth: []
       parameters:
         - name: company-id
           in: header
           schema:
             type: integer
-          example: '11'
+          example: '3'
       responses:
         '200':
           description: Successful response
