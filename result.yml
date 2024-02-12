@@ -2123,11 +2123,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: paginate
           in: query
           schema:
@@ -2197,11 +2192,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: type
           in: path
           schema:
@@ -2260,11 +2250,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: paginate
           in: query
           schema:
@@ -2303,11 +2288,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: id
           in: path
           schema:
@@ -6653,6 +6633,8 @@ paths:
                 files[1]:
                   type: string
                   format: binary
+                on_credit:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -6752,6 +6734,8 @@ paths:
                 _method:
                   type: string
                   example: patch
+                on_credit:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -8710,11 +8694,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: paginate
           in: query
           schema:
@@ -8784,11 +8763,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: type
           in: path
           schema:
@@ -8824,11 +8798,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -11635,11 +11604,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: id
           in: path
           schema:

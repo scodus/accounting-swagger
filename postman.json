@@ -3,8 +3,8 @@
 		"_postman_id": "64eb6419-57c3-4685-beff-990704af1d9e",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32125242",
-		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=32125242"
+		"_exporter_id": "31745190",
+		"_collection_link": "https://grey-eclipse-533286.postman.co/workspace/My-Workspace~0bbf2477-357c-4549-816b-d3b032512244/collection/31745190-64eb6419-57c3-4685-beff-990704af1d9e?action=share&source=collection_link&creator=31745190"
 	},
 	"item": [
 		{
@@ -3842,7 +3842,8 @@
 									{
 										"key": "company-id",
 										"value": "1",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -3970,7 +3971,8 @@
 									{
 										"key": "company-id",
 										"value": "1",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -4084,7 +4086,8 @@
 									{
 										"key": "company-id",
 										"value": "1",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -4158,7 +4161,8 @@
 									{
 										"key": "company-id",
 										"value": "1",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"body": {
@@ -4722,8 +4726,7 @@
 								{
 									"key": "email",
 									"value": "accountingfirm@accountingfirm.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
@@ -4733,7 +4736,8 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -12026,6 +12030,11 @@
 									"key": "files[1]",
 									"type": "file",
 									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
+								},
+								{
+									"key": "on_credit",
+									"value": "",
+									"type": "text"
 								}
 							]
 						},
@@ -12119,6 +12128,11 @@
 								{
 									"key": "_method",
 									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "on_credit",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -15543,7 +15557,8 @@
 							{
 								"key": "company-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -15669,7 +15684,8 @@
 							{
 								"key": "company-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -15725,7 +15741,8 @@
 							{
 								"key": "company-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -20014,7 +20031,8 @@
 							{
 								"key": "company-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -20087,7 +20105,8 @@
 							{
 								"key": "company-id",
 								"value": "1",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
