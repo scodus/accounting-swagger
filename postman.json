@@ -6509,13 +6509,13 @@
 									"type": "text"
 								},
 								{
-									"key": "parent_id",
-									"value": "45",
+									"key": "opening_balance_date",
+									"value": "2022-01-01",
 									"type": "text"
 								},
 								{
-									"key": "status",
-									"value": "approved",
+									"key": "parent_id",
+									"value": "45",
 									"type": "text"
 								}
 							]
@@ -6588,8 +6588,8 @@
 									"type": "text"
 								},
 								{
-									"key": "status",
-									"value": "active",
+									"key": "opening_balance_date",
+									"value": "2022-01-01",
 									"type": "text"
 								},
 								{
@@ -6703,7 +6703,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=ca&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -6726,7 +6726,7 @@
 								},
 								{
 									"key": "search_keyword",
-									"value": "ca"
+									"value": ""
 								},
 								{
 									"key": "parent_slug",
@@ -10497,8 +10497,8 @@
 							"formdata": [
 								{
 									"key": "file",
-									"value": "active",
-									"type": "text"
+									"type": "file",
+									"src": "/home/user123/Downloads/sample (24).xlsx"
 								}
 							]
 						},
@@ -11998,12 +11998,12 @@
 								},
 								{
 									"key": "paid_account_id",
-									"value": "3",
+									"value": "33",
 									"type": "text"
 								},
 								{
 									"key": "vendor_id",
-									"value": "41",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -12033,7 +12033,7 @@
 								},
 								{
 									"key": "on_credit",
-									"value": "",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -12383,7 +12383,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "8"
 								}
 							]
 						}
@@ -15023,11 +15023,16 @@
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account_heads\": [\n        {\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"account_head_id\": 2,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
+							"raw": "{\n    \"account_heads\": [\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 2,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18342,7 +18347,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 36,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 35,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 35,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"vendor_id\": 49,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 2000,\n    \"note\": \"asdasd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18390,7 +18395,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 36,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"amount\": 200,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 200,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 49,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200011,\n    \"note\": \"asdasd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18410,7 +18415,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "16"
 								}
 							]
 						}
@@ -18514,7 +18519,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "16"
 								}
 							]
 						}
@@ -18657,7 +18662,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 35,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 35,\n            \"amount\": 300,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 35,\n            \"tax\": 13,\n            \"amount\": 300,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 49,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 2000,\n    \"note\": \"asdasd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18705,7 +18710,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"accounts\": [\n        {\n            \"account_head_id\": 34,\n            \"amount\": 111,\n            \"description\": \"description\"\n        },\n        {\n            \"account_head_id\": 3,\n            \"tax\": 13,\n            \"amount\": 111,\n            \"description\": \"description\"\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 35,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 123123,\n    \"note\": \"asdzxczxc\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18725,7 +18730,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "13"
 								}
 							]
 						}
@@ -18849,7 +18854,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "13"
 								}
 							]
 						}
@@ -18952,7 +18957,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "13"
 								}
 							]
 						}
@@ -22335,8 +22340,8 @@
 							"formdata": [
 								{
 									"key": "file",
-									"value": "active",
-									"type": "text"
+									"type": "file",
+									"src": "/home/user123/Downloads/sample (24).xlsx"
 								}
 							]
 						},
@@ -23352,6 +23357,63 @@
 							"key": "search_keyword",
 							"value": ""
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/dashboard",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dashboard"
 					]
 				}
 			},

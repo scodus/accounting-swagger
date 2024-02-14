@@ -3480,12 +3480,12 @@ paths:
                 opening_balance:
                   type: integer
                   example: '0'
+                opening_balance_date:
+                  type: string
+                  example: '2022-01-01'
                 parent_id:
                   type: integer
                   example: '45'
-                status:
-                  type: string
-                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -3532,7 +3532,6 @@ paths:
           in: query
           schema:
             type: string
-          example: ca
         - name: parent_slug
           in: query
           schema:
@@ -3594,9 +3593,9 @@ paths:
                 opening_balance:
                   type: integer
                   example: '300000'
-                status:
+                opening_balance_date:
                   type: string
-                  example: active
+                  example: '2022-01-01'
                 _method:
                   type: string
                   example: patch
@@ -5799,7 +5798,7 @@ paths:
               properties:
                 file:
                   type: string
-                  example: active
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -6616,10 +6615,9 @@ paths:
                   example: '33'
                 paid_account_id:
                   type: integer
-                  example: '3'
+                  example: '33'
                 vendor_id:
-                  type: integer
-                  example: '41'
+                  type: string
                 amount:
                   type: integer
                   example: '2000'
@@ -6634,7 +6632,8 @@ paths:
                   type: string
                   format: binary
                 on_credit:
-                  type: string
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -6848,7 +6847,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '8'
       responses:
         '200':
           description: Successful response
@@ -8377,13 +8376,16 @@ paths:
               type: object
               example:
                 account_heads:
-                  - account_head_id: 1
+                  - date: '2022-01-01'
+                    account_head_id: 1
                     amount: 200000
                     type: cr
-                  - account_head_id: 2
+                  - date: '2022-01-01'
+                    account_head_id: 2
                     amount: 200000
                     type: cr
-                  - account_head_id: 3
+                  - date: '2022-01-01'
+                    account_head_id: 3
                     amount: 0
                     type: dr
       security:
@@ -8394,6 +8396,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -10498,20 +10505,11 @@ paths:
             schema:
               type: object
               example:
-                vendor_id: 36
+                vendor_id: 49
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                payment_mode: ''
-                payment_reference: ''
-                note: ''
-                accounts:
-                  - account_head_id: 35
-                    amount: 300
-                    description: description
-                  - account_head_id: 35
-                    tax: 13
-                    amount: 300
-                    description: description
+                amount: 2000
+                note: asdasd
       security:
         - bearerAuth: []
       parameters:
@@ -10563,20 +10561,11 @@ paths:
               type: object
               example:
                 _method: patch
-                vendor_id: 36
+                vendor_id: 49
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                payment_mode: ''
-                payment_reference: ''
-                note: ''
-                accounts:
-                  - account_head_id: 34
-                    amount: 200
-                    description: description
-                  - account_head_id: 3
-                    tax: 13
-                    amount: 200
-                    description: description
+                amount: 200011
+                note: asdasd
       security:
         - bearerAuth: []
       parameters:
@@ -10595,7 +10584,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '16'
       responses:
         '200':
           description: Successful response
@@ -10684,7 +10673,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '16'
       responses:
         '200':
           description: Successful response
@@ -10701,20 +10690,11 @@ paths:
             schema:
               type: object
               example:
-                customer_id: 35
+                customer_id: 49
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                payment_mode: ''
-                payment_reference: ''
-                note: ''
-                accounts:
-                  - account_head_id: 35
-                    amount: 300
-                    description: description
-                  - account_head_id: 35
-                    tax: 13
-                    amount: 300
-                    description: description
+                amount: 2000
+                note: asdasd
       security:
         - bearerAuth: []
       parameters:
@@ -10787,19 +10767,11 @@ paths:
               type: object
               example:
                 _method: patch
+                customer_id: 35
                 receiver_id: '8'
                 received_date: '2023-01-01'
-                payment_mode: ''
-                payment_reference: ''
-                note: ''
-                accounts:
-                  - account_head_id: 34
-                    amount: 111
-                    description: description
-                  - account_head_id: 3
-                    tax: 13
-                    amount: 111
-                    description: description
+                amount: 123123
+                note: asdzxczxc
       security:
         - bearerAuth: []
       parameters:
@@ -10818,7 +10790,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '13'
       responses:
         '200':
           description: Successful response
@@ -10874,7 +10846,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '13'
       responses:
         '200':
           description: Successful response
@@ -10907,7 +10879,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '13'
       responses:
         '200':
           description: Successful response
@@ -12886,7 +12858,7 @@ paths:
               properties:
                 file:
                   type: string
-                  example: active
+                  format: binary
       security:
         - bearerAuth: []
       parameters:
@@ -13436,6 +13408,29 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/dashboard:
+    get:
+      tags:
+        - default
+      summary: dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
