@@ -6845,7 +6845,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '23'
+          example: '25'
       responses:
         '200':
           description: Successful response
@@ -6862,15 +6862,9 @@ paths:
             schema:
               type: object
               example:
+                expense_id: 2
+                receiver_id: 3
                 amount: 1000
-                receiver_id: 3
-                vendor_id: 36
-                received_date: '2023-10-17'
-                payment_mode: khalti
-                payment_allocation:
-                  - expense_id: 23
-                    allocated_amount: 1000
-                is_single_expense_payment: 1
       security:
         - bearerAuth: []
       parameters:
@@ -6884,166 +6878,6 @@ paths:
           schema:
             type: integer
           example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - expense payment
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: bill_id
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/expense-payment/{id}:
-    post:
-      tags:
-        - expense payment
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                vendor_id: 38
-                receiver_id: 3
-                received_date: '2023-01-01'
-                amount: 1500
-                payment_mode: ''
-                payment_reference: ''
-                note: ''
-                payment_allocation:
-                  - expense_id: 23
-                    allocated_amount: 1500
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '58'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - expense payment
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - expense payment
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/expense-payment/{id}/update-status:
-    post:
-      tags:
-        - expense payment
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '58'
       responses:
         '200':
           description: Successful response

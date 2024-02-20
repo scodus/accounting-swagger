@@ -12378,7 +12378,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "23"
+									"value": "25"
 								}
 							]
 						}
@@ -12418,7 +12418,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 1000,\n    \"receiver_id\": 3,\n    \"vendor_id\": 36,\n    \"received_date\": \"2023-10-17\",\n    \"payment_mode\": \"khalti\",\n    \"payment_allocation\": [\n        {\n            \"expense_id\": 23,\n            \"allocated_amount\": 1000\n        }\n    ],\n    \"is_single_expense_payment\": 1\n}",
+							"raw": "{\n    \"expense_id\": 2,\n    \"receiver_id\": 3,\n    \"amount\": 1000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -12433,272 +12433,6 @@
 							"path": [
 								"api",
 								"expense-payment"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 38,\n    \"receiver_id\": 3,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 1500,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"expense_id\": 23,\n            \"allocated_amount\": 1500\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/expense-payment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"expense-payment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "58"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/expense-payment?bill_id=&status=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"expense-payment"
-							],
-							"query": [
-								{
-									"key": "bill_id",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "approved",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/expense-payment/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"expense-payment",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "58"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/expense-payment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"expense-payment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/expense-payment/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"expense-payment",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -22655,7 +22389,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/home/user123/Downloads/sample (24).xlsx"
+									"src": "/home/user123/Downloads/sample (25).xlsx"
 								}
 							]
 						},
