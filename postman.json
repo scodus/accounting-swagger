@@ -12418,7 +12418,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"expense_id\": 2,\n    \"receiver_id\": 3,\n    \"amount\": 1000\n}",
+							"raw": "{\n    \"expense_id\": 4,\n    \"receiver_id\": 3,\n    \"amount\": 3999\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14214,7 +14214,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=",
+							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -14252,6 +14252,14 @@
 									"value": "",
 									"description": "\n",
 									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -16503,7 +16511,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=&inventory",
+							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=0&is_service=&inventory",
 							"host": [
 								"{{url}}"
 							],
@@ -16526,7 +16534,7 @@
 								},
 								{
 									"key": "search_keyword",
-									"value": ""
+									"value": "0"
 								},
 								{
 									"key": "is_service",
@@ -17278,7 +17286,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=824&multiple_status[0]=unpaid&multiple_status[1]=paid&multiple_status[2]=partial",
+							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=824&multiple_status[0]=unpaid&multiple_status[1]=paid&multiple_status[2]=partial&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -17322,6 +17330,14 @@
 								{
 									"key": "multiple_status[2]",
 									"value": "partial"
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -17408,13 +17424,13 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1",
+								"value": "5",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 35,\n    \"credit_term\": \"\",\n    \"order_date\": \"2023-08-01\",\n    \"reference\": \"\",\n    \"order_number\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100,\n            \"warehouse_id\": 4\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"vendor_id\": 284,\n    \"credit_term\": \"\",\n    \"order_date\": \"2023-08-01\",\n    \"reference\": \"\",\n    \"order_number\": \"\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 19,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"discount\": \"10\",\n            \"tax\": 0,\n            \"account_head_id\": 1,\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17630,7 +17646,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-order?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/purchase-order?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -17654,6 +17670,14 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -17855,7 +17879,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-payment?bill_id=&status=",
+							"raw": "{{url}}/api/purchase-payment?bill_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -17871,6 +17895,14 @@
 								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -18271,7 +18303,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-return?paginate=&page=&limit=&search_keyword=&status=&vendor_id=",
+							"raw": "{{url}}/api/purchase-return?paginate=&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -18303,6 +18335,14 @@
 								{
 									"key": "vendor_id",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -18504,7 +18544,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment?status=",
+							"raw": "{{url}}/api/quick-payment?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -18514,8 +18554,36 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "vendor_id",
+									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -18819,7 +18887,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-receipt?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=",
+							"raw": "{{url}}/api/quick-receipt?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -18849,8 +18917,16 @@
 									"value": ""
 								},
 								{
-									"key": "vendor_id",
+									"key": "customer_id",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -19261,7 +19337,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quotation?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/quotation?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -19285,6 +19361,14 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -20470,7 +20554,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-order?paginate=1&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/sales-order?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -20494,6 +20578,14 @@
 								{
 									"key": "search_keyword",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -20695,7 +20787,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment?invoice_id=&status=",
+							"raw": "{{url}}/api/sales-payment?invoice_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -20711,6 +20803,14 @@
 								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -21111,7 +21211,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=",
+							"raw": "{{url}}/api/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -21143,6 +21243,14 @@
 								{
 									"key": "customer_id",
 									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2024-04-01"
 								}
 							]
 						}

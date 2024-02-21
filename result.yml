@@ -6862,9 +6862,9 @@ paths:
             schema:
               type: object
               example:
-                expense_id: 2
+                expense_id: 4
                 receiver_id: 3
-                amount: 1000
+                amount: 3999
       security:
         - bearerAuth: []
       parameters:
@@ -7733,6 +7733,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -9088,7 +9098,8 @@ paths:
         - name: search_keyword
           in: query
           schema:
-            type: string
+            type: integer
+          example: '0'
         - name: is_service
           in: query
           schema:
@@ -9557,6 +9568,16 @@ paths:
           schema:
             type: string
           example: partial
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -9796,21 +9817,21 @@ paths:
             schema:
               type: object
               example:
-                vendor_id: 35
+                vendor_id: 284
                 credit_term: ''
                 order_date: '2023-08-01'
                 reference: ''
                 order_number: ''
                 note: ''
                 products:
-                  - product_id: 1
+                  - product_id: 19
                     quantity: 10
                     rate: '10'
                     discount: '10'
                     tax: 0
                     account_head_id: 1
                     amount: 100
-                    warehouse_id: 4
+                    warehouse_id: 1
                 document_id: ''
       security:
         - bearerAuth: []
@@ -9824,7 +9845,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -9864,6 +9885,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -10160,6 +10191,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -10382,6 +10423,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -10569,10 +10620,41 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
         - name: status
           in: query
           schema:
             type: string
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -10775,10 +10857,20 @@ paths:
           in: query
           schema:
             type: string
-        - name: vendor_id
+        - name: customer_id
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -10997,6 +11089,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -11721,6 +11823,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -11824,6 +11936,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -12050,6 +12172,16 @@ paths:
           in: query
           schema:
             type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+          example: '2023-09-01'
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
