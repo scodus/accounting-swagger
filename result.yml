@@ -10353,21 +10353,21 @@ paths:
               type: object
               example:
                 bill_id: 1
-                vendor_id: 38
-                reference_number: '21345'
-                purchase_return_date: '2023-08-01'
+                vendor_id: 43
+                reference_number: ''
+                purchase_return_date: '2024-02-26'
                 note: ''
                 receiver_id: 3
                 products:
                   - product_id: 1
-                    account_head_id: 32
-                    quantity: 100
-                    rate: 100
+                    account_head_id: 40
+                    quantity: 10
+                    rate: 125000
                     tax: 0
                     description: description
                     amount: 100
                     warehouse_id: 1
-                additional_discount: 100
+                additional_discount: ''
                 document_id: ''
       security:
         - bearerAuth: []
@@ -10569,6 +10569,38 @@ paths:
             type: integer
           required: true
           example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-payment-return/{id}:
+    post:
+      tags:
+        - purchase return
+      summary: payment return
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                account_head_id:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -12318,7 +12350,39 @@ paths:
           schema:
             type: integer
           required: true
-          example: '21'
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-payment-return/{id}:
+    post:
+      tags:
+        - sale return
+      summary: payment return
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                account_head_id:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -12676,6 +12740,41 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/update-user:
+    post:
+      tags:
+        - users
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: name
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

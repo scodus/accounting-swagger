@@ -18097,7 +18097,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_id\": 1,\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"purchase_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": 100,\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"bill_id\": 1,\n    \"vendor_id\": 43,\n    \"reference_number\": \"\",\n    \"purchase_return_date\": \"2024-02-26\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 40,\n            \"quantity\": 10,\n            \"rate\": 125000,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": \"\",\n    \"document_id\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18396,6 +18396,57 @@
 								{
 									"key": "id",
 									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment return",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_head_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/purchase-payment-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"purchase-payment-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
 								}
 							]
 						}
@@ -21120,7 +21171,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "21"
+									"value": "3"
 								}
 							]
 						}
@@ -21304,6 +21355,57 @@
 								{
 									"key": "id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment return",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_head_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-payment-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-payment-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
 								}
 							]
 						}
@@ -21954,6 +22056,60 @@
 							"path": [
 								"api",
 								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/user123/Pictures/Screenshots/Screenshot from 2024-02-16 15-22-50.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/update-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"update-user"
 							]
 						}
 					},
