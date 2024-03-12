@@ -13716,7 +13716,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"2022-01-01\",\n    \"reference_number\": \"qwe\",\n    \"reason\": \"\",\n    \"account_head_id\": 1,\n    \"description\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 18,\n            \"warehouse_id\": 2,\n            \"adjust_quantity\": 10,\n            \"adjusted_quantity\": 90,\n            \"adjust_value\": \"\",\n            \"adjusted_value\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"03/06/2024\",\n    \"reason\": \"Internal\",\n    \"account_head_id\": 85,\n    \"products\": [\n        {\n            \"product_id\": 28,\n            \"warehouse_id\": 1,\n            \"adjusted_quantity\": \"45\",\n            \"adjust_quantity\": 15,\n            \"adjusted_value\": \"\",\n            \"adjust_value\": \"\"\n        }\n    ],\n    \"id\": null\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -13731,6 +13731,163 @@
 							"path": [
 								"api",
 								"inventory-adjustment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"adjustment_type\": \"quantity\",\n    \"date\": \"03/06/2024\",\n    \"reason\": \"Internal\",\n    \"account_head_id\": 42,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"warehouse_id\": 1,\n            \"adjusted_quantity\": \"250\",\n            \"adjust_quantity\": 100,\n            \"adjusted_value\": \"\",\n            \"adjust_value\": \"\"\n        }\n    ],\n    \"_method\": \"patch\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/inventory-adjustment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"inventory-adjustment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "approved",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/inventory-adjustment/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"inventory-adjustment",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/inventory-adjustment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"inventory-adjustment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
 							]
 						}
 					},
@@ -13890,7 +14047,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-08-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 31,\n            \"quantity\": 1,\n            \"rate\": \"10\",\n            \"discount\": \"\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 4\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"rate\": 11,\n            \"quantity\": 11,\n            \"account_head_id\": 31,\n            \"tax\": \"\",\n            \"amount\": 121,\n            \"remarks\": \"\",\n            \"product_id\": 2,\n            \"discount\": \"\",\n            \"vat_amount\": false,\n            \"vatless_amount\": 121,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"due_date\": \"2024-03-06\",\n    \"invoice_date\": \"2024-03-06\",\n    \"customer_id\": 44,\n    \"id\": null,\n    \"document_id\": [\n        null\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18428,7 +18585,7 @@
 							"formdata": [
 								{
 									"key": "account_head_id",
-									"value": "",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -18446,7 +18603,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "5"
+									"value": "11"
 								}
 							]
 						}
@@ -21387,7 +21544,7 @@
 							"formdata": [
 								{
 									"key": "account_head_id",
-									"value": "",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -23487,6 +23644,56 @@
 								{
 									"key": "id",
 									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/warehouse-transfer/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"warehouse-transfer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
 								}
 							]
 						}

@@ -7552,18 +7552,17 @@ paths:
               type: object
               example:
                 adjustment_type: quantity
-                date: '2022-01-01'
-                reference_number: qwe
-                reason: ''
-                account_head_id: 1
-                description: ''
+                date: 03/06/2024
+                reason: Internal
+                account_head_id: 85
                 products:
-                  - product_id: 18
-                    warehouse_id: 2
-                    adjust_quantity: 10
-                    adjusted_quantity: 90
-                    adjust_value: ''
+                  - product_id: 28
+                    warehouse_id: 1
+                    adjusted_quantity: '45'
+                    adjust_quantity: 15
                     adjusted_value: ''
+                    adjust_value: ''
+                id: null
       security:
         - bearerAuth: []
       parameters:
@@ -7621,6 +7620,80 @@ paths:
           content:
             application/json: {}
   /api/inventory-adjustment/{id}:
+    post:
+      tags:
+        - inventory adjustment
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                adjustment_type: quantity
+                date: 03/06/2024
+                reason: Internal
+                account_head_id: 42
+                products:
+                  - product_id: 1
+                    warehouse_id: 1
+                    adjusted_quantity: '250'
+                    adjust_quantity: 100
+                    adjusted_value: ''
+                    adjust_value: ''
+                _method: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - inventory adjustment
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     get:
       tags:
         - inventory adjustment
@@ -7649,6 +7722,39 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/inventory-adjustment/{id}/update-status:
+    post:
+      tags:
+        - inventory adjustment
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/invoice:
     post:
       tags:
@@ -7660,24 +7766,24 @@ paths:
             schema:
               type: object
               example:
-                invoice_number: '142365'
-                customer_id: 35
-                reference_number: '21345'
-                invoice_date: '2023-08-01'
-                due_date: '2023-08-30'
-                note: ''
-                status: ''
                 products:
-                  - product_id: 1
+                  - rate: 11
+                    quantity: 11
                     account_head_id: 31
-                    quantity: 1
-                    rate: '10'
+                    tax: ''
+                    amount: 121
+                    remarks: ''
+                    product_id: 2
                     discount: ''
-                    tax: 0
-                    description: description
-                    amount: 300
-                    warehouse_id: 4
-                document_id: ''
+                    vat_amount: false
+                    vatless_amount: 121
+                    warehouse_id: 1
+                due_date: '2024-03-06'
+                invoice_date: '2024-03-06'
+                customer_id: 44
+                id: null
+                document_id:
+                  - null
       security:
         - bearerAuth: []
       parameters:
@@ -10586,7 +10692,8 @@ paths:
               type: object
               properties:
                 account_head_id:
-                  type: string
+                  type: integer
+                  example: '3'
       security:
         - bearerAuth: []
       parameters:
@@ -10600,7 +10707,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '11'
       responses:
         '200':
           description: Successful response
@@ -12368,7 +12475,8 @@ paths:
               type: object
               properties:
                 account_head_id:
-                  type: string
+                  type: integer
+                  example: '3'
       security:
         - bearerAuth: []
       parameters:
@@ -13594,6 +13702,34 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - warehouse transfer
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
       responses:
         '200':
           description: Successful response
