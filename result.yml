@@ -7922,10 +7922,35 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: unpaid
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/invoice/{id}/void-status:
+    post:
+      tags:
+        - invoice
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
       security:
         - bearerAuth: []
       parameters:
@@ -9204,8 +9229,7 @@ paths:
         - name: search_keyword
           in: query
           schema:
-            type: integer
-          example: '0'
+            type: string
         - name: is_service
           in: query
           schema:
@@ -9814,10 +9838,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: unpaid
       security:
         - bearerAuth: []
       parameters:
@@ -9832,6 +9852,35 @@ paths:
             type: integer
           required: true
           example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-bill/{id}/void-status:
+    post:
+      tags:
+        - purchase bill
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -10102,10 +10151,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -10120,6 +10165,35 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-order/{id}/void-status:
+    post:
+      tags:
+        - purchase order
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -10424,10 +10498,35 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-payment/{id}/void-status:
+    post:
+      tags:
+        - purchase payment
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
       security:
         - bearerAuth: []
       parameters:
@@ -11364,10 +11463,35 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/quotation/{id}/void-status:
+    post:
+      tags:
+        - quotation
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
       security:
         - bearerAuth: []
       parameters:
@@ -11987,10 +12111,35 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-order/{id}/void-status:
+    post:
+      tags:
+        - sales order
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
       security:
         - bearerAuth: []
       parameters:
@@ -12206,10 +12355,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -12224,6 +12369,35 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-payment/{id}/void-status:
+    post:
+      tags:
+        - sale payment
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
       responses:
         '200':
           description: Successful response
