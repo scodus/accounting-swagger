@@ -14813,13 +14813,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "approved",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{url}}/api/journal-voucher/:id/update-status",
@@ -14836,6 +14830,52 @@
 								{
 									"key": "id",
 									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/journal-voucher/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"journal-voucher",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
 								}
 							]
 						}

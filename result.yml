@@ -8289,10 +8289,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -8307,6 +8303,35 @@ paths:
             type: integer
           required: true
           example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/journal-voucher/{id}/void-status:
+    post:
+      tags:
+        - journal voucher
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
