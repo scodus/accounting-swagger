@@ -18981,13 +18981,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "paid",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{url}}/api/quick-payment/:id/update-status",
@@ -19004,6 +18998,52 @@
 								{
 									"key": "id",
 									"value": "16"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-payment/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-payment",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
 								}
 							]
 						}
@@ -19324,13 +19364,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "paid",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{url}}/api/quick-receipt/:id/update-status",
@@ -19347,6 +19381,52 @@
 								{
 									"key": "id",
 									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/quick-receipt/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"quick-receipt",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
 								}
 							]
 						}
