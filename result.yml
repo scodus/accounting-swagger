@@ -14085,6 +14085,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/total-sales:
+    get:
+      tags:
+        - default
+      summary: dashboard total sales
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: last_month
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/test:
     get:
       tags:
