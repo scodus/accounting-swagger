@@ -14047,7 +14047,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"rate\": 11,\n            \"quantity\": 11,\n            \"account_head_id\": 31,\n            \"tax\": \"\",\n            \"amount\": 121,\n            \"remarks\": \"\",\n            \"product_id\": 2,\n            \"discount\": \"\",\n            \"vat_amount\": false,\n            \"vatless_amount\": 121,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"due_date\": \"2024-03-06\",\n    \"invoice_date\": \"2024-03-06\",\n    \"customer_id\": 44,\n    \"id\": null,\n    \"document_id\": [\n        null\n    ]\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"rate\": 11,\n            \"quantity\": 11,\n            \"account_head_id\": 31,\n            \"tax\": \"\",\n            \"amount\": 121,\n            \"remarks\": \"\",\n            \"product_id\": 1,\n            \"discount\": \"\",\n            \"vat_amount\": false,\n            \"vatless_amount\": 121,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"due_date\": \"2024-03-06\",\n    \"invoice_date\": \"2024-03-06\",\n    \"billing_address\": \"hello address\",\n    \"customer_id\": 44,\n    \"id\": null,\n    \"document_id\": [\n        null\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14090,7 +14090,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"invoice_number\": \"142365\",\n    \"customer_id\": 35,\n    \"reference_number\": \"21345\",\n    \"billing_address\": \"hello address\",\n    \"invoice_date\": \"2023-08-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 26,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14509,7 +14509,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "4"
 								}
 							]
 						}
@@ -17199,7 +17199,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 40,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 38,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 40,\n            \"quantity\": 100,\n            \"rate\": \"9\",\n            \"discount\": \"100\",\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17242,7 +17242,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"142365\",\n    \"vendor_id\": 34,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"142365\",\n    \"vendor_id\": 34,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2023-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2023-01-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 2,\n            \"account_head_id\": 32,\n            \"quantity\": 20,\n            \"rate\": 10,\n            \"discount\": \"10\",\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 400,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
