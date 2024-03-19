@@ -15325,7 +15325,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account_heads\": [\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 2,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
+							"raw": "{\n    \"account_heads\": [\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 1,\n            \"amount\": 200000,\n            \"type\": \"cr\"\n        },\n        {\n            \"date\": \"2022-01-01\",\n            \"account_head_id\": 2,\n            \"amount\": 0,\n            \"type\": \"cr\"\n        },\n        {\n            \"date\": \"\",\n            \"account_head_id\": 3,\n            \"amount\": 0,\n            \"type\": \"dr\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18547,13 +18547,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "approved",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{url}}/api/purchase-return/:id/update-status",
@@ -18565,6 +18559,52 @@
 								"purchase-return",
 								":id",
 								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "16"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/purchase-return/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"purchase-return",
+								":id",
+								"void-status"
 							],
 							"variable": [
 								{
@@ -21706,13 +21746,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "approved",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{url}}/api/sales-return/:id/update-status",
@@ -21724,6 +21758,52 @@
 								"sales-return",
 								":id",
 								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-return/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-return",
+								":id",
+								"void-status"
 							],
 							"variable": [
 								{

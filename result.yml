@@ -8580,9 +8580,9 @@ paths:
                     type: cr
                   - date: '2022-01-01'
                     account_head_id: 2
-                    amount: 200000
+                    amount: 0
                     type: cr
-                  - date: '2022-01-01'
+                  - date: ''
                     account_head_id: 3
                     amount: 0
                     type: dr
@@ -10785,10 +10785,35 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-return/{id}/void-status:
+    post:
+      tags:
+        - purchase return
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
       security:
         - bearerAuth: []
       parameters:
@@ -12693,10 +12718,35 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                status:
-                  type: string
-                  example: approved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-return/{id}/void-status:
+    post:
+      tags:
+        - sale return
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
       security:
         - bearerAuth: []
       parameters:
