@@ -7663,6 +7663,11 @@
 									"key": "price",
 									"value": "5000",
 									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2024-01-01",
+									"type": "text"
 								}
 							]
 						},
@@ -7751,6 +7756,11 @@
 								{
 									"key": "price",
 									"value": "500000",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -18609,7 +18619,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "1"
 								}
 							]
 						}
@@ -24464,7 +24474,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/total-sales?type=last_month",
+					"raw": "{{url}}/api/total-sales?type=yearly",
 					"host": [
 						"{{url}}"
 					],
@@ -24475,7 +24485,71 @@
 					"query": [
 						{
 							"key": "type",
-							"value": "last_month"
+							"value": "yearly"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard total receivable payable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/accounts-receivable-payable?type=last_7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"accounts-receivable-payable"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "last_7"
 						}
 					]
 				}

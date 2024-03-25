@@ -4150,6 +4150,9 @@ paths:
                 price:
                   type: integer
                   example: '5000'
+                date:
+                  type: string
+                  example: '2024-01-01'
       security:
         - bearerAuth: []
       parameters:
@@ -4240,6 +4243,8 @@ paths:
                 image:
                   type: string
                   format: binary
+                date:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -10827,7 +10832,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '16'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -14157,7 +14162,35 @@ paths:
           in: query
           schema:
             type: string
-          example: last_month
+          example: yearly
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounts-receivable-payable:
+    get:
+      tags:
+        - default
+      summary: dashboard total receivable payable
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: last_7
       responses:
         '200':
           description: Successful response
