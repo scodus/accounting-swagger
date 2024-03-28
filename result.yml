@@ -11857,7 +11857,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/report:
+  /api/income-statement:
     get:
       tags:
         - report
@@ -11928,6 +11928,39 @@ paths:
       tags:
         - report
       summary: balance sheet
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: 2023-1-22
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report:
+    get:
+      tags:
+        - report
+      summary: report
       security:
         - bearerAuth: []
       parameters:
