@@ -14519,7 +14519,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "4"
+									"value": "6"
 								}
 							]
 						}
@@ -18097,7 +18097,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"amount\": 11,\n  \"receiver_id\": 3,\n  \"vendor_id\": 36,\n  \"received_date\": \"2023-10-17\",\n  \"payment_mode\": \"khalti\",\n  \"payment_allocation\": [\n    {\n      \"bill_id\": 5,\n      \"allocated_amount\": \"11\"\n    }\n  ],\n  \"is_single_bill_payment\": 1\n}",
+							"raw": "{\n    \"vendor_id\": 44,\n    \"receiver_id\": 3,\n    \"payment_mode\": \"cheque\",\n    \"bank_id\": 45,\n    \"cheque_id\": 1,\n    \"received_date\": \"2024-04-01\",\n    \"amount\": \"1000.00\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 3,\n            \"allocated_amount\": \"1000.00\",\n            \"tds\": \"\"\n        }\n    ],\n    \"tds\": null,\n    \"is_single_bill_payment\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18145,7 +18145,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 38,\n    \"receiver_id\": \"3\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 1000,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 16,\n            \"allocated_amount\": 1000\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 38,\n    \"receiver_id\": \"3\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 1000,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 16,\n            \"allocated_amount\": 1000\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18275,7 +18275,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "10"
 								}
 							]
 						}
@@ -21352,7 +21352,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 10,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 10,\n            \"tds\": \n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 10,\n    \"payment_mode\": \"\",\n    \"bank_name\": \"\",\n    \"cheque_number\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 10,\n            \"tds\": \n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -21400,7 +21400,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200,\n            \"td\": \"\"\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200,\n            \"tds\": \"\"\n        }\n    ]\n}\n\n",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200,\n            \"td\": \"\"\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200,\n            \"tds\": \"\"\n        }\n    ]\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -21530,7 +21530,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "6"
 								}
 							]
 						}

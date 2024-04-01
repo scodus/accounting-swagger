@@ -8028,7 +8028,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -10358,14 +10358,18 @@ paths:
             schema:
               type: object
               example:
-                amount: 11
+                vendor_id: 44
                 receiver_id: 3
-                vendor_id: 36
-                received_date: '2023-10-17'
-                payment_mode: khalti
+                payment_mode: cheque
+                bank_id: 45
+                cheque_id: 1
+                received_date: '2024-04-01'
+                amount: '1000.00'
                 payment_allocation:
-                  - bill_id: 5
-                    allocated_amount: '11'
+                  - bill_id: 3
+                    allocated_amount: '1000.00'
+                    tds: ''
+                tds: null
                 is_single_bill_payment: 1
       security:
         - bearerAuth: []
@@ -10437,6 +10441,8 @@ paths:
                 received_date: '2023-01-01'
                 amount: 1000
                 payment_mode: ''
+                bank_id: ''
+                cheque_id: ''
                 payment_reference: ''
                 note: ''
                 payment_allocation:
@@ -10545,7 +10551,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '10'
       responses:
         '200':
           description: Successful response
@@ -12318,6 +12324,8 @@ paths:
                     "received_date": "2023-08-01",
                     "amount": 10,
                     "payment_mode": "",
+                    "bank_name": "",
+                    "cheque_number": "",
                     "payment_reference": "",
                     "note": "",
                     "payment_allocation": [
@@ -12398,6 +12406,8 @@ paths:
                 received_date: '2023-08-01'
                 amount: 400
                 payment_mode: ''
+                bank_id: ''
+                cheque_id: ''
                 payment_reference: ''
                 note: ''
                 payment_allocation:
@@ -12510,7 +12520,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '6'
       responses:
         '200':
           description: Successful response
