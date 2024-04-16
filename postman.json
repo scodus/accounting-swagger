@@ -20501,7 +20501,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/trial-balance?start_date=2022-07-22&end_date=2024-08-21",
+							"raw": "{{url}}/api/trial-balance?start_date=2024-04-11&end_date=2024-04-11",
 							"host": [
 								"{{url}}"
 							],
@@ -20512,12 +20512,55 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2022-07-22"
+									"value": "2024-04-11"
 								},
 								{
 									"key": "end_date",
-									"value": "2024-08-21"
+									"value": "2024-04-11"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset ledger",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/reset-ledger",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"reset-ledger"
 							]
 						}
 					},
@@ -24601,6 +24644,70 @@
 					"path": [
 						"api",
 						"accounts-receivable-payable"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "last_7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard cashflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "company-id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/cashflow?type=last_7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"cashflow"
 					],
 					"query": [
 						{

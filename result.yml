@@ -11918,12 +11918,40 @@ paths:
           in: query
           schema:
             type: string
-          example: '2022-07-22'
+          example: '2024-04-11'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-21'
+          example: '2024-04-11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-ledger:
+    post:
+      tags:
+        - report
+      summary: reset ledger
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -14216,6 +14244,34 @@ paths:
       tags:
         - default
       summary: dashboard total receivable payable
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: last_7
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashflow:
+    get:
+      tags:
+        - default
+      summary: dashboard cashflow
       security:
         - bearerAuth: []
       parameters:
