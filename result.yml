@@ -3696,8 +3696,7 @@ paths:
                 warranty:
                   type: string
                 location_id:
-                  type: integer
-                  example: '1'
+                  type: string
                 expiry_date:
                   type: string
                 description:
@@ -3718,7 +3717,7 @@ paths:
                   example: '2022-01-01'
                 asset_account_head_id:
                   type: integer
-                  example: '179'
+                  example: '48'
                 useful_year:
                   type: string
                 depreciation_start_date:
@@ -3739,6 +3738,15 @@ paths:
                 files[0]:
                   type: string
                   format: binary
+                quantity:
+                  type: integer
+                  example: '10'
+                asset_detail:
+                  type: string
+                  example: current
+                vendor_id:
+                  type: integer
+                  example: '44'
       security:
         - bearerAuth: []
       parameters:
@@ -6556,6 +6564,75 @@ paths:
             type: string
           description: 'date format: Y-m'
           example: 2024-01
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/advance-salary-payment:
+    post:
+      tags:
+        - employee summary
+      summary: advance payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                month: ''
+                year: ''
+                date: 2024-01
+                employee_id: 46
+                paid_account_id: 3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/void-advance-salary-payment/{payroll_id}/void-status:
+    post:
+      tags:
+        - employee summary
+      summary: void advance payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: payroll_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '12'
       responses:
         '200':
           description: Successful response

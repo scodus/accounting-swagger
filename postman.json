@@ -6870,7 +6870,7 @@
 								},
 								{
 									"key": "location_id",
-									"value": "1",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -6910,7 +6910,7 @@
 								},
 								{
 									"key": "asset_account_head_id",
-									"value": "179",
+									"value": "48",
 									"type": "text"
 								},
 								{
@@ -6939,6 +6939,21 @@
 									"key": "files[0]",
 									"type": "file",
 									"src": "/home/user123/Downloads/IMG20231208144612.jpg"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "asset_detail",
+									"value": "current",
+									"type": "text"
+								},
+								{
+									"key": "vendor_id",
+									"value": "44",
+									"type": "text"
 								}
 							]
 						},
@@ -11903,6 +11918,110 @@
 									"key": "date",
 									"value": "2024-01",
 									"description": "date format: Y-m"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "advance payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employee_id\": 46,\n    \"paid_account_id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/advance-salary-payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"advance-salary-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void advance payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/void-advance-salary-payment/:payroll_id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"void-advance-salary-payment",
+								":payroll_id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "payroll_id",
+									"value": "12"
 								}
 							]
 						}
