@@ -6584,6 +6584,7 @@ paths:
                 year: ''
                 date: 2024-01
                 employee_id: 46
+                amount: 2000
                 paid_account_id: 3
       security:
         - bearerAuth: []

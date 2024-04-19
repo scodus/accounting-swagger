@@ -11952,7 +11952,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employee_id\": 46,\n    \"paid_account_id\": 3\n}",
+							"raw": "{\n    \"month\": \"\",\n    \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employee_id\": 46,\n    \"amount\": 2000,\n    \"paid_account_id\": 3\n}",
 							"options": {
 								"raw": {
 									"language": "json"
