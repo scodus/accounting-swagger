@@ -16,7 +16,7 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://accounting.scodus.com/
+  - url: https://accounting.scoduscorp.com/
     description: accounting software server
 components:
   securitySchemes:
