@@ -6545,6 +6545,35 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/void-payment/{payroll_id}:
+    post:
+      tags:
+        - employee summary
+      summary: void payment
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: payroll_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/payroll-header-data:
     get:
       tags:
@@ -6989,8 +7018,8 @@ paths:
           schema:
             type: string
           required: true
-          description: customer || vendor
-          example: customer
+          description: customer || vendor || product
+          example: vendor
       responses:
         '200':
           description: Successful response
@@ -8020,7 +8049,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -8049,7 +8078,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -9344,10 +9373,46 @@ paths:
           in: query
           schema:
             type: string
+        - name: is_product
+          in: query
+          schema:
+            type: string
         - name: inventory
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product-import:
+    post:
+      tags:
+        - product
+      summary: import
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -11996,12 +12061,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-04-11'
+          example: '2024-05-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-04-11'
+          example: '2024-05-23'
       responses:
         '200':
           description: Successful response
@@ -12769,24 +12834,126 @@ paths:
             schema:
               type: object
               example:
-                _method: patch
-                invoice_id: 1
-                customer_id: 40
-                reference_number: '21345'
-                sales_return_date: '2023-08-01'
+                id: '6'
+                customer_id: 43
+                customer_detail:
+                  id: 43
+                  type: dr
+                  name: customer1
+                  pan_number: pan_number 1
+                  address: adderss 1
+                  slug: customer1
+                receiver_detail: ''
+                reference_number: ''
+                sales_return_number: SR-6
+                sales_return_date: '2024-05-07'
+                invoice:
+                  id: 7
+                  customer_id: 43
+                  customer_detail:
+                    id: 43
+                    type: dr
+                    name: customer1
+                    pan_number: pan_number 1
+                    address: adderss 1
+                    slug: customer1
+                  invoice_number: INVO-7
+                  reference_number: null
+                  invoice_date: '2024-05-07 00:00:00'
+                  due_date: '2024-05-07 00:00:00'
+                  billing_address: adderss 1
+                  note: null
+                  status: unpaid
+                  amount: '900.00'
+                  due_amount: '800.00'
+                  extra:
+                    subTotal: 900
+                    grandTotal: 900
+                    totalDiscount: 0
+                    totalTaxAmount: 0
+                    totalTaxableAccount: 0
+                    totalDiscountedAmount: 900
+                    totalNonTaxableAccount: 900
+                  products:
+                    - id: 5
+                      name: product 5
+                      slug: product-5
+                      sku: prod-005
+                      product_category_id: null
+                      tax: null
+                      is_service: null
+                      description: ''
+                      status: null
+                      quantity: 90
+                      discount: '0.00'
+                      rate: '10.00'
+                      amount: '900.00'
+                      account_head_id: 31
+                      warehouse_id: 1
+                      tracks:
+                        - rate: 10
+                          quantity: 80
+                          inventory_id: 8
+                          sale_quantity: 70
+                        - rate: 10
+                          quantity: 50
+                          inventory_id: 9
+                          sale_quantity: 10
+                  created_at: '2024-05-07 12:20:56'
+                  updated_at: '2024-05-07 12:24:14'
+                  created_by: accounting firm user
+                  updated_by: ''
+                  approved_at: '2024-05-07 12:24:14'
+                  approved_by: accounting firm user
+                  documents: []
                 note: ''
-                receiver_id: 3
+                status: draft
+                amount: '720.00'
+                additional_discount: ''
+                extra:
+                  subTotal: 720
+                  grandTotal: 720
+                  totalDiscount: 0
+                  totalTaxAmount: 0
+                  totalTaxableAccount: 0
+                  totalDiscountedAmount: 720
+                  totalNonTaxableAccount: 720
                 products:
-                  - product_id: 2
-                    account_head_id: 29
-                    quantity: 3
-                    rate: 10
-                    tax: 0
-                    description: description
-                    amount: 100
+                  - id: 5
+                    name: product 5
+                    slug: product-5
+                    sku: prod-005
+                    product_category_id: null
+                    tax: null
+                    is_service: null
+                    description: ''
+                    status: null
+                    quantity: '75'
+                    discount: '0.00'
+                    rate: '10.00'
+                    amount: 750
+                    account_head_id: 31
                     warehouse_id: 1
-                additional_discount: 100
-                document_id: ''
+                    tracks:
+                      - rate: 10
+                        quantity: 80
+                        inventory_id: 8
+                        sale_quantity: '75'
+                    product_id: 5
+                    vat_amount: false
+                    vatless_amount: 750
+                ledgers: []
+                created_at: '2024-05-07 12:25:04'
+                updated_at: '2024-05-07 12:49:26'
+                created_by: accounting firm user
+                updated_by: accounting firm user
+                approved_at: ''
+                approved_by: ''
+                documents: []
+                invoice_id: 7
+                document_id:
+                  - null
+                _method: PATCH
       security:
         - bearerAuth: []
       parameters:
@@ -12800,7 +12967,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '11'
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -12885,7 +13052,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -14230,6 +14397,47 @@ paths:
       tags:
         - default
       summary: draft items
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/recents:
+    get:
+      tags:
+        - default
+      summary: recents
       security:
         - bearerAuth: []
       parameters:
