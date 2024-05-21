@@ -13178,9 +13178,12 @@ paths:
                 invoice_tc:
                   type: string
                   example: qwer
-                invoice_bank:
+                invoice_bank[0]:
                   type: integer
                   example: '1'
+                invoice_bank[1]:
+                  type: integer
+                  example: '2'
       security:
         - bearerAuth: []
       parameters:
@@ -13218,7 +13221,7 @@ paths:
             type: string
           required: true
           description: general || payment-mode || warehouse || invoice_template
-          example: invoice_template
+          example: invoice_bank
       responses:
         '200':
           description: Successful response

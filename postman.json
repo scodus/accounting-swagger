@@ -22502,8 +22502,13 @@
 									"type": "text"
 								},
 								{
-									"key": "invoice_bank",
+									"key": "invoice_bank[0]",
 									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "invoice_bank[1]",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -22567,7 +22572,7 @@
 							"variable": [
 								{
 									"key": "group",
-									"value": "invoice_template",
+									"value": "invoice_bank",
 									"description": "general || payment-mode || warehouse || invoice_template"
 								}
 							]
