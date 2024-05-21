@@ -13169,6 +13169,18 @@ paths:
                   type: string
                   description: Tax Depreciation || Financial Audit Depreciation
                   example: financial_audit_depreciation
+                quotation_tc:
+                  type: string
+                  example: testset
+                sales_order_tc:
+                  type: integer
+                  example: '2134'
+                invoice_tc:
+                  type: string
+                  example: qwer
+                invoice_bank:
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -13205,8 +13217,8 @@ paths:
           schema:
             type: string
           required: true
-          description: general || payment-mode || warehouse
-          example: general
+          description: general || payment-mode || warehouse || invoice_template
+          example: invoice_template
       responses:
         '200':
           description: Successful response

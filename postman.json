@@ -22485,6 +22485,26 @@
 									"value": "financial_audit_depreciation",
 									"description": "Tax Depreciation || Financial Audit Depreciation",
 									"type": "text"
+								},
+								{
+									"key": "quotation_tc",
+									"value": "testset",
+									"type": "text"
+								},
+								{
+									"key": "sales_order_tc",
+									"value": "2134",
+									"type": "text"
+								},
+								{
+									"key": "invoice_tc",
+									"value": "qwer",
+									"type": "text"
+								},
+								{
+									"key": "invoice_bank",
+									"value": "1",
+									"type": "text"
 								}
 							]
 						},
@@ -22547,8 +22567,8 @@
 							"variable": [
 								{
 									"key": "group",
-									"value": "general",
-									"description": "general || payment-mode || warehouse"
+									"value": "invoice_template",
+									"description": "general || payment-mode || warehouse || invoice_template"
 								}
 							]
 						}
