@@ -90,12 +90,13 @@ tags:
   - name: receipt cheque
   - name: report
   - name: role
-  - name: stock consumption
-  - name: stock issue
   - name: sales order
   - name: sale payment
   - name: sale return
   - name: site setting
+  - name: stock consumption
+  - name: stock issue
+  - name: stock issue return
   - name: tax pool type
   - name: transfer
   - name: users
@@ -12329,479 +12330,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/stock-consumption:
-    post:
-      tags:
-        - stock consumption
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                warehouse_department_id: 1
-                stock_consumption_date: '2024-03-06'
-                note: ''
-                products:
-                  - product_id: 1
-                    rate: 100
-                    quantity: 100
-                    amount: 10000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - stock consumption
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-        - name: date[0]
-          in: query
-          schema:
-            type: string
-        - name: date[1]
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption/{id}:
-    post:
-      tags:
-        - stock consumption
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                warehouse_department_id: 1
-                stock_consumption_date: '2024-03-06'
-                note: edit
-                products:
-                  - product_id: 1
-                    rate: 120
-                    quantity: 100
-                    amount: 12000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - stock consumption
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '10'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - stock consumption
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption/{id}/update-status:
-    post:
-      tags:
-        - stock consumption
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption/{id}/void-status:
-    post:
-      tags:
-        - stock consumption
-      summary: void status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-issue:
-    post:
-      tags:
-        - stock issue
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                warehouse_department_id: 1
-                stock_issue_date: '2024-03-06'
-                note: ''
-                auto_consumption: ''
-                products:
-                  - product_id: 1
-                    rate: 100
-                    quantity: 100
-                    amount: 10000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - stock issue
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-        - name: date[0]
-          in: query
-          schema:
-            type: string
-        - name: date[1]
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-issue/{id}:
-    post:
-      tags:
-        - stock issue
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                warehouse_department_id: 1
-                stock_issue_date: '2024-03-06'
-                note: edit
-                auto_consumption: ''
-                products:
-                  - product_id: 1
-                    rate: 120
-                    quantity: 100
-                    amount: 12000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '4'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - stock issue
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - stock issue
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '12'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-issue/{id}/update-status:
-    post:
-      tags:
-        - stock issue
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '10'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-issue/{id}/void-status:
-    post:
-      tags:
-        - stock issue
-      summary: void status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/sales-order:
     post:
       tags:
@@ -13734,6 +13262,716 @@ paths:
           required: true
           description: required if key is payment_mode_name else nullable
           example: cheque
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption:
+    post:
+      tags:
+        - stock consumption
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_consumption_date: '2024-03-06'
+                note: ''
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock consumption
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption/{id}:
+    post:
+      tags:
+        - stock consumption
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                warehouse_department_id: 1
+                stock_consumption_date: '2024-03-06'
+                note: edit
+                products:
+                  - product_id: 1
+                    rate: 120
+                    quantity: 100
+                    amount: 12000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - stock consumption
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock consumption
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption/{id}/update-status:
+    post:
+      tags:
+        - stock consumption
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption/{id}/void-status:
+    post:
+      tags:
+        - stock consumption
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue:
+    post:
+      tags:
+        - stock issue
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_issue_date: '2024-03-06'
+                note: ''
+                auto_consumption: ''
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock issue
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue/{id}:
+    post:
+      tags:
+        - stock issue
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                warehouse_department_id: 1
+                stock_issue_date: '2024-03-06'
+                note: edit
+                auto_consumption: ''
+                products:
+                  - product_id: 1
+                    rate: 120
+                    quantity: 100
+                    amount: 12000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - stock issue
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock issue
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue/{id}/update-status:
+    post:
+      tags:
+        - stock issue
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue/{id}/void-status:
+    post:
+      tags:
+        - stock issue
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue-return:
+    post:
+      tags:
+        - stock issue return
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                stock_issue_id: 1
+                stock_issue_return_date: '2024-03-06'
+                note: ''
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock issue return
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue-return/{id}:
+    post:
+      tags:
+        - stock issue return
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                stock_issue_id: 1
+                stock_issue_return_date: '2024-03-06'
+                note: edit
+                products:
+                  - product_id: 1
+                    rate: 120
+                    quantity: 100
+                    amount: 12000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - stock issue return
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock issue return
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue-return/{id}/update-status:
+    post:
+      tags:
+        - stock issue return
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue-return/{id}/void-status:
+    post:
+      tags:
+        - stock issue return
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
       responses:
         '200':
           description: Successful response

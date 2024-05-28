@@ -21202,766 +21202,6 @@
 			]
 		},
 		{
-			"name": "stock consumption",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "void status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id/void-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id",
-								"void-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								},
-								{
-									"key": "multiple_status[0]",
-									"value": "",
-									"description": "\n",
-									"disabled": true
-								},
-								{
-									"key": "date[0]",
-									"value": ""
-								},
-								{
-									"key": "date[1]",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "stock issue",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"auto_consumption\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "4"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "void status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue/:id/void-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue",
-								":id",
-								"void-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								},
-								{
-									"key": "multiple_status[0]",
-									"value": "",
-									"description": "\n",
-									"disabled": true
-								},
-								{
-									"key": "date[0]",
-									"value": ""
-								},
-								{
-									"key": "date[1]",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "12"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "sales order",
 			"item": [
 				{
@@ -23390,6 +22630,1146 @@
 									"key": "value",
 									"value": "cheque",
 									"description": "required if key is payment_mode_name else nullable"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock consumption",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"description": "\n",
+									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock issue",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"auto_consumption\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"description": "\n",
+									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock issue return",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stock_issue_id\": 1,\n    \"stock_issue_return_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"stock_issue_id\": 1,\n    \"stock_issue_return_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"description": "\n",
+									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
 								}
 							]
 						}
