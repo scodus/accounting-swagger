@@ -10797,6 +10797,79 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "customer ledgers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/customer-ledgers?customer_id=43&paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer-ledgers"
+							],
+							"query": [
+								{
+									"key": "customer_id",
+									"value": "43"
+								},
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -23399,7 +23472,7 @@
 			]
 		},
 		{
-			"name": "stock issue return",
+			"name": "stock return",
 			"item": [
 				{
 					"name": "store",
@@ -23429,7 +23502,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"stock_issue_id\": 1,\n    \"stock_issue_return_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_return_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23437,13 +23510,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return",
+							"raw": "{{url}}/api/stock-return",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return"
+								"stock-return"
 							]
 						}
 					},
@@ -23472,7 +23545,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"stock_issue_id\": 1,\n    \"stock_issue_return_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_return_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23480,13 +23553,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return/:id",
+							"raw": "{{url}}/api/stock-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return",
+								"stock-return",
 								":id"
 							],
 							"variable": [
@@ -23525,20 +23598,20 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return/:id/update-status",
+							"raw": "{{url}}/api/stock-return/:id/update-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return",
+								"stock-return",
 								":id",
 								"update-status"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "4"
+									"value": "16"
 								}
 							]
 						}
@@ -23571,13 +23644,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return/:id/void-status",
+							"raw": "{{url}}/api/stock-return/:id/void-status",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return",
+								"stock-return",
 								":id",
 								"void-status"
 							],
@@ -23622,19 +23695,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return/:id",
+							"raw": "{{url}}/api/stock-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return",
+								"stock-return",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "17"
 								}
 							]
 						}
@@ -23675,13 +23748,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
+							"raw": "{{url}}/api/stock-return?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return"
+								"stock-return"
 							],
 							"query": [
 								{
@@ -23757,19 +23830,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-return/:id",
+							"raw": "{{url}}/api/stock-return/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"stock-issue-return",
+								"stock-return",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "19"
 								}
 							]
 						}

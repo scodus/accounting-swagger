@@ -96,7 +96,7 @@ tags:
   - name: site setting
   - name: stock consumption
   - name: stock issue
-  - name: stock issue return
+  - name: stock return
   - name: tax pool type
   - name: transfer
   - name: users
@@ -5942,6 +5942,50 @@ paths:
             type: integer
           required: true
           example: '58'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer-ledgers:
+    get:
+      tags:
+        - customer
+      summary: customer ledgers
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: customer_id
+          in: query
+          schema:
+            type: integer
+          example: '43'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -13741,10 +13785,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/stock-issue-return:
+  /api/stock-return:
     post:
       tags:
-        - stock issue return
+        - stock return
       summary: store
       requestBody:
         content:
@@ -13752,8 +13796,8 @@ paths:
             schema:
               type: object
               example:
-                stock_issue_id: 1
-                stock_issue_return_date: '2024-03-06'
+                warehouse_department_id: 1
+                stock_return_date: '2024-03-06'
                 note: ''
                 products:
                   - product_id: 1
@@ -13780,7 +13824,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - stock issue return
+        - stock return
       summary: list
       security:
         - bearerAuth: []
@@ -13824,10 +13868,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/stock-issue-return/{id}:
+  /api/stock-return/{id}:
     post:
       tags:
-        - stock issue return
+        - stock return
       summary: update
       requestBody:
         content:
@@ -13836,8 +13880,8 @@ paths:
               type: object
               example:
                 _method: patch
-                stock_issue_id: 1
-                stock_issue_return_date: '2024-03-06'
+                warehouse_department_id: 1
+                stock_return_date: '2024-03-06'
                 note: edit
                 products:
                   - product_id: 1
@@ -13865,7 +13909,7 @@ paths:
             application/json: {}
     delete:
       tags:
-        - stock issue return
+        - stock return
       summary: delete
       security:
         - bearerAuth: []
@@ -13885,7 +13929,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '17'
       responses:
         '200':
           description: Successful response
@@ -13893,7 +13937,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - stock issue return
+        - stock return
       summary: show
       security:
         - bearerAuth: []
@@ -13913,16 +13957,16 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '19'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/stock-issue-return/{id}/update-status:
+  /api/stock-return/{id}/update-status:
     post:
       tags:
-        - stock issue return
+        - stock return
       summary: update status
       requestBody:
         content:
@@ -13942,16 +13986,16 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4'
+          example: '16'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/stock-issue-return/{id}/void-status:
+  /api/stock-return/{id}/void-status:
     post:
       tags:
-        - stock issue return
+        - stock return
       summary: void status
       requestBody:
         content:
