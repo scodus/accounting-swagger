@@ -13410,6 +13410,43 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/stock-consumption-create-approve:
+    post:
+      tags:
+        - stock consumption
+      summary: create approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_consumption_date: '2024-03-06'
+                note: ''
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/stock-consumption/{id}:
     post:
       tags:
@@ -13649,6 +13686,44 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/stock-issue-create-approve:
+    post:
+      tags:
+        - stock issue
+      summary: create approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_issue_date: '2024-03-06'
+                note: ''
+                auto_consumption: false
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/stock-issue/{id}:
     post:
       tags:
@@ -13883,6 +13958,43 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-return-create-approve:
+    post:
+      tags:
+        - stock return
+      summary: create approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_return_date: '2024-03-06'
+                note: ''
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

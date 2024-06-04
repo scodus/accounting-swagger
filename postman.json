@@ -22764,6 +22764,54 @@
 					"response": []
 				},
 				{
+					"name": "create approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption-create-approve",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption-create-approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update",
 					"request": {
 						"auth": {
@@ -23144,6 +23192,54 @@
 					"response": []
 				},
 				{
+					"name": "create approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-create-approve",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-create-approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update",
 					"request": {
 						"auth": {
@@ -23518,6 +23614,54 @@
 							"path": [
 								"api",
 								"stock-return"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_return_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-return-create-approve",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-return-create-approve"
 							]
 						}
 					},
