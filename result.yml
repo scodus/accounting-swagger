@@ -1,23 +1,10 @@
 openapi: 3.0.0
 info:
-  title: Swagger
-  description: Swagger
-  version: '1.0'
-  x-logo:
-    url: https://github.com/joolfe/logoBanner.png
-    backgroundColor: '#FFFFFF'
-    altText: logo
-  termsOfService: '#'
-  contact:
-    name: Scodus
-    url: https://scodus.com
-    email: scodusnp@gmail.com
-  license:
-    name: MIT
-    url: https://es.wikipedia.org/wiki/Licencia_MIT
+  title: accounting
+  version: 1.0.0
 servers:
-  - url: https://accounting.scoduscorp.com/
-    description: accounting software server
+  - url: http://{{url}}
+  - url: http://{{live_url}}
 components:
   securitySchemes:
     noauthAuth:
@@ -146,6 +133,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -169,6 +157,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - noauthAuth: []
       parameters:
@@ -6001,6 +5990,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -6603,6 +6593,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8084,6 +8075,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8113,6 +8105,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8451,6 +8444,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8480,6 +8474,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10063,6 +10058,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10092,6 +10088,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10376,6 +10373,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10405,6 +10403,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10729,6 +10728,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10758,6 +10758,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10987,6 +10988,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11016,6 +11018,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11261,6 +11264,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11290,6 +11294,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11502,6 +11507,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11531,6 +11537,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11769,6 +11776,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11798,6 +11806,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12130,6 +12139,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12478,6 +12488,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12507,6 +12518,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12726,6 +12738,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12755,6 +12768,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13087,6 +13101,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13116,6 +13131,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13499,6 +13515,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13528,6 +13545,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13737,6 +13755,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13766,6 +13785,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13973,6 +13993,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -14002,6 +14023,7 @@ paths:
           multipart/form-data:
             schema:
               type: object
+              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -15167,8 +15189,73 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
         - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/warehouse-department-product/{product_id}/view:
+    get:
+      tags:
+        - warehouse department
+      summary: product view
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
+        - name: product_id
           in: path
           schema:
             type: integer

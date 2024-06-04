@@ -25817,22 +25817,16 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "2",
+								"value": "1",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "inactive",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/warehouse-department/:id/stock",
+							"raw": "{{url}}/api/warehouse-department/:id/stock?paginate=&page=&limit=&search_keyword=&is_service=",
 							"host": [
 								"{{url}}"
 							],
@@ -25842,9 +25836,102 @@
 								":id",
 								"stock"
 							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/warehouse-department-product/:product_id/view?paginate=1&page=&limit=&search_keyword=&is_service=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"warehouse-department-product",
+								":product_id",
+								"view"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "product_id",
 									"value": "1"
 								}
 							]
