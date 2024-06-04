@@ -4713,7 +4713,8 @@
 									"pm.environment.set('token', response.data.access_token)",
 									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4753,7 +4754,7 @@
 								},
 								{
 									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
+									"value": "sejoyoh902@azduan.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -23122,7 +23123,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23565,7 +23566,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "19"
 								}
 							]
 						}
@@ -23657,7 +23658,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "16"
 								}
 							]
 						}
@@ -25785,6 +25786,61 @@
 								"warehouse-department",
 								":id",
 								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stock",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/warehouse-department/:id/stock",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"warehouse-department",
+								":id",
+								"stock"
 							],
 							"variable": [
 								{

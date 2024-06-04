@@ -2589,7 +2589,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: sejoyoh902@azduan.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -13561,7 +13561,7 @@ paths:
                 warehouse_department_id: 1
                 stock_issue_date: '2024-03-06'
                 note: ''
-                auto_consumption: ''
+                auto_consumption: false
                 products:
                   - product_id: 1
                     rate: 100
@@ -13901,7 +13901,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '19'
       responses:
         '200':
           description: Successful response
@@ -14015,7 +14015,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '3'
+          example: '16'
       responses:
         '200':
           description: Successful response
@@ -15144,6 +15144,30 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/warehouse-department/{id}/stock:
+    get:
+      tags:
+        - warehouse department
+      summary: stock
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
         - name: id
           in: path
           schema:
