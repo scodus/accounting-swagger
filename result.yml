@@ -15624,6 +15624,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: purchase_bill
       responses:
         '200':
           description: Successful response
