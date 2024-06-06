@@ -19184,7 +19184,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 49,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 2000,\n    \"note\": \"asdasd\"\n}",
+							"raw": "{\n    \"vendor_id\": 44,\n    \"receiver_id\": 3,\n    \"tds\": 200,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 2000,\n    \"note\": \"asdasd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19232,7 +19232,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 49,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200011,\n    \"note\": \"asdasd\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 44,\n    \"receiver_id\": 3,\n    \"tds\": 200,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 200011,\n    \"note\": \"asdasd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19252,7 +19252,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "8"
 								}
 							]
 						}
@@ -19293,7 +19293,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/quick-payment?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=&date[1]=",
 							"host": [
 								"{{url}}"
 							],
@@ -19328,11 +19328,11 @@
 								},
 								{
 									"key": "date[0]",
-									"value": "2023-09-01"
+									"value": ""
 								},
 								{
 									"key": "date[1]",
-									"value": "2024-04-01"
+									"value": ""
 								}
 							]
 						}
@@ -19378,7 +19378,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "9"
 								}
 							]
 						}
@@ -19567,7 +19567,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 49,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 2000,\n    \"note\": \"asdasd\"\n}",
+							"raw": "{\n    \"customer_id\": 43,\n    \"receiver_id\": 3,\n    \"tds\": 200,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 2000,\n    \"note\": \"asdasd\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19615,7 +19615,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 35,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 123123,\n    \"note\": \"asdzxczxc\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 43,\n    \"receiver_id\": 3,\n    \"tds\": 200,\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 123123,\n    \"note\": \"asdzxczxc\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19761,7 +19761,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "13"
+									"value": "7"
 								}
 							]
 						}
@@ -19807,7 +19807,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "7"
 								}
 							]
 						}
@@ -26482,7 +26482,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -26518,7 +26519,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/draft-items?paginate=1&page=1&limit=&search_keyword=",
+					"raw": "{{url}}/api/draft-items?paginate=1&page=1&limit=&search_keyword=&type=invoice",
 					"host": [
 						"{{url}}"
 					],
@@ -26542,6 +26543,10 @@
 						{
 							"key": "search_keyword",
 							"value": ""
+						},
+						{
+							"key": "type",
+							"value": "invoice"
 						}
 					]
 				}

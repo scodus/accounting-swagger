@@ -1,10 +1,23 @@
 openapi: 3.0.0
 info:
-  title: accounting
-  version: 1.0.0
+  title: Swagger
+  description: Swagger
+  version: '1.0'
+  x-logo:
+    url: https://github.com/joolfe/logoBanner.png
+    backgroundColor: '#FFFFFF'
+    altText: logo
+  termsOfService: '#'
+  contact:
+    name: Scodus
+    url: https://scodus.com
+    email: scodusnp@gmail.com
+  license:
+    name: MIT
+    url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: http://{{url}}
-  - url: http://{{live_url}}
+  - url: https://accounting.scoduscorp.com/
+    description: accounting software server
 components:
   securitySchemes:
     noauthAuth:
@@ -133,7 +146,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -157,7 +169,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - noauthAuth: []
       parameters:
@@ -5990,7 +6001,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -6593,7 +6603,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8075,7 +8084,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8105,7 +8113,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8444,7 +8451,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -8474,7 +8480,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10058,7 +10063,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10088,7 +10092,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10373,7 +10376,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10403,7 +10405,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10728,7 +10729,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10758,7 +10758,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -10988,7 +10987,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11018,7 +11016,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11082,8 +11079,9 @@ paths:
             schema:
               type: object
               example:
-                vendor_id: 49
-                receiver_id: '8'
+                vendor_id: 44
+                receiver_id: 3
+                tds: 200
                 received_date: '2023-01-01'
                 amount: 2000
                 note: asdasd
@@ -11146,12 +11144,10 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-09-01'
         - name: date[1]
           in: query
           schema:
             type: string
-          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -11169,8 +11165,9 @@ paths:
               type: object
               example:
                 _method: patch
-                vendor_id: 49
-                receiver_id: '8'
+                vendor_id: 44
+                receiver_id: 3
+                tds: 200
                 received_date: '2023-01-01'
                 amount: 200011
                 note: asdasd
@@ -11192,7 +11189,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '16'
+          example: '8'
       responses:
         '200':
           description: Successful response
@@ -11264,7 +11261,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11278,7 +11274,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '16'
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -11294,7 +11290,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11325,8 +11320,9 @@ paths:
             schema:
               type: object
               example:
-                customer_id: 49
-                receiver_id: '8'
+                customer_id: 43
+                receiver_id: 3
+                tds: 200
                 received_date: '2023-01-01'
                 amount: 2000
                 note: asdasd
@@ -11412,8 +11408,9 @@ paths:
               type: object
               example:
                 _method: patch
-                customer_id: 35
-                receiver_id: '8'
+                customer_id: 43
+                receiver_id: 3
+                tds: 200
                 received_date: '2023-01-01'
                 amount: 123123
                 note: asdzxczxc
@@ -11507,7 +11504,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11521,7 +11517,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '13'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -11537,7 +11533,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11551,7 +11546,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -11776,7 +11771,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -11806,7 +11800,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12139,7 +12132,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12488,7 +12480,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12518,7 +12509,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12738,7 +12728,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -12768,7 +12757,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13101,7 +13089,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13131,7 +13118,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13552,7 +13538,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13582,7 +13567,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13830,7 +13814,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -13860,7 +13843,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -14105,7 +14087,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -14135,7 +14116,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties: {}
       security:
         - bearerAuth: []
       parameters:
@@ -15628,7 +15608,7 @@ paths:
           in: query
           schema:
             type: string
-          example: purchase_bill
+          example: invoice
       responses:
         '200':
           description: Successful response
