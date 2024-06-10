@@ -1602,7 +1602,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '11'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2589,7 +2589,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: sejoyoh902@azduan.com
+                  example: bikashxsingh@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2640,7 +2640,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '11'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2753,7 +2753,7 @@ paths:
                   example: dadedil246@
                 email:
                   type: string
-                  example: dadedil246@konican.com
+                  example: augxdeveloper@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -2780,10 +2780,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: dadedil246@konican.com
+                  example: augxdeveloper@gmail.com
                 token:
                   type: integer
-                  example: '220532'
+                  example: '353891'
       security:
         - noauthAuth: []
       responses:
@@ -2901,10 +2901,10 @@ paths:
                 token:
                   type: string
                   example: >-
-                    jVRbNDicfvdNO3ERhQ32FRQRFuzzs0aUi4lkuHCWprQEFdXMHWKBZrGm2TRhJxzCU7dp6kG13UYVeGTZVLiuC1wvclUZQoJKIJxGtUfNymLaOcr2DLkrt2fyCQ7LqVmb
+                    9vzG8Bvn6bZGy2mUSWD68kO4KqlC0urafzMOJvvWRVe6OUHXBQghmZjEHNpPYDV4nXZye7SuFIoTtBJdIO4KMu4RsQWixxdGC1D61e0msi14CnH1eDcw87lHkixDPuGl
                 email:
                   type: string
-                  example: daded27440@rentaen.com
+                  example: bikashxsingh@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -5581,8 +5581,8 @@ paths:
             schema:
               type: object
               example:
-                company_id: 11
-                email: daded27440@rentaen.com
+                company_id: 1
+                email: bikashxsingh@gmail.com
                 permissions:
                   - view-company-dashboard
       security:
@@ -5593,6 +5593,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -5611,6 +5616,11 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
         - name: paginate
           in: query
           schema:
@@ -5650,10 +5660,11 @@ paths:
             schema:
               type: object
               example:
-                company_id: 11
-                user_id: 47
+                company_id: 1
+                user_id: 4
                 permissions:
-                  - company-user-view
+                  - purchase-bill-update-status
+                  - purchase-order-update
       security:
         - bearerAuth: []
       parameters:
@@ -5666,7 +5677,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '11'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -15841,6 +15852,46 @@ paths:
             type: string
           required: true
           example: a7ae29da5d45cf3c3cb30d587cc994e8.jpg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/unapproved/{type}/{id}/update-status:
+    post:
+      tags:
+        - default
+      summary: unapproved status change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: invoice
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
