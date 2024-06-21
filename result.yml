@@ -9880,7 +9880,7 @@ paths:
               type: object
               example:
                 bill_number: ''
-                vendor_id: 88
+                vendor_id: 133
                 reference_number: '21345'
                 bill_date: '2024-01-01'
                 billing_address: hello address
@@ -9889,31 +9889,49 @@ paths:
                 tds: ''
                 status: ''
                 products:
-                  - product_id: 3
-                    account_head_id: 85
-                    quantity: 100
-                    rate: '10'
+                  - product_id: 9
+                    account_head_id: 129
+                    quantity: 2
+                    rate: 22
                     discount: null
-                    tax: 0
+                    tax: null
                     description: description
-                    amount: 300
-                    warehouse_id: 1
-                  - product_id: 4
-                    account_head_id: 85
-                    quantity: 200
-                    rate: '20'
+                    amount: 44
+                    warehouse_id: 3
+                  - product_id: 10
+                    account_head_id: 129
+                    quantity: 1
+                    rate: 11
                     discount: null
-                    tax: 13
+                    tax: null
                     description: description
-                    amount: 300
-                    warehouse_id: 1
+                    amount: 11
+                    warehouse_id: 3
                 document_id: ''
-                discount: 5
-                discount_type: percent
+                discount: 0
+                discount_type: fixed
                 is_import: true
                 country: India
                 import_date: 2024-6-13
                 document_no: '1243'
+                additional_cost_term_type: cost_term_wise
+                additional_cost_terms:
+                  - act_id: 3
+                    product_id: null
+                    type: value
+                    amount: 10
+                  - act_id: 1
+                    product_id: 9
+                    type: null
+                    amount: 10
+                  - act_id: 2
+                    product_id: 9
+                    type: null
+                    amount: 1
+                  - act_id: 2
+                    product_id: 10
+                    type: null
+                    amount: 2
       security:
         - bearerAuth: []
       parameters:
@@ -9926,7 +9944,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -9943,7 +9961,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -9952,7 +9970,8 @@ paths:
         - name: page
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
@@ -10005,7 +10024,7 @@ paths:
               example:
                 _method: patch
                 bill_number: PB-2
-                vendor_id: 88
+                vendor_id: 133
                 reference_number: '21345'
                 bill_date: '2024-01-01'
                 billing_address: hello address
@@ -10014,24 +10033,24 @@ paths:
                 tds: ''
                 status: draft
                 products:
-                  - product_id: 3
-                    account_head_id: 85
-                    quantity: 100
-                    rate: '15'
+                  - product_id: 9
+                    account_head_id: 129
+                    quantity: 2
+                    rate: 22
                     discount: null
-                    tax: 0
+                    tax: null
                     description: description
-                    amount: 300
-                    warehouse_id: 1
-                  - product_id: 4
-                    account_head_id: 85
-                    quantity: 200
-                    rate: '25'
+                    amount: 44
+                    warehouse_id: 3
+                  - product_id: 10
+                    account_head_id: 129
+                    quantity: 1
+                    rate: 11
                     discount: null
-                    tax: 13
+                    tax: null
                     description: description
-                    amount: 300
-                    warehouse_id: 1
+                    amount: 11
+                    warehouse_id: 3
                 document_id: ''
                 discount: 800
                 discount_type: percent
@@ -10039,6 +10058,24 @@ paths:
                 country: India
                 import_date: 2024-6-13
                 document_no: '1243'
+                additional_cost_term_type: cost_term_wise
+                additional_cost_terms:
+                  - act_id: 3
+                    product_id: null
+                    type: value
+                    amount: 4
+                  - act_id: 1
+                    product_id: 9
+                    type: null
+                    amount: 3
+                  - act_id: 2
+                    product_id: 9
+                    type: null
+                    amount: 6
+                  - act_id: 2
+                    product_id: 10
+                    type: null
+                    amount: 4
       security:
         - bearerAuth: []
       parameters:
@@ -10046,13 +10083,13 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '3'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '29'
+          example: '82'
       responses:
         '200':
           description: Successful response
@@ -10074,13 +10111,13 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '80'
       responses:
         '200':
           description: Successful response
@@ -10102,12 +10139,13 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: id
           in: path
           schema:
-            type: string
+            type: integer
           required: true
+          example: '82'
       responses:
         '200':
           description: Successful response

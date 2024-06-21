@@ -17207,12 +17207,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "3"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 88,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\":\"\",\n    \"products\": [\n        {\n            \"product_id\": 3,\n            \"account_head_id\": 85,\n            \"quantity\": 100,\n            \"rate\": \"10\",\n            \"discount\": null,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 4,\n            \"account_head_id\": 85,\n            \"quantity\": 200,\n            \"rate\": \"20\",\n            \"discount\": null,\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n       \n    ],\n    \"document_id\": \"\",\n    \"discount\":5,\n    \"discount_type\":\"percent\",//percent,fixed\n    \"is_import\":true,//true,false\n    \"country\":\"India\",\n    \"import_date\":\"2024-6-13\",\n    \"document_no\":\"1243\"\n\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 133,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 9,\n            \"account_head_id\": 129,\n            \"quantity\": 2,\n            \"rate\": 22,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 44,\n            \"warehouse_id\": 3\n        },\n        {\n            \"product_id\": 10,\n            \"account_head_id\": 129,\n            \"quantity\": 1,\n            \"rate\": 11,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 11,\n            \"warehouse_id\": 3\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 0,\n    \"discount_type\": \"fixed\", //percent,fixed\n    \"is_import\": true, //true,false\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n      \"additional_cost_term_type\": \"cost_term_wise\",//additional_cost_term_wise|product_wise\n  \"additional_cost_terms\": [\n        {\n            \"act_id\": 3,\n            \"product_id\": null,\n            \"type\": \"value\",\n            \"amount\": 10\n        },\n        {\n            \"act_id\": 1,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 10\n        },\n        {\n            \"act_id\": 2,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 1\n        },\n        {\n            \"act_id\": 2,\n            \"product_id\": 10, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 2\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17249,12 +17249,12 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "3"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"PB-2\",\n    \"vendor_id\": 88,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"draft\",\n    \"products\": [\n        {\n            \"product_id\": 3,\n            \"account_head_id\": 85,\n            \"quantity\": 100,\n            \"rate\": \"15\",\n            \"discount\": null,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        },\n        {\n            \"product_id\": 4,\n            \"account_head_id\": 85,\n            \"quantity\": 200,\n            \"rate\": \"25\",\n            \"discount\": null,\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 300,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 800,\n    \"discount_type\":\"percent\",//percent,fixed\n    \"is_import\": true,\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\"\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"PB-2\",\n    \"vendor_id\": 133,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"draft\",\n    \"products\": [\n        {\n            \"product_id\": 9,\n            \"account_head_id\": 129,\n            \"quantity\": 2,\n            \"rate\": 22,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 44,\n            \"warehouse_id\": 3\n        },\n        {\n            \"product_id\": 10,\n            \"account_head_id\": 129,\n            \"quantity\": 1,\n            \"rate\": 11,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 11,\n            \"warehouse_id\": 3\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 800,\n    \"discount_type\":\"percent\",//percent,fixed\n    \"is_import\": true,\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n    \"additional_cost_term_type\": \"cost_term_wise\",//additional_cost_term_wise|product_wise\n    \"additional_cost_terms\": [\n        {\n            \"act_id\": 3,\n            \"product_id\": null,\n            \"type\": \"value\",\n            \"amount\": 4\n        }\n        ,\n        {\n            \"act_id\": 1,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 3\n        }\n        ,\n        {\n            \"act_id\": 2,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 6\n        }\n        ,\n        {\n            \"act_id\": 2,\n            \"product_id\": 10, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 4\n        }\n        // , {\n        //     \"act_id\": 3,\n        //     \"product_id\": null,\n        //     \"type\": \"value\",\n        //     \"amount\": 4\n        // }\n        // ,\n        // {\n        //     \"act_id\": 2,\n        //     \"product_id\": 10, //nullable\n        //     \"type\": null, //value,quantity,(null; if product_id null)\n        //     \"amount\": 4\n        // }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17274,7 +17274,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "29"
+									"value": "82"
 								}
 							]
 						}
@@ -17392,7 +17392,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -17412,7 +17412,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "80"
 								}
 							]
 						}
@@ -17553,7 +17553,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -17566,7 +17566,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid&date[0]=&date[1]=",
+							"raw": "{{url}}/api/purchase-bill?paginate=1&page=1&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid&date[0]=&date[1]=",
 							"host": [
 								"{{url}}"
 							],
@@ -17581,7 +17581,7 @@
 								},
 								{
 									"key": "page",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "limit",
@@ -17644,7 +17644,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -17664,7 +17664,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "82"
 								}
 							]
 						}
