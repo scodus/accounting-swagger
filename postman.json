@@ -4673,25 +4673,13 @@
 								},
 								{
 									"key": "email",
-									"value": "nirag38142@wuzak.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "daded27440@rentaen.com",
+									"value": "perfectkid23@gmail.com",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "sejoyoh902@azduan.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "bikashxsingh@gmail.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -6599,7 +6587,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -6612,7 +6600,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=",
+							"raw": "{{url}}/api/account-head?paginate=&page=&limit=&search_keyword=&parent_slug=&tree_view=&no_sub_account_head=&no_customer=&no_vendor=&fiscal_year_id=&parent_slug_child=",
 							"host": [
 								"{{url}}"
 							],
@@ -6639,7 +6627,8 @@
 								},
 								{
 									"key": "parent_slug",
-									"value": ""
+									"value": "",
+									"description": "cash-and-bank"
 								},
 								{
 									"key": "tree_view",
@@ -6664,6 +6653,11 @@
 								{
 									"key": "fiscal_year_id",
 									"value": ""
+								},
+								{
+									"key": "parent_slug_child",
+									"value": "",
+									"description": "direct-expense"
 								}
 							]
 						}
@@ -6715,6 +6709,327 @@
 								{
 									"key": "id",
 									"value": "40"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "additional cost term (don't use)",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"custom\",\n    \"type\": \"quantity\",//quantity,value\n    \"description\": \"\",\n    \"status\": \"active\",//active,inactive\n    \"parent_id\":127\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/additional-cost-term",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"additional-cost-term"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"title\": \"custome\",\n    \"type\": \"quantity\", //quantity,value\n    \"description\": \"\",\n    \"status\": \"active\", //active,inactive\n    \"parent_id\":128\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/additional-cost-term/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"additional-cost-term",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/additional-cost-term/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"additional-cost-term",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/additional-cost-term/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"additional-cost-term",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/additional-cost-term?paginate=&page=&limit=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"additional-cost-term"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/additional-cost-term/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"additional-cost-term",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -7756,7 +8071,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -10357,7 +10672,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -10366,7 +10681,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/home/user123/Downloads/sample (24).xlsx"
+									"src": "/C:/Users/Scodus/Downloads/customer-sample.xlsx"
 								}
 							]
 						},
@@ -12267,7 +12582,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -12280,7 +12595,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/expense?paginate=&page=&limit=&search_keyword=&status=",
+							"raw": "{{url}}/api/expense?paginate=1&page=&limit=&search_keyword=&status=&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -12291,7 +12606,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -12308,6 +12623,14 @@
 								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -14924,7 +15247,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -16440,53 +16763,6 @@
 					"response": []
 				},
 				{
-					"name": "import",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/home/user--49/Downloads/product-sample (2).xlsx"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/product-import",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"product-import"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "update",
 					"request": {
 						"auth": {
@@ -16758,7 +17034,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -16771,7 +17047,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=&page=&limit=&search_keyword=&is_service=&is_product=&inventory=",
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=1&inventory=",
 							"host": [
 								"{{url}}"
 							],
@@ -16782,15 +17058,15 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "10"
 								},
 								{
 									"key": "search_keyword",
@@ -16802,7 +17078,7 @@
 								},
 								{
 									"key": "is_product",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "inventory",
@@ -16859,6 +17135,58 @@
 									"key": "id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "import",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Scodus/Downloads/product-sample (2).xlsx"
+								},
+								{
+									"key": "as_of_date",
+									"value": "2024-07-23",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/product-import",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-import"
 							]
 						}
 					},
@@ -17207,12 +17535,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "2"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 133,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 9,\n            \"account_head_id\": 129,\n            \"quantity\": 2,\n            \"rate\": 22,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 44,\n            \"warehouse_id\": 3\n        },\n        {\n            \"product_id\": 10,\n            \"account_head_id\": 129,\n            \"quantity\": 1,\n            \"rate\": 11,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 11,\n            \"warehouse_id\": 3\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 0,\n    \"discount_type\": \"fixed\", //percent,fixed\n    \"is_import\": true, //true,false\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n      \"additional_cost_term_type\": \"cost_term_wise\",//additional_cost_term_wise|product_wise\n  \"additional_cost_terms\": [\n        {\n            \"act_id\": 3,\n            \"product_id\": null,\n            \"type\": \"value\",\n            \"amount\": 10\n        },\n        {\n            \"act_id\": 1,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 10\n        },\n        {\n            \"act_id\": 2,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 1\n        },\n        {\n            \"act_id\": 2,\n            \"product_id\": 10, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 2\n        }\n    ]\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 105,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 13,\n            \"account_head_id\": 93,\n            \"quantity\": 100,\n            \"rate\": 10,\n            \"discount\": null,\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 2\n        },\n        {\n            \"account_head_id\": 93,\n            \"quantity\": \"1\",\n            \"rate\": \"11\",\n            \"tax\": \"\",\n            \"amount\": 11,\n            \"product_id\": 8,\n            \"discount\": \"\",\n            \"description\": \"description\",\n            \"warehouse_id\": 2\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 0,\n    \"discount_type\": \"fixed\", //percent,fixed\n    \"is_import\": false, //true,false\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n    \"port_of_entry\": \"np\",\n    \"is_product_wise\": false\n    // ,\n    //   \"additional_cost_terms\": [\n    //         {\n    //             \"act_id\": 3,\n    //             \"product_id\": null,\n    //             \"type\": \"value\",\n    //             \"amount\": 10\n    //         },\n    //         {\n    //             \"act_id\": 1,\n    //             \"product_id\": 9, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 10\n    //         },\n    //         {\n    //             \"act_id\": 2,\n    //             \"product_id\": 9, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 1\n    //         },\n    //         {\n    //             \"act_id\": 2,\n    //             \"product_id\": 10, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 2\n    //         }\n    //     ]\n    // \"additional_costs\": [\n    //     {\n    //         \"product_id\": \"all_product\",\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": null,\n    //                 \"cfc_account_id\": 2,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     },\n    //     {\n    //         \"product_id\": 1,\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": null,\n    //                 \"cfc_account_id\": 2,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     },\n    //     {\n    //         \"product_id\": 2,\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     }\n    // ],\n    // \"additional_costs\": [\n    //     {\n    //         \"account_head_id\": 197,\n    //         \"product_id\": 13,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 198,\n    //         \"product_id\": 13,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 200,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 201,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 202,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 203,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 197,\n    //         \"product_id\": 14,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 198,\n    //         \"product_id\": 14,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 200,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 201,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 202,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 203,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     }\n    // ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17254,7 +17582,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"PB-2\",\n    \"vendor_id\": 133,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"draft\",\n    \"products\": [\n        {\n            \"product_id\": 9,\n            \"account_head_id\": 129,\n            \"quantity\": 2,\n            \"rate\": 22,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 44,\n            \"warehouse_id\": 3\n        },\n        {\n            \"product_id\": 10,\n            \"account_head_id\": 129,\n            \"quantity\": 1,\n            \"rate\": 11,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 11,\n            \"warehouse_id\": 3\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 800,\n    \"discount_type\":\"percent\",//percent,fixed\n    \"is_import\": true,\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n    \"additional_cost_term_type\": \"cost_term_wise\",//additional_cost_term_wise|product_wise\n    \"additional_cost_terms\": [\n        {\n            \"act_id\": 3,\n            \"product_id\": null,\n            \"type\": \"value\",\n            \"amount\": 4\n        }\n        ,\n        {\n            \"act_id\": 1,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 3\n        }\n        ,\n        {\n            \"act_id\": 2,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 6\n        }\n        ,\n        {\n            \"act_id\": 2,\n            \"product_id\": 10, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 4\n        }\n        // , {\n        //     \"act_id\": 3,\n        //     \"product_id\": null,\n        //     \"type\": \"value\",\n        //     \"amount\": 4\n        // }\n        // ,\n        // {\n        //     \"act_id\": 2,\n        //     \"product_id\": 10, //nullable\n        //     \"type\": null, //value,quantity,(null; if product_id null)\n        //     \"amount\": 4\n        // }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"bill_number\": \"PB-2\",\n    \"vendor_id\": 133,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"draft\",\n    \"products\": [\n        {\n            \"product_id\": 9,\n            \"account_head_id\": 129,\n            \"quantity\": 2,\n            \"rate\": 22,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 44,\n            \"warehouse_id\": 3\n        },\n        {\n            \"product_id\": 10,\n            \"account_head_id\": 129,\n            \"quantity\": 1,\n            \"rate\": 11,\n            \"discount\": null,\n            \"tax\": null,\n            \"description\": \"description\",\n            \"amount\": 11,\n            \"warehouse_id\": 3\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 800,\n    \"discount_type\":\"percent\",//percent,fixed\n    \"is_import\": true,\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n    \"is_product_wise\": false,\n    \"additional_cost_terms\": [\n        {\n            \"act_id\": 3,\n            \"product_id\": null,\n            \"type\": \"value\",\n            \"amount\": 4\n        }\n        ,\n        {\n            \"act_id\": 1,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 3\n        }\n        ,\n        {\n            \"act_id\": 2,\n            \"product_id\": 9, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 6\n        }\n        ,\n        {\n            \"act_id\": 2,\n            \"product_id\": 10, //nullable\n            \"type\": null, //value,quantity,(null; if product_id null)\n            \"amount\": 4\n        }\n        // , {\n        //     \"act_id\": 3,\n        //     \"product_id\": null,\n        //     \"type\": \"value\",\n        //     \"amount\": 4\n        // }\n        // ,\n        // {\n        //     \"act_id\": 2,\n        //     \"product_id\": 10, //nullable\n        //     \"type\": null, //value,quantity,(null; if product_id null)\n        //     \"amount\": 4\n        // }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17319,7 +17647,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -17343,7 +17671,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -17553,7 +17881,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -17566,7 +17894,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=1&page=1&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid&date[0]=&date[1]=",
+							"raw": "{{url}}/api/purchase-bill?paginate=1&page=1&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid&date[0]=&date[1]=&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -17614,6 +17942,14 @@
 								{
 									"key": "date[1]",
 									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -17644,7 +17980,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -17664,7 +18000,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "82"
+									"value": "86"
 								}
 							]
 						}
@@ -17950,7 +18286,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-order?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/purchase-order?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -17981,6 +18317,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -18176,7 +18520,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-payment?bill_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/purchase-payment?bill_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -18199,6 +18543,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -18666,7 +19018,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-return?paginate=&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/purchase-return?paginate=&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -18705,6 +19057,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -18937,7 +19297,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -18950,7 +19310,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-payment?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=&date[1]=",
+							"raw": "{{url}}/api/quick-payment?paginate=1&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=&date[1]=&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -18990,6 +19350,14 @@
 								{
 									"key": "date[1]",
 									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-04-01"
 								}
 							]
 						}
@@ -19322,7 +19690,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quick-receipt?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/quick-receipt?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -19361,6 +19729,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -19823,7 +20199,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -19836,7 +20212,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/quotation?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/quotation?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -19867,6 +20243,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -20322,6 +20706,1074 @@
 			"name": "report",
 			"item": [
 				{
+					"name": "accounting",
+					"item": [
+						{
+							"name": "transaction list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/transaction-list?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21&transaction_type=quotation,sales_order,invoice,purchase_bill",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"transaction-list"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-21"
+										},
+										{
+											"key": "transaction_type",
+											"value": "quotation,sales_order,invoice,purchase_bill"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "journal report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/journal-report?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"journal-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cashflow summary",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "1"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/cashflow-summary?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"cashflow-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-21"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "receivable",
+					"item": [
+						{
+							"name": "customer aging summary",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/customer-aging-summary?paginate=1&page=&limit=&date=2024-07-01&day_interval=60&aging_interval=4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer-aging-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "date",
+											"value": "2024-07-01"
+										},
+										{
+											"key": "day_interval",
+											"value": "60"
+										},
+										{
+											"key": "aging_interval",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "invoice age",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/invoice-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&transaction_type=invoice,quick_receipt",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"invoice-age"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										},
+										{
+											"key": "transaction_type",
+											"value": "invoice,quick_receipt"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "payable",
+					"item": [
+						{
+							"name": "vendor aging summary",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor-aging-summary?paginate=1&page=&limit=&date=2024-07-01&day_interval=60&aging_interval=4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor-aging-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "date",
+											"value": "2024-07-01"
+										},
+										{
+											"key": "day_interval",
+											"value": "60"
+										},
+										{
+											"key": "aging_interval",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase bill age",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-bill-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&transaction_type=purchase_bill,quick_payment",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-bill-age"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										},
+										{
+											"key": "transaction_type",
+											"value": "purchase_bill,quick_payment"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "sales report",
+					"item": [
+						{
+							"name": "sales by customer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-by-customer"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sales by item",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-by-item"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sales by customer monthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-by-customer-monthly?paginate=1&page=&limit=&year=2080-2081",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-by-customer-monthly"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "year",
+											"value": "2080-2081"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sales by item monthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-by-item-monthly?paginate=1&page=&limit=&year=2080-2081&type=amount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-by-item-monthly"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "year",
+											"value": "2080-2081"
+										},
+										{
+											"key": "type",
+											"value": "amount"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "purchase report",
+					"item": [
+						{
+							"name": "purchase by vendor",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-vendor"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase by item",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-item"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase by vendor monthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-vendor-monthly?paginate=1&page=&limit=&year=2080-2081",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-vendor-monthly"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "year",
+											"value": "2080-2081"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase by item monthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2080-2081&type=amount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-item-monthly"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "year",
+											"value": "2080-2081"
+										},
+										{
+											"key": "type",
+											"value": "amount"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "reset ledger ***DANGER**",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/reset-ledger",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"reset-ledger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -20399,7 +21851,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -20407,7 +21859,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/trial-balance?start_date=2024-05-01&end_date=2024-05-23",
+							"raw": "{{url}}/api/trial-balance?start_date=2024-06-15&end_date=2024-07-14",
 							"host": [
 								"{{url}}"
 							],
@@ -20418,53 +21870,12 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2024-05-01"
+									"value": "2024-06-15"
 								},
 								{
 									"key": "end_date",
-									"value": "2024-05-23"
+									"value": "2024-07-14"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "reset ledger",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/reset-ledger",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"reset-ledger"
 							]
 						}
 					},
@@ -21153,7 +22564,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-order?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/sales-order?paginate=1&page=&limit=&search_keyword=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -21184,6 +22595,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -21379,7 +22798,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment?invoice_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/sales-payment?invoice_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -21402,6 +22821,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -21869,7 +23296,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01",
+							"raw": "{{url}}/api/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
 							"host": [
 								"{{url}}"
 							],
@@ -21908,6 +23335,14 @@
 								},
 								{
 									"key": "date[1]",
+									"value": "2024-04-01"
+								},
+								{
+									"key": "start_date",
+									"value": "2023-09-01"
+								},
+								{
+									"key": "end_date",
 									"value": "2024-04-01"
 								}
 							]
@@ -24488,7 +25923,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -24497,7 +25932,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/home/user123/Downloads/sample (25).xlsx"
+									"src": "/C:/Users/Scodus/Downloads/vendor-sample.xlsx"
 								}
 							]
 						},
@@ -25429,7 +26864,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -25477,7 +26912,107 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "stock",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/warehouse-department/:id/stock?paginate=&page=&limit=&search_keyword=&is_service=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"warehouse-department",
+										":id",
+										"stock"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										},
+										{
+											"key": "is_service",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 09:14:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999997"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Warehouse Departments\",\n    \"data\": [\n        {\n            \"id\": 11,\n            \"name\": \"Product 1\",\n            \"slug\": \"product-1\",\n            \"price\": 100,\n            \"quantity\": 11\n        },\n        {\n            \"id\": 36,\n            \"name\": \"Product 1D11111\",\n            \"slug\": \"product-1d11111\",\n            \"price\": 100,\n            \"quantity\": -1\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "product view",
@@ -25868,327 +27403,6 @@
 								{
 									"key": "id",
 									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "additional cost term",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"custom\",\n    \"type\": \"quantity\",//quantity,value\n    \"description\": \"\",\n    \"status\": \"active\"//active,inactive\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/additional-cost-term",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"additional-cost-term"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"title\": \"custome\",\n    \"type\": \"quantity\", //quantity,value\n    \"description\": \"\",\n    \"status\": \"active\" //active,inactive\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/additional-cost-term/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"additional-cost-term",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "inactive",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/additional-cost-term/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"additional-cost-term",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/additional-cost-term/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"additional-cost-term",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "5"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/additional-cost-term?paginate=&page=&limit=&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"additional-cost-term"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": ""
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/additional-cost-term/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"additional-cost-term",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
 								}
 							]
 						}
@@ -26906,6 +28120,59 @@
 							"key": "id",
 							"value": "1"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset-ledger ***DANGER***",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "company-id",
+						"value": "2"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/api/reset-ledger",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"reset-ledger"
 					]
 				}
 			},
