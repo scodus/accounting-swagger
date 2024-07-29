@@ -17,7 +17,7 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: https://accounting.scoduscorp.com/
-    description: accounting software server
+    description: accounting software test server
 components:
   securitySchemes:
     noauthAuth:
@@ -95,6 +95,7 @@ tags:
   - name: report > payable
   - name: report > sales report
   - name: report > purchase report
+  - name: report > inventory report
   - name: role
   - name: sales order
   - name: sale payment
@@ -12684,6 +12685,52 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/customer-statement:
+    get:
+      tags:
+        - report > receivable
+      summary: customer statement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '37'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-07-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor-aging-summary:
     get:
       tags:
@@ -12781,6 +12828,52 @@ paths:
           schema:
             type: string
           example: purchase_bill,quick_payment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor-statement:
+    get:
+      tags:
+        - report > payable
+      summary: vendor statement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '37'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-07-01'
       responses:
         '200':
           description: Successful response
@@ -12965,6 +13058,52 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/sales-master-report:
+    get:
+      tags:
+        - report > sales report
+      summary: sales master report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '37'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-01-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/purchase-by-vendor:
     get:
       tags:
@@ -13014,7 +13153,7 @@ paths:
   /api/purchase-by-item:
     get:
       tags:
-        - report > purchase report
+        - report > inventory report
       summary: purchase by item
       security:
         - bearerAuth: []
@@ -13060,7 +13199,7 @@ paths:
   /api/purchase-by-vendor-monthly:
     get:
       tags:
-        - report > purchase report
+        - report > inventory report
       summary: purchase by vendor monthly
       security:
         - bearerAuth: []
@@ -13101,7 +13240,7 @@ paths:
   /api/purchase-by-item-monthly:
     get:
       tags:
-        - report > purchase report
+        - report > inventory report
       summary: purchase by item monthly
       security:
         - bearerAuth: []
@@ -13139,6 +13278,98 @@ paths:
           schema:
             type: string
           example: amount
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-master-report:
+    get:
+      tags:
+        - report > inventory report
+      summary: purchase master report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '37'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-01-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-movement:
+    get:
+      tags:
+        - report > inventory report
+      summary: purchase by vendor
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '37'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-07-01'
       responses:
         '200':
           description: Successful response
@@ -14352,6 +14583,9 @@ paths:
                 invoice_bank[1]:
                   type: integer
                   example: '2'
+                allow_negative_inventory:
+                  type: integer
+                  example: '0'
       security:
         - bearerAuth: []
       parameters:
@@ -14364,7 +14598,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -14382,14 +14616,16 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
         - name: group
           in: path
           schema:
             type: string
           required: true
-          description: general || payment-mode || warehouse || invoice_template
-          example: invoice_bank
+          description: >-
+            general || payment-mode || warehouse ||
+            invoice_template||invoice_bank
+          example: general
       responses:
         '200':
           description: Successful response
@@ -14525,14 +14761,14 @@ paths:
             schema:
               type: object
               example:
-                warehouse_department_id: 1
-                stock_consumption_date: '2024-03-06'
+                warehouse_department_id: 2
+                stock_consumption_date: '2024-07-25'
                 note: ''
                 products:
-                  - product_id: 1
-                    rate: 100
-                    quantity: 100
-                    amount: 10000
+                  - product_id: 68
+                    rate: 0
+                    quantity: 1000
+                    amount: 0
       security:
         - bearerAuth: []
       parameters:
@@ -14545,7 +14781,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -14715,15 +14951,15 @@ paths:
             schema:
               type: object
               example:
-                warehouse_department_id: 1
-                stock_issue_date: '2024-03-06'
+                warehouse_department_id: 2
+                stock_issue_date: '2024-07-24'
                 note: ''
                 auto_consumption: false
                 products:
-                  - product_id: 1
-                    rate: 100
-                    quantity: 100
-                    amount: 10000
+                  - product_id: 68
+                    rate: 0
+                    quantity: 50
+                    amount: 0
       security:
         - bearerAuth: []
       parameters:
@@ -14736,7 +14972,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -14799,15 +15035,15 @@ paths:
             schema:
               type: object
               example:
-                warehouse_department_id: 1
-                stock_issue_date: '2024-03-06'
+                warehouse_department_id: 18
+                stock_issue_date: '2024-07-24'
                 note: ''
                 auto_consumption: false
                 products:
-                  - product_id: 1
-                    rate: 100
-                    quantity: 100
-                    amount: 10000
+                  - product_id: 6
+                    quantity: 111
+                    rate: 0
+                    amount: 0
       security:
         - bearerAuth: []
       parameters:
@@ -14820,7 +15056,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -16428,61 +16664,9 @@ paths:
           example: '1'
       responses:
         '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Mon, 22 Jul 2024 09:14:46 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999997'
-            Vary:
-              schema:
-                type: string
-                example: Origin
+          description: Successful response
           content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Warehouse Departments
-                data:
-                  - id: 11
-                    name: Product 1
-                    slug: product-1
-                    price: 100
-                    quantity: 11
-                  - id: 36
-                    name: Product 1D11111
-                    slug: product-1d11111
-                    price: 100
-                    quantity: -1
+            application/json: {}
   /api/warehouse-department-product/{product_id}/view:
     get:
       tags:

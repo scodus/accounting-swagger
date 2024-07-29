@@ -22,7 +22,7 @@
 	"servers": [
 		{
 			"url": "https://accounting.scoduscorp.com/",
-			"description": "accounting software server"
+			"description": "accounting software test server"
 		}
 	]
 }

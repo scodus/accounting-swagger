@@ -4669,7 +4669,8 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -4680,8 +4681,7 @@
 								{
 									"key": "email",
 									"value": "sejoyoh902@azduan.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -21054,6 +21054,72 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "customer statement",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer-statement"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -21194,6 +21260,72 @@
 										{
 											"key": "transaction_type",
 											"value": "purchase_bill,quick_payment"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "vendor statement",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor-statement"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
 										}
 									]
 								}
@@ -21464,6 +21596,72 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "sales master report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-master-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-01-01"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -21724,6 +21922,403 @@
 										{
 											"key": "type",
 											"value": "amount"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase master report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-master-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-01-01"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "inventory report",
+					"item": [
+						{
+							"name": "purchase by vendor",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/inventory-movement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"inventory-movement"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase by item",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-item"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase by vendor monthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-vendor-monthly?paginate=1&page=&limit=&year=2080-2081",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-vendor-monthly"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "year",
+											"value": "2080-2081"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase by item monthly",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2080-2081&type=amount",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-item-monthly"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "year",
+											"value": "2080-2081"
+										},
+										{
+											"key": "type",
+											"value": "amount"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "purchase master report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-master-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-01-01"
 										}
 									]
 								}
@@ -23477,7 +24072,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -23584,13 +24179,18 @@
 									"key": "invoice_bank[1]",
 									"value": "2",
 									"type": "text"
+								},
+								{
+									"key": "allow_negative_inventory",
+									"value": "0",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{live_url}}/api/site-setting",
+							"raw": "{{url}}/api/site-setting",
 							"host": [
-								"{{live_url}}"
+								"{{url}}"
 							],
 							"path": [
 								"api",
@@ -23620,7 +24220,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -23645,8 +24245,8 @@
 							"variable": [
 								{
 									"key": "group",
-									"value": "invoice_bank",
-									"description": "general || payment-mode || warehouse || invoice_template"
+									"value": "general",
+									"description": "general || payment-mode || warehouse || invoice_template||invoice_bank"
 								}
 							]
 						}
@@ -23779,12 +24379,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 2,\n    \"stock_consumption_date\": \"2024-07-25\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 0,\n            \"quantity\": 1000,\n            \"amount\": 0\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24149,12 +24749,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 2,\n    \"stock_issue_date\": \"2024-07-24\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 0,\n            \"quantity\": 50,\n            \"amount\": 0\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24195,12 +24795,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 18,\n    \"stock_issue_date\": \"2024-07-24\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 6,\n            \"quantity\": 111,\n            \"rate\": 0,\n            \"amount\": 0\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -26912,107 +27512,7 @@
 							]
 						}
 					},
-					"response": [
-						{
-							"name": "stock",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/warehouse-department/:id/stock?paginate=&page=&limit=&search_keyword=&is_service=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"warehouse-department",
-										":id",
-										"stock"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": ""
-										},
-										{
-											"key": "page",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": ""
-										},
-										{
-											"key": "search_keyword",
-											"value": ""
-										},
-										{
-											"key": "is_service",
-											"value": ""
-										}
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 22 Jul 2024 09:14:46 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999997"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Warehouse Departments\",\n    \"data\": [\n        {\n            \"id\": 11,\n            \"name\": \"Product 1\",\n            \"slug\": \"product-1\",\n            \"price\": 100,\n            \"quantity\": 11\n        },\n        {\n            \"id\": 36,\n            \"name\": \"Product 1D11111\",\n            \"slug\": \"product-1d11111\",\n            \"price\": 100,\n            \"quantity\": -1\n        }\n    ]\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "product view",
