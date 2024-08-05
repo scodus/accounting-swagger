@@ -745,7 +745,7 @@ paths:
     get:
       tags:
         - ADMIN APIS > Accounting Firm
-      summary: list accountingfirm users
+      summary: list accountingfirm users *OLD
       security:
         - bearerAuth: []
       parameters:
@@ -785,7 +785,7 @@ paths:
     post:
       tags:
         - ADMIN APIS > Accounting Firm
-      summary: assign or update admin
+      summary: assign or update admin *OLD
       requestBody:
         content:
           application/json:
@@ -813,7 +813,7 @@ paths:
     get:
       tags:
         - ADMIN APIS > Accounting Firm
-      summary: list accountingfirm admin invitations
+      summary: list accountingfirm admin invitations *OLD
       security:
         - bearerAuth: []
       parameters:
@@ -853,7 +853,7 @@ paths:
     post:
       tags:
         - ADMIN APIS > Accounting Firm
-      summary: admin permission update
+      summary: admin permission update *OLD
       requestBody:
         content:
           application/json:
@@ -881,7 +881,7 @@ paths:
     post:
       tags:
         - ADMIN APIS > Accounting Firm
-      summary: unassign  admin
+      summary: unassign  admin *OLD
       requestBody:
         content:
           application/json:
@@ -898,6 +898,196 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-owner/{accounting_firm_id}:
+    get:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: list accountingfirm owner
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-assign-update-owner:
+    post:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: assign or update owner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 4
+                email: hewan45884@cubene.com
+                permissions:
+                  - view-accountingfirm-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-owner/{accounting_firm_id}/invitations:
+    get:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: list accountingfirm owner invitations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-owner-permission-update:
+    post:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: owner permission update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 50
+                permissions:
+                  - view-accountingfirm-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-unassign-owner:
+    post:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: unassign owner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_firm_id: 1
+                user_id: 50
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm/{accounting_firm_id}/owner/invitation/{user_temporary_data}:
+    delete:
+      tags:
+        - ADMIN APIS > Accounting Firm
+      summary: delete owner  invitation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: user_temporary_data
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -1619,7 +1809,7 @@ paths:
     get:
       tags:
         - ADMIN APIS > Company
-      summary: list company admin invitations
+      summary: list company admin invitations *OLD
       security:
         - bearerAuth: []
       parameters:
@@ -1659,7 +1849,7 @@ paths:
     post:
       tags:
         - ADMIN APIS > Company
-      summary: assign or update admin
+      summary: assign or update admin *OLD
       requestBody:
         content:
           application/json:
@@ -1687,7 +1877,7 @@ paths:
     post:
       tags:
         - ADMIN APIS > Company
-      summary: admin permission update
+      summary: admin permission update *OLD
       requestBody:
         content:
           application/json:
@@ -1715,7 +1905,7 @@ paths:
     post:
       tags:
         - ADMIN APIS > Company
-      summary: unassign admin
+      summary: unassign admin *OLD
       requestBody:
         content:
           application/json:
@@ -1732,6 +1922,156 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-owner/{company_id}:
+    get:
+      tags:
+        - ADMIN APIS > Company
+      summary: list company owner invitations
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-assign-update-owner:
+    post:
+      tags:
+        - ADMIN APIS > Company
+      summary: assign or update owner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                email: hewan45884@cubene.com
+                permissions:
+                  - view-company-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-owner-permission-update:
+    post:
+      tags:
+        - ADMIN APIS > Company
+      summary: owner permission update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id: 10
+                permissions:
+                  - view-accountingfirm-dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-unassign-owner:
+    post:
+      tags:
+        - ADMIN APIS > Company
+      summary: unassign owner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                user_id: 10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company/{company_id}/owner/invitation/{user_temporary_data}:
+    delete:
+      tags:
+        - ADMIN APIS > Company
+      summary: delete owner  invitation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: user_temporary_data
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -2596,10 +2936,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: sejoyoh902@azduan.com
+                  example: kimchifastfoods@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Kimchi@2065
       responses:
         '200':
           description: Successful response
@@ -3190,7 +3530,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: create user
+      summary: create user *OLD
       requestBody:
         content:
           application/json:
@@ -3217,7 +3557,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: update user
+      summary: update user *OLD
       requestBody:
         content:
           application/json:
@@ -3244,7 +3584,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: remove user
+      summary: remove user *OLD
       requestBody:
         content:
           application/json:
@@ -3271,7 +3611,7 @@ paths:
     post:
       tags:
         - accounting firm
-      summary: assign admin
+      summary: assign admin *OLD
       requestBody:
         content:
           application/json:
@@ -9673,7 +10013,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -9693,6 +10033,7 @@ paths:
           in: query
           schema:
             type: string
+          example: kewr
         - name: is_service
           in: query
           schema:
@@ -12457,7 +12798,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12537,6 +12878,52 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/general-ledger-summary:
+    get:
+      tags:
+        - report > accounting
+      summary: general ledger summary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '37'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-06-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/cashflow-summary:
     get:
       tags:
@@ -12553,8 +12940,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: audio/mp4
         - name: paginate
           in: query
           schema:
@@ -12600,7 +12987,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12702,7 +13089,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12748,7 +13135,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12799,7 +13186,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12850,7 +13237,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12896,7 +13283,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12942,7 +13329,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -12965,7 +13352,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-12-01'
       responses:
         '200':
           description: Successful response
@@ -12988,7 +13375,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13029,7 +13416,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13075,7 +13462,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13121,7 +13508,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13153,7 +13540,7 @@ paths:
   /api/purchase-by-item:
     get:
       tags:
-        - report > inventory report
+        - report > purchase report
       summary: purchase by item
       security:
         - bearerAuth: []
@@ -13167,7 +13554,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13199,7 +13586,7 @@ paths:
   /api/purchase-by-vendor-monthly:
     get:
       tags:
-        - report > inventory report
+        - report > purchase report
       summary: purchase by vendor monthly
       security:
         - bearerAuth: []
@@ -13213,7 +13600,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13240,7 +13627,7 @@ paths:
   /api/purchase-by-item-monthly:
     get:
       tags:
-        - report > inventory report
+        - report > purchase report
       summary: purchase by item monthly
       security:
         - bearerAuth: []
@@ -13254,7 +13641,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13286,7 +13673,7 @@ paths:
   /api/purchase-master-report:
     get:
       tags:
-        - report > inventory report
+        - report > purchase report
       summary: purchase master report
       security:
         - bearerAuth: []
@@ -13300,7 +13687,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '37'
+          example: '4'
         - name: paginate
           in: query
           schema:
@@ -13329,11 +13716,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/inventory-movement:
+  /api/inventory-position:
     get:
       tags:
         - report > inventory report
-      summary: purchase by vendor
+      summary: inventory position
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '4'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-07-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inventory-master-report:
+    get:
+      tags:
+        - report > inventory report
+      summary: inventory master report
       security:
         - bearerAuth: []
       parameters:
@@ -13370,6 +13803,11 @@ paths:
           schema:
             type: string
           example: '2024-07-01'
+        - name: transaction_type
+          in: query
+          schema:
+            type: string
+          example: invoice,purchase_bill
       responses:
         '200':
           description: Successful response
@@ -17235,6 +17673,38 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/forex/v1/rates:
+    get:
+      tags:
+        - default
+      summary: >-
+        https://www.nrb.org.np/api/forex/v1?page=1&per_page=10&from=2024-07-31&to=2024-07-31
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: from
+          in: query
+          schema:
+            type: string
+          example: '2024-07-31'
+        - name: to
+          in: query
+          schema:
+            type: string
+          example: '2024-07-31'
       responses:
         '200':
           description: Successful response
