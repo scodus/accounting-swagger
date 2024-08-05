@@ -1312,7 +1312,7 @@
 							"response": []
 						},
 						{
-							"name": "list accountingfirm users",
+							"name": "list accountingfirm users *OLD",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1383,7 +1383,7 @@
 							"response": []
 						},
 						{
-							"name": "assign or update admin",
+							"name": "assign or update admin *OLD",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1426,7 +1426,7 @@
 							"response": []
 						},
 						{
-							"name": "list accountingfirm admin invitations",
+							"name": "list accountingfirm admin invitations *OLD",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1498,7 +1498,7 @@
 							"response": []
 						},
 						{
-							"name": "admin permission update",
+							"name": "admin permission update *OLD",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1541,7 +1541,7 @@
 							"response": []
 						},
 						{
-							"name": "unassign  admin",
+							"name": "unassign  admin *OLD",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -1578,6 +1578,335 @@
 										"api",
 										"admin",
 										"accounting-firm-unassign-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list accountingfirm owner",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm-owner/:accounting_firm_id?paginate=&page=&limit=&search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm-owner",
+										":accounting_firm_id"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "accounting_firm_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assign or update owner",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounting_firm_id\": 4,\n    \"email\": \"hewan45884@cubene.com\"\n    ,\"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm-assign-update-owner",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm-assign-update-owner"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list accountingfirm owner invitations",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm-owner/:accounting_firm_id/invitations?paginate=&page=&limit=&search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm-owner",
+										":accounting_firm_id",
+										"invitations"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "accounting_firm_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "owner permission update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm-owner-permission-update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm-owner-permission-update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unassign owner",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm-unassign-owner",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm-unassign-owner"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete owner  invitation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/accounting-firm/:accounting_firm_id/owner/invitation/:user_temporary_data",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"accounting-firm",
+										":accounting_firm_id",
+										"owner",
+										"invitation",
+										":user_temporary_data"
+									],
+									"variable": [
+										{
+											"key": "accounting_firm_id",
+											"value": ""
+										},
+										{
+											"key": "user_temporary_data",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -2841,7 +3170,7 @@
 							"response": []
 						},
 						{
-							"name": "list company users",
+							"name": "list company users *OLD",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -2912,7 +3241,7 @@
 							"response": []
 						},
 						{
-							"name": "assign or update admin",
+							"name": "assign or update admin *OLD",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -2955,7 +3284,7 @@
 							"response": []
 						},
 						{
-							"name": "list company admin invitations",
+							"name": "list company admin invitations *OLD",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -3026,7 +3355,7 @@
 							"response": []
 						},
 						{
-							"name": "admin permission update",
+							"name": "admin permission update *OLD",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3069,7 +3398,7 @@
 							"response": []
 						},
 						{
-							"name": "unassign admin",
+							"name": "unassign admin *OLD",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3106,6 +3435,334 @@
 										"api",
 										"admin",
 										"company-unassign-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list company owner",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company-owner/:company_id?paginate=&page=&limit=&search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company-owner",
+										":company_id"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "company_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assign or update owner",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 1,\n    \"email\": \"hewan45884@cubene.com\",\n    \"permissions\" : [\n        \"view-company-dashboard\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company-assign-update-owner",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company-assign-update-owner"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list company owner invitations",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company-owner/:company_id?paginate=&page=&limit=&search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company-owner",
+										":company_id"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "company_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "owner permission update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10,\n    \"permissions\" : [\n        \"view-accountingfirm-dashboard\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company-owner-permission-update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company-owner-permission-update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unassign owner",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company_id\": 1,\n    \"user_id\": 10   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company-unassign-owner",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company-unassign-owner"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete owner  invitation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounting_firm_id\": 1,\n    \"user_id\": 50   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/company/:company_id/owner/invitation/:user_temporary_data",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"company",
+										":company_id",
+										"owner",
+										"invitation",
+										":user_temporary_data"
+									],
+									"variable": [
+										{
+											"key": "company_id",
+											"value": ""
+										},
+										{
+											"key": "user_temporary_data",
+											"value": ""
+										}
 									]
 								}
 							},
@@ -4669,8 +5326,7 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -4681,7 +5337,20 @@
 								{
 									"key": "email",
 									"value": "sejoyoh902@azduan.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "kimchifastfoods@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Kimchi@2065",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -5885,7 +6554,7 @@
 					"response": []
 				},
 				{
-					"name": "create user",
+					"name": "create user *OLD",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -5927,7 +6596,7 @@
 					"response": []
 				},
 				{
-					"name": "update user",
+					"name": "update user *OLD",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -5969,7 +6638,7 @@
 					"response": []
 				},
 				{
-					"name": "remove user",
+					"name": "remove user *OLD",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -6011,7 +6680,7 @@
 					"response": []
 				},
 				{
-					"name": "assign admin",
+					"name": "assign admin *OLD",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -17034,7 +17703,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -17047,7 +17716,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=1&inventory=",
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=kewr&is_service=&is_product=1&inventory=",
 							"host": [
 								"{{url}}"
 							],
@@ -17070,7 +17739,7 @@
 								},
 								{
 									"key": "search_keyword",
-									"value": ""
+									"value": "kewr"
 								},
 								{
 									"key": "is_service",
@@ -20732,7 +21401,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -20845,6 +21514,72 @@
 							"response": []
 						},
 						{
+							"name": "general ledger summary",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "37"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/general-ledger-summary?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"general-ledger-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "cashflow summary",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -20868,7 +21603,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "1"
+										"value": "audio/mp4"
 									}
 								],
 								"body": {
@@ -20939,7 +21674,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21079,7 +21814,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21150,7 +21885,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21220,7 +21955,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21290,7 +22025,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21361,7 +22096,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21427,7 +22162,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21435,7 +22170,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-12-01",
 									"host": [
 										"{{url}}"
 									],
@@ -21462,7 +22197,7 @@
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-12-01"
 										}
 									]
 								}
@@ -21493,7 +22228,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21555,7 +22290,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21621,7 +22356,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21692,7 +22427,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21758,7 +22493,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21824,7 +22559,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21886,7 +22621,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -21952,7 +22687,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -22000,7 +22735,7 @@
 					"name": "inventory report",
 					"item": [
 						{
-							"name": "purchase by vendor",
+							"name": "inventory position",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -22023,7 +22758,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "4"
 									}
 								],
 								"body": {
@@ -22031,13 +22766,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/inventory-movement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/inventory-position?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"inventory-movement"
+										"inventory-position"
 									],
 									"query": [
 										{
@@ -22066,7 +22801,7 @@
 							"response": []
 						},
 						{
-							"name": "purchase by item",
+							"name": "inventory master report",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -22097,13 +22832,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/inventory-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&transaction_type=invoice,purchase_bill",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"purchase-by-item"
+										"inventory-master-report"
 									],
 									"query": [
 										{
@@ -22125,200 +22860,10 @@
 										{
 											"key": "end_date",
 											"value": "2024-07-01"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "purchase by vendor monthly",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "37"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/purchase-by-vendor-monthly?paginate=1&page=&limit=&year=2080-2081",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"purchase-by-vendor-monthly"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
 										},
 										{
-											"key": "page",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": ""
-										},
-										{
-											"key": "year",
-											"value": "2080-2081"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "purchase by item monthly",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "37"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2080-2081&type=amount",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"purchase-by-item-monthly"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": ""
-										},
-										{
-											"key": "year",
-											"value": "2080-2081"
-										},
-										{
-											"key": "type",
-											"value": "amount"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "purchase master report",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "37"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"purchase-master-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": ""
-										},
-										{
-											"key": "start_date",
-											"value": "2024-01-01"
-										},
-										{
-											"key": "end_date",
-											"value": "2025-01-01"
+											"key": "transaction_type",
+											"value": "invoice,purchase_bill"
 										}
 									]
 								}
@@ -28673,6 +29218,48 @@
 					"path": [
 						"api",
 						"reset-ledger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.nrb.org.np/api/forex/v1?page=1&per_page=10&from=2024-07-31&to=2024-07-31",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.nrb.org.np/api/forex/v1/rates?page=1&per_page=10&from=2024-07-31&to=2024-07-31",
+					"protocol": "https",
+					"host": [
+						"www",
+						"nrb",
+						"org",
+						"np"
+					],
+					"path": [
+						"api",
+						"forex",
+						"v1",
+						"rates"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "10"
+						},
+						{
+							"key": "from",
+							"value": "2024-07-31"
+						},
+						{
+							"key": "to",
+							"value": "2024-07-31"
+						}
 					]
 				}
 			},
