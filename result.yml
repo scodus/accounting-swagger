@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Swagger
+  title: Accounting Swagger
   description: Swagger
   version: '1.0'
   x-logo:
