@@ -6284,8 +6284,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -10455,7 +10455,7 @@ paths:
                 bill_number: ''
                 vendor_id: 105
                 reference_number: '21345'
-                bill_date: '2024-01-01'
+                bill_date: '2024-08-01'
                 billing_address: hello address
                 due_date: '2024-12-30'
                 note: ''
@@ -10464,7 +10464,7 @@ paths:
                 products:
                   - product_id: 13
                     account_head_id: 93
-                    quantity: 100
+                    quantity: 11.65
                     rate: 10
                     discount: null
                     tax: 13
@@ -12899,8 +12899,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -14060,6 +14059,239 @@ paths:
           schema:
             type: string
           example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue-report:
+    get:
+      tags:
+        - report
+      summary: stock issue report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: stock_issue_date start
+          example: '2024-06-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: stock_issue_date end
+          example: '2024-08-22'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+          description: warehouse_department_id
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: product id string "1,2,3"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption-report:
+    get:
+      tags:
+        - report
+      summary: stock consumption report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: stock_consumption_date start
+          example: '2024-06-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: stock_consumption_date end
+          example: '2024-08-22'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+          description: warehouse_department_id
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: product id string "1,2,3"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-return-report:
+    get:
+      tags:
+        - report
+      summary: stock return report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: stock_return_date start
+          example: '2024-06-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: stock_return_date start
+          example: '2024-08-22'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+          description: warehouse_department_id
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: product id string "1,2,3"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-issue-consumption-detail-report:
+    get:
+      tags:
+        - report
+      summary: stock issue consumption detailreport
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-05-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+        - name: product_id
+          in: query
+          schema:
+            type: integer
+          example: '36'
       responses:
         '200':
           description: Successful response
@@ -16908,7 +17140,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
         - name: paginate
           in: query
           schema:
@@ -17463,8 +17695,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response

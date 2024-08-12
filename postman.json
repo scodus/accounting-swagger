@@ -11232,7 +11232,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"url": {
@@ -28995,7 +28995,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -29021,7 +29022,7 @@
 					},
 					{
 						"key": "company-id",
-						"value": "1"
+						"value": "{{company-id}}"
 					}
 				],
 				"body": {
