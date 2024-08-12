@@ -18209,7 +18209,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 105,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-01-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 13,\n            \"account_head_id\": 93,\n            \"quantity\": 100,\n            \"rate\": 10,\n            \"discount\": null,\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 2\n        },\n        {\n            \"account_head_id\": 93,\n            \"quantity\": \"1\",\n            \"rate\": \"11\",\n            \"tax\": \"\",\n            \"amount\": 11,\n            \"product_id\": 8,\n            \"discount\": \"\",\n            \"description\": \"description\",\n            \"warehouse_id\": 2\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 0,\n    \"discount_type\": \"fixed\", //percent,fixed\n    \"is_import\": false, //true,false\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n    \"port_of_entry\": \"np\",\n    \"is_product_wise\": false\n    // ,\n    //   \"additional_cost_terms\": [\n    //         {\n    //             \"act_id\": 3,\n    //             \"product_id\": null,\n    //             \"type\": \"value\",\n    //             \"amount\": 10\n    //         },\n    //         {\n    //             \"act_id\": 1,\n    //             \"product_id\": 9, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 10\n    //         },\n    //         {\n    //             \"act_id\": 2,\n    //             \"product_id\": 9, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 1\n    //         },\n    //         {\n    //             \"act_id\": 2,\n    //             \"product_id\": 10, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 2\n    //         }\n    //     ]\n    // \"additional_costs\": [\n    //     {\n    //         \"product_id\": \"all_product\",\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": null,\n    //                 \"cfc_account_id\": 2,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     },\n    //     {\n    //         \"product_id\": 1,\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": null,\n    //                 \"cfc_account_id\": 2,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     },\n    //     {\n    //         \"product_id\": 2,\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     }\n    // ],\n    // \"additional_costs\": [\n    //     {\n    //         \"account_head_id\": 197,\n    //         \"product_id\": 13,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 198,\n    //         \"product_id\": 13,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 200,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 201,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 202,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 203,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 197,\n    //         \"product_id\": 14,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 198,\n    //         \"product_id\": 14,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 200,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 201,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 202,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 203,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     }\n    // ]\n}",
+							"raw": "{\n    \"bill_number\": \"\",\n    \"vendor_id\": 105,\n    \"reference_number\": \"21345\",\n    \"bill_date\": \"2024-08-01\",\n    \"billing_address\": \"hello address\",\n    \"due_date\": \"2024-12-30\",\n    \"note\": \"\",\n    \"tds\": \"\",\n    \"status\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 13,\n            \"account_head_id\": 93,\n            \"quantity\": 11.65,\n            \"rate\": 10,\n            \"discount\": null,\n            \"tax\": 13,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 2\n        },\n        {\n            \"account_head_id\": 93,\n            \"quantity\": \"1\",\n            \"rate\": \"11\",\n            \"tax\": \"\",\n            \"amount\": 11,\n            \"product_id\": 8,\n            \"discount\": \"\",\n            \"description\": \"description\",\n            \"warehouse_id\": 2\n        }\n    ],\n    \"document_id\": \"\",\n    \"discount\": 0,\n    \"discount_type\": \"fixed\", //percent,fixed\n    \"is_import\": false, //true,false\n    \"country\": \"India\",\n    \"import_date\": \"2024-6-13\",\n    \"document_no\": \"1243\",\n    \"port_of_entry\": \"np\",\n    \"is_product_wise\": false\n    // ,\n    //   \"additional_cost_terms\": [\n    //         {\n    //             \"act_id\": 3,\n    //             \"product_id\": null,\n    //             \"type\": \"value\",\n    //             \"amount\": 10\n    //         },\n    //         {\n    //             \"act_id\": 1,\n    //             \"product_id\": 9, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 10\n    //         },\n    //         {\n    //             \"act_id\": 2,\n    //             \"product_id\": 9, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 1\n    //         },\n    //         {\n    //             \"act_id\": 2,\n    //             \"product_id\": 10, //nullable\n    //             \"type\": null, //value,quantity,(null; if product_id null)\n    //             \"amount\": 2\n    //         }\n    //     ]\n    // \"additional_costs\": [\n    //     {\n    //         \"product_id\": \"all_product\",\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": null,\n    //                 \"cfc_account_id\": 2,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     },\n    //     {\n    //         \"product_id\": 1,\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"dt_account_id\": null,\n    //                 \"cfc_account_id\": 2,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     },\n    //     {\n    //         \"product_id\": 2,\n    //         \"costs\": [\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             },\n    //             {\n    //                 \"act_id\": 3,\n    //                 \"product_id\": null,\n    //                 \"dt_account_id\": 1,\n    //                 \"cfc_account_id\": null,\n    //                 \"amount\": 10\n    //             }\n    //         ]\n    //     }\n    // ],\n    // \"additional_costs\": [\n    //     {\n    //         \"account_head_id\": 197,\n    //         \"product_id\": 13,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 198,\n    //         \"product_id\": 13,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 200,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 201,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 202,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 203,\n    //         \"product_id\": 13,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 197,\n    //         \"product_id\": 14,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 198,\n    //         \"product_id\": 14,\n    //         \"dt_id\": 48,\n    //         \"cfc_id\": null,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 200,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 201,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 202,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     },\n    //     {\n    //         \"account_head_id\": 203,\n    //         \"product_id\": 14,\n    //         \"dt_id\": null,\n    //         \"cfc_id\": 213,\n    //         \"amount\": 10\n    //     }\n    // ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -21545,7 +21545,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/general-ledger-summary?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
+									"raw": "{{url}}/api/general-ledger-summary?paginate=&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
 									"host": [
 										"{{url}}"
 									],
@@ -21556,7 +21556,7 @@
 									"query": [
 										{
 											"key": "paginate",
-											"value": "1"
+											"value": ""
 										},
 										{
 											"key": "page",
@@ -23255,6 +23255,333 @@
 								{
 									"key": "end_date",
 									"value": "2024-08-22"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stock issue report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-06-22",
+									"description": "stock_issue_date start"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22",
+									"description": "stock_issue_date end"
+								},
+								{
+									"key": "warehouse_department_id",
+									"value": "",
+									"description": "warehouse_department_id"
+								},
+								{
+									"key": "product_name_sku",
+									"value": "",
+									"description": "product_name_sku",
+									"disabled": true
+								},
+								{
+									"key": "product_id",
+									"value": "",
+									"description": "product id string \"1,2,3\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stock consumption report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-06-22",
+									"description": "stock_consumption_date start"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22",
+									"description": "stock_consumption_date end"
+								},
+								{
+									"key": "warehouse_department_id",
+									"value": "",
+									"description": "warehouse_department_id"
+								},
+								{
+									"key": "product_name_sku",
+									"value": "",
+									"description": "product_name_sku",
+									"disabled": true
+								},
+								{
+									"key": "product_id",
+									"value": "",
+									"description": "product id string \"1,2,3\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stock return report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-return-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-06-22",
+									"description": "stock_return_date start"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22",
+									"description": "stock_return_date start"
+								},
+								{
+									"key": "warehouse_department_id",
+									"value": "",
+									"description": "warehouse_department_id"
+								},
+								{
+									"key": "product_name_sku",
+									"value": "",
+									"description": "product_name_sku",
+									"disabled": true
+								},
+								{
+									"key": "product_id",
+									"value": "",
+									"description": "product id string \"1,2,3\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "stock issue consumption detailreport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-consumption-detail-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-05-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22"
+								},
+								{
+									"key": "product_id",
+									"value": "36"
+								},
+								{
+									"key": "product_name_sku",
+									"value": "Product 1",
+									"disabled": true
 								}
 							]
 						}
@@ -27840,7 +28167,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
