@@ -5336,7 +5336,7 @@
 								},
 								{
 									"key": "email",
-									"value": "sejoyoh902@azduan.com",
+									"value": "wwebipin2009@yahoo.com",
 									"type": "text",
 									"disabled": true
 								},
@@ -24011,7 +24011,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 12 Aug 2024 10:56:38 GMT"
+									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -24031,7 +24031,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 2,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 2\n        },\n        \"data\": {\n            \"in\": [\n                {\n                    \"date\": \"2024-07-22 00:00:00\",\n                    \"quantity\": 1,\n                    \"rate\": \"0.00\",\n                    \"amount\": \"0.00\",\n                    \"created_by\": {\n                        \"id\": 3,\n                        \"name\": \"augxdeveloper\",\n                        \"email\": \"augxdeveloper@gmail.com\",\n                        \"email_verified_at\": \"2024-07-15 10:51:13\",\n                        \"status\": null,\n                        \"image\": null,\n                        \"created_at\": \"2024-07-15 10:50:32\",\n                        \"updated_at\": \"2024-07-15 10:51:13\",\n                        \"roles\": [\n                            \"company\"\n                        ],\n                        \"permissions\": []\n                    }\n                }\n            ],\n            \"out\": [\n                {\n                    \"date\": \"2024-07-22 00:00:00\",\n                    \"quantity\": 1,\n                    \"rate\": \"0.00\",\n                    \"amount\": \"0.00\",\n                    \"created_by\": null\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 2,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 2,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=2\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=2\"\n        }\n    }\n}"
+							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
 						}
 					]
 				}
