@@ -23327,7 +23327,7 @@
 								{
 									"key": "warehouse_department_id",
 									"value": "",
-									"description": "warehouse_department_id"
+									"description": "warehouse_department_id \"1,2\""
 								},
 								{
 									"key": "product_name_sku",
@@ -23491,7 +23491,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=36,39",
+							"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -23525,7 +23525,7 @@
 								{
 									"key": "warehouse_department_id",
 									"value": "",
-									"description": "warehouse_department_id"
+									"description": "warehouse_department_id \"1,2\""
 								},
 								{
 									"key": "product_name_sku",
@@ -23535,7 +23535,7 @@
 								},
 								{
 									"key": "product_id",
-									"value": "36,39",
+									"value": "",
 									"description": "product id string \"1,2,3\""
 								}
 							]
@@ -23689,7 +23689,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=36",
+							"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=1,2&product_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -23722,8 +23722,8 @@
 								},
 								{
 									"key": "warehouse_department_id",
-									"value": "",
-									"description": "warehouse_department_id"
+									"value": "1,2",
+									"description": "warehouse_department_id \"1,2\""
 								},
 								{
 									"key": "product_name_sku",
@@ -23733,7 +23733,7 @@
 								},
 								{
 									"key": "product_id",
-									"value": "36",
+									"value": "",
 									"description": "product id string \"1,2,3\""
 								}
 							]
@@ -23856,7 +23856,7 @@
 					]
 				},
 				{
-					"name": "stock issue consumption detailreport",
+					"name": "stock issue consumption detail report",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -23887,7 +23887,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+							"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
 							"host": [
 								"{{url}}"
 							],
@@ -23906,7 +23906,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "1"
+									"value": "10"
 								},
 								{
 									"key": "start_date",
@@ -23918,12 +23918,725 @@
 								},
 								{
 									"key": "product_id",
-									"value": "36"
+									"value": "36",
+									"description": "required, product_id"
 								},
 								{
 									"key": "product_name_sku",
 									"value": "Product 1",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "stock issue consumption detailreport",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-consumption-detail-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_id",
+											"value": "36"
+										},
+										{
+											"key": "product_name_sku",
+											"value": "Product 1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999997"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "stock issue consumption return detail report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-issue-consumption-return-detail-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&product_id=39&type=stock_return",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-issue-consumption-return-detail-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-06-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22"
+								},
+								{
+									"key": "product_id",
+									"value": "39",
+									"description": "required"
+								},
+								{
+									"key": "type",
+									"value": "stock_return",
+									"description": "in:stock_issue,stock_consumption,stock_return"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "stock issue consumption detailreport",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-consumption-detail-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_id",
+											"value": "36"
+										},
+										{
+											"key": "product_name_sku",
+											"value": "Product 1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999997"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "product in out report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-in-out-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-05-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22"
+								},
+								{
+									"key": "product_id",
+									"value": "36",
+									"description": "required, product_id"
+								},
+								{
+									"key": "product_name_sku",
+									"value": "Product 1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "stock issue consumption detailreport",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-consumption-detail-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_id",
+											"value": "36"
+										},
+										{
+											"key": "product_name_sku",
+											"value": "Product 1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999997"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "purchase rate log report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"purchase-rate-log-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-05-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22"
+								},
+								{
+									"key": "product_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "stock issue consumption detailreport",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-consumption-detail-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_id",
+											"value": "36"
+										},
+										{
+											"key": "product_name_sku",
+											"value": "Product 1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999997"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "stock valuation report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-valuation-report"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "start_date",
+									"value": "2024-05-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-08-22"
+								},
+								{
+									"key": "product_id",
+									"value": ""
 								}
 							]
 						}
@@ -25703,7 +26416,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 2,\n    \"stock_consumption_date\": \"2024-07-25\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 0,\n            \"quantity\": 1000,\n            \"amount\": 0\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-07-25\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 36,\n            \"rate\": 0,\n            \"quantity\": 1,\n            \"amount\": 0\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25930,7 +26643,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -25975,7 +26688,6 @@
 								{
 									"key": "multiple_status[0]",
 									"value": "",
-									"description": "\n",
 									"disabled": true
 								},
 								{
@@ -26119,7 +26831,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 18,\n    \"stock_issue_date\": \"2024-07-24\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 6,\n            \"quantity\": 111,\n            \"rate\": 0,\n            \"amount\": 0\n        }\n    ]\n}",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_issue_date\": \"2024-07-24\",\n    \"note\": \"\",\n    \"auto_consumption\": false,\n    \"products\": [\n        {\n            \"product_id\": 36,\n            \"quantity\": 2,\n            \"rate\": 0,\n            \"amount\": 0\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -26205,7 +26917,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -26226,7 +26938,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "55"
 								}
 							]
 						}
