@@ -24110,112 +24110,7 @@
 							]
 						}
 					},
-					"response": [
-						{
-							"name": "stock issue consumption detailreport",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"stock-issue-consumption-detail-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "1"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-05-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22"
-										},
-										{
-											"key": "product_id",
-											"value": "36"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "Product 1",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999997"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "product in out report",
@@ -24249,7 +24144,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+							"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-08-22&product_id=36",
 							"host": [
 								"{{url}}"
 							],
@@ -24272,7 +24167,7 @@
 								},
 								{
 									"key": "start_date",
-									"value": "2024-05-22"
+									"value": "2024-04-22"
 								},
 								{
 									"key": "end_date",
@@ -24282,18 +24177,13 @@
 									"key": "product_id",
 									"value": "36",
 									"description": "required, product_id"
-								},
-								{
-									"key": "product_name_sku",
-									"value": "Product 1",
-									"disabled": true
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "stock issue consumption detailreport",
+							"name": "product in out report",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -24311,13 +24201,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-08-22&product_id=36",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"stock-issue-consumption-detail-report"
+										"product-in-out-report"
 									],
 									"query": [
 										{
@@ -24330,11 +24220,11 @@
 										},
 										{
 											"key": "limit",
-											"value": "1"
+											"value": "10"
 										},
 										{
 											"key": "start_date",
-											"value": "2024-05-22"
+											"value": "2024-04-22"
 										},
 										{
 											"key": "end_date",
@@ -24342,12 +24232,8 @@
 										},
 										{
 											"key": "product_id",
-											"value": "36"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "Product 1",
-											"disabled": true
+											"value": "36",
+											"description": "required, product_id"
 										}
 									]
 								}
@@ -24374,7 +24260,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+									"value": "Fri, 16 Aug 2024 11:17:20 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -24394,7 +24280,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+							"body": "{\n    \"message\": \"Product In Out Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/product-in-out-report\",\n            \"per_page\": 10,\n            \"to\": 3,\n            \"total\": 3\n        },\n        \"data\": [\n            {\n                \"in_date\": \"2024-07-22\",\n                \"in_number\": \"PB-1\",\n                \"in_type\": \"bill\",\n                \"in_particular\": \"Venodr a\",\n                \"in_quantity\": 11,\n                \"in_rate\": \"12.00\",\n                \"in_amount\": \"352.56\",\n                \"in_approved_by_name\": \"augxdeveloper\",\n                \"out_date\": \"2024-07-22\",\n                \"out_number\": \"STCI-1\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 1,\n                \"out_rate\": \"0.00\",\n                \"out_amount\": \"0.00\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            },\n            {\n                \"in_date\": \"2024-07-22\",\n                \"in_number\": \"STCR-1\",\n                \"in_type\": \"stock_return\",\n                \"in_particular\": \"default dep1\",\n                \"in_quantity\": 1,\n                \"in_rate\": \"0.00\",\n                \"in_amount\": \"0.00\",\n                \"in_approved_by_name\": \"augxdeveloper\",\n                \"out_date\": \"2024-07-22\",\n                \"out_number\": \"STCI-3\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 1,\n                \"out_rate\": \"0.00\",\n                \"out_amount\": \"0.00\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            },\n            {\n                \"in_date\": null,\n                \"in_number\": null,\n                \"in_type\": null,\n                \"in_particular\": null,\n                \"in_quantity\": null,\n                \"in_rate\": null,\n                \"in_amount\": null,\n                \"in_approved_by_name\": \"\",\n                \"out_date\": \"2024-07-24\",\n                \"out_number\": \"STCI-2\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 2,\n                \"out_rate\": \"99.22\",\n                \"out_amount\": \"198.44\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            }\n        ],\n        \"in_totals\": {\n            \"total_quantity\": 22,\n            \"total_amount\": 705.12\n        },\n        \"out_totals\": {\n            \"total_quantity\": 4,\n            \"total_amount\": 198.44\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/product-in-out-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/product-in-out-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
 						}
 					]
 				},
@@ -24430,7 +24316,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=",
+							"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
 							"host": [
 								"{{url}}"
 							],
@@ -24461,14 +24347,15 @@
 								},
 								{
 									"key": "product_id",
-									"value": ""
+									"value": "36",
+									"description": "required"
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "stock issue consumption detailreport",
+							"name": "purchase rate log report",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -24486,13 +24373,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"stock-issue-consumption-detail-report"
+										"purchase-rate-log-report"
 									],
 									"query": [
 										{
@@ -24505,7 +24392,7 @@
 										},
 										{
 											"key": "limit",
-											"value": "1"
+											"value": "10"
 										},
 										{
 											"key": "start_date",
@@ -24517,12 +24404,8 @@
 										},
 										{
 											"key": "product_id",
-											"value": "36"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "Product 1",
-											"disabled": true
+											"value": "36",
+											"description": "required"
 										}
 									]
 								}
@@ -24549,7 +24432,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+									"value": "Fri, 16 Aug 2024 11:17:06 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -24561,7 +24444,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "999997"
+									"value": "999998"
 								},
 								{
 									"key": "Vary",
@@ -24569,7 +24452,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+							"body": "{\n    \"message\": \"Product Rate Log Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-rate-log-report\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"bill_id\": 16,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-07-22\",\n                \"vendor_name\": \"Venodr a\",\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"quantity\": 11,\n                \"rate\": \"12.00\",\n                \"modified_rate\": \"28.36\",\n                \"amount\": \"352.56\",\n                \"bill_approved_by_name\": \"augxdeveloper\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-rate-log-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-rate-log-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
 						}
 					]
 				},
@@ -24605,7 +24488,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=",
+							"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
 							"host": [
 								"{{url}}"
 							],
@@ -24635,7 +24518,7 @@
 									"value": "2024-08-22"
 								},
 								{
-									"key": "product_id",
+									"key": "product_name_sku",
 									"value": ""
 								}
 							]
@@ -24643,7 +24526,7 @@
 					},
 					"response": [
 						{
-							"name": "stock issue consumption detailreport",
+							"name": "stock valuation report",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -24661,13 +24544,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+									"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"stock-issue-consumption-detail-report"
+										"stock-valuation-report"
 									],
 									"query": [
 										{
@@ -24680,7 +24563,7 @@
 										},
 										{
 											"key": "limit",
-											"value": "1"
+											"value": "10"
 										},
 										{
 											"key": "start_date",
@@ -24691,13 +24574,8 @@
 											"value": "2024-08-22"
 										},
 										{
-											"key": "product_id",
-											"value": "36"
-										},
-										{
 											"key": "product_name_sku",
-											"value": "Product 1",
-											"disabled": true
+											"value": ""
 										}
 									]
 								}
@@ -24724,7 +24602,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+									"value": "Fri, 16 Aug 2024 11:16:51 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -24736,7 +24614,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "999997"
+									"value": "999999"
 								},
 								{
 									"key": "Vary",
@@ -24744,7 +24622,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+							"body": "{\n    \"message\": \"Stock Valuation Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 3,\n            \"path\": \"http://127.0.0.1:8000/api/stock-valuation-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 29\n        },\n        \"data\": [\n            {\n                \"product_id\": 8,\n                \"product_name\": \"Temporibus at velit\",\n                \"product_sku\": \"Duis est ut ratione\",\n                \"product_quantity\": 2,\n                \"product_rate\": 11,\n                \"product_amount\": \"22.00\"\n            },\n            {\n                \"product_id\": 10,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 12,\n                \"product_name\": \"Product 2\",\n                \"product_sku\": \"prod-sku-2\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 13,\n                \"product_name\": \"Product 11\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1023,\n                \"product_rate\": 98.01,\n                \"product_amount\": \"100226.50\"\n            },\n            {\n                \"product_id\": 14,\n                \"product_name\": \"Product 12\",\n                \"product_sku\": \"prod-sku-12\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 19,\n                \"product_name\": \"Atque dignissimos qu\",\n                \"product_sku\": \"Deleniti voluptate r\",\n                \"product_quantity\": 93,\n                \"product_rate\": 61,\n                \"product_amount\": \"5673.00\"\n            },\n            {\n                \"product_id\": 20,\n                \"product_name\": \"Dolore nesciunt sin\",\n                \"product_sku\": \"Duis officiis et a q\",\n                \"product_quantity\": 1,\n                \"product_rate\": 1,\n                \"product_amount\": \"1.00\"\n            },\n            {\n                \"product_id\": 22,\n                \"product_name\": \"Product 111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 23,\n                \"product_name\": \"Product 121\",\n                \"product_sku\": \"prod-sku-121\",\n                \"product_quantity\": 1,\n                \"product_rate\": 11,\n                \"product_amount\": \"11.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=3\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=2\"\n        }\n    }\n}"
 						}
 					]
 				}
@@ -30747,6 +30625,24 @@
 							"key": "to",
 							"value": "2024-07-31"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/api/test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"test"
 					]
 				}
 			},

@@ -14640,85 +14640,9 @@ paths:
           example: stock_return
       responses:
         '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Tue, 13 Aug 2024 08:43:54 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999997'
-            Vary:
-              schema:
-                type: string
-                example: Origin
+          description: Successful response
           content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Stock Issue Consumption Detail Report
-                data:
-                  meta:
-                    current_page: 1
-                    from: 1
-                    last_page: 1
-                    path: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report
-                    per_page: 1
-                    to: 1
-                    total: 1
-                  data:
-                    data:
-                      - stock_issue_date: '2024-07-22'
-                        stock_issue_quantity: 1
-                        stock_issue_rate: '0.00'
-                        stock_issue_amount: '0.00'
-                        stock_issue_approved_by_name: augxdeveloper
-                        stock_consumption_date: '2024-07-22'
-                        stock_consumption_quantity: 1
-                        stock_consumption_rate: '0.00'
-                        stock_consumption_amount: '0.00'
-                        stock_consumption_approved_by_name: augxdeveloper
-                    in_totals:
-                      total_quantity: 1
-                      total_amount: 0
-                    out_totals:
-                      total_quantity: 0
-                      total_amount: 0
-                  links:
-                    first: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
-                    last: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
-                    prev: ''
-                    next: ''
+            application/json: {}
   /api/product-in-out-report:
     get:
       tags:
@@ -14756,7 +14680,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-05-22'
+          example: '2024-04-22'
         - name: end_date
           in: query
           schema:
@@ -14791,7 +14715,7 @@ paths:
             Date:
               schema:
                 type: string
-                example: Tue, 13 Aug 2024 08:43:54 GMT
+                example: Fri, 16 Aug 2024 11:17:20 GMT
             Content-Type:
               schema:
                 type: string
@@ -14813,40 +14737,74 @@ paths:
               schema:
                 type: object
               example:
-                message: Stock Issue Consumption Detail Report
+                message: Product In Out Report
                 data:
                   meta:
                     current_page: 1
                     from: 1
                     last_page: 1
-                    path: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report
-                    per_page: 1
-                    to: 1
-                    total: 1
+                    path: http://127.0.0.1:8000/api/product-in-out-report
+                    per_page: 10
+                    to: 3
+                    total: 3
                   data:
-                    data:
-                      - stock_issue_date: '2024-07-22'
-                        stock_issue_quantity: 1
-                        stock_issue_rate: '0.00'
-                        stock_issue_amount: '0.00'
-                        stock_issue_approved_by_name: augxdeveloper
-                        stock_consumption_date: '2024-07-22'
-                        stock_consumption_quantity: 1
-                        stock_consumption_rate: '0.00'
-                        stock_consumption_amount: '0.00'
-                        stock_consumption_approved_by_name: augxdeveloper
-                    in_totals:
-                      total_quantity: 1
-                      total_amount: 0
-                    out_totals:
-                      total_quantity: 0
-                      total_amount: 0
+                    - in_date: '2024-07-22'
+                      in_number: PB-1
+                      in_type: bill
+                      in_particular: Venodr a
+                      in_quantity: 11
+                      in_rate: '12.00'
+                      in_amount: '352.56'
+                      in_approved_by_name: augxdeveloper
+                      out_date: '2024-07-22'
+                      out_number: STCI-1
+                      out_type: stock_issue
+                      out_particular: default dep1
+                      out_quantity: 1
+                      out_rate: '0.00'
+                      out_amount: '0.00'
+                      out_approved_by_name: augxdeveloper
+                    - in_date: '2024-07-22'
+                      in_number: STCR-1
+                      in_type: stock_return
+                      in_particular: default dep1
+                      in_quantity: 1
+                      in_rate: '0.00'
+                      in_amount: '0.00'
+                      in_approved_by_name: augxdeveloper
+                      out_date: '2024-07-22'
+                      out_number: STCI-3
+                      out_type: stock_issue
+                      out_particular: default dep1
+                      out_quantity: 1
+                      out_rate: '0.00'
+                      out_amount: '0.00'
+                      out_approved_by_name: augxdeveloper
+                    - in_date: null
+                      in_number: null
+                      in_type: null
+                      in_particular: null
+                      in_quantity: null
+                      in_rate: null
+                      in_amount: null
+                      in_approved_by_name: ''
+                      out_date: '2024-07-24'
+                      out_number: STCI-2
+                      out_type: stock_issue
+                      out_particular: default dep1
+                      out_quantity: 2
+                      out_rate: '99.22'
+                      out_amount: '198.44'
+                      out_approved_by_name: augxdeveloper
+                  in_totals:
+                    total_quantity: 22
+                    total_amount: 705.12
+                  out_totals:
+                    total_quantity: 4
+                    total_amount: 198.44
                   links:
-                    first: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
-                    last: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
+                    first: http://127.0.0.1:8000/api/product-in-out-report?page=1
+                    last: http://127.0.0.1:8000/api/product-in-out-report?page=1
                     prev: ''
                     next: ''
   /api/purchase-rate-log-report:
@@ -14895,7 +14853,9 @@ paths:
         - name: product_id
           in: query
           schema:
-            type: string
+            type: integer
+          description: required
+          example: '36'
       responses:
         '200':
           description: OK
@@ -14919,7 +14879,7 @@ paths:
             Date:
               schema:
                 type: string
-                example: Tue, 13 Aug 2024 08:43:54 GMT
+                example: Fri, 16 Aug 2024 11:17:06 GMT
             Content-Type:
               schema:
                 type: string
@@ -14931,7 +14891,7 @@ paths:
             X-RateLimit-Remaining:
               schema:
                 type: integer
-                example: '999997'
+                example: '999998'
             Vary:
               schema:
                 type: string
@@ -14941,40 +14901,31 @@ paths:
               schema:
                 type: object
               example:
-                message: Stock Issue Consumption Detail Report
+                message: Product Rate Log Report
                 data:
                   meta:
                     current_page: 1
                     from: 1
                     last_page: 1
-                    path: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report
-                    per_page: 1
+                    path: http://127.0.0.1:8000/api/purchase-rate-log-report
+                    per_page: 10
                     to: 1
                     total: 1
                   data:
-                    data:
-                      - stock_issue_date: '2024-07-22'
-                        stock_issue_quantity: 1
-                        stock_issue_rate: '0.00'
-                        stock_issue_amount: '0.00'
-                        stock_issue_approved_by_name: augxdeveloper
-                        stock_consumption_date: '2024-07-22'
-                        stock_consumption_quantity: 1
-                        stock_consumption_rate: '0.00'
-                        stock_consumption_amount: '0.00'
-                        stock_consumption_approved_by_name: augxdeveloper
-                    in_totals:
-                      total_quantity: 1
-                      total_amount: 0
-                    out_totals:
-                      total_quantity: 0
-                      total_amount: 0
+                    - bill_id: 16
+                      bill_number: PB-1
+                      bill_date: '2024-07-22'
+                      vendor_name: Venodr a
+                      product_name: Product 1D11111
+                      product_sku: prod-sku-11
+                      quantity: 11
+                      rate: '12.00'
+                      modified_rate: '28.36'
+                      amount: '352.56'
+                      bill_approved_by_name: augxdeveloper
                   links:
-                    first: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
-                    last: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
+                    first: http://127.0.0.1:8000/api/purchase-rate-log-report?page=1
+                    last: http://127.0.0.1:8000/api/purchase-rate-log-report?page=1
                     prev: ''
                     next: ''
   /api/stock-valuation-report:
@@ -15020,7 +14971,7 @@ paths:
           schema:
             type: string
           example: '2024-08-22'
-        - name: product_id
+        - name: product_name_sku
           in: query
           schema:
             type: string
@@ -15047,7 +14998,7 @@ paths:
             Date:
               schema:
                 type: string
-                example: Tue, 13 Aug 2024 08:43:54 GMT
+                example: Fri, 16 Aug 2024 11:16:51 GMT
             Content-Type:
               schema:
                 type: string
@@ -15059,7 +15010,7 @@ paths:
             X-RateLimit-Remaining:
               schema:
                 type: integer
-                example: '999997'
+                example: '999999'
             Vary:
               schema:
                 type: string
@@ -15069,42 +15020,82 @@ paths:
               schema:
                 type: object
               example:
-                message: Stock Issue Consumption Detail Report
+                message: Stock Valuation Report
                 data:
                   meta:
                     current_page: 1
                     from: 1
-                    last_page: 1
-                    path: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report
-                    per_page: 1
-                    to: 1
-                    total: 1
+                    last_page: 3
+                    path: http://127.0.0.1:8000/api/stock-valuation-report
+                    per_page: 10
+                    to: 10
+                    total: 29
                   data:
-                    data:
-                      - stock_issue_date: '2024-07-22'
-                        stock_issue_quantity: 1
-                        stock_issue_rate: '0.00'
-                        stock_issue_amount: '0.00'
-                        stock_issue_approved_by_name: augxdeveloper
-                        stock_consumption_date: '2024-07-22'
-                        stock_consumption_quantity: 1
-                        stock_consumption_rate: '0.00'
-                        stock_consumption_amount: '0.00'
-                        stock_consumption_approved_by_name: augxdeveloper
-                    in_totals:
-                      total_quantity: 1
-                      total_amount: 0
-                    out_totals:
-                      total_quantity: 0
-                      total_amount: 0
+                    - product_id: 8
+                      product_name: Temporibus at velit
+                      product_sku: Duis est ut ratione
+                      product_quantity: 2
+                      product_rate: 11
+                      product_amount: '22.00'
+                    - product_id: 10
+                      product_name: Product 1
+                      product_sku: prod-sku-1
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 11
+                      product_name: Product 1
+                      product_sku: prod-sku-1
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 12
+                      product_name: Product 2
+                      product_sku: prod-sku-2
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 13
+                      product_name: Product 11
+                      product_sku: prod-sku-11
+                      product_quantity: 1023
+                      product_rate: 98.01
+                      product_amount: '100226.50'
+                    - product_id: 14
+                      product_name: Product 12
+                      product_sku: prod-sku-12
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 19
+                      product_name: Atque dignissimos qu
+                      product_sku: Deleniti voluptate r
+                      product_quantity: 93
+                      product_rate: 61
+                      product_amount: '5673.00'
+                    - product_id: 20
+                      product_name: Dolore nesciunt sin
+                      product_sku: Duis officiis et a q
+                      product_quantity: 1
+                      product_rate: 1
+                      product_amount: '1.00'
+                    - product_id: 22
+                      product_name: Product 111
+                      product_sku: prod-sku-11
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 23
+                      product_name: Product 121
+                      product_sku: prod-sku-121
+                      product_quantity: 1
+                      product_rate: 11
+                      product_amount: '11.00'
                   links:
-                    first: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
-                    last: >-
-                      http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1
+                    first: http://127.0.0.1:8000/api/stock-valuation-report?page=1
+                    last: http://127.0.0.1:8000/api/stock-valuation-report?page=3
                     prev: ''
-                    next: ''
+                    next: http://127.0.0.1:8000/api/stock-valuation-report?page=2
   /api/role:
     get:
       tags:
@@ -18598,15 +18589,7 @@ paths:
     get:
       tags:
         - default
-      summary: test
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
+      summary: '{{url}}/api/test'
       responses:
         '200':
           description: Successful response
