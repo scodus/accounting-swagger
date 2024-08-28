@@ -5898,7 +5898,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5919,7 +5920,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "dadedil246@konican.com",
+									"value": "augxdeveloper@gmail.com",
 									"type": "text"
 								}
 							]
@@ -5946,7 +5947,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5967,7 +5969,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "dadedil246@konican.com",
+									"value": "augxdeveloper@gmail.com",
 									"type": "text"
 								},
 								{
@@ -5999,7 +6001,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -6020,7 +6023,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "dadedil246@konican.com",
+									"value": "augxdeveloper@gmail.com",
 									"type": "text"
 								},
 								{
@@ -11687,6 +11690,67 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "active",
+									"description": "active|inactive",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/customer/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "115"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -16499,7 +16563,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -16507,32 +16571,43 @@
 							"formdata": [
 								{
 									"key": "bank_id",
-									"value": "39",
+									"value": "104",
 									"type": "text"
 								},
 								{
 									"key": "cheque_id",
-									"value": "21",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "entry_date",
-									"value": "2023-11-02",
+									"value": "2024-06-02",
 									"type": "text"
 								},
 								{
 									"key": "payment_date",
-									"value": "2023-11-02",
-									"type": "text"
-								},
-								{
-									"key": "party_name",
-									"value": "40",
+									"value": "2024-11-02",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "1000",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "party_name",
+									"value": "112",
+									"description": "id or name",
+									"type": "text"
+								},
+								{
+									"key": "is_supplier_party",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "party_name_other",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -16575,55 +16650,66 @@
 							"formdata": [
 								{
 									"key": "_method",
-									"value": "patch",
+									"value": "put",
 									"type": "text"
 								},
 								{
 									"key": "bank_id",
-									"value": "39",
+									"value": "104",
 									"type": "text"
 								},
 								{
 									"key": "cheque_id",
-									"value": "6",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "entry_date",
-									"value": "2023-10-13",
+									"value": "2024-06-02",
 									"type": "text"
 								},
 								{
 									"key": "payment_date",
-									"value": "2023-10-13",
-									"type": "text"
-								},
-								{
-									"key": "party_name",
-									"value": "40",
+									"value": "2024-11-02",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "1001",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "party_name",
+									"value": "112",
+									"type": "text"
+								},
+								{
+									"key": "is_supplier_party",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "party_name_other",
+									"value": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/payment-cheque/:id",
+							"raw": "{{url}}/api/payment-cheque/:id/new",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"payment-cheque",
-								":id"
+								":id",
+								"new"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "4"
 								}
 							]
 						}
@@ -16650,7 +16736,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -21004,7 +21090,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "2"
 							}
 						],
 						"body": {
@@ -21017,27 +21103,37 @@
 								},
 								{
 									"key": "cheque_number",
-									"value": "1010",
+									"value": "10100",
 									"type": "text"
 								},
 								{
 									"key": "entry_date",
-									"value": "2023-10-13",
+									"value": "2024-08-23",
 									"type": "text"
 								},
 								{
 									"key": "payment_date",
-									"value": "2023-10-13",
+									"value": "2024-08-23",
 									"type": "text"
 								},
 								{
 									"key": "party_name",
-									"value": "41",
+									"value": "107",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "2000",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "is_customer_party",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "party_other_name",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -21090,27 +21186,37 @@
 								},
 								{
 									"key": "cheque_number",
-									"value": "1010",
+									"value": "10100",
 									"type": "text"
 								},
 								{
 									"key": "entry_date",
-									"value": "2023-10-13",
+									"value": "2024-08-23",
 									"type": "text"
 								},
 								{
 									"key": "payment_date",
-									"value": "2023-10-13",
+									"value": "2024-08-23",
 									"type": "text"
 								},
 								{
 									"key": "party_name",
-									"value": "41",
+									"value": "107",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "2500",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "is_customer_party",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "party_other_name",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -21674,7 +21780,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "3"
 									}
 								],
 								"body": {
@@ -21682,7 +21788,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-aging-summary?paginate=1&page=&limit=&date=2024-07-01&day_interval=60&aging_interval=4",
+									"raw": "{{url}}/api/customer-aging-summary?paginate=1&page=&limit=&date=2024-07-01&day_interval=10&aging_interval=4",
 									"host": [
 										"{{url}}"
 									],
@@ -21709,7 +21815,7 @@
 										},
 										{
 											"key": "day_interval",
-											"value": "60"
+											"value": "10"
 										},
 										{
 											"key": "aging_interval",
@@ -21885,7 +21991,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "3"
 									}
 								],
 								"body": {
@@ -22621,7 +22727,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "3"
 									}
 								],
 								"body": {
@@ -22629,7 +22735,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2080-2081&type=amount",
+									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2081-2082&type=amount",
 									"host": [
 										"{{url}}"
 									],
@@ -22652,7 +22758,7 @@
 										},
 										{
 											"key": "year",
-											"value": "2080-2081"
+											"value": "2081-2082"
 										},
 										{
 											"key": "type",
@@ -28697,6 +28803,67 @@
 								{
 									"key": "id",
 									"value": "39"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "active",
+									"description": "active|inactive",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/vendor/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vendor",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "112"
 								}
 							]
 						}

@@ -3172,7 +3172,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: dadedil246@konican.com
+                  example: augxdeveloper@gmail.com
       security:
         - noauthAuth: []
       responses:
@@ -3193,7 +3193,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: dadedil246@konican.com
+                  example: augxdeveloper@gmail.com
                 token:
                   type: integer
                   example: '463284'
@@ -3217,7 +3217,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: dadedil246@konican.com
+                  example: augxdeveloper@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -6561,6 +6561,48 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/customer/{id}/update-status:
+    post:
+      tags:
+        - customer
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: active|inactive
+                  example: active
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '115'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/depreciation:
     post:
       tags:
@@ -9467,22 +9509,28 @@ paths:
               properties:
                 bank_id:
                   type: integer
-                  example: '39'
+                  example: '104'
                 cheque_id:
                   type: integer
-                  example: '21'
+                  example: '1'
                 entry_date:
                   type: string
-                  example: '2023-11-02'
+                  example: '2024-06-02'
                 payment_date:
                   type: string
-                  example: '2023-11-02'
-                party_name:
-                  type: integer
-                  example: '40'
+                  example: '2024-11-02'
                 amount:
                   type: integer
-                  example: '1000'
+                  example: '10'
+                party_name:
+                  type: integer
+                  description: id or name
+                  example: '112'
+                is_supplier_party:
+                  type: integer
+                  example: '1'
+                party_name_other:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -9495,7 +9543,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -9512,7 +9560,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
         - name: paginate
           in: query
           schema:
@@ -9552,7 +9600,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment-cheque/{id}:
+  /api/payment-cheque/{id}/new:
     post:
       tags:
         - payment cheque
@@ -9565,25 +9613,30 @@ paths:
               properties:
                 _method:
                   type: string
-                  example: patch
+                  example: put
                 bank_id:
                   type: integer
-                  example: '39'
+                  example: '104'
                 cheque_id:
                   type: integer
-                  example: '6'
+                  example: '1'
                 entry_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2024-06-02'
                 payment_date:
                   type: string
-                  example: '2023-10-13'
-                party_name:
-                  type: integer
-                  example: '40'
+                  example: '2024-11-02'
                 amount:
                   type: integer
-                  example: '1001'
+                  example: '10'
+                party_name:
+                  type: integer
+                  example: '112'
+                is_supplier_party:
+                  type: integer
+                  example: '1'
+                party_name_other:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -9597,12 +9650,13 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '4'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+  /api/payment-cheque/{id}:
     get:
       tags:
         - payment cheque
@@ -12560,19 +12614,24 @@ paths:
                   example: ABC
                 cheque_number:
                   type: integer
-                  example: '1010'
+                  example: '10100'
                 entry_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2024-08-23'
                 payment_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2024-08-23'
                 party_name:
                   type: integer
-                  example: '41'
+                  example: '107'
                 amount:
                   type: integer
-                  example: '2000'
+                  example: '20'
+                is_customer_party:
+                  type: integer
+                  example: '1'
+                party_other_name:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -12585,7 +12644,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -12660,19 +12719,24 @@ paths:
                   example: ABC
                 cheque_number:
                   type: integer
-                  example: '1010'
+                  example: '10100'
                 entry_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2024-08-23'
                 payment_date:
                   type: string
-                  example: '2023-10-13'
+                  example: '2024-08-23'
                 party_name:
                   type: integer
-                  example: '41'
+                  example: '107'
                 amount:
                   type: integer
-                  example: '2500'
+                  example: '20'
+                is_customer_party:
+                  type: integer
+                  example: '1'
+                party_other_name:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -12986,7 +13050,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '4'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -13009,7 +13073,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '60'
+          example: '10'
         - name: aging_interval
           in: query
           schema:
@@ -13134,7 +13198,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '4'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -13640,7 +13704,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '4'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -13658,7 +13722,7 @@ paths:
           in: query
           schema:
             type: string
-          example: 2080-2081
+          example: 2081-2082
         - name: type
           in: query
           schema:
@@ -17683,6 +17747,48 @@ paths:
             type: integer
           required: true
           example: '39'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor/{id}/update-status:
+    post:
+      tags:
+        - vendor
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: active|inactive
+                  example: active
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '112'
       responses:
         '200':
           description: Successful response
