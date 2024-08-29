@@ -25345,7 +25345,86 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "store approve",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customer_id\": 114,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"amount\": 100\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-order-store-approve",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-order-store-approve"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Aug 2024 10:20:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999999"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Sales order has been created and approved.\",\n    \"data\": {\n        \"id\": 7,\n        \"order_date\": \"2024-08-29\",\n        \"delivery_date\": \"2024-08-29\",\n        \"order_number\": \"SO-6\",\n        \"customer_id\": 114,\n        \"customer_detail\": {\n            \"id\": 114,\n            \"type\": \"dr\",\n            \"name\": \"Toshin Abasi\",\n            \"slug\": \"toshin-abasi\"\n        },\n        \"reference\": null,\n        \"note\": null,\n        \"status\": \"approved\",\n        \"amount\": 100,\n        \"extra\": {\n            \"subTotal\": 100,\n            \"totalDiscount\": 0,\n            \"totalDiscountedAmount\": 100,\n            \"totalRatioDiscount\": 0,\n            \"totalRatioDiscountedAmount\": 100,\n            \"totalTaxableAccount\": 0,\n            \"totalNonTaxableAccount\": 100,\n            \"totalTaxAmount\": 0,\n            \"grandTotal\": 100\n        },\n        \"products\": [\n            {\n                \"id\": 68,\n                \"name\": \"Product 2zqs\",\n                \"slug\": \"product-2zqs\",\n                \"sku\": \"q31\",\n                \"product_category_id\": 12,\n                \"is_service\": 0,\n                \"tax\": null,\n                \"quantity\": 10,\n                \"discount\": 0,\n                \"rate\": \"10\",\n                \"amount\": 100,\n                \"description\": \"\",\n                \"account_head_id\": 84,\n                \"warehouse_id\": 2,\n                \"modified_rate\": 10\n            }\n        ],\n        \"created_at\": \"2024-08-29 16:05:50\",\n        \"updated_at\": \"2024-08-29 16:05:50\",\n        \"created_by\": \"augxdeveloper\",\n        \"updated_by\": \"\",\n        \"approved_at\": \"2024-08-29 16:05:50\",\n        \"approved_by\": \"augxdeveloper\",\n        \"documents\": [],\n        \"discount\": null,\n        \"discount_type\": null\n    }\n}"
+						}
+					]
 				}
 			]
 		},
