@@ -6351,11 +6351,12 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -6368,6 +6369,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: active|inactive
       responses:
         '200':
           description: Successful response
@@ -8628,8 +8634,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -8665,6 +8671,16 @@ paths:
           schema:
             type: string
           example: '2024-12-01'
+        - name: multiple_status
+          in: query
+          schema:
+            type: string
+          description: as array, multiple_status[]
+        - name: status_not
+          in: query
+          schema:
+            type: string
+          description: exclude with this status
       responses:
         '200':
           description: Successful response
@@ -15288,8 +15304,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15316,7 +15332,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-04-01'
+          example: '2025-04-01'
         - name: start_date
           in: query
           schema:
@@ -15326,7 +15342,17 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-04-01'
+          example: '2025-04-01'
+        - name: multiple_status
+          in: query
+          schema:
+            type: string
+          description: as array, multiple_status[]
+        - name: status_not
+          in: query
+          schema:
+            type: string
+          description: exclude with this status
       responses:
         '200':
           description: Successful response
@@ -15385,6 +15411,41 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-order-store-approve:
+    post:
+      tags:
+        - sales order
+      summary: store approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customer_id: 114
+                products:
+                  - product_id: 68
+                    quantity: 10
+                    rate: '10'
+                    amount: 100
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -17589,11 +17650,12 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '2'
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -17606,6 +17668,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: active|inactive
       responses:
         '200':
           description: Successful response
