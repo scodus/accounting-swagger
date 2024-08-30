@@ -15612,6 +15612,52 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "store approve payment approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 10,\n            \"quantity\": 10,\n            \"amount\": 100\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":10,\n    \"customer_id\": 114,\n    \"receiver_id\":104\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice-store-approve-payment-return",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice-store-approve-payment-return"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -25327,7 +25373,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 114,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": \"10\",\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 114,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": 0,\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25452,12 +25498,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 34,\n    \"receiver_id\": 8,\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 10,\n    \"payment_mode\": \"\",\n    \"bank_name\": \"\",\n    \"cheque_number\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 10,\n            \"tds\": \n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 114,\n    \"receiver_id\": 104,\n    \"received_date\": \"2024-08-01\",\n    \"amount\": 1300,\n    \"payment_mode\": \"\",\n    \"bank_name\": \"\",\n    \"cheque_number\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 6,\n            \"allocated_amount\": 1300,\n            \"tds\": null\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25785,6 +25831,52 @@
 									"key": "id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"invoice_id\": 6,\n    \"receiver_id\": 104,\n    \"amount\": 21\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-payment-store-approve",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-payment-store-approve"
 							]
 						}
 					},

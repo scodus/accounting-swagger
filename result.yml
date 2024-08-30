@@ -8936,6 +8936,44 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/invoice-store-approve-payment-return:
+    post:
+      tags:
+        - invoice
+      summary: store approve payment approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                products:
+                  - product_id: 68
+                    rate: 10
+                    quantity: 10
+                    amount: 100
+                discount_type: fixed
+                discount: 10
+                customer_id: 114
+                receiver_id: 104
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/journal-voucher:
     post:
       tags:
@@ -15431,7 +15469,7 @@ paths:
                 products:
                   - product_id: 68
                     quantity: 10
-                    rate: '10'
+                    rate: 0
                     amount: 100
       security:
         - bearerAuth: []
@@ -15552,25 +15590,20 @@ paths:
           application/json:
             schema:
               type: object
-              example: |-
-                {
-                    "customer_id": 34,
-                    "receiver_id": 8,
-                    "received_date": "2023-08-01",
-                    "amount": 10,
-                    "payment_mode": "",
-                    "bank_name": "",
-                    "cheque_number": "",
-                    "payment_reference": "",
-                    "note": "",
-                    "payment_allocation": [
-                        {
-                            "invoice_id": 1,
-                            "allocated_amount": 10,
-                            "tds": 
-                        }
-                    ]
-                }
+              example:
+                customer_id: 114
+                receiver_id: 104
+                received_date: '2024-08-01'
+                amount: 1300
+                payment_mode: ''
+                bank_name: ''
+                cheque_number: ''
+                payment_reference: ''
+                note: ''
+                payment_allocation:
+                  - invoice_id: 6
+                    allocated_amount: 1300
+                    tds: null
       security:
         - bearerAuth: []
       parameters:
@@ -15582,8 +15615,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -15795,6 +15828,38 @@ paths:
             type: integer
           required: true
           example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-payment-store-approve:
+    post:
+      tags:
+        - sale payment
+      summary: store approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                invoice_id: 6
+                receiver_id: 104
+                amount: 21
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
