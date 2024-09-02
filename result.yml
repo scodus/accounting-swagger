@@ -8997,11 +8997,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/invoice-store-approve-payment-return:
+  /api/invoice-store-approve-payment:
     post:
       tags:
         - invoice
-      summary: store approve payment approve
+      summary: store approve payment
       requestBody:
         content:
           application/json:

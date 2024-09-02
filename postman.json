@@ -15728,7 +15728,7 @@
 					"response": []
 				},
 				{
-					"name": "store approve payment approve",
+					"name": "store approve payment",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -15761,13 +15761,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice-store-approve-payment-return",
+							"raw": "{{url}}/api/invoice-store-approve-payment",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"invoice-store-approve-payment-return"
+								"invoice-store-approve-payment"
 							]
 						}
 					},
