@@ -1069,7 +1069,7 @@ paths:
     delete:
       tags:
         - ADMIN APIS > Accounting Firm
-      summary: delete owner  invitation
+      summary: admin invitation delete
       security:
         - bearerAuth: []
       parameters:
@@ -2049,11 +2049,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/company/{company_id}/owner/invitation/{user_temporary_data}:
+  /api/admin/company-admin/{company_id}/invitations/{user_temporary_data}:
     delete:
       tags:
         - ADMIN APIS > Company
-      summary: delete owner  invitation
+      summary: admin invitation delete
       security:
         - bearerAuth: []
       parameters:
@@ -3790,6 +3790,34 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting-firm-user/{accounting_firm_id}/invitations/{user_temporary_data_id}:
+    delete:
+      tags:
+        - accounting firm
+      summary: user invitation delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: user_temporary_data_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -6268,6 +6296,39 @@ paths:
           schema:
             type: integer
           example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-firm-admin/{accounting_firm_id}/invitations/{user_temporary_data_id}:
+    delete:
+      tags:
+        - company
+      summary: user invitation delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '11'
+        - name: accounting_firm_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: user_temporary_data_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -13235,6 +13296,52 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/customer-receivable-summary:
+    get:
+      tags:
+        - report > receivable
+      summary: customer receivable summary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '4'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-09-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vendor-aging-summary:
     get:
       tags:
@@ -13378,6 +13485,52 @@ paths:
           schema:
             type: string
           example: '2024-07-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vendor-payable-summary:
+    get:
+      tags:
+        - report > payable
+      summary: vendor payable summary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '4'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-09-01'
       responses:
         '200':
           description: Successful response
@@ -15876,23 +16029,23 @@ paths:
             schema:
               type: object
               example:
-                invoice_id: 3
-                customer_id: 40
+                invoice_id: 5
+                customer_id: 114
                 reference_number: '21345'
-                sales_return_date: '2023-08-01'
+                sales_return_date: '2024-08-01'
                 note: ''
                 receiver_id: 3
                 products:
-                  - product_id: 1
-                    account_head_id: 29
-                    quantity: 100
-                    rate: 100
+                  - product_id: 68
+                    account_head_id: 84
+                    quantity: 10
+                    rate: 10
                     tax: 0
                     description: description
-                    amount: 1000
-                    warehouse_id: 1
-                additional_discount: 100
-                document_id: ''
+                    amount: 100
+                    warehouse_id: 2
+                additional_discount: null
+                document_id: null
       security:
         - bearerAuth: []
       parameters:
@@ -15904,8 +16057,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -15921,12 +16074,13 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -15951,22 +16105,18 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-09-01'
         - name: date[1]
           in: query
           schema:
             type: string
-          example: '2024-04-01'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2023-09-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -16264,6 +16414,45 @@ paths:
             type: integer
           required: true
           example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-return-store-approve-payment-return:
+    post:
+      tags:
+        - sale return
+      summary: store approve payment return
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                invoice_id: 37
+                products:
+                  - product_id: 67
+                    quantity: 20
+                    rate: 20
+                    tax: 0
+                    amount: 400
+                    account_head_id: 84
+                    warehouse_id: 2
+                account_head_id: 84
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response

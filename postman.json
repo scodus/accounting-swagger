@@ -1856,7 +1856,7 @@
 							"response": []
 						},
 						{
-							"name": "delete owner  invitation",
+							"name": "admin invitation delete",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3712,7 +3712,7 @@
 							"response": []
 						},
 						{
-							"name": "delete owner  invitation",
+							"name": "admin invitation delete",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3741,17 +3741,16 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company/:company_id/owner/invitation/:user_temporary_data",
+									"raw": "{{url}}/api/admin/company-admin/:company_id/invitations/:user_temporary_data",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"admin",
-										"company",
+										"company-admin",
 										":company_id",
-										"owner",
-										"invitation",
+										"invitations",
 										":user_temporary_data"
 									],
 									"variable": [
@@ -6986,6 +6985,61 @@
 							"path": [
 								"api",
 								"accounting-firm-unassign-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user invitation delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accounting_firm_id\":1,\n    // \"email\": \"dadedil246@konican.com\",\n    \"user_id\":50   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/accounting-firm-user/:accounting_firm_id/invitations/:user_temporary_data_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounting-firm-user",
+								":accounting_firm_id",
+								"invitations",
+								":user_temporary_data_id"
+							],
+							"variable": [
+								{
+									"key": "accounting_firm_id",
+									"value": ""
+								},
+								{
+									"key": "user_temporary_data_id",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -11208,6 +11262,66 @@
 							"path": [
 								"api",
 								"company-unassign-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user invitation delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "11"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_id\": 11,\n    \"user_id\": \"daded27440@rentaen.com\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/accounting-firm-admin/:accounting_firm_id/invitations/:user_temporary_data_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"accounting-firm-admin",
+								":accounting_firm_id",
+								"invitations",
+								":user_temporary_data_id"
+							],
+							"variable": [
+								{
+									"key": "accounting_firm_id",
+									"value": ""
+								},
+								{
+									"key": "user_temporary_data_id",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -22021,6 +22135,72 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "customer receivable summary",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "4"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/customer-receivable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer-receivable-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-09-01"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -22227,6 +22407,72 @@
 										{
 											"key": "end_date",
 											"value": "2024-07-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "vendor payable summary",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "4"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/vendor-payable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vendor-payable-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-09-01"
 										}
 									]
 								}
@@ -25908,12 +26154,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 3,\n    \"customer_id\": 40,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2023-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"account_head_id\": 29,\n            \"quantity\": 100,\n            \"rate\": 100,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 1000,\n            \"warehouse_id\": 1\n        }\n    ],\n    \"additional_discount\": 100,\n    \"document_id\": \"\"\n}",
+							"raw": "{\n    \"invoice_id\": 5,\n    \"customer_id\": 114,\n    \"reference_number\": \"21345\",\n    \"sales_return_date\": \"2024-08-01\",\n    \"note\": \"\",\n    \"receiver_id\": 3,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"account_head_id\": 84,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"tax\": 0,\n            \"description\": \"description\",\n            \"amount\": 100,\n            \"warehouse_id\": 2\n        }\n    ],\n    \"additional_discount\": null,\n    \"document_id\": null\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -26140,7 +26386,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -26153,7 +26399,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
+							"raw": "{{url}}/api/sales-return?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=&date[1]=&start_date=&end_date=",
 							"host": [
 								"{{url}}"
 							],
@@ -26164,7 +26410,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -26188,19 +26434,19 @@
 								},
 								{
 									"key": "date[0]",
-									"value": "2023-09-01"
+									"value": ""
 								},
 								{
 									"key": "date[1]",
-									"value": "2024-04-01"
+									"value": ""
 								},
 								{
 									"key": "start_date",
-									"value": "2023-09-01"
+									"value": ""
 								},
 								{
 									"key": "end_date",
-									"value": "2024-04-01"
+									"value": ""
 								}
 							]
 						}
@@ -26303,6 +26549,52 @@
 									"key": "id",
 									"value": "5"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store approve payment return",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"invoice_id\": 37,\n    \"products\": [\n        {\n            \"product_id\": 67,\n            \"quantity\": 20,\n            \"rate\": 20,\n            \"tax\": 0,\n            \"amount\": 400,\n            \"account_head_id\": 84,\n            \"warehouse_id\": 2\n        }\n    ],\n    \"account_head_id\": 84\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-return-store-approve-payment-return",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-return-store-approve-payment-return"
 							]
 						}
 					},
