@@ -2946,7 +2946,7 @@ paths:
           schema:
             type: integer
           description: Company ID
-          example: '1'
+          example: '2'
       responses:
         '200':
           description: OK
@@ -3020,7 +3020,7 @@ paths:
           in: header
           schema:
             type: string
-          example: W5EiRR1sZr1ONmrOhRiazIewLptSbQ1G
+          example: BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb
       responses:
         '200':
           description: Successful response
@@ -6515,7 +6515,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -6675,13 +6675,13 @@ paths:
           in: header
           schema:
             type: integer
-          example: '1'
+          example: '3'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '58'
+          example: '403'
       responses:
         '200':
           description: Successful response
@@ -6768,6 +6768,79 @@ paths:
             type: integer
           required: true
           example: '115'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer-pos:
+    get:
+      tags:
+        - customer
+      summary: customer pos
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer-pos/update-or-create:
+    post:
+      tags:
+        - customer
+      summary: update or create customer pos
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: pos customer
+                email:
+                  type: string
+                  example: pos@customer.com
+                phone:
+                  type: integer
+                  example: '12431234'
+                address:
+                  type: string
+                  example: customer address edit
+                pan_number:
+                  type: integer
+                  example: '90817234'
+                status:
+                  type: string
+                  example: active
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
       responses:
         '200':
           description: Successful response
@@ -13371,7 +13444,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '4'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -13394,7 +13467,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2025-07-01'
+        - name: customer_id[]
+          in: query
+          schema:
+            type: integer
+          example: '402'
       responses:
         '200':
           description: Successful response
@@ -13441,6 +13519,11 @@ paths:
           schema:
             type: string
           example: '2024-09-01'
+        - name: customer_id[]
+          in: query
+          schema:
+            type: string
+          description: array
       responses:
         '200':
           description: Successful response
@@ -13565,7 +13648,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '4'
+          example: '3'
         - name: paginate
           in: query
           schema:
@@ -13588,7 +13671,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2025-07-01'
+        - name: vendor_id
+          in: query
+          schema:
+            type: integer
+          example: '160'
       responses:
         '200':
           description: Successful response
@@ -14048,6 +14136,14 @@ paths:
           schema:
             type: string
           example: '2025-01-01'
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -14468,6 +14564,14 @@ paths:
           schema:
             type: string
           example: '2025-01-01'
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -14620,7 +14724,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '3'
         - name: start_date
           in: query
           schema:

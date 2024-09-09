@@ -5317,7 +5317,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1",
+								"value": "2",
 								"description": "Company ID"
 							}
 						],
@@ -5453,7 +5453,7 @@
 							},
 							{
 								"key": "confirmation-token",
-								"value": "W5EiRR1sZr1ONmrOhRiazIewLptSbQ1G",
+								"value": "BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb",
 								"type": "text"
 							},
 							{
@@ -5524,7 +5524,8 @@
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -5558,8 +5559,7 @@
 								{
 									"key": "email",
 									"value": "ripiw95957@mfunza.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -11850,7 +11850,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -11922,7 +11922,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -11942,7 +11942,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "58"
+									"value": "403"
 								}
 							]
 						}
@@ -12076,6 +12076,133 @@
 									"key": "id",
 									"value": "115"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer pos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/customer-pos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer-pos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update or create customer pos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "pos customer",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "pos@customer.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12431234",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "customer address edit",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "90817234",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/customer-pos/update-or-create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer-pos",
+								"update-or-create"
 							]
 						}
 					},
@@ -22304,7 +22431,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "3"
 									}
 								],
 								"body": {
@@ -22312,7 +22439,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id[]=402",
 									"host": [
 										"{{url}}"
 									],
@@ -22339,7 +22466,11 @@
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2025-07-01"
+										},
+										{
+											"key": "customer_id[]",
+											"value": "402"
 										}
 									]
 								}
@@ -22378,7 +22509,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-receivable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01",
+									"raw": "{{url}}/api/customer-receivable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01&customer_id[]",
 									"host": [
 										"{{url}}"
 									],
@@ -22406,6 +22537,11 @@
 										{
 											"key": "end_date",
 											"value": "2024-09-01"
+										},
+										{
+											"key": "customer_id[]",
+											"value": null,
+											"description": "array"
 										}
 									]
 								}
@@ -22581,7 +22717,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "3"
 									}
 								],
 								"body": {
@@ -22589,7 +22725,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&vendor_id=160",
 									"host": [
 										"{{url}}"
 									],
@@ -22616,7 +22752,11 @@
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2025-07-01"
+										},
+										{
+											"key": "vendor_id",
+											"value": "160"
 										}
 									]
 								}
@@ -23252,7 +23392,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01",
+									"raw": "{{url}}/api/sales-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01&customer_id=&product_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -23280,6 +23420,14 @@
 										{
 											"key": "end_date",
 											"value": "2025-01-01"
+										},
+										{
+											"key": "customer_id",
+											"value": ""
+										},
+										{
+											"key": "product_id",
+											"value": ""
 										}
 									]
 								}
@@ -23849,7 +23997,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01",
+									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01&vendor_id=&product_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -23877,6 +24025,14 @@
 										{
 											"key": "end_date",
 											"value": "2025-01-01"
+										},
+										{
+											"key": "vendor_id",
+											"value": ""
+										},
+										{
+											"key": "product_id",
+											"value": ""
 										}
 									]
 								}
@@ -24104,7 +24260,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "3"
 							}
 						],
 						"body": {
