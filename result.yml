@@ -2924,15 +2924,10 @@ paths:
           content:
             application/json: {}
   /api/admin/reset-ledger:
-    post:
+    delete:
       tags:
         - ADMIN APIS
       summary: reset-ledger ***DANGER***
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
       security:
         - bearerAuth: []
       parameters:
@@ -2964,11 +2959,8 @@ paths:
               properties:
                 email:
                   type: string
-                  example: kimchifastfoods@gmail.com
+                  example: ripiw95957@mfunza.com
                 password:
-                  type: string
-                  example: Kimchi@2065
-                '':
                   type: string
                   example: P@ssw0rd
       responses:
@@ -9045,9 +9037,10 @@ paths:
                     quantity: 10
                     amount: 100
                 discount_type: fixed
-                discount: 10
+                discount: 0
                 customer_id: 114
                 receiver_id: 104
+                amount: 897.79
       security:
         - bearerAuth: []
       parameters:
@@ -13677,6 +13670,130 @@ paths:
                     last: http://127.0.0.1:8000/api/sales-summary?page=1
                     prev: ''
                     next: ''
+  /api/sales-by-customer:
+    get:
+      tags:
+        - report > sales report
+      summary: sales by customer
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-01'
+        - name: customer_id
+          in: query
+          schema:
+            type: integer
+          example: '166'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Wed, 04 Sep 2024 09:16:31 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999997'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales by Customer
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/sales-by-customer
+                    per_page: 10
+                    to: 2
+                    total: 2
+                  data:
+                    - id: 2
+                      invoice_number: INVO-1
+                      invoice_date: '2024-07-31 00:00:00'
+                      due_date: '2024-07-31 00:00:00'
+                      status: void
+                      amount: '130.00'
+                      due_amount: '130.00'
+                    - id: 3
+                      invoice_number: INVO-2
+                      invoice_date: '2024-07-31 00:00:00'
+                      due_date: '2024-07-31 00:00:00'
+                      status: unpaid
+                      amount: '900.00'
+                      due_amount: '900.00'
+                  totals:
+                    total_amount: 1030
+                    total_due_amount: 1030
+                  links:
+                    first: http://127.0.0.1:8000/api/sales-by-customer?page=1
+                    last: http://127.0.0.1:8000/api/sales-by-customer?page=1
+                    prev: ''
+                    next: ''
   /api/sales-by-item:
     get:
       tags:
@@ -13856,130 +13973,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sales-by-customer:
-    get:
-      tags:
-        - report > sales report
-      summary: sales by customer
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '3'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2024-01-01'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-01'
-        - name: customer_id
-          in: query
-          schema:
-            type: integer
-          example: '166'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Wed, 04 Sep 2024 09:16:31 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999997'
-            Vary:
-              schema:
-                type: string
-                example: Origin
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Sales by Customer
-                data:
-                  meta:
-                    current_page: 1
-                    from: 1
-                    last_page: 1
-                    path: http://127.0.0.1:8000/api/sales-by-customer
-                    per_page: 10
-                    to: 2
-                    total: 2
-                  data:
-                    - id: 2
-                      invoice_number: INVO-1
-                      invoice_date: '2024-07-31 00:00:00'
-                      due_date: '2024-07-31 00:00:00'
-                      status: void
-                      amount: '130.00'
-                      due_amount: '130.00'
-                    - id: 3
-                      invoice_number: INVO-2
-                      invoice_date: '2024-07-31 00:00:00'
-                      due_date: '2024-07-31 00:00:00'
-                      status: unpaid
-                      amount: '900.00'
-                      due_amount: '900.00'
-                  totals:
-                    total_amount: 1030
-                    total_due_amount: 1030
-                  links:
-                    first: http://127.0.0.1:8000/api/sales-by-customer?page=1
-                    last: http://127.0.0.1:8000/api/sales-by-customer?page=1
-                    prev: ''
-                    next: ''
   /api/purchase-summary:
     get:
       tags:
@@ -14088,6 +14081,137 @@ paths:
                   links:
                     first: http://127.0.0.1:8000/api/purchase-summary?page=1
                     last: http://127.0.0.1:8000/api/purchase-summary?page=1
+                    prev: ''
+                    next: ''
+  /api/purchase-by-vendor:
+    get:
+      tags:
+        - report > purchase report
+      summary: purchase by vendor
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-07-01'
+        - name: vendor_id
+          in: query
+          schema:
+            type: integer
+          example: '105'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Wed, 04 Sep 2024 09:05:04 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Purchase by Vendor
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/purchase-by-vendor
+                    per_page: 10
+                    to: 3
+                    total: 3
+                  data:
+                    - id: 15
+                      bill_number: PB-1
+                      bill_date: '2024-01-01 00:00:00'
+                      due_date: '2024-12-30 00:00:00'
+                      status: draft
+                      amount: '1141.00'
+                      due_amount: '1141.00'
+                    - id: 20
+                      bill_number: PB-1
+                      bill_date: '2024-01-01 00:00:00'
+                      due_date: '2024-12-30 00:00:00'
+                      status: unpaid
+                      amount: '129.65'
+                      due_amount: '129.65'
+                    - id: 22
+                      bill_number: PB-2
+                      bill_date: '2024-01-01 00:00:00'
+                      due_date: '2024-12-30 00:00:00'
+                      status: draft
+                      amount: '129.65'
+                      due_amount: '129.65'
+                  totals:
+                    total_amount: 1400.3000000000002
+                    total_due_amount: 1400.3000000000002
+                  links:
+                    first: http://127.0.0.1:8000/api/purchase-by-vendor?page=1
+                    last: http://127.0.0.1:8000/api/purchase-by-vendor?page=1
                     prev: ''
                     next: ''
   /api/purchase-by-item:
@@ -14269,137 +14393,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/purchase-by-vendor:
-    get:
-      tags:
-        - report > purchase report
-      summary: purchase by vendor
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2024-01-01'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-07-01'
-        - name: vendor_id
-          in: query
-          schema:
-            type: integer
-          example: '105'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Wed, 04 Sep 2024 09:05:04 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999999'
-            Vary:
-              schema:
-                type: string
-                example: Origin
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Purchase by Vendor
-                data:
-                  meta:
-                    current_page: 1
-                    from: 1
-                    last_page: 1
-                    path: http://127.0.0.1:8000/api/purchase-by-vendor
-                    per_page: 10
-                    to: 3
-                    total: 3
-                  data:
-                    - id: 15
-                      bill_number: PB-1
-                      bill_date: '2024-01-01 00:00:00'
-                      due_date: '2024-12-30 00:00:00'
-                      status: draft
-                      amount: '1141.00'
-                      due_amount: '1141.00'
-                    - id: 20
-                      bill_number: PB-1
-                      bill_date: '2024-01-01 00:00:00'
-                      due_date: '2024-12-30 00:00:00'
-                      status: unpaid
-                      amount: '129.65'
-                      due_amount: '129.65'
-                    - id: 22
-                      bill_number: PB-2
-                      bill_date: '2024-01-01 00:00:00'
-                      due_date: '2024-12-30 00:00:00'
-                      status: draft
-                      amount: '129.65'
-                      due_amount: '129.65'
-                  totals:
-                    total_amount: 1400.3000000000002
-                    total_due_amount: 1400.3000000000002
-                  links:
-                    first: http://127.0.0.1:8000/api/purchase-by-vendor?page=1
-                    last: http://127.0.0.1:8000/api/purchase-by-vendor?page=1
-                    prev: ''
-                    next: ''
   /api/inventory-position:
     get:
       tags:
@@ -16147,6 +16140,42 @@ paths:
                   documents: []
                   discount: null
                   discount_type: null
+  /api/sales-order-update-approve:
+    post:
+      tags:
+        - sales order
+      summary: udpate approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                customer_id: 114
+                products:
+                  - product_id: 68
+                    quantity: 10
+                    rate: 0
+                    amount: 100
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/sales-payment:
     post:
       tags:

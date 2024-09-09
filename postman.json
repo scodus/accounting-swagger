@@ -5309,7 +5309,7 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
@@ -5407,9 +5407,15 @@
 									"disabled": true
 								},
 								{
-									"key": "",
+									"key": "password",
 									"value": "P@ssw0rd",
 									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ripiw95957@mfunza.com",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -15813,7 +15819,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 10,\n            \"quantity\": 10,\n            \"amount\": 100\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":10,\n    \"customer_id\": 114,\n    \"receiver_id\":104\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 10,\n            \"quantity\": 10,\n            \"amount\": 100\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 114,\n    \"receiver_id\":104,\n    \"amount\":897.79\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22707,6 +22713,176 @@
 							]
 						},
 						{
+							"name": "sales by customer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "3"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-08-01&customer_id=166",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales-by-customer"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-01"
+										},
+										{
+											"key": "customer_id",
+											"value": "166"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sales by customer",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "3"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-08-01&customer_id=166",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sales-by-customer"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-01"
+												},
+												{
+													"key": "customer_id",
+													"value": "166"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 04 Sep 2024 09:16:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales by Customer\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/sales-by-customer\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"id\": 2,\n                \"invoice_number\": \"INVO-1\",\n                \"invoice_date\": \"2024-07-31 00:00:00\",\n                \"due_date\": \"2024-07-31 00:00:00\",\n                \"status\": \"void\",\n                \"amount\": \"130.00\",\n                \"due_amount\": \"130.00\"\n            },\n            {\n                \"id\": 3,\n                \"invoice_number\": \"INVO-2\",\n                \"invoice_date\": \"2024-07-31 00:00:00\",\n                \"due_date\": \"2024-07-31 00:00:00\",\n                \"status\": \"unpaid\",\n                \"amount\": \"900.00\",\n                \"due_amount\": \"900.00\"\n            }\n        ],\n        \"totals\": {\n            \"total_amount\": 1030,\n            \"total_due_amount\": 1030\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/sales-by-customer?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/sales-by-customer?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
 							"name": "sales by item",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -22965,176 +23141,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "sales by customer",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "3"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-08-01&customer_id=166",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"sales-by-customer"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": ""
-										},
-										{
-											"key": "start_date",
-											"value": "2024-01-01"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-01"
-										},
-										{
-											"key": "customer_id",
-											"value": "166"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "sales by customer",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"key": "company-id",
-												"value": "3"
-											}
-										],
-										"body": {
-											"mode": "formdata",
-											"formdata": []
-										},
-										"url": {
-											"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-08-01&customer_id=166",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"sales-by-customer"
-											],
-											"query": [
-												{
-													"key": "paginate",
-													"value": "1"
-												},
-												{
-													"key": "page",
-													"value": ""
-												},
-												{
-													"key": "limit",
-													"value": ""
-												},
-												{
-													"key": "start_date",
-													"value": "2024-01-01"
-												},
-												{
-													"key": "end_date",
-													"value": "2024-08-01"
-												},
-												{
-													"key": "customer_id",
-													"value": "166"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Host",
-											"value": "127.0.0.1:8000"
-										},
-										{
-											"key": "Connection",
-											"value": "close"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.12"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "Date",
-											"value": "Wed, 04 Sep 2024 09:16:31 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "1000000"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "999997"
-										},
-										{
-											"key": "Vary",
-											"value": "Origin"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"message\": \"Sales by Customer\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/sales-by-customer\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"id\": 2,\n                \"invoice_number\": \"INVO-1\",\n                \"invoice_date\": \"2024-07-31 00:00:00\",\n                \"due_date\": \"2024-07-31 00:00:00\",\n                \"status\": \"void\",\n                \"amount\": \"130.00\",\n                \"due_amount\": \"130.00\"\n            },\n            {\n                \"id\": 3,\n                \"invoice_number\": \"INVO-2\",\n                \"invoice_date\": \"2024-07-31 00:00:00\",\n                \"due_date\": \"2024-07-31 00:00:00\",\n                \"status\": \"unpaid\",\n                \"amount\": \"900.00\",\n                \"due_amount\": \"900.00\"\n            }\n        ],\n        \"totals\": {\n            \"total_amount\": 1030,\n            \"total_due_amount\": 1030\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/sales-by-customer?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/sales-by-customer?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-								}
-							]
 						}
 					]
 				},
@@ -23300,6 +23306,176 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"message\": \"Purchase Summary\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-summary\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"vendor_id\": 105,\n                \"vendor_name\": \"Venodr a\",\n                \"bill_count\": 3,\n                \"total\": 1243,\n                \"discount\": 0,\n                \"net_sales\": 1243,\n                \"tax_amount\": 157.3,\n                \"total_amount\": 1400.3000000000002\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-summary?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "purchase by vendor",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&vendor_id=105",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-by-vendor"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-01"
+										},
+										{
+											"key": "vendor_id",
+											"value": "105"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "purchase by vendor",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&vendor_id=105",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"purchase-by-vendor"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-07-01"
+												},
+												{
+													"key": "vendor_id",
+													"value": "105"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 04 Sep 2024 09:05:04 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase by Vendor\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-by-vendor\",\n            \"per_page\": 10,\n            \"to\": 3,\n            \"total\": 3\n        },\n        \"data\": [\n            {\n                \"id\": 15,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-01-01 00:00:00\",\n                \"due_date\": \"2024-12-30 00:00:00\",\n                \"status\": \"draft\",\n                \"amount\": \"1141.00\",\n                \"due_amount\": \"1141.00\"\n            },\n            {\n                \"id\": 20,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-01-01 00:00:00\",\n                \"due_date\": \"2024-12-30 00:00:00\",\n                \"status\": \"unpaid\",\n                \"amount\": \"129.65\",\n                \"due_amount\": \"129.65\"\n            },\n            {\n                \"id\": 22,\n                \"bill_number\": \"PB-2\",\n                \"bill_date\": \"2024-01-01 00:00:00\",\n                \"due_date\": \"2024-12-30 00:00:00\",\n                \"status\": \"draft\",\n                \"amount\": \"129.65\",\n                \"due_amount\": \"129.65\"\n            }\n        ],\n        \"totals\": {\n            \"total_amount\": 1400.3000000000002,\n            \"total_due_amount\": 1400.3000000000002\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-by-vendor?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-by-vendor?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
 								}
 							]
 						},
@@ -23562,176 +23738,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "purchase by vendor",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "{{company-id}}"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&vendor_id=105",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"purchase-by-vendor"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": ""
-										},
-										{
-											"key": "start_date",
-											"value": "2024-01-01"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-07-01"
-										},
-										{
-											"key": "vendor_id",
-											"value": "105"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "purchase by vendor",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"key": "company-id",
-												"value": "{{company-id}}"
-											}
-										],
-										"body": {
-											"mode": "formdata",
-											"formdata": []
-										},
-										"url": {
-											"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&vendor_id=105",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"purchase-by-vendor"
-											],
-											"query": [
-												{
-													"key": "paginate",
-													"value": "1"
-												},
-												{
-													"key": "page",
-													"value": ""
-												},
-												{
-													"key": "limit",
-													"value": ""
-												},
-												{
-													"key": "start_date",
-													"value": "2024-01-01"
-												},
-												{
-													"key": "end_date",
-													"value": "2024-07-01"
-												},
-												{
-													"key": "vendor_id",
-													"value": "105"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Host",
-											"value": "127.0.0.1:8000"
-										},
-										{
-											"key": "Connection",
-											"value": "close"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.12"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "Date",
-											"value": "Wed, 04 Sep 2024 09:05:04 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "1000000"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "999999"
-										},
-										{
-											"key": "Vary",
-											"value": "Origin"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"message\": \"Purchase by Vendor\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-by-vendor\",\n            \"per_page\": 10,\n            \"to\": 3,\n            \"total\": 3\n        },\n        \"data\": [\n            {\n                \"id\": 15,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-01-01 00:00:00\",\n                \"due_date\": \"2024-12-30 00:00:00\",\n                \"status\": \"draft\",\n                \"amount\": \"1141.00\",\n                \"due_amount\": \"1141.00\"\n            },\n            {\n                \"id\": 20,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-01-01 00:00:00\",\n                \"due_date\": \"2024-12-30 00:00:00\",\n                \"status\": \"unpaid\",\n                \"amount\": \"129.65\",\n                \"due_amount\": \"129.65\"\n            },\n            {\n                \"id\": 22,\n                \"bill_number\": \"PB-2\",\n                \"bill_date\": \"2024-01-01 00:00:00\",\n                \"due_date\": \"2024-12-30 00:00:00\",\n                \"status\": \"draft\",\n                \"amount\": \"129.65\",\n                \"due_amount\": \"129.65\"\n            }\n        ],\n        \"totals\": {\n            \"total_amount\": 1400.3000000000002,\n            \"total_due_amount\": 1400.3000000000002\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-by-vendor?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-by-vendor?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-								}
-							]
 						}
 					]
 				},
@@ -26309,6 +26315,52 @@
 							"body": "{\n    \"message\": \"Sales order has been created and approved.\",\n    \"data\": {\n        \"id\": 7,\n        \"order_date\": \"2024-08-29\",\n        \"delivery_date\": \"2024-08-29\",\n        \"order_number\": \"SO-6\",\n        \"customer_id\": 114,\n        \"customer_detail\": {\n            \"id\": 114,\n            \"type\": \"dr\",\n            \"name\": \"Toshin Abasi\",\n            \"slug\": \"toshin-abasi\"\n        },\n        \"reference\": null,\n        \"note\": null,\n        \"status\": \"approved\",\n        \"amount\": 100,\n        \"extra\": {\n            \"subTotal\": 100,\n            \"totalDiscount\": 0,\n            \"totalDiscountedAmount\": 100,\n            \"totalRatioDiscount\": 0,\n            \"totalRatioDiscountedAmount\": 100,\n            \"totalTaxableAccount\": 0,\n            \"totalNonTaxableAccount\": 100,\n            \"totalTaxAmount\": 0,\n            \"grandTotal\": 100\n        },\n        \"products\": [\n            {\n                \"id\": 68,\n                \"name\": \"Product 2zqs\",\n                \"slug\": \"product-2zqs\",\n                \"sku\": \"q31\",\n                \"product_category_id\": 12,\n                \"is_service\": 0,\n                \"tax\": null,\n                \"quantity\": 10,\n                \"discount\": 0,\n                \"rate\": \"10\",\n                \"amount\": 100,\n                \"description\": \"\",\n                \"account_head_id\": 84,\n                \"warehouse_id\": 2,\n                \"modified_rate\": 10\n            }\n        ],\n        \"created_at\": \"2024-08-29 16:05:50\",\n        \"updated_at\": \"2024-08-29 16:05:50\",\n        \"created_by\": \"augxdeveloper\",\n        \"updated_by\": \"\",\n        \"approved_at\": \"2024-08-29 16:05:50\",\n        \"approved_by\": \"augxdeveloper\",\n        \"documents\": [],\n        \"discount\": null,\n        \"discount_type\": null\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "udpate approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 114,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": 0,\n            \"amount\": 100\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-order-update-approve",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-order-update-approve"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
