@@ -9330,15 +9330,15 @@ paths:
               type: object
               example:
                 products:
-                  - product_id: 68
+                  - product_id: 55
                     rate: 10
-                    quantity: 200
-                    amount: 100
+                    quantity: 3
+                    amount: 30
                 discount_type: fixed
                 discount: 0
-                customer_id: 114
-                receiver_id: 104
-                amount: 897.79
+                customer_id: 518
+                receiver_id: 106
+                amount: 30
       security:
         - bearerAuth: []
       parameters:
@@ -17231,21 +17231,21 @@ paths:
               properties:
                 account_head_id:
                   type: integer
-                  example: '3'
+                  example: '106'
       security:
         - bearerAuth: []
       parameters:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '5'
+          example: '16'
       responses:
         '200':
           description: Successful response
@@ -17262,16 +17262,12 @@ paths:
             schema:
               type: object
               example:
-                invoice_id: 37
+                invoice_id: 131
+                note: asdf asdf
                 products:
-                  - product_id: 67
-                    quantity: 20
-                    rate: 20
-                    tax: 0
-                    amount: 400
-                    account_head_id: 84
-                    warehouse_id: 2
-                account_head_id: 84
+                  - product_id: 20
+                    quantity: 12
+                account_head_id: 106
       security:
         - bearerAuth: []
       parameters:

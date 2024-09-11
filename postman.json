@@ -16345,7 +16345,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"rate\": 10,\n            \"quantity\": 200,\n            \"amount\": 100\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 114,\n    \"receiver_id\":104,\n    \"amount\":897.79\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 55,\n            \"rate\": 10,\n            \"quantity\": 3,\n            \"amount\": 30\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 518,\n    \"receiver_id\":106,\n    \"amount\":30\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27820,7 +27820,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -27828,7 +27828,7 @@
 							"formdata": [
 								{
 									"key": "account_head_id",
-									"value": "3",
+									"value": "106",
 									"type": "text"
 								}
 							]
@@ -27846,7 +27846,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "5"
+									"value": "16"
 								}
 							]
 						}
@@ -27879,7 +27879,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 37,\n    \"products\": [\n        {\n            \"product_id\": 67,\n            \"quantity\": 20,\n            \"rate\": 20,\n            \"tax\": 0,\n            \"amount\": 400,\n            \"account_head_id\": 84,\n            \"warehouse_id\": 2\n        }\n    ],\n    \"account_head_id\": 84\n    \n}",
+							"raw": "{\n    \"invoice_id\": 131,\n    \"note\":\"asdf asdf\",\n    \"products\": [\n        {\n            \"product_id\": 20,\n            \"quantity\": 12\n        }\n    ],\n    \"account_head_id\": 106\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
