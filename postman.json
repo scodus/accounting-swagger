@@ -5494,9 +5494,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"const response = pm.response.json()",
-									"pm.environment.set('token', response.data.access_token)",
-									"pm.environment.set('refresh_token', response.data.refresh_token)"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -5505,7 +5503,14 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "company-id",
+								"value": "5",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -5560,6 +5565,12 @@
 									"key": "email",
 									"value": "ripiw95957@mfunza.com",
 									"type": "text"
+								},
+								{
+									"key": "company-id",
+									"value": "5",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -17894,6 +17905,332 @@
 							"path": [
 								"api",
 								"assign-permission"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POS",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"pos 10\", //required\n    \"address\": \"pos location\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"inactive\", //required\n    \"warehouse_id\" : 3 //required\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 2 update\",\n    \"address\": \"pos location updated\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 3 //required\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/pos/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos?paginate=10&page=1&search_keyword=&is_service=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/pos/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/pos/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
 							]
 						}
 					},
@@ -32603,6 +32940,35 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localUrl",
+			"value": "http://localhost:8000/api",
+			"type": "string"
 		}
 	]
 }
