@@ -17968,7 +17968,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"pos 3\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"inactive\", //required\n    \"warehouse_id\" : 3 //required\n}",
+							"raw": "{\n    \"name\": \"pos 3\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"inactive\", //required\n    \"warehouse_id\" : 3 //required\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18014,7 +18014,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 16 update 2\",\n    \"address\": \"pos location updated\", //nullable\n    \"customer_name\": \"cus 16 update \",\n    \"customer_address\": \"cus location 2\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 1 //required\n  \n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 18 update 1\",\n    \"address\": \"pos location updated\", //nullable\n    \"customer_name\": \"cus 18 update 1 \",\n    \"customer_address\": \"cus 18 location 1\", //nullable\n    \"email\" : \"testupate1@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 1 //required\n  \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18034,7 +18034,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "18"
 								}
 							]
 						}
@@ -27397,7 +27397,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id&product_id",
+							"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
 							"host": [
 								"{{url}}"
 							],
@@ -27417,7 +27417,7 @@
 								},
 								{
 									"key": "warehouse_department_id",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "product_id",
@@ -27435,7 +27435,7 @@
 					},
 					"response": [
 						{
-							"name": "stock valuation report",
+							"name": "report total",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -27445,7 +27445,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "2"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -27453,38 +27453,38 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
+									"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"stock-valuation-report"
+										"report-total",
+										":type"
 									],
 									"query": [
 										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
 											"key": "start_date",
-											"value": "2024-05-22"
+											"value": "2024-06-22"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-22"
+											"value": "2024-09-22"
 										},
 										{
-											"key": "product_name_sku",
+											"key": "warehouse_department_id",
 											"value": ""
+										},
+										{
+											"key": "product_id",
+											"value": null
+										}
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "stock_issue_report",
+											"description": "Report Name"
 										}
 									]
 								}
@@ -27511,7 +27511,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 16 Aug 2024 11:16:51 GMT"
+									"value": "Mon, 23 Sep 2024 08:28:27 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -27523,7 +27523,7 @@
 								},
 								{
 									"key": "X-RateLimit-Remaining",
-									"value": "999999"
+									"value": "999994"
 								},
 								{
 									"key": "Vary",
@@ -27531,7 +27531,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Valuation Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 3,\n            \"path\": \"http://127.0.0.1:8000/api/stock-valuation-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 29\n        },\n        \"data\": [\n            {\n                \"product_id\": 8,\n                \"product_name\": \"Temporibus at velit\",\n                \"product_sku\": \"Duis est ut ratione\",\n                \"product_quantity\": 2,\n                \"product_rate\": 11,\n                \"product_amount\": \"22.00\"\n            },\n            {\n                \"product_id\": 10,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 12,\n                \"product_name\": \"Product 2\",\n                \"product_sku\": \"prod-sku-2\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 13,\n                \"product_name\": \"Product 11\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1023,\n                \"product_rate\": 98.01,\n                \"product_amount\": \"100226.50\"\n            },\n            {\n                \"product_id\": 14,\n                \"product_name\": \"Product 12\",\n                \"product_sku\": \"prod-sku-12\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 19,\n                \"product_name\": \"Atque dignissimos qu\",\n                \"product_sku\": \"Deleniti voluptate r\",\n                \"product_quantity\": 93,\n                \"product_rate\": 61,\n                \"product_amount\": \"5673.00\"\n            },\n            {\n                \"product_id\": 20,\n                \"product_name\": \"Dolore nesciunt sin\",\n                \"product_sku\": \"Duis officiis et a q\",\n                \"product_quantity\": 1,\n                \"product_rate\": 1,\n                \"product_amount\": \"1.00\"\n            },\n            {\n                \"product_id\": 22,\n                \"product_name\": \"Product 111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 23,\n                \"product_name\": \"Product 121\",\n                \"product_sku\": \"prod-sku-121\",\n                \"product_quantity\": 1,\n                \"product_rate\": 11,\n                \"product_amount\": \"11.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=3\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=2\"\n        }\n    }\n}"
+							"body": "{\n    \"message\": \"Report Total\",\n    \"data\": {\n        \"totals\": {\n            \"total_quantity\": 1586356.7099999993,\n            \"total_amount\": 10001089.509999996\n        }\n    }\n}"
 						}
 					]
 				}
