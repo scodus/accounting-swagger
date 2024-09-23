@@ -5494,6 +5494,25 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"if (pm.response && pm.response.json) {\r",
+									"    const response = pm.response.json();\r",
+									"    pm.environment.set('token', response.data.access_token);\r",
+									"    pm.environment.set('refresh_token', response.data.refresh_token);\r",
+									"} else {\r",
+									"    console.log('Response is not in JSON format or pm.response is undefined');\r",
+									"    console.log(pm.response);\r",
+									"    //   throw new Error('Response is not in JSON format or pm.response is undefined');\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
 									""
 								],
 								"type": "text/javascript",
@@ -5547,28 +5566,22 @@
 								{
 									"key": "email",
 									"value": "kimchifastfoods@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "Kimchi@2065",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "ripiw95957@mfunza.com",
-									"type": "text"
-								},
-								{
-									"key": "company-id",
-									"value": "5",
 									"type": "text",
 									"disabled": true
 								}
@@ -5607,6 +5620,20 @@
 				},
 				{
 					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"pm.environment.set('token', response.data.access_token)\r",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -17941,7 +17968,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"pos 10\", //required\n    \"address\": \"pos location\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"inactive\", //required\n    \"warehouse_id\" : 3 //required\n}",
+							"raw": "{\n    \"name\": \"pos 3\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"inactive\", //required\n    \"warehouse_id\" : 3 //required\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17987,7 +18014,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 2 update\",\n    \"address\": \"pos location updated\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 3 //required\n  \n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 16 update 2\",\n    \"address\": \"pos location updated\", //nullable\n    \"customer_name\": \"cus 16 update \",\n    \"customer_address\": \"cus location 2\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_no\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 1 //required\n  \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18007,7 +18034,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "16"
 								}
 							]
 						}
@@ -18022,7 +18049,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
 									"type": "string"
 								}
 							]
@@ -18035,7 +18062,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "3"
 							}
 						],
 						"body": {
@@ -18043,19 +18070,20 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/pos/:id",
+							"raw": "{{url}}/api/pos/delete/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"pos",
+								"delete",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "11"
+									"value": "17"
 								}
 							]
 						}
@@ -18178,7 +18206,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "11"
+									"value": "16"
 								}
 							]
 						}
@@ -18231,6 +18259,627 @@
 									"key": "id",
 									"value": "11"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CashInOut",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 0, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 100, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out/update/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out/delete/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out?paginate=10&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Day Books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/day-books",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"day-books"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Day Books Total Amount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/day-books/total-amount",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"day-books",
+								"total-amount"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cashier Session",
+			"item": [
+				{
+					"name": "session start",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drawer_amount\": 452 //required\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier-session/start",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier-session",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "session end",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"employee_cash_in_hand\":552\n    // \"note\" : \"\" //nullable\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier-session/end",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier-session",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier-session/check",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier-session",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POS list by company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos-list-by-company/:company_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos-list-by-company",
+								":company_id"
+							],
+							"variable": [
+								{
+									"key": "company_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cashier Drawer Amount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier/drawer-amounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier",
+								"drawer-amounts"
 							]
 						}
 					},
@@ -18945,6 +19594,94 @@
 								{
 									"key": "is_variant_product",
 									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product-list?paginate=1&page=1&limit=10&search_keyword=111111111&is_service=&is_product=&inventory=&is_variant_product=&resource_fields=id,name,slug,sku",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-list"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search_keyword",
+									"value": "111111111"
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								},
+								{
+									"key": "is_product",
+									"value": ""
+								},
+								{
+									"key": "inventory",
+									"value": ""
+								},
+								{
+									"key": "is_variant_product",
+									"value": ""
+								},
+								{
+									"key": "resource_fields",
+									"value": "id,name,slug,sku",
+									"description": "id,name,slug,sku"
 								}
 							]
 						}
@@ -25287,7 +26024,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -25881,7 +26618,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -25889,7 +26626,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+							"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=87",
 							"host": [
 								"{{url}}"
 							],
@@ -25920,7 +26657,7 @@
 								},
 								{
 									"key": "product_id",
-									"value": "36",
+									"value": "87",
 									"description": "required, product_id"
 								},
 								{
@@ -26125,7 +26862,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -26138,7 +26875,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -26146,7 +26883,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-08-22&product_id=36",
+							"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-10-22&product_id=53",
 							"host": [
 								"{{url}}"
 							],
@@ -26173,11 +26910,11 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2024-08-22"
+									"value": "2024-10-22"
 								},
 								{
 									"key": "product_id",
-									"value": "36",
+									"value": "53",
 									"description": "required, product_id"
 								}
 							]
@@ -26522,6 +27259,176 @@
 								{
 									"key": "product_name_sku",
 									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "stock valuation report",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-valuation-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_name_sku",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 16 Aug 2024 11:16:51 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000000"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999999"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Stock Valuation Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 3,\n            \"path\": \"http://127.0.0.1:8000/api/stock-valuation-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 29\n        },\n        \"data\": [\n            {\n                \"product_id\": 8,\n                \"product_name\": \"Temporibus at velit\",\n                \"product_sku\": \"Duis est ut ratione\",\n                \"product_quantity\": 2,\n                \"product_rate\": 11,\n                \"product_amount\": \"22.00\"\n            },\n            {\n                \"product_id\": 10,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 12,\n                \"product_name\": \"Product 2\",\n                \"product_sku\": \"prod-sku-2\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 13,\n                \"product_name\": \"Product 11\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1023,\n                \"product_rate\": 98.01,\n                \"product_amount\": \"100226.50\"\n            },\n            {\n                \"product_id\": 14,\n                \"product_name\": \"Product 12\",\n                \"product_sku\": \"prod-sku-12\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 19,\n                \"product_name\": \"Atque dignissimos qu\",\n                \"product_sku\": \"Deleniti voluptate r\",\n                \"product_quantity\": 93,\n                \"product_rate\": 61,\n                \"product_amount\": \"5673.00\"\n            },\n            {\n                \"product_id\": 20,\n                \"product_name\": \"Dolore nesciunt sin\",\n                \"product_sku\": \"Duis officiis et a q\",\n                \"product_quantity\": 1,\n                \"product_rate\": 1,\n                \"product_amount\": \"1.00\"\n            },\n            {\n                \"product_id\": 22,\n                \"product_name\": \"Product 111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 23,\n                \"product_name\": \"Product 121\",\n                \"product_sku\": \"prod-sku-121\",\n                \"product_quantity\": 1,\n                \"product_rate\": 11,\n                \"product_amount\": \"11.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=3\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=2\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "report total",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id&product_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"report-total",
+								":type"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2024-06-22"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-09-22"
+								},
+								{
+									"key": "warehouse_department_id",
+									"value": null
+								},
+								{
+									"key": "product_id",
+									"value": null
+								}
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "stock_issue_report",
+									"description": "Report Name"
 								}
 							]
 						}

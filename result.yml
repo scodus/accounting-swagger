@@ -80,6 +80,8 @@ tags:
   - name: payment cheque
   - name: permission
   - name: POS
+  - name: CashInOut
+  - name: Cashier Session
   - name: prefix
   - name: product
   - name: product category
@@ -3045,9 +3047,6 @@ paths:
                 password:
                   type: string
                   example: P@ssw0rd
-                company-id:
-                  type: integer
-                  example: '5'
       responses:
         '200':
           description: Successful response
@@ -10287,8 +10286,10 @@ paths:
             schema:
               type: object
               example:
-                name: pos 10
+                name: pos 3
                 address: pos location
+                customer_name: cus 3
+                customer_address: cus location 3
                 email: test@test.com
                 phone_no: '8956256525'
                 pan_no: '656565656'
@@ -10364,13 +10365,15 @@ paths:
               type: object
               example:
                 _method: patch
-                name: pos 2 update
+                name: pos 16 update 2
                 address: pos location updated
+                customer_name: 'cus 16 update '
+                customer_address: cus location 2
                 email: test@test.com
                 phone_no: '8956256525'
                 pan_no: '656565656'
                 status: active
-                warehouse_id: 3
+                warehouse_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -10389,35 +10392,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - POS
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
+          example: '16'
       responses:
         '200':
           description: Successful response
@@ -10445,7 +10420,36 @@ paths:
           schema:
             type: integer
           required: true
-          example: '11'
+          example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos/delete/{id}:
+    delete:
+      tags:
+        - POS
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '17'
       responses:
         '200':
           description: Successful response
@@ -10479,6 +10483,354 @@ paths:
             type: integer
           required: true
           example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-in-out:
+    post:
+      tags:
+        - CashInOut
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                particular: paper
+                received: 0
+                paid: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - CashInOut
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-in-out/update/{id}:
+    patch:
+      tags:
+        - CashInOut
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                particular: paper
+                received: 100
+                paid: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-in-out/delete/{id}:
+    delete:
+      tags:
+        - CashInOut
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/day-books:
+    get:
+      tags:
+        - CashInOut
+      summary: Day Books
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/day-books/total-amount:
+    get:
+      tags:
+        - CashInOut
+      summary: Day Books Total Amount
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier-session/start:
+    post:
+      tags:
+        - Cashier Session
+      summary: session start
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                drawer_amount: 452
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier-session/end:
+    post:
+      tags:
+        - Cashier Session
+      summary: session end
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                employee_cash_in_hand: 552
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier-session/check:
+    get:
+      tags:
+        - Cashier Session
+      summary: check session
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos-list-by-company/{company_id}:
+    get:
+      tags:
+        - Cashier Session
+      summary: POS list by company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier/drawer-amounts:
+    get:
+      tags:
+        - Cashier Session
+      summary: Cashier Drawer Amount
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
       responses:
         '200':
           description: Successful response
@@ -10918,6 +11270,71 @@ paths:
             type: integer
           required: true
           example: '45'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product-list:
+    get:
+      tags:
+        - product
+      summary: list product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search_keyword
+          in: query
+          schema:
+            type: integer
+          example: '111111111'
+        - name: is_service
+          in: query
+          schema:
+            type: string
+        - name: is_product
+          in: query
+          schema:
+            type: string
+        - name: inventory
+          in: query
+          schema:
+            type: string
+        - name: is_variant_product
+          in: query
+          schema:
+            type: string
+        - name: resource_fields
+          in: query
+          schema:
+            type: string
+          description: id,name,slug,sku
+          example: id,name,slug,sku
       responses:
         '200':
           description: Successful response
@@ -15359,8 +15776,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15748,8 +16165,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15780,7 +16197,7 @@ paths:
           schema:
             type: integer
           description: required, product_id
-          example: '36'
+          example: '87'
       responses:
         '200':
           description: OK
@@ -15938,8 +16355,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15964,13 +16381,13 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-08-22'
+          example: '2024-10-22'
         - name: product_id
           in: query
           schema:
             type: integer
           description: required, product_id
-          example: '36'
+          example: '53'
       responses:
         '200':
           description: OK
@@ -16254,6 +16671,170 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 16 Aug 2024 11:16:51 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Stock Valuation Report
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 3
+                    path: http://127.0.0.1:8000/api/stock-valuation-report
+                    per_page: 10
+                    to: 10
+                    total: 29
+                  data:
+                    - product_id: 8
+                      product_name: Temporibus at velit
+                      product_sku: Duis est ut ratione
+                      product_quantity: 2
+                      product_rate: 11
+                      product_amount: '22.00'
+                    - product_id: 10
+                      product_name: Product 1
+                      product_sku: prod-sku-1
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 11
+                      product_name: Product 1
+                      product_sku: prod-sku-1
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 12
+                      product_name: Product 2
+                      product_sku: prod-sku-2
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 13
+                      product_name: Product 11
+                      product_sku: prod-sku-11
+                      product_quantity: 1023
+                      product_rate: 98.01
+                      product_amount: '100226.50'
+                    - product_id: 14
+                      product_name: Product 12
+                      product_sku: prod-sku-12
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 19
+                      product_name: Atque dignissimos qu
+                      product_sku: Deleniti voluptate r
+                      product_quantity: 93
+                      product_rate: 61
+                      product_amount: '5673.00'
+                    - product_id: 20
+                      product_name: Dolore nesciunt sin
+                      product_sku: Duis officiis et a q
+                      product_quantity: 1
+                      product_rate: 1
+                      product_amount: '1.00'
+                    - product_id: 22
+                      product_name: Product 111
+                      product_sku: prod-sku-11
+                      product_quantity: 1000
+                      product_rate: 100
+                      product_amount: '100000.00'
+                    - product_id: 23
+                      product_name: Product 121
+                      product_sku: prod-sku-121
+                      product_quantity: 1
+                      product_rate: 11
+                      product_amount: '11.00'
+                  links:
+                    first: http://127.0.0.1:8000/api/stock-valuation-report?page=1
+                    last: http://127.0.0.1:8000/api/stock-valuation-report?page=3
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/stock-valuation-report?page=2
+  /api/report-total/{type}:
+    get:
+      tags:
+        - report
+      summary: report total
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-06-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-09-22'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: Report Name
+          example: stock_issue_report
       responses:
         '200':
           description: OK
