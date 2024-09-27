@@ -5566,24 +5566,30 @@
 								{
 									"key": "email",
 									"value": "kimchifastfoods@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "Kimchi@2065",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "ripiw95957@mfunza.com",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "srotcloud@gmail.com",
+									"type": "text"
 								}
 							]
 						},
@@ -7561,7 +7567,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -12504,6 +12510,253 @@
 			]
 		},
 		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "dashboard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard total sales",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/total-sales?type=yearly",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"total-sales"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "yearly"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard total receivable payable",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/accounts-receivable-payable?type=last_7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounts-receivable-payable"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "last_7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard cashflow",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/cashflow?type=last_7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashflow"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "last_7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "depreciation",
 			"item": [
 				{
@@ -16378,12 +16631,17 @@
 							},
 							{
 								"key": "company-id",
-								"value": "{{company-id}}"
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "2",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 55,\n            \"rate\": 10,\n            \"quantity\": 3,\n            \"amount\": 30\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 518,\n    \"receiver_id\":106,\n    \"amount\":30\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 6,\n            \"rate\": 10,\n            \"quantity\": 1,\n            \"amount\": 10\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": null,//nullable\n    \"receiver_id\":106,\n    \"amount\":10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17950,7 +18208,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -17963,12 +18221,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"pos 3\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"inactive\", //required\n    \"warehouse_id\" : 3 //required\n}",
+							"raw": "{\n    \"name\": \"pos 1\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 11 //required\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17996,7 +18254,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -18009,12 +18267,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 18 update 1\",\n    \"address\": \"pos location updated\", //nullable\n    \"customer_name\": \"cus 18 update 1 \",\n    \"customer_address\": \"cus 18 location 1\", //nullable\n    \"email\" : \"testupate1@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 1 //required\n  \n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"name\": \"pos 3\", //required\n    \"address\": \"pos3 location\", //nullable\n    \"customer_name\": \"cusas 3\", //required\n    \"customer_address\": \"cusssa location 3\", //nullable\n    \"email\": \"tessta@tesst.com\", //nullable\n    \"phone_no\": \"895625651215\", //nullable\n    \"pan_number\": \"65656561561\", //nullable\n    \"warehouse_id\": 11, //required\n    \"status\": \"active\" //required\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18034,7 +18292,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "18"
+									"value": "6"
 								}
 							]
 						}
@@ -18101,7 +18359,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -18163,6 +18421,76 @@
 					"response": []
 				},
 				{
+					"name": "Dashboard Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "16",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos/:pos-id/dashboard-data",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								":pos-id",
+								"dashboard-data"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "pos-id",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "show",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -18206,7 +18534,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "16"
+									"value": "18"
 								}
 							]
 						}
@@ -18300,7 +18628,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 0, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
+							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 200, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18628,7 +18956,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -18645,13 +18973,13 @@
 							},
 							{
 								"key": "pos-id",
-								"value": "15",
+								"value": "2",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawer_amount\": 452 //required\n}",
+							"raw": "{\n    \"drawer_amount\": 100 //required\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18680,7 +19008,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -18697,13 +19025,13 @@
 							},
 							{
 								"key": "pos-id",
-								"value": "15",
+								"value": "4",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"employee_cash_in_hand\":552\n    // \"note\" : \"\" //nullable\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"employee_cash_in_hand\":100,\n    \"note\" : \"hjgjhgj\" //nullable\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -18735,7 +19063,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -18749,6 +19077,11 @@
 							{
 								"key": "company-id",
 								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "2",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -18831,7 +19164,7 @@
 					"response": []
 				},
 				{
-					"name": "Cashier Drawer Amount",
+					"name": "POS list by AuthUser",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -18854,11 +19187,61 @@
 							},
 							{
 								"key": "company-id",
+								"value": "3",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos-list-by-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos-list-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cashier Drawer Amount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
 								"value": "3"
 							},
 							{
 								"key": "pos-id",
-								"value": "15",
+								"value": "2",
 								"type": "text"
 							}
 						],
@@ -19554,7 +19937,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&is_variant_product=",
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=1&is_variant_product=",
 							"host": [
 								"{{url}}"
 							],
@@ -19589,7 +19972,7 @@
 								},
 								{
 									"key": "inventory",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "is_variant_product",
@@ -23761,7 +24144,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -23805,7 +24188,107 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "customer aging summary",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/customer-aging-summary?paginate=1&page=&limit=&date=2024-07-01&day_interval=10&aging_interval=4",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"customer-aging-summary"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "date",
+													"value": "2024-07-01"
+												},
+												{
+													"key": "day_interval",
+													"value": "10"
+												},
+												{
+													"key": "aging_interval",
+													"value": "4"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:06:22 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999994"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Customer Aging Summary\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/customer-aging-summary\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"accounth_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_count\": 838,\n                \"current\": 0,\n                \"0-10\": \"500600.25\",\n                \"11-20\": \"0.00\",\n                \"21-30\": \"0.00\",\n                \"total\": \"500600.25\"\n            },\n            {\n                \"accounth_head_id\": 1546,\n                \"name\": \"Outlet Customer\",\n                \"invoice_count\": 2,\n                \"current\": 0,\n                \"0-10\": \"230.00\",\n                \"11-20\": \"0.00\",\n                \"21-30\": \"0.00\",\n                \"total\": \"230.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/customer-aging-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/customer-aging-summary?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "invoice age",
@@ -23831,7 +24314,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -23839,7 +24322,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/invoice-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&transaction_type=invoice,quick_receipt",
+									"raw": "{{url}}/api/invoice-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-10-01&transaction_type=invoice,quick_receipt",
 									"host": [
 										"{{url}}"
 									],
@@ -23866,7 +24349,7 @@
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-10-01"
 										},
 										{
 											"key": "transaction_type",
@@ -23875,7 +24358,107 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "invoice age",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/invoice-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-10-01&transaction_type=invoice,quick_receipt",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"invoice-age"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-10-01"
+												},
+												{
+													"key": "transaction_type",
+													"value": "invoice,quick_receipt"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:10:14 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invoice Age\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 84,\n            \"path\": \"http://127.0.0.1:8000/api/invoice-age\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 840\n        },\n        \"data\": [\n            {\n                \"id\": 921,\n                \"date\": \"2024-09-26 00:00:00\",\n                \"due_date\": \"2024-09-26 00:00:00\",\n                \"transaction_number\": \"INVO-851\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"225.00\",\n                \"paid\": \"225.00\",\n                \"age_days\": 1,\n                \"created_at\": \"2024-09-26 10:55:00\",\n                \"updated_at\": \"2024-09-26 10:55:00\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 920,\n                \"date\": \"2024-09-26 00:00:00\",\n                \"due_date\": \"2024-09-26 00:00:00\",\n                \"transaction_number\": \"INVO-850\",\n                \"reference_number\": null,\n                \"customer\": \"Outlet Customer\",\n                \"status\": \"paid\",\n                \"amount\": \"150.00\",\n                \"paid\": \"150.00\",\n                \"age_days\": 1,\n                \"created_at\": \"2024-09-26 10:21:02\",\n                \"updated_at\": \"2024-09-26 10:21:02\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 919,\n                \"date\": \"2024-09-26 00:00:00\",\n                \"due_date\": \"2024-09-26 00:00:00\",\n                \"transaction_number\": \"INVO-849\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"150.00\",\n                \"paid\": \"150.00\",\n                \"age_days\": 1,\n                \"created_at\": \"2024-09-26 10:20:39\",\n                \"updated_at\": \"2024-09-26 10:20:39\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 918,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-848\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"200.00\",\n                \"paid\": \"200.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 20:15:03\",\n                \"updated_at\": \"2024-09-25 20:15:03\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 917,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-847\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"589.50\",\n                \"paid\": \"589.50\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 20:14:01\",\n                \"updated_at\": \"2024-09-25 20:14:01\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 916,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-846\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"partial\",\n                \"amount\": \"135.00\",\n                \"paid\": \"120.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 20:12:12\",\n                \"updated_at\": \"2024-09-25 20:12:12\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 915,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-845\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"150.00\",\n                \"paid\": \"150.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 20:08:24\",\n                \"updated_at\": \"2024-09-25 20:08:24\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 914,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-844\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"150.00\",\n                \"paid\": \"150.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 19:52:08\",\n                \"updated_at\": \"2024-09-25 19:52:08\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 913,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-843\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"1089.00\",\n                \"paid\": \"1089.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 19:50:38\",\n                \"updated_at\": \"2024-09-25 19:50:38\",\n                \"type\": \"INVOICE\"\n            },\n            {\n                \"id\": 912,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"INVO-842\",\n                \"reference_number\": null,\n                \"customer\": \"Cash Counter\",\n                \"status\": \"paid\",\n                \"amount\": \"1080.00\",\n                \"paid\": \"1080.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-25 19:45:28\",\n                \"updated_at\": \"2024-09-25 19:45:28\",\n                \"type\": \"INVOICE\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/invoice-age?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/invoice-age?page=84\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/invoice-age?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "customer statement",
@@ -23901,7 +24484,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -23909,7 +24492,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id[]=402",
+									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id=1488",
 									"host": [
 										"{{url}}"
 									],
@@ -23939,13 +24522,123 @@
 											"value": "2025-07-01"
 										},
 										{
-											"key": "customer_id[]",
-											"value": "402"
+											"key": "customer_id[0]",
+											"value": "1488",
+											"disabled": true
+										},
+										{
+											"key": "customer_id",
+											"value": "1488"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "customer statement",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id=1488",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"customer-statement"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-07-01"
+												},
+												{
+													"key": "customer_id[0]",
+													"value": "1488",
+													"disabled": true
+												},
+												{
+													"key": "customer_id",
+													"value": "1488"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:17:17 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999993"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Customer Statement\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 270,\n            \"path\": \"http://127.0.0.1:8000/api/customer-statement\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 2693\n        },\n        \"data\": [\n            {\n                \"entry_date\": \"2024-09-17 13:27:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 47,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-1\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"900.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:27:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 47,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-1\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"120.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:27:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 47,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-1\",\n                \"reference_number\": null,\n                \"cr_amount\": \"1020.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1440,\n                \"description\": \"Cash in Hand\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:28:30\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 48,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-2\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"3000.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:28:30\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 48,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-2\",\n                \"reference_number\": null,\n                \"cr_amount\": \"3000.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1440,\n                \"description\": \"Cash in Hand\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 14:19:24\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 49,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-3\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"200.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 14:19:24\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 49,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-3\",\n                \"reference_number\": null,\n                \"cr_amount\": \"200.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1440,\n                \"description\": \"Cash in Hand\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 15:50:09\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 50,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-4\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"800.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 15:50:09\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 50,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-4\",\n                \"reference_number\": null,\n                \"cr_amount\": \"800.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1489,\n                \"description\": \"NMB Bank\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 15:51:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 51,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"500.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            }\n        ],\n        \"opening_balance\": {\n            \"total_cr_amount\": 0,\n            \"total_dr_amount\": 0,\n            \"amount\": 0\n        },\n        \"closing_balance\": {\n            \"total_cr_amount\": 0,\n            \"total_dr_amount\": 6038.75,\n            \"amount\": 6038.75\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/customer-statement?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/customer-statement?page=270\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/customer-statement?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "customer receivable summary",
@@ -23971,7 +24664,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -23979,7 +24672,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-receivable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01&customer_id[]",
+									"raw": "{{url}}/api/customer-receivable-summary?paginate=1&page=&limit=&start_date=2023-01-01&end_date=2025-09-01&customer_id=1488",
 									"host": [
 										"{{url}}"
 									],
@@ -24002,21 +24695,142 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2023-01-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-09-01"
+											"value": "2025-09-01"
 										},
 										{
-											"key": "customer_id[]",
-											"value": null,
-											"description": "array"
+											"key": "customer_id[0]",
+											"value": "1488",
+											"description": "array, [1488]",
+											"disabled": true
+										},
+										{
+											"key": "customer_id[1]",
+											"value": "1546",
+											"disabled": true
+										},
+										{
+											"key": "customer_id",
+											"value": "1488"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "customer receivable summary",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/customer-receivable-summary?paginate=1&page=&limit=&start_date=2023-01-01&end_date=2025-09-01&customer_id=1488",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"customer-receivable-summary"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2023-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-09-01"
+												},
+												{
+													"key": "customer_id[0]",
+													"value": "1488",
+													"description": "array, [1488]",
+													"disabled": true
+												},
+												{
+													"key": "customer_id[1]",
+													"value": "1546",
+													"disabled": true
+												},
+												{
+													"key": "customer_id",
+													"value": "1488"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:15:29 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999998"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Customer Receivable Summary.\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/customer-receivable-summary\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"518440.25\",\n                \"transaction_credit\": \"512401.50\",\n                \"closing_balance\": \"6038.75\"\n            },\n            {\n                \"id\": 1546,\n                \"name\": \"Outlet Customer\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"230.00\",\n                \"transaction_credit\": \"230.00\",\n                \"closing_balance\": \"0.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/customer-receivable-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/customer-receivable-summary?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -24047,7 +24861,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24091,7 +24905,107 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "vendor aging summary",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/vendor-aging-summary?paginate=1&page=&limit=&date=2024-07-01&day_interval=60&aging_interval=4",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"vendor-aging-summary"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "date",
+													"value": "2024-07-01"
+												},
+												{
+													"key": "day_interval",
+													"value": "60"
+												},
+												{
+													"key": "aging_interval",
+													"value": "4"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:04:39 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor Aging Summary\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 4,\n            \"path\": \"http://127.0.0.1:8000/api/vendor-aging-summary\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 31\n        },\n        \"data\": [\n            {\n                \"accounth_head_id\": 396,\n                \"name\": \"A-CUBE ENTERPRISES\",\n                \"bill_count\": 1,\n                \"current\": 0,\n                \"0-60\": \"71010.00\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"71010.00\"\n            },\n            {\n                \"accounth_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_count\": 2,\n                \"current\": 0,\n                \"0-60\": \"97856.40\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"97856.40\"\n            },\n            {\n                \"accounth_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_count\": 9,\n                \"current\": 0,\n                \"0-60\": \"154524.89\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"154524.89\"\n            },\n            {\n                \"accounth_head_id\": 401,\n                \"name\": \"BHOJPURE DUDH DAIRY\",\n                \"bill_count\": 94,\n                \"current\": 0,\n                \"0-60\": \"307730.00\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"307730.00\"\n            },\n            {\n                \"accounth_head_id\": 402,\n                \"name\": \"BIRENDRA YADAV (FRUITS)\",\n                \"bill_count\": 41,\n                \"current\": 0,\n                \"0-60\": \"459574.88\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"459574.88\"\n            },\n            {\n                \"accounth_head_id\": 404,\n                \"name\": \"CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.\",\n                \"bill_count\": 8,\n                \"current\": 0,\n                \"0-60\": \"392400.00\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"392400.00\"\n            },\n            {\n                \"accounth_head_id\": 405,\n                \"name\": \"CONSOLIDATED BRAND HOLDING PVT. LTD.\",\n                \"bill_count\": 1,\n                \"current\": 0,\n                \"0-60\": \"44700.00\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"44700.00\"\n            },\n            {\n                \"accounth_head_id\": 406,\n                \"name\": \"COOP AGRO PVT. LTD.\",\n                \"bill_count\": 13,\n                \"current\": 0,\n                \"0-60\": \"601394.68\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"601394.68\"\n            },\n            {\n                \"accounth_head_id\": 407,\n                \"name\": \"GANGOUR SWEET\",\n                \"bill_count\": 14,\n                \"current\": 0,\n                \"0-60\": \"271905.00\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"271905.00\"\n            },\n            {\n                \"accounth_head_id\": 408,\n                \"name\": \"GITA LAL (AGRIM STORE)\",\n                \"bill_count\": 5,\n                \"current\": 0,\n                \"0-60\": \"325086.16\",\n                \"61-120\": \"0.00\",\n                \"121-180\": \"0.00\",\n                \"total\": \"325086.16\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/vendor-aging-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/vendor-aging-summary?page=4\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/vendor-aging-summary?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "purchase bill age",
@@ -24117,7 +25031,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24125,7 +25039,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-bill-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&transaction_type=purchase_bill,quick_payment",
+									"raw": "{{url}}/api/purchase-bill-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&transaction_type=purchase_bill,quick_payment",
 									"host": [
 										"{{url}}"
 									],
@@ -24152,7 +25066,7 @@
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2025-07-01"
 										},
 										{
 											"key": "transaction_type",
@@ -24161,7 +25075,107 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "purchase bill age",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/purchase-bill-age?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&transaction_type=purchase_bill,quick_payment",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"purchase-bill-age"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-07-01"
+												},
+												{
+													"key": "transaction_type",
+													"value": "purchase_bill,quick_payment"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:04:44 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999998"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase Bill Age\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 86,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-bill-age\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 855\n        },\n        \"data\": [\n            {\n                \"id\": 1410,\n                \"date\": \"2024-09-23 00:00:00\",\n                \"due_date\": \"2024-09-26 00:00:00\",\n                \"transaction_number\": \"PB-876\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - A\",\n                \"status\": \"unpaid\",\n                \"amount\": \"13180.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 4,\n                \"created_at\": \"2024-09-26 10:53:21\",\n                \"updated_at\": \"2024-09-26 10:53:25\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1409,\n                \"date\": \"2024-09-25 00:00:00\",\n                \"due_date\": \"2024-09-26 00:00:00\",\n                \"transaction_number\": \"PB-875\",\n                \"reference_number\": \"855\",\n                \"vendor\": \"SANDESH DUDH DAIRY\",\n                \"status\": \"unpaid\",\n                \"amount\": \"18970.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 2,\n                \"created_at\": \"2024-09-26 10:34:51\",\n                \"updated_at\": \"2024-09-26 10:34:56\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1407,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-874\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - B\",\n                \"status\": \"unpaid\",\n                \"amount\": \"375.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 16:36:01\",\n                \"updated_at\": \"2024-09-25 16:36:11\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1406,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-873\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - B\",\n                \"status\": \"unpaid\",\n                \"amount\": \"95.20\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 16:31:04\",\n                \"updated_at\": \"2024-09-25 16:31:12\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1405,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-872\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - B\",\n                \"status\": \"unpaid\",\n                \"amount\": \"150.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 16:29:02\",\n                \"updated_at\": \"2024-09-25 16:29:15\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1404,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-871\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - B\",\n                \"status\": \"unpaid\",\n                \"amount\": \"330.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 16:26:06\",\n                \"updated_at\": \"2024-09-25 16:26:14\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1403,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-870\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - B\",\n                \"status\": \"unpaid\",\n                \"amount\": \"150.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 16:16:57\",\n                \"updated_at\": \"2024-09-25 16:17:10\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1401,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-868\",\n                \"reference_number\": null,\n                \"vendor\": \"LOCAL MARKET - B\",\n                \"status\": \"unpaid\",\n                \"amount\": \"3820.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 16:14:32\",\n                \"updated_at\": \"2024-09-25 16:14:37\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1400,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-867\",\n                \"reference_number\": null,\n                \"vendor\": \"BIRENDRA YADAV (FRUITS)\",\n                \"status\": \"unpaid\",\n                \"amount\": \"1332.40\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 15:14:11\",\n                \"updated_at\": \"2024-09-25 15:14:17\",\n                \"type\": \"PURCHASE_BILL\"\n            },\n            {\n                \"id\": 1399,\n                \"date\": \"2024-09-24 00:00:00\",\n                \"due_date\": \"2024-09-25 00:00:00\",\n                \"transaction_number\": \"PB-866\",\n                \"reference_number\": null,\n                \"vendor\": \"BIRENDRA YADAV (FRUITS)\",\n                \"status\": \"unpaid\",\n                \"amount\": \"11306.00\",\n                \"paid\": \"0.00\",\n                \"age_days\": 3,\n                \"created_at\": \"2024-09-25 15:10:46\",\n                \"updated_at\": \"2024-09-25 15:10:56\",\n                \"type\": \"PURCHASE_BILL\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-bill-age?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-bill-age?page=86\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/purchase-bill-age?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "vendor statement",
@@ -24187,7 +25201,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24195,7 +25209,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&vendor_id=160",
+									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&vendor_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -24226,12 +25240,112 @@
 										},
 										{
 											"key": "vendor_id",
-											"value": "160"
+											"value": ""
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "vendor statement",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&vendor_id=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"vendor-statement"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-07-01"
+												},
+												{
+													"key": "vendor_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:04:52 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor Statement\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 272,\n            \"path\": \"http://127.0.0.1:8000/api/vendor-statement\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 2711\n        },\n        \"data\": [\n            {\n                \"entry_date\": \"2024-08-16 00:00:00\",\n                \"account_head_id\": 396,\n                \"name\": \"A-CUBE ENTERPRISES\",\n                \"bill_id\": 686,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-358\",\n                \"reference_number\": \"795\",\n                \"cr_amount\": \"14640.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 43,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-4\",\n                \"reference_number\": null,\n                \"cr_amount\": \"22500.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-16 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 1047,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-585\",\n                \"reference_number\": null,\n                \"cr_amount\": \"33750.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-16 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 1047,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-585\",\n                \"reference_number\": null,\n                \"cr_amount\": \"26006.40\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-16 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 1047,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-585\",\n                \"reference_number\": null,\n                \"cr_amount\": \"15600.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"9421.57\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"13369.14\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"6849.90\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"6480.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"3700.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            }\n        ],\n        \"opening_balance\": {\n            \"total_cr_amount\": 0,\n            \"total_dr_amount\": 0,\n            \"amount\": 0\n        },\n        \"closing_balance\": {\n            \"total_cr_amount\": 19913838.490000002,\n            \"total_dr_amount\": 0,\n            \"amount\": 19913838.490000002\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/vendor-statement?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/vendor-statement?page=272\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/vendor-statement?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "vendor payable summary",
@@ -24257,7 +25371,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24265,7 +25379,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor-payable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01",
+									"raw": "{{url}}/api/vendor-payable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01&vendor_id",
 									"host": [
 										"{{url}}"
 									],
@@ -24293,11 +25407,115 @@
 										{
 											"key": "end_date",
 											"value": "2024-09-01"
+										},
+										{
+											"key": "vendor_id",
+											"value": null
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "vendor payable summary",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/vendor-payable-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-09-01&vendor_id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"vendor-payable-summary"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-09-01"
+												},
+												{
+													"key": "vendor_id",
+													"value": null
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:03:32 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor Payable Summary.\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 5,\n            \"path\": \"http://127.0.0.1:8000/api/vendor-payable-summary\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 50\n        },\n        \"data\": [\n            {\n                \"id\": 396,\n                \"name\": \"A-CUBE ENTERPRISES\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"14640.00\",\n                \"closing_balance\": \"14640.00\"\n            },\n            {\n                \"id\": 397,\n                \"name\": \"ABC MARKETING (CIGG)\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"0.00\",\n                \"closing_balance\": \"0.00\"\n            },\n            {\n                \"id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"22500.00\",\n                \"closing_balance\": \"22500.00\"\n            },\n            {\n                \"id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"107520.89\",\n                \"closing_balance\": \"107520.89\"\n            },\n            {\n                \"id\": 400,\n                \"name\": \"BANEPALI STORE\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"0.00\",\n                \"closing_balance\": \"0.00\"\n            },\n            {\n                \"id\": 401,\n                \"name\": \"BHOJPURE DUDH DAIRY\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"157734.00\",\n                \"closing_balance\": \"157734.00\"\n            },\n            {\n                \"id\": 402,\n                \"name\": \"BIRENDRA YADAV (FRUITS)\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"262234.31\",\n                \"closing_balance\": \"251223.21\"\n            },\n            {\n                \"id\": 403,\n                \"name\": \"BLUE STAR ENTERPRISES\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"0.00\",\n                \"closing_balance\": \"0.00\"\n            },\n            {\n                \"id\": 404,\n                \"name\": \"CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"304940.00\",\n                \"closing_balance\": \"277335.00\"\n            },\n            {\n                \"id\": 405,\n                \"name\": \"CONSOLIDATED BRAND HOLDING PVT. LTD.\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"44700.00\",\n                \"closing_balance\": \"44700.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/vendor-payable-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/vendor-payable-summary?page=5\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/vendor-payable-summary?page=2\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -24328,7 +25546,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24336,7 +25554,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-08-01",
+									"raw": "{{url}}/api/sales-summary?paginate=1&page=&limit=&start_date=2024-09-25&end_date=2024-09-25",
 									"host": [
 										"{{url}}"
 									],
@@ -24359,11 +25577,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-25"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-01"
+											"value": "2024-09-25"
 										}
 									]
 								}
@@ -24490,7 +25708,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24498,7 +25716,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-08-01&customer_id=166",
+									"raw": "{{url}}/api/sales-by-customer?paginate=1&page=&limit=&start_date=2024-09-25&end_date=2024-09-25&customer_id=1546",
 									"host": [
 										"{{url}}"
 									],
@@ -24521,15 +25739,15 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-25"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-01"
+											"value": "2024-09-25"
 										},
 										{
 											"key": "customer_id",
-											"value": "166"
+											"value": "1546"
 										}
 									]
 								}
@@ -24660,7 +25878,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24668,7 +25886,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-12-01",
+									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-09-25&end_date=2024-09-25&product_id=1564",
 									"host": [
 										"{{url}}"
 									],
@@ -24691,16 +25909,120 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-25"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-12-01"
+											"value": "2024-09-25"
+										},
+										{
+											"key": "product_id",
+											"value": "1564"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "sales by item",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-09-25&end_date=2024-09-25&product_id=1564",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sales-by-item"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-09-25"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-09-25"
+												},
+												{
+													"key": "product_id",
+													"value": "1564"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 09:23:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999996"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales by Customer\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/sales-by-item\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"product_id\": 1564,\n                \"product_name\": \"ThermosPlastic Cups 150（塑料杯）\",\n                \"product_count\": 4,\n                \"total\": \"555.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"555.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 555\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/sales-by-item?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/sales-by-item?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "sales by customer monthly",
@@ -24726,7 +26048,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24734,7 +26056,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-by-customer-monthly?paginate=1&page=&limit=&year=2080-2081",
+									"raw": "{{url}}/api/sales-by-customer-monthly?paginate=1&page=&limit=&year=2081-2082",
 									"host": [
 										"{{url}}"
 									],
@@ -24757,12 +26079,104 @@
 										},
 										{
 											"key": "year",
-											"value": "2080-2081"
+											"value": "2081-2082"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "sales by customer monthly",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/sales-by-customer-monthly?paginate=1&page=&limit=&year=2081-2082",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sales-by-customer-monthly"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "year",
+													"value": "2081-2082"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 09:23:46 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales by customer monthly\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/sales-by-customer-monthly\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"shrawan_2081\": \"0.00\",\n                \"bhadra_2081\": \"0.00\",\n                \"ashwin_2081\": \"500600.25\",\n                \"first_quater\": \"500600.25\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"500600.25\"\n            },\n            {\n                \"customer_id\": 1546,\n                \"customer_name\": \"Outlet Customer\",\n                \"shrawan_2081\": \"0.00\",\n                \"bhadra_2081\": \"0.00\",\n                \"ashwin_2081\": \"230.00\",\n                \"first_quater\": \"230.00\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"230.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/sales-by-customer-monthly?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/sales-by-customer-monthly?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "sales by item monthly",
@@ -24788,7 +26202,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24796,7 +26210,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-by-item-monthly?paginate=1&page=&limit=&year=2080-2081&type=amount",
+									"raw": "{{url}}/api/sales-by-item-monthly?paginate=1&page=&limit=&year=2081-2082&type=quantity",
 									"host": [
 										"{{url}}"
 									],
@@ -24819,16 +26233,114 @@
 										},
 										{
 											"key": "year",
-											"value": "2080-2081"
+											"value": "2081-2082"
 										},
 										{
 											"key": "type",
-											"value": "amount"
+											"value": "quantity",
+											"description": "amount|quantity"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "sales by item monthly",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/sales-by-item-monthly?paginate=1&page=&limit=&year=2081-2082&type=quantity",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sales-by-item-monthly"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "year",
+													"value": "2081-2082"
+												},
+												{
+													"key": "type",
+													"value": "quantity",
+													"description": "amount|quantity"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 09:38:12 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales by item monthly\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 21,\n            \"path\": \"http://127.0.0.1:8000/api/sales-by-item-monthly\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 209\n        },\n        \"data\": [\n            {\n                \"id\": 1818,\n                \"name\": \"10pcs Clothes Hanger 250（10个衣架）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 2,\n                \"first_quater\": 2,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 2\n            },\n            {\n                \"id\": 1817,\n                \"name\": \"10pcs Clothes Hanger（10个衣架)\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 10,\n                \"first_quater\": 10,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 10\n            },\n            {\n                \"id\": 1706,\n                \"name\": \"10pcs Hairbands(皮筋10个组合）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 5,\n                \"first_quater\": 5,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 5\n            },\n            {\n                \"id\": 1701,\n                \"name\": \"1pcs Hairbands 100(粗皮筋）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 1,\n                \"first_quater\": 1,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 1\n            },\n            {\n                \"id\": 1700,\n                \"name\": \"1pcs Hairbands 50(细皮筋）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 52,\n                \"first_quater\": 52,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 52\n            },\n            {\n                \"id\": 1783,\n                \"name\": \"1pcs Hairbands（细皮筋）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 42,\n                \"first_quater\": 42,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 42\n            },\n            {\n                \"id\": 1615,\n                \"name\": \"1pcs Neon color（彩笔）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 24,\n                \"first_quater\": 24,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 24\n            },\n            {\n                \"id\": 1621,\n                \"name\": \"1pcs Toothbrush（牙刷）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 11,\n                \"first_quater\": 11,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 11\n            },\n            {\n                \"id\": 1616,\n                \"name\": \"1pcs Watercolor brush(水彩笔）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 22,\n                \"first_quater\": 22,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 22\n            },\n            {\n                \"id\": 1773,\n                \"name\": \"20pcs spone box(塑料勺子20只）\",\n                \"shrawan_2081\": 0,\n                \"bhadra_2081\": 0,\n                \"ashwin_2081\": 6,\n                \"first_quater\": 6,\n                \"kartik_2081\": 0,\n                \"mangsir_2081\": 0,\n                \"poush_2081\": 0,\n                \"second_quater\": 0,\n                \"magh_2081\": 0,\n                \"falgun_2081\": 0,\n                \"chaitra_2081\": 0,\n                \"third_quater\": 0,\n                \"baishakh_2082\": 0,\n                \"jestha_2082\": 0,\n                \"asar_2082\": 0,\n                \"fourth_quater\": 0,\n                \"total\": 6\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/sales-by-item-monthly?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/sales-by-item-monthly?page=21\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/sales-by-item-monthly?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "sales master report",
@@ -24854,7 +26366,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24862,7 +26374,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01&customer_id=&product_id=",
+									"raw": "{{url}}/api/sales-master-report?paginate=1&page=&limit=&start_date=2024-09-25&end_date=2024-09-25&customer_id=&product_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -24885,11 +26397,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-25"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-01-01"
+											"value": "2024-09-25"
 										},
 										{
 											"key": "customer_id",
@@ -24902,7 +26414,111 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "sales master report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/sales-master-report?paginate=1&page=&limit=&start_date=2024-09-17&end_date=2025-09-17&customer_id=&product_id=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sales-master-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-09-17"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-09-17"
+												},
+												{
+													"key": "customer_id",
+													"value": ""
+												},
+												{
+													"key": "product_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 24 Sep 2024 10:49:54 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999996"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales Master Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 46,\n            \"path\": \"http://127.0.0.1:8000/api/sales-master-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 460\n        },\n        \"data\": [\n            {\n                \"id\": 47,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-1\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 13:27:27\",\n                \"product_id\": 1664,\n                \"product_sku\": \"P-101\",\n                \"product_name\": \"24pcs Nall（指甲片24片装）\",\n                \"quantity\": 3,\n                \"rate\": \"300.00\",\n                \"amount\": \"900.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"900.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 900\n            },\n            {\n                \"id\": 47,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-1\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 13:27:27\",\n                \"product_id\": 1666,\n                \"product_sku\": \"P-103\",\n                \"product_name\": \"Nail polish(指甲油小瓶装）\",\n                \"quantity\": 2,\n                \"rate\": \"60.00\",\n                \"amount\": \"120.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"120.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 120\n            },\n            {\n                \"id\": 48,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-2\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 13:28:30\",\n                \"product_id\": 1667,\n                \"product_sku\": \"P-104\",\n                \"product_name\": \"2pcs Hair iron(卷发棒2支装）\",\n                \"quantity\": 2,\n                \"rate\": \"1500.00\",\n                \"amount\": \"3000.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"3000.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 3000\n            },\n            {\n                \"id\": 49,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-3\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 14:19:24\",\n                \"product_id\": 1686,\n                \"product_sku\": \"P-123\",\n                \"product_name\": \"Electronic watches（小电子表）\",\n                \"quantity\": 1,\n                \"rate\": \"200.00\",\n                \"amount\": \"200.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"200.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 200\n            },\n            {\n                \"id\": 50,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-4\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 15:50:09\",\n                \"product_id\": 1574,\n                \"product_sku\": \"P-11\",\n                \"product_name\": \"Clothes Hanger（衣架）\",\n                \"quantity\": 4,\n                \"rate\": \"200.00\",\n                \"amount\": \"800.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"800.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 800\n            },\n            {\n                \"id\": 51,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-5\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 15:51:27\",\n                \"product_id\": 1751,\n                \"product_sku\": \"P-188\",\n                \"product_name\": \"Silk scarves 250（丝巾）\",\n                \"quantity\": 2,\n                \"rate\": \"250.00\",\n                \"amount\": \"500.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"500.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 500\n            },\n            {\n                \"id\": 51,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-5\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 15:51:27\",\n                \"product_id\": 1750,\n                \"product_sku\": \"P-187\",\n                \"product_name\": \"Bunny hat(兔子帽）\",\n                \"quantity\": 1,\n                \"rate\": \"500.00\",\n                \"amount\": \"500.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"500.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 500\n            },\n            {\n                \"id\": 51,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-5\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 15:51:27\",\n                \"product_id\": 1611,\n                \"product_sku\": \"P-48\",\n                \"product_name\": \"Combo(梳子）\",\n                \"quantity\": 1,\n                \"rate\": \"100.00\",\n                \"amount\": \"100.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"100.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 100\n            },\n            {\n                \"id\": 52,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-6\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 15:56:36\",\n                \"product_id\": 1657,\n                \"product_sku\": \"P-94\",\n                \"product_name\": \"Kite(纸鸢）\",\n                \"quantity\": 3,\n                \"rate\": \"150.00\",\n                \"amount\": \"450.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"450.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 450\n            },\n            {\n                \"id\": 52,\n                \"customer_id\": 1488,\n                \"customer_name\": \"Cash Counter\",\n                \"invoice_number\": \"INVO-6\",\n                \"reference_number\": null,\n                \"invoice_date\": \"2024-09-17 15:56:36\",\n                \"product_id\": 1656,\n                \"product_sku\": \"P-93\",\n                \"product_name\": \"Flashing spiky ball(发光弹弹球）\",\n                \"quantity\": 1,\n                \"rate\": \"150.00\",\n                \"amount\": \"150.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"150.00\",\n                \"vat_type\": \"0\",\n                \"vat_amount\": 0,\n                \"total_amount\": 150\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/sales-master-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/sales-master-report?page=46\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/sales-master-report?page=2\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -24941,7 +26557,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-summary?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/purchase-summary?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18",
 									"host": [
 										"{{url}}"
 									],
@@ -24964,11 +26580,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-09-18"
 										}
 									]
 								}
@@ -25103,7 +26719,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&vendor_id=105",
+									"raw": "{{url}}/api/purchase-by-vendor?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18&vendor_id=399",
 									"host": [
 										"{{url}}"
 									],
@@ -25126,15 +26742,15 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "vendor_id",
-											"value": "105"
+											"value": "399"
 										}
 									]
 								}
@@ -25265,7 +26881,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -25273,7 +26889,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18&product_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -25296,16 +26912,116 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-09-18"
+										},
+										{
+											"key": "product_id",
+											"value": ""
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "purchase by item",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-10-01",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"purchase-by-item"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-10-01"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 24 Sep 2024 11:03:12 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase by item\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 29,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-by-item\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 281\n        },\n        \"data\": [\n            {\n                \"product_id\": 86,\n                \"product_name\": \"8848 VODKA\",\n                \"product_count\": 47430,\n                \"total\": \"124603.80\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"124603.80\",\n                \"tax_amount\": 0,\n                \"total_amount\": 124603.8\n            },\n            {\n                \"product_id\": 87,\n                \"product_name\": \"A4 SIZE PAPER\",\n                \"product_count\": 480,\n                \"total\": \"480.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"480.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 480\n            },\n            {\n                \"product_id\": 88,\n                \"product_name\": \"RICE AARATI CLASSIC\",\n                \"product_count\": 500,\n                \"total\": \"96250.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"96250.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 96250\n            },\n            {\n                \"product_id\": 91,\n                \"product_name\": \"ABSULATE VODKA\",\n                \"product_count\": 5000,\n                \"total\": \"30250.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"30250.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 30250\n            },\n            {\n                \"product_id\": 92,\n                \"product_name\": \"AJINOMOTO\",\n                \"product_count\": 75,\n                \"total\": \"23750.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"23750.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 23750\n            },\n            {\n                \"product_id\": 93,\n                \"product_name\": \"AIR FRESHENER\",\n                \"product_count\": 65,\n                \"total\": \"14280.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"14280.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 14280\n            },\n            {\n                \"product_id\": 94,\n                \"product_name\": \"AIR POWER PACKET\",\n                \"product_count\": 36,\n                \"total\": \"3276.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"3276.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 3276\n            },\n            {\n                \"product_id\": 95,\n                \"product_name\": \"ALMOND\",\n                \"product_count\": 22,\n                \"total\": \"28835.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"28835.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 28835\n            },\n            {\n                \"product_id\": 97,\n                \"product_name\": \"ALMUNIUM CONTAINER-S (250ML)\",\n                \"product_count\": 5500,\n                \"total\": \"15605.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"15605.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 15605\n            },\n            {\n                \"product_id\": 98,\n                \"product_name\": \"ALMUNIUM CONTAINER-L (660ML)\",\n                \"product_count\": 8000,\n                \"total\": \"41600.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"41600.00\",\n                \"tax_amount\": 0,\n                \"total_amount\": 41600\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-by-item?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-by-item?page=29\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/purchase-by-item?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "purchase by vendor monthly",
@@ -25331,7 +27047,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -25339,7 +27055,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-vendor-monthly?paginate=1&page=&limit=&year=2080-2081",
+									"raw": "{{url}}/api/purchase-by-vendor-monthly?paginate=1&page=&limit=&year=2081-2082",
 									"host": [
 										"{{url}}"
 									],
@@ -25362,12 +27078,104 @@
 										},
 										{
 											"key": "year",
-											"value": "2080-2081"
+											"value": "2081-2082"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "purchase by vendor monthly",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/purchase-by-vendor-monthly?paginate=1&page=&limit=&year=2081-2082",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"purchase-by-vendor-monthly"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "year",
+													"value": "2081-2082"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 10:45:50 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999998"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales by vendor monthly\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 4,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-by-vendor-monthly\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 31\n        },\n        \"data\": [\n            {\n                \"vendor_id\": 396,\n                \"vendor_name\": \"A-CUBE ENTERPRISES\",\n                \"shrawan_2081\": \"71010.00\",\n                \"bhadra_2081\": \"0.00\",\n                \"ashwin_2081\": \"0.00\",\n                \"first_quater\": \"71010.00\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"71010.00\"\n            },\n            {\n                \"vendor_id\": 398,\n                \"vendor_name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"shrawan_2081\": \"22500.00\",\n                \"bhadra_2081\": \"75356.40\",\n                \"ashwin_2081\": \"0.00\",\n                \"first_quater\": \"97856.40\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"97856.40\"\n            },\n            {\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"shrawan_2081\": \"67358.61\",\n                \"bhadra_2081\": \"72208.28\",\n                \"ashwin_2081\": \"14958.00\",\n                \"first_quater\": \"154524.89\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"154524.89\"\n            },\n            {\n                \"vendor_id\": 401,\n                \"vendor_name\": \"BHOJPURE DUDH DAIRY\",\n                \"shrawan_2081\": \"139865.00\",\n                \"bhadra_2081\": \"131690.00\",\n                \"ashwin_2081\": \"36175.00\",\n                \"first_quater\": \"307730.00\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"307730.00\"\n            },\n            {\n                \"vendor_id\": 402,\n                \"vendor_name\": \"BIRENDRA YADAV (FRUITS)\",\n                \"shrawan_2081\": \"183049.01\",\n                \"bhadra_2081\": \"191513.75\",\n                \"ashwin_2081\": \"85012.12\",\n                \"first_quater\": \"459574.88\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"459574.88\"\n            },\n            {\n                \"vendor_id\": 404,\n                \"vendor_name\": \"CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.\",\n                \"shrawan_2081\": \"228880.00\",\n                \"bhadra_2081\": \"133720.00\",\n                \"ashwin_2081\": \"29800.00\",\n                \"first_quater\": \"392400.00\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"392400.00\"\n            },\n            {\n                \"vendor_id\": 405,\n                \"vendor_name\": \"CONSOLIDATED BRAND HOLDING PVT. LTD.\",\n                \"shrawan_2081\": \"44700.00\",\n                \"bhadra_2081\": \"0.00\",\n                \"ashwin_2081\": \"0.00\",\n                \"first_quater\": \"44700.00\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"44700.00\"\n            },\n            {\n                \"vendor_id\": 406,\n                \"vendor_name\": \"COOP AGRO PVT. LTD.\",\n                \"shrawan_2081\": \"281144.79\",\n                \"bhadra_2081\": \"246164.85\",\n                \"ashwin_2081\": \"74085.04\",\n                \"first_quater\": \"601394.68\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"601394.68\"\n            },\n            {\n                \"vendor_id\": 407,\n                \"vendor_name\": \"GANGOUR SWEET\",\n                \"shrawan_2081\": \"61650.00\",\n                \"bhadra_2081\": \"210255.00\",\n                \"ashwin_2081\": \"0.00\",\n                \"first_quater\": \"271905.00\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"271905.00\"\n            },\n            {\n                \"vendor_id\": 408,\n                \"vendor_name\": \"GITA LAL (AGRIM STORE)\",\n                \"shrawan_2081\": \"207631.56\",\n                \"bhadra_2081\": \"108754.60\",\n                \"ashwin_2081\": \"8700.00\",\n                \"first_quater\": \"325086.16\",\n                \"kartik_2081\": \"0.00\",\n                \"mangsir_2081\": \"0.00\",\n                \"poush_2081\": \"0.00\",\n                \"second_quater\": \"0.00\",\n                \"magh_2081\": \"0.00\",\n                \"falgun_2081\": \"0.00\",\n                \"chaitra_2081\": \"0.00\",\n                \"third_quater\": \"0.00\",\n                \"baishakh_2082\": \"0.00\",\n                \"jestha_2082\": \"0.00\",\n                \"asar_2082\": \"0.00\",\n                \"fourth_quater\": \"0.00\",\n                \"total\": \"325086.16\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-by-vendor-monthly?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-by-vendor-monthly?page=4\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/purchase-by-vendor-monthly?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "purchase by item monthly",
@@ -25393,7 +27201,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "3"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -25401,7 +27209,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2081-2082&type=amount",
+									"raw": "{{url}}/api/purchase-by-item-monthly?paginate=1&page=&limit=&year=2081-2082&type=quantity",
 									"host": [
 										"{{url}}"
 									],
@@ -25428,7 +27236,8 @@
 										},
 										{
 											"key": "type",
-											"value": "amount"
+											"value": "quantity",
+											"description": "amount|quantity"
 										}
 									]
 								}
@@ -25459,7 +27268,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -25467,7 +27276,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01&vendor_id=&product_id=",
+									"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18&vendor_id=&product_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -25490,11 +27299,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "vendor_id",
@@ -25507,7 +27316,111 @@
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "purchase master report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/purchase-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-01-01&vendor_id=&product_id=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"purchase-master-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-01-01"
+												},
+												{
+													"key": "vendor_id",
+													"value": ""
+												},
+												{
+													"key": "product_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 24 Sep 2024 11:32:21 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999996"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sales Master Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 200,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-master-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 1998\n        },\n        \"data\": [\n            {\n                \"id\": 18,\n                \"vendor_id\": 1091,\n                \"vendor_name\": \"RAJAN MEAT SHOP ( FISH)\",\n                \"bill_number\": \"PB-1\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-04 00:00:00\",\n                \"product_id\": 214,\n                \"product_sku\": \"FIS00286\",\n                \"product_name\": \"FISH RAW\",\n                \"quantity\": 5,\n                \"rate\": \"470.00\",\n                \"amount\": \"2350.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"2350.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 2350\n            },\n            {\n                \"id\": 41,\n                \"vendor_id\": 412,\n                \"vendor_name\": \"LOCAL MARKET - A\",\n                \"bill_number\": \"PB-2\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-02 00:00:00\",\n                \"product_id\": 397,\n                \"product_sku\": \"SAL0010\",\n                \"product_name\": \"SALT\",\n                \"quantity\": 2,\n                \"rate\": \"20.00\",\n                \"amount\": \"40.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"40.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 40\n            },\n            {\n                \"id\": 41,\n                \"vendor_id\": 412,\n                \"vendor_name\": \"LOCAL MARKET - A\",\n                \"bill_number\": \"PB-2\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-02 00:00:00\",\n                \"product_id\": 452,\n                \"product_sku\": \"TOM00119\",\n                \"product_name\": \"TOMATO KETCHUP\",\n                \"quantity\": 1,\n                \"rate\": \"10.00\",\n                \"amount\": \"10.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"10.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 10\n            },\n            {\n                \"id\": 42,\n                \"vendor_id\": 1089,\n                \"vendor_name\": \"SNP HOSPITALITY\",\n                \"bill_number\": \"PB-3\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 451,\n                \"product_sku\": \"TOI00411\",\n                \"product_name\": \"TOILET PAPER\",\n                \"quantity\": 10,\n                \"rate\": \"100.00\",\n                \"amount\": \"1000.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"1000.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 1000\n            },\n            {\n                \"id\": 43,\n                \"vendor_id\": 398,\n                \"vendor_name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_number\": \"PB-4\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 325,\n                \"product_sku\": \"NAP00115\",\n                \"product_name\": \"NAPKIN PRINTED\",\n                \"quantity\": 500,\n                \"rate\": \"45.00\",\n                \"amount\": \"22500.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"22500.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 22500\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 375,\n                \"product_sku\": \"POT0063\",\n                \"product_name\": \"POTATO\",\n                \"quantity\": 157,\n                \"rate\": \"60.01\",\n                \"amount\": \"9421.57\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"9421.57\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 9421.57\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 334,\n                \"product_sku\": \"ONI0064\",\n                \"product_name\": \"ONION\",\n                \"quantity\": 153,\n                \"rate\": \"87.38\",\n                \"amount\": \"13369.14\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"13369.14\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 13369.14\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 205,\n                \"product_sku\": \"DRY0082\",\n                \"product_name\": \"DRY GARLIC\",\n                \"quantity\": 27,\n                \"rate\": \"253.70\",\n                \"amount\": \"6849.90\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"6849.90\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 6849.9\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 206,\n                \"product_sku\": \"DRY0083\",\n                \"product_name\": \"DRY GINGER\",\n                \"quantity\": 27,\n                \"rate\": \"240.00\",\n                \"amount\": \"6480.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"6480.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 6480\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 203,\n                \"product_sku\": \"DRY0084\",\n                \"product_name\": \"DRY CHILLI\",\n                \"quantity\": 8,\n                \"rate\": \"462.50\",\n                \"amount\": \"3700.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"3700.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 3700\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-master-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-master-report?page=200\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/purchase-master-report?page=2\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -25538,7 +27451,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -25546,7 +27459,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/inventory-position?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01",
+									"raw": "{{url}}/api/inventory-position?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18",
 									"host": [
 										"{{url}}"
 									],
@@ -25569,16 +27482,112 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-09-18"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "inventory position",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/inventory-position?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"inventory-position"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-09-18"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-09-18"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 09:45:58 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999996"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Inventory Position\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 25,\n            \"path\": \"http://127.0.0.1:8000/api/inventory-position\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 243\n        },\n        \"data\": [\n            {\n                \"product_id\": 1564,\n                \"product_name\": \"ThermosPlastic Cups 150（塑料杯）\",\n                \"product_sku\": \"P-1\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1565,\n                \"product_name\": \"ThermosPlastic Cups 200（塑料杯）\",\n                \"product_sku\": \"P-2\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1566,\n                \"product_name\": \"ThermosPlastic Cups 300（塑料杯）\",\n                \"product_sku\": \"P-3\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1567,\n                \"product_name\": \"ThermosPlastic Cups 400（塑料杯）\",\n                \"product_sku\": \"P-4\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1568,\n                \"product_name\": \"ThermosPlastic Cups 450（塑料杯）\",\n                \"product_sku\": \"P-5\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1569,\n                \"product_name\": \"ThermosPlastic Cups 500（塑料杯）\",\n                \"product_sku\": \"P-6\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1570,\n                \"product_name\": \"Thermos 700（保温杯）\",\n                \"product_sku\": \"P-7\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1571,\n                \"product_name\": \"Thermos 800（保温杯）\",\n                \"product_sku\": \"P-8\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1572,\n                \"product_name\": \"Cup（口杯）\",\n                \"product_sku\": \"P-9\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1573,\n                \"product_name\": \"Sticking Hooks 200（粘钩）\",\n                \"product_sku\": \"P-10\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/inventory-position?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/inventory-position?page=25\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/inventory-position?page=2\"\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "inventory master report",
@@ -25604,7 +27613,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -25612,7 +27621,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/inventory-master-report?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2024-07-01&transaction_type=invoice,purchase_bill",
+									"raw": "{{url}}/api/inventory-master-report?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18&transaction_type=invoice",
 									"host": [
 										"{{url}}"
 									],
@@ -25635,20 +27644,122 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-01-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-07-01"
+											"value": "2024-09-18"
 										},
 										{
 											"key": "transaction_type",
-											"value": "invoice,purchase_bill"
+											"value": "invoice",
+											"description": "invoice,purchase_bill"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "inventory master report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/inventory-master-report?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18&transaction_type=invoice",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"inventory-master-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-09-18"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-09-18"
+												},
+												{
+													"key": "transaction_type",
+													"value": "invoice",
+													"description": "invoice,purchase_bill"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 09:48:59 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Inventory Master Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 35,\n            \"path\": \"http://127.0.0.1:8000/api/inventory-master-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 346\n        },\n        \"data\": [\n            {\n                \"id\": 221,\n                \"entry_date\": \"2024-09-18 21:02:32\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-172\",\n                \"reference_number\": null,\n                \"product_name\": \"Bodywasher（浴球）\",\n                \"product_sku\": \"P-17\",\n                \"product_category_name\": \"Daily Necessities\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"150.00\",\n                \"amount\": 150,\n                \"discount\": \"0.00\",\n                \"net_amount\": 150,\n                \"vat_amount\": 0,\n                \"total_amount\": \"150.00\"\n            },\n            {\n                \"id\": 220,\n                \"entry_date\": \"2024-09-18 21:01:30\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-171\",\n                \"reference_number\": null,\n                \"product_name\": \"Nail polish(指甲油小瓶装）\",\n                \"product_sku\": \"P-103\",\n                \"product_category_name\": \"Cosmetics\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"60.00\",\n                \"amount\": 60,\n                \"discount\": \"0.00\",\n                \"net_amount\": 60,\n                \"vat_amount\": 0,\n                \"total_amount\": \"60.00\"\n            },\n            {\n                \"id\": 220,\n                \"entry_date\": \"2024-09-18 21:01:30\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-171\",\n                \"reference_number\": null,\n                \"product_name\": \"Combomashage（洗头刷）\",\n                \"product_sku\": \"P-18\",\n                \"product_category_name\": \"Daily Necessities\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"150.00\",\n                \"amount\": 150,\n                \"discount\": \"0.00\",\n                \"net_amount\": 150,\n                \"vat_amount\": 0,\n                \"total_amount\": \"150.00\"\n            },\n            {\n                \"id\": 219,\n                \"entry_date\": \"2024-09-18 20:35:38\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-170\",\n                \"reference_number\": null,\n                \"product_name\": \"Small doll(小号玩偶)\",\n                \"product_sku\": \"P-98\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"300.00\",\n                \"amount\": 300,\n                \"discount\": \"0.00\",\n                \"net_amount\": 300,\n                \"vat_amount\": 0,\n                \"total_amount\": \"300.00\"\n            },\n            {\n                \"id\": 218,\n                \"entry_date\": \"2024-09-18 20:30:05\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-169\",\n                \"reference_number\": null,\n                \"product_name\": \"Toy big gun(狙击枪）\",\n                \"product_sku\": \"P-71\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"200.00\",\n                \"amount\": 200,\n                \"discount\": \"0.00\",\n                \"net_amount\": 200,\n                \"vat_amount\": 0,\n                \"total_amount\": \"200.00\"\n            },\n            {\n                \"id\": 218,\n                \"entry_date\": \"2024-09-18 20:30:05\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-169\",\n                \"reference_number\": null,\n                \"product_name\": \"Toy car 200（玩具越野车）\",\n                \"product_sku\": \"P-65\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"200.00\",\n                \"amount\": 200,\n                \"discount\": \"0.00\",\n                \"net_amount\": 200,\n                \"vat_amount\": 0,\n                \"total_amount\": \"200.00\"\n            },\n            {\n                \"id\": 218,\n                \"entry_date\": \"2024-09-18 20:30:05\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-169\",\n                \"reference_number\": null,\n                \"product_name\": \"Toy dumper car(玩具翻斗车）\",\n                \"product_sku\": \"P-92\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"100.00\",\n                \"amount\": 100,\n                \"discount\": \"0.00\",\n                \"net_amount\": 100,\n                \"vat_amount\": 0,\n                \"total_amount\": \"100.00\"\n            },\n            {\n                \"id\": 217,\n                \"entry_date\": \"2024-09-18 20:29:14\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-168\",\n                \"reference_number\": null,\n                \"product_name\": \"Claw clip(大发夹）\",\n                \"product_sku\": \"P-168\",\n                \"product_category_name\": \"Trinket\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"100.00\",\n                \"amount\": 100,\n                \"discount\": \"0.00\",\n                \"net_amount\": 100,\n                \"vat_amount\": 0,\n                \"total_amount\": \"80.00\"\n            },\n            {\n                \"id\": 216,\n                \"entry_date\": \"2024-09-18 20:28:19\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-167\",\n                \"reference_number\": null,\n                \"product_name\": \"Doll(芭比娃娃\",\n                \"product_sku\": \"P-75\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"50.00\",\n                \"amount\": 50,\n                \"discount\": \"0.00\",\n                \"net_amount\": 50,\n                \"vat_amount\": 0,\n                \"total_amount\": \"50.00\"\n            },\n            {\n                \"id\": 215,\n                \"entry_date\": \"2024-09-18 20:26:48\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-166\",\n                \"reference_number\": null,\n                \"product_name\": \"ThermosPlastic Cups 300（塑料杯）\",\n                \"product_sku\": \"P-3\",\n                \"product_category_name\": \"Daily Necessities\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"300.00\",\n                \"amount\": 300,\n                \"discount\": \"0.00\",\n                \"net_amount\": 300,\n                \"vat_amount\": 0,\n                \"total_amount\": \"300.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/inventory-master-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/inventory-master-report?page=35\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/inventory-master-report?page=2\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -26069,15 +28180,15 @@
 									"description": "warehouse_department_id \"1,2\""
 								},
 								{
+									"key": "product_id",
+									"value": "",
+									"description": "product id string \"1,2,3\""
+								},
+								{
 									"key": "product_name_sku",
 									"value": "",
 									"description": "product_name_sku",
 									"disabled": true
-								},
-								{
-									"key": "product_id",
-									"value": "",
-									"description": "product id string \"1,2,3\""
 								}
 							]
 						}
@@ -27219,7 +29330,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -27397,7 +29508,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
+							"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
 							"host": [
 								"{{url}}"
 							],
@@ -27409,26 +29520,48 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2024-06-22"
+									"value": "2024-06-22",
+									"description": "date start"
 								},
 								{
 									"key": "end_date",
-									"value": "2024-09-22"
+									"value": "2024-09-22",
+									"description": "date end"
 								},
 								{
 									"key": "warehouse_department_id",
-									"value": ""
+									"value": "",
+									"description": "warehouse_department_id \"1,2\""
 								},
 								{
 									"key": "product_id",
+									"value": "",
+									"description": "product id string \"1,2,3\" or \"1\""
+								},
+								{
+									"key": "vendor_id",
 									"value": null
+								},
+								{
+									"key": "customer_id",
+									"value": null
+								},
+								{
+									"key": "year",
+									"value": null,
+									"description": "e.g. 2081-2082"
+								},
+								{
+									"key": "type",
+									"value": null,
+									"description": "amount||quantity"
 								}
 							],
 							"variable": [
 								{
 									"key": "type",
-									"value": "stock_issue_report",
-									"description": "Report Name"
+									"value": "",
+									"description": "Report Name, e.g. stock_issue_report, stock_consumption_report, stock_returns_report,sales_summary_report,purchase_summary_report, "
 								}
 							]
 						}
@@ -27578,7 +29711,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/role?paginate=&page=&limit=&search_keyword=&is_service=",
+							"raw": "{{url}}/api/role?paginate=1&page=&limit=&search_keyword=&is_service=",
 							"host": [
 								"{{url}}"
 							],
@@ -27589,7 +29722,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -28112,11 +30245,16 @@
 							{
 								"key": "company-id",
 								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 114,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": 0,\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"customer_id\": 1488,//nullable or customer id\n    \"products\": [\n        {\n            \"product_id\": 1788,\n            \"quantity\": 10,\n            \"rate\": 10,\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -28237,11 +30375,16 @@
 							{
 								"key": "company-id",
 								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 114,\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": 0,\n            \"amount\": 100\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 114,//nullable\n    \"products\": [\n        {\n            \"product_id\": 68,\n            \"quantity\": 10,\n            \"rate\": 0,\n            \"amount\": 100\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -29281,6 +31424,11 @@
 									"key": "allow_negative_inventory",
 									"value": "0",
 									"type": "text"
+								},
+								{
+									"key": "template_id",
+									"value": "1",
+									"type": "text"
 								}
 							]
 						},
@@ -29342,8 +31490,8 @@
 							"variable": [
 								{
 									"key": "group",
-									"value": "general",
-									"description": "general || payment-mode || warehouse || invoice_template||invoice_bank"
+									"value": "invoice_template",
+									"description": "general || payment-mode || warehouse || invoice_template||invoice_bank||purchase_template"
 								}
 							]
 						}
@@ -32132,7 +34280,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -33074,57 +35222,6 @@
 			]
 		},
 		{
-			"name": "role list",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/api/role",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"role"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "draft items",
 			"event": [
 				{
@@ -33277,22 +35374,7 @@
 			"response": []
 		},
 		{
-			"name": "dashboard",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "delete file",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -33304,15 +35386,11 @@
 						}
 					]
 				},
-				"method": "GET",
+				"method": "DELETE",
 				"header": [
 					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
 						"key": "company-id",
-						"value": "{{company-id}}"
+						"value": "1"
 					}
 				],
 				"body": {
@@ -33320,20 +35398,27 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/dashboard",
+					"raw": "{{url}}/api/file/:filename",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"dashboard"
+						"file",
+						":filename"
+					],
+					"variable": [
+						{
+							"key": "filename",
+							"value": "a7ae29da5d45cf3c3cb30d587cc994e8.jpg"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "dashboard total sales",
+			"name": "unapproved status change",
 			"event": [
 				{
 					"listen": "test",
@@ -33346,9 +35431,6 @@
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -33360,7 +35442,7 @@
 						}
 					]
 				},
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Accept",
@@ -33376,142 +35458,25 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/total-sales?type=yearly",
+					"raw": "{{url}}/api/unapproved/:type/:id/update-status",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"total-sales"
+						"unapproved",
+						":type",
+						":id",
+						"update-status"
 					],
-					"query": [
+					"variable": [
 						{
 							"key": "type",
-							"value": "yearly"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "dashboard total receivable payable",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
+							"value": "invoice"
+						},
 						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "company-id",
-						"value": "1"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/api/accounts-receivable-payable?type=last_7",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"accounts-receivable-payable"
-					],
-					"query": [
-						{
-							"key": "type",
-							"value": "last_7"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "dashboard cashflow",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "company-id",
-						"value": "1"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/api/cashflow?type=last_7",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"cashflow"
-					],
-					"query": [
-						{
-							"key": "type",
-							"value": "last_7"
+							"key": "id",
+							"value": "1"
 						}
 					]
 				}
@@ -33679,116 +35644,6 @@
 			"response": []
 		},
 		{
-			"name": "delete file",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "company-id",
-						"value": "1"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/api/file/:filename",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"file",
-						":filename"
-					],
-					"variable": [
-						{
-							"key": "filename",
-							"value": "a7ae29da5d45cf3c3cb30d587cc994e8.jpg"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "unapproved status change",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "company-id",
-						"value": "1"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/api/unapproved/:type/:id/update-status",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"unapproved",
-						":type",
-						":id",
-						"update-status"
-					],
-					"variable": [
-						{
-							"key": "type",
-							"value": "invoice"
-						},
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "https://www.nrb.org.np/api/forex/v1?page=1&per_page=10&from=2024-07-31&to=2024-07-31",
 			"request": {
 				"method": "GET",
@@ -33825,24 +35680,6 @@
 							"key": "to",
 							"value": "2024-07-31"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{url}}/api/test",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/api/test",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"test"
 					]
 				}
 			},
