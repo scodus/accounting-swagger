@@ -59,6 +59,7 @@ tags:
   - name: company > package subscription
   - name: company dashboard
   - name: customer
+  - name: dashboard
   - name: depreciation
   - name: document
   - name: employee
@@ -79,6 +80,9 @@ tags:
   - name: package
   - name: payment cheque
   - name: permission
+  - name: POS
+  - name: CashInOut
+  - name: Cashier Session
   - name: prefix
   - name: product
   - name: product category
@@ -3040,7 +3044,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: ripiw95957@mfunza.com
+                  example: srotcloud@gmail.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -3998,8 +4002,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -6991,6 +6995,113 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/dashboard:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/total-sales:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard total sales
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: yearly
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounts-receivable-payable:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard total receivable payable
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: last_7
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashflow:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard cashflow
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: last_7
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/depreciation:
     post:
       tags:
@@ -9330,15 +9441,15 @@ paths:
               type: object
               example:
                 products:
-                  - product_id: 55
+                  - product_id: 6
                     rate: 10
-                    quantity: 3
-                    amount: 30
+                    quantity: 1
+                    amount: 10
                 discount_type: fixed
                 discount: 0
-                customer_id: 518
+                customer_id: null
                 receiver_id: 106
-                amount: 30
+                amount: 10
       security:
         - bearerAuth: []
       parameters:
@@ -9350,8 +9461,13 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: string
-          example: '{{company-id}}'
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -10272,6 +10388,620 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/pos:
+    post:
+      tags:
+        - POS
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: pos 1
+                address: pos location
+                customer_name: cus 3
+                customer_address: cus location 3
+                email: test@test.com
+                phone_no: '8956256525'
+                pan_number: '656565656'
+                status: active
+                warehouse_id: 11
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - POS
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos/{id}:
+    post:
+      tags:
+        - POS
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                name: pos 3
+                address: pos3 location
+                customer_name: cusas 3
+                customer_address: cusssa location 3
+                email: tessta@tesst.com
+                phone_no: '895625651215'
+                pan_number: '65656561561'
+                warehouse_id: 11
+                status: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - POS
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '18'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos/delete/{id}:
+    delete:
+      tags:
+        - POS
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '17'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos/{pos-id}/dashboard-data:
+    get:
+      tags:
+        - POS
+      summary: Dashboard Data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos/{id}/update-status:
+    post:
+      tags:
+        - POS
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: inactive
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-in-out:
+    post:
+      tags:
+        - CashInOut
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                particular: paper
+                received: 200
+                paid: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - CashInOut
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-in-out/update/{id}:
+    patch:
+      tags:
+        - CashInOut
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                particular: paper
+                received: 100
+                paid: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cash-in-out/delete/{id}:
+    delete:
+      tags:
+        - CashInOut
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '15'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/day-books:
+    get:
+      tags:
+        - CashInOut
+      summary: Day Books
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/day-books/total-amount:
+    get:
+      tags:
+        - CashInOut
+      summary: Day Books Total Amount
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier-session/start:
+    post:
+      tags:
+        - Cashier Session
+      summary: session start
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                drawer_amount: 100
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier-session/end:
+    post:
+      tags:
+        - Cashier Session
+      summary: session end
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                employee_cash_in_hand: 100
+                note: hjgjhgj
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier-session/check:
+    get:
+      tags:
+        - Cashier Session
+      summary: check session
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos-list-by-company/{company_id}:
+    get:
+      tags:
+        - Cashier Session
+      summary: POS list by company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pos-list-by-user:
+    get:
+      tags:
+        - Cashier Session
+      summary: POS list by AuthUser
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/cashier/drawer-amounts:
+    get:
+      tags:
+        - Cashier Session
+      summary: Cashier Drawer Amount
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/prefix/{id}:
     post:
       tags:
@@ -10535,7 +11265,8 @@ paths:
         - name: inventory
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: is_variant_product
           in: query
           schema:
@@ -10706,6 +11437,71 @@ paths:
             type: integer
           required: true
           example: '45'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product-list:
+    get:
+      tags:
+        - product
+      summary: list product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search_keyword
+          in: query
+          schema:
+            type: integer
+          example: '111111111'
+        - name: is_service
+          in: query
+          schema:
+            type: string
+        - name: is_product
+          in: query
+          schema:
+            type: string
+        - name: inventory
+          in: query
+          schema:
+            type: string
+        - name: is_variant_product
+          in: query
+          schema:
+            type: string
+        - name: resource_fields
+          in: query
+          schema:
+            type: string
+          description: id,name,slug,sku
+          example: id,name,slug,sku
       responses:
         '200':
           description: Successful response
@@ -13574,8 +14370,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13606,9 +14402,81 @@ paths:
           example: '4'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:06:22 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999994'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Customer Aging Summary
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/customer-aging-summary
+                    per_page: 10
+                    to: 2
+                    total: 2
+                  data:
+                    - accounth_head_id: 1488
+                      name: Cash Counter
+                      invoice_count: 838
+                      current: 0
+                      0-10: '500600.25'
+                      11-20: '0.00'
+                      21-30: '0.00'
+                      total: '500600.25'
+                    - accounth_head_id: 1546
+                      name: Outlet Customer
+                      invoice_count: 2
+                      current: 0
+                      0-10: '230.00'
+                      11-20: '0.00'
+                      21-30: '0.00'
+                      total: '230.00'
+                  links:
+                    first: http://127.0.0.1:8000/api/customer-aging-summary?page=1
+                    last: http://127.0.0.1:8000/api/customer-aging-summary?page=1
+                    prev: ''
+                    next: ''
   /api/invoice-age:
     get:
       tags:
@@ -13625,8 +14493,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '37'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13649,7 +14517,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-10-01'
         - name: transaction_type
           in: query
           schema:
@@ -13657,9 +14525,195 @@ paths:
           example: invoice,quick_receipt
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:10:14 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999997'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Invoice Age
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 84
+                    path: http://127.0.0.1:8000/api/invoice-age
+                    per_page: 10
+                    to: 10
+                    total: 840
+                  data:
+                    - id: 921
+                      date: '2024-09-26 00:00:00'
+                      due_date: '2024-09-26 00:00:00'
+                      transaction_number: INVO-851
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '225.00'
+                      paid: '225.00'
+                      age_days: 1
+                      created_at: '2024-09-26 10:55:00'
+                      updated_at: '2024-09-26 10:55:00'
+                      type: INVOICE
+                    - id: 920
+                      date: '2024-09-26 00:00:00'
+                      due_date: '2024-09-26 00:00:00'
+                      transaction_number: INVO-850
+                      reference_number: null
+                      customer: Outlet Customer
+                      status: paid
+                      amount: '150.00'
+                      paid: '150.00'
+                      age_days: 1
+                      created_at: '2024-09-26 10:21:02'
+                      updated_at: '2024-09-26 10:21:02'
+                      type: INVOICE
+                    - id: 919
+                      date: '2024-09-26 00:00:00'
+                      due_date: '2024-09-26 00:00:00'
+                      transaction_number: INVO-849
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '150.00'
+                      paid: '150.00'
+                      age_days: 1
+                      created_at: '2024-09-26 10:20:39'
+                      updated_at: '2024-09-26 10:20:39'
+                      type: INVOICE
+                    - id: 918
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-848
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '200.00'
+                      paid: '200.00'
+                      age_days: 2
+                      created_at: '2024-09-25 20:15:03'
+                      updated_at: '2024-09-25 20:15:03'
+                      type: INVOICE
+                    - id: 917
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-847
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '589.50'
+                      paid: '589.50'
+                      age_days: 2
+                      created_at: '2024-09-25 20:14:01'
+                      updated_at: '2024-09-25 20:14:01'
+                      type: INVOICE
+                    - id: 916
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-846
+                      reference_number: null
+                      customer: Cash Counter
+                      status: partial
+                      amount: '135.00'
+                      paid: '120.00'
+                      age_days: 2
+                      created_at: '2024-09-25 20:12:12'
+                      updated_at: '2024-09-25 20:12:12'
+                      type: INVOICE
+                    - id: 915
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-845
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '150.00'
+                      paid: '150.00'
+                      age_days: 2
+                      created_at: '2024-09-25 20:08:24'
+                      updated_at: '2024-09-25 20:08:24'
+                      type: INVOICE
+                    - id: 914
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-844
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '150.00'
+                      paid: '150.00'
+                      age_days: 2
+                      created_at: '2024-09-25 19:52:08'
+                      updated_at: '2024-09-25 19:52:08'
+                      type: INVOICE
+                    - id: 913
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-843
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '1089.00'
+                      paid: '1089.00'
+                      age_days: 2
+                      created_at: '2024-09-25 19:50:38'
+                      updated_at: '2024-09-25 19:50:38'
+                      type: INVOICE
+                    - id: 912
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: INVO-842
+                      reference_number: null
+                      customer: Cash Counter
+                      status: paid
+                      amount: '1080.00'
+                      paid: '1080.00'
+                      age_days: 2
+                      created_at: '2024-09-25 19:45:28'
+                      updated_at: '2024-09-25 19:45:28'
+                      type: INVOICE
+                  links:
+                    first: http://127.0.0.1:8000/api/invoice-age?page=1
+                    last: http://127.0.0.1:8000/api/invoice-age?page=84
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/invoice-age?page=2
   /api/customer-statement:
     get:
       tags:
@@ -13676,8 +14730,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13701,16 +14755,210 @@ paths:
           schema:
             type: string
           example: '2025-07-01'
-        - name: customer_id[]
+        - name: customer_id
           in: query
           schema:
             type: integer
-          example: '402'
+          example: '1488'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:17:17 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999993'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Customer Statement
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 270
+                    path: http://127.0.0.1:8000/api/customer-statement
+                    per_page: 10
+                    to: 10
+                    total: 2693
+                  data:
+                    - entry_date: '2024-09-17 13:27:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 47
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-1
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '900.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 13:27:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 47
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-1
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '120.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 13:27:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 47
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-1
+                      reference_number: null
+                      cr_amount: '1020.00'
+                      dr_amount: '0.00'
+                      particular_id: 1440
+                      description: Cash in Hand
+                    - entry_date: '2024-09-17 13:28:30'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 48
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-2
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '3000.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 13:28:30'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 48
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-2
+                      reference_number: null
+                      cr_amount: '3000.00'
+                      dr_amount: '0.00'
+                      particular_id: 1440
+                      description: Cash in Hand
+                    - entry_date: '2024-09-17 14:19:24'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 49
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-3
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '200.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 14:19:24'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 49
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-3
+                      reference_number: null
+                      cr_amount: '200.00'
+                      dr_amount: '0.00'
+                      particular_id: 1440
+                      description: Cash in Hand
+                    - entry_date: '2024-09-17 15:50:09'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 50
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-4
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '800.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 15:50:09'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 50
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-4
+                      reference_number: null
+                      cr_amount: '800.00'
+                      dr_amount: '0.00'
+                      particular_id: 1489
+                      description: NMB Bank
+                    - entry_date: '2024-09-17 15:51:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 51
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-5
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '500.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                  opening_balance:
+                    total_cr_amount: 0
+                    total_dr_amount: 0
+                    amount: 0
+                  closing_balance:
+                    total_cr_amount: 0
+                    total_dr_amount: 6038.75
+                    amount: 6038.75
+                  links:
+                    first: http://127.0.0.1:8000/api/customer-statement?page=1
+                    last: http://127.0.0.1:8000/api/customer-statement?page=270
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/customer-statement?page=2
   /api/customer-receivable-summary:
     get:
       tags:
@@ -13727,8 +14975,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13746,22 +14994,92 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2023-01-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-09-01'
-        - name: customer_id[]
+          example: '2025-09-01'
+        - name: customer_id
           in: query
           schema:
-            type: string
-          description: array
+            type: integer
+          example: '1488'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:15:29 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999998'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Customer Receivable Summary.
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/customer-receivable-summary
+                    per_page: 10
+                    to: 2
+                    total: 2
+                  data:
+                    - id: 1488
+                      name: Cash Counter
+                      opening_balance: '0.00'
+                      transaction_debit: '518440.25'
+                      transaction_credit: '512401.50'
+                      closing_balance: '6038.75'
+                    - id: 1546
+                      name: Outlet Customer
+                      opening_balance: '0.00'
+                      transaction_debit: '230.00'
+                      transaction_credit: '230.00'
+                      closing_balance: '0.00'
+                  links:
+                    first: >-
+                      http://127.0.0.1:8000/api/customer-receivable-summary?page=1
+                    last: >-
+                      http://127.0.0.1:8000/api/customer-receivable-summary?page=1
+                    prev: ''
+                    next: ''
   /api/vendor-aging-summary:
     get:
       tags:
@@ -13778,8 +15096,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13810,9 +15128,145 @@ paths:
           example: '4'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:04:39 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Vendor Aging Summary
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 4
+                    path: http://127.0.0.1:8000/api/vendor-aging-summary
+                    per_page: 10
+                    to: 10
+                    total: 31
+                  data:
+                    - accounth_head_id: 396
+                      name: A-CUBE ENTERPRISES
+                      bill_count: 1
+                      current: 0
+                      0-60: '71010.00'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '71010.00'
+                    - accounth_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_count: 2
+                      current: 0
+                      0-60: '97856.40'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '97856.40'
+                    - accounth_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_count: 9
+                      current: 0
+                      0-60: '154524.89'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '154524.89'
+                    - accounth_head_id: 401
+                      name: BHOJPURE DUDH DAIRY
+                      bill_count: 94
+                      current: 0
+                      0-60: '307730.00'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '307730.00'
+                    - accounth_head_id: 402
+                      name: BIRENDRA YADAV (FRUITS)
+                      bill_count: 41
+                      current: 0
+                      0-60: '459574.88'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '459574.88'
+                    - accounth_head_id: 404
+                      name: CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.
+                      bill_count: 8
+                      current: 0
+                      0-60: '392400.00'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '392400.00'
+                    - accounth_head_id: 405
+                      name: CONSOLIDATED BRAND HOLDING PVT. LTD.
+                      bill_count: 1
+                      current: 0
+                      0-60: '44700.00'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '44700.00'
+                    - accounth_head_id: 406
+                      name: COOP AGRO PVT. LTD.
+                      bill_count: 13
+                      current: 0
+                      0-60: '601394.68'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '601394.68'
+                    - accounth_head_id: 407
+                      name: GANGOUR SWEET
+                      bill_count: 14
+                      current: 0
+                      0-60: '271905.00'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '271905.00'
+                    - accounth_head_id: 408
+                      name: GITA LAL (AGRIM STORE)
+                      bill_count: 5
+                      current: 0
+                      0-60: '325086.16'
+                      61-120: '0.00'
+                      121-180: '0.00'
+                      total: '325086.16'
+                  links:
+                    first: http://127.0.0.1:8000/api/vendor-aging-summary?page=1
+                    last: http://127.0.0.1:8000/api/vendor-aging-summary?page=4
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/vendor-aging-summary?page=2
   /api/purchase-bill-age:
     get:
       tags:
@@ -13829,8 +15283,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13853,7 +15307,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2025-07-01'
         - name: transaction_type
           in: query
           schema:
@@ -13861,9 +15315,195 @@ paths:
           example: purchase_bill,quick_payment
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:04:44 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999998'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Purchase Bill Age
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 86
+                    path: http://127.0.0.1:8000/api/purchase-bill-age
+                    per_page: 10
+                    to: 10
+                    total: 855
+                  data:
+                    - id: 1410
+                      date: '2024-09-23 00:00:00'
+                      due_date: '2024-09-26 00:00:00'
+                      transaction_number: PB-876
+                      reference_number: null
+                      vendor: LOCAL MARKET - A
+                      status: unpaid
+                      amount: '13180.00'
+                      paid: '0.00'
+                      age_days: 4
+                      created_at: '2024-09-26 10:53:21'
+                      updated_at: '2024-09-26 10:53:25'
+                      type: PURCHASE_BILL
+                    - id: 1409
+                      date: '2024-09-25 00:00:00'
+                      due_date: '2024-09-26 00:00:00'
+                      transaction_number: PB-875
+                      reference_number: '855'
+                      vendor: SANDESH DUDH DAIRY
+                      status: unpaid
+                      amount: '18970.00'
+                      paid: '0.00'
+                      age_days: 2
+                      created_at: '2024-09-26 10:34:51'
+                      updated_at: '2024-09-26 10:34:56'
+                      type: PURCHASE_BILL
+                    - id: 1407
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-874
+                      reference_number: null
+                      vendor: LOCAL MARKET - B
+                      status: unpaid
+                      amount: '375.00'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 16:36:01'
+                      updated_at: '2024-09-25 16:36:11'
+                      type: PURCHASE_BILL
+                    - id: 1406
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-873
+                      reference_number: null
+                      vendor: LOCAL MARKET - B
+                      status: unpaid
+                      amount: '95.20'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 16:31:04'
+                      updated_at: '2024-09-25 16:31:12'
+                      type: PURCHASE_BILL
+                    - id: 1405
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-872
+                      reference_number: null
+                      vendor: LOCAL MARKET - B
+                      status: unpaid
+                      amount: '150.00'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 16:29:02'
+                      updated_at: '2024-09-25 16:29:15'
+                      type: PURCHASE_BILL
+                    - id: 1404
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-871
+                      reference_number: null
+                      vendor: LOCAL MARKET - B
+                      status: unpaid
+                      amount: '330.00'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 16:26:06'
+                      updated_at: '2024-09-25 16:26:14'
+                      type: PURCHASE_BILL
+                    - id: 1403
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-870
+                      reference_number: null
+                      vendor: LOCAL MARKET - B
+                      status: unpaid
+                      amount: '150.00'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 16:16:57'
+                      updated_at: '2024-09-25 16:17:10'
+                      type: PURCHASE_BILL
+                    - id: 1401
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-868
+                      reference_number: null
+                      vendor: LOCAL MARKET - B
+                      status: unpaid
+                      amount: '3820.00'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 16:14:32'
+                      updated_at: '2024-09-25 16:14:37'
+                      type: PURCHASE_BILL
+                    - id: 1400
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-867
+                      reference_number: null
+                      vendor: BIRENDRA YADAV (FRUITS)
+                      status: unpaid
+                      amount: '1332.40'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 15:14:11'
+                      updated_at: '2024-09-25 15:14:17'
+                      type: PURCHASE_BILL
+                    - id: 1399
+                      date: '2024-09-24 00:00:00'
+                      due_date: '2024-09-25 00:00:00'
+                      transaction_number: PB-866
+                      reference_number: null
+                      vendor: BIRENDRA YADAV (FRUITS)
+                      status: unpaid
+                      amount: '11306.00'
+                      paid: '0.00'
+                      age_days: 3
+                      created_at: '2024-09-25 15:10:46'
+                      updated_at: '2024-09-25 15:10:56'
+                      type: PURCHASE_BILL
+                  links:
+                    first: http://127.0.0.1:8000/api/purchase-bill-age?page=1
+                    last: http://127.0.0.1:8000/api/purchase-bill-age?page=86
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/purchase-bill-age?page=2
   /api/vendor-statement:
     get:
       tags:
@@ -13880,8 +15520,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13908,13 +15548,206 @@ paths:
         - name: vendor_id
           in: query
           schema:
-            type: integer
-          example: '160'
+            type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:04:52 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999997'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Vendor Statement
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 272
+                    path: http://127.0.0.1:8000/api/vendor-statement
+                    per_page: 10
+                    to: 10
+                    total: 2711
+                  data:
+                    - entry_date: '2024-08-16 00:00:00'
+                      account_head_id: 396
+                      name: A-CUBE ENTERPRISES
+                      bill_id: 686
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-358
+                      reference_number: '795'
+                      cr_amount: '14640.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 43
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-4
+                      reference_number: null
+                      cr_amount: '22500.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-09-16 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 1047
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-585
+                      reference_number: null
+                      cr_amount: '33750.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-09-16 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 1047
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-585
+                      reference_number: null
+                      cr_amount: '26006.40'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-09-16 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 1047
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-585
+                      reference_number: null
+                      cr_amount: '15600.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '9421.57'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '13369.14'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '6849.90'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '6480.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '3700.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                  opening_balance:
+                    total_cr_amount: 0
+                    total_dr_amount: 0
+                    amount: 0
+                  closing_balance:
+                    total_cr_amount: 19913838.490000002
+                    total_dr_amount: 0
+                    amount: 19913838.490000002
+                  links:
+                    first: http://127.0.0.1:8000/api/vendor-statement?page=1
+                    last: http://127.0.0.1:8000/api/vendor-statement?page=272
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/vendor-statement?page=2
   /api/vendor-payable-summary:
     get:
       tags:
@@ -13931,8 +15764,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13956,11 +15789,131 @@ paths:
           schema:
             type: string
           example: '2024-09-01'
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:03:32 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Vendor Payable Summary.
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 5
+                    path: http://127.0.0.1:8000/api/vendor-payable-summary
+                    per_page: 10
+                    to: 10
+                    total: 50
+                  data:
+                    - id: 396
+                      name: A-CUBE ENTERPRISES
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '14640.00'
+                      closing_balance: '14640.00'
+                    - id: 397
+                      name: ABC MARKETING (CIGG)
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '0.00'
+                      closing_balance: '0.00'
+                    - id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '22500.00'
+                      closing_balance: '22500.00'
+                    - id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '107520.89'
+                      closing_balance: '107520.89'
+                    - id: 400
+                      name: BANEPALI STORE
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '0.00'
+                      closing_balance: '0.00'
+                    - id: 401
+                      name: BHOJPURE DUDH DAIRY
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '157734.00'
+                      closing_balance: '157734.00'
+                    - id: 402
+                      name: BIRENDRA YADAV (FRUITS)
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '262234.31'
+                      closing_balance: '251223.21'
+                    - id: 403
+                      name: BLUE STAR ENTERPRISES
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '0.00'
+                      closing_balance: '0.00'
+                    - id: 404
+                      name: CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '304940.00'
+                      closing_balance: '277335.00'
+                    - id: 405
+                      name: CONSOLIDATED BRAND HOLDING PVT. LTD.
+                      opening_balance: '0.00'
+                      transaction_debit: '0.00'
+                      transaction_credit: '44700.00'
+                      closing_balance: '44700.00'
+                  links:
+                    first: http://127.0.0.1:8000/api/vendor-payable-summary?page=1
+                    last: http://127.0.0.1:8000/api/vendor-payable-summary?page=5
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/vendor-payable-summary?page=2
   /api/sales-summary:
     get:
       tags:
@@ -13977,8 +15930,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13996,12 +15949,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-25'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-01'
+          example: '2024-09-25'
       responses:
         '200':
           description: OK
@@ -14087,8 +16040,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14106,17 +16059,17 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-25'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-01'
+          example: '2024-09-25'
         - name: customer_id
           in: query
           schema:
             type: integer
-          example: '166'
+          example: '1546'
       responses:
         '200':
           description: OK
@@ -14211,8 +16164,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14230,17 +16183,86 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-25'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-12-01'
+          example: '2024-09-25'
+        - name: product_id
+          in: query
+          schema:
+            type: integer
+          example: '1564'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 09:23:31 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999996'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales by Customer
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/sales-by-item
+                    per_page: 10
+                    to: 1
+                    total: 1
+                  data:
+                    - product_id: 1564
+                      product_name: ThermosPlastic Cups 150（塑料杯）
+                      product_count: 4
+                      total: '555.00'
+                      discount: '0.00'
+                      net_sales: '555.00'
+                      tax_amount: 0
+                      total_amount: 555
+                  links:
+                    first: http://127.0.0.1:8000/api/sales-by-item?page=1
+                    last: http://127.0.0.1:8000/api/sales-by-item?page=1
+                    prev: ''
+                    next: ''
   /api/sales-by-customer-monthly:
     get:
       tags:
@@ -14257,8 +16279,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14276,12 +16298,106 @@ paths:
           in: query
           schema:
             type: string
-          example: 2080-2081
+          example: 2081-2082
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 09:23:46 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales by customer monthly
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/sales-by-customer-monthly
+                    per_page: 10
+                    to: 2
+                    total: 2
+                  data:
+                    - customer_id: 1488
+                      customer_name: Cash Counter
+                      shrawan_2081: '0.00'
+                      bhadra_2081: '0.00'
+                      ashwin_2081: '500600.25'
+                      first_quater: '500600.25'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '500600.25'
+                    - customer_id: 1546
+                      customer_name: Outlet Customer
+                      shrawan_2081: '0.00'
+                      bhadra_2081: '0.00'
+                      ashwin_2081: '230.00'
+                      first_quater: '230.00'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '230.00'
+                  links:
+                    first: http://127.0.0.1:8000/api/sales-by-customer-monthly?page=1
+                    last: http://127.0.0.1:8000/api/sales-by-customer-monthly?page=1
+                    prev: ''
+                    next: ''
   /api/sales-by-item-monthly:
     get:
       tags:
@@ -14298,8 +16414,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14317,17 +16433,264 @@ paths:
           in: query
           schema:
             type: string
-          example: 2080-2081
+          example: 2081-2082
         - name: type
           in: query
           schema:
             type: string
-          example: amount
+          description: amount|quantity
+          example: quantity
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 09:38:12 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales by item monthly
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 21
+                    path: http://127.0.0.1:8000/api/sales-by-item-monthly
+                    per_page: 10
+                    to: 10
+                    total: 209
+                  data:
+                    - id: 1818
+                      name: 10pcs Clothes Hanger 250（10个衣架）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 2
+                      first_quater: 2
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 2
+                    - id: 1817
+                      name: 10pcs Clothes Hanger（10个衣架)
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 10
+                      first_quater: 10
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 10
+                    - id: 1706
+                      name: 10pcs Hairbands(皮筋10个组合）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 5
+                      first_quater: 5
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 5
+                    - id: 1701
+                      name: 1pcs Hairbands 100(粗皮筋）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 1
+                      first_quater: 1
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 1
+                    - id: 1700
+                      name: 1pcs Hairbands 50(细皮筋）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 52
+                      first_quater: 52
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 52
+                    - id: 1783
+                      name: 1pcs Hairbands（细皮筋）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 42
+                      first_quater: 42
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 42
+                    - id: 1615
+                      name: 1pcs Neon color（彩笔）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 24
+                      first_quater: 24
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 24
+                    - id: 1621
+                      name: 1pcs Toothbrush（牙刷）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 11
+                      first_quater: 11
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 11
+                    - id: 1616
+                      name: 1pcs Watercolor brush(水彩笔）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 22
+                      first_quater: 22
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 22
+                    - id: 1773
+                      name: 20pcs spone box(塑料勺子20只）
+                      shrawan_2081: 0
+                      bhadra_2081: 0
+                      ashwin_2081: 6
+                      first_quater: 6
+                      kartik_2081: 0
+                      mangsir_2081: 0
+                      poush_2081: 0
+                      second_quater: 0
+                      magh_2081: 0
+                      falgun_2081: 0
+                      chaitra_2081: 0
+                      third_quater: 0
+                      baishakh_2082: 0
+                      jestha_2082: 0
+                      asar_2082: 0
+                      fourth_quater: 0
+                      total: 6
+                  links:
+                    first: http://127.0.0.1:8000/api/sales-by-item-monthly?page=1
+                    last: http://127.0.0.1:8000/api/sales-by-item-monthly?page=21
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/sales-by-item-monthly?page=2
   /api/sales-master-report:
     get:
       tags:
@@ -14344,8 +16707,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14363,12 +16726,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-25'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-01-01'
+          example: '2024-09-25'
         - name: customer_id
           in: query
           schema:
@@ -14379,9 +16742,235 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Sep 2024 10:49:54 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999996'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales Master Report
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 46
+                    path: http://127.0.0.1:8000/api/sales-master-report
+                    per_page: 10
+                    to: 10
+                    total: 460
+                  data:
+                    - id: 47
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-1
+                      reference_number: null
+                      invoice_date: '2024-09-17 13:27:27'
+                      product_id: 1664
+                      product_sku: P-101
+                      product_name: 24pcs Nall（指甲片24片装）
+                      quantity: 3
+                      rate: '300.00'
+                      amount: '900.00'
+                      discount: '0.00'
+                      net_sales: '900.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 900
+                    - id: 47
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-1
+                      reference_number: null
+                      invoice_date: '2024-09-17 13:27:27'
+                      product_id: 1666
+                      product_sku: P-103
+                      product_name: Nail polish(指甲油小瓶装）
+                      quantity: 2
+                      rate: '60.00'
+                      amount: '120.00'
+                      discount: '0.00'
+                      net_sales: '120.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 120
+                    - id: 48
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-2
+                      reference_number: null
+                      invoice_date: '2024-09-17 13:28:30'
+                      product_id: 1667
+                      product_sku: P-104
+                      product_name: 2pcs Hair iron(卷发棒2支装）
+                      quantity: 2
+                      rate: '1500.00'
+                      amount: '3000.00'
+                      discount: '0.00'
+                      net_sales: '3000.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 3000
+                    - id: 49
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-3
+                      reference_number: null
+                      invoice_date: '2024-09-17 14:19:24'
+                      product_id: 1686
+                      product_sku: P-123
+                      product_name: Electronic watches（小电子表）
+                      quantity: 1
+                      rate: '200.00'
+                      amount: '200.00'
+                      discount: '0.00'
+                      net_sales: '200.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 200
+                    - id: 50
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-4
+                      reference_number: null
+                      invoice_date: '2024-09-17 15:50:09'
+                      product_id: 1574
+                      product_sku: P-11
+                      product_name: Clothes Hanger（衣架）
+                      quantity: 4
+                      rate: '200.00'
+                      amount: '800.00'
+                      discount: '0.00'
+                      net_sales: '800.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 800
+                    - id: 51
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-5
+                      reference_number: null
+                      invoice_date: '2024-09-17 15:51:27'
+                      product_id: 1751
+                      product_sku: P-188
+                      product_name: Silk scarves 250（丝巾）
+                      quantity: 2
+                      rate: '250.00'
+                      amount: '500.00'
+                      discount: '0.00'
+                      net_sales: '500.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 500
+                    - id: 51
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-5
+                      reference_number: null
+                      invoice_date: '2024-09-17 15:51:27'
+                      product_id: 1750
+                      product_sku: P-187
+                      product_name: Bunny hat(兔子帽）
+                      quantity: 1
+                      rate: '500.00'
+                      amount: '500.00'
+                      discount: '0.00'
+                      net_sales: '500.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 500
+                    - id: 51
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-5
+                      reference_number: null
+                      invoice_date: '2024-09-17 15:51:27'
+                      product_id: 1611
+                      product_sku: P-48
+                      product_name: Combo(梳子）
+                      quantity: 1
+                      rate: '100.00'
+                      amount: '100.00'
+                      discount: '0.00'
+                      net_sales: '100.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 100
+                    - id: 52
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-6
+                      reference_number: null
+                      invoice_date: '2024-09-17 15:56:36'
+                      product_id: 1657
+                      product_sku: P-94
+                      product_name: Kite(纸鸢）
+                      quantity: 3
+                      rate: '150.00'
+                      amount: '450.00'
+                      discount: '0.00'
+                      net_sales: '450.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 450
+                    - id: 52
+                      customer_id: 1488
+                      customer_name: Cash Counter
+                      invoice_number: INVO-6
+                      reference_number: null
+                      invoice_date: '2024-09-17 15:56:36'
+                      product_id: 1656
+                      product_sku: P-93
+                      product_name: Flashing spiky ball(发光弹弹球）
+                      quantity: 1
+                      rate: '150.00'
+                      amount: '150.00'
+                      discount: '0.00'
+                      net_sales: '150.00'
+                      vat_type: '0'
+                      vat_amount: 0
+                      total_amount: 150
+                  links:
+                    first: http://127.0.0.1:8000/api/sales-master-report?page=1
+                    last: http://127.0.0.1:8000/api/sales-master-report?page=46
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/sales-master-report?page=2
   /api/purchase-summary:
     get:
       tags:
@@ -14417,12 +17006,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-18'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-09-18'
       responses:
         '200':
           description: OK
@@ -14527,17 +17116,17 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-18'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-09-18'
         - name: vendor_id
           in: query
           schema:
             type: integer
-          example: '105'
+          example: '399'
       responses:
         '200':
           description: OK
@@ -14639,8 +17228,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14658,17 +17247,157 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-18'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-09-18'
+        - name: product_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Sep 2024 11:03:12 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Purchase by item
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 29
+                    path: http://127.0.0.1:8000/api/purchase-by-item
+                    per_page: 10
+                    to: 10
+                    total: 281
+                  data:
+                    - product_id: 86
+                      product_name: 8848 VODKA
+                      product_count: 47430
+                      total: '124603.80'
+                      discount: '0.00'
+                      net_sales: '124603.80'
+                      tax_amount: 0
+                      total_amount: 124603.8
+                    - product_id: 87
+                      product_name: A4 SIZE PAPER
+                      product_count: 480
+                      total: '480.00'
+                      discount: '0.00'
+                      net_sales: '480.00'
+                      tax_amount: 0
+                      total_amount: 480
+                    - product_id: 88
+                      product_name: RICE AARATI CLASSIC
+                      product_count: 500
+                      total: '96250.00'
+                      discount: '0.00'
+                      net_sales: '96250.00'
+                      tax_amount: 0
+                      total_amount: 96250
+                    - product_id: 91
+                      product_name: ABSULATE VODKA
+                      product_count: 5000
+                      total: '30250.00'
+                      discount: '0.00'
+                      net_sales: '30250.00'
+                      tax_amount: 0
+                      total_amount: 30250
+                    - product_id: 92
+                      product_name: AJINOMOTO
+                      product_count: 75
+                      total: '23750.00'
+                      discount: '0.00'
+                      net_sales: '23750.00'
+                      tax_amount: 0
+                      total_amount: 23750
+                    - product_id: 93
+                      product_name: AIR FRESHENER
+                      product_count: 65
+                      total: '14280.00'
+                      discount: '0.00'
+                      net_sales: '14280.00'
+                      tax_amount: 0
+                      total_amount: 14280
+                    - product_id: 94
+                      product_name: AIR POWER PACKET
+                      product_count: 36
+                      total: '3276.00'
+                      discount: '0.00'
+                      net_sales: '3276.00'
+                      tax_amount: 0
+                      total_amount: 3276
+                    - product_id: 95
+                      product_name: ALMOND
+                      product_count: 22
+                      total: '28835.00'
+                      discount: '0.00'
+                      net_sales: '28835.00'
+                      tax_amount: 0
+                      total_amount: 28835
+                    - product_id: 97
+                      product_name: ALMUNIUM CONTAINER-S (250ML)
+                      product_count: 5500
+                      total: '15605.00'
+                      discount: '0.00'
+                      net_sales: '15605.00'
+                      tax_amount: 0
+                      total_amount: 15605
+                    - product_id: 98
+                      product_name: ALMUNIUM CONTAINER-L (660ML)
+                      product_count: 8000
+                      total: '41600.00'
+                      discount: '0.00'
+                      net_sales: '41600.00'
+                      tax_amount: 0
+                      total_amount: 41600
+                  links:
+                    first: http://127.0.0.1:8000/api/purchase-by-item?page=1
+                    last: http://127.0.0.1:8000/api/purchase-by-item?page=29
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/purchase-by-item?page=2
   /api/purchase-by-vendor-monthly:
     get:
       tags:
@@ -14685,8 +17414,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14704,12 +17433,261 @@ paths:
           in: query
           schema:
             type: string
-          example: 2080-2081
+          example: 2081-2082
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 10:45:50 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999998'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales by vendor monthly
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 4
+                    path: http://127.0.0.1:8000/api/purchase-by-vendor-monthly
+                    per_page: 10
+                    to: 10
+                    total: 31
+                  data:
+                    - vendor_id: 396
+                      vendor_name: A-CUBE ENTERPRISES
+                      shrawan_2081: '71010.00'
+                      bhadra_2081: '0.00'
+                      ashwin_2081: '0.00'
+                      first_quater: '71010.00'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '71010.00'
+                    - vendor_id: 398
+                      vendor_name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      shrawan_2081: '22500.00'
+                      bhadra_2081: '75356.40'
+                      ashwin_2081: '0.00'
+                      first_quater: '97856.40'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '97856.40'
+                    - vendor_id: 399
+                      vendor_name: B. S. B. TRADERS (POTATO/ONION)
+                      shrawan_2081: '67358.61'
+                      bhadra_2081: '72208.28'
+                      ashwin_2081: '14958.00'
+                      first_quater: '154524.89'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '154524.89'
+                    - vendor_id: 401
+                      vendor_name: BHOJPURE DUDH DAIRY
+                      shrawan_2081: '139865.00'
+                      bhadra_2081: '131690.00'
+                      ashwin_2081: '36175.00'
+                      first_quater: '307730.00'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '307730.00'
+                    - vendor_id: 402
+                      vendor_name: BIRENDRA YADAV (FRUITS)
+                      shrawan_2081: '183049.01'
+                      bhadra_2081: '191513.75'
+                      ashwin_2081: '85012.12'
+                      first_quater: '459574.88'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '459574.88'
+                    - vendor_id: 404
+                      vendor_name: CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.
+                      shrawan_2081: '228880.00'
+                      bhadra_2081: '133720.00'
+                      ashwin_2081: '29800.00'
+                      first_quater: '392400.00'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '392400.00'
+                    - vendor_id: 405
+                      vendor_name: CONSOLIDATED BRAND HOLDING PVT. LTD.
+                      shrawan_2081: '44700.00'
+                      bhadra_2081: '0.00'
+                      ashwin_2081: '0.00'
+                      first_quater: '44700.00'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '44700.00'
+                    - vendor_id: 406
+                      vendor_name: COOP AGRO PVT. LTD.
+                      shrawan_2081: '281144.79'
+                      bhadra_2081: '246164.85'
+                      ashwin_2081: '74085.04'
+                      first_quater: '601394.68'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '601394.68'
+                    - vendor_id: 407
+                      vendor_name: GANGOUR SWEET
+                      shrawan_2081: '61650.00'
+                      bhadra_2081: '210255.00'
+                      ashwin_2081: '0.00'
+                      first_quater: '271905.00'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '271905.00'
+                    - vendor_id: 408
+                      vendor_name: GITA LAL (AGRIM STORE)
+                      shrawan_2081: '207631.56'
+                      bhadra_2081: '108754.60'
+                      ashwin_2081: '8700.00'
+                      first_quater: '325086.16'
+                      kartik_2081: '0.00'
+                      mangsir_2081: '0.00'
+                      poush_2081: '0.00'
+                      second_quater: '0.00'
+                      magh_2081: '0.00'
+                      falgun_2081: '0.00'
+                      chaitra_2081: '0.00'
+                      third_quater: '0.00'
+                      baishakh_2082: '0.00'
+                      jestha_2082: '0.00'
+                      asar_2082: '0.00'
+                      fourth_quater: '0.00'
+                      total: '325086.16'
+                  links:
+                    first: >-
+                      http://127.0.0.1:8000/api/purchase-by-vendor-monthly?page=1
+                    last: >-
+                      http://127.0.0.1:8000/api/purchase-by-vendor-monthly?page=4
+                    prev: ''
+                    next: >-
+                      http://127.0.0.1:8000/api/purchase-by-vendor-monthly?page=2
   /api/purchase-by-item-monthly:
     get:
       tags:
@@ -14726,8 +17704,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14750,7 +17728,8 @@ paths:
           in: query
           schema:
             type: string
-          example: amount
+          description: amount|quantity
+          example: quantity
       responses:
         '200':
           description: Successful response
@@ -14772,8 +17751,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14791,12 +17770,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-18'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-01-01'
+          example: '2024-09-18'
         - name: vendor_id
           in: query
           schema:
@@ -14807,9 +17786,235 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Sep 2024 11:32:21 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999996'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Sales Master Report
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 200
+                    path: http://127.0.0.1:8000/api/purchase-master-report
+                    per_page: 10
+                    to: 10
+                    total: 1998
+                  data:
+                    - id: 18
+                      vendor_id: 1091
+                      vendor_name: RAJAN MEAT SHOP ( FISH)
+                      bill_number: PB-1
+                      reference_number: null
+                      bill_date: '2024-08-04 00:00:00'
+                      product_id: 214
+                      product_sku: FIS00286
+                      product_name: FISH RAW
+                      quantity: 5
+                      rate: '470.00'
+                      amount: '2350.00'
+                      discount: '0.00'
+                      net_sales: '2350.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 2350
+                    - id: 41
+                      vendor_id: 412
+                      vendor_name: LOCAL MARKET - A
+                      bill_number: PB-2
+                      reference_number: null
+                      bill_date: '2024-08-02 00:00:00'
+                      product_id: 397
+                      product_sku: SAL0010
+                      product_name: SALT
+                      quantity: 2
+                      rate: '20.00'
+                      amount: '40.00'
+                      discount: '0.00'
+                      net_sales: '40.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 40
+                    - id: 41
+                      vendor_id: 412
+                      vendor_name: LOCAL MARKET - A
+                      bill_number: PB-2
+                      reference_number: null
+                      bill_date: '2024-08-02 00:00:00'
+                      product_id: 452
+                      product_sku: TOM00119
+                      product_name: TOMATO KETCHUP
+                      quantity: 1
+                      rate: '10.00'
+                      amount: '10.00'
+                      discount: '0.00'
+                      net_sales: '10.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 10
+                    - id: 42
+                      vendor_id: 1089
+                      vendor_name: SNP HOSPITALITY
+                      bill_number: PB-3
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 451
+                      product_sku: TOI00411
+                      product_name: TOILET PAPER
+                      quantity: 10
+                      rate: '100.00'
+                      amount: '1000.00'
+                      discount: '0.00'
+                      net_sales: '1000.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 1000
+                    - id: 43
+                      vendor_id: 398
+                      vendor_name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_number: PB-4
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 325
+                      product_sku: NAP00115
+                      product_name: NAPKIN PRINTED
+                      quantity: 500
+                      rate: '45.00'
+                      amount: '22500.00'
+                      discount: '0.00'
+                      net_sales: '22500.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 22500
+                    - id: 44
+                      vendor_id: 399
+                      vendor_name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_number: PB-5
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 375
+                      product_sku: POT0063
+                      product_name: POTATO
+                      quantity: 157
+                      rate: '60.01'
+                      amount: '9421.57'
+                      discount: '0.00'
+                      net_sales: '9421.57'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 9421.57
+                    - id: 44
+                      vendor_id: 399
+                      vendor_name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_number: PB-5
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 334
+                      product_sku: ONI0064
+                      product_name: ONION
+                      quantity: 153
+                      rate: '87.38'
+                      amount: '13369.14'
+                      discount: '0.00'
+                      net_sales: '13369.14'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 13369.14
+                    - id: 44
+                      vendor_id: 399
+                      vendor_name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_number: PB-5
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 205
+                      product_sku: DRY0082
+                      product_name: DRY GARLIC
+                      quantity: 27
+                      rate: '253.70'
+                      amount: '6849.90'
+                      discount: '0.00'
+                      net_sales: '6849.90'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 6849.9
+                    - id: 44
+                      vendor_id: 399
+                      vendor_name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_number: PB-5
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 206
+                      product_sku: DRY0083
+                      product_name: DRY GINGER
+                      quantity: 27
+                      rate: '240.00'
+                      amount: '6480.00'
+                      discount: '0.00'
+                      net_sales: '6480.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 6480
+                    - id: 44
+                      vendor_id: 399
+                      vendor_name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_number: PB-5
+                      reference_number: null
+                      bill_date: '2024-08-05 00:00:00'
+                      product_id: 203
+                      product_sku: DRY0084
+                      product_name: DRY CHILLI
+                      quantity: 8
+                      rate: '462.50'
+                      amount: '3700.00'
+                      discount: '0.00'
+                      net_sales: '3700.00'
+                      vat_type: null
+                      vat_amount: 0
+                      total_amount: 3700
+                  links:
+                    first: http://127.0.0.1:8000/api/purchase-master-report?page=1
+                    last: http://127.0.0.1:8000/api/purchase-master-report?page=200
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/purchase-master-report?page=2
   /api/inventory-position:
     get:
       tags:
@@ -14826,8 +18031,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14845,17 +18050,143 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-18'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-09-18'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 09:45:58 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999996'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Inventory Position
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 25
+                    path: http://127.0.0.1:8000/api/inventory-position
+                    per_page: 10
+                    to: 10
+                    total: 243
+                  data:
+                    - product_id: 1564
+                      product_name: ThermosPlastic Cups 150（塑料杯）
+                      product_sku: P-1
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1565
+                      product_name: ThermosPlastic Cups 200（塑料杯）
+                      product_sku: P-2
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1566
+                      product_name: ThermosPlastic Cups 300（塑料杯）
+                      product_sku: P-3
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1567
+                      product_name: ThermosPlastic Cups 400（塑料杯）
+                      product_sku: P-4
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1568
+                      product_name: ThermosPlastic Cups 450（塑料杯）
+                      product_sku: P-5
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1569
+                      product_name: ThermosPlastic Cups 500（塑料杯）
+                      product_sku: P-6
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1570
+                      product_name: Thermos 700（保温杯）
+                      product_sku: P-7
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1571
+                      product_name: Thermos 800（保温杯）
+                      product_sku: P-8
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1572
+                      product_name: Cup（口杯）
+                      product_sku: P-9
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                    - product_id: 1573
+                      product_name: Sticking Hooks 200（粘钩）
+                      product_sku: P-10
+                      unit: pcs
+                      quantity: ''
+                      rate: ''
+                      amount: ''
+                  links:
+                    first: http://127.0.0.1:8000/api/inventory-position?page=1
+                    last: http://127.0.0.1:8000/api/inventory-position?page=25
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/inventory-position?page=2
   /api/inventory-master-report:
     get:
       tags:
@@ -14872,8 +18203,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '37'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14891,22 +18222,259 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2024-09-18'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-07-01'
+          example: '2024-09-18'
         - name: transaction_type
           in: query
           schema:
             type: string
-          example: invoice,purchase_bill
+          description: invoice,purchase_bill
+          example: invoice
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 09:48:59 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999997'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Inventory Master Report
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 35
+                    path: http://127.0.0.1:8000/api/inventory-master-report
+                    per_page: 10
+                    to: 10
+                    total: 346
+                  data:
+                    - id: 221
+                      entry_date: '2024-09-18 21:02:32'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-172
+                      reference_number: null
+                      product_name: Bodywasher（浴球）
+                      product_sku: P-17
+                      product_category_name: Daily Necessities
+                      quantity: 1
+                      unit: pcs
+                      rate: '150.00'
+                      amount: 150
+                      discount: '0.00'
+                      net_amount: 150
+                      vat_amount: 0
+                      total_amount: '150.00'
+                    - id: 220
+                      entry_date: '2024-09-18 21:01:30'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-171
+                      reference_number: null
+                      product_name: Nail polish(指甲油小瓶装）
+                      product_sku: P-103
+                      product_category_name: Cosmetics
+                      quantity: 1
+                      unit: pcs
+                      rate: '60.00'
+                      amount: 60
+                      discount: '0.00'
+                      net_amount: 60
+                      vat_amount: 0
+                      total_amount: '60.00'
+                    - id: 220
+                      entry_date: '2024-09-18 21:01:30'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-171
+                      reference_number: null
+                      product_name: Combomashage（洗头刷）
+                      product_sku: P-18
+                      product_category_name: Daily Necessities
+                      quantity: 1
+                      unit: pcs
+                      rate: '150.00'
+                      amount: 150
+                      discount: '0.00'
+                      net_amount: 150
+                      vat_amount: 0
+                      total_amount: '150.00'
+                    - id: 219
+                      entry_date: '2024-09-18 20:35:38'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-170
+                      reference_number: null
+                      product_name: Small doll(小号玩偶)
+                      product_sku: P-98
+                      product_category_name: Toys
+                      quantity: 1
+                      unit: pcs
+                      rate: '300.00'
+                      amount: 300
+                      discount: '0.00'
+                      net_amount: 300
+                      vat_amount: 0
+                      total_amount: '300.00'
+                    - id: 218
+                      entry_date: '2024-09-18 20:30:05'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-169
+                      reference_number: null
+                      product_name: Toy big gun(狙击枪）
+                      product_sku: P-71
+                      product_category_name: Toys
+                      quantity: 1
+                      unit: pcs
+                      rate: '200.00'
+                      amount: 200
+                      discount: '0.00'
+                      net_amount: 200
+                      vat_amount: 0
+                      total_amount: '200.00'
+                    - id: 218
+                      entry_date: '2024-09-18 20:30:05'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-169
+                      reference_number: null
+                      product_name: Toy car 200（玩具越野车）
+                      product_sku: P-65
+                      product_category_name: Toys
+                      quantity: 1
+                      unit: pcs
+                      rate: '200.00'
+                      amount: 200
+                      discount: '0.00'
+                      net_amount: 200
+                      vat_amount: 0
+                      total_amount: '200.00'
+                    - id: 218
+                      entry_date: '2024-09-18 20:30:05'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-169
+                      reference_number: null
+                      product_name: Toy dumper car(玩具翻斗车）
+                      product_sku: P-92
+                      product_category_name: Toys
+                      quantity: 1
+                      unit: pcs
+                      rate: '100.00'
+                      amount: 100
+                      discount: '0.00'
+                      net_amount: 100
+                      vat_amount: 0
+                      total_amount: '100.00'
+                    - id: 217
+                      entry_date: '2024-09-18 20:29:14'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-168
+                      reference_number: null
+                      product_name: Claw clip(大发夹）
+                      product_sku: P-168
+                      product_category_name: Trinket
+                      quantity: 1
+                      unit: pcs
+                      rate: '100.00'
+                      amount: 100
+                      discount: '0.00'
+                      net_amount: 100
+                      vat_amount: 0
+                      total_amount: '80.00'
+                    - id: 216
+                      entry_date: '2024-09-18 20:28:19'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-167
+                      reference_number: null
+                      product_name: Doll(芭比娃娃
+                      product_sku: P-75
+                      product_category_name: Toys
+                      quantity: 1
+                      unit: pcs
+                      rate: '50.00'
+                      amount: 50
+                      discount: '0.00'
+                      net_amount: 50
+                      vat_amount: 0
+                      total_amount: '50.00'
+                    - id: 215
+                      entry_date: '2024-09-18 20:26:48'
+                      contact: Cash Counter
+                      type: invoice
+                      account: Sales Goods
+                      transaction_number: INVO-166
+                      reference_number: null
+                      product_name: ThermosPlastic Cups 300（塑料杯）
+                      product_sku: P-3
+                      product_category_name: Daily Necessities
+                      quantity: 1
+                      unit: pcs
+                      rate: '300.00'
+                      amount: 300
+                      discount: '0.00'
+                      net_amount: 300
+                      vat_amount: 0
+                      total_amount: '300.00'
+                  links:
+                    first: http://127.0.0.1:8000/api/inventory-master-report?page=1
+                    last: http://127.0.0.1:8000/api/inventory-master-report?page=35
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/inventory-master-report?page=2
   /api/income-statement:
     get:
       tags:
@@ -15147,8 +18715,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15536,8 +19104,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15568,7 +19136,7 @@ paths:
           schema:
             type: integer
           description: required, product_id
-          example: '36'
+          example: '87'
       responses:
         '200':
           description: OK
@@ -15726,8 +19294,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15752,13 +19320,13 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-08-22'
+          example: '2024-10-22'
         - name: product_id
           in: query
           schema:
             type: integer
           description: required, product_id
-          example: '36'
+          example: '53'
       responses:
         '200':
           description: OK
@@ -16011,8 +19579,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -16163,11 +19731,11 @@ paths:
                     last: http://127.0.0.1:8000/api/stock-valuation-report?page=3
                     prev: ''
                     next: http://127.0.0.1:8000/api/stock-valuation-report?page=2
-  /api/role:
+  /api/report-total/{type}:
     get:
       tags:
-        - default
-      summary: role list
+        - report
+      summary: report total
       security:
         - bearerAuth: []
       parameters:
@@ -16176,6 +19744,143 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: date start
+          example: '2024-06-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: date end
+          example: '2024-09-22'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+          description: warehouse_department_id "1,2"
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: product id string "1,2,3" or "1"
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+        - name: year
+          in: query
+          schema:
+            type: string
+          description: e.g. 2081-2082
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: amount||quantity
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: >-
+            Report Name, e.g. stock_issue_report, stock_consumption_report,
+            stock_returns_report,sales_summary_report,purchase_summary_report, 
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 23 Sep 2024 08:28:27 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999994'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Report Total
+                data:
+                  totals:
+                    total_quantity: 1586356.7099999993
+                    total_amount: 10001089.509999996
+  /api/role:
+    get:
+      tags:
+        - role
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -16414,11 +20119,11 @@ paths:
             schema:
               type: object
               example:
-                customer_id: 114
+                customer_id: 1488
                 products:
-                  - product_id: 68
+                  - product_id: 1788
                     quantity: 10
-                    rate: 0
+                    rate: 10
                     amount: 100
       security:
         - bearerAuth: []
@@ -16433,6 +20138,10 @@ paths:
           schema:
             type: string
           example: '{{company-id}}'
+        - name: pos-id
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -16560,6 +20269,10 @@ paths:
           schema:
             type: string
           example: '{{company-id}}'
+        - name: pos-id
+          in: header
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -17353,6 +21066,9 @@ paths:
                 allow_negative_inventory:
                   type: integer
                   example: '0'
+                template_id:
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -17391,8 +21107,8 @@ paths:
           required: true
           description: >-
             general || payment-mode || warehouse ||
-            invoice_template||invoice_bank
-          example: general
+            invoice_template||invoice_bank||purchase_template
+          example: invoice_template
       responses:
         '200':
           description: Successful response
@@ -19082,8 +22798,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -19824,165 +23540,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/dashboard:
-    get:
-      tags:
-        - default
-      summary: dashboard
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/total-sales:
-    get:
-      tags:
-        - default
-      summary: dashboard total sales
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: type
-          in: query
-          schema:
-            type: string
-          example: yearly
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/accounts-receivable-payable:
-    get:
-      tags:
-        - default
-      summary: dashboard total receivable payable
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: type
-          in: query
-          schema:
-            type: string
-          example: last_7
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/cashflow:
-    get:
-      tags:
-        - default
-      summary: dashboard cashflow
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: type
-          in: query
-          schema:
-            type: string
-          example: last_7
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/test:
-    get:
-      tags:
-        - default
-      summary: '{{url}}/api/test'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/test-auth:
-    get:
-      tags:
-        - default
-      summary: test auth
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/test-no-auth-check:
-    get:
-      tags:
-        - default
-      summary: test no auth check
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/test-auth-check:
-    get:
-      tags:
-        - default
-      summary: test auth check
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/file/{filename}:
     delete:
       tags:
@@ -20042,6 +23599,66 @@ paths:
             type: integer
           required: true
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test:
+    get:
+      tags:
+        - default
+      summary: test
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test-auth:
+    get:
+      tags:
+        - default
+      summary: test auth
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test-no-auth-check:
+    get:
+      tags:
+        - default
+      summary: test no auth check
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/test-auth-check:
+    get:
+      tags:
+        - default
+      summary: test auth check
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
       responses:
         '200':
           description: Successful response
