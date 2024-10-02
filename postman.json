@@ -5583,13 +5583,13 @@
 								{
 									"key": "email",
 									"value": "ripiw95957@mfunza.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "srotcloud@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -18483,7 +18483,7 @@
 							"variable": [
 								{
 									"key": "pos-id",
-									"value": "15"
+									"value": "2"
 								}
 							]
 						}
@@ -19174,7 +19174,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -21528,12 +21528,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vendor_id\": 44,\n    \"receiver_id\": 3,\n    \"payment_mode\": \"cheque\",\n    \"bank_id\": 45,\n    \"cheque_id\": 1,\n    \"received_date\": \"2024-04-01\",\n    \"amount\": \"1000.00\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 3,\n            \"allocated_amount\": \"1000.00\",\n            \"tds\": \"\"\n        }\n    ],\n    \"tds\": null,\n    \"is_single_bill_payment\": 1\n}",
+							"raw": "{\n    \"vendor_id\": 220,\n    \"receiver_id\": 106,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"received_date\": \"2024-10-04\",\n    \"amount\": 750.00,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 24,\n            \"allocated_amount\": 750.00,\n            \"tds\":50,\n            \"payment_discount\": 100\n        }\n    ],\n    // \"payment_discount\": 50,\n    // \"tds\": null,\n    \"is_single_bill_payment\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -21574,12 +21574,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 38,\n    \"receiver_id\": \"3\",\n    \"received_date\": \"2023-01-01\",\n    \"amount\": 1000,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 16,\n            \"allocated_amount\": 1000\n        }\n    ]\n}",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"vendor_id\": 220,\n    \"receiver_id\": 106,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"received_date\": \"2024-10-01\",\n    \"amount\": 500.00,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 21,\n            \"allocated_amount\": 500.00,\n            \"tds\":20,\n            \"payment_discount\": 50\n        }\n    ],\n    // \"payment_discount\": 50,\n    // \"tds\": null,\n    \"is_single_bill_payment\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -21626,7 +21626,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21639,7 +21639,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-payment?bill_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
+							"raw": "{{url}}/api/purchase-payment?bill_id=&status=&date[0]=2023-09-01&date[1]=2024-12-01&start_date=2023-09-01&end_date=2024-12-01",
 							"host": [
 								"{{url}}"
 							],
@@ -21662,7 +21662,7 @@
 								},
 								{
 									"key": "date[1]",
-									"value": "2024-04-01"
+									"value": "2024-12-01"
 								},
 								{
 									"key": "start_date",
@@ -21670,7 +21670,7 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2024-04-01"
+									"value": "2024-12-01"
 								}
 							]
 						}
@@ -21694,7 +21694,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21715,7 +21715,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "10"
+									"value": "122"
 								}
 							]
 						}
@@ -21791,7 +21791,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21811,7 +21811,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "116"
 								}
 							]
 						}
@@ -24492,7 +24492,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id=1488",
+									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id=216",
 									"host": [
 										"{{url}}"
 									],
@@ -24528,7 +24528,7 @@
 										},
 										{
 											"key": "customer_id",
-											"value": "1488"
+											"value": "216"
 										}
 									]
 								}
@@ -25886,7 +25886,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2024-09-25&end_date=2024-09-25&product_id=1564",
+									"raw": "{{url}}/api/sales-by-item?paginate=1&page=&limit=&start_date=2023-09-25&end_date=2024-10-25&product_id=&product_category_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -25909,15 +25909,19 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-09-25"
+											"value": "2023-09-25"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-09-25"
+											"value": "2024-10-25"
 										},
 										{
 											"key": "product_id",
-											"value": "1564"
+											"value": ""
+										},
+										{
+											"key": "product_category_id",
+											"value": ""
 										}
 									]
 								}
@@ -26889,7 +26893,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2024-09-18&end_date=2024-09-18&product_id=",
+									"raw": "{{url}}/api/purchase-by-item?paginate=1&page=&limit=&start_date=2023-09-18&end_date=2024-12-18&product_id=&product_category_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -26912,14 +26916,18 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-09-18"
+											"value": "2023-09-18"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-09-18"
+											"value": "2024-12-18"
 										},
 										{
 											"key": "product_id",
+											"value": ""
+										},
+										{
+											"key": "product_category_id",
 											"value": ""
 										}
 									]
@@ -30435,7 +30443,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"customer_id\": 114,\n    \"receiver_id\": 104,\n    \"received_date\": \"2024-08-01\",\n    \"amount\": 1300,\n    \"payment_mode\": \"\",\n    \"bank_name\": \"\",\n    \"cheque_number\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 6,\n            \"allocated_amount\": 1300,\n            \"tds\": null\n        }\n    ]\n}",
+							"raw": "{\n    // \"customer_id\": 348,\n    \"customer_id\": 403,\n    \"receiver_id\": 106,\n    \"received_date\": \"2024-10-04\",\n    \"amount\": 1200,\n    \"payment_mode\": \"\",\n    \"bank_name\": \"\",\n    \"cheque_number\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 138,\n            \"allocated_amount\": 1200,\n            \"tds\": 100,\n            \"payment_discount\": 250\n        }\n    ],\n    // \"payment_discount\": 5,\n    \"is_single_invoice_payment\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -30476,12 +30484,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 34,\n    \"receiver_id\": \"8\",\n    \"received_date\": \"2023-08-01\",\n    \"amount\": 400,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 1,\n            \"allocated_amount\": 200,\n            \"td\": \"\"\n        },\n        {\n            \"invoice_id\": 2,\n            \"allocated_amount\": 200,\n            \"tds\": \"\"\n        }\n    ]\n}\n\n",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"customer_id\": 348,\n    \"receiver_id\": 106,\n    \"received_date\": \"2024-10-01\",\n    \"amount\": 20,\n    \"payment_mode\": \"\",\n    \"bank_name\": \"\",\n    \"cheque_number\": \"\",\n    \"payment_reference\": \"\",\n    \"note\": \"\",\n    \"payment_allocation\": [\n        {\n            \"invoice_id\": 134,\n            \"allocated_amount\": 375,\n            \"tds\": 25,\n            \"payment_discount\": 50\n        }\n    ],\n    // \"payment_discount\": 4,\n    \"is_single_invoice_payment\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -30501,7 +30509,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "113"
 								}
 							]
 						}
@@ -30528,7 +30536,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -30541,7 +30549,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-payment?invoice_id=&status=&date[0]=2023-09-01&date[1]=2024-04-01&start_date=2023-09-01&end_date=2024-04-01",
+							"raw": "{{url}}/api/sales-payment?paginate=1&page=&limit=&search_keyword=&status=&invoice_id=&status=&date[0]=2023-09-01&date[1]=2024-12-01&start_date=2023-09-01&end_date=2024-12-01",
 							"host": [
 								"{{url}}"
 							],
@@ -30550,6 +30558,26 @@
 								"sales-payment"
 							],
 							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
 								{
 									"key": "invoice_id",
 									"value": ""
@@ -30564,7 +30592,7 @@
 								},
 								{
 									"key": "date[1]",
-									"value": "2024-04-01"
+									"value": "2024-12-01"
 								},
 								{
 									"key": "start_date",
@@ -30572,7 +30600,7 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2024-04-01"
+									"value": "2024-12-01"
 								}
 							]
 						}
@@ -30596,7 +30624,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -30617,7 +30645,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6"
+									"value": "123"
 								}
 							]
 						}
@@ -30693,7 +30721,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -30713,7 +30741,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "112"
 								}
 							]
 						}
@@ -35233,6 +35261,13 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"protocolProfileBehavior": {
@@ -35257,7 +35292,7 @@
 					},
 					{
 						"key": "company-id",
-						"value": "1"
+						"value": "{{company-id}}"
 					}
 				],
 				"body": {
@@ -35265,7 +35300,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "{{url}}/api/draft-items?paginate=1&page=1&limit=&search_keyword=&type=invoice",
+					"raw": "{{url}}/api/draft-items?paginate=1&page=1&limit=&search_keyword=&type=",
 					"host": [
 						"{{url}}"
 					],
@@ -35292,7 +35327,8 @@
 						},
 						{
 							"key": "type",
-							"value": "invoice"
+							"value": "",
+							"description": "invoice"
 						}
 					]
 				}
