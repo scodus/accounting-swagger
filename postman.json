@@ -24073,7 +24073,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "audio/mp4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -24081,7 +24081,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/cashflow-summary?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
+									"raw": "{{url}}/api/cashflow-summary?start_date=2024-09-01&end_date=2024-10-30",
 									"host": [
 										"{{url}}"
 									],
@@ -24092,28 +24092,130 @@
 									"query": [
 										{
 											"key": "paginate",
-											"value": "1"
+											"value": "1",
+											"disabled": true
 										},
 										{
 											"key": "page",
-											"value": ""
+											"value": "",
+											"disabled": true
 										},
 										{
 											"key": "limit",
-											"value": ""
+											"value": "",
+											"disabled": true
 										},
 										{
 											"key": "start_date",
-											"value": "2024-06-01"
+											"value": "2024-09-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-21"
+											"value": "2024-10-30"
 										}
 									]
 								}
 							},
-							"response": []
+							"response": [
+								{
+									"name": "cashflow summary",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/cashflow-summary?start_date=2024-09-01&end_date=2024-10-30",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"cashflow-summary"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "limit",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "start_date",
+													"value": "2024-09-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-10-30"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 04 Oct 2024 12:05:14 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Cashflow Summary\",\n    \"data\": {\n        \"data\": {\n            \"starting_balance\": {\n                \"balance\": 476213.57,\n                \"items\": [\n                    {\n                        \"name\": \"Cash in Hand\",\n                        \"account_head_id\": 106,\n                        \"balance\": 234\n                    },\n                    {\n                        \"name\": \"Rastra Bank\",\n                        \"account_head_id\": 162,\n                        \"balance\": 476669.57\n                    },\n                    {\n                        \"name\": \"Ut do mollitia sed f\",\n                        \"account_head_id\": 224,\n                        \"balance\": -690\n                    }\n                ]\n            },\n            \"received_from_customers\": {\n                \"cash_in\": 163491.63,\n                \"cash_out\": 996.59,\n                \"balance\": 162495.04,\n                \"items\": [\n                    {\n                        \"name\": \"Ad labore hic nostru\",\n                        \"cash_in\": \"855.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"855.00\"\n                    },\n                    {\n                        \"name\": \"asas\",\n                        \"cash_in\": \"8273.24\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"8273.24\"\n                    },\n                    {\n                        \"name\": \"asda\",\n                        \"cash_in\": \"1120.65\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"1120.65\"\n                    },\n                    {\n                        \"name\": \"asdasd\",\n                        \"cash_in\": \"11451.44\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"11451.44\"\n                    },\n                    {\n                        \"name\": \"Bir Bahadur\",\n                        \"cash_in\": \"944.00\",\n                        \"cash_out\": \"952.59\",\n                        \"balance\": \"-8.59\"\n                    },\n                    {\n                        \"name\": \"Darnia Gone\",\n                        \"cash_in\": \"6024.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"6024.00\"\n                    },\n                    {\n                        \"name\": \"dddd\",\n                        \"cash_in\": \"7197.61\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"7197.61\"\n                    },\n                    {\n                        \"name\": \"ds\",\n                        \"cash_in\": \"1759.65\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"1759.65\"\n                    },\n                    {\n                        \"name\": \"Eum est repellendus\",\n                        \"cash_in\": \"229.50\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"229.50\"\n                    },\n                    {\n                        \"name\": \"Exercitation volupta\",\n                        \"cash_in\": \"5330.67\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"5330.67\"\n                    },\n                    {\n                        \"name\": \"Inventore aspernatur\",\n                        \"cash_in\": \"195.58\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"195.58\"\n                    },\n                    {\n                        \"name\": \"Nulla esse aliquip f\",\n                        \"cash_in\": \"3586.74\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"3586.74\"\n                    },\n                    {\n                        \"name\": \"POS 201\",\n                        \"cash_in\": \"50000.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"50000.00\"\n                    },\n                    {\n                        \"name\": \"Qui beatae non corpo\",\n                        \"cash_in\": \"12827.85\",\n                        \"cash_out\": \"44.00\",\n                        \"balance\": \"12783.85\"\n                    },\n                    {\n                        \"name\": \"sd\",\n                        \"cash_in\": \"39521.75\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"39521.75\"\n                    },\n                    {\n                        \"name\": \"Shutter\",\n                        \"cash_in\": \"458.95\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"458.95\"\n                    },\n                    {\n                        \"name\": \"Test POS 1\",\n                        \"cash_in\": \"13715.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"13715.00\"\n                    }\n                ]\n            },\n            \"other_receipts\": {\n                \"cash_in\": 0,\n                \"cash_out\": 0,\n                \"balance\": 0,\n                \"items\": []\n            },\n            \"paid_to_suppliers\": {\n                \"cash_in\": 0,\n                \"cash_out\": 1100,\n                \"balance\": -1100,\n                \"items\": [\n                    {\n                        \"name\": \"John Petrucci\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"300.00\",\n                        \"balance\": \"-300.00\"\n                    },\n                    {\n                        \"name\": \"Tosin Abasi\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"800.00\",\n                        \"balance\": \"-800.00\"\n                    }\n                ]\n            },\n            \"other_payments\": {\n                \"cash_in\": 0,\n                \"cash_out\": 10395.59,\n                \"balance\": -10395.59,\n                \"items\": [\n                    {\n                        \"name\": \"Bir Bahadur\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"952.59\",\n                        \"balance\": \"-952.59\"\n                    },\n                    {\n                        \"name\": \"Depreciation\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"7900.00\",\n                        \"balance\": \"-7900.00\"\n                    },\n                    {\n                        \"name\": \"Discount Expense\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"499.00\",\n                        \"balance\": \"-499.00\"\n                    },\n                    {\n                        \"name\": \"Qui beatae non corpo\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"44.00\",\n                        \"balance\": \"-44.00\"\n                    },\n                    {\n                        \"name\": \"Salary Expense\",\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"1000.00\",\n                        \"balance\": \"-1000.00\"\n                    }\n                ]\n            },\n            \"ending_balance\": {\n                \"balance\": 638230.61,\n                \"items\": [\n                    {\n                        \"name\": \"Cash in Hand\",\n                        \"account_head_id\": 106,\n                        \"balance\": 104658.29\n                    },\n                    {\n                        \"name\": \"Rastra Bank\",\n                        \"account_head_id\": 162,\n                        \"balance\": 534262.32\n                    },\n                    {\n                        \"name\": \"Ut do mollitia sed f\",\n                        \"account_head_id\": 224,\n                        \"balance\": -690\n                    }\n                ]\n            }\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},

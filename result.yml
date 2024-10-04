@@ -14326,35 +14326,205 @@ paths:
           in: header
           schema:
             type: string
-          example: audio/mp4
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
+          example: '{{company-id}}'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-06-01'
+          example: '2024-09-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-21'
+          example: '2024-10-30'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 04 Oct 2024 12:05:14 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999999'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Cashflow Summary
+                data:
+                  data:
+                    starting_balance:
+                      balance: 476213.57
+                      items:
+                        - name: Cash in Hand
+                          account_head_id: 106
+                          balance: 234
+                        - name: Rastra Bank
+                          account_head_id: 162
+                          balance: 476669.57
+                        - name: Ut do mollitia sed f
+                          account_head_id: 224
+                          balance: -690
+                    received_from_customers:
+                      cash_in: 163491.63
+                      cash_out: 996.59
+                      balance: 162495.04
+                      items:
+                        - name: Ad labore hic nostru
+                          cash_in: '855.00'
+                          cash_out: '0.00'
+                          balance: '855.00'
+                        - name: asas
+                          cash_in: '8273.24'
+                          cash_out: '0.00'
+                          balance: '8273.24'
+                        - name: asda
+                          cash_in: '1120.65'
+                          cash_out: '0.00'
+                          balance: '1120.65'
+                        - name: asdasd
+                          cash_in: '11451.44'
+                          cash_out: '0.00'
+                          balance: '11451.44'
+                        - name: Bir Bahadur
+                          cash_in: '944.00'
+                          cash_out: '952.59'
+                          balance: '-8.59'
+                        - name: Darnia Gone
+                          cash_in: '6024.00'
+                          cash_out: '0.00'
+                          balance: '6024.00'
+                        - name: dddd
+                          cash_in: '7197.61'
+                          cash_out: '0.00'
+                          balance: '7197.61'
+                        - name: ds
+                          cash_in: '1759.65'
+                          cash_out: '0.00'
+                          balance: '1759.65'
+                        - name: Eum est repellendus
+                          cash_in: '229.50'
+                          cash_out: '0.00'
+                          balance: '229.50'
+                        - name: Exercitation volupta
+                          cash_in: '5330.67'
+                          cash_out: '0.00'
+                          balance: '5330.67'
+                        - name: Inventore aspernatur
+                          cash_in: '195.58'
+                          cash_out: '0.00'
+                          balance: '195.58'
+                        - name: Nulla esse aliquip f
+                          cash_in: '3586.74'
+                          cash_out: '0.00'
+                          balance: '3586.74'
+                        - name: POS 201
+                          cash_in: '50000.00'
+                          cash_out: '0.00'
+                          balance: '50000.00'
+                        - name: Qui beatae non corpo
+                          cash_in: '12827.85'
+                          cash_out: '44.00'
+                          balance: '12783.85'
+                        - name: sd
+                          cash_in: '39521.75'
+                          cash_out: '0.00'
+                          balance: '39521.75'
+                        - name: Shutter
+                          cash_in: '458.95'
+                          cash_out: '0.00'
+                          balance: '458.95'
+                        - name: Test POS 1
+                          cash_in: '13715.00'
+                          cash_out: '0.00'
+                          balance: '13715.00'
+                    other_receipts:
+                      cash_in: 0
+                      cash_out: 0
+                      balance: 0
+                      items: []
+                    paid_to_suppliers:
+                      cash_in: 0
+                      cash_out: 1100
+                      balance: -1100
+                      items:
+                        - name: John Petrucci
+                          cash_in: '0.00'
+                          cash_out: '300.00'
+                          balance: '-300.00'
+                        - name: Tosin Abasi
+                          cash_in: '0.00'
+                          cash_out: '800.00'
+                          balance: '-800.00'
+                    other_payments:
+                      cash_in: 0
+                      cash_out: 10395.59
+                      balance: -10395.59
+                      items:
+                        - name: Bir Bahadur
+                          cash_in: '0.00'
+                          cash_out: '952.59'
+                          balance: '-952.59'
+                        - name: Depreciation
+                          cash_in: '0.00'
+                          cash_out: '7900.00'
+                          balance: '-7900.00'
+                        - name: Discount Expense
+                          cash_in: '0.00'
+                          cash_out: '499.00'
+                          balance: '-499.00'
+                        - name: Qui beatae non corpo
+                          cash_in: '0.00'
+                          cash_out: '44.00'
+                          balance: '-44.00'
+                        - name: Salary Expense
+                          cash_in: '0.00'
+                          cash_out: '1000.00'
+                          balance: '-1000.00'
+                    ending_balance:
+                      balance: 638230.61
+                      items:
+                        - name: Cash in Hand
+                          account_head_id: 106
+                          balance: 104658.29
+                        - name: Rastra Bank
+                          account_head_id: 162
+                          balance: 534262.32
+                        - name: Ut do mollitia sed f
+                          account_head_id: 224
+                          balance: -690
   /api/customer-aging-summary:
     get:
       tags:
