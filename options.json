@@ -1,6 +1,6 @@
 {
 	"info": {
-		"title": "Swagger",
+		"title": "Accounting Swagger",
 		"version": "1.0",
 		"description": "Swagger",
 		"termsOfService": "#",
@@ -22,7 +22,7 @@
 	"servers": [
 		{
 			"url": "https://accounting.scoduscorp.com/",
-			"description": "accounting software server"
+			"description": "accounting software test server"
 		}
 	]
 }
