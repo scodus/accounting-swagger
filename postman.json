@@ -19937,7 +19937,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=1&is_variant_product=",
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&is_variant_product=&product_category_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -19972,89 +19972,6 @@
 								},
 								{
 									"key": "inventory",
-									"value": "1"
-								},
-								{
-									"key": "is_variant_product",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list product",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/product-list?paginate=1&page=1&limit=10&search_keyword=111111111&is_service=&is_product=&inventory=&is_variant_product=&resource_fields=id,name,slug,sku",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"product-list"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "search_keyword",
-									"value": "111111111"
-								},
-								{
-									"key": "is_service",
-									"value": ""
-								},
-								{
-									"key": "is_product",
-									"value": ""
-								},
-								{
-									"key": "inventory",
 									"value": ""
 								},
 								{
@@ -20062,9 +19979,8 @@
 									"value": ""
 								},
 								{
-									"key": "resource_fields",
-									"value": "id,name,slug,sku",
-									"description": "id,name,slug,sku"
+									"key": "product_category_id",
+									"value": ""
 								}
 							]
 						}
@@ -20306,6 +20222,98 @@
 							"path": [
 								"api",
 								"product-store-multiple"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list product NEW",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product-list?paginate=1&page=1&limit=10&search_keyword=111111111&is_service=&is_product=&inventory=&is_variant_product=&resource_fields=id,name,slug,sku&product_category_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-list"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search_keyword",
+									"value": "111111111"
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								},
+								{
+									"key": "is_product",
+									"value": ""
+								},
+								{
+									"key": "inventory",
+									"value": ""
+								},
+								{
+									"key": "is_variant_product",
+									"value": ""
+								},
+								{
+									"key": "resource_fields",
+									"value": "id,name,slug,sku",
+									"description": "id,name,slug,sku"
+								},
+								{
+									"key": "product_category_id",
+									"value": null
+								}
 							]
 						}
 					},
@@ -21000,7 +21008,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21013,7 +21021,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-bill?paginate=1&page=1&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid&date[0]=&date[1]=&start_date=2023-09-01&end_date=2024-04-01",
+							"raw": "{{url}}/api/purchase-bill?paginate=1&page=1&limit=&search_keyword=&status=&vendor_id=&multiple_status[0]=draft&multiple_status[1]=paid&date[0]=&date[1]=&start_date=2023-09-01&end_date=2024-11-01",
 							"host": [
 								"{{url}}"
 							],
@@ -21048,11 +21056,13 @@
 								},
 								{
 									"key": "multiple_status[0]",
-									"value": "draft"
+									"value": "draft",
+									"description": "draft"
 								},
 								{
 									"key": "multiple_status[1]",
-									"value": "paid"
+									"value": "paid",
+									"description": "paid"
 								},
 								{
 									"key": "date[0]",
@@ -21068,7 +21078,7 @@
 								},
 								{
 									"key": "end_date",
-									"value": "2024-04-01"
+									"value": "2024-11-01"
 								}
 							]
 						}
@@ -24050,6 +24060,168 @@
 							"response": []
 						},
 						{
+							"name": "trial balance",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "3"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/trial-balance?start_date=2024-06-15&end_date=2024-07-14",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"trial-balance"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2024-06-15"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-07-14"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "income-statement",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "1"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/income-statement?start_date=2023-07-22&end_date=2023-08-21",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"income-statement"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2023-07-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2023-08-21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "balance sheet",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "1"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/balance-sheet?start_date=2023-1-22&end_date=2024-08-22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"balance-sheet"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2023-1-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "cashflow summary",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -24117,104 +24289,6 @@
 								}
 							},
 							"response": [
-								{
-									"name": "cashflow summary",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"key": "company-id",
-												"value": "{{company-id}}"
-											}
-										],
-										"body": {
-											"mode": "formdata",
-											"formdata": []
-										},
-										"url": {
-											"raw": "{{url}}/api/cashflow-summary?start_date=2024-09-01&end_date=2024-10-30",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"cashflow-summary"
-											],
-											"query": [
-												{
-													"key": "paginate",
-													"value": "1",
-													"disabled": true
-												},
-												{
-													"key": "page",
-													"value": "",
-													"disabled": true
-												},
-												{
-													"key": "limit",
-													"value": "",
-													"disabled": true
-												},
-												{
-													"key": "start_date",
-													"value": "2024-09-01"
-												},
-												{
-													"key": "end_date",
-													"value": "2024-10-30"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Host",
-											"value": "127.0.0.1:8000"
-										},
-										{
-											"key": "Connection",
-											"value": "close"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.2.12"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 08 Oct 2024 05:27:40 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "1000000"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "999999"
-										},
-										{
-											"key": "Vary",
-											"value": "Origin"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"message\": \"Cashflow Summary\",\n    \"data\": {\n        \"data\": {\n            \"starting_balance\": {\n                \"balance\": -23830.43,\n                \"items\": [\n                    {\n                        \"name\": \"Cash in Hand\",\n                        \"id\": 106,\n                        \"balance\": 234\n                    },\n                    {\n                        \"name\": \"Rastra Bank\",\n                        \"id\": 162,\n                        \"balance\": -23330.43\n                    },\n                    {\n                        \"name\": \"Ut do mollitia sed f\",\n                        \"id\": 224,\n                        \"balance\": -734\n                    }\n                ]\n            },\n            \"received_from_customers\": {\n                \"cash_in\": 163491.63,\n                \"cash_out\": 996.59,\n                \"balance\": 162495.04,\n                \"items\": [\n                    {\n                        \"name\": \"Ad labore hic nostru\",\n                        \"id\": 562,\n                        \"cash_in\": \"855.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"855.00\"\n                    },\n                    {\n                        \"name\": \"asas\",\n                        \"id\": 558,\n                        \"cash_in\": \"8273.24\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"8273.24\"\n                    },\n                    {\n                        \"name\": \"asda\",\n                        \"id\": 554,\n                        \"cash_in\": \"1120.65\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"1120.65\"\n                    },\n                    {\n                        \"name\": \"asdasd\",\n                        \"id\": 403,\n                        \"cash_in\": \"11451.44\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"11451.44\"\n                    },\n                    {\n                        \"name\": \"Bir Bahadur\",\n                        \"id\": 216,\n                        \"cash_in\": \"944.00\",\n                        \"cash_out\": \"952.59\",\n                        \"balance\": \"-8.59\"\n                    },\n                    {\n                        \"name\": \"Darnia Gone\",\n                        \"id\": 520,\n                        \"cash_in\": \"6024.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"6024.00\"\n                    },\n                    {\n                        \"name\": \"dddd\",\n                        \"id\": 556,\n                        \"cash_in\": \"7197.61\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"7197.61\"\n                    },\n                    {\n                        \"name\": \"ds\",\n                        \"id\": 555,\n                        \"cash_in\": \"1759.65\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"1759.65\"\n                    },\n                    {\n                        \"name\": \"Eum est repellendus\",\n                        \"id\": 560,\n                        \"cash_in\": \"229.50\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"229.50\"\n                    },\n                    {\n                        \"name\": \"Exercitation volupta\",\n                        \"id\": 552,\n                        \"cash_in\": \"5330.67\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"5330.67\"\n                    },\n                    {\n                        \"name\": \"Inventore aspernatur\",\n                        \"id\": 545,\n                        \"cash_in\": \"195.58\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"195.58\"\n                    },\n                    {\n                        \"name\": \"Nulla esse aliquip f\",\n                        \"id\": 402,\n                        \"cash_in\": \"3586.74\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"3586.74\"\n                    },\n                    {\n                        \"name\": \"POS 201\",\n                        \"id\": 561,\n                        \"cash_in\": \"50000.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"50000.00\"\n                    },\n                    {\n                        \"name\": \"Qui beatae non corpo\",\n                        \"id\": 521,\n                        \"cash_in\": \"12827.85\",\n                        \"cash_out\": \"44.00\",\n                        \"balance\": \"12783.85\"\n                    },\n                    {\n                        \"name\": \"sd\",\n                        \"id\": 557,\n                        \"cash_in\": \"39521.75\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"39521.75\"\n                    },\n                    {\n                        \"name\": \"Shutter\",\n                        \"id\": 551,\n                        \"cash_in\": \"458.95\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"458.95\"\n                    },\n                    {\n                        \"name\": \"Test POS 1\",\n                        \"id\": 559,\n                        \"cash_in\": \"13715.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"13715.00\"\n                    }\n                ]\n            },\n            \"other_receipts\": {\n                \"cash_in\": 661,\n                \"cash_out\": 0,\n                \"balance\": 661,\n                \"items\": [\n                    {\n                        \"name\": \"Others(JV)\",\n                        \"id\": null,\n                        \"cash_in\": \"661.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"661.00\"\n                    }\n                ]\n            },\n            \"paid_to_suppliers\": {\n                \"cash_in\": 0,\n                \"cash_out\": 1100,\n                \"balance\": -1100,\n                \"items\": [\n                    {\n                        \"name\": \"John Petrucci\",\n                        \"id\": 161,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"300.00\",\n                        \"balance\": \"-300.00\"\n                    },\n                    {\n                        \"name\": \"Tosin Abasi\",\n                        \"id\": 160,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"800.00\",\n                        \"balance\": \"-800.00\"\n                    }\n                ]\n            },\n            \"other_payments\": {\n                \"cash_in\": 0,\n                \"cash_out\": 8595.59,\n                \"balance\": -8595.59,\n                \"items\": [\n                    {\n                        \"name\": \"Bir Bahadur\",\n                        \"id\": 216,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"952.59\",\n                        \"balance\": \"-952.59\"\n                    },\n                    {\n                        \"name\": \"Depreciation\",\n                        \"id\": 140,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"5900.00\",\n                        \"balance\": \"-5900.00\"\n                    },\n                    {\n                        \"name\": \"Discount Expense\",\n                        \"id\": 139,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"499.00\",\n                        \"balance\": \"-499.00\"\n                    },\n                    {\n                        \"name\": \"Others(JV)\",\n                        \"id\": null,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"200.00\",\n                        \"balance\": \"-200.00\"\n                    },\n                    {\n                        \"name\": \"Qui beatae non corpo\",\n                        \"id\": 521,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"44.00\",\n                        \"balance\": \"-44.00\"\n                    },\n                    {\n                        \"name\": \"Salary Expense\",\n                        \"id\": 138,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"1000.00\",\n                        \"balance\": \"-1000.00\"\n                    }\n                ]\n            },\n            \"ending_balance\": {\n                \"balance\": 130626.60999999999,\n                \"items\": [\n                    {\n                        \"name\": \"Cash in Hand\",\n                        \"id\": 106,\n                        \"balance\": 94898.29\n                    },\n                    {\n                        \"name\": \"Rastra Bank\",\n                        \"id\": 162,\n                        \"balance\": 36662.32\n                    },\n                    {\n                        \"name\": \"Ut do mollitia sed f\",\n                        \"id\": 224,\n                        \"balance\": -934\n                    }\n                ]\n            }\n        }\n    }\n}"
-								},
 								{
 									"name": "cashflow summary",
 									"originalRequest": {
@@ -24692,7 +24766,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id=216",
+									"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=5&start_date=2024-01-01&end_date=2025-07-01&customer_id=216",
 									"host": [
 										"{{url}}"
 									],
@@ -24711,7 +24785,7 @@
 										},
 										{
 											"key": "limit",
-											"value": ""
+											"value": "5"
 										},
 										{
 											"key": "start_date",
@@ -25409,7 +25483,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&vendor_id=",
+									"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=5&start_date=2024-01-01&end_date=2025-07-01&vendor_id=161",
 									"host": [
 										"{{url}}"
 									],
@@ -25428,7 +25502,7 @@
 										},
 										{
 											"key": "limit",
-											"value": ""
+											"value": "5"
 										},
 										{
 											"key": "start_date",
@@ -25440,7 +25514,7 @@
 										},
 										{
 											"key": "vendor_id",
-											"value": ""
+											"value": "161"
 										}
 									]
 								}
@@ -27629,6 +27703,178 @@
 									"body": "{\n    \"message\": \"Sales Master Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 200,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-master-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 1998\n        },\n        \"data\": [\n            {\n                \"id\": 18,\n                \"vendor_id\": 1091,\n                \"vendor_name\": \"RAJAN MEAT SHOP ( FISH)\",\n                \"bill_number\": \"PB-1\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-04 00:00:00\",\n                \"product_id\": 214,\n                \"product_sku\": \"FIS00286\",\n                \"product_name\": \"FISH RAW\",\n                \"quantity\": 5,\n                \"rate\": \"470.00\",\n                \"amount\": \"2350.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"2350.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 2350\n            },\n            {\n                \"id\": 41,\n                \"vendor_id\": 412,\n                \"vendor_name\": \"LOCAL MARKET - A\",\n                \"bill_number\": \"PB-2\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-02 00:00:00\",\n                \"product_id\": 397,\n                \"product_sku\": \"SAL0010\",\n                \"product_name\": \"SALT\",\n                \"quantity\": 2,\n                \"rate\": \"20.00\",\n                \"amount\": \"40.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"40.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 40\n            },\n            {\n                \"id\": 41,\n                \"vendor_id\": 412,\n                \"vendor_name\": \"LOCAL MARKET - A\",\n                \"bill_number\": \"PB-2\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-02 00:00:00\",\n                \"product_id\": 452,\n                \"product_sku\": \"TOM00119\",\n                \"product_name\": \"TOMATO KETCHUP\",\n                \"quantity\": 1,\n                \"rate\": \"10.00\",\n                \"amount\": \"10.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"10.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 10\n            },\n            {\n                \"id\": 42,\n                \"vendor_id\": 1089,\n                \"vendor_name\": \"SNP HOSPITALITY\",\n                \"bill_number\": \"PB-3\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 451,\n                \"product_sku\": \"TOI00411\",\n                \"product_name\": \"TOILET PAPER\",\n                \"quantity\": 10,\n                \"rate\": \"100.00\",\n                \"amount\": \"1000.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"1000.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 1000\n            },\n            {\n                \"id\": 43,\n                \"vendor_id\": 398,\n                \"vendor_name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_number\": \"PB-4\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 325,\n                \"product_sku\": \"NAP00115\",\n                \"product_name\": \"NAPKIN PRINTED\",\n                \"quantity\": 500,\n                \"rate\": \"45.00\",\n                \"amount\": \"22500.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"22500.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 22500\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 375,\n                \"product_sku\": \"POT0063\",\n                \"product_name\": \"POTATO\",\n                \"quantity\": 157,\n                \"rate\": \"60.01\",\n                \"amount\": \"9421.57\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"9421.57\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 9421.57\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 334,\n                \"product_sku\": \"ONI0064\",\n                \"product_name\": \"ONION\",\n                \"quantity\": 153,\n                \"rate\": \"87.38\",\n                \"amount\": \"13369.14\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"13369.14\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 13369.14\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 205,\n                \"product_sku\": \"DRY0082\",\n                \"product_name\": \"DRY GARLIC\",\n                \"quantity\": 27,\n                \"rate\": \"253.70\",\n                \"amount\": \"6849.90\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"6849.90\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 6849.9\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 206,\n                \"product_sku\": \"DRY0083\",\n                \"product_name\": \"DRY GINGER\",\n                \"quantity\": 27,\n                \"rate\": \"240.00\",\n                \"amount\": \"6480.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"6480.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 6480\n            },\n            {\n                \"id\": 44,\n                \"vendor_id\": 399,\n                \"vendor_name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_number\": \"PB-5\",\n                \"reference_number\": null,\n                \"bill_date\": \"2024-08-05 00:00:00\",\n                \"product_id\": 203,\n                \"product_sku\": \"DRY0084\",\n                \"product_name\": \"DRY CHILLI\",\n                \"quantity\": 8,\n                \"rate\": \"462.50\",\n                \"amount\": \"3700.00\",\n                \"discount\": \"0.00\",\n                \"net_sales\": \"3700.00\",\n                \"vat_type\": null,\n                \"vat_amount\": 0,\n                \"total_amount\": 3700\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-master-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-master-report?page=200\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/purchase-master-report?page=2\"\n        }\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "purchase rate log report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-10-22&product_id=8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-rate-log-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-10-22"
+										},
+										{
+											"key": "product_id",
+											"value": "8",
+											"description": "required"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "purchase rate log report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"purchase-rate-log-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-05-22"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22"
+												},
+												{
+													"key": "product_id",
+													"value": "36",
+													"description": "required"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2024 11:17:06 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999998"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Product Rate Log Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-rate-log-report\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"bill_id\": 16,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-07-22\",\n                \"vendor_name\": \"Venodr a\",\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"quantity\": 11,\n                \"rate\": \"12.00\",\n                \"modified_rate\": \"28.36\",\n                \"amount\": \"352.56\",\n                \"bill_approved_by_name\": \"augxdeveloper\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-rate-log-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-rate-log-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -27796,6 +28042,80 @@
 									"body": "{\n    \"message\": \"Inventory Position\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 25,\n            \"path\": \"http://127.0.0.1:8000/api/inventory-position\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 243\n        },\n        \"data\": [\n            {\n                \"product_id\": 1564,\n                \"product_name\": \"ThermosPlastic Cups 150（塑料杯）\",\n                \"product_sku\": \"P-1\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1565,\n                \"product_name\": \"ThermosPlastic Cups 200（塑料杯）\",\n                \"product_sku\": \"P-2\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1566,\n                \"product_name\": \"ThermosPlastic Cups 300（塑料杯）\",\n                \"product_sku\": \"P-3\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1567,\n                \"product_name\": \"ThermosPlastic Cups 400（塑料杯）\",\n                \"product_sku\": \"P-4\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1568,\n                \"product_name\": \"ThermosPlastic Cups 450（塑料杯）\",\n                \"product_sku\": \"P-5\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1569,\n                \"product_name\": \"ThermosPlastic Cups 500（塑料杯）\",\n                \"product_sku\": \"P-6\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1570,\n                \"product_name\": \"Thermos 700（保温杯）\",\n                \"product_sku\": \"P-7\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1571,\n                \"product_name\": \"Thermos 800（保温杯）\",\n                \"product_sku\": \"P-8\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1572,\n                \"product_name\": \"Cup（口杯）\",\n                \"product_sku\": \"P-9\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            },\n            {\n                \"product_id\": 1573,\n                \"product_name\": \"Sticking Hooks 200（粘钩）\",\n                \"product_sku\": \"P-10\",\n                \"unit\": \"pcs\",\n                \"quantity\": \"\",\n                \"rate\": \"\",\n                \"amount\": \"\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/inventory-position?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/inventory-position?page=25\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/inventory-position?page=2\"\n        }\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "inventory movement",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/inventory-movement?paginate=1&page=&limit=10&start_date=2024-09-18&end_date=2024-09-18&product_category_id&product_id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"inventory-movement"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-09-18"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-09-18"
+										},
+										{
+											"key": "product_category_id",
+											"value": null
+										},
+										{
+											"key": "product_id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
 						},
 						{
 							"name": "inventory master report",
@@ -27968,170 +28288,1408 @@
 									"body": "{\n    \"message\": \"Inventory Master Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 35,\n            \"path\": \"http://127.0.0.1:8000/api/inventory-master-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 346\n        },\n        \"data\": [\n            {\n                \"id\": 221,\n                \"entry_date\": \"2024-09-18 21:02:32\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-172\",\n                \"reference_number\": null,\n                \"product_name\": \"Bodywasher（浴球）\",\n                \"product_sku\": \"P-17\",\n                \"product_category_name\": \"Daily Necessities\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"150.00\",\n                \"amount\": 150,\n                \"discount\": \"0.00\",\n                \"net_amount\": 150,\n                \"vat_amount\": 0,\n                \"total_amount\": \"150.00\"\n            },\n            {\n                \"id\": 220,\n                \"entry_date\": \"2024-09-18 21:01:30\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-171\",\n                \"reference_number\": null,\n                \"product_name\": \"Nail polish(指甲油小瓶装）\",\n                \"product_sku\": \"P-103\",\n                \"product_category_name\": \"Cosmetics\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"60.00\",\n                \"amount\": 60,\n                \"discount\": \"0.00\",\n                \"net_amount\": 60,\n                \"vat_amount\": 0,\n                \"total_amount\": \"60.00\"\n            },\n            {\n                \"id\": 220,\n                \"entry_date\": \"2024-09-18 21:01:30\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-171\",\n                \"reference_number\": null,\n                \"product_name\": \"Combomashage（洗头刷）\",\n                \"product_sku\": \"P-18\",\n                \"product_category_name\": \"Daily Necessities\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"150.00\",\n                \"amount\": 150,\n                \"discount\": \"0.00\",\n                \"net_amount\": 150,\n                \"vat_amount\": 0,\n                \"total_amount\": \"150.00\"\n            },\n            {\n                \"id\": 219,\n                \"entry_date\": \"2024-09-18 20:35:38\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-170\",\n                \"reference_number\": null,\n                \"product_name\": \"Small doll(小号玩偶)\",\n                \"product_sku\": \"P-98\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"300.00\",\n                \"amount\": 300,\n                \"discount\": \"0.00\",\n                \"net_amount\": 300,\n                \"vat_amount\": 0,\n                \"total_amount\": \"300.00\"\n            },\n            {\n                \"id\": 218,\n                \"entry_date\": \"2024-09-18 20:30:05\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-169\",\n                \"reference_number\": null,\n                \"product_name\": \"Toy big gun(狙击枪）\",\n                \"product_sku\": \"P-71\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"200.00\",\n                \"amount\": 200,\n                \"discount\": \"0.00\",\n                \"net_amount\": 200,\n                \"vat_amount\": 0,\n                \"total_amount\": \"200.00\"\n            },\n            {\n                \"id\": 218,\n                \"entry_date\": \"2024-09-18 20:30:05\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-169\",\n                \"reference_number\": null,\n                \"product_name\": \"Toy car 200（玩具越野车）\",\n                \"product_sku\": \"P-65\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"200.00\",\n                \"amount\": 200,\n                \"discount\": \"0.00\",\n                \"net_amount\": 200,\n                \"vat_amount\": 0,\n                \"total_amount\": \"200.00\"\n            },\n            {\n                \"id\": 218,\n                \"entry_date\": \"2024-09-18 20:30:05\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-169\",\n                \"reference_number\": null,\n                \"product_name\": \"Toy dumper car(玩具翻斗车）\",\n                \"product_sku\": \"P-92\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"100.00\",\n                \"amount\": 100,\n                \"discount\": \"0.00\",\n                \"net_amount\": 100,\n                \"vat_amount\": 0,\n                \"total_amount\": \"100.00\"\n            },\n            {\n                \"id\": 217,\n                \"entry_date\": \"2024-09-18 20:29:14\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-168\",\n                \"reference_number\": null,\n                \"product_name\": \"Claw clip(大发夹）\",\n                \"product_sku\": \"P-168\",\n                \"product_category_name\": \"Trinket\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"100.00\",\n                \"amount\": 100,\n                \"discount\": \"0.00\",\n                \"net_amount\": 100,\n                \"vat_amount\": 0,\n                \"total_amount\": \"80.00\"\n            },\n            {\n                \"id\": 216,\n                \"entry_date\": \"2024-09-18 20:28:19\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-167\",\n                \"reference_number\": null,\n                \"product_name\": \"Doll(芭比娃娃\",\n                \"product_sku\": \"P-75\",\n                \"product_category_name\": \"Toys\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"50.00\",\n                \"amount\": 50,\n                \"discount\": \"0.00\",\n                \"net_amount\": 50,\n                \"vat_amount\": 0,\n                \"total_amount\": \"50.00\"\n            },\n            {\n                \"id\": 215,\n                \"entry_date\": \"2024-09-18 20:26:48\",\n                \"contact\": \"Cash Counter\",\n                \"type\": \"invoice\",\n                \"account\": \"Sales Goods\",\n                \"transaction_number\": \"INVO-166\",\n                \"reference_number\": null,\n                \"product_name\": \"ThermosPlastic Cups 300（塑料杯）\",\n                \"product_sku\": \"P-3\",\n                \"product_category_name\": \"Daily Necessities\",\n                \"quantity\": 1,\n                \"unit\": \"pcs\",\n                \"rate\": \"300.00\",\n                \"amount\": 300,\n                \"discount\": \"0.00\",\n                \"net_amount\": 300,\n                \"vat_amount\": 0,\n                \"total_amount\": \"300.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/inventory-master-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/inventory-master-report?page=35\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/inventory-master-report?page=2\"\n        }\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "stock issue report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-22",
+											"description": "stock_issue_date start"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22",
+											"description": "stock_issue_date end"
+										},
+										{
+											"key": "warehouse_department_id",
+											"value": "",
+											"description": "warehouse_department_id \"1,2\""
+										},
+										{
+											"key": "product_id",
+											"value": "",
+											"description": "product id string \"1,2,3\""
+										},
+										{
+											"key": "product_name_sku",
+											"value": "",
+											"description": "product_name_sku",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "stock issue report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/stock-issue-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"stock-issue-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-06-22",
+													"description": "stock_issue_date start"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22",
+													"description": "stock_issue_date end"
+												},
+												{
+													"key": "warehouse_department_id",
+													"value": "",
+													"description": "warehouse_department_id"
+												},
+												{
+													"key": "product_name_sku",
+													"value": "",
+													"description": "product_name_sku",
+													"disabled": true
+												},
+												{
+													"key": "product_id",
+													"value": "",
+													"description": "product id string \"1,2,3\""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 12 Aug 2024 10:56:12 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999995"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Stock Issue Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-report\",\n            \"per_page\": 10,\n            \"to\": 4,\n            \"total\": 4\n        },\n        \"data\": [\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": 11,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 36,\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": 2,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 39,\n                \"product_name\": \"p-1\",\n                \"product_sku\": \"Product 1D11111Product 1D11111\",\n                \"unit\": \"ms\",\n                \"quantity\": 1,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 68,\n                \"product_name\": \"Product 2zqs\",\n                \"product_sku\": \"q31\",\n                \"unit\": \"G\",\n                \"quantity\": 450,\n                \"amount\": \"45000.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "stock consumption report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-consumption-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-22",
+											"description": "stock_consumption_date start"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22",
+											"description": "stock_consumption_date end"
+										},
+										{
+											"key": "warehouse_department_id",
+											"value": "",
+											"description": "warehouse_department_id \"1,2\""
+										},
+										{
+											"key": "product_name_sku",
+											"value": "",
+											"description": "product_name_sku",
+											"disabled": true
+										},
+										{
+											"key": "product_id",
+											"value": "",
+											"description": "product id string \"1,2,3\""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "stock consumption report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=36,39",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"stock-consumption-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-06-22",
+													"description": "stock_consumption_date start"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22",
+													"description": "stock_consumption_date end"
+												},
+												{
+													"key": "warehouse_department_id",
+													"value": "",
+													"description": "warehouse_department_id"
+												},
+												{
+													"key": "product_name_sku",
+													"value": "",
+													"description": "product_name_sku",
+													"disabled": true
+												},
+												{
+													"key": "product_id",
+													"value": "36,39",
+													"description": "product id string \"1,2,3\""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 12 Aug 2024 10:55:38 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Stock Consumption Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-consumption-report\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"product_id\": 36,\n                \"product_sku\": \"prod-sku-11\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": 2,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 39,\n                \"product_sku\": \"Product 1D11111Product 1D11111\",\n                \"unit\": \"ms\",\n                \"quantity\": 1,\n                \"amount\": \"0.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-consumption-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-consumption-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "stock return report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=1,2&product_id=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-return-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-22",
+											"description": "stock_return_date start"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22",
+											"description": "stock_return_date start"
+										},
+										{
+											"key": "warehouse_department_id",
+											"value": "1,2",
+											"description": "warehouse_department_id \"1,2\""
+										},
+										{
+											"key": "product_name_sku",
+											"value": "",
+											"description": "product_name_sku",
+											"disabled": true
+										},
+										{
+											"key": "product_id",
+											"value": "",
+											"description": "product id string \"1,2,3\""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "stock return report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=36",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"stock-return-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-06-22",
+													"description": "stock_return_date start"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22",
+													"description": "stock_return_date start"
+												},
+												{
+													"key": "warehouse_department_id",
+													"value": "",
+													"description": "warehouse_department_id"
+												},
+												{
+													"key": "product_name_sku",
+													"value": "",
+													"description": "product_name_sku",
+													"disabled": true
+												},
+												{
+													"key": "product_id",
+													"value": "36",
+													"description": "product id string \"1,2,3\""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 12 Aug 2024 10:56:25 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999998"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Stock Return Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-return-report\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"product_id\": 36,\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": \"1\",\n                \"amount\": \"0.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-return-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-return-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "issue and consumption detail report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=87",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-consumption-detail-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_id",
+											"value": "87",
+											"description": "required, product_id"
+										},
+										{
+											"key": "product_name_sku",
+											"value": "Product 1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "stock issue consumption detailreport",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"stock-issue-consumption-detail-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "1"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-05-22"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22"
+												},
+												{
+													"key": "product_id",
+													"value": "36"
+												},
+												{
+													"key": "product_name_sku",
+													"value": "Product 1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 13 Aug 2024 08:43:54 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "stock issue stock consumption stock return detail report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-issue-consumption-return-detail-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&product_id=39&type=stock_return",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-issue-consumption-return-detail-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-06-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_id",
+											"value": "39",
+											"description": "required"
+										},
+										{
+											"key": "type",
+											"value": "stock_return",
+											"description": "in:stock_issue,stock_consumption,stock_return"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "product in out report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-10-22&product_id=53",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product-in-out-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-04-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-10-22"
+										},
+										{
+											"key": "product_id",
+											"value": "53",
+											"description": "required, product_id"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "product in out report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-08-22&product_id=36",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"product-in-out-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-04-22"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22"
+												},
+												{
+													"key": "product_id",
+													"value": "36",
+													"description": "required, product_id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2024 11:17:20 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Product In Out Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/product-in-out-report\",\n            \"per_page\": 10,\n            \"to\": 3,\n            \"total\": 3\n        },\n        \"data\": [\n            {\n                \"in_date\": \"2024-07-22\",\n                \"in_number\": \"PB-1\",\n                \"in_type\": \"bill\",\n                \"in_particular\": \"Venodr a\",\n                \"in_quantity\": 11,\n                \"in_rate\": \"12.00\",\n                \"in_amount\": \"352.56\",\n                \"in_approved_by_name\": \"augxdeveloper\",\n                \"out_date\": \"2024-07-22\",\n                \"out_number\": \"STCI-1\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 1,\n                \"out_rate\": \"0.00\",\n                \"out_amount\": \"0.00\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            },\n            {\n                \"in_date\": \"2024-07-22\",\n                \"in_number\": \"STCR-1\",\n                \"in_type\": \"stock_return\",\n                \"in_particular\": \"default dep1\",\n                \"in_quantity\": 1,\n                \"in_rate\": \"0.00\",\n                \"in_amount\": \"0.00\",\n                \"in_approved_by_name\": \"augxdeveloper\",\n                \"out_date\": \"2024-07-22\",\n                \"out_number\": \"STCI-3\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 1,\n                \"out_rate\": \"0.00\",\n                \"out_amount\": \"0.00\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            },\n            {\n                \"in_date\": null,\n                \"in_number\": null,\n                \"in_type\": null,\n                \"in_particular\": null,\n                \"in_quantity\": null,\n                \"in_rate\": null,\n                \"in_amount\": null,\n                \"in_approved_by_name\": \"\",\n                \"out_date\": \"2024-07-24\",\n                \"out_number\": \"STCI-2\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 2,\n                \"out_rate\": \"99.22\",\n                \"out_amount\": \"198.44\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            }\n        ],\n        \"in_totals\": {\n            \"total_quantity\": 22,\n            \"total_amount\": 705.12\n        },\n        \"out_totals\": {\n            \"total_quantity\": 4,\n            \"total_amount\": 198.44\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/product-in-out-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/product-in-out-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "stock valuation report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"stock-valuation-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										},
+										{
+											"key": "product_name_sku",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "stock valuation report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "2"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"stock-valuation-report"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "start_date",
+													"value": "2024-05-22"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-08-22"
+												},
+												{
+													"key": "product_name_sku",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 16 Aug 2024 11:16:51 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Stock Valuation Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 3,\n            \"path\": \"http://127.0.0.1:8000/api/stock-valuation-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 29\n        },\n        \"data\": [\n            {\n                \"product_id\": 8,\n                \"product_name\": \"Temporibus at velit\",\n                \"product_sku\": \"Duis est ut ratione\",\n                \"product_quantity\": 2,\n                \"product_rate\": 11,\n                \"product_amount\": \"22.00\"\n            },\n            {\n                \"product_id\": 10,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 12,\n                \"product_name\": \"Product 2\",\n                \"product_sku\": \"prod-sku-2\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 13,\n                \"product_name\": \"Product 11\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1023,\n                \"product_rate\": 98.01,\n                \"product_amount\": \"100226.50\"\n            },\n            {\n                \"product_id\": 14,\n                \"product_name\": \"Product 12\",\n                \"product_sku\": \"prod-sku-12\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 19,\n                \"product_name\": \"Atque dignissimos qu\",\n                \"product_sku\": \"Deleniti voluptate r\",\n                \"product_quantity\": 93,\n                \"product_rate\": 61,\n                \"product_amount\": \"5673.00\"\n            },\n            {\n                \"product_id\": 20,\n                \"product_name\": \"Dolore nesciunt sin\",\n                \"product_sku\": \"Duis officiis et a q\",\n                \"product_quantity\": 1,\n                \"product_rate\": 1,\n                \"product_amount\": \"1.00\"\n            },\n            {\n                \"product_id\": 22,\n                \"product_name\": \"Product 111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 23,\n                \"product_name\": \"Product 121\",\n                \"product_sku\": \"prod-sku-121\",\n                \"product_quantity\": 1,\n                \"product_rate\": 11,\n                \"product_amount\": \"11.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=3\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=2\"\n        }\n    }\n}"
+								}
+							]
 						}
 					]
 				},
 				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
+					"name": "tax report",
+					"item": [
+						{
+							"name": "sale register",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
 							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/income-statement?start_date=2023-07-22&end_date=2023-08-21",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"income-statement"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2023-07-22"
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
 								},
-								{
-									"key": "end_date",
-									"value": "2023-08-21"
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "1"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/sale-register?paginate=1&page=&limit=&start_date=2023-01-22&end_date=2024-08-22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sale-register"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2023-01-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										}
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "purchase register",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "1"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/purchase-register?paginate=1&page=&limit=&start_date=2023-01-22&end_date=2024-08-22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"purchase-register"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2023-01-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "annex 5 report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/annex-5-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"annex-5-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-05-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "trial balance",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/trial-balance?start_date=2024-06-15&end_date=2024-07-14",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"trial-balance"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2024-06-15"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-07-14"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "balance sheet",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/balance-sheet?start_date=2023-1-22&end_date=2024-08-22",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"balance-sheet"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2023-1-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								}
-							]
-						}
-					},
-					"response": []
+					"name": "system report",
+					"item": []
 				},
 				{
 					"name": "report",
@@ -28188,1503 +29746,6 @@
 					"response": []
 				},
 				{
-					"name": "sale register",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/sale-register?paginate=1&page=&limit=&start_date=2023-01-22&end_date=2024-08-22",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"sale-register"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "start_date",
-									"value": "2023-01-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "purchase register",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/purchase-register?paginate=1&page=&limit=&start_date=2023-01-22&end_date=2024-08-22",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"purchase-register"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "start_date",
-									"value": "2023-01-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "stock issue report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-06-22",
-									"description": "stock_issue_date start"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22",
-									"description": "stock_issue_date end"
-								},
-								{
-									"key": "warehouse_department_id",
-									"value": "",
-									"description": "warehouse_department_id \"1,2\""
-								},
-								{
-									"key": "product_id",
-									"value": "",
-									"description": "product id string \"1,2,3\""
-								},
-								{
-									"key": "product_name_sku",
-									"value": "",
-									"description": "product_name_sku",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "stock issue report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/stock-issue-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"stock-issue-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-06-22",
-											"description": "stock_issue_date start"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22",
-											"description": "stock_issue_date end"
-										},
-										{
-											"key": "warehouse_department_id",
-											"value": "",
-											"description": "warehouse_department_id"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "",
-											"description": "product_name_sku",
-											"disabled": true
-										},
-										{
-											"key": "product_id",
-											"value": "",
-											"description": "product id string \"1,2,3\""
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 12 Aug 2024 10:56:12 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999995"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-report\",\n            \"per_page\": 10,\n            \"to\": 4,\n            \"total\": 4\n        },\n        \"data\": [\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": 11,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 36,\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": 2,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 39,\n                \"product_name\": \"p-1\",\n                \"product_sku\": \"Product 1D11111Product 1D11111\",\n                \"unit\": \"ms\",\n                \"quantity\": 1,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 68,\n                \"product_name\": \"Product 2zqs\",\n                \"product_sku\": \"q31\",\n                \"unit\": \"G\",\n                \"quantity\": 450,\n                \"amount\": \"45000.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "stock consumption report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "2"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-06-22",
-									"description": "stock_consumption_date start"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22",
-									"description": "stock_consumption_date end"
-								},
-								{
-									"key": "warehouse_department_id",
-									"value": "",
-									"description": "warehouse_department_id \"1,2\""
-								},
-								{
-									"key": "product_name_sku",
-									"value": "",
-									"description": "product_name_sku",
-									"disabled": true
-								},
-								{
-									"key": "product_id",
-									"value": "",
-									"description": "product id string \"1,2,3\""
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "stock consumption report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/stock-consumption-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=36,39",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"stock-consumption-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-06-22",
-											"description": "stock_consumption_date start"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22",
-											"description": "stock_consumption_date end"
-										},
-										{
-											"key": "warehouse_department_id",
-											"value": "",
-											"description": "warehouse_department_id"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "",
-											"description": "product_name_sku",
-											"disabled": true
-										},
-										{
-											"key": "product_id",
-											"value": "36,39",
-											"description": "product id string \"1,2,3\""
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 12 Aug 2024 10:55:38 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999997"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Consumption Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-consumption-report\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"product_id\": 36,\n                \"product_sku\": \"prod-sku-11\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": 2,\n                \"amount\": \"0.00\"\n            },\n            {\n                \"product_id\": 39,\n                \"product_sku\": \"Product 1D11111Product 1D11111\",\n                \"unit\": \"ms\",\n                \"quantity\": 1,\n                \"amount\": \"0.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-consumption-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-consumption-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "stock return report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "2"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=1,2&product_id=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-return-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-06-22",
-									"description": "stock_return_date start"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22",
-									"description": "stock_return_date start"
-								},
-								{
-									"key": "warehouse_department_id",
-									"value": "1,2",
-									"description": "warehouse_department_id \"1,2\""
-								},
-								{
-									"key": "product_name_sku",
-									"value": "",
-									"description": "product_name_sku",
-									"disabled": true
-								},
-								{
-									"key": "product_id",
-									"value": "",
-									"description": "product id string \"1,2,3\""
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "stock return report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/stock-return-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&warehouse_department_id=&product_id=36",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"stock-return-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-06-22",
-											"description": "stock_return_date start"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22",
-											"description": "stock_return_date start"
-										},
-										{
-											"key": "warehouse_department_id",
-											"value": "",
-											"description": "warehouse_department_id"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "",
-											"description": "product_name_sku",
-											"disabled": true
-										},
-										{
-											"key": "product_id",
-											"value": "36",
-											"description": "product id string \"1,2,3\""
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 12 Aug 2024 10:56:25 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999998"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Return Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-return-report\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"product_id\": 36,\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"unit\": \"Kilogram\",\n                \"quantity\": \"1\",\n                \"amount\": \"0.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-return-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-return-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "stock issue consumption detail report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=87",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue-consumption-detail-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-05-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								},
-								{
-									"key": "product_id",
-									"value": "87",
-									"description": "required, product_id"
-								},
-								{
-									"key": "product_name_sku",
-									"value": "Product 1",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "stock issue consumption detailreport",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/stock-issue-consumption-detail-report?paginate=1&page=1&limit=1&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"stock-issue-consumption-detail-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "1"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-05-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22"
-										},
-										{
-											"key": "product_id",
-											"value": "36"
-										},
-										{
-											"key": "product_name_sku",
-											"value": "Product 1",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 13 Aug 2024 08:43:54 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999997"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Issue Consumption Detail Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report\",\n            \"per_page\": 1,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": {\n            \"data\": [\n                {\n                    \"stock_issue_date\": \"2024-07-22\",\n                    \"stock_issue_quantity\": 1,\n                    \"stock_issue_rate\": \"0.00\",\n                    \"stock_issue_amount\": \"0.00\",\n                    \"stock_issue_approved_by_name\": \"augxdeveloper\",\n                    \"stock_consumption_date\": \"2024-07-22\",\n                    \"stock_consumption_quantity\": 1,\n                    \"stock_consumption_rate\": \"0.00\",\n                    \"stock_consumption_amount\": \"0.00\",\n                    \"stock_consumption_approved_by_name\": \"augxdeveloper\"\n                }\n            ],\n            \"in_totals\": {\n                \"total_quantity\": 1,\n                \"total_amount\": 0\n            },\n            \"out_totals\": {\n                \"total_quantity\": 0,\n                \"total_amount\": 0\n            }\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-issue-consumption-detail-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "stock issue consumption return detail report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "2"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-issue-consumption-return-detail-report?paginate=1&page=1&limit=10&start_date=2024-06-22&end_date=2024-08-22&product_id=39&type=stock_return",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-issue-consumption-return-detail-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-06-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								},
-								{
-									"key": "product_id",
-									"value": "39",
-									"description": "required"
-								},
-								{
-									"key": "type",
-									"value": "stock_return",
-									"description": "in:stock_issue,stock_consumption,stock_return"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "product in out report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-10-22&product_id=53",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"product-in-out-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-04-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-10-22"
-								},
-								{
-									"key": "product_id",
-									"value": "53",
-									"description": "required, product_id"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "product in out report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/product-in-out-report?paginate=1&page=1&limit=10&start_date=2024-04-22&end_date=2024-08-22&product_id=36",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"product-in-out-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-04-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22"
-										},
-										{
-											"key": "product_id",
-											"value": "36",
-											"description": "required, product_id"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 16 Aug 2024 11:17:20 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999997"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Product In Out Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/product-in-out-report\",\n            \"per_page\": 10,\n            \"to\": 3,\n            \"total\": 3\n        },\n        \"data\": [\n            {\n                \"in_date\": \"2024-07-22\",\n                \"in_number\": \"PB-1\",\n                \"in_type\": \"bill\",\n                \"in_particular\": \"Venodr a\",\n                \"in_quantity\": 11,\n                \"in_rate\": \"12.00\",\n                \"in_amount\": \"352.56\",\n                \"in_approved_by_name\": \"augxdeveloper\",\n                \"out_date\": \"2024-07-22\",\n                \"out_number\": \"STCI-1\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 1,\n                \"out_rate\": \"0.00\",\n                \"out_amount\": \"0.00\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            },\n            {\n                \"in_date\": \"2024-07-22\",\n                \"in_number\": \"STCR-1\",\n                \"in_type\": \"stock_return\",\n                \"in_particular\": \"default dep1\",\n                \"in_quantity\": 1,\n                \"in_rate\": \"0.00\",\n                \"in_amount\": \"0.00\",\n                \"in_approved_by_name\": \"augxdeveloper\",\n                \"out_date\": \"2024-07-22\",\n                \"out_number\": \"STCI-3\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 1,\n                \"out_rate\": \"0.00\",\n                \"out_amount\": \"0.00\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            },\n            {\n                \"in_date\": null,\n                \"in_number\": null,\n                \"in_type\": null,\n                \"in_particular\": null,\n                \"in_quantity\": null,\n                \"in_rate\": null,\n                \"in_amount\": null,\n                \"in_approved_by_name\": \"\",\n                \"out_date\": \"2024-07-24\",\n                \"out_number\": \"STCI-2\",\n                \"out_type\": \"stock_issue\",\n                \"out_particular\": \"default dep1\",\n                \"out_quantity\": 2,\n                \"out_rate\": \"99.22\",\n                \"out_amount\": \"198.44\",\n                \"out_approved_by_name\": \"augxdeveloper\"\n            }\n        ],\n        \"in_totals\": {\n            \"total_quantity\": 22,\n            \"total_amount\": 705.12\n        },\n        \"out_totals\": {\n            \"total_quantity\": 4,\n            \"total_amount\": 198.44\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/product-in-out-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/product-in-out-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "purchase rate log report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "2"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"purchase-rate-log-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-05-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								},
-								{
-									"key": "product_id",
-									"value": "36",
-									"description": "required"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "purchase rate log report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/purchase-rate-log-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_id=36",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"purchase-rate-log-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-05-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22"
-										},
-										{
-											"key": "product_id",
-											"value": "36",
-											"description": "required"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 16 Aug 2024 11:17:06 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999998"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Product Rate Log Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/purchase-rate-log-report\",\n            \"per_page\": 10,\n            \"to\": 1,\n            \"total\": 1\n        },\n        \"data\": [\n            {\n                \"bill_id\": 16,\n                \"bill_number\": \"PB-1\",\n                \"bill_date\": \"2024-07-22\",\n                \"vendor_name\": \"Venodr a\",\n                \"product_name\": \"Product 1D11111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"quantity\": 11,\n                \"rate\": \"12.00\",\n                \"modified_rate\": \"28.36\",\n                \"amount\": \"352.56\",\n                \"bill_approved_by_name\": \"augxdeveloper\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/purchase-rate-log-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/purchase-rate-log-report?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "stock valuation report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-valuation-report"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "start_date",
-									"value": "2024-05-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								},
-								{
-									"key": "product_name_sku",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "stock valuation report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "2"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/stock-valuation-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22&product_name_sku=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"stock-valuation-report"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "10"
-										},
-										{
-											"key": "start_date",
-											"value": "2024-05-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-08-22"
-										},
-										{
-											"key": "product_name_sku",
-											"value": ""
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 16 Aug 2024 11:16:51 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999999"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Stock Valuation Report\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 3,\n            \"path\": \"http://127.0.0.1:8000/api/stock-valuation-report\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 29\n        },\n        \"data\": [\n            {\n                \"product_id\": 8,\n                \"product_name\": \"Temporibus at velit\",\n                \"product_sku\": \"Duis est ut ratione\",\n                \"product_quantity\": 2,\n                \"product_rate\": 11,\n                \"product_amount\": \"22.00\"\n            },\n            {\n                \"product_id\": 10,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 11,\n                \"product_name\": \"Product 1\",\n                \"product_sku\": \"prod-sku-1\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 12,\n                \"product_name\": \"Product 2\",\n                \"product_sku\": \"prod-sku-2\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 13,\n                \"product_name\": \"Product 11\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1023,\n                \"product_rate\": 98.01,\n                \"product_amount\": \"100226.50\"\n            },\n            {\n                \"product_id\": 14,\n                \"product_name\": \"Product 12\",\n                \"product_sku\": \"prod-sku-12\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 19,\n                \"product_name\": \"Atque dignissimos qu\",\n                \"product_sku\": \"Deleniti voluptate r\",\n                \"product_quantity\": 93,\n                \"product_rate\": 61,\n                \"product_amount\": \"5673.00\"\n            },\n            {\n                \"product_id\": 20,\n                \"product_name\": \"Dolore nesciunt sin\",\n                \"product_sku\": \"Duis officiis et a q\",\n                \"product_quantity\": 1,\n                \"product_rate\": 1,\n                \"product_amount\": \"1.00\"\n            },\n            {\n                \"product_id\": 22,\n                \"product_name\": \"Product 111\",\n                \"product_sku\": \"prod-sku-11\",\n                \"product_quantity\": 1000,\n                \"product_rate\": 100,\n                \"product_amount\": \"100000.00\"\n            },\n            {\n                \"product_id\": 23,\n                \"product_name\": \"Product 121\",\n                \"product_sku\": \"prod-sku-121\",\n                \"product_quantity\": 1,\n                \"product_rate\": 11,\n                \"product_amount\": \"11.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=3\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/stock-valuation-report?page=2\"\n        }\n    }\n}"
-						}
-					]
-				},
-				{
 					"name": "report total",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -29716,7 +29777,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
+							"raw": "{{url}}/api/report-total/:type?start_date=2023-10-01&end_date=2024-10-31&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
 							"host": [
 								"{{url}}"
 							],
@@ -29728,12 +29789,12 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2024-06-22",
+									"value": "2023-10-01",
 									"description": "date start"
 								},
 								{
 									"key": "end_date",
-									"value": "2024-09-22",
+									"value": "2024-10-31",
 									"description": "date end"
 								},
 								{
@@ -29768,8 +29829,8 @@
 							"variable": [
 								{
 									"key": "type",
-									"value": "",
-									"description": "Report Name, e.g. stock_issue_report, stock_consumption_report, stock_returns_report,sales_summary_report,purchase_summary_report, "
+									"value": "sales_by_item_report",
+									"description": "Report Name, e.g. stock_issue_report, stock_consumption_report, stock_returns_report, sales_summary_report, purchase_summary_report, customer_receivable_summary_report, vendor_payable_summary_report, purchase_by_item_report, sales_by_item_report"
 								}
 							]
 						}

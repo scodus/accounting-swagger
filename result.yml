@@ -101,6 +101,8 @@ tags:
   - name: report > sales report
   - name: report > purchase report
   - name: report > inventory report
+  - name: report > tax report
+  - name: report > system report
   - name: role
   - name: sales order
   - name: sale payment
@@ -11265,9 +11267,12 @@ paths:
         - name: inventory
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: is_variant_product
+          in: query
+          schema:
+            type: string
+        - name: product_category_id
           in: query
           schema:
             type: string
@@ -11442,71 +11447,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product-list:
-    get:
-      tags:
-        - product
-      summary: list product
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '10'
-        - name: search_keyword
-          in: query
-          schema:
-            type: integer
-          example: '111111111'
-        - name: is_service
-          in: query
-          schema:
-            type: string
-        - name: is_product
-          in: query
-          schema:
-            type: string
-        - name: inventory
-          in: query
-          schema:
-            type: string
-        - name: is_variant_product
-          in: query
-          schema:
-            type: string
-        - name: resource_fields
-          in: query
-          schema:
-            type: string
-          description: id,name,slug,sku
-          example: id,name,slug,sku
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/product-import:
     post:
       tags:
@@ -11623,6 +11563,75 @@ paths:
           schema:
             type: integer
           example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product-list:
+    get:
+      tags:
+        - product
+      summary: list product NEW
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search_keyword
+          in: query
+          schema:
+            type: integer
+          example: '111111111'
+        - name: is_service
+          in: query
+          schema:
+            type: string
+        - name: is_product
+          in: query
+          schema:
+            type: string
+        - name: inventory
+          in: query
+          schema:
+            type: string
+        - name: is_variant_product
+          in: query
+          schema:
+            type: string
+        - name: resource_fields
+          in: query
+          schema:
+            type: string
+          description: id,name,slug,sku
+          example: id,name,slug,sku
+        - name: product_category_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -11892,8 +11901,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -11924,11 +11933,13 @@ paths:
           in: query
           schema:
             type: string
+          description: draft
           example: draft
         - name: multiple_status[1]
           in: query
           schema:
             type: string
+          description: paid
           example: paid
         - name: date[0]
           in: query
@@ -11947,7 +11958,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-04-01'
+          example: '2024-11-01'
       responses:
         '200':
           description: Successful response
@@ -14309,6 +14320,105 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/trial-balance:
+    get:
+      tags:
+        - report > accounting
+      summary: trial balance
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-06-15'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-07-14'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/income-statement:
+    get:
+      tags:
+        - report > accounting
+      summary: income-statement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-07-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2023-08-21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/balance-sheet:
+    get:
+      tags:
+        - report > accounting
+      summary: balance sheet
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: 2023-1-22
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/cashflow-summary:
     get:
       tags:
@@ -14360,7 +14470,7 @@ paths:
             Date:
               schema:
                 type: string
-                example: Tue, 08 Oct 2024 05:27:40 GMT
+                example: Tue, 08 Oct 2024 05:35:15 GMT
             Content-Type:
               schema:
                 type: string
@@ -14381,383 +14491,200 @@ paths:
             application/json:
               schema:
                 type: object
-              examples:
-                example-0:
-                  summary: cashflow summary
-                  value:
-                    message: Cashflow Summary
-                    data:
-                      data:
-                        starting_balance:
-                          balance: -23830.43
-                          items:
-                            - name: Cash in Hand
-                              id: 106
-                              balance: 234
-                            - name: Rastra Bank
-                              id: 162
-                              balance: -23330.43
-                            - name: Ut do mollitia sed f
-                              id: 224
-                              balance: -734
-                        received_from_customers:
-                          cash_in: 163491.63
-                          cash_out: 996.59
-                          balance: 162495.04
-                          items:
-                            - name: Ad labore hic nostru
-                              id: 562
-                              cash_in: '855.00'
-                              cash_out: '0.00'
-                              balance: '855.00'
-                            - name: asas
-                              id: 558
-                              cash_in: '8273.24'
-                              cash_out: '0.00'
-                              balance: '8273.24'
-                            - name: asda
-                              id: 554
-                              cash_in: '1120.65'
-                              cash_out: '0.00'
-                              balance: '1120.65'
-                            - name: asdasd
-                              id: 403
-                              cash_in: '11451.44'
-                              cash_out: '0.00'
-                              balance: '11451.44'
-                            - name: Bir Bahadur
-                              id: 216
-                              cash_in: '944.00'
-                              cash_out: '952.59'
-                              balance: '-8.59'
-                            - name: Darnia Gone
-                              id: 520
-                              cash_in: '6024.00'
-                              cash_out: '0.00'
-                              balance: '6024.00'
-                            - name: dddd
-                              id: 556
-                              cash_in: '7197.61'
-                              cash_out: '0.00'
-                              balance: '7197.61'
-                            - name: ds
-                              id: 555
-                              cash_in: '1759.65'
-                              cash_out: '0.00'
-                              balance: '1759.65'
-                            - name: Eum est repellendus
-                              id: 560
-                              cash_in: '229.50'
-                              cash_out: '0.00'
-                              balance: '229.50'
-                            - name: Exercitation volupta
-                              id: 552
-                              cash_in: '5330.67'
-                              cash_out: '0.00'
-                              balance: '5330.67'
-                            - name: Inventore aspernatur
-                              id: 545
-                              cash_in: '195.58'
-                              cash_out: '0.00'
-                              balance: '195.58'
-                            - name: Nulla esse aliquip f
-                              id: 402
-                              cash_in: '3586.74'
-                              cash_out: '0.00'
-                              balance: '3586.74'
-                            - name: POS 201
-                              id: 561
-                              cash_in: '50000.00'
-                              cash_out: '0.00'
-                              balance: '50000.00'
-                            - name: Qui beatae non corpo
-                              id: 521
-                              cash_in: '12827.85'
-                              cash_out: '44.00'
-                              balance: '12783.85'
-                            - name: sd
-                              id: 557
-                              cash_in: '39521.75'
-                              cash_out: '0.00'
-                              balance: '39521.75'
-                            - name: Shutter
-                              id: 551
-                              cash_in: '458.95'
-                              cash_out: '0.00'
-                              balance: '458.95'
-                            - name: Test POS 1
-                              id: 559
-                              cash_in: '13715.00'
-                              cash_out: '0.00'
-                              balance: '13715.00'
-                        other_receipts:
-                          cash_in: 661
-                          cash_out: 0
-                          balance: 661
-                          items:
-                            - name: Others(JV)
-                              id: null
-                              cash_in: '661.00'
-                              cash_out: '0.00'
-                              balance: '661.00'
-                        paid_to_suppliers:
-                          cash_in: 0
-                          cash_out: 1100
-                          balance: -1100
-                          items:
-                            - name: John Petrucci
-                              id: 161
-                              cash_in: '0.00'
-                              cash_out: '300.00'
-                              balance: '-300.00'
-                            - name: Tosin Abasi
-                              id: 160
-                              cash_in: '0.00'
-                              cash_out: '800.00'
-                              balance: '-800.00'
-                        other_payments:
-                          cash_in: 0
-                          cash_out: 8595.59
-                          balance: -8595.59
-                          items:
-                            - name: Bir Bahadur
-                              id: 216
-                              cash_in: '0.00'
-                              cash_out: '952.59'
-                              balance: '-952.59'
-                            - name: Depreciation
-                              id: 140
-                              cash_in: '0.00'
-                              cash_out: '5900.00'
-                              balance: '-5900.00'
-                            - name: Discount Expense
-                              id: 139
-                              cash_in: '0.00'
-                              cash_out: '499.00'
-                              balance: '-499.00'
-                            - name: Others(JV)
-                              id: null
-                              cash_in: '0.00'
-                              cash_out: '200.00'
-                              balance: '-200.00'
-                            - name: Qui beatae non corpo
-                              id: 521
-                              cash_in: '0.00'
-                              cash_out: '44.00'
-                              balance: '-44.00'
-                            - name: Salary Expense
-                              id: 138
-                              cash_in: '0.00'
-                              cash_out: '1000.00'
-                              balance: '-1000.00'
-                        ending_balance:
-                          balance: 130626.60999999999
-                          items:
-                            - name: Cash in Hand
-                              id: 106
-                              balance: 94898.29
-                            - name: Rastra Bank
-                              id: 162
-                              balance: 36662.32
-                            - name: Ut do mollitia sed f
-                              id: 224
-                              balance: -934
-                example-1:
-                  summary: cashflow summary
-                  value:
-                    message: Cashflow Summary
-                    data:
-                      data:
-                        starting_balance:
+              example:
+                message: Cashflow Summary
+                data:
+                  data:
+                    starting_balance:
+                      cash_in: null
+                      cash_out: null
+                      balance: -23830.43
+                      items:
+                        - name: Cash in Hand
+                          id: 106
                           cash_in: null
                           cash_out: null
-                          balance: -23830.43
-                          items:
-                            - name: Cash in Hand
-                              id: 106
-                              cash_in: null
-                              cash_out: null
-                              balance: 234
-                            - name: Rastra Bank
-                              id: 162
-                              cash_in: null
-                              cash_out: null
-                              balance: -23330.43
-                            - name: Ut do mollitia sed f
-                              id: 224
-                              cash_in: null
-                              cash_out: null
-                              balance: -734
-                        received_from_customers:
-                          cash_in: 163491.63
-                          cash_out: 996.59
-                          balance: 162495.04
-                          items:
-                            - name: Ad labore hic nostru
-                              id: 562
-                              cash_in: '855.00'
-                              cash_out: '0.00'
-                              balance: '855.00'
-                            - name: asas
-                              id: 558
-                              cash_in: '8273.24'
-                              cash_out: '0.00'
-                              balance: '8273.24'
-                            - name: asda
-                              id: 554
-                              cash_in: '1120.65'
-                              cash_out: '0.00'
-                              balance: '1120.65'
-                            - name: asdasd
-                              id: 403
-                              cash_in: '11451.44'
-                              cash_out: '0.00'
-                              balance: '11451.44'
-                            - name: Bir Bahadur
-                              id: 216
-                              cash_in: '944.00'
-                              cash_out: '952.59'
-                              balance: '-8.59'
-                            - name: Darnia Gone
-                              id: 520
-                              cash_in: '6024.00'
-                              cash_out: '0.00'
-                              balance: '6024.00'
-                            - name: dddd
-                              id: 556
-                              cash_in: '7197.61'
-                              cash_out: '0.00'
-                              balance: '7197.61'
-                            - name: ds
-                              id: 555
-                              cash_in: '1759.65'
-                              cash_out: '0.00'
-                              balance: '1759.65'
-                            - name: Eum est repellendus
-                              id: 560
-                              cash_in: '229.50'
-                              cash_out: '0.00'
-                              balance: '229.50'
-                            - name: Exercitation volupta
-                              id: 552
-                              cash_in: '5330.67'
-                              cash_out: '0.00'
-                              balance: '5330.67'
-                            - name: Inventore aspernatur
-                              id: 545
-                              cash_in: '195.58'
-                              cash_out: '0.00'
-                              balance: '195.58'
-                            - name: Nulla esse aliquip f
-                              id: 402
-                              cash_in: '3586.74'
-                              cash_out: '0.00'
-                              balance: '3586.74'
-                            - name: POS 201
-                              id: 561
-                              cash_in: '50000.00'
-                              cash_out: '0.00'
-                              balance: '50000.00'
-                            - name: Qui beatae non corpo
-                              id: 521
-                              cash_in: '12827.85'
-                              cash_out: '44.00'
-                              balance: '12783.85'
-                            - name: sd
-                              id: 557
-                              cash_in: '39521.75'
-                              cash_out: '0.00'
-                              balance: '39521.75'
-                            - name: Shutter
-                              id: 551
-                              cash_in: '458.95'
-                              cash_out: '0.00'
-                              balance: '458.95'
-                            - name: Test POS 1
-                              id: 559
-                              cash_in: '13715.00'
-                              cash_out: '0.00'
-                              balance: '13715.00'
-                        other_receipts:
-                          cash_in: 661
-                          cash_out: 0
-                          balance: 661
-                          items:
-                            - name: Others(JV)
-                              id: null
-                              cash_in: '661.00'
-                              cash_out: '0.00'
-                              balance: '661.00'
-                        paid_to_suppliers:
-                          cash_in: 0
-                          cash_out: 1100
-                          balance: -1100
-                          items:
-                            - name: John Petrucci
-                              id: 161
-                              cash_in: '0.00'
-                              cash_out: '300.00'
-                              balance: '-300.00'
-                            - name: Tosin Abasi
-                              id: 160
-                              cash_in: '0.00'
-                              cash_out: '800.00'
-                              balance: '-800.00'
-                        other_payments:
-                          cash_in: 0
-                          cash_out: 8595.59
-                          balance: -8595.59
-                          items:
-                            - name: Bir Bahadur
-                              id: 216
-                              cash_in: '0.00'
-                              cash_out: '952.59'
-                              balance: '-952.59'
-                            - name: Depreciation
-                              id: 140
-                              cash_in: '0.00'
-                              cash_out: '5900.00'
-                              balance: '-5900.00'
-                            - name: Discount Expense
-                              id: 139
-                              cash_in: '0.00'
-                              cash_out: '499.00'
-                              balance: '-499.00'
-                            - name: Others(JV)
-                              id: null
-                              cash_in: '0.00'
-                              cash_out: '200.00'
-                              balance: '-200.00'
-                            - name: Qui beatae non corpo
-                              id: 521
-                              cash_in: '0.00'
-                              cash_out: '44.00'
-                              balance: '-44.00'
-                            - name: Salary Expense
-                              id: 138
-                              cash_in: '0.00'
-                              cash_out: '1000.00'
-                              balance: '-1000.00'
-                        ending_balance:
+                          balance: 234
+                        - name: Rastra Bank
+                          id: 162
                           cash_in: null
                           cash_out: null
-                          balance: 130626.60999999999
-                          items:
-                            - name: Cash in Hand
-                              id: 106
-                              cash_in: null
-                              cash_out: null
-                              balance: 94898.29
-                            - name: Rastra Bank
-                              id: 162
-                              cash_in: null
-                              cash_out: null
-                              balance: 36662.32
-                            - name: Ut do mollitia sed f
-                              id: 224
-                              cash_in: null
-                              cash_out: null
-                              balance: -934
+                          balance: -23330.43
+                        - name: Ut do mollitia sed f
+                          id: 224
+                          cash_in: null
+                          cash_out: null
+                          balance: -734
+                    received_from_customers:
+                      cash_in: 163491.63
+                      cash_out: 996.59
+                      balance: 162495.04
+                      items:
+                        - name: Ad labore hic nostru
+                          id: 562
+                          cash_in: '855.00'
+                          cash_out: '0.00'
+                          balance: '855.00'
+                        - name: asas
+                          id: 558
+                          cash_in: '8273.24'
+                          cash_out: '0.00'
+                          balance: '8273.24'
+                        - name: asda
+                          id: 554
+                          cash_in: '1120.65'
+                          cash_out: '0.00'
+                          balance: '1120.65'
+                        - name: asdasd
+                          id: 403
+                          cash_in: '11451.44'
+                          cash_out: '0.00'
+                          balance: '11451.44'
+                        - name: Bir Bahadur
+                          id: 216
+                          cash_in: '944.00'
+                          cash_out: '952.59'
+                          balance: '-8.59'
+                        - name: Darnia Gone
+                          id: 520
+                          cash_in: '6024.00'
+                          cash_out: '0.00'
+                          balance: '6024.00'
+                        - name: dddd
+                          id: 556
+                          cash_in: '7197.61'
+                          cash_out: '0.00'
+                          balance: '7197.61'
+                        - name: ds
+                          id: 555
+                          cash_in: '1759.65'
+                          cash_out: '0.00'
+                          balance: '1759.65'
+                        - name: Eum est repellendus
+                          id: 560
+                          cash_in: '229.50'
+                          cash_out: '0.00'
+                          balance: '229.50'
+                        - name: Exercitation volupta
+                          id: 552
+                          cash_in: '5330.67'
+                          cash_out: '0.00'
+                          balance: '5330.67'
+                        - name: Inventore aspernatur
+                          id: 545
+                          cash_in: '195.58'
+                          cash_out: '0.00'
+                          balance: '195.58'
+                        - name: Nulla esse aliquip f
+                          id: 402
+                          cash_in: '3586.74'
+                          cash_out: '0.00'
+                          balance: '3586.74'
+                        - name: POS 201
+                          id: 561
+                          cash_in: '50000.00'
+                          cash_out: '0.00'
+                          balance: '50000.00'
+                        - name: Qui beatae non corpo
+                          id: 521
+                          cash_in: '12827.85'
+                          cash_out: '44.00'
+                          balance: '12783.85'
+                        - name: sd
+                          id: 557
+                          cash_in: '39521.75'
+                          cash_out: '0.00'
+                          balance: '39521.75'
+                        - name: Shutter
+                          id: 551
+                          cash_in: '458.95'
+                          cash_out: '0.00'
+                          balance: '458.95'
+                        - name: Test POS 1
+                          id: 559
+                          cash_in: '13715.00'
+                          cash_out: '0.00'
+                          balance: '13715.00'
+                    other_receipts:
+                      cash_in: 661
+                      cash_out: 0
+                      balance: 661
+                      items:
+                        - name: Others(JV)
+                          id: null
+                          cash_in: '661.00'
+                          cash_out: '0.00'
+                          balance: '661.00'
+                    paid_to_suppliers:
+                      cash_in: 0
+                      cash_out: 1100
+                      balance: -1100
+                      items:
+                        - name: John Petrucci
+                          id: 161
+                          cash_in: '0.00'
+                          cash_out: '300.00'
+                          balance: '-300.00'
+                        - name: Tosin Abasi
+                          id: 160
+                          cash_in: '0.00'
+                          cash_out: '800.00'
+                          balance: '-800.00'
+                    other_payments:
+                      cash_in: 0
+                      cash_out: 8595.59
+                      balance: -8595.59
+                      items:
+                        - name: Bir Bahadur
+                          id: 216
+                          cash_in: '0.00'
+                          cash_out: '952.59'
+                          balance: '-952.59'
+                        - name: Depreciation
+                          id: 140
+                          cash_in: '0.00'
+                          cash_out: '5900.00'
+                          balance: '-5900.00'
+                        - name: Discount Expense
+                          id: 139
+                          cash_in: '0.00'
+                          cash_out: '499.00'
+                          balance: '-499.00'
+                        - name: Others(JV)
+                          id: null
+                          cash_in: '0.00'
+                          cash_out: '200.00'
+                          balance: '-200.00'
+                        - name: Qui beatae non corpo
+                          id: 521
+                          cash_in: '0.00'
+                          cash_out: '44.00'
+                          balance: '-44.00'
+                        - name: Salary Expense
+                          id: 138
+                          cash_in: '0.00'
+                          cash_out: '1000.00'
+                          balance: '-1000.00'
+                    ending_balance:
+                      cash_in: null
+                      cash_out: null
+                      balance: 130626.60999999999
+                      items:
+                        - name: Cash in Hand
+                          id: 106
+                          cash_in: null
+                          cash_out: null
+                          balance: 94898.29
+                        - name: Rastra Bank
+                          id: 162
+                          cash_in: null
+                          cash_out: null
+                          balance: 36662.32
+                        - name: Ut do mollitia sed f
+                          id: 224
+                          cash_in: null
+                          cash_out: null
+                          balance: -934
   /api/customer-aging-summary:
     get:
       tags:
@@ -15148,7 +15075,8 @@ paths:
         - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '5'
         - name: start_date
           in: query
           schema:
@@ -15938,7 +15866,8 @@ paths:
         - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '5'
         - name: start_date
           in: query
           schema:
@@ -15952,7 +15881,8 @@ paths:
         - name: vendor_id
           in: query
           schema:
-            type: string
+            type: integer
+          example: '161'
       responses:
         '200':
           description: OK
@@ -18426,6 +18356,127 @@ paths:
                     last: http://127.0.0.1:8000/api/purchase-master-report?page=200
                     prev: ''
                     next: http://127.0.0.1:8000/api/purchase-master-report?page=2
+  /api/purchase-rate-log-report:
+    get:
+      tags:
+        - report > purchase report
+      summary: purchase rate log report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-05-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-10-22'
+        - name: product_id
+          in: query
+          schema:
+            type: integer
+          description: required
+          example: '8'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 16 Aug 2024 11:17:06 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999998'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Product Rate Log Report
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: http://127.0.0.1:8000/api/purchase-rate-log-report
+                    per_page: 10
+                    to: 1
+                    total: 1
+                  data:
+                    - bill_id: 16
+                      bill_number: PB-1
+                      bill_date: '2024-07-22'
+                      vendor_name: Venodr a
+                      product_name: Product 1D11111
+                      product_sku: prod-sku-11
+                      quantity: 11
+                      rate: '12.00'
+                      modified_rate: '28.36'
+                      amount: '352.56'
+                      bill_approved_by_name: augxdeveloper
+                  links:
+                    first: http://127.0.0.1:8000/api/purchase-rate-log-report?page=1
+                    last: http://127.0.0.1:8000/api/purchase-rate-log-report?page=1
+                    prev: ''
+                    next: ''
   /api/inventory-position:
     get:
       tags:
@@ -18598,6 +18649,61 @@ paths:
                     last: http://127.0.0.1:8000/api/inventory-position?page=25
                     prev: ''
                     next: http://127.0.0.1:8000/api/inventory-position?page=2
+  /api/inventory-movement:
+    get:
+      tags:
+        - report > inventory report
+      summary: inventory movement
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-09-18'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-09-18'
+        - name: product_category_id
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/inventory-master-report:
     get:
       tags:
@@ -18886,234 +18992,10 @@ paths:
                     last: http://127.0.0.1:8000/api/inventory-master-report?page=35
                     prev: ''
                     next: http://127.0.0.1:8000/api/inventory-master-report?page=2
-  /api/income-statement:
-    get:
-      tags:
-        - report
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2023-07-22'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2023-08-21'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/trial-balance:
-    get:
-      tags:
-        - report
-      summary: trial balance
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '3'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2024-06-15'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-07-14'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/balance-sheet:
-    get:
-      tags:
-        - report
-      summary: balance sheet
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: 2023-1-22
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/report:
-    get:
-      tags:
-        - report
-      summary: report
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: 2023-1-22
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/sale-register:
-    get:
-      tags:
-        - report
-      summary: sale register
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2023-01-22'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/purchase-register:
-    get:
-      tags:
-        - report
-      summary: purchase register
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2023-01-22'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/stock-issue-report:
     get:
       tags:
-        - report
+        - report > inventory report
       summary: stock issue report
       security:
         - bearerAuth: []
@@ -19253,7 +19135,7 @@ paths:
   /api/stock-consumption-report:
     get:
       tags:
-        - report
+        - report > inventory report
       summary: stock consumption report
       security:
         - bearerAuth: []
@@ -19379,7 +19261,7 @@ paths:
   /api/stock-return-report:
     get:
       tags:
-        - report
+        - report > inventory report
       summary: stock return report
       security:
         - bearerAuth: []
@@ -19502,8 +19384,8 @@ paths:
   /api/stock-issue-consumption-detail-report:
     get:
       tags:
-        - report
-      summary: stock issue consumption detail report
+        - report > inventory report
+      summary: issue and consumption detail report
       security:
         - bearerAuth: []
       parameters:
@@ -19632,8 +19514,8 @@ paths:
   /api/stock-issue-consumption-return-detail-report:
     get:
       tags:
-        - report
-      summary: stock issue consumption return detail report
+        - report > inventory report
+      summary: stock issue stock consumption stock return detail report
       security:
         - bearerAuth: []
       parameters:
@@ -19692,7 +19574,7 @@ paths:
   /api/product-in-out-report:
     get:
       tags:
-        - report
+        - report > inventory report
       summary: product in out report
       security:
         - bearerAuth: []
@@ -19853,131 +19735,10 @@ paths:
                     last: http://127.0.0.1:8000/api/product-in-out-report?page=1
                     prev: ''
                     next: ''
-  /api/purchase-rate-log-report:
-    get:
-      tags:
-        - report
-      summary: purchase rate log report
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '2'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '10'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2024-05-22'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-22'
-        - name: product_id
-          in: query
-          schema:
-            type: integer
-          description: required
-          example: '36'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Fri, 16 Aug 2024 11:17:06 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999998'
-            Vary:
-              schema:
-                type: string
-                example: Origin
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Product Rate Log Report
-                data:
-                  meta:
-                    current_page: 1
-                    from: 1
-                    last_page: 1
-                    path: http://127.0.0.1:8000/api/purchase-rate-log-report
-                    per_page: 10
-                    to: 1
-                    total: 1
-                  data:
-                    - bill_id: 16
-                      bill_number: PB-1
-                      bill_date: '2024-07-22'
-                      vendor_name: Venodr a
-                      product_name: Product 1D11111
-                      product_sku: prod-sku-11
-                      quantity: 11
-                      rate: '12.00'
-                      modified_rate: '28.36'
-                      amount: '352.56'
-                      bill_approved_by_name: augxdeveloper
-                  links:
-                    first: http://127.0.0.1:8000/api/purchase-rate-log-report?page=1
-                    last: http://127.0.0.1:8000/api/purchase-rate-log-report?page=1
-                    prev: ''
-                    next: ''
   /api/stock-valuation-report:
     get:
       tags:
-        - report
+        - report > inventory report
       summary: stock valuation report
       security:
         - bearerAuth: []
@@ -20142,6 +19903,179 @@ paths:
                     last: http://127.0.0.1:8000/api/stock-valuation-report?page=3
                     prev: ''
                     next: http://127.0.0.1:8000/api/stock-valuation-report?page=2
+  /api/sale-register:
+    get:
+      tags:
+        - report > tax report
+      summary: sale register
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-01-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/purchase-register:
+    get:
+      tags:
+        - report > tax report
+      summary: purchase register
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-01-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/annex-5-report:
+    get:
+      tags:
+        - report > tax report
+      summary: annex 5 report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-05-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report:
+    get:
+      tags:
+        - report
+      summary: report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: 2023-1-22
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/report-total/{type}:
     get:
       tags:
@@ -20165,13 +20099,13 @@ paths:
           schema:
             type: string
           description: date start
-          example: '2024-06-22'
+          example: '2023-10-01'
         - name: end_date
           in: query
           schema:
             type: string
           description: date end
-          example: '2024-09-22'
+          example: '2024-10-31'
         - name: warehouse_department_id
           in: query
           schema:
@@ -20207,7 +20141,10 @@ paths:
           required: true
           description: >-
             Report Name, e.g. stock_issue_report, stock_consumption_report,
-            stock_returns_report,sales_summary_report,purchase_summary_report, 
+            stock_returns_report, sales_summary_report, purchase_summary_report,
+            customer_receivable_summary_report, vendor_payable_summary_report,
+            purchase_by_item_report, sales_by_item_report
+          example: sales_by_item_report
       responses:
         '200':
           description: OK
