@@ -5576,18 +5576,30 @@
 									"disabled": true
 								},
 								{
+									"key": "email",
+									"value": "test@gmail.com",
+									"type": "text"
+								},
+								{
 									"key": "password",
 									"value": "P@ssw0rd",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "ripiw95957@mfunza.com",
-									"type": "text"
+									"value": "srotcloud@gmail.com",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
-									"value": "srotcloud@gmail.com",
+									"value": "gloriacoffee01@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Gloria@6097",
 									"type": "text",
 									"disabled": true
 								}
@@ -8297,7 +8309,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -8409,6 +8421,16 @@
 									"key": "vendor_id",
 									"value": "44",
 									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "reference_number",
+									"value": "",
+									"type": "text"
 								}
 							]
 						},
@@ -8442,7 +8464,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -8540,8 +8562,18 @@
 								},
 								{
 									"key": "files[0]",
-									"type": "file",
-									"src": []
+									"value": "",
+									"type": "file"
+								},
+								{
+									"key": "tax",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "reference_number",
+									"value": "",
+									"type": "text"
 								}
 							]
 						},
@@ -11869,6 +11901,373 @@
 							"path": [
 								"api",
 								"company-dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "credit term",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "ct30",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/credit-term",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"credit-term"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "ct 30",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/credit-term/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"credit-term",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/credit-term/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"credit-term",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/credit-term?paginate=1&page=&limit=&search_keyword=&status=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"credit-term"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/credit-term/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"credit-term",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/credit-term/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"credit-term",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -28075,7 +28474,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/inventory-movement?paginate=1&page=&limit=10&start_date=2024-09-18&end_date=2024-09-18&product_category_id&product_id",
+									"raw": "{{url}}/api/inventory-movement?paginate=1&page=1&limit=10&start_date=2024-07-25&end_date=2024-12-30&product_category_id=&product_id=",
 									"host": [
 										"{{url}}"
 									],
@@ -28090,7 +28489,7 @@
 										},
 										{
 											"key": "page",
-											"value": ""
+											"value": "1"
 										},
 										{
 											"key": "limit",
@@ -28098,19 +28497,19 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-09-18"
+											"value": "2024-07-25"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-09-18"
+											"value": "2024-12-30"
 										},
 										{
 											"key": "product_category_id",
-											"value": null
+											"value": ""
 										},
 										{
 											"key": "product_id",
-											"value": null
+											"value": ""
 										}
 									]
 								}
@@ -35526,8 +35925,11 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [],
-						"type": "text/javascript"
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -35589,7 +35991,7 @@
 						{
 							"key": "type",
 							"value": "",
-							"description": "invoice"
+							"description": "quotation,sales_order,invoice,sales_return,purchase_order,purchase_bill,purchase_bills,purchase_return,quick_receipt,record_payment,supplier_payment,quick_payment,expense,journal_voucher,stock_issue,stock_consumption,stock_return"
 						}
 					]
 				}
@@ -35769,7 +36171,8 @@
 					"variable": [
 						{
 							"key": "type",
-							"value": "invoice"
+							"value": "invoice",
+							"description": "quotation,sales_order,invoice,sales_return,purchase_order,purchase_bill,purchase_bills,purchase_return,quick_receipt,quick_payment,record_payment,supplier_payment,expense,journal_voucher,stock_issue,stock_consumption,stock_return"
 						},
 						{
 							"key": "id",

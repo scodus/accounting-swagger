@@ -58,6 +58,7 @@ tags:
   - name: company
   - name: company > package subscription
   - name: company dashboard
+  - name: credit term
   - name: customer
   - name: dashboard
   - name: depreciation
@@ -3046,10 +3047,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: srotcloud@gmail.com
+                  example: gloriacoffee01@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd
+                  example: Gloria@6097
       responses:
         '200':
           description: Successful response
@@ -4588,6 +4589,10 @@ paths:
                 vendor_id:
                   type: integer
                   example: '44'
+                tax:
+                  type: string
+                reference_number:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -4599,8 +4604,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -4701,14 +4706,18 @@ paths:
                 files[0]:
                   type: string
                   format: binary
+                tax:
+                  type: string
+                reference_number:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
@@ -6601,6 +6610,230 @@ paths:
           schema:
             type: string
           example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/credit-term:
+    post:
+      tags:
+        - credit term
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: ct30
+                value:
+                  type: integer
+                  example: '30'
+                status:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - credit term
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/credit-term/{id}:
+    post:
+      tags:
+        - credit term
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                title:
+                  type: string
+                  example: ct 30
+                value:
+                  type: integer
+                  example: '30'
+                status:
+                  type: string
+                  example: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - credit term
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - credit term
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/credit-term/{id}/update-status:
+    post:
+      tags:
+        - credit term
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: patch
+                status:
+                  type: string
+                  example: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -18675,7 +18908,8 @@ paths:
         - name: page
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
@@ -18685,12 +18919,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-09-18'
+          example: '2024-07-25'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-09-18'
+          example: '2024-12-30'
         - name: product_category_id
           in: query
           schema:
@@ -23859,7 +24093,8 @@ paths:
           in: query
           schema:
             type: string
-          description: invoice
+          description: >-
+            quotation,sales_order,invoice,sales_return,purchase_order,purchase_bill,purchase_bills,purchase_return,quick_receipt,record_payment,supplier_payment,quick_payment,expense,journal_voucher,stock_issue,stock_consumption,stock_return
       responses:
         '200':
           description: Successful response
@@ -23958,6 +24193,8 @@ paths:
           schema:
             type: string
           required: true
+          description: >-
+            quotation,sales_order,invoice,sales_return,purchase_order,purchase_bill,purchase_bills,purchase_return,quick_receipt,quick_payment,record_payment,supplier_payment,expense,journal_voucher,stock_issue,stock_consumption,stock_return
           example: invoice
         - name: id
           in: path
