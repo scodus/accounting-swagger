@@ -14020,113 +14020,13 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "fullname",
-									"value": "employee1edit",
-									"type": "text"
-								},
-								{
-									"key": "date_of_birth",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "gender",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "address",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "contact_info",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "citizenship_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "pan_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "emergency_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "emergency_contact_info",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "emergency_relation",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "department",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "designation",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "work_location",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "date_of_hire",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "account_holder_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "bank_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "account_number",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "branch_name",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "salary",
-									"value": "65000",
-									"type": "text"
-								},
-								{
-									"key": "allowance",
-									"value": "",
-									"type": "text"
-								},
-								{
 									"key": "_method",
 									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "date_of_termination",
+									"value": "2025-01-01",
 									"type": "text"
 								}
 							]
@@ -14145,7 +14045,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "67"
+									"value": "218"
 								}
 							]
 						}
@@ -20340,66 +20240,6 @@
 							},
 							{
 								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PATCH",
-									"type": "text"
-								},
-								{
-									"key": "parent_id",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/product/:id/update",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"product",
-								":id",
-								"update"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "7"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update parent",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
 								"value": "1"
 							}
 						],
@@ -20560,20 +20400,67 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/product/:id",
+							"raw": "{{url}}/api/product/:id/update",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"product",
-								":id"
+								":id",
+								"update"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "7"
+									"value": ""
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update parent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_method\": \"PATCH\",\r\n    \"parent_id\": 67,\r\n    \"product_id\": [274]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product-update-parent",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product-update-parent"
 							]
 						}
 					},
@@ -20664,7 +20551,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=1&product_category_id=&has_variant_product&is_not_variant_product=1",
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=1&product_category_id=&has_variant_product&is_not_variant_product=&is_variant_product=1",
 							"host": [
 								"{{url}}"
 							],
@@ -20706,16 +20593,15 @@
 									"value": ""
 								},
 								{
-									"key": "is_variant_product",
-									"value": "1",
-									"disabled": true
-								},
-								{
 									"key": "has_variant_product",
 									"value": null
 								},
 								{
 									"key": "is_not_variant_product",
+									"value": ""
+								},
+								{
+									"key": "is_variant_product",
 									"value": "1"
 								}
 							]

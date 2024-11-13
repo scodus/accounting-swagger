@@ -7931,53 +7931,12 @@ paths:
             schema:
               type: object
               properties:
-                fullname:
-                  type: string
-                  example: employee1edit
-                date_of_birth:
-                  type: string
-                gender:
-                  type: string
-                email:
-                  type: string
-                address:
-                  type: string
-                contact_info:
-                  type: string
-                citizenship_number:
-                  type: string
-                pan_number:
-                  type: string
-                emergency_name:
-                  type: string
-                emergency_contact_info:
-                  type: string
-                emergency_relation:
-                  type: string
-                department:
-                  type: string
-                designation:
-                  type: string
-                work_location:
-                  type: string
-                date_of_hire:
-                  type: string
-                account_holder_name:
-                  type: string
-                bank_name:
-                  type: string
-                account_number:
-                  type: string
-                branch_name:
-                  type: string
-                salary:
-                  type: integer
-                  example: '65000'
-                allowance:
-                  type: string
                 _method:
                   type: string
                   example: patch
+                date_of_termination:
+                  type: string
+                  example: '2025-01-01'
       security:
         - bearerAuth: []
       parameters:
@@ -7991,7 +7950,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '67'
+          example: '218'
       responses:
         '200':
           description: Successful response
@@ -11641,6 +11600,10 @@ paths:
         - name: is_not_variant_product
           in: query
           schema:
+            type: string
+        - name: is_variant_product
+          in: query
+          schema:
             type: integer
           example: '1'
       responses:
@@ -11653,46 +11616,6 @@ paths:
       tags:
         - product
       summary: update
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                _method:
-                  type: string
-                  example: PATCH
-                parent_id:
-                  type: string
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '7'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/product/{id}:
-    post:
-      tags:
-        - product
-      summary: update parent
       requestBody:
         content:
           multipart/form-data:
@@ -11790,14 +11713,47 @@ paths:
         - name: id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '7'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+  /api/product-update-parent:
+    post:
+      tags:
+        - product
+      summary: update parent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PATCH
+                parent_id: 67
+                product_id:
+                  - 274
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/{id}:
     delete:
       tags:
         - product
