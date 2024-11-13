@@ -11648,11 +11648,51 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product/{id}:
+  /api/product/{id}/update:
     post:
       tags:
         - product
       summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+                parent_id:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/{id}:
+    post:
+      tags:
+        - product
+      summary: update parent
       requestBody:
         content:
           multipart/form-data:
