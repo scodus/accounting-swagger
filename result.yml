@@ -120,6 +120,13 @@ tags:
   - name: warehouse
   - name: warehouse department
   - name: warehouse transfer
+  - name: Link Site
+  - name: Link Site > Main Account
+  - name: Link Site > Main Account > Admin
+  - name: Link Site > Main Account > Account
+  - name: Link Site > Main Account > Account > Product
+  - name: Link Site > Main Account > Account > Link Company
+  - name: Link Site > Main Account > Link Serve
 paths:
   /api/admin/login:
     post:
@@ -3069,18 +3076,17 @@ paths:
           content:
             application/json: {}
   /api/refresh-token/{refresh_token}:
-    post:
+    get:
       tags:
         - Auth
       summary: refresh token
-      requestBody:
-        content: {}
       parameters:
         - name: refresh_token
           in: path
           schema:
             type: string
           required: true
+          example: '{{refresh_token}}'
       responses:
         '200':
           description: Successful response
@@ -6865,6 +6871,8 @@ paths:
                 status:
                   type: string
                   example: active
+                credit_term_id:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -6970,6 +6978,9 @@ paths:
             schema:
               type: object
               properties:
+                _method:
+                  type: string
+                  example: patch
                 name:
                   type: string
                   example: customer name edit
@@ -6988,9 +6999,8 @@ paths:
                 status:
                   type: string
                   example: active
-                _method:
+                credit_term_id:
                   type: string
-                  example: patch
       security:
         - bearerAuth: []
       parameters:
@@ -7191,6 +7201,9 @@ paths:
             schema:
               type: object
               properties:
+                _method:
+                  type: string
+                  example: patch
                 name:
                   type: string
                   example: pos customer1
@@ -7209,9 +7222,8 @@ paths:
                 status:
                   type: string
                   example: active
-                _method:
+                credit_term_id:
                   type: string
-                  example: patch
       security:
         - bearerAuth: []
       parameters:
@@ -7698,6 +7710,8 @@ paths:
                 citizenship[2]:
                   type: string
                   format: binary
+                date_of_termination:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -7709,8 +7723,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -7726,8 +7740,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -7761,6 +7775,13 @@ paths:
           in: query
           schema:
             type: string
+          description: 'date format: Y-m in BS e.g. 2081-06'
+          example: 2081-10
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: current|terminated {nullable}
       responses:
         '200':
           description: Successful response
@@ -7899,6 +7920,83 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/employee/{id}/terminate:
+    post:
+      tags:
+        - employee
+      summary: update terminate
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                fullname:
+                  type: string
+                  example: employee1edit
+                date_of_birth:
+                  type: string
+                gender:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                contact_info:
+                  type: string
+                citizenship_number:
+                  type: string
+                pan_number:
+                  type: string
+                emergency_name:
+                  type: string
+                emergency_contact_info:
+                  type: string
+                emergency_relation:
+                  type: string
+                department:
+                  type: string
+                designation:
+                  type: string
+                work_location:
+                  type: string
+                date_of_hire:
+                  type: string
+                account_holder_name:
+                  type: string
+                bank_name:
+                  type: string
+                account_number:
+                  type: string
+                branch_name:
+                  type: string
+                salary:
+                  type: integer
+                  example: '65000'
+                allowance:
+                  type: string
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '67'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/employee-summary:
     post:
       tags:
@@ -7910,30 +8008,20 @@ paths:
             schema:
               type: object
               example:
-                month: ''
-                year: ''
-                date: 2024-01
+                date: 2081-09
+                payment_date: '2025-02-10'
                 employee_id:
-                  - 59
-                  - 60
-                  - 61
-                  - 62
-                  - 63
-                  - 64
-                  - 65
-                  - 66
-                  - 67
-                  - 68
+                  - 218
                 status: paid
-                paid_account_id: 69
+                paid_account_id: 106
       security:
         - bearerAuth: []
       parameters:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -7979,14 +8067,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: date
           in: query
           schema:
             type: string
-          description: 'date format: Y-m'
-          example: 2024-01
+          description: 'date format: Y-m in BS'
+          example: 2081-4
       responses:
         '200':
           description: Successful response
@@ -8003,12 +8091,11 @@ paths:
             schema:
               type: object
               example:
-                month: ''
-                year: ''
-                date: 2024-01
-                employee_id: 46
-                amount: 2000
-                paid_account_id: 3
+                date: '2025-03-10'
+                amount: '100'
+                employee_id: '218'
+                paid_account_id: 162
+                tds: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -8020,8 +8107,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -8073,8 +8160,6 @@ paths:
             schema:
               type: object
               example:
-                month: ''
-                year: ''
                 date: 2024-01
                 employees:
                   - employee_id: 67
@@ -9953,8 +10038,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -9968,11 +10053,54 @@ paths:
           in: query
           schema:
             type: string
+        - name: account_head_id
+          in: query
+          schema:
+            type: integer
+          example: '559'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/account-head-ledger-grouped:
+    get:
+      tags:
+        - ledger
+      summary: list account head ledger grouped
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '71'
         - name: slug
           in: query
           schema:
             type: string
-          example: cash-in-hand
+          description: cash-in-hand
+        - name: account_head_id
+          in: query
+          schema:
+            type: integer
+          description: 220 or 559
+          example: '559'
       responses:
         '200':
           description: Successful response
@@ -11500,15 +11628,21 @@ paths:
         - name: inventory
           in: query
           schema:
-            type: string
-        - name: is_variant_product
-          in: query
-          schema:
-            type: string
+            type: integer
+          example: '1'
         - name: product_category_id
           in: query
           schema:
             type: string
+        - name: has_variant_product
+          in: query
+          schema:
+            type: string
+        - name: is_not_variant_product
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -11731,7 +11865,6 @@ paths:
                   example: protestxyz
                 sku:
                   type: string
-                  example: po
                 hsn_code:
                   type: string
                   example: ss
@@ -11767,7 +11900,7 @@ paths:
                   example: '100'
                 products[0][name]:
                   type: string
-                  example: protestxyzxls
+                  example: p104
                 products[0][sale_rate]:
                   type: integer
                   example: '2'
@@ -11783,6 +11916,9 @@ paths:
                 image:
                   type: string
                   format: binary
+                product_id:
+                  type: integer
+                  example: '67'
       security:
         - bearerAuth: []
       parameters:
@@ -11855,12 +11991,6 @@ paths:
           in: query
           schema:
             type: string
-        - name: resource_fields
-          in: query
-          schema:
-            type: string
-          description: id,name,slug,sku
-          example: id,name,slug,sku
         - name: product_category_id
           in: query
           schema:
@@ -12530,8 +12660,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -12549,26 +12679,6 @@ paths:
           in: query
           schema:
             type: string
-        - name: date[0]
-          in: query
-          schema:
-            type: string
-          example: '2023-09-01'
-        - name: date[1]
-          in: query
-          schema:
-            type: string
-          example: '2024-04-01'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2023-09-01'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -12856,6 +12966,7 @@ paths:
                     tds: 50
                     payment_discount: 100
                 is_single_bill_payment: 1
+                payment_discount: 50
       security:
         - bearerAuth: []
       parameters:
@@ -13951,8 +14062,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -13970,26 +14081,6 @@ paths:
           in: query
           schema:
             type: string
-        - name: date[0]
-          in: query
-          schema:
-            type: string
-          example: '2023-09-01'
-        - name: date[1]
-          in: query
-          schema:
-            type: string
-          example: '2024-04-01'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2023-09-01'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-04-01'
       responses:
         '200':
           description: Successful response
@@ -14093,14 +14184,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -14365,8 +14456,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
@@ -14478,8 +14569,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '37'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -14502,7 +14593,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-08-21'
+          example: '2024-11-21'
       responses:
         '200':
           description: Successful response
@@ -15304,17 +15395,18 @@ paths:
         - name: page
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
             type: integer
-          example: '5'
+          example: '15'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2023-01-01'
         - name: end_date
           in: query
           schema:
@@ -15324,7 +15416,8 @@ paths:
           in: query
           schema:
             type: integer
-          example: '216'
+          description: '216'
+          example: '559'
       responses:
         '200':
           description: OK
@@ -16095,17 +16188,18 @@ paths:
         - name: page
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
             type: integer
-          example: '5'
+          example: '10'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-01-01'
+          example: '2023-01-01'
         - name: end_date
           in: query
           schema:
@@ -16115,7 +16209,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '161'
+          example: '220'
       responses:
         '200':
           description: OK
@@ -16516,12 +16610,16 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-09-25'
+          example: '2023-09-25'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-09-25'
+          example: '2024-10-25'
+        - name: pos_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -16626,7 +16724,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-09-25'
+          example: '2023-09-25'
         - name: end_date
           in: query
           schema:
@@ -16636,7 +16734,11 @@ paths:
           in: query
           schema:
             type: integer
-          example: '1546'
+          example: '521'
+        - name: pos_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -16764,6 +16866,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: pos_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -16869,6 +16975,10 @@ paths:
           schema:
             type: string
           example: 2081-2082
+        - name: pos_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -17010,6 +17120,10 @@ paths:
             type: string
           description: amount|quantity
           example: quantity
+        - name: pos_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -17307,6 +17421,10 @@ paths:
           schema:
             type: string
         - name: product_id
+          in: query
+          schema:
+            type: string
+        - name: pos_id
           in: query
           schema:
             type: string
@@ -18914,7 +19032,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '5'
         - name: start_date
           in: query
           schema:
@@ -18932,7 +19050,8 @@ paths:
         - name: product_id
           in: query
           schema:
-            type: string
+            type: integer
+          example: '6'
       responses:
         '200':
           description: Successful response
@@ -19647,7 +19766,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '4'
         - name: start_date
           in: query
           schema:
@@ -19663,7 +19782,7 @@ paths:
           schema:
             type: integer
           description: required, product_id
-          example: '87'
+          example: '9'
       responses:
         '200':
           description: OK
@@ -19837,7 +19956,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '2'
         - name: start_date
           in: query
           schema:
@@ -20153,8 +20272,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -20199,8 +20318,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -22055,7 +22174,7 @@ paths:
           in: header
           schema:
             type: integer
-          example: '2'
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -23105,6 +23224,8 @@ paths:
                 status:
                   type: string
                   example: active
+                credit_term_id:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -23210,6 +23331,9 @@ paths:
             schema:
               type: object
               properties:
+                _method:
+                  type: string
+                  example: patch
                 name:
                   type: string
                   example: vendor name edit
@@ -23225,9 +23349,8 @@ paths:
                 status:
                   type: string
                   example: active
-                _method:
+                credit_term_id:
                   type: string
-                  example: patch
       security:
         - bearerAuth: []
       parameters:
@@ -24048,6 +24171,375 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/get-hospitality-companies:
+    get:
+      tags:
+        - Link Site > Main Account > Admin
+      summary: GetHospitalityCompaiesFromLinkSite
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-link-details/{account_company_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Admin
+      summary: Hospitality company-link-details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-link-store:
+    post:
+      tags:
+        - Link Site > Main Account > Admin
+      summary: Company Link Store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                account_company_id: 1
+                hospitality_company_id: 8
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-link-delete/{account_company_id}:
+    delete:
+      tags:
+        - Link Site > Main Account > Admin
+      summary: Company Link Delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/products/{branch_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Account > Product
+      summary: Get Hospitality Linked Company With Branches Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/get-compare-products/{account_company_id}/{hospitality_branch_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Account > Product
+      summary: getProductsCompare From Account
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/sync-hospitality-products/{account_company_id}/{hospitality_branch_id}:
+    post:
+      tags:
+        - Link Site > Main Account > Account > Product
+      summary: sync Hospitality Products
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company:
+    get:
+      tags:
+        - Link Site > Main Account > Account > Link Company
+      summary: Get Hospitality Linked Company With Branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/branches:
+    get:
+      tags:
+        - Link Site > Main Account > Account > Link Company
+      summary: Get Hospitality Linked Company  Branches List
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/branches-and-warehouses:
+    get:
+      tags:
+        - Link Site > Main Account > Account > Link Company
+      summary: Get Linked Warehouses and branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/store-warehouse:
+    post:
+      tags:
+        - Link Site > Main Account > Account > Link Company
+      summary: Store Warehouse with Branch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                branch_id: 10
+                warehouse_id: 20
+                name: Shankamul
+                address: Kathmandu
+                phone_no: '9828382937'
+                email: email1@gmail.com
+                pan_number: '323232'
+                hospitality_company_id: 7
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/inked-company/update-warehouse:
+    put:
+      tags:
+        - Link Site > Main Account > Account > Link Company
+      summary: Update Warehouse and Branch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                hospitality_company_id: 1
+                warehouse_id: 1
+                name: adwkjkajwd
+                address: wdawdwd
+                customer_name: wdawdwd
+                customer_address: wdawdwd
+                email: wdawdwd
+                phone_no: '564654654'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/delete-warehouse:
+    delete:
+      tags:
+        - Link Site > Main Account > Account > Link Company
+      summary: Delete Warehouse and Branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/hospitality/get-compare-products/{account_company_id}/{hospitality_branch_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: getProductsCompare From Link Server
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/get-linked-branch-and-warehouse/{company_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: GetHospitalitiesProducts
+      parameters:
+        - name: company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/hospitality/sync-hospitality-products/{account_company_id}/{hospitality_branch_id}:
+    put:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: Sync Hospitality Products
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/hospitality/sync-hospitality-products/{hospitality_branch_id}/:
+    post:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: Update or Create Stock IssueHospitality Products
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
