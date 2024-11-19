@@ -5171,14 +5171,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '39'
+          example: '162'
       responses:
         '200':
           description: Successful response
@@ -7762,7 +7762,8 @@ paths:
         - name: payroll
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: month
           in: query
           schema:
@@ -7776,12 +7777,16 @@ paths:
           schema:
             type: string
           description: 'date format: Y-m in BS e.g. 2081-06'
-          example: 2081-10
+          example: 2081-11
         - name: status
           in: query
           schema:
             type: string
           description: current|terminated {nullable}
+        - name: is_advance
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -9619,14 +9624,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '320'
       responses:
         '200':
           description: Successful response
@@ -9747,6 +9752,45 @@ paths:
           schema:
             type: integer
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/invoice/{id}/print-download:
+    post:
+      tags:
+        - invoice
+      summary: print download
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: put
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: '318'
+          example: '318'
       responses:
         '200':
           description: Successful response
@@ -11730,11 +11774,7 @@ paths:
           application/json:
             schema:
               type: object
-              example:
-                _method: PATCH
-                parent_id: 67
-                product_id:
-                  - 274
+              example: "{\r\n    \"_method\": \"PATCH\",\r\n    \"parent_id\": ,\r\n    \"parent_id\": []\r\n}"
       security:
         - bearerAuth: []
       parameters:
@@ -20344,7 +20384,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/annex-5-report:
+  /api/annex5-report:
     get:
       tags:
         - report > tax report
@@ -20365,8 +20405,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -20381,12 +20420,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-05-22'
+          example: '2024-01-22'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-22'
+          example: '2024-12-22'
       responses:
         '200':
           description: Successful response
@@ -21575,8 +21614,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
@@ -21689,13 +21728,19 @@ paths:
           application/json:
             schema:
               type: object
-              example:
-                invoice_id: 131
-                note: asdf asdf
-                products:
-                  - product_id: 20
-                    quantity: 12
-                account_head_id: 106
+              example: |-
+                sales_return{
+                    "invoice_id": 131,
+                    "note":"asdf asdf",
+                    "products": [
+                        {
+                            "product_id": 20,
+                            "quantity": 12
+                        }
+                    ],
+                    "account_head_id": 106
+                    
+                }
       security:
         - bearerAuth: []
       parameters:
@@ -21709,6 +21754,44 @@ paths:
           schema:
             type: string
           example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-return/{id}/print-download:
+    post:
+      tags:
+        - sale return
+      summary: print download
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: put
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -24782,6 +24865,36 @@ paths:
           schema:
             type: string
           example: '2024-07-31'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/bill:
+    post:
+      tags:
+        - default
+      summary: ' https://cbapi.ird.gov.np/api/bill'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: user123
+                password: pass123
+                seller_pan: '600123456'
+                buyer_pan: '700654321'
+                fiscal_year: 2023/2024
+                buyer_name: John Doe
+                invoice_number: INV-12345
+                invoice_date: '2024-11-15'
+                total_sales: 15934.75
+                taxable_sales_vat: 14500
+                vat: 1435
+                excisable_amount: 500
+                excise: 25
+                taxable_sales_hst: 250
       responses:
         '200':
           description: Successful response

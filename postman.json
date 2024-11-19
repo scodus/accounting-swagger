@@ -5560,7 +5560,8 @@
 								{
 									"key": "email",
 									"value": "wwebipin2009@yahoo.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -5577,8 +5578,7 @@
 								{
 									"key": "email",
 									"value": "test@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
@@ -9409,7 +9409,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -9429,7 +9429,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "39"
+									"value": "162"
 								}
 							]
 						}
@@ -14133,7 +14133,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=&month=&year=&date=2081-10&status=",
+							"raw": "{{url}}/api/employee?paginate=1&page=&limit=&search_keyword=&payroll=1&month=&year=&date=2081-11&status=&is_advance=",
 							"host": [
 								"{{url}}"
 							],
@@ -14160,7 +14160,7 @@
 								},
 								{
 									"key": "payroll",
-									"value": ""
+									"value": "1"
 								},
 								{
 									"key": "month",
@@ -14172,7 +14172,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2081-10",
+									"value": "2081-11",
 									"description": "date format: Y-m in BS e.g. 2081-06"
 								},
 								{
@@ -14185,6 +14185,10 @@
 									"key": "status",
 									"value": "",
 									"description": "current|terminated {nullable}"
+								},
+								{
+									"key": "is_advance",
+									"value": ""
 								}
 							]
 						}
@@ -17076,7 +17080,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -17096,7 +17100,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6"
+									"value": "320"
 								}
 							]
 						}
@@ -17149,6 +17153,62 @@
 							"path": [
 								"api",
 								"invoice-store-approve-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "print download",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/:id/print-download",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								":id",
+								"print-download"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "318",
+									"description": "318"
+								}
 							]
 						}
 					},
@@ -20446,7 +20506,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_method\": \"PATCH\",\r\n    \"parent_id\": 67,\r\n    \"product_id\": [274]\r\n}",
+							"raw": "{\r\n    \"_method\": \"PATCH\",\r\n    \"parent_id\": ,\r\n    \"parent_id\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -30312,18 +30372,18 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/annex-5-report?paginate=1&page=1&limit=10&start_date=2024-05-22&end_date=2024-08-22",
+									"raw": "{{url}}/api/annex5-report?paginate=&page=1&limit=10&start_date=2024-01-22&end_date=2024-12-22",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"annex-5-report"
+										"annex5-report"
 									],
 									"query": [
 										{
 											"key": "paginate",
-											"value": "1"
+											"value": ""
 										},
 										{
 											"key": "page",
@@ -30335,11 +30395,16 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-05-22"
+											"value": "2024-01-22"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-22"
+											"value": "2024-12-22"
+										},
+										{
+											"key": "invoice_id",
+											"value": "",
+											"disabled": true
 										}
 									]
 								}
@@ -32113,7 +32178,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -32216,7 +32281,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"invoice_id\": 131,\n    \"note\":\"asdf asdf\",\n    \"products\": [\n        {\n            \"product_id\": 20,\n            \"quantity\": 12\n        }\n    ],\n    \"account_head_id\": 106\n    \n}",
+							"raw": "sales_return{\n    \"invoice_id\": 131,\n    \"note\":\"asdf asdf\",\n    \"products\": [\n        {\n            \"product_id\": 20,\n            \"quantity\": 12\n        }\n    ],\n    \"account_head_id\": 106\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -32231,6 +32296,61 @@
 							"path": [
 								"api",
 								"sales-return-store-approve-payment-return"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "print download",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-return/:id/print-download",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-return",
+								":id",
+								"print-download"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -37337,6 +37457,37 @@
 							"key": "to",
 							"value": "2024-07-31"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " https://cbapi.ird.gov.np/api/bill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"user123\",\r\n  \"password\": \"pass123\",\r\n  \"seller_pan\": \"600123456\",\r\n  \"buyer_pan\": \"700654321\",\r\n  \"fiscal_year\": \"2023/2024\",\r\n  \"buyer_name\": \"John Doe\",\r\n  \"invoice_number\": \"INV-12345\",\r\n  \"invoice_date\": \"2024-11-15\",\r\n  \"total_sales\": 15934.75,\r\n  \"taxable_sales_vat\": 14500.00,\r\n  \"vat\": 1435.00,\r\n  \"excisable_amount\": 500.00,\r\n  \"excise\": 25.00,\r\n  \"taxable_sales_hst\": 250.00\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cbapi.ird.gov.np/api/bill",
+					"protocol": "https",
+					"host": [
+						"cbapi",
+						"ird",
+						"gov",
+						"np"
+					],
+					"path": [
+						"api",
+						"bill"
 					]
 				}
 			},
