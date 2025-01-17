@@ -26,6 +26,9 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+    basicAuth:
+      type: http
+      scheme: basic
 tags:
   - name: ADMIN APIS
   - name: ADMIN APIS > Auth
@@ -40,6 +43,8 @@ tags:
   - name: ADMIN APIS > Permission
   - name: ADMIN APIS > Role
   - name: ADMIN APIS > User
+  - name: ADMIN APIS > Excel Export
+  - name: ADMIN APIS > ***ADMINISTRATOR COMMANDS***
   - name: Auth
   - name: accounting firm
   - name: accounting firm dashboard
@@ -64,8 +69,8 @@ tags:
   - name: depreciation
   - name: document
   - name: employee
-  - name: employee summary
   - name: employee tax deduction
+  - name: employee summary
   - name: expense
   - name: expense payment
   - name: excel sample
@@ -125,6 +130,7 @@ tags:
   - name: Link Site > Main Account > Admin
   - name: Link Site > Main Account > Account
   - name: Link Site > Main Account > Account > Product
+  - name: Link Site > Main Account > Account > Unit Sync
   - name: Link Site > Main Account > Account > Link Company
   - name: Link Site > Main Account > Link Serve
 paths:
@@ -1584,11 +1590,23 @@ paths:
                   example: '1'
                 status:
                   type: string
+                website:
+                  type: string
+                ird_verified:
+                  type: integer
+                  example: '1'
+                cbms_data_sync:
+                  type: integer
+                  example: '1'
+                cbms_key:
+                  type: string
+                  example: Test_CBMS
+                cbms_secret:
+                  type: string
+                  example: test@321
                 logo:
                   type: string
                   format: binary
-                website:
-                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -1704,11 +1722,13 @@ paths:
               properties:
                 name:
                   type: string
-                  example: name edit
+                  example: Gloria Coffee Company Private
                 short_name:
                   type: string
+                  example: Gloria Coffee
                 address:
                   type: string
+                  example: dillibazar
                 primary_email:
                   type: string
                   example: email@email
@@ -1729,6 +1749,20 @@ paths:
                 logo:
                   type: string
                   format: binary
+                ird_verified:
+                  type: integer
+                  example: '1'
+                cbms_data_sync:
+                  type: integer
+                  example: '1'
+                cbms_key:
+                  type: string
+                  description: Test_CBMS
+                  example: Test_CBMS
+                cbms_secret:
+                  type: string
+                  description: test@321
+                  example: test@321
       security:
         - bearerAuth: []
       parameters:
@@ -1737,7 +1771,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -2938,11 +2972,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/generate-reset-ledger-confirmation-token:
+  /api/admin/excel-export-download/{excel_export_type}:
     post:
       tags:
-        - ADMIN APIS
-      summary: generate reset ledger confirmation token
+        - ADMIN APIS > Excel Export
+      summary: excel export download
       requestBody:
         content:
           multipart/form-data:
@@ -2951,17 +2985,43 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: company_id
+          in: query
+          schema:
+            type: integer
+          example: '3'
+        - name: excel_export_type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: product|customer|vendor
+          example: product
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/generate-reset-ledger-confirmation-token:
+    post:
+      tags:
+        - ADMIN APIS > ***ADMINISTRATOR COMMANDS***
+      summary: generate reset ledger confirmation token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+      security:
+        - bearerAuth: []
+      parameters:
         - name: Accept
           in: header
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          description: Company ID
-          example: '2'
       responses:
         '200':
           description: OK
@@ -3015,8 +3075,26 @@ paths:
   /api/admin/reset-ledger:
     delete:
       tags:
-        - ADMIN APIS
+        - ADMIN APIS > ***ADMINISTRATOR COMMANDS***
       summary: reset-ledger ***DANGER***
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/delete-company:
+    delete:
+      tags:
+        - ADMIN APIS > ***ADMINISTRATOR COMMANDS***
+      summary: delete-company ***DANGER***
       security:
         - bearerAuth: []
       parameters:
@@ -3070,6 +3148,8 @@ paths:
       summary: logout
       requestBody:
         content: {}
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -3103,8 +3183,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -6268,7 +6348,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -6873,6 +6953,9 @@ paths:
                   example: active
                 credit_term_id:
                   type: string
+                pan_number:
+                  type: integer
+                  example: '12'
       security:
         - bearerAuth: []
       parameters:
@@ -6884,8 +6967,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -6960,8 +7043,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -7712,6 +7795,8 @@ paths:
                   format: binary
                 date_of_termination:
                   type: string
+                tds:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -7803,6 +7888,9 @@ paths:
             schema:
               type: object
               properties:
+                _method:
+                  type: string
+                  example: patch
                 fullname:
                   type: string
                   example: employee1edit
@@ -7847,9 +7935,8 @@ paths:
                   example: '65000'
                 allowance:
                   type: string
-                _method:
+                tds:
                   type: string
-                  example: patch
       security:
         - bearerAuth: []
       parameters:
@@ -7961,6 +8048,102 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/employee-tax-deduction:
+    post:
+      tags:
+        - employee tax deduction
+      summary: store/update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                date: 2024-01
+                employees:
+                  - employee_id: 67
+                    bonus: 2000
+                    tds: 500
+                    deduction: 2000
+                    note: hello i am under the water.
+                  - employee_id: 68
+                    bonus: 1500
+                    tds: 500
+                    deduction: 1500
+                    note: hello i am under the water.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/void-employee-tax-deduction/{payroll_id}:
+    post:
+      tags:
+        - employee tax deduction
+      summary: void-payment
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: payroll_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/payroll-header-data:
+    get:
+      tags:
+        - employee summary
+      summary: payroll header data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: 'date format: Y-m in BS'
+          example: 2081-4
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/employee-summary:
     post:
       tags:
@@ -7991,11 +8174,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/void-payment/{payroll_id}:
+  /api/void-employee-payment/{payroll_id}/void-status:
     post:
       tags:
         - employee summary
-      summary: void payment
+      summary: void-employee-payment
       requestBody:
         content:
           multipart/form-data:
@@ -8012,33 +8195,8 @@ paths:
         - name: payroll_id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payroll-header-data:
-    get:
-      tags:
-        - employee summary
-      summary: payroll header data
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: date
-          in: query
-          schema:
-            type: string
-          description: 'date format: Y-m in BS'
-          example: 2081-4
       responses:
         '200':
           description: Successful response
@@ -8113,45 +8271,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/employee-tax-deduction:
-    post:
-      tags:
-        - employee tax deduction
-      summary: store/update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                date: 2024-01
-                employees:
-                  - employee_id: 67
-                    deduction: 2000
-                    tds: 500
-                    note: hello i am under the water.
-                  - employee_id: 68
-                    deduction: 1500
-                    tds: 500
-                    note: hello i am under the water.
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/expense:
     post:
       tags:
@@ -8165,31 +8284,55 @@ paths:
               properties:
                 date:
                   type: string
-                  example: '2022-01-01'
-                expense_account_id:
+                  example: '2025-01-01'
+                on_credit:
                   type: integer
-                  example: '33'
+                  example: '0'
                 paid_account_id:
-                  type: string
+                  type: integer
+                  example: '2697'
                 vendor_id:
                   type: integer
-                  example: '41'
-                amount:
-                  type: integer
-                  example: '2000'
+                  example: '2813'
                 reference:
                   type: string
                 remarks:
                   type: string
+                amount:
+                  type: integer
+                  example: '1200'
+                include_tds:
+                  type: string
+                tds:
+                  type: integer
+                  example: '100'
+                expense_account_id:
+                  type: integer
+                  example: '33'
+                expense_details[0][expense_account_id]:
+                  type: integer
+                  example: '2731'
+                expense_details[0][particulars]:
+                  type: string
+                  example: abc
+                expense_details[0][amount]:
+                  type: integer
+                  example: '1000'
+                expense_details[0][tax]:
+                  type: integer
+                  example: '13'
+                expense_details[0][tax_amount]:
+                  type: integer
+                  example: '130'
+                expense_details[0][total]:
+                  type: integer
+                  example: '1130'
                 files[0]:
                   type: string
                   format: binary
                 files[1]:
                   type: string
                   format: binary
-                on_credit:
-                  type: integer
-                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -8201,8 +8344,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -8272,33 +8415,75 @@ paths:
             schema:
               type: object
               properties:
+                _method:
+                  type: string
+                  example: patch
                 date:
                   type: string
-                  example: '2022-01-01'
-                expense_account_id:
+                  example: '2025-01-01'
+                on_credit:
                   type: integer
-                  example: '33'
+                  example: '0'
                 paid_account_id:
-                  type: string
+                  type: integer
+                  example: '2697'
                 vendor_id:
                   type: integer
-                  example: '41'
-                amount:
-                  type: integer
-                  example: '1500'
+                  example: '2813'
                 reference:
                   type: string
                 remarks:
                   type: string
+                amount:
+                  type: integer
+                  example: '1200'
+                include_tds:
+                  type: string
+                tds:
+                  type: integer
+                  example: '100'
+                expense_account_id:
+                  type: integer
+                  example: '33'
+                expense_details[0][expense_account_id]:
+                  type: integer
+                  example: '2731'
+                expense_details[0][particulars]:
+                  type: string
+                  example: abc
+                expense_details[0][amount]:
+                  type: integer
+                  example: '1000'
+                expense_details[0][tax]:
+                  type: integer
+                  example: '13'
+                expense_details[0][tax_amount]:
+                  type: integer
+                  example: '130'
+                expense_details[0][total]:
+                  type: integer
+                  example: '1130'
+                expense_details[1][expense_account_id]:
+                  type: integer
+                  example: '2732'
+                expense_details[1][particulars]:
+                  type: string
+                  example: abc
+                expense_details[1][amount]:
+                  type: integer
+                  example: '2000'
+                expense_details[1][tax]:
+                  type: integer
+                  example: '0'
+                expense_details[1][tax_amount]:
+                  type: integer
+                  example: '0'
+                expense_details[1][total]:
+                  type: integer
+                  example: '2000'
                 files[0]:
                   type: string
                   format: binary
-                _method:
-                  type: string
-                  example: patch
-                on_credit:
-                  type: integer
-                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -8310,14 +8495,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '20'
+          example: '411'
       responses:
         '200':
           description: Successful response
@@ -8366,14 +8551,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '20'
+          example: '408'
       responses:
         '200':
           description: Successful response
@@ -8404,14 +8589,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '25'
+          example: '411'
       responses:
         '200':
           description: Successful response
@@ -8433,14 +8618,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '20'
+          example: '411'
       responses:
         '200':
           description: Successful response
@@ -9538,14 +9723,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '12'
+          example: '4447'
       responses:
         '200':
           description: Successful response
@@ -11599,8 +11784,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -11631,8 +11816,7 @@ paths:
         - name: inventory
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: product_category_id
           in: query
           schema:
@@ -11648,8 +11832,7 @@ paths:
         - name: is_variant_product
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
       responses:
         '200':
           description: Successful response
@@ -11837,14 +12020,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '45'
+          example: '4225'
       responses:
         '200':
           description: Successful response
@@ -11866,7 +12049,7 @@ paths:
                   format: binary
                 as_of_date:
                   type: string
-                  example: '2024-07-23'
+                  example: '2024-12-30'
       security:
         - bearerAuth: []
       parameters:
@@ -11878,8 +12061,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -11973,11 +12156,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/product-list:
+  /api/v2/product-list:
     get:
       tags:
         - product
-      summary: list product NEW
+      summary: v2 list
       security:
         - bearerAuth: []
       parameters:
@@ -12009,8 +12192,7 @@ paths:
         - name: search_keyword
           in: query
           schema:
-            type: integer
-          example: '111111111'
+            type: string
         - name: is_service
           in: query
           schema:
@@ -12031,6 +12213,45 @@ paths:
           in: query
           schema:
             type: string
+        - name: unit_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/product/{id}:
+    get:
+      tags:
+        - product
+      summary: v2 show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: resource_fields
+          in: query
+          schema:
+            type: string
+          description: id,name,slug,sku
+          example: id,name,slug,sku
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4225'
       responses:
         '200':
           description: Successful response
@@ -14696,23 +14917,2913 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '3'
+            type: string
+          example: '{{company-id}}'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-06-15'
+          example: '2024-07-16'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-07-14'
+          description: '2025-08-12'
+          example: '2025-08-12'
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 03 Dec 2024 04:43:12 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999996'
+            Vary:
+              schema:
+                type: string
+                example: Origin
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                message: reports
+                data:
+                  - name: Assets
+                    opening_balance:
+                      total_cr_amount: 0
+                      total_dr_amount: 5085
+                      amount: 5085
+                    closing_balance:
+                      total_cr_amount: 0
+                      total_dr_amount: 1212243347.71
+                      amount: 1212243347.71
+                    transaction:
+                      total_cr_amount: 2899671.92
+                      total_dr_amount: 1213922934.63
+                      amount: 1211023262.71
+                    sub_account_heads:
+                      - id: 1894
+                        name: Current Assets
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 5085
+                          amount: 5085
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 1212243347.71
+                          amount: 1212243347.71
+                        transaction:
+                          total_cr_amount: 2899671.92
+                          total_dr_amount: 1213922934.63
+                          amount: 1211023262.71
+                        sub_account_heads:
+                          - id: 1895
+                            name: Cash and Bank
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 309145.6200000001
+                              amount: 309145.6200000001
+                            transaction:
+                              total_cr_amount: 2502763.15
+                              total_dr_amount: 1596908.77
+                              amount: -905854.3799999999
+                            sub_account_heads:
+                              - id: 1896
+                                name: Cash in Hand
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 412136.17000000004
+                                  amount: 412136.17000000004
+                                transaction:
+                                  total_cr_amount: 429672.65
+                                  total_dr_amount: 391808.82
+                                  amount: -37863.830000000016
+                                sub_account_heads: []
+                              - id: 1948
+                                name: GLOBAL IME BANK LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: -102990.55000000005
+                                  amount: -102990.55000000005
+                                transaction:
+                                  total_cr_amount: 2073090.5
+                                  total_dr_amount: 1205099.95
+                                  amount: -867990.55
+                                sub_account_heads: []
+                          - id: 1897
+                            name: Account Receivables
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 5085
+                              amount: 5085
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 5027915.09
+                              amount: 5027915.09
+                            transaction:
+                              total_cr_amount: 396908.77
+                              total_dr_amount: 5419738.86
+                              amount: 5022830.09
+                            sub_account_heads:
+                              - id: 1979
+                                name: HEALTHY BITES SERVICES PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 276397.05
+                                  amount: 276397.05
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 276397.05
+                                  amount: 276397.05
+                                sub_account_heads: []
+                              - id: 1980
+                                name: YONGTARU RESTRO & SEKUWA CORNER PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 32199.89
+                                  amount: 32199.89
+                                transaction:
+                                  total_cr_amount: 15599.96
+                                  total_dr_amount: 47799.85
+                                  amount: 32199.89
+                                sub_account_heads: []
+                              - id: 1981
+                                name: HOTEL DOLMALING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 31999.34
+                                  amount: 31999.34
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 31999.34
+                                  amount: 31999.34
+                                sub_account_heads: []
+                              - id: 1982
+                                name: CHUBBY CHICKEN PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18645
+                                  amount: 18645
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18645
+                                  amount: 18645
+                                sub_account_heads: []
+                              - id: 1983
+                                name: MUNCH TIME CATERERS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 49590.89
+                                  amount: 49590.89
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 49590.89
+                                  amount: 49590.89
+                                sub_account_heads: []
+                              - id: 2055
+                                name: DEWANCHEN RESTAURANT
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 47608.55
+                                  amount: 47608.55
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 47608.55
+                                  amount: 47608.55
+                                sub_account_heads: []
+                              - id: 2056
+                                name: PASSION CAFE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5085
+                                  amount: 5085
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 36332.18
+                                  amount: 36332.18
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 31247.18
+                                  amount: 31247.18
+                                sub_account_heads: []
+                              - id: 2057
+                                name: HIMALAYAN SIP PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 84959.83
+                                  amount: 84959.83
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 84959.83
+                                  amount: 84959.83
+                                sub_account_heads: []
+                              - id: 2058
+                                name: MANDRO AGRO PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18599.79
+                                  amount: 18599.79
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18599.79
+                                  amount: 18599.79
+                                sub_account_heads: []
+                              - id: 2059
+                                name: ROLL PIN RESTAURANT & CAFE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 32969.78
+                                  amount: 32969.78
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 32969.78
+                                  amount: 32969.78
+                                sub_account_heads: []
+                              - id: 2060
+                                name: CHILL HOUSE NEPAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 14539.99
+                                  amount: 14539.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 14539.99
+                                  amount: 14539.99
+                                sub_account_heads: []
+                              - id: 2061
+                                name: HOME FURNISHERS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3390
+                                  amount: 3390
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3390
+                                  amount: 3390
+                                sub_account_heads: []
+                              - id: 2062
+                                name: BIRYANI HOUSE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3775.08
+                                  amount: 3775.08
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3775.08
+                                  amount: 3775.08
+                                sub_account_heads: []
+                              - id: 2063
+                                name: COFFEE O CLOCK SPECIALITY ROSTERY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 709356
+                                  amount: 709356
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 709356
+                                  amount: 709356
+                                sub_account_heads: []
+                              - id: 2064
+                                name: GAAU BESI LOGISTICS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 2000
+                                  total_dr_amount: 2000
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2065
+                                name: MICHAEL GRILL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 36399.9
+                                  amount: 36399.9
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 36399.9
+                                  amount: 36399.9
+                                sub_account_heads: []
+                              - id: 2066
+                                name: KOTSYS BAKERY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 43579.58
+                                  amount: 43579.58
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 43579.58
+                                  amount: 43579.58
+                                sub_account_heads: []
+                              - id: 2067
+                                name: CHICKEN STATION BANEPA
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9825.01
+                                  amount: 9825.01
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9825.01
+                                  amount: 9825.01
+                                sub_account_heads: []
+                              - id: 2068
+                                name: FIVE STAR RESTAURANT & BAR PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 62619.5
+                                  amount: 62619.5
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 62619.5
+                                  amount: 62619.5
+                                sub_account_heads: []
+                              - id: 2069
+                                name: ARIYA CAFE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 21990.36
+                                  amount: 21990.36
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 21990.36
+                                  amount: 21990.36
+                                sub_account_heads: []
+                              - id: 2070
+                                name: TAG SPORTS LONGUE & BAR PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18700.19
+                                  amount: 18700.19
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18700.19
+                                  amount: 18700.19
+                                sub_account_heads: []
+                              - id: 2071
+                                name: DRISHYA FOODWORKS
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8189.99
+                                  amount: 8189.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8189.99
+                                  amount: 8189.99
+                                sub_account_heads: []
+                              - id: 2072
+                                name: EPIC NEST CAFE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3399.99
+                                  amount: 3399.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3399.99
+                                  amount: 3399.99
+                                sub_account_heads: []
+                              - id: 2073
+                                name: HIMALAYAN BEANS BREW
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8000.4
+                                  amount: 8000.4
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8000.4
+                                  amount: 8000.4
+                                sub_account_heads: []
+                              - id: 2074
+                                name: MAAN BAKERY & CONFECTIONARY
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5200.03
+                                  amount: 5200.03
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5200.03
+                                  amount: 5200.03
+                                sub_account_heads: []
+                              - id: 2075
+                                name: DHUNGE GHAR RESTRO & BAR PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 4490
+                                  amount: 4490
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 4490
+                                  amount: 4490
+                                sub_account_heads: []
+                              - id: 2076
+                                name: ROYAL JUNGLE RESTRO
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9749.97
+                                  amount: 9749.97
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9749.97
+                                  amount: 9749.97
+                                sub_account_heads: []
+                              - id: 2077
+                                name: VIP RESTAURANT LOUNGE BAR
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 1699.99
+                                  amount: 1699.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 1699.99
+                                  amount: 1699.99
+                                sub_account_heads: []
+                              - id: 2078
+                                name: SKYLINE RESTAURANT PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 50699.52
+                                  amount: 50699.52
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 50699.52
+                                  amount: 50699.52
+                                sub_account_heads: []
+                              - id: 2079
+                                name: BAKE & SALE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 100068.51
+                                  amount: 100068.51
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 100068.51
+                                  amount: 100068.51
+                                sub_account_heads: []
+                              - id: 2080
+                                name: DADU PANEU CUSINE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 19650.02
+                                  amount: 19650.02
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 19650.02
+                                  amount: 19650.02
+                                sub_account_heads: []
+                              - id: 2081
+                                name: ALEV KEBAB SULTANMATE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18450.31
+                                  amount: 18450.31
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18450.31
+                                  amount: 18450.31
+                                sub_account_heads: []
+                              - id: 2082
+                                name: TRIDEVI THAKALI RESTAURENT
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 14724.45
+                                  amount: 14724.45
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 14724.45
+                                  amount: 14724.45
+                                sub_account_heads: []
+                              - id: 2083
+                                name: SASURALI RESTAURENT PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 20427.91
+                                  amount: 20427.91
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 20427.91
+                                  amount: 20427.91
+                                sub_account_heads: []
+                              - id: 2084
+                                name: HIMALAYAN BURGER AND STUFF
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5099.98
+                                  amount: 5099.98
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5099.98
+                                  amount: 5099.98
+                                sub_account_heads: []
+                              - id: 2085
+                                name: ANTEA RESTRO
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 11899.95
+                                  amount: 11899.95
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 11899.95
+                                  amount: 11899.95
+                                sub_account_heads: []
+                              - id: 2086
+                                name: DESI TEA HOUSE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 15179.92
+                                  amount: 15179.92
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 15179.92
+                                  amount: 15179.92
+                                sub_account_heads: []
+                              - id: 2087
+                                name: BLUE  MEMOSA THE CAFE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 58695.81
+                                  amount: 58695.81
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 58695.81
+                                  amount: 58695.81
+                                sub_account_heads: []
+                              - id: 2088
+                                name: CHILL BOX PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 15255
+                                  amount: 15255
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 15255
+                                  amount: 15255
+                                sub_account_heads: []
+                              - id: 2089
+                                name: DRISHYA FOODWORKS
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 6799.98
+                                  amount: 6799.98
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 6799.98
+                                  amount: 6799.98
+                                sub_account_heads: []
+                              - id: 2090
+                                name: NEW HOTEL ARYA INN
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8475
+                                  amount: 8475
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8475
+                                  amount: 8475
+                                sub_account_heads: []
+                              - id: 2091
+                                name: BRO BAKERY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 53897.26
+                                  amount: 53897.26
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 53897.26
+                                  amount: 53897.26
+                                sub_account_heads: []
+                              - id: 2092
+                                name: BURGER HOUSE CAFE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 374208.86
+                                  total_dr_amount: 374208.86
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2093
+                                name: BEGING RESTRO
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3400.01
+                                  amount: 3400.01
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3400.01
+                                  amount: 3400.01
+                                sub_account_heads: []
+                              - id: 2094
+                                name: CAFFEOPHILIA CAFE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 11865
+                                  amount: 11865
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 11865
+                                  amount: 11865
+                                sub_account_heads: []
+                              - id: 2095
+                                name: HYGIENIC RESTRO & TREKS SUPPLIERS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 63999.58
+                                  amount: 63999.58
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 63999.58
+                                  amount: 63999.58
+                                sub_account_heads: []
+                              - id: 2096
+                                name: NEW SIP N SKIP LOUNGE & BAR
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5085
+                                  amount: 5085
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5085
+                                  amount: 5085
+                                sub_account_heads: []
+                              - id: 2097
+                                name: ESSENTIAL HOSPITALITY BAKERY CAFE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5099.98
+                                  amount: 5099.98
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5099.98
+                                  amount: 5099.98
+                                sub_account_heads: []
+                              - id: 2098
+                                name: CHIYA ADDA
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 21419.65
+                                  amount: 21419.65
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 21419.65
+                                  amount: 21419.65
+                                sub_account_heads: []
+                              - id: 2099
+                                name: S.B.K SEKUWA PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 57439.95
+                                  amount: 57439.95
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 57439.95
+                                  amount: 57439.95
+                                sub_account_heads: []
+                              - id: 2100
+                                name: BREWING HOUSE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9500
+                                  amount: 9500
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9500
+                                  amount: 9500
+                                sub_account_heads: []
+                              - id: 2101
+                                name: THE SOCIETY FINE DINING REDEFINED PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8639.99
+                                  amount: 8639.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8639.99
+                                  amount: 8639.99
+                                sub_account_heads: []
+                              - id: 2102
+                                name: CHICKEN HUB & CHRUNCY FRIED CHICKEN PVT
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8499.97
+                                  amount: 8499.97
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8499.97
+                                  amount: 8499.97
+                                sub_account_heads: []
+                              - id: 2103
+                                name: ALPINE EXPORT IMPORT PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 219999.7
+                                  amount: 219999.7
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 219999.7
+                                  amount: 219999.7
+                                sub_account_heads: []
+                              - id: 2104
+                                name: KOILA MULTI CUSINE RESTAURANT
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9000
+                                  amount: 9000
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9000
+                                  amount: 9000
+                                sub_account_heads: []
+                              - id: 2105
+                                name: NEPALI COTTAGE RESORT
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 6100.01
+                                  amount: 6100.01
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 6100.01
+                                  amount: 6100.01
+                                sub_account_heads: []
+                              - id: 2106
+                                name: CIVIL ENTERTAINMANET PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3399.99
+                                  amount: 3399.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3399.99
+                                  amount: 3399.99
+                                sub_account_heads: []
+                              - id: 2107
+                                name: ROOFTOP  RESTAURENT & lODGE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9799.47
+                                  amount: 9799.47
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9799.47
+                                  amount: 9799.47
+                                sub_account_heads: []
+                              - id: 2162
+                                name: ARS INTERNATIONAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 1599.99
+                                  amount: 1599.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 1599.99
+                                  amount: 1599.99
+                                sub_account_heads: []
+                              - id: 2163
+                                name: CHEF BURGER HOUSE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9991.46
+                                  amount: 9991.46
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9991.46
+                                  amount: 9991.46
+                                sub_account_heads: []
+                              - id: 2164
+                                name: NAURIKOT THAKALI & COFFEE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9349.97
+                                  amount: 9349.97
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 9349.97
+                                  amount: 9349.97
+                                sub_account_heads: []
+                              - id: 2165
+                                name: K.K.S GROUP PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 521099.96
+                                  amount: 521099.96
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 521099.96
+                                  amount: 521099.96
+                                sub_account_heads: []
+                              - id: 2166
+                                name: K.S.D COFFEE SHOP PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18080
+                                  amount: 18080
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 18080
+                                  amount: 18080
+                                sub_account_heads: []
+                              - id: 2167
+                                name: CHILL HOUSE NEPAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2168
+                                name: CHILL HOUSE NEPAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8000
+                                  amount: 8000
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8000
+                                  amount: 8000
+                                sub_account_heads: []
+                              - id: 2170
+                                name: YONGTARU RESTRO & SEKUWA CORNER PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2171
+                                name: PIROS RESTAURENT
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3199.98
+                                  amount: 3199.98
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3199.98
+                                  amount: 3199.98
+                                sub_account_heads: []
+                              - id: 2172
+                                name: CHILL HOUSE NEPAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2173
+                                name: TAAS & tANDORI HOUSE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5577.63
+                                  amount: 5577.63
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 5577.63
+                                  amount: 5577.63
+                                sub_account_heads: []
+                              - id: 2174
+                                name: SUPER DYNAMIC TRAINING & EDUCATION PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8350.01
+                                  amount: 8350.01
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 8350.01
+                                  amount: 8350.01
+                                sub_account_heads: []
+                              - id: 2175
+                                name: PANUMA FENCY STORE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 50649.73
+                                  amount: 50649.73
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 50649.73
+                                  amount: 50649.73
+                                sub_account_heads: []
+                              - id: 2233
+                                name: CINABON BAKERY & LOUNGE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 49398.93
+                                  amount: 49398.93
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 49398.93
+                                  amount: 49398.93
+                                sub_account_heads: []
+                              - id: 2234
+                                name: JENI FITNESS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2235
+                                name: MUSICOLOGY RESTAURANT PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 7439.83
+                                  amount: 7439.83
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 7439.83
+                                  amount: 7439.83
+                                sub_account_heads: []
+                              - id: 2236
+                                name: DHAPASI BURGER HOUSE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 34579.93
+                                  amount: 34579.93
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 34579.93
+                                  amount: 34579.93
+                                sub_account_heads: []
+                              - id: 2237
+                                name: SUMMIT DHAULAGIRI TRADING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 1246219.99
+                                  amount: 1246219.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 1246219.99
+                                  amount: 1246219.99
+                                sub_account_heads: []
+                              - id: 2238
+                                name: METRO HOSPITALITY
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 39197.44
+                                  amount: 39197.44
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 39197.44
+                                  amount: 39197.44
+                                sub_account_heads: []
+                              - id: 2239
+                                name: S.B.K SEKUWA PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3399.99
+                                  amount: 3399.99
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 3399.99
+                                  amount: 3399.99
+                                sub_account_heads: []
+                              - id: 2240
+                                name: MICRO BEVERAGE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 5099.95
+                                  total_dr_amount: 5099.95
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2241
+                                name: ROBOT HOSPITALITY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2242
+                                name: ROBOT HOSPITALITY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2243
+                                name: THE SOLAIRE CAFE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2244
+                                name: ELEMENTS MOVIES PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2245
+                                name: KHADKA VENTURES
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2246
+                                name: PRA & PRA RESTAURANT PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2247
+                                name: AYUSH RAI JHAPA
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2248
+                                name: BHAKTAPUR GUEST HOUSE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2249
+                                name: NEEKET & BROTHERS TRADERS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2250
+                                name: SMART GYM
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 575000.05
+                                  amount: 575000.05
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 575000.05
+                                  amount: 575000.05
+                                sub_account_heads: []
+                              - id: 2251
+                                name: AIRPORT DIANA HOTEL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2252
+                                name: BIGBEST SERVICES PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2253
+                                name: HYGIENIC ENTERPRISES PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2254
+                                name: CAFAY TREYO
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2255
+                                name: BAHATTRA CAFE & CAR WASH
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2256
+                                name: COFFEE CLINIC BARISTA ACADEMY
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2257
+                                name: KO SE YA HOSPITALITY
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2258
+                                name: EPIC NEST CAFE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2259
+                                name: SARTHAK ENTERTAINMENT PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 2260
+                                name: SIMARA BUSINESS CENTER PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                          - id: 1898
+                            name: Deposits
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1899
+                            name: Loans and Advances
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1900
+                            name: TDS Receivables
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1901
+                            name: Inventory
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 1206906287
+                              amount: 1206906287
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 1206906287
+                              amount: 1206906287
+                            sub_account_heads: []
+                      - id: 1902
+                        name: Non Current Assets
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        transaction:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        sub_account_heads:
+                          - id: 1903
+                            name: Fixed Asset
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads:
+                              - id: 1904
+                                name: Property, Plant & Equipment
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1905
+                                name: Intangible Assets
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1974
+                                name: CONSTRUCTION AND RENOVATION
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                          - id: 1906
+                            name: Long Term Investment
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1907
+                            name: Accumulated Depreciation
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                  - name: Liability
+                    opening_balance:
+                      total_cr_amount: 585
+                      total_dr_amount: 0
+                      amount: 585
+                    closing_balance:
+                      total_cr_amount: 4062282.6999999997
+                      total_dr_amount: 0
+                      amount: 4062282.6999999997
+                    transaction:
+                      total_cr_amount: 5980926.68
+                      total_dr_amount: 1919228.98
+                      amount: 4061697.6999999997
+                    sub_account_heads:
+                      - id: 1908
+                        name: Current Liability
+                        opening_balance:
+                          total_cr_amount: 585
+                          total_dr_amount: 0
+                          amount: 585
+                        closing_balance:
+                          total_cr_amount: 4062282.6999999997
+                          total_dr_amount: 0
+                          amount: 4062282.6999999997
+                        transaction:
+                          total_cr_amount: 5980926.68
+                          total_dr_amount: 1919228.98
+                          amount: 4061697.6999999997
+                        sub_account_heads:
+                          - id: 1909
+                            name: Duties & Taxes Payable
+                            opening_balance:
+                              total_cr_amount: 585
+                              total_dr_amount: 0
+                              amount: 585
+                            closing_balance:
+                              total_cr_amount: 6535.989999999991
+                              total_dr_amount: 0
+                              amount: 6535.989999999991
+                            transaction:
+                              total_cr_amount: 622416.82
+                              total_dr_amount: 616465.83
+                              amount: 5950.989999999991
+                            sub_account_heads:
+                              - id: 1910
+                                name: VAT
+                                opening_balance:
+                                  total_cr_amount: 585
+                                  total_dr_amount: 0
+                                  amount: 585
+                                closing_balance:
+                                  total_cr_amount: 6535.989999999991
+                                  total_dr_amount: 0
+                                  amount: 6535.989999999991
+                                transaction:
+                                  total_cr_amount: 622416.82
+                                  total_dr_amount: 616465.83
+                                  amount: 5950.989999999991
+                                sub_account_heads: []
+                              - id: 1911
+                                name: TDS Payable
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                          - id: 1912
+                            name: Salary Payable
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1913
+                            name: Account Payable
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 4055746.7100000004
+                              total_dr_amount: 0
+                              amount: 4055746.7100000004
+                            transaction:
+                              total_cr_amount: 5358509.86
+                              total_dr_amount: 1302763.15
+                              amount: 4055746.7100000004
+                            sub_account_heads:
+                              - id: 1947
+                                name: DUCO CUP UDHYOG
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 108330.84
+                                  total_dr_amount: 0
+                                  amount: 108330.84
+                                transaction:
+                                  total_cr_amount: 143925.84
+                                  total_dr_amount: 35595
+                                  amount: 108330.84
+                                sub_account_heads: []
+                              - id: 1949
+                                name: SHANVI FOOD PRODUCTS
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 466799.16
+                                  total_dr_amount: 0
+                                  amount: 466799.16
+                                transaction:
+                                  total_cr_amount: 466799.16
+                                  total_dr_amount: 0
+                                  amount: 466799.16
+                                sub_account_heads: []
+                              - id: 1950
+                                name: TOTAL MACHINARY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 15200.760000000002
+                                  total_dr_amount: 0
+                                  amount: 15200.760000000002
+                                transaction:
+                                  total_cr_amount: 72503.61
+                                  total_dr_amount: 57302.85
+                                  amount: 15200.760000000002
+                                sub_account_heads: []
+                              - id: 1951
+                                name: HYGIENIC RESTRO AND TREKS SUPPLIERS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 23730.22
+                                  total_dr_amount: 23730.22
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1952
+                                name: LD INTERNATIONAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 686180.55
+                                  total_dr_amount: 0
+                                  amount: 686180.55
+                                transaction:
+                                  total_cr_amount: 786180.55
+                                  total_dr_amount: 100000
+                                  amount: 686180.55
+                                sub_account_heads: []
+                              - id: 1953
+                                name: ABC HOSPITALITY BUSSINESS
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 95654.5
+                                  total_dr_amount: 0
+                                  amount: 95654.5
+                                transaction:
+                                  total_cr_amount: 95654.5
+                                  total_dr_amount: 0
+                                  amount: 95654.5
+                                sub_account_heads: []
+                              - id: 1954
+                                name: >-
+                                  HOUSE OF RAJKARNICAR EXHIBITIONS & EVENTS PVT
+                                  LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 162720
+                                  total_dr_amount: 162720
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1955
+                                name: KANCHANJUNGA COFFEE COMPANY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 1650955.09
+                                  total_dr_amount: 0
+                                  amount: 1650955.09
+                                transaction:
+                                  total_cr_amount: 1650955.09
+                                  total_dr_amount: 0
+                                  amount: 1650955.09
+                                sub_account_heads: []
+                              - id: 1956
+                                name: DAMI HOME DECOR
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 6500.01
+                                  total_dr_amount: 6500.01
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1957
+                                name: MSG SUPPLIERS
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 237978
+                                  total_dr_amount: 0
+                                  amount: 237978
+                                transaction:
+                                  total_cr_amount: 237978
+                                  total_dr_amount: 0
+                                  amount: 237978
+                                sub_account_heads: []
+                              - id: 1958
+                                name: ARS INTERNATIONAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 130390.16
+                                  total_dr_amount: 0
+                                  amount: 130390.16
+                                transaction:
+                                  total_cr_amount: 130390.16
+                                  total_dr_amount: 0
+                                  amount: 130390.16
+                                sub_account_heads: []
+                              - id: 1959
+                                name: PAPERLINE ENTERPRISES
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 270094.7
+                                  total_dr_amount: 0
+                                  amount: 270094.7
+                                transaction:
+                                  total_cr_amount: 270094.7
+                                  total_dr_amount: 0
+                                  amount: 270094.7
+                                sub_account_heads: []
+                              - id: 1960
+                                name: RIYANSH TRADING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 183519.69
+                                  total_dr_amount: 0
+                                  amount: 183519.69
+                                transaction:
+                                  total_cr_amount: 262001.17
+                                  total_dr_amount: 78481.48
+                                  amount: 183519.69
+                                sub_account_heads: []
+                              - id: 1961
+                                name: SUBHA BHANBHORI INDUSTRY PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 75343.32
+                                  total_dr_amount: 0
+                                  amount: 75343.32
+                                transaction:
+                                  total_cr_amount: 75343.32
+                                  total_dr_amount: 0
+                                  amount: 75343.32
+                                sub_account_heads: []
+                              - id: 1962
+                                name: ABS ENTERPRISES
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0.01999999998952262
+                                  total_dr_amount: 0
+                                  amount: 0.01999999998952262
+                                transaction:
+                                  total_cr_amount: 95139.01
+                                  total_dr_amount: 95138.99
+                                  amount: 0.01999999998952262
+                                sub_account_heads: []
+                              - id: 1963
+                                name: SMART ALUMINUM & HARDWARE PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 9585.23
+                                  total_dr_amount: 9585.23
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1964
+                                name: BIKKI ENTERPRISES
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 33662.7
+                                  total_dr_amount: 33662.7
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1965
+                                name: PJK TRADING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0.04000000000814907
+                                  total_dr_amount: 0
+                                  amount: 0.04000000000814907
+                                transaction:
+                                  total_cr_amount: 255672.29
+                                  total_dr_amount: 255672.25
+                                  amount: 0.04000000000814907
+                                sub_account_heads: []
+                              - id: 1966
+                                name: ANUSHUYA MULTIPURPOSE TRADING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 328830
+                                  total_dr_amount: 328830
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1968
+                                name: PACKMANDU ENTERPRISES
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 124300
+                                  total_dr_amount: 0
+                                  amount: 124300
+                                transaction:
+                                  total_cr_amount: 124300
+                                  total_dr_amount: 0
+                                  amount: 124300
+                                sub_account_heads: []
+                              - id: 1969
+                                name: S.G NEPAL PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 67833.9
+                                  total_dr_amount: 67833.9
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1970
+                                name: MANIK GANGA ENTERPRISES
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 4529.1
+                                  total_dr_amount: 4529.1
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1971
+                                name: NAMAN CHEMICALS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 1559.4
+                                  total_dr_amount: 1559.4
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1972
+                                name: Aashma Trading
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 2339.1
+                                  total_dr_amount: 2339.1
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1973
+                                name: S HARDWARE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1975
+                                name: EXHIBITION LIGHT HOUSE
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 18000.9
+                                  total_dr_amount: 18000.9
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1976
+                                name: KALI GANDAKI AUTO WORKS PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 8320.08
+                                  total_dr_amount: 8320.08
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1977
+                                name: SYNTRADE TRADING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 10999.87
+                                  total_dr_amount: 0
+                                  amount: 10999.87
+                                transaction:
+                                  total_cr_amount: 10999.87
+                                  total_dr_amount: 0
+                                  amount: 10999.87
+                                sub_account_heads: []
+                              - id: 1978
+                                name: MULTI KITCHEN TRADING PVT LTD
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0.010000000000218279
+                                  total_dr_amount: 0
+                                  amount: 0.010000000000218279
+                                transaction:
+                                  total_cr_amount: 12961.95
+                                  total_dr_amount: 12961.94
+                                  amount: 0.010000000000218279
+                                sub_account_heads: []
+                          - id: 1914
+                            name: Loans & Borrowings - Short Term
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                      - id: 1915
+                        name: Non Current Liability
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        transaction:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        sub_account_heads:
+                          - id: 1916
+                            name: Loans & Borrowings - Long Term
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                  - name: Equity
+                    opening_balance:
+                      total_cr_amount: 0
+                      total_dr_amount: 0
+                      amount: 0
+                    closing_balance:
+                      total_cr_amount: 0
+                      total_dr_amount: 0
+                      amount: 0
+                    transaction:
+                      total_cr_amount: 1200000
+                      total_dr_amount: 1200000
+                      amount: 0
+                    sub_account_heads:
+                      - id: 1917
+                        name: Capital
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        transaction:
+                          total_cr_amount: 1200000
+                          total_dr_amount: 1200000
+                          amount: 0
+                        sub_account_heads:
+                          - id: 1918
+                            name: Share Capital
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1967
+                            name: RABIN SHRESTHA
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 1200000
+                              total_dr_amount: 1200000
+                              amount: 0
+                            sub_account_heads: []
+                      - id: 1919
+                        name: Reserve and Surplus
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        transaction:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        sub_account_heads:
+                          - id: 1920
+                            name: Retained Earning
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                  - name: Income
+                    opening_balance:
+                      total_cr_amount: 4500
+                      total_dr_amount: 0
+                      amount: 4500
+                    closing_balance:
+                      total_cr_amount: 4801822.04
+                      total_dr_amount: 0
+                      amount: 4801822.04
+                    transaction:
+                      total_cr_amount: 4797322.04
+                      total_dr_amount: 0
+                      amount: 4797322.04
+                    sub_account_heads:
+                      - id: 1921
+                        name: Direct Income
+                        opening_balance:
+                          total_cr_amount: 4500
+                          total_dr_amount: 0
+                          amount: 4500
+                        closing_balance:
+                          total_cr_amount: 4801822.04
+                          total_dr_amount: 0
+                          amount: 4801822.04
+                        transaction:
+                          total_cr_amount: 4797322.04
+                          total_dr_amount: 0
+                          amount: 4797322.04
+                        sub_account_heads:
+                          - id: 1922
+                            name: Sales
+                            opening_balance:
+                              total_cr_amount: 4500
+                              total_dr_amount: 0
+                              amount: 4500
+                            closing_balance:
+                              total_cr_amount: 4801822.04
+                              total_dr_amount: 0
+                              amount: 4801822.04
+                            transaction:
+                              total_cr_amount: 4797322.04
+                              total_dr_amount: 0
+                              amount: 4797322.04
+                            sub_account_heads:
+                              - id: 1923
+                                name: Sales Services
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 37610.62
+                                  total_dr_amount: 0
+                                  amount: 37610.62
+                                transaction:
+                                  total_cr_amount: 37610.62
+                                  total_dr_amount: 0
+                                  amount: 37610.62
+                                sub_account_heads: []
+                              - id: 1924
+                                name: Sales Goods
+                                opening_balance:
+                                  total_cr_amount: 4500
+                                  total_dr_amount: 0
+                                  amount: 4500
+                                closing_balance:
+                                  total_cr_amount: 4764211.42
+                                  total_dr_amount: 0
+                                  amount: 4764211.42
+                                transaction:
+                                  total_cr_amount: 4759711.42
+                                  total_dr_amount: 0
+                                  amount: 4759711.42
+                                sub_account_heads: []
+                      - id: 1925
+                        name: Indirect Income
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        transaction:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        sub_account_heads:
+                          - id: 1926
+                            name: Discount Income
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1927
+                            name: Foreign Exchange Gain
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                  - name: Expenses
+                    opening_balance:
+                      total_cr_amount: 0
+                      total_dr_amount: 0
+                      amount: 0
+                    closing_balance:
+                      total_cr_amount: 0
+                      total_dr_amount: -1202164242.96
+                      amount: -1202164242.96
+                    transaction:
+                      total_cr_amount: 1206906287
+                      total_dr_amount: 4742044.04
+                      amount: -1202164242.96
+                    sub_account_heads:
+                      - id: 1928
+                        name: Indirect Expense
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        transaction:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        sub_account_heads:
+                          - id: 1929
+                            name: Salary Expense
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1930
+                            name: Discount Expense
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1931
+                            name: Depreciation
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 1932
+                            name: Foreign Exchange Loss
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                          - id: 2013
+                            name: Bank Charges
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
+                      - id: 1933
+                        name: Direct Expense
+                        opening_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: 0
+                          amount: 0
+                        closing_balance:
+                          total_cr_amount: 0
+                          total_dr_amount: -1202164242.96
+                          amount: -1202164242.96
+                        transaction:
+                          total_cr_amount: 1206906287
+                          total_dr_amount: 4742044.04
+                          amount: -1202164242.96
+                        sub_account_heads:
+                          - id: 1934
+                            name: Purchase
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 4742044.04
+                              amount: 4742044.04
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 4742044.04
+                              amount: 4742044.04
+                            sub_account_heads:
+                              - id: 1935
+                                name: Purchase Goods
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 4557941.73
+                                  amount: 4557941.73
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 4557941.73
+                                  amount: 4557941.73
+                                sub_account_heads: []
+                              - id: 1936
+                                name: Purchase Services
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 184102.31
+                                  amount: 184102.31
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 184102.31
+                                  amount: 184102.31
+                                sub_account_heads: []
+                          - id: 1937
+                            name: Cost of Goods Sold
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: -1206906287
+                              amount: -1206906287
+                            transaction:
+                              total_cr_amount: 1206906287
+                              total_dr_amount: 0
+                              amount: -1206906287
+                            sub_account_heads: []
+                          - id: 1938
+                            name: Duties and Taxes
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads:
+                              - id: 1939
+                                name: Custom Duty
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1940
+                                name: Excise Duty
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                          - id: 1941
+                            name: Carrying and Forwarding Cost
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads:
+                              - id: 1942
+                                name: Freight
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1943
+                                name: Insurance
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1944
+                                name: Clearing Charge
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                              - id: 1945
+                                name: Loading and Unloading Charges
+                                opening_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                closing_balance:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                transaction:
+                                  total_cr_amount: 0
+                                  total_dr_amount: 0
+                                  amount: 0
+                                sub_account_heads: []
+                          - id: 1946
+                            name: Direct Labour
+                            opening_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            closing_balance:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            transaction:
+                              total_cr_amount: 0
+                              total_dr_amount: 0
+                              amount: 0
+                            sub_account_heads: []
   /api/income-statement:
     get:
       tags:
@@ -14729,8 +17840,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: start_date
           in: query
           schema:
@@ -14740,7 +17851,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-08-21'
+          example: '2025-01-30'
       responses:
         '200':
           description: Successful response
@@ -15426,8 +18537,7 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
         - name: page
           in: query
           schema:
@@ -15452,8 +18562,8 @@ paths:
           in: query
           schema:
             type: integer
-          description: '216'
-          example: '559'
+          description: '216.559'
+          example: '2250'
       responses:
         '200':
           description: OK
@@ -16235,7 +19345,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-01-01'
+          example: '2023-06-15'
         - name: end_date
           in: query
           schema:
@@ -16244,8 +19354,8 @@ paths:
         - name: vendor_id
           in: query
           schema:
-            type: integer
-          example: '220'
+            type: string
+          description: '413.417'
       responses:
         '200':
           description: OK
@@ -16489,7 +19599,8 @@ paths:
         - name: vendor_id
           in: query
           schema:
-            type: string
+            type: integer
+          example: '419'
       responses:
         '200':
           description: OK
@@ -20296,7 +23407,55 @@ paths:
     get:
       tags:
         - report > tax report
-      summary: sale register
+      summary: sales register
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-11-16'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-12-15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-return-register:
+    get:
+      tags:
+        - report > tax report
+      summary: sales return register
       security:
         - bearerAuth: []
       parameters:
@@ -20327,12 +23486,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-01-22'
+          example: '2024-11-16'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-22'
+          example: '2024-12-15'
       responses:
         '200':
           description: Successful response
@@ -20384,11 +23543,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/annex5-report:
+  /api/purchase-return-register:
     get:
       tags:
         - report > tax report
-      summary: annex 5 report
+      summary: purchase return register
       security:
         - bearerAuth: []
       parameters:
@@ -20405,7 +23564,54 @@ paths:
         - name: paginate
           in: query
           schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
             type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-01-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/annex5-report:
+    get:
+      tags:
+        - report > tax report
+      summary: annex5 report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -20426,6 +23632,124 @@ paths:
           schema:
             type: string
           example: '2024-12-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/activity-log-report:
+    get:
+      tags:
+        - report > system report
+      summary: activity report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-12-22'
+        - name: users
+          in: query
+          schema:
+            type: string
+          description: company users, "1,2"
+        - name: action
+          in: query
+          schema:
+            type: string
+          description: created|updated|void|approved , in string "created,updated"
+        - name: log_source
+          in: query
+          schema:
+            type: string
+          description: >-
+            quotation|sales_order|invoice|record_payment|sales_return|quick_receipt|purchase_order|purchase_bill|supplier_payment|purchase_return|quick_payment|expense|journal_voucher|cash_transfer|inventory_adjustment|warehouse_transfer
+            in string "quotation,sales_order"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user-log-report:
+    get:
+      tags:
+        - report > system report
+      summary: user report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '20'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-12-22'
+        - name: users
+          in: query
+          schema:
+            type: string
+          description: company users, 1,2,3
       responses:
         '200':
           description: Successful response
@@ -20531,8 +23855,118 @@ paths:
             Report Name, e.g. stock_issue_report, stock_consumption_report,
             stock_returns_report, sales_summary_report, purchase_summary_report,
             customer_receivable_summary_report, vendor_payable_summary_report,
-            purchase_by_item_report, sales_by_item_report
-          example: sales_by_item_report
+            purchase_by_item_report,
+            sales_by_item_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 23 Sep 2024 08:28:27 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999994'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Report Total
+                data:
+                  totals:
+                    total_quantity: 1586356.7099999993
+                    total_amount: 10001089.509999996
+  /api/report-excel-download/{type}:
+    post:
+      tags:
+        - report
+      summary: report excel download
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-16'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-12-15'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+        - name: year
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: >-
+            stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report
+          example: annex5_report
       responses:
         '200':
           description: OK
@@ -22233,6 +25667,7 @@ paths:
               type: object
               example:
                 warehouse_department_id: 2
+                warehouse_id: 2
                 stock_issue_date: '2024-07-24'
                 note: ''
                 auto_consumption: false
@@ -22317,6 +25752,7 @@ paths:
               type: object
               example:
                 warehouse_department_id: 1
+                warehouse_id: 2
                 stock_issue_date: '2024-07-24'
                 note: ''
                 auto_consumption: false
@@ -23305,6 +26741,9 @@ paths:
                   example: active
                 credit_term_id:
                   type: string
+                pan_number:
+                  type: integer
+                  example: '111'
       security:
         - bearerAuth: []
       parameters:
@@ -23316,8 +26755,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -23392,8 +26831,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
       responses:
         '200':
           description: Successful response
@@ -23502,9 +26941,8 @@ paths:
         - name: id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '39'
       responses:
         '200':
           description: Successful response
@@ -24401,6 +27839,58 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/linked-company/get-compare-units/{account_company_id}/{hospitality_branch_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Account > Unit Sync
+      summary: getProductsCompare From Account
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/linked-company/sync-hospitality-units/{account_company_id}/{hospitality_branch_id}:
+    post:
+      tags:
+        - Link Site > Main Account > Account > Unit Sync
+      summary: sync Hospitality Products
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/linked-company:
     get:
       tags:
@@ -24537,11 +28027,27 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/hospitality/company-payment-options/{hospitality_company_id}:
+    get:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: getCompanyPaymentOptionsCompare From Link Server
+      parameters:
+        - name: hospitality_company_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/hospitality/get-compare-products/{account_company_id}/{hospitality_branch_id}:
     get:
       tags:
         - Link Site > Main Account > Link Serve
-      summary: getProductsCompare From Link Server
+      summary: getProductsCompare From Link Server Copy
       parameters:
         - name: account_company_id
           in: path
@@ -24578,12 +28084,10 @@ paths:
           content:
             application/json: {}
   /api/hospitality/sync-hospitality-products/{account_company_id}/{hospitality_branch_id}:
-    put:
+    get:
       tags:
         - Link Site > Main Account > Link Serve
       summary: Sync Hospitality Products
-      requestBody:
-        content: {}
       security:
         - bearerAuth: []
       parameters:
@@ -24592,7 +28096,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '3'
         - name: hospitality_branch_id
           in: path
           schema:
@@ -24712,25 +28216,25 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/file/{filename}:
+  /api/file-filename/{filename}:
     delete:
       tags:
         - default
-      summary: delete file
+      summary: delete file by filename
       security:
         - bearerAuth: []
       parameters:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: filename
           in: path
           schema:
             type: string
           required: true
-          example: a7ae29da5d45cf3c3cb30d587cc994e8.jpg
+          example: 0527530d4d574709578891db0d058f23.jpg
       responses:
         '200':
           description: Successful response
@@ -24881,20 +28385,199 @@ paths:
             schema:
               type: object
               example:
-                username: user123
-                password: pass123
-                seller_pan: '600123456'
-                buyer_pan: '700654321'
-                fiscal_year: 2023/2024
-                buyer_name: John Doe
-                invoice_number: INV-12345
-                invoice_date: '2024-11-15'
-                total_sales: 15934.75
-                taxable_sales_vat: 14500
-                vat: 1435
-                excisable_amount: 500
-                excise: 25
-                taxable_sales_hst: 250
+                username: Test_CBMS
+                password: testqw@321
+                seller_pan: '999999999'
+                buyer_pan: '123456789'
+                buyer_name: ''
+                fiscal_year: '2073.074'
+                invoice_number: '67705'
+                invoice_date: 2074.07.06
+                total_sales: 1130
+                taxable_sales_vat: 1000
+                vat: 130
+                excisable_amount: 0
+                excise: 0
+                taxable_sales_hst: 0
+                hst: 0
+                amount_for_esf: 0
+                esf: 0
+                export_sales: 0
+                tax_exempted_sales: 0
+                isrealtime: true
+                datetimeclient: '2024-11-15T14:52:30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/billreturn:
+    post:
+      tags:
+        - default
+      summary: https://cbapi.ird.gov.np/api/billreturn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: Test_CBMS
+                password: testqw@321
+                seller_pan: '999999999'
+                buyer_pan: '123456789'
+                buyer_name: ''
+                fiscal_year: '2073.074'
+                invoice_number: '67710'
+                invoice_date: 2074.07.06
+                total_sales: 1130
+                taxable_sales_vat: 1000
+                vat: 130
+                excisable_amount: 0
+                excise: 0
+                taxable_sales_hst: 0
+                hst: 0
+                amount_for_esf: 0
+                esf: 0
+                export_sales: 0
+                tax_exempted_sales: 0
+                isrealtime: true
+                datetimeclient: '2024-11-15T14:52:30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/invoice-post-to-cbms:
+    post:
+      tags:
+        - default
+      summary: invoice-post-to-cbms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: Test_CBMS
+                password: testqw@321
+                seller_pan: '999999999'
+                buyer_pan: 123456789a
+                buyer_name: ''
+                fiscal_year: '2073.074'
+                invoice_number: '67701'
+                invoice_date: 2074.07.06
+                total_sales: 1130
+                taxable_sales_vat: 1000
+                vat: 130
+                excisable_amount: 0
+                excise: 0
+                taxable_sales_hst: 0
+                hst: 0
+                amount_for_esf: 0
+                esf: 0
+                export_sales: 0
+                tax_exempted_sales: 0
+                isrealtime: true
+                datetimeclient: '2024-11-15T14:52:30'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-return-post-to-cbms:
+    post:
+      tags:
+        - default
+      summary: sales-return-post-to-cbms
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /virtual-server/remote.cgi:
+    get:
+      tags:
+        - default
+      summary: >-
+        https://103.90.86.206:10000/virtual-server/remote.cgi?program=list-domains
+      security:
+        - basicAuth: []
+      parameters:
+        - name: program
+          in: query
+          schema:
+            type: string
+          example: list-server-statuses
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /storage-file:
+    get:
+      tags:
+        - default
+      summary: storage file get
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: path
+          in: query
+          schema:
+            type: string
+          example: >-
+            http://127.0.0.1:8000/storage/20/1d8200626c851aa9cbf1c691ae22c7e4.jpg
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/storage-file:
+    get:
+      tags:
+        - default
+      summary: storage file get api
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '3'
+        - name: path
+          in: query
+          schema:
+            type: string
+          example: >-
+            http://127.0.0.1:8000/storage/20/1d8200626c851aa9cbf1c691ae22c7e4.jpg
       responses:
         '200':
           description: Successful response
