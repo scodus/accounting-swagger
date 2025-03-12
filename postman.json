@@ -3,8 +3,8 @@
 		"_postman_id": "9a0fc440-d4de-4cbc-8c6d-76d518f86ea5",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34655126",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=34655126"
+		"_exporter_id": "42517497",
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=42517497"
 	},
 	"item": [
 		{
@@ -5328,105 +5328,6 @@
 					]
 				},
 				{
-					"name": "Excel Export",
-					"item": [
-						{
-							"name": "excel export download",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "company-id",
-										"value": "{{company-id}}",
-										"type": "text",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/excel-export-download/:excel_export_type?company_id=3",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"excel-export-download",
-										":excel_export_type"
-									],
-									"query": [
-										{
-											"key": "start_date",
-											"value": "2024-01-16",
-											"disabled": true
-										},
-										{
-											"key": "end_date",
-											"value": "2024-12-15",
-											"disabled": true
-										},
-										{
-											"key": "warehouse_department_id",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "product_id",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "vendor_id",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "customer_id",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "year",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "type",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "company_id",
-											"value": "3"
-										}
-									],
-									"variable": [
-										{
-											"key": "excel_export_type",
-											"value": "product",
-											"description": "product|customer|vendor"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "***ADMINISTRATOR COMMANDS***",
 					"item": [
 						{
@@ -5708,6 +5609,137 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "excel export download",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/excel-export-download/:excel_export_type?company_id=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"excel-export-download",
+								":excel_export_type"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2024-01-16",
+									"disabled": true
+								},
+								{
+									"key": "end_date",
+									"value": "2024-12-15",
+									"disabled": true
+								},
+								{
+									"key": "warehouse_department_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "product_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "vendor_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "customer_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "year",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "company_id",
+									"value": "3"
+								}
+							],
+							"variable": [
+								{
+									"key": "excel_export_type",
+									"value": "product",
+									"description": "product|customer|vendor"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DB Backup Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "ird-type",
+								"value": "",
+								"description": "IRD, NO_IRD",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/admin/db-backup/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"db-backup",
+								"create"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -5793,24 +5825,24 @@
 								{
 									"key": "email",
 									"value": "kimchifastfoods@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "Kimchi@2065",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "test@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -5827,6 +5859,12 @@
 								{
 									"key": "password",
 									"value": "Gloria@6097",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "gsaurav2000@gmail.com",
 									"type": "text",
 									"disabled": true
 								}
@@ -5980,13 +6018,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZGVjZDBjZS0wZTUxLTQwNTUtOTdhMS0wZTA3YzQ1MGUxMjEiLCJqdGkiOiIwMTExY2NmMGFlNDcwNDQ0YjUzZWNhYTA2Y2RlZTdjYjBjYjg1NWRiMjQ1OTY2YTU2ZWVhMWJkZmFhNjM0MDFkMGY1MzNkMTM2Zjk2NWY4NSIsImlhdCI6MTczNjQwNTA4NC45ODE2OTUsIm5iZiI6MTczNjQwNTA4NC45ODE2OTYsImV4cCI6MTczNzcwMTA4NC45NzE4MTMsInN1YiI6IjIiLCJzY29wZXMiOlsiKiJdfQ.MQSWSHOB4rd8A-nfuapYRf5ABwHN4EE81p1e3MwhAMpKw5REbGHlw9XQR6WjrZ0vwKuLv5dc54X5eovlewovV8Nmyv39i0773dJdOg6qrheR1iM8uBFodmqC_9EBbuVqmD3zGw4T8aaet2vM66cuVGmhbriIkx515O1z7kQQMs-Th-gpjguPJjWFO1qcNshTZItrbFOdCUFz4SRZ-DPnIy5P-YbI_A2Ufuy0q4oQl1nr4i15HI0wTOsc4NXZp4e60YzVe7MgkffanaGPRqilhBvmbjVSiguAG3GSohR9L9Pp3QY9u3_WqdxOGZwknlC04bVabn8-KwVVIK-vfn5faIR0rIPWt0KB6q2bafctHacELjL6pfT_AwPnUZM3IZ-CzH0fbisCUvHWQeh_7fR6PqAOuboXzPmk4oxdMsTqspk24HOTrzBPDTgwxM1zJ0wSI8MaQrjbnFAW9vfqyOVqhqeXQ_f4A5wE6K_CwsxYsXjEjhBEa3luJVfgpVCqGbXdDs8gyedg2yEyBMukbf_GJ-AqcSg3m4DEq9mYfhBLUaTWwDRhg-bdq7-vmPB9Xp10raAjkXJ7d7A16zfg9GcsUalrIT3hKb1QjKQbkl5B3MlqPVcdPiSNcZxy7qV7BsPKM0xxSxBqIe63H9PSDZ5-VXDL-6CpSZ5Z7SLh_Y1Xctw",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "ird-type",
+								"value": "IRD",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -6037,13 +6081,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/user-company-list",
+							"raw": "{{url}}/api/user-company-list?ird-type",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"user-company-list"
+							],
+							"query": [
+								{
+									"key": "ird-type",
+									"value": null
+								}
 							]
 						}
 					},
@@ -12813,7 +12863,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/customer?paginate=1&page=&limit=&search_keyword=&status=",
+							"raw": "{{url}}/api/customer?paginate=1&page=&limit=1000&search_keyword=&status=",
 							"host": [
 								"{{url}}"
 							],
@@ -12832,7 +12882,7 @@
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "1000"
 								},
 								{
 									"key": "search_keyword",
@@ -12840,8 +12890,7 @@
 								},
 								{
 									"key": "status",
-									"value": "",
-									"description": "active|inactive"
+									"value": ""
 								}
 							]
 						}
@@ -14249,7 +14298,7 @@
 					"response": []
 				},
 				{
-					"name": "update terminate",
+					"name": "update date of termination",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -14501,7 +14550,7 @@
 			]
 		},
 		{
-			"name": "employee tax deduction",
+			"name": "employee tax deduction - payroll",
 			"item": [
 				{
 					"name": "store/update",
@@ -14524,12 +14573,12 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    // \"month\": \"\",\n    // \"year\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"bonus\": 2000,\n            \"tds\": 500,\n            \"deduction\": 2000,\n            \"note\": \"hello i am under the water.\"\n        },\n        {\n            \"employee_id\": 68,\n            \"bonus\": 1500,\n            \"tds\": 500,\n            \"deduction\": 1500,\n            \"note\": \"hello i am under the water.\"\n        }\n    ]\n}",
+							"raw": "{\n    // \"month\": \"\",\n    // \"year\": \"\",\n    // \"note\": \"\",\n    \"date\": \"2024-01\",\n    \"employees\": [\n        {\n            \"employee_id\": 67,\n            \"bonus\": 2000,\n            \"tds\": 500,\n            \"deduction\": 2000,\n            \"note\": \"hello i am under the water.\"\n        },\n        {\n            \"employee_id\": 68,\n            \"bonus\": 1500,\n            \"tds\": 500,\n            \"deduction\": 1500,\n            \"note\": \"hello i am under the water.\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14592,17 +14641,9 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "employee summary",
-			"item": [
+				},
 				{
-					"name": "payroll header data",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "employee salary payable excel export",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -14614,48 +14655,50 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
 							{
 								"key": "company-id",
 								"value": "{{company-id}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{url}}/api/payroll-header-data?date=2081-4",
+							"raw": "{{url}}/api/employee-salary-payable-excel-export?payment_date=&batch=&date=2081-11",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"payroll-header-data"
+								"employee-salary-payable-excel-export"
 							],
 							"query": [
 								{
-									"key": "date",
-									"value": "2024-08",
-									"description": "date format: Y-m",
-									"disabled": true
+									"key": "payment_date",
+									"value": "",
+									"description": "2025-02-17"
+								},
+								{
+									"key": "batch",
+									"value": ""
 								},
 								{
 									"key": "date",
-									"value": "2081-4",
-									"description": "date format: Y-m in BS"
+									"value": "2081-11"
 								}
 							]
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "employee summary - payroll payment",
+			"item": [
 				{
 					"name": "store",
 					"request": {
@@ -14678,7 +14721,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    // \"month\": \"\",\n    // \"year\": \"\",\n    \"date\": \"2081-09\",\n    \"payment_date\": \"2025-02-10\",\n    \"employee_id\": [218],\n    \"status\": \"paid\",\n    \"paid_account_id\": 106\n}",
+							"raw": "{\n    // \"month\": \"\",\n    // \"year\": \"\",\n    // \"status\": \"paid\",\n    \"date\": \"2081-09\",\n    \"payment_date\": \"2025-02-10\",\n    \"payment_details\": [\n        {\n            \"employee_id\": 1,\n            \"paid_amount\": 1\n        }\n    ],\n    \"paid_account_id\": 106,\n    \"bank_charge\": 106\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -14837,6 +14880,604 @@
 								{
 									"key": "payroll_id",
 									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payroll header data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payroll-header-data?date=2081-4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payroll-header-data"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-08",
+									"description": "date format: Y-m",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2081-4",
+									"description": "date format: Y-m in BS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list payroll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary?paginate=1&page=&limit=&search_keyword=&status=&payment_date&date&payroll_payment_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "payment_date",
+									"value": null,
+									"description": "2025-02-25"
+								},
+								{
+									"key": "date",
+									"value": null,
+									"description": "2081-10"
+								},
+								{
+									"key": "payroll_payment_id",
+									"value": null,
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show payroll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary/:payroll_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary",
+								":payroll_id"
+							],
+							"variable": [
+								{
+									"key": "payroll_id",
+									"value": "57"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show employee payroll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-payroll-summary/:payroll_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-payroll-summary",
+								":payroll_id"
+							],
+							"variable": [
+								{
+									"key": "payroll_id",
+									"value": "57"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show employee payroll detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-payroll-summary-detail/:payroll_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-payroll-summary-detail",
+								":payroll_id"
+							],
+							"variable": [
+								{
+									"key": "payroll_id",
+									"value": "57"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list payroll payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment?paginate=1&page=&limit=&search_keyword=&status=&date=2081-11&payment_date=&payroll_payment_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": "2081-11",
+									"description": "2081-11"
+								},
+								{
+									"key": "payment_date",
+									"value": "",
+									"description": "2025-02-17"
+								},
+								{
+									"key": "payroll_payment_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show payroll payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment/:payroll_payment_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment",
+								":payroll_payment_id"
+							],
+							"variable": [
+								{
+									"key": "payroll_payment_id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list payroll payment allocation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment-allocation?paginate=1&page=&limit=&search_keyword=&status=&date=2081-11&payment_date=&payroll_payment_id=8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment-allocation"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": "2081-11",
+									"description": "2081-11"
+								},
+								{
+									"key": "payment_date",
+									"value": "",
+									"description": "2025-02-17"
+								},
+								{
+									"key": "payroll_payment_id",
+									"value": "8",
+									"description": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show payroll payment allocation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment-allocation/:payroll_payment_allocation_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment-allocation",
+								":payroll_payment_allocation_id"
+							],
+							"variable": [
+								{
+									"key": "payroll_payment_allocation_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update payroll payment allocation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"PUT\",\n    \"paid_amount\": 15000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment-allocation/:payroll_payment_allocation_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment-allocation",
+								":payroll_payment_allocation_id"
+							],
+							"variable": [
+								{
+									"key": "payroll_payment_allocation_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void payroll payment allocation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment-allocation/:payroll_payment_allocation_id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment-allocation",
+								":payroll_payment_allocation_id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "payroll_payment_allocation_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void payroll payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/employee-summary-payroll-payment/:payroll_payment_id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"employee-summary-payroll-payment",
+								":payroll_payment_id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "payroll_payment_id",
+									"value": ""
 								}
 							]
 						}
@@ -15065,6 +15706,11 @@
 									"disabled": true
 								},
 								{
+									"key": "expense_details[0][id]",
+									"value": "",
+									"type": "text"
+								},
+								{
 									"key": "expense_details[0][expense_account_id]",
 									"value": "2731",
 									"type": "text"
@@ -15092,6 +15738,11 @@
 								{
 									"key": "expense_details[0][total]",
 									"value": "1130",
+									"type": "text"
+								},
+								{
+									"key": "expense_details[1][id]",
+									"value": "",
 									"type": "text"
 								},
 								{
@@ -17404,7 +18055,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2024-12-01&multiple_status&status_not=",
+							"raw": "{{url}}/api/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2023-09-01&date[1]=2025-12-01&status_not=&start_date&end_date&customer_id",
 							"host": [
 								"{{url}}"
 							],
@@ -17443,15 +18094,16 @@
 								},
 								{
 									"key": "date[1]",
-									"value": "2024-12-01"
-								},
-								{
-									"key": "multiple_status",
-									"value": null,
-									"description": "as array, multiple_status[]"
+									"value": "2025-12-01"
 								},
 								{
 									"key": "multiple_status[0]",
+									"value": "",
+									"description": "as array, multiple_status[]",
+									"disabled": true
+								},
+								{
+									"key": "multiple_status[1]",
 									"value": "",
 									"disabled": true
 								},
@@ -17459,6 +18111,18 @@
 									"key": "status_not",
 									"value": "",
 									"description": "exclude with this status"
+								},
+								{
+									"key": "start_date",
+									"value": null
+								},
+								{
+									"key": "end_date",
+									"value": null
+								},
+								{
+									"key": "customer_id",
+									"value": null
 								}
 							]
 						}
@@ -17537,17 +18201,17 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "{{company-id}}"
 							},
 							{
 								"key": "pos-id",
-								"value": "2",
+								"value": "{{pos-id}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 6,\n            \"rate\": 10,\n            \"quantity\": 1,\n            \"amount\": 10\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": null,//nullable\n    \"receiver_id\":106,\n    \"amount\":10\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 3436,\n            \"rate\": 10,\n            \"quantity\": 5,\n            \"amount\": 50\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 3896,//nullable\n    \"receiver_id\":2697,\n    \"amount\":50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -17618,6 +18282,240 @@
 									"value": "318",
 									"description": "318"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v2 list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/invoice?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=2024-01-01&date[1]=2025-12-01&status_not=draft&sort_by=created_at&direction=asc&start_date&end_date&minimal_response=&customer_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"invoice"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "customer_id",
+									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": "2024-01-01"
+								},
+								{
+									"key": "date[1]",
+									"value": "2025-12-01"
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"description": "as array, multiple_status[]",
+									"disabled": true
+								},
+								{
+									"key": "multiple_status[1]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "status_not",
+									"value": "draft",
+									"description": "exclude with this status"
+								},
+								{
+									"key": "sort_by",
+									"value": "created_at",
+									"description": "name,created_at,updated_at ['table columns']"
+								},
+								{
+									"key": "direction",
+									"value": "asc",
+									"description": "asc|desc"
+								},
+								{
+									"key": "start_date",
+									"value": null
+								},
+								{
+									"key": "end_date",
+									"value": null
+								},
+								{
+									"key": "minimal_response",
+									"value": "",
+									"description": "1|0"
+								},
+								{
+									"key": "customer_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v2 show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/invoice/:id?minimal_response=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"invoice",
+								":id"
+							],
+							"query": [
+								{
+									"key": "minimal_response",
+									"value": "",
+									"description": "1|0"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8934"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store approve payment v2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "{{pos-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 3436,\n            \"rate\": 10,\n            \"quantity\": 5,\n            \"amount\": 50\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 3896,//nullable\n    \"receiver_id\":2697,\n    \"amount\":50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/invoice-store-approve-payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"invoice-store-approve-payment"
 							]
 						}
 					},
@@ -17791,7 +18689,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -17804,7 +18702,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/journal-voucher?paginate=1&page=&limit=&search_keyword=&status=",
+							"raw": "{{url}}/api/journal-voucher?paginate=1&page=&limit=&search_keyword=&status=&start_date=2024-01-17&end_date=2024-12-17",
 							"host": [
 								"{{url}}"
 							],
@@ -17832,6 +18730,14 @@
 								{
 									"key": "status",
 									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "2024-01-17"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-12-17"
 								}
 							]
 						}
@@ -17985,7 +18891,7 @@
 			"name": "ledger",
 			"item": [
 				{
-					"name": "list",
+					"name": "list account head ledger",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -18017,7 +18923,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=&account_head_id=559",
+							"raw": "{{url}}/api/account-head-ledger?paginate=0&page=&limit=&slug=&account_head_id=2805&start_date=2025-02-21&end_date=2025-02-31",
 							"host": [
 								"{{url}}"
 							],
@@ -18028,7 +18934,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1"
+									"value": "0"
 								},
 								{
 									"key": "page",
@@ -18040,12 +18946,20 @@
 								},
 								{
 									"key": "slug",
-									"value": "cash-in-hand",
-									"disabled": true
+									"value": "",
+									"description": "cash-in-hand"
 								},
 								{
 									"key": "account_head_id",
-									"value": "559"
+									"value": "2805"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-02-21"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-02-31"
 								}
 							]
 						}
@@ -18085,7 +18999,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger-grouped?paginate=1&page=&limit=71&slug=&account_head_id=559",
+							"raw": "{{url}}/api/account-head-ledger-grouped?paginate=1&page=&limit=7&slug=&account_head_id=2696&start_date=2025-02-21&end_date=2025-02-21",
 							"host": [
 								"{{url}}"
 							],
@@ -18104,7 +19018,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "71"
+									"value": "7"
 								},
 								{
 									"key": "slug",
@@ -18113,8 +19027,16 @@
 								},
 								{
 									"key": "account_head_id",
-									"value": "559",
+									"value": "2696",
 									"description": "220 or 559"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-02-21"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-02-21"
 								}
 							]
 						}
@@ -19262,7 +20184,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"pos 1\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 11 //required\n}",
+							"raw": "{\n    \"name\": \"pos 1\", //required\n    \"address\": \"pos location\", //nullable\n    \"customer_name\": \"cus 3\", //required\n    \"customer_address\": \"cus location 3\", //nullable\n    \"email\" : \"test@test.com\", //nullable\n    \"phone_no\" : \"8956256525\", //nullable\n    \"pan_number\" : \"656565656\", //nullable\n    \"status\": \"active\", //required\n    \"warehouse_id\" : 24, //required\n    \"pos_type\": \"SERVICE_RETAIL\" //nullable\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -20005,17 +20927,17 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "{{company-id}}"
 							},
 							{
 								"key": "pos-id",
-								"value": "2",
+								"value": "{{pos-id}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawer_amount\": 100 //required\n}",
+							"raw": "{\n    \"drawer_amount\": 0 //required\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -20057,11 +20979,11 @@
 							},
 							{
 								"key": "company-id",
-								"value": "3"
+								"value": "{{company-id}}"
 							},
 							{
 								"key": "pos-id",
-								"value": "4",
+								"value": "{{pos-id}}",
 								"type": "text"
 							}
 						],
@@ -21020,7 +21942,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&product_category_id=&has_variant_product&is_not_variant_product=&is_variant_product=",
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=100&search_keyword=&is_service=&is_product=&inventory=&product_category_id=&has_variant_product&is_not_variant_product=&is_variant_product=&is_hospitality=0",
 							"host": [
 								"{{url}}"
 							],
@@ -21039,7 +21961,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "10"
+									"value": "100"
 								},
 								{
 									"key": "search_keyword",
@@ -21072,6 +21994,10 @@
 								{
 									"key": "is_variant_product",
 									"value": ""
+								},
+								{
+									"key": "is_hospitality",
+									"value": "0"
 								}
 							]
 						}
@@ -21360,14 +22286,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/product-list?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&is_variant_product=&product_category_id&unit_id",
+							"raw": "{{url}}/api/v2/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&is_variant_product=&product_category_id&resource_fields=id,name,slug,sku&unit_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"v2",
-								"product-list"
+								"product"
 							],
 							"query": [
 								{
@@ -21409,8 +22335,7 @@
 								{
 									"key": "resource_fields",
 									"value": "id,name,slug,sku",
-									"description": "id,name,slug,sku",
-									"disabled": true
+									"description": "id,name,slug,sku"
 								},
 								{
 									"key": "unit_id",
@@ -21511,7 +22436,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21519,7 +22444,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "title",
+									"value": "titles",
 									"type": "text"
 								},
 								{
@@ -21541,6 +22466,11 @@
 									"key": "image",
 									"type": "file",
 									"src": "/home/user--49/Pictures/Screenshots/Screenshot from 2023-08-22 16-11-56.png"
+								},
+								{
+									"key": "is_service_category",
+									"value": "1",
+									"type": "text"
 								}
 							]
 						},
@@ -21578,7 +22508,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21612,6 +22542,11 @@
 								{
 									"key": "_method",
 									"value": "patch",
+									"type": "text"
+								},
+								{
+									"key": "is_service_category",
+									"value": "0",
 									"type": "text"
 								}
 							]
@@ -21708,7 +22643,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -21721,7 +22656,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/product-category?paginate=&page=&limit=&search_keyword=",
+							"raw": "{{url}}/api/product-category?paginate=&page=&limit=&search_keyword=&is_service_category=&is_product_category=",
 							"host": [
 								"{{url}}"
 							],
@@ -21744,6 +22679,14 @@
 								},
 								{
 									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service_category",
+									"value": ""
+								},
+								{
+									"key": "is_product_category",
 									"value": ""
 								}
 							]
@@ -25265,7 +26208,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/trial-balance?start_date=2024-07-16&end_date=2025-08-12",
+									"raw": "{{url}}/api/trial-balance?start_date=2025-01-14&end_date=2025-02-12",
 									"host": [
 										"{{url}}"
 									],
@@ -25276,12 +26219,11 @@
 									"query": [
 										{
 											"key": "start_date",
-											"value": "2024-07-16"
+											"value": "2025-01-14"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-08-12",
-											"description": "2025-08-12"
+											"value": "2025-02-12"
 										}
 									]
 								}
@@ -26743,7 +27685,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor-statement?paginate=1&page=1&limit=10&start_date=2023-06-15&end_date=2025-07-01&vendor_id=",
+									"raw": "{{url}}/api/vendor-statement?paginate=1&page=1&limit=10&start_date=2024-12-30&end_date=2024-12-30&vendor_id=2777",
 									"host": [
 										"{{url}}"
 									],
@@ -26766,15 +27708,15 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2023-06-15"
+											"value": "2024-12-30"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-07-01"
+											"value": "2024-12-30"
 										},
 										{
 											"key": "vendor_id",
-											"value": "",
+											"value": "2777",
 											"description": "413.417"
 										}
 									]
@@ -31106,6 +32048,127 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "vat summary report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/vat-summary-report?year=2081-2082",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vat-summary-report"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2081-2082"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tds report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/tds-report?paginate=1&page=1&limit=10&start_date=2024-01-22&end_date=2025-01-30&tds_type=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"tds-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-01-30"
+										},
+										{
+											"key": "tds_type",
+											"value": "",
+											"description": "tds_payable|tds_receivables"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -31186,7 +32249,7 @@
 										{
 											"key": "log_source",
 											"value": "",
-											"description": "quotation|sales_order|invoice|record_payment|sales_return|quick_receipt|purchase_order|purchase_bill|supplier_payment|purchase_return|quick_payment|expense|journal_voucher|cash_transfer|inventory_adjustment|warehouse_transfer in string \"quotation,sales_order\""
+											"description": "quotation|sales_order|invoice|record_payment|sales_return|quick_receipt|purchase_order|purchase_bill|supplier_payment|purchase_return|quick_payment|expense|journal_voucher|cash_transfer|inventory_adjustment|warehouse_transfer,stock_issue,payroll >>> in string like \"quotation,sales_order\""
 										}
 									]
 								}
@@ -31290,7 +32353,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -31298,7 +32361,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/report?start_date=2023-1-22&end_date=2024-08-22",
+							"raw": "{{url}}/api/report?start_date=2023-01-22&end_date=2024-08-22",
 							"host": [
 								"{{url}}"
 							],
@@ -31309,7 +32372,7 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2023-1-22"
+									"value": "2023-01-22"
 								},
 								{
 									"key": "end_date",
@@ -31352,7 +32415,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/report-total/:type?start_date=2023-10-01&end_date=2024-10-31&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
+							"raw": "{{url}}/api/report-total/:type?start_date=2024-01-01&end_date=2025-02-28&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
 							"host": [
 								"{{url}}"
 							],
@@ -31364,12 +32427,12 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2023-10-01",
+									"value": "2024-01-01",
 									"description": "date start"
 								},
 								{
 									"key": "end_date",
-									"value": "2024-10-31",
+									"value": "2025-02-28",
 									"description": "date end"
 								},
 								{
@@ -31404,7 +32467,7 @@
 							"variable": [
 								{
 									"key": "type",
-									"value": "",
+									"value": "tds_report",
 									"description": "Report Name, e.g. stock_issue_report, stock_consumption_report, stock_returns_report, sales_summary_report, purchase_summary_report, customer_receivable_summary_report, vendor_payable_summary_report, purchase_by_item_report, sales_by_item_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report"
 								}
 							]
@@ -31538,7 +32601,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/report-excel-download/:type?start_date=2024-01-16&end_date=2024-12-15&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
+							"raw": "{{url}}/api/report-excel-download/:type?start_date=2024-02-05&end_date=2025-02-05&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
 							"host": [
 								"{{url}}"
 							],
@@ -31550,11 +32613,11 @@
 							"query": [
 								{
 									"key": "start_date",
-									"value": "2024-01-16"
+									"value": "2024-02-05"
 								},
 								{
 									"key": "end_date",
-									"value": "2024-12-15"
+									"value": "2025-02-05"
 								},
 								{
 									"key": "warehouse_department_id",
@@ -31584,8 +32647,8 @@
 							"variable": [
 								{
 									"key": "type",
-									"value": "annex5_report",
-									"description": "stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report"
+									"value": "purchase_by_bill_report",
+									"description": "stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report|customer_statement|vendor_statement|vendor_payable_summary_report|customer_statement|vendor_statement"
 								}
 							]
 						}
@@ -37550,7 +38613,7 @@
 													"bearer": [
 														{
 															"key": "token",
-															"value": "{{token}}",
+															"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJiNDJhOGEyMmVkNDFjMDRhNjcyMjVjYWQ3YWRiYTM2MWY5NjkwMWYzNGYxYmVlYmZiZTE0OWZhNDk2M2ZmOTk5NzJhOWNiM2M2MzJjY2I2NyIsImlhdCI6MTczNzA5NzExMS40NDExOTUsIm5iZiI6MTczNzA5NzExMS40NDExOTgsImV4cCI6MTczODM5MzExMS40MzAwMzgsInN1YiI6IjQiLCJzY29wZXMiOlsiKiJdfQ.BG2L9zPr38P6oIXsKLYijVrGyDDT3mG3074KisasouUh3m6NU0l4O9TEcf2CWv0Zgqie6u7TPFPVlpkdg8lSfo8zTz8gG7RB_oaoI3xjiw5-c2hHmkjZJECirSXsRxpYA32Bu9tKgw3h8zF1MC2EQTjXQBvMTazgm7SChQUGDIX3p3LaZ0j_ycxi7RlQJjUK7oZpuWWDvgZK9JpKJ7VgxEQ4uSYofpBbGxMikEwDYzfQQ2LdJVjoGtt2SWtU3Wu51-vOzdTd8iw6nYLa9xg2FC9Mzbm_HEhI0o8XvDWGmbKqOhQKEgeWFxIssgneK28IOYENdlqEHlrMDIcB_3R88g2B05dY0uteZNSjWmzqK7xhCbJz-uA2fZ0JkfV-7joj7UHgR7wKYwVo2vXIfh7-DcqIyQU2RWSBardhohRjQwwftxJLtv9qUioJ2zLLI_44elt0cewZzD0UGGuL7ULTGSZNVp5ms-AVegjyQxOg9WK3f6uHzbs-QtuvgliRyKPGrHD86cRCA5IsivkHH88xHuvjaVreZPtvlPujCIMPx125_q1r1EXoz-DLYLWvl4mzQ6WOcwNbX48uY23cLEEm4adWiK7n-LKewIeQOfGlazOQpttb28MtTd1yKtAuAFwP6lN3wthbfU2hfDEAtz8G_YzhSv06PKhYnQenCoO7iWQ",
 															"type": "string"
 														}
 													]
@@ -37618,6 +38681,52 @@
 														{
 															"key": "hospitality_branch_id",
 															"value": "8"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Customer",
+									"item": [
+										{
+											"name": "sync Hospitality Products",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{url}}/api/linked-company/sync-hospitality-customers/:account_company_id/:hospitality_branch_id",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"linked-company",
+														"sync-hospitality-customers",
+														":account_company_id",
+														":hospitality_branch_id"
+													],
+													"variable": [
+														{
+															"key": "account_company_id",
+															"value": "3"
+														},
+														{
+															"key": "hospitality_branch_id",
+															"value": "22"
 														}
 													]
 												}
@@ -37944,6 +39053,125 @@
 											"response": []
 										}
 									]
+								},
+								{
+									"name": "CompanyPaymentOptions Sync",
+									"item": [
+										{
+											"name": "getCompanyPaymentOptions",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "company-id",
+														"value": "8",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{url}}/api/linked-company/get-hospitality-company-payment-options",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"linked-company",
+														"get-hospitality-company-payment-options"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "getSyncedCompanyPaymentOptions",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "company-id",
+														"value": "8",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{url}}/api/linked-company/get-synced-company-payment-options",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"linked-company",
+														"get-synced-company-payment-options"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "getCompanyPaymentOptions",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJiNDJhOGEyMmVkNDFjMDRhNjcyMjVjYWQ3YWRiYTM2MWY5NjkwMWYzNGYxYmVlYmZiZTE0OWZhNDk2M2ZmOTk5NzJhOWNiM2M2MzJjY2I2NyIsImlhdCI6MTczNzA5NzExMS40NDExOTUsIm5iZiI6MTczNzA5NzExMS40NDExOTgsImV4cCI6MTczODM5MzExMS40MzAwMzgsInN1YiI6IjQiLCJzY29wZXMiOlsiKiJdfQ.BG2L9zPr38P6oIXsKLYijVrGyDDT3mG3074KisasouUh3m6NU0l4O9TEcf2CWv0Zgqie6u7TPFPVlpkdg8lSfo8zTz8gG7RB_oaoI3xjiw5-c2hHmkjZJECirSXsRxpYA32Bu9tKgw3h8zF1MC2EQTjXQBvMTazgm7SChQUGDIX3p3LaZ0j_ycxi7RlQJjUK7oZpuWWDvgZK9JpKJ7VgxEQ4uSYofpBbGxMikEwDYzfQQ2LdJVjoGtt2SWtU3Wu51-vOzdTd8iw6nYLa9xg2FC9Mzbm_HEhI0o8XvDWGmbKqOhQKEgeWFxIssgneK28IOYENdlqEHlrMDIcB_3R88g2B05dY0uteZNSjWmzqK7xhCbJz-uA2fZ0JkfV-7joj7UHgR7wKYwVo2vXIfh7-DcqIyQU2RWSBardhohRjQwwftxJLtv9qUioJ2zLLI_44elt0cewZzD0UGGuL7ULTGSZNVp5ms-AVegjyQxOg9WK3f6uHzbs-QtuvgliRyKPGrHD86cRCA5IsivkHH88xHuvjaVreZPtvlPujCIMPx125_q1r1EXoz-DLYLWvl4mzQ6WOcwNbX48uY23cLEEm4adWiK7n-LKewIeQOfGlazOQpttb28MtTd1yKtAuAFwP6lN3wthbfU2hfDEAtz8G_YzhSv06PKhYnQenCoO7iWQ",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "company-id",
+														"value": "8",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{  \r\n    \"hospitality_company_id\": 3,\r\n    \"payments\":[\r\n            {\r\n               \r\n                \"account_head_id\" : 2,\r\n                \"payment_option_name\" : \"Cash\",\r\n                \"hospitality_company_payment_option_id\" : 17\r\n            },\r\n            {\r\n              \r\n                \"account_head_id\" : null,\r\n                \"payment_option_name\" : \"FonePay\",\r\n                \"hospitality_company_payment_option_id\" : 16\r\n            }\r\n        ]    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/api/linked-company/sync-hospitality-company-payment-options",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"linked-company",
+														"sync-hospitality-company-payment-options"
+													]
+												}
+											},
+											"response": []
+										}
+									]
 								}
 							]
 						},
@@ -37956,20 +39184,24 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "https://srot-system-link.scoduscorp.com/api/hospitality/company-payment-options/:hospitality_company_id",
-											"protocol": "https",
+											"raw": "http://localhost:8001/api/hospitality/company-payment-options/:account_company_id/:hospitality_company_id",
+											"protocol": "http",
 											"host": [
-												"srot-system-link",
-												"scoduscorp",
-												"com"
+												"localhost"
 											],
+											"port": "8001",
 											"path": [
 												"api",
 												"hospitality",
 												"company-payment-options",
+												":account_company_id",
 												":hospitality_company_id"
 											],
 											"variable": [
+												{
+													"key": "account_company_id",
+													"value": ""
+												},
 												{
 													"key": "hospitality_company_id",
 													"value": ""
@@ -38127,10 +39359,853 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Create Invoice In Accounting",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "localhost:8001/api/accounting/create-invoice/:hospitality_branch_id/:order_payment_id",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"create-invoice",
+												":hospitality_branch_id",
+												":order_payment_id"
+											],
+											"variable": [
+												{
+													"key": "hospitality_branch_id",
+													"value": "22"
+												},
+												{
+													"key": "order_payment_id",
+													"value": "49134",
+													"description": "Partial Payment( 49088 ) - Full Payment(49096)"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Void Invoice In Accounting",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "localhost:8001/api/accounting/void-invoice/:hospitality_branch_id/:order_payment_id",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"void-invoice",
+												":hospitality_branch_id",
+												":order_payment_id"
+											],
+											"variable": [
+												{
+													"key": "hospitality_branch_id",
+													"value": "22"
+												},
+												{
+													"key": "order_payment_id",
+													"value": "49134"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Transfer Multiple Products",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "localhost:8001/api/hospitality/transfer-products/:account_company_id",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"hospitality",
+												"transfer-products",
+												":account_company_id"
+											],
+											"variable": [
+												{
+													"key": "account_company_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone_number",
+									"value": "9849",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "some name",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": " random address",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": " randomemail@email.com",
+									"type": "text"
+								},
+								{
+									"key": "pan_number",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "scheduled_from",
+									"value": "2020-02-20 19:00",
+									"type": "text"
+								},
+								{
+									"key": "scheduled_to",
+									"value": "2020-02-20 20:00",
+									"type": "text"
+								},
+								{
+									"key": "employee_account_head_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][product_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][quantity]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[0][rate]",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "services[1][product_id]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][quantity]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][rate]",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "another name 2",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "12345678910",
+									"type": "text"
+								},
+								{
+									"key": "scheduled_from",
+									"value": "2020-02-20 19:00",
+									"type": "text"
+								},
+								{
+									"key": "scheduled_to",
+									"value": "2020-02-20 20:00",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "some note another",
+									"type": "text"
+								},
+								{
+									"key": "adult_pax_count",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "child_pax_count",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "employee_account_head_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[0][product_id]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[0][rate]",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "services[0][quantity]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "services[1][product_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "services[1][rate]",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "services[1][quantity]",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments?page=1&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update services",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "put",
+									"type": "text"
+								},
+								{
+									"key": "services[0][product_id]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[0][rate]",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "services[0][quantity]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][product_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "services[1][rate]",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "services[1][quantity]",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments/:id/services",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id",
+								"services"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check in",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/:id/check-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id",
+								"check-in"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check out",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/:id/check-out",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id",
+								"check-out"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/:id/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "43"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get aggregate count by day",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments/aggregate-by-day?from=2020-02-01&to=2020-02-27",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"aggregate-by-day"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2020-02-01"
+								},
+								{
+									"key": "to",
+									"value": "2020-02-27"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "services by day",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/services-by-day?date=2020-02-20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"services-by-day"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2020-03-01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2020-03-27",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2020-02-20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "services[0][product_id]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "services[0][quantity]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[0][rate]",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "services[1][product_id]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][quantity]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "services[1][rate]",
+									"value": "300",
+									"type": "text"
+								},
+								{
+									"key": "receiver_id",
+									"value": "56",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "customer_id",
+									"value": "55",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "discount_type",
+									"value": "fixed",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments/:id/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id",
+								"payment"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "42"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
