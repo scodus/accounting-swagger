@@ -39554,6 +39554,11 @@
 									"key": "services[1][rate]",
 									"value": "123",
 									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "some random note",
+									"type": "text"
 								}
 							]
 						},
@@ -39739,7 +39744,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/appointments?page=1&limit=10",
+							"raw": "{{url}}/api/appointments?page=1&limit=10&paginate=1",
 							"host": [
 								"{{url}}"
 							],
@@ -39755,6 +39760,10 @@
 								{
 									"key": "limit",
 									"value": "10"
+								},
+								{
+									"key": "paginate",
+									"value": "1"
 								}
 							]
 						}
@@ -39986,99 +39995,6 @@
 					"response": []
 				},
 				{
-					"name": "get aggregate count by day",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							},
-							{
-								"key": "pos-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/appointments/aggregate-by-day?from=2020-02-01&to=2020-02-27",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"appointments",
-								"aggregate-by-day"
-							],
-							"query": [
-								{
-									"key": "from",
-									"value": "2020-02-01"
-								},
-								{
-									"key": "to",
-									"value": "2020-02-27"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "services by day",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1",
-								"type": "text"
-							},
-							{
-								"key": "pos-id",
-								"value": "1",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/appointments/services-by-day?date=2020-02-20",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"appointments",
-								"services-by-day"
-							],
-							"query": [
-								{
-									"key": "from",
-									"value": "2020-03-01",
-									"disabled": true
-								},
-								{
-									"key": "to",
-									"value": "2020-03-27",
-									"disabled": true
-								},
-								{
-									"key": "date",
-									"value": "2020-02-20"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "create payment",
 					"request": {
 						"method": "POST",
@@ -40169,6 +40085,92 @@
 								{
 									"key": "id",
 									"value": "42"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/statistics?types[1]=COMPLETED_APPOINTMENT&types[2]=TOP_PERFORMING_SERVICES&service_time_range=week&types[3]=TOTAL_REVENUE&types[4]=NEW_CLIENT_COUNT&types[5]=TOTAL_WEEKLY_REVENUE&types[6]=AGGREGATE_FOR_RANGE&aggregate_range_from=2025-03-11&aggregate_range_to=2025-03-18&types[7]=AGGREGATE_FOR_MONTH&aggregate_from=2025-03-11&aggregate_to=2025-03-18",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "types[1]",
+									"value": "COMPLETED_APPOINTMENT"
+								},
+								{
+									"key": "types[2]",
+									"value": "TOP_PERFORMING_SERVICES"
+								},
+								{
+									"key": "service_time_range",
+									"value": "week",
+									"description": "week/month"
+								},
+								{
+									"key": "types[3]",
+									"value": "TOTAL_REVENUE"
+								},
+								{
+									"key": "types[4]",
+									"value": "NEW_CLIENT_COUNT"
+								},
+								{
+									"key": "types[5]",
+									"value": "TOTAL_WEEKLY_REVENUE"
+								},
+								{
+									"key": "types[6]",
+									"value": "AGGREGATE_FOR_RANGE"
+								},
+								{
+									"key": "aggregate_range_from",
+									"value": "2025-03-11"
+								},
+								{
+									"key": "aggregate_range_to",
+									"value": "2025-03-18"
+								},
+								{
+									"key": "types[7]",
+									"value": "AGGREGATE_FOR_MONTH"
+								},
+								{
+									"key": "aggregate_from",
+									"value": "2025-03-11"
+								},
+								{
+									"key": "aggregate_to",
+									"value": "2025-03-18"
 								}
 							]
 						}

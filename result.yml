@@ -29099,6 +29099,9 @@ paths:
                 services[1][rate]:
                   type: integer
                   example: '123'
+                note:
+                  type: string
+                  example: some random note
       parameters:
         - name: Accept
           in: header
@@ -29145,6 +29148,11 @@ paths:
           schema:
             type: integer
           example: '10'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -29421,63 +29429,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/appointments/aggregate-by-day:
-    get:
-      tags:
-        - Appointment
-      summary: get aggregate count by day
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: pos-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: from
-          in: query
-          schema:
-            type: string
-          example: '2020-02-01'
-        - name: to
-          in: query
-          schema:
-            type: string
-          example: '2020-02-27'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/appointments/services-by-day:
-    get:
-      tags:
-        - Appointment
-      summary: services by day
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: pos-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: date
-          in: query
-          schema:
-            type: string
-          example: '2020-02-20'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/appointments/{id}/payment:
     post:
       tags:
@@ -29539,6 +29490,93 @@ paths:
             type: integer
           required: true
           example: '42'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/appointments/statistics:
+    get:
+      tags:
+        - Appointment
+      summary: Get Statistics
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: types[1]
+          in: query
+          schema:
+            type: string
+          example: COMPLETED_APPOINTMENT
+        - name: types[2]
+          in: query
+          schema:
+            type: string
+          example: TOP_PERFORMING_SERVICES
+        - name: service_time_range
+          in: query
+          schema:
+            type: string
+          description: week/month
+          example: week
+        - name: types[3]
+          in: query
+          schema:
+            type: string
+          example: TOTAL_REVENUE
+        - name: types[4]
+          in: query
+          schema:
+            type: string
+          example: NEW_CLIENT_COUNT
+        - name: types[5]
+          in: query
+          schema:
+            type: string
+          example: TOTAL_WEEKLY_REVENUE
+        - name: types[6]
+          in: query
+          schema:
+            type: string
+          example: AGGREGATE_FOR_RANGE
+        - name: aggregate_range_from
+          in: query
+          schema:
+            type: string
+          example: '2025-03-11'
+        - name: aggregate_range_to
+          in: query
+          schema:
+            type: string
+          example: '2025-03-18'
+        - name: types[7]
+          in: query
+          schema:
+            type: string
+          example: AGGREGATE_FOR_MONTH
+        - name: aggregate_from
+          in: query
+          schema:
+            type: string
+          example: '2025-03-11'
+        - name: aggregate_to
+          in: query
+          schema:
+            type: string
+          example: '2025-03-18'
       responses:
         '200':
           description: Successful response
