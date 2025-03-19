@@ -5825,24 +5825,24 @@
 								{
 									"key": "email",
 									"value": "kimchifastfoods@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "Kimchi@2065",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "test@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -39559,6 +39559,11 @@
 									"key": "note",
 									"value": "some random note",
 									"type": "text"
+								},
+								{
+									"key": "is_walk_in_client",
+									"value": "1",
+									"type": "text"
 								}
 							]
 						},
@@ -39744,7 +39749,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/appointments?page=1&limit=10&paginate=1",
+							"raw": "{{url}}/api/appointments?page=1&limit=10&paginate=1&q=harry&status=SCHEDULED",
 							"host": [
 								"{{url}}"
 							],
@@ -39764,6 +39769,14 @@
 								{
 									"key": "paginate",
 									"value": "1"
+								},
+								{
+									"key": "q",
+									"value": "harry"
+								},
+								{
+									"key": "status",
+									"value": "SCHEDULED"
 								}
 							]
 						}

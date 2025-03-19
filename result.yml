@@ -29102,6 +29102,9 @@ paths:
                 note:
                   type: string
                   example: some random note
+                is_walk_in_client:
+                  type: integer
+                  example: '1'
       parameters:
         - name: Accept
           in: header
@@ -29153,6 +29156,16 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: q
+          in: query
+          schema:
+            type: string
+          example: harry
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: SCHEDULED
       responses:
         '200':
           description: Successful response
