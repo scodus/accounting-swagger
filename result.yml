@@ -53,6 +53,7 @@ tags:
   - name: asset
   - name: asset category
   - name: bank
+  - name: balance transfer
   - name: bank cheque
   - name: Bug
   - name: Bug Feedback
@@ -5292,6 +5293,156 @@ paths:
             type: integer
           required: true
           example: '162'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/balance-transfer:
+    post:
+      tags:
+        - balance transfer
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                from_account_head_id:
+                  type: integer
+                  example: '2697'
+                to_account_head_id:
+                  type: integer
+                  example: '2805'
+                balance_transfer_date:
+                  type: string
+                  example: '2025-03-20'
+                amount:
+                  type: integer
+                  example: '10'
+                bank_charge:
+                  type: integer
+                  example: '2'
+                note:
+                  type: string
+                  example: zxcvzxcv
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - balance transfer
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: '2025-03-20'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: '2025-03-20'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/balance-transfer/{id}/void-status:
+    post:
+      tags:
+        - balance transfer
+      summary: void status
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/balance-transfer/{id}:
+    get:
+      tags:
+        - balance transfer
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -29476,7 +29627,7 @@ paths:
                   example: '56'
                 amount:
                   type: integer
-                  example: '100'
+                  example: '900'
                 customer_id:
                   type: integer
                   example: '55'

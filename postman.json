@@ -3,8 +3,8 @@
 		"_postman_id": "9a0fc440-d4de-4cbc-8c6d-76d518f86ea5",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "42517497",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=42517497"
+		"_exporter_id": "34655126",
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=34655126"
 	},
 	"item": [
 		{
@@ -9717,6 +9717,252 @@
 								{
 									"key": "id",
 									"value": "162"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "balance transfer",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "from_account_head_id",
+									"value": "2697",
+									"type": "text"
+								},
+								{
+									"key": "to_account_head_id",
+									"value": "2805",
+									"type": "text"
+								},
+								{
+									"key": "balance_transfer_date",
+									"value": "2025-03-20",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "bank_charge",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "zxcvzxcv",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/balance-transfer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"balance-transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/balance-transfer/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"balance-transfer",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/balance-transfer?paginate=1&page=&limit=&search_keyword=&status=&start_date=&end_date=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"balance-transfer"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"description": "2025-03-20"
+								},
+								{
+									"key": "end_date",
+									"value": "",
+									"description": "2025-03-20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/balance-transfer/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"balance-transfer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -40063,13 +40309,14 @@
 								},
 								{
 									"key": "amount",
-									"value": "100",
+									"value": "900",
 									"type": "text"
 								},
 								{
 									"key": "customer_id",
 									"value": "55",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "discount",
