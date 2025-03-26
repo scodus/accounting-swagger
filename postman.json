@@ -3,8 +3,8 @@
 		"_postman_id": "9a0fc440-d4de-4cbc-8c6d-76d518f86ea5",
 		"name": "accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34655126",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=34655126"
+		"_exporter_id": "42517497",
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=42517497"
 	},
 	"item": [
 		{
@@ -9962,7 +9962,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -10868,6 +10868,681 @@
 									"key": "account_head_id",
 									"value": "25"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CashInOut",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 200, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 100, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out/update/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out/delete/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							},
+							{
+								"key": "pos-id",
+								"value": "15",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cash-in-out?paginate=10&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cash-in-out"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Day Books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/day-books",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"day-books"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Day Books Total Amount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/day-books/total-amount",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"day-books",
+								"total-amount"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cashier Session",
+			"item": [
+				{
+					"name": "session start",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "{{pos-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drawer_amount\": 0 //required\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier-session/start",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier-session",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "session end",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "{{pos-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"employee_cash_in_hand\":100,\n    \"note\" : \"hjgjhgj\" //nullable\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier-session/end",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier-session",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "{{pos-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier-session/check",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier-session",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POS list by company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos-list-by-company/:company_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos-list-by-company",
+								":company_id"
+							],
+							"variable": [
+								{
+									"key": "company_id",
+									"value": "{{company-id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POS list by AuthUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pos-list-by-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pos-list-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cashier Drawer Amount",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							},
+							{
+								"key": "pos-id",
+								"value": "{{pos-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cashier/drawer-amounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cashier",
+								"drawer-amounts"
 							]
 						}
 					},
@@ -18746,7 +19421,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 3436,\n            \"rate\": 10,\n            \"quantity\": 5,\n            \"amount\": 50\n            // \"discount\": null,\n            // \"tax\": null,\n            // \"account_head_id\": 84,\n            // \"warehouse_id\": 2\n            // \"vat_amount\": false,\n            // \"vatless_amount\": 121,\n        }\n    ],\n    \"discount_type\":\"fixed\",//fixed or percent\n    \"discount\":0,\n    \"customer_id\": 3896,//nullable\n    \"receiver_id\":2697,\n    \"amount\":50\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 6598,\n            \"name\": \"new test product 1\",\n            \"rate\": \"50.00000\",\n            \"amount\": 100,\n            \"quantity\": 2\n        }\n        ,\n        {\n            \"product_id\": 3504,\n            \"name\": \"OLIV OIL\",\n            \"rate\": \"1600.00000\",\n            \"amount\": 32,\n            \"quantity\": 0.02\n        }\n    ],\n    \"discount_type\": \"fixed\",\n    \"discount\": 10 ,\n    \"totalDiscount\": 0,\n    \"customer_id\": 3896,\n    \"receiver_id\": 2697,\n    \"amount\": 122,\n    \"reference\": \"zxcv\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -19169,7 +19844,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=0&page=&limit=&slug=&account_head_id=2805&start_date=2025-02-21&end_date=2025-02-31",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=10&slug=&account_head_id=2801&start_date=2025-03-21&end_date=2025-03-21",
 							"host": [
 								"{{url}}"
 							],
@@ -19180,7 +19855,7 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "0"
+									"value": "1"
 								},
 								{
 									"key": "page",
@@ -19188,7 +19863,7 @@
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "10"
 								},
 								{
 									"key": "slug",
@@ -19197,15 +19872,15 @@
 								},
 								{
 									"key": "account_head_id",
-									"value": "2805"
+									"value": "2801"
 								},
 								{
 									"key": "start_date",
-									"value": "2025-02-21"
+									"value": "2025-03-21"
 								},
 								{
 									"key": "end_date",
-									"value": "2025-02-31"
+									"value": "2025-03-21"
 								}
 							]
 						}
@@ -19245,7 +19920,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger-grouped?paginate=1&page=&limit=7&slug=&account_head_id=2696&start_date=2025-02-21&end_date=2025-02-21",
+							"raw": "{{url}}/api/account-head-ledger-grouped?paginate=1&page=&limit=10&slug=&account_head_id=2801&start_date=2025-03-21&end_date=2025-03-21",
 							"host": [
 								"{{url}}"
 							],
@@ -19264,7 +19939,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "7"
+									"value": "10"
 								},
 								{
 									"key": "slug",
@@ -19273,16 +19948,93 @@
 								},
 								{
 									"key": "account_head_id",
-									"value": "2696",
+									"value": "2801",
 									"description": "220 or 559"
 								},
 								{
 									"key": "start_date",
-									"value": "2025-02-21"
+									"value": "2025-03-21"
 								},
 								{
 									"key": "end_date",
-									"value": "2025-02-21"
+									"value": "2025-03-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list account head ledger transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account-head-ledger-transactions?paginate=1&page=&limit=10&slug=&account_head_id=2801&start_date=2025-03-20&end_date=2025-03-21",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account-head-ledger-transactions"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "slug",
+									"value": "",
+									"description": "cash-in-hand"
+								},
+								{
+									"key": "account_head_id",
+									"value": "2801",
+									"description": "220 or 559"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-03-20"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-03-21"
 								}
 							]
 						}
@@ -20791,682 +21543,6 @@
 									"key": "id",
 									"value": "11"
 								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "CashInOut",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							},
-							{
-								"key": "pos-id",
-								"value": "15",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 200, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cash-in-out",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cash-in-out"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							},
-							{
-								"key": "pos-id",
-								"value": "15",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"particular\": \"paper\", //required\n    \"received\": 100, //nullable - numeric\n    \"paid\": 0 //nullable - numeric\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cash-in-out/update/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cash-in-out",
-								"update",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							},
-							{
-								"key": "pos-id",
-								"value": "15",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/cash-in-out/delete/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cash-in-out",
-								"delete",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "2"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							},
-							{
-								"key": "pos-id",
-								"value": "15",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cash-in-out?paginate=10&page=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cash-in-out"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "10"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "2",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Day Books",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/day-books",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"day-books"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "2",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Day Books Total Amount",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/day-books/total-amount",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"day-books",
-								"total-amount"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "2",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Cashier Session",
-			"item": [
-				{
-					"name": "session start",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							},
-							{
-								"key": "pos-id",
-								"value": "{{pos-id}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"drawer_amount\": 0 //required\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cashier-session/start",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cashier-session",
-								"start"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "session end",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							},
-							{
-								"key": "pos-id",
-								"value": "{{pos-id}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"employee_cash_in_hand\":100,\n    \"note\" : \"hjgjhgj\" //nullable\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cashier-session/end",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cashier-session",
-								"end"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "check session",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							},
-							{
-								"key": "pos-id",
-								"value": "2",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cashier-session/check",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cashier-session",
-								"check"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POS list by company",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YzljYWQyYS05ODM2LTQxZWMtYWJkMi1hOWEwZTY0Y2VlY2EiLCJqdGkiOiJlZTljMzc3YjM2NDliNTVlZDc4MGIyYjkwNDkyMDA2MTNlNjQxMGM4ZjYyOWY4MGYxN2I4MmY2NTZjNTY4NmIyODRiYjJhODAyZjI1ZDZhZCIsImlhdCI6MTcyNjQ3ODE1Mi40MTA3MjUsIm5iZiI6MTcyNjQ3ODE1Mi40MTA3MywiZXhwIjoxNzI3Nzc0MTUyLjM5MDM5Nywic3ViIjoiNCIsInNjb3BlcyI6WyIqIl19.ioYtyz8HVHTxaKUQIEcDH1tDdu_7qlETfsZ_-9TIZnP5ZEU7gr6EY_9cE4-QI8Zfs8nRuy65yzyRAODqVy55PsPoXsvuNhe0jVc21NrMySL31WGmIAXlSIESUtuChTBXvy6natyD2KWBby22vM2Etcz0KJrxjChJKavEch9_tULwWojushHMn6jb_Gd48eDumlPKjcDcmViz6XO71wcc6J7gDPSZWdoSvU7gPuEtbSzI6siQSaOxJbjyX8N08sbFQ8KocdTn5-XI6vHO5tVsPsxCkIL8H6uFYxK0kceNFBC3lssTSofJtqdRPcxDlfLQyFwGdPN3SdmJRiGyfupzQSDmNTFgpfDaRSvef7kYvBh9f5oqaQWn-pobKTMAtBGrGA49FNUJiNZLl0LiGNWGdvwlWKXMiFMua8_rGAkQthiuPCMuDnqT3GWvUIX7p95zehCF5UyOELQPC6WIHWthpJRvUSfujFxVj0DkYwFNDgYBcsaPJBRT83zZacOj_MQRnG2QZi-xCBS7a3z8TimhFvEONbn7l1oxcGpRxMfl1b_XG59_bqLLaGqN6HmgVxzlUbk6eG2qgLEPsytxfZyl3HQWe9S4IcRRAy5BSk8LDaGKOXSBBE91Jbw4y4RHP2XENpvrYiEfgGj0z0MGq4jcvv6viKPWXdmh4eLeJMtR2wE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/pos-list-by-company/:company_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"pos-list-by-company",
-								":company_id"
-							],
-							"variable": [
-								{
-									"key": "company_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POS list by AuthUser",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/pos-list-by-user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"pos-list-by-user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cashier Drawer Amount",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "3"
-							},
-							{
-								"key": "pos-id",
-								"value": "2",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/cashier/drawer-amounts",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"cashier",
-								"drawer-amounts"
 							]
 						}
 					},
@@ -39565,6 +39641,49 @@
 									"response": []
 								},
 								{
+									"name": "Sync Hospitality Customer",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8001/api/hospitality/sync-hospitality-customers/:account_company_id/:hospitality_branch_id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"hospitality",
+												"sync-hospitality-customers",
+												":account_company_id",
+												":hospitality_branch_id"
+											],
+											"variable": [
+												{
+													"key": "account_company_id",
+													"value": "19"
+												},
+												{
+													"key": "hospitality_branch_id",
+													"value": "22"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Update or Create Stock IssueHospitality Products",
 									"request": {
 										"auth": {
@@ -39633,6 +39752,38 @@
 													"key": "order_payment_id",
 													"value": "49134",
 													"description": "Partial Payment( 49088 ) - Full Payment(49096)"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delivery Partner Invoice Create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "localhost:8001/api/accounting/delivery-partner-invoice/:hospitality_branch_id/:order_id",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"delivery-partner-invoice",
+												":hospitality_branch_id",
+												":order_id"
+											],
+											"variable": [
+												{
+													"key": "hospitality_branch_id",
+													"value": "22"
+												},
+												{
+													"key": "order_id",
+													"value": "54797"
 												}
 											]
 										}
@@ -40373,7 +40524,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/appointments/statistics?types[1]=COMPLETED_APPOINTMENT&types[2]=TOP_PERFORMING_SERVICES&service_time_range=week&types[3]=TOTAL_REVENUE&types[4]=NEW_CLIENT_COUNT&types[5]=TOTAL_WEEKLY_REVENUE&types[6]=AGGREGATE_FOR_RANGE&aggregate_range_from=2025-03-11&aggregate_range_to=2025-03-18&types[7]=AGGREGATE_FOR_MONTH&aggregate_from=2025-03-11&aggregate_to=2025-03-18",
+							"raw": "{{url}}/api/appointments/statistics",
 							"host": [
 								"{{url}}"
 							],
@@ -40385,52 +40536,100 @@
 							"query": [
 								{
 									"key": "types[1]",
-									"value": "COMPLETED_APPOINTMENT"
+									"value": "COMPLETED_APPOINTMENT",
+									"disabled": true
 								},
 								{
 									"key": "types[2]",
-									"value": "TOP_PERFORMING_SERVICES"
+									"value": "TOP_PERFORMING_SERVICES",
+									"disabled": true
 								},
 								{
 									"key": "service_time_range",
 									"value": "week",
-									"description": "week/month"
+									"description": "week/month",
+									"disabled": true
 								},
 								{
 									"key": "types[3]",
-									"value": "TOTAL_REVENUE"
+									"value": "TOTAL_REVENUE",
+									"disabled": true
 								},
 								{
 									"key": "types[4]",
-									"value": "NEW_CLIENT_COUNT"
+									"value": "NEW_CLIENT_COUNT",
+									"disabled": true
 								},
 								{
 									"key": "types[5]",
-									"value": "TOTAL_WEEKLY_REVENUE"
+									"value": "TOTAL_WEEKLY_REVENUE",
+									"disabled": true
 								},
 								{
 									"key": "types[6]",
-									"value": "AGGREGATE_FOR_RANGE"
+									"value": "AGGREGATE_FOR_RANGE",
+									"disabled": true
 								},
 								{
 									"key": "aggregate_range_from",
-									"value": "2025-03-11"
+									"value": "2025-03-11",
+									"disabled": true
 								},
 								{
 									"key": "aggregate_range_to",
-									"value": "2025-03-18"
+									"value": "2025-03-18",
+									"disabled": true
 								},
 								{
 									"key": "types[7]",
-									"value": "AGGREGATE_FOR_MONTH"
+									"value": "AGGREGATE_FOR_MONTH",
+									"disabled": true
 								},
 								{
 									"key": "aggregate_from",
-									"value": "2025-03-11"
+									"value": "2025-03-11",
+									"disabled": true
 								},
 								{
 									"key": "aggregate_to",
-									"value": "2025-03-18"
+									"value": "2025-03-18",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get guest detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/appointments/guests?q=randomemail@email.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"guests"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "randomemail@email.com"
 								}
 							]
 						}
