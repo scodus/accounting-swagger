@@ -29256,7 +29256,7 @@ paths:
             type: integer
           required: true
           description: Partial Payment( 49088 ) - Full Payment(49096)
-          example: '49167'
+          example: '49176'
       responses:
         '200':
           description: Successful response
@@ -29915,6 +29915,29 @@ paths:
             type: integer
           required: true
           example: '59'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/appointments/appointment-guests:
+    get:
+      tags:
+        - Appointment
+      summary: aggregate by month
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

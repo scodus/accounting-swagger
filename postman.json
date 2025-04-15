@@ -39888,7 +39888,7 @@
 												},
 												{
 													"key": "order_payment_id",
-													"value": "49167",
+													"value": "49176",
 													"description": "Partial Payment( 49088 ) - Full Payment(49096)"
 												}
 											]
@@ -40880,6 +40880,58 @@
 									"key": "id",
 									"value": "59"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "aggregate by month",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"guest_id\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments/appointment-guests",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"appointment-guests"
 							]
 						}
 					},
