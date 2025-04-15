@@ -15968,7 +15968,7 @@
 							"variable": [
 								{
 									"key": "payroll_id",
-									"value": "57"
+									"value": "70"
 								}
 							]
 						}
@@ -19094,7 +19094,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "320"
+									"value": "9409"
 								}
 							]
 						}
@@ -19421,7 +19421,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 6598,\n            \"name\": \"new test product 1\",\n            \"rate\": \"50.00000\",\n            \"amount\": 100,\n            \"quantity\": 2\n        }\n        ,\n        {\n            \"product_id\": 3504,\n            \"name\": \"OLIV OIL\",\n            \"rate\": \"1600.00000\",\n            \"amount\": 32,\n            \"quantity\": 0.02\n        }\n    ],\n    \"discount_type\": \"fixed\",\n    \"discount\": 10 ,\n    \"totalDiscount\": 0,\n    \"customer_id\": 3896,\n    \"receiver_id\": 2697,\n    \"amount\": 122,\n    \"reference\": \"zxcv\"\n}",
+							"raw": "{\n    \"products\": [\n        {\n            \"product_id\": 6598,\n            \"name\": \"new test product 1\",\n            \"rate\": \"50.00000\",\n            \"amount\": 100,//\n            \"quantity\": 2\n            // \"discount_type\": \"percent\",\n            // \"discount\": 10\n        },\n        {\n            \"product_id\": 3504,\n            \"name\": \"OLIV OIL\",\n            \"rate\": \"1600.00000\",\n            \"amount\": 32,//\n            \"quantity\": 0.02\n            // \"discount_type\": \"fixed\",\n            // \"discount\": 10\n        }\n    ],\n    \"discount_type\": \"percent\",\n    \"discount\": 10,\n    \"totalDiscount\": 0,\n    \"customer_id\": 3896,\n    \"receiver_id\": 2697,\n    \"amount\": 118,\n    \"reference\": \"zxcv\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22370,7 +22370,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "4225"
+									"value": "6599"
 								}
 							]
 						}
@@ -22572,6 +22572,156 @@
 					"response": []
 				},
 				{
+					"name": "list custom",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/product?paginate=1&page=1&limit=100&search_keyword=&is_service=&is_product=&inventory=&product_category_id=&has_variant_product&is_not_variant_product=&is_variant_product=&is_hospitality=0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								},
+								{
+									"key": "is_product",
+									"value": ""
+								},
+								{
+									"key": "inventory",
+									"value": ""
+								},
+								{
+									"key": "product_category_id",
+									"value": ""
+								},
+								{
+									"key": "has_variant_product",
+									"value": null
+								},
+								{
+									"key": "is_not_variant_product",
+									"value": ""
+								},
+								{
+									"key": "is_variant_product",
+									"value": ""
+								},
+								{
+									"key": "is_hospitality",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show custom",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6599"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "v2 list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -22608,7 +22758,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&is_variant_product=&product_category_id&resource_fields=id,name,slug,sku&unit_id",
+							"raw": "{{url}}/api/v2/product?paginate=1&page=1&limit=10&search_keyword=&is_service=&is_product=&inventory=&is_variant_product=&product_category_id&unit_id",
 							"host": [
 								"{{url}}"
 							],
@@ -22653,11 +22803,6 @@
 								{
 									"key": "product_category_id",
 									"value": null
-								},
-								{
-									"key": "resource_fields",
-									"value": "id,name,slug,sku",
-									"description": "id,name,slug,sku"
 								},
 								{
 									"key": "unit_id",
@@ -22705,7 +22850,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/product/:id?resource_fields=id,name,slug,sku",
+							"raw": "{{url}}/api/v2/product/:id",
 							"host": [
 								"{{url}}"
 							],
@@ -22715,17 +22860,10 @@
 								"product",
 								":id"
 							],
-							"query": [
-								{
-									"key": "resource_fields",
-									"value": "id,name,slug,sku",
-									"description": "id,name,slug,sku"
-								}
-							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "4225"
+									"value": "7285"
 								}
 							]
 						}
@@ -23540,7 +23678,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "2"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -23560,7 +23698,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "86"
+									"value": "7906"
 								}
 							]
 						}
@@ -23920,7 +24058,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -23928,19 +24066,19 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/sales-order/:id",
+							"raw": "{{url}}/api/purchase-order/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"sales-order",
+								"purchase-order",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "26"
 								}
 							]
 						}
@@ -26074,7 +26212,7 @@
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -26291,7 +26429,7 @@
 			]
 		},
 		{
-			"name": "report",
+			"name": "REPORT",
 			"item": [
 				{
 					"name": "accounting",
@@ -26776,7 +26914,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/cashflow-summary?start_date=2024-09-01&end_date=2024-10-30",
+									"raw": "{{url}}/api/cashflow-summary?start_date=2025-04-11&end_date=2025-04-11",
 									"host": [
 										"{{url}}"
 									],
@@ -26802,11 +26940,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-09-01"
+											"value": "2025-04-11"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-10-30"
+											"value": "2025-04-11"
 										}
 									]
 								}
@@ -39750,7 +39888,7 @@
 												},
 												{
 													"key": "order_payment_id",
-													"value": "49134",
+													"value": "49167",
 													"description": "Partial Payment( 49088 ) - Full Payment(49096)"
 												}
 											]
@@ -39842,6 +39980,47 @@
 											"variable": [
 												{
 													"key": "account_company_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Transfer Multiple Products Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"commission\":450, //required\r\n    \"received_amount\":4500, //required\r\n    \"tds\":4.5, //nullable\r\n    \"receiver_id\":1 //required - Cash/Bank AccountHead ID\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8001/api/accounting/delivery-partner-payment/:hospitality_branch_id/:delivery_partner_id",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"delivery-partner-payment",
+												":hospitality_branch_id",
+												":delivery_partner_id"
+											],
+											"variable": [
+												{
+													"key": "hospitality_branch_id",
+													"value": ""
+												},
+												{
+													"key": "delivery_partner_id",
 													"value": ""
 												}
 											]
@@ -39959,6 +40138,11 @@
 								},
 								{
 									"key": "is_walk_in_client",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "cashier_session_id",
 									"value": "1",
 									"type": "text"
 								}
@@ -40146,7 +40330,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/appointments?page=1&limit=10&paginate=1&q=harry&status=SCHEDULED",
+							"raw": "{{url}}/api/appointments?page=1&limit=10&paginate=1",
 							"host": [
 								"{{url}}"
 							],
@@ -40169,11 +40353,23 @@
 								},
 								{
 									"key": "q",
-									"value": "harry"
+									"value": "product1",
+									"disabled": true
 								},
 								{
 									"key": "status",
-									"value": "SCHEDULED"
+									"value": "SCHEDULED",
+									"disabled": true
+								},
+								{
+									"key": "scheduled_from",
+									"value": "2025-03-16 00:00:00 ",
+									"disabled": true
+								},
+								{
+									"key": "scheduled_to",
+									"value": "2025-03-18 00:00:00",
+									"disabled": true
 								}
 							]
 						}
@@ -40524,7 +40720,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/appointments/statistics",
+							"raw": "{{url}}/api/appointments/statistics?types[6]=AGGREGATE_FOR_RANGE&aggregate_range_from=2025-03-11&aggregate_range_to=2025-03-18",
 							"host": [
 								"{{url}}"
 							],
@@ -40567,18 +40763,15 @@
 								},
 								{
 									"key": "types[6]",
-									"value": "AGGREGATE_FOR_RANGE",
-									"disabled": true
+									"value": "AGGREGATE_FOR_RANGE"
 								},
 								{
 									"key": "aggregate_range_from",
-									"value": "2025-03-11",
-									"disabled": true
+									"value": "2025-03-11"
 								},
 								{
 									"key": "aggregate_range_to",
-									"value": "2025-03-18",
-									"disabled": true
+									"value": "2025-03-18"
 								},
 								{
 									"key": "types[7]",
@@ -40630,6 +40823,62 @@
 								{
 									"key": "q",
 									"value": "randomemail@email.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reschedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "pos-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"scheduled_from\":\"2025-02-02 02:02:02\",\r\n    \"scheduled_to\":\"2025-02-02 02:10:02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/appointments/:id/reschedule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								":id",
+								"reschedule"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "59"
 								}
 							]
 						}

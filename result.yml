@@ -100,15 +100,15 @@ tags:
   - name: quick receipt
   - name: quotation
   - name: receipt cheque
-  - name: report
-  - name: report > accounting
-  - name: report > receivable
-  - name: report > payable
-  - name: report > sales report
-  - name: report > purchase report
-  - name: report > inventory report
-  - name: report > tax report
-  - name: report > system report
+  - name: REPORT
+  - name: REPORT > accounting
+  - name: REPORT > receivable
+  - name: REPORT > payable
+  - name: REPORT > sales report
+  - name: REPORT > purchase report
+  - name: REPORT > inventory report
+  - name: REPORT > tax report
+  - name: REPORT > system report
   - name: role
   - name: sales order
   - name: sale payment
@@ -8943,7 +8943,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '57'
+          example: '70'
       responses:
         '200':
           description: Successful response
@@ -10788,7 +10788,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '320'
+          example: '9409'
       responses:
         '200':
           description: Successful response
@@ -11093,12 +11093,12 @@ paths:
                     rate: '1600.00000'
                     amount: 32
                     quantity: 0.02
-                discount_type: fixed
+                discount_type: percent
                 discount: 10
                 totalDiscount: 0
                 customer_id: 3896
                 receiver_id: 2697
-                amount: 122
+                amount: 118
                 reference: zxcv
       security:
         - bearerAuth: []
@@ -12632,7 +12632,7 @@ paths:
     get:
       tags:
         - product
-      summary: list
+      summary: list custom
       security:
         - bearerAuth: []
       parameters:
@@ -12873,7 +12873,7 @@ paths:
     get:
       tags:
         - product
-      summary: show
+      summary: show custom
       security:
         - bearerAuth: []
       parameters:
@@ -12892,7 +12892,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '4225'
+          example: '6599'
       responses:
         '200':
           description: Successful response
@@ -13078,12 +13078,6 @@ paths:
           in: query
           schema:
             type: string
-        - name: resource_fields
-          in: query
-          schema:
-            type: string
-          description: id,name,slug,sku
-          example: id,name,slug,sku
         - name: unit_id
           in: query
           schema:
@@ -13111,18 +13105,12 @@ paths:
           schema:
             type: string
           example: '{{company-id}}'
-        - name: resource_fields
-          in: query
-          schema:
-            type: string
-          description: id,name,slug,sku
-          example: id,name,slug,sku
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '4225'
+          example: '7285'
       responses:
         '200':
           description: Successful response
@@ -13596,14 +13584,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '2'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '86'
+          example: '7906'
       responses:
         '200':
           description: Successful response
@@ -13912,6 +13900,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    get:
+      tags:
+        - purchase order
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '26'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/purchase-order/{id}/update-status:
     post:
       tags:
@@ -13965,120 +13981,6 @@ paths:
             type: integer
           required: true
           example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/sales-order/{id}:
-    get:
-      tags:
-        - sales order
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    post:
-      tags:
-        - sales order
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                order_date: '2023-08-01'
-                delivery_date: '2023-08-30'
-                customer_id: 35
-                order_number: ''
-                reference: ''
-                note: ''
-                products:
-                  - product_id: 1
-                    quantity: 100
-                    rate: '100'
-                    discount: '100'
-                    tax: 0
-                    amount: 10000
-                    warehouse_id: 1
-                  - product_id: 2
-                    quantity: 100
-                    rate: 100
-                    discount: '100'
-                    tax: 13
-                    amount: 10000
-                    warehouse_id: 1
-                document_id: ''
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '9'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - sales order
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
       responses:
         '200':
           description: Successful response
@@ -15459,8 +15361,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -15647,7 +15549,7 @@ paths:
   /api/transaction-list:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: transaction list
       security:
         - bearerAuth: []
@@ -15698,7 +15600,7 @@ paths:
   /api/journal-report:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: journal report
       security:
         - bearerAuth: []
@@ -15744,7 +15646,7 @@ paths:
   /api/general-ledger-summary:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: general ledger summary
       security:
         - bearerAuth: []
@@ -15789,7 +15691,7 @@ paths:
   /api/trial-balance:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: trial balance
       security:
         - bearerAuth: []
@@ -18711,7 +18613,7 @@ paths:
   /api/income-statement:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: income-statement
       security:
         - bearerAuth: []
@@ -18744,7 +18646,7 @@ paths:
   /api/balance-sheet:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: balance sheet
       security:
         - bearerAuth: []
@@ -18777,7 +18679,7 @@ paths:
   /api/cashflow-summary:
     get:
       tags:
-        - report > accounting
+        - REPORT > accounting
       summary: cashflow summary
       security:
         - bearerAuth: []
@@ -18796,12 +18698,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-09-01'
+          example: '2025-04-11'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-10-30'
+          example: '2025-04-11'
       responses:
         '200':
           description: OK
@@ -19043,7 +18945,7 @@ paths:
   /api/customer-aging-summary:
     get:
       tags:
-        - report > receivable
+        - REPORT > receivable
       summary: customer aging summary
       security:
         - bearerAuth: []
@@ -19166,7 +19068,7 @@ paths:
   /api/invoice-age:
     get:
       tags:
-        - report > receivable
+        - REPORT > receivable
       summary: invoice age
       security:
         - bearerAuth: []
@@ -19403,7 +19305,7 @@ paths:
   /api/customer-statement:
     get:
       tags:
-        - report > receivable
+        - REPORT > receivable
       summary: customer statement
       security:
         - bearerAuth: []
@@ -19650,7 +19552,7 @@ paths:
   /api/customer-receivable-summary:
     get:
       tags:
-        - report > receivable
+        - REPORT > receivable
       summary: customer receivable summary
       security:
         - bearerAuth: []
@@ -19771,7 +19673,7 @@ paths:
   /api/vendor-aging-summary:
     get:
       tags:
-        - report > payable
+        - REPORT > payable
       summary: vendor aging summary
       security:
         - bearerAuth: []
@@ -19958,7 +19860,7 @@ paths:
   /api/purchase-bill-age:
     get:
       tags:
-        - report > payable
+        - REPORT > payable
       summary: purchase bill age
       security:
         - bearerAuth: []
@@ -20195,7 +20097,7 @@ paths:
   /api/vendor-statement:
     get:
       tags:
-        - report > payable
+        - REPORT > payable
       summary: vendor statement
       security:
         - bearerAuth: []
@@ -20443,7 +20345,7 @@ paths:
   /api/vendor-payable-summary:
     get:
       tags:
-        - report > payable
+        - REPORT > payable
       summary: vendor payable summary
       security:
         - bearerAuth: []
@@ -20610,7 +20512,7 @@ paths:
   /api/sales-summary:
     get:
       tags:
-        - report > sales report
+        - REPORT > sales report
       summary: sales summary
       security:
         - bearerAuth: []
@@ -20724,7 +20626,7 @@ paths:
   /api/sales-by-customer:
     get:
       tags:
-        - report > sales report
+        - REPORT > sales report
       summary: sales by customer
       security:
         - bearerAuth: []
@@ -20852,7 +20754,7 @@ paths:
   /api/sales-by-item:
     get:
       tags:
-        - report > sales report
+        - REPORT > sales report
       summary: sales by item
       security:
         - bearerAuth: []
@@ -20974,7 +20876,7 @@ paths:
   /api/sales-by-customer-monthly:
     get:
       tags:
-        - report > sales report
+        - REPORT > sales report
       summary: sales by customer monthly
       security:
         - bearerAuth: []
@@ -21113,7 +21015,7 @@ paths:
   /api/sales-by-item-monthly:
     get:
       tags:
-        - report > sales report
+        - REPORT > sales report
       summary: sales by item monthly
       security:
         - bearerAuth: []
@@ -21410,7 +21312,7 @@ paths:
   /api/sales-master-report:
     get:
       tags:
-        - report > sales report
+        - REPORT > sales report
       summary: sales master report
       security:
         - bearerAuth: []
@@ -21694,7 +21596,7 @@ paths:
   /api/purchase-summary:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase summary
       security:
         - bearerAuth: []
@@ -21804,7 +21706,7 @@ paths:
   /api/purchase-by-vendor:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase by vendor
       security:
         - bearerAuth: []
@@ -21935,7 +21837,7 @@ paths:
   /api/purchase-by-item:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase by item
       security:
         - bearerAuth: []
@@ -22125,7 +22027,7 @@ paths:
   /api/purchase-by-vendor-monthly:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase by vendor monthly
       security:
         - bearerAuth: []
@@ -22415,7 +22317,7 @@ paths:
   /api/purchase-by-item-monthly:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase by item monthly
       security:
         - bearerAuth: []
@@ -22462,7 +22364,7 @@ paths:
   /api/purchase-master-report:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase master report
       security:
         - bearerAuth: []
@@ -22742,7 +22644,7 @@ paths:
   /api/purchase-rate-log-report:
     get:
       tags:
-        - report > purchase report
+        - REPORT > purchase report
       summary: purchase rate log report
       security:
         - bearerAuth: []
@@ -22863,7 +22765,7 @@ paths:
   /api/inventory-position:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: inventory position
       security:
         - bearerAuth: []
@@ -23035,7 +22937,7 @@ paths:
   /api/inventory-movement:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: inventory movement
       security:
         - bearerAuth: []
@@ -23092,7 +22994,7 @@ paths:
   /api/inventory-master-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: inventory master report
       security:
         - bearerAuth: []
@@ -23380,7 +23282,7 @@ paths:
   /api/stock-issue-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: stock issue report
       security:
         - bearerAuth: []
@@ -23520,7 +23422,7 @@ paths:
   /api/stock-consumption-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: stock consumption report
       security:
         - bearerAuth: []
@@ -23646,7 +23548,7 @@ paths:
   /api/stock-return-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: stock return report
       security:
         - bearerAuth: []
@@ -23769,7 +23671,7 @@ paths:
   /api/stock-issue-consumption-detail-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: issue and consumption detail report
       security:
         - bearerAuth: []
@@ -23899,7 +23801,7 @@ paths:
   /api/stock-issue-consumption-return-detail-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: stock issue stock consumption stock return detail report
       security:
         - bearerAuth: []
@@ -23959,7 +23861,7 @@ paths:
   /api/product-in-out-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: product in out report
       security:
         - bearerAuth: []
@@ -24123,7 +24025,7 @@ paths:
   /api/stock-valuation-report:
     get:
       tags:
-        - report > inventory report
+        - REPORT > inventory report
       summary: stock valuation report
       security:
         - bearerAuth: []
@@ -24291,7 +24193,7 @@ paths:
   /api/sale-register:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: sales register
       security:
         - bearerAuth: []
@@ -24339,7 +24241,7 @@ paths:
   /api/sales-return-register:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: sales return register
       security:
         - bearerAuth: []
@@ -24385,7 +24287,7 @@ paths:
   /api/purchase-register:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: purchase register
       security:
         - bearerAuth: []
@@ -24431,7 +24333,7 @@ paths:
   /api/purchase-return-register:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: purchase return register
       security:
         - bearerAuth: []
@@ -24477,7 +24379,7 @@ paths:
   /api/annex5-report:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: annex5 report
       security:
         - bearerAuth: []
@@ -24525,7 +24427,7 @@ paths:
   /api/vat-summary-report:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: vat summary report
       security:
         - bearerAuth: []
@@ -24553,7 +24455,7 @@ paths:
   /api/tds-report:
     get:
       tags:
-        - report > tax report
+        - REPORT > tax report
       summary: tds report
       security:
         - bearerAuth: []
@@ -24606,7 +24508,7 @@ paths:
   /api/activity-log-report:
     get:
       tags:
-        - report > system report
+        - REPORT > system report
       summary: activity report
       security:
         - bearerAuth: []
@@ -24671,7 +24573,7 @@ paths:
   /api/user-log-report:
     get:
       tags:
-        - report > system report
+        - REPORT > system report
       summary: user report
       security:
         - bearerAuth: []
@@ -24724,7 +24626,7 @@ paths:
   /api/report:
     get:
       tags:
-        - report
+        - REPORT
       summary: report
       security:
         - bearerAuth: []
@@ -24757,7 +24659,7 @@ paths:
   /api/report-total/{type}:
     get:
       tags:
-        - report
+        - REPORT
       summary: report total
       security:
         - bearerAuth: []
@@ -24877,7 +24779,7 @@ paths:
   /api/report-excel-download/{type}:
     post:
       tags:
-        - report
+        - REPORT
       summary: report excel download
       requestBody:
         content:
@@ -25182,6 +25084,120 @@ paths:
           schema:
             type: string
           description: exclude with this status
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sales-order/{id}:
+    post:
+      tags:
+        - sales order
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                order_date: '2023-08-01'
+                delivery_date: '2023-08-30'
+                customer_id: 35
+                order_number: ''
+                reference: ''
+                note: ''
+                products:
+                  - product_id: 1
+                    quantity: 100
+                    rate: '100'
+                    discount: '100'
+                    tax: 0
+                    amount: 10000
+                    warehouse_id: 1
+                  - product_id: 2
+                    quantity: 100
+                    rate: 100
+                    discount: '100'
+                    tax: 13
+                    amount: 10000
+                    warehouse_id: 1
+                document_id: ''
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - sales order
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - sales order
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -29240,7 +29256,7 @@ paths:
             type: integer
           required: true
           description: Partial Payment( 49088 ) - Full Payment(49096)
-          example: '49134'
+          example: '49167'
       responses:
         '200':
           description: Successful response
@@ -29314,6 +29330,37 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /001/api/accounting/delivery-partner-payment/{hospitality_branch_id}/{delivery_partner_id}:
+    post:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: Transfer Multiple Products Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                commission: 450
+                received_amount: 4500
+                tds: 4.5
+                receiver_id: 1
+      parameters:
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: delivery_partner_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/appointments:
     post:
       tags:
@@ -29373,6 +29420,9 @@ paths:
                 is_walk_in_client:
                   type: integer
                   example: '1'
+                cashier_session_id:
+                  type: integer
+                  example: '1'
       parameters:
         - name: Accept
           in: header
@@ -29424,16 +29474,6 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: q
-          in: query
-          schema:
-            type: string
-          example: harry
-        - name: status
-          in: query
-          schema:
-            type: string
-          example: SCHEDULED
       responses:
         '200':
           description: Successful response
@@ -29797,6 +29837,21 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: types[6]
+          in: query
+          schema:
+            type: string
+          example: AGGREGATE_FOR_RANGE
+        - name: aggregate_range_from
+          in: query
+          schema:
+            type: string
+          example: '2025-03-11'
+        - name: aggregate_range_to
+          in: query
+          schema:
+            type: string
+          example: '2025-03-18'
       responses:
         '200':
           description: Successful response
@@ -29823,6 +29878,43 @@ paths:
           schema:
             type: string
           example: randomemail@email.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/appointments/{id}/reschedule:
+    post:
+      tags:
+        - Appointment
+      summary: reschedule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                scheduled_from: '2025-02-02 02:02:02'
+                scheduled_to: '2025-02-02 02:10:02'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pos-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '59'
       responses:
         '200':
           description: Successful response
