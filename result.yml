@@ -44,6 +44,7 @@ tags:
   - name: ADMIN APIS > Role
   - name: ADMIN APIS > User
   - name: ADMIN APIS > ***ADMINISTRATOR COMMANDS***
+  - name: ADMIN APIS > AWS Files
   - name: Auth
   - name: accounting firm
   - name: accounting firm dashboard
@@ -114,8 +115,8 @@ tags:
   - name: sale payment
   - name: sale return
   - name: site setting
-  - name: stock consumption
   - name: stock issue
+  - name: stock consumption
   - name: stock return
   - name: tax pool type
   - name: transfer
@@ -1558,7 +1559,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/company:
+  /admin/company:
     post:
       tags:
         - ADMIN APIS > Company
@@ -1571,14 +1572,16 @@ paths:
               properties:
                 name:
                   type: string
-                  example: name
+                  example: test limited access
                 short_name:
                   type: string
+                  example: limited access
                 address:
                   type: string
+                  example: limited access
                 primary_email:
                   type: string
-                  example: email@email
+                  example: limitedaccess@gmail.com
                 primary_phone:
                   type: integer
                   example: '123123'
@@ -1610,6 +1613,9 @@ paths:
                 logo:
                   type: string
                   format: binary
+                limited_access:
+                  type: integer
+                  example: '1'
       security:
         - bearerAuth: []
       parameters:
@@ -1642,7 +1648,8 @@ paths:
         - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '100'
         - name: search_keyword
           in: query
           schema:
@@ -1712,7 +1719,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/company/{id}:
+  /admin/company/{id}:
     post:
       tags:
         - ADMIN APIS > Company
@@ -1766,6 +1773,9 @@ paths:
                   type: string
                   description: test@321
                   example: test@321
+                limited_access:
+                  type: integer
+                  example: '0'
       security:
         - bearerAuth: []
       parameters:
@@ -1775,29 +1785,6 @@ paths:
             type: integer
           required: true
           example: '24'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - ADMIN APIS > Company
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '4'
       responses:
         '200':
           description: Successful response
@@ -1820,7 +1807,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -1852,6 +1839,30 @@ paths:
             type: integer
           required: true
           example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company/{id}:
+    delete:
+      tags:
+        - ADMIN APIS > Company
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -3092,6 +3103,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /admin/file/lists:
+    get:
+      tags:
+        - ADMIN APIS > AWS Files
+      summary: File Lists
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/excel-export-download/{excel_export_type}:
     post:
       tags:
@@ -4278,14 +4307,14 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '40'
+          example: '3273'
       responses:
         '200':
           description: Successful response
@@ -4564,7 +4593,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '2700'
+          example: '3273'
       responses:
         '200':
           description: Successful response
@@ -5741,6 +5770,78 @@ paths:
             type: integer
           required: true
           example: '162'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bank:
+    get:
+      tags:
+        - bank
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: cheque_status
+          in: query
+          schema:
+            type: string
+          description: assigned
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bank/{id}:
+    get:
+      tags:
+        - bank
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1610'
       responses:
         '200':
           description: Successful response
@@ -8462,7 +8563,8 @@ paths:
           in: query
           schema:
             type: string
-          example: yearly
+          description: yearly|current_month|last_month|last_30|last_7
+          example: current_month
       responses:
         '200':
           description: Successful response
@@ -8472,7 +8574,7 @@ paths:
     get:
       tags:
         - dashboard
-      summary: dashboard total receivable payable
+      summary: dashboard receivable payable
       security:
         - bearerAuth: []
       parameters:
@@ -8490,7 +8592,8 @@ paths:
           in: query
           schema:
             type: string
-          example: last_7
+          description: yearly|current_month|last_month|last_30|last_7
+          example: yearly
       responses:
         '200':
           description: Successful response
@@ -8518,7 +8621,141 @@ paths:
           in: query
           schema:
             type: string
-          example: last_7
+          description: yearly|current_month|last_month|last_30|last_7
+          example: current_month
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/dashboard:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/dashboard-second:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard second v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/total-sales:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard total sales v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: yearly|current_month|last_month|last_30|last_7
+          example: last_30
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/accounts-receivable-payable:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard receivable payable v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: yearly|current_month|last_month|last_30|last_7
+          example: last_30
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/cashflow:
+    get:
+      tags:
+        - dashboard
+      summary: dashboard cashflow v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: yearly|current_month|last_month|last_30|last_7
+          example: last_30
       responses:
         '200':
           description: Successful response
@@ -9135,6 +9372,101 @@ paths:
             type: integer
           required: true
           example: '218'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/employee:
+    get:
+      tags:
+        - employee
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          example: YUB
+        - name: payroll
+          in: query
+          schema:
+            type: string
+        - name: month
+          in: query
+          schema:
+            type: string
+        - name: year
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: 'date format: Y-m in BS e.g. 2081-06'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: current|terminated {nullable}
+        - name: is_advance
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/employee/{id}:
+    get:
+      tags:
+        - employee
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3745'
       responses:
         '200':
           description: Successful response
@@ -10131,6 +10463,92 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/expense:
+    get:
+      tags:
+        - expense
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/expense/{id}:
+    get:
+      tags:
+        - expense
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1610'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/expense-payment:
     post:
       tags:
@@ -11035,6 +11453,94 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/inventory-adjustment:
+    get:
+      tags:
+        - inventory adjustment
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/inventory-adjustment/{id}:
+    get:
+      tags:
+        - inventory adjustment
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '78'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/invoice:
     post:
       tags:
@@ -11751,7 +12257,7 @@ paths:
     get:
       tags:
         - journal voucher
-      summary: show
+      summary: show v2
       security:
         - bearerAuth: []
       parameters:
@@ -11763,14 +12269,18 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '10'
+          example: '610'
       responses:
         '200':
           description: Successful response
@@ -11834,6 +12344,58 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/journal-voucher:
+    get:
+      tags:
+        - journal voucher
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/account-head-ledger:
     get:
       tags:
@@ -11860,27 +12422,27 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '1000'
         - name: slug
           in: query
           schema:
             type: string
-          description: cash-in-hand
+          example: cash-in-hand
         - name: account_head_id
           in: query
           schema:
-            type: integer
-          example: '2801'
+            type: string
+          description: '2801'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2025-03-21'
+          example: '2025-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-03-21'
+          example: '2025-03-30'
       responses:
         '200':
           description: Successful response
@@ -11912,28 +12474,25 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '1000'
         - name: slug
           in: query
           schema:
             type: string
-          description: cash-in-hand
+          example: cash-in-hand
         - name: account_head_id
           in: query
           schema:
-            type: integer
-          description: 220 or 559
-          example: '2801'
+            type: string
+          description: '2801'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2025-03-21'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-03-21'
       responses:
         '200':
           description: Successful response
@@ -11965,7 +12524,115 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '1000'
+        - name: slug
+          in: query
+          schema:
+            type: string
+          example: cash-in-hand
+        - name: account_head_id
+          in: query
+          schema:
+            type: string
+          description: '2801'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/account-head-ledger:
+    get:
+      tags:
+        - ledger
+      summary: list account head ledger v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: slug
+          in: query
+          schema:
+            type: string
+          example: cash-in-hand
+        - name: account_head_id
+          in: query
+          schema:
+            type: string
+          description: 2801,2725,2711,2697,2833,3273
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: '2025-03-01'
+          example: '2025-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: '2025-03-30'
+          example: '2025-03-30'
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/account-head-ledger-grouped:
+    get:
+      tags:
+        - ledger
+      summary: list account head ledger grouped v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
         - name: slug
           in: query
           schema:
@@ -11975,18 +12642,78 @@ paths:
           in: query
           schema:
             type: integer
-          description: 220 or 559
-          example: '2801'
+          description: 2801,2725,2711,2697,2833,9765,3273,
+          example: '2833'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2025-03-20'
+          description: '2025-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-03-21'
+          description: '2025-03-30'
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/account-head-ledger-transactions:
+    get:
+      tags:
+        - ledger
+      summary: list account head ledger transactions v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: slug
+          in: query
+          schema:
+            type: string
+          example: cash-in-hand
+        - name: account_head_id
+          in: query
+          schema:
+            type: string
+          description: 2801,2725,2711,2697,2833,
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: '2025-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: '2025-03-30'
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -13813,6 +14540,87 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/product-category:
+    get:
+      tags:
+        - product category
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service_category
+          in: query
+          schema:
+            type: string
+        - name: is_product_category
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/product-category/{id}:
+    get:
+      tags:
+        - product category
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '228'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/purchase-bill:
     post:
       tags:
@@ -15051,6 +15859,48 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    post:
+      tags:
+        - purchase payment
+      summary: store v2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                vendor_id: 220
+                receiver_id: 106
+                payment_mode: ''
+                bank_id: ''
+                cheque_id: ''
+                received_date: '2024-10-04'
+                amount: 750
+                payment_allocation:
+                  - bill_id: 24
+                    allocated_amount: 750
+                    tds: 50
+                    payment_discount: 100
+                is_single_bill_payment: 1
+                payment_discount: 50
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/v2/purchase-payment/{id}:
     get:
       tags:
@@ -15075,6 +15925,35 @@ paths:
             type: integer
           required: true
           example: '66583'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/purchase-payment/{id}/update-status:
+    post:
+      tags:
+        - purchase payment
+      summary: update status v2
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '122'
       responses:
         '200':
           description: Successful response
@@ -15376,6 +16255,97 @@ paths:
             type: integer
           required: true
           example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/purchase-return:
+    get:
+      tags:
+        - purchase return
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/purchase-return/{id}:
+    get:
+      tags:
+        - purchase return
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '64'
       responses:
         '200':
           description: Successful response
@@ -16389,6 +17359,269 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/report:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2023-01-22'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2024-08-22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/report-total/{type}:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: report total
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          description: date start
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          description: date end
+          example: '2025-02-28'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+          description: warehouse_department_id "1,2"
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: product id string "1,2,3" or "1"
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+        - name: year
+          in: query
+          schema:
+            type: string
+          description: e.g. 2081-2082
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: amount||quantity
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: >-
+            Report Name, e.g. stock_issue_report, stock_consumption_report,
+            stock_returns_report, sales_summary_report, purchase_summary_report,
+            customer_receivable_summary_report, vendor_payable_summary_report,
+            purchase_by_item_report,
+            sales_by_item_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report
+          example: tds_report
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 23 Sep 2024 08:28:27 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999994'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Report Total
+                data:
+                  totals:
+                    total_quantity: 1586356.7099999993
+                    total_amount: 10001089.509999996
+  /api/report-excel-download/{type}:
+    post:
+      tags:
+        - REPORT > accounting
+      summary: report excel download
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-02-05'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-02-05'
+        - name: warehouse_department_id
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
+        - name: vendor_id
+          in: query
+          schema:
+            type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+        - name: year
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: query
+          schema:
+            type: string
+        - name: type
+          in: path
+          schema:
+            type: string
+          required: true
+          description: >-
+            stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report|customer_statement|vendor_statement|vendor_payable_summary_report|customer_statement|vendor_statement
+          example: purchase_by_bill_report
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Mon, 23 Sep 2024 08:28:27 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999994'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Report Total
+                data:
+                  totals:
+                    total_quantity: 1586356.7099999993
+                    total_amount: 10001089.509999996
   /api/transaction-list:
     get:
       tags:
@@ -16405,8 +17638,8 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '4'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
@@ -16419,22 +17652,26 @@ paths:
         - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '15'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-06-01'
+          example: '2025-05-15'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-21'
+          example: '2025-06-14'
         - name: transaction_type
           in: query
           schema:
             type: string
-          example: quotation,sales_order,invoice,purchase_bill
+          description: >-
+            quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher
+          example: >-
+            quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher
       responses:
         '200':
           description: Successful response
@@ -16475,12 +17712,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-06-01'
+          example: '2021-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-11-21'
+          example: '2025-03-30'
       responses:
         '200':
           description: Successful response
@@ -16502,30 +17739,33 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '37'
+            type: string
+          example: '{{company-id}}'
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '10'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-06-01'
+          example: '2025-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-21'
+          example: '2025-03-30'
       responses:
         '200':
           description: Successful response
@@ -16553,12 +17793,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2025-01-14'
+          example: '2025-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-02-12'
+          example: '2025-03-30'
       responses:
         '200':
           description: OK
@@ -19475,12 +20715,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-07-22'
+          example: '2025-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-01-30'
+          example: '2025-03-30'
       responses:
         '200':
           description: Successful response
@@ -19502,18 +20742,18 @@ paths:
         - name: company-id
           in: header
           schema:
-            type: integer
-          example: '1'
+            type: string
+          example: '{{company-id}}'
         - name: start_date
           in: query
           schema:
             type: string
-          example: 2023-1-22
+          example: '2025-03-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-08-22'
+          example: '2025-03-30'
       responses:
         '200':
           description: Successful response
@@ -19541,12 +20781,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2025-04-11'
+          example: '2025-05-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-04-11'
+          example: '2025-06-30'
       responses:
         '200':
           description: OK
@@ -19785,6 +21025,287 @@ paths:
                           cash_in: null
                           cash_out: null
                           balance: -934
+  /api/v2/transaction-list:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: transaction list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-05-15'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-06-14'
+        - name: transaction_type
+          in: query
+          schema:
+            type: string
+          description: >-
+            quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher,inventory_adjustment,warehouse_transfer,payroll,payroll_payment,balance_transfer,stock_issue,stock_consumption,stock_return
+          example: >-
+            quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher,inventory_adjustment,warehouse_transfer,payroll,payroll_payment,balance_transfer,stock_issue,stock_consumption,stock_return
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/journal-report:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: journal report v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2021-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/general-ledger-summary:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: general ledger summary v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/trial-balance:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: trial balance v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/income-statement:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: income-statement v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/balance-sheet:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: balance sheet v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/cashflow-summary:
+    get:
+      tags:
+        - REPORT > accounting
+      summary: cashflow summary v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-05-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-06-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/customer-aging-summary:
     get:
       tags:
@@ -20166,7 +21687,8 @@ paths:
         - name: paginate
           in: query
           schema:
-            type: string
+            type: integer
+          example: '1'
         - name: page
           in: query
           schema:
@@ -20181,18 +21703,18 @@ paths:
           in: query
           schema:
             type: string
-          example: '2023-01-01'
+          example: '2024-01-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-07-01'
+          example: '2026-01-03'
         - name: customer_id
           in: query
           schema:
             type: integer
           description: '216.559'
-          example: '2250'
+          example: '9919'
       responses:
         '200':
           description: OK
@@ -20513,6 +22035,254 @@ paths:
                       http://127.0.0.1:8000/api/customer-receivable-summary?page=1
                     prev: ''
                     next: ''
+  /api/v2/customer-statement:
+    get:
+      tags:
+        - REPORT > receivable
+      summary: customer statement v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2024-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-12-03'
+        - name: customer_id
+          in: query
+          schema:
+            type: integer
+          description: '9919'
+          example: '2833'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:17:17 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999993'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Customer Statement
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 270
+                    path: http://127.0.0.1:8000/api/customer-statement
+                    per_page: 10
+                    to: 10
+                    total: 2693
+                  data:
+                    - entry_date: '2024-09-17 13:27:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 47
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-1
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '900.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 13:27:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 47
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-1
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '120.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 13:27:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 47
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-1
+                      reference_number: null
+                      cr_amount: '1020.00'
+                      dr_amount: '0.00'
+                      particular_id: 1440
+                      description: Cash in Hand
+                    - entry_date: '2024-09-17 13:28:30'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 48
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-2
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '3000.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 13:28:30'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 48
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-2
+                      reference_number: null
+                      cr_amount: '3000.00'
+                      dr_amount: '0.00'
+                      particular_id: 1440
+                      description: Cash in Hand
+                    - entry_date: '2024-09-17 14:19:24'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 49
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-3
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '200.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 14:19:24'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 49
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-3
+                      reference_number: null
+                      cr_amount: '200.00'
+                      dr_amount: '0.00'
+                      particular_id: 1440
+                      description: Cash in Hand
+                    - entry_date: '2024-09-17 15:50:09'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 50
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-4
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '800.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                    - entry_date: '2024-09-17 15:50:09'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 50
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-4
+                      reference_number: null
+                      cr_amount: '800.00'
+                      dr_amount: '0.00'
+                      particular_id: 1489
+                      description: NMB Bank
+                    - entry_date: '2024-09-17 15:51:27'
+                      account_head_id: 1488
+                      name: Cash Counter
+                      invoice_id: 51
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: invoice
+                      code: INVO-5
+                      reference_number: null
+                      cr_amount: '0.00'
+                      dr_amount: '500.00'
+                      particular_id: 1468
+                      description: Sales Goods
+                  opening_balance:
+                    total_cr_amount: 0
+                    total_dr_amount: 0
+                    amount: 0
+                  closing_balance:
+                    total_cr_amount: 0
+                    total_dr_amount: 6038.75
+                    amount: 6038.75
+                  links:
+                    first: http://127.0.0.1:8000/api/customer-statement?page=1
+                    last: http://127.0.0.1:8000/api/customer-statement?page=270
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/customer-statement?page=2
   /api/vendor-aging-summary:
     get:
       tags:
@@ -20969,23 +22739,23 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '15'
         - name: start_date
           in: query
           schema:
             type: string
-          example: '2024-12-30'
+          example: '2025-01-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2024-12-30'
+          example: '2025-07-30'
         - name: vendor_id
           in: query
           schema:
             type: integer
           description: '413.417'
-          example: '2777'
+          example: '2765'
       responses:
         '200':
           description: OK
@@ -21352,6 +23122,254 @@ paths:
                     last: http://127.0.0.1:8000/api/vendor-payable-summary?page=5
                     prev: ''
                     next: http://127.0.0.1:8000/api/vendor-payable-summary?page=2
+  /api/v2/vendor-statement:
+    get:
+      tags:
+        - REPORT > payable
+      summary: vendor statement v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-07-30'
+        - name: vendor_id
+          in: query
+          schema:
+            type: integer
+          description: '413.417'
+          example: '2765'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.12
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Sep 2024 11:04:52 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '1000000'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '999997'
+            Vary:
+              schema:
+                type: string
+                example: Origin
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Vendor Statement
+                data:
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 272
+                    path: http://127.0.0.1:8000/api/vendor-statement
+                    per_page: 10
+                    to: 10
+                    total: 2711
+                  data:
+                    - entry_date: '2024-08-16 00:00:00'
+                      account_head_id: 396
+                      name: A-CUBE ENTERPRISES
+                      bill_id: 686
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-358
+                      reference_number: '795'
+                      cr_amount: '14640.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 43
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-4
+                      reference_number: null
+                      cr_amount: '22500.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-09-16 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 1047
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-585
+                      reference_number: null
+                      cr_amount: '33750.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-09-16 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 1047
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-585
+                      reference_number: null
+                      cr_amount: '26006.40'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-09-16 00:00:00'
+                      account_head_id: 398
+                      name: ARPAN PAPER INDUSTRIES PVT. LTD.
+                      bill_id: 1047
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-585
+                      reference_number: null
+                      cr_amount: '15600.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '9421.57'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '13369.14'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '6849.90'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '6480.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                    - entry_date: '2024-08-05 00:00:00'
+                      account_head_id: 399
+                      name: B. S. B. TRADERS (POTATO/ONION)
+                      bill_id: 44
+                      payment_id: null
+                      journal_voucher_id: null
+                      type: bill
+                      code: PB-5
+                      reference_number: null
+                      cr_amount: '3700.00'
+                      dr_amount: '0.00'
+                      particular_id: 393
+                      description: Purchase Goods
+                  opening_balance:
+                    total_cr_amount: 0
+                    total_dr_amount: 0
+                    amount: 0
+                  closing_balance:
+                    total_cr_amount: 19913838.490000002
+                    total_dr_amount: 0
+                    amount: 19913838.490000002
+                  links:
+                    first: http://127.0.0.1:8000/api/vendor-statement?page=1
+                    last: http://127.0.0.1:8000/api/vendor-statement?page=272
+                    prev: ''
+                    next: http://127.0.0.1:8000/api/vendor-statement?page=2
   /api/sales-summary:
     get:
       tags:
@@ -25466,269 +27484,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/report:
-    get:
-      tags:
-        - REPORT
-      summary: report
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2023-01-22'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2024-08-22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/report-total/{type}:
-    get:
-      tags:
-        - REPORT
-      summary: report total
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          description: date start
-          example: '2024-01-01'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          description: date end
-          example: '2025-02-28'
-        - name: warehouse_department_id
-          in: query
-          schema:
-            type: string
-          description: warehouse_department_id "1,2"
-        - name: product_id
-          in: query
-          schema:
-            type: string
-          description: product id string "1,2,3" or "1"
-        - name: vendor_id
-          in: query
-          schema:
-            type: string
-        - name: customer_id
-          in: query
-          schema:
-            type: string
-        - name: year
-          in: query
-          schema:
-            type: string
-          description: e.g. 2081-2082
-        - name: type
-          in: query
-          schema:
-            type: string
-          description: amount||quantity
-        - name: type
-          in: path
-          schema:
-            type: string
-          required: true
-          description: >-
-            Report Name, e.g. stock_issue_report, stock_consumption_report,
-            stock_returns_report, sales_summary_report, purchase_summary_report,
-            customer_receivable_summary_report, vendor_payable_summary_report,
-            purchase_by_item_report,
-            sales_by_item_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report
-          example: tds_report
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Mon, 23 Sep 2024 08:28:27 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999994'
-            Vary:
-              schema:
-                type: string
-                example: Origin
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Report Total
-                data:
-                  totals:
-                    total_quantity: 1586356.7099999993
-                    total_amount: 10001089.509999996
-  /api/report-excel-download/{type}:
-    post:
-      tags:
-        - REPORT
-      summary: report excel download
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: start_date
-          in: query
-          schema:
-            type: string
-          example: '2024-02-05'
-        - name: end_date
-          in: query
-          schema:
-            type: string
-          example: '2025-02-05'
-        - name: warehouse_department_id
-          in: query
-          schema:
-            type: string
-        - name: product_id
-          in: query
-          schema:
-            type: string
-        - name: vendor_id
-          in: query
-          schema:
-            type: string
-        - name: customer_id
-          in: query
-          schema:
-            type: string
-        - name: year
-          in: query
-          schema:
-            type: string
-        - name: type
-          in: query
-          schema:
-            type: string
-        - name: type
-          in: path
-          schema:
-            type: string
-          required: true
-          description: >-
-            stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report|customer_statement|vendor_statement|vendor_payable_summary_report|customer_statement|vendor_statement
-          example: purchase_by_bill_report
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: 127.0.0.1:8000
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: string
-                example: PHP/8.2.12
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Date:
-              schema:
-                type: string
-                example: Mon, 23 Sep 2024 08:28:27 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '1000000'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '999994'
-            Vary:
-              schema:
-                type: string
-                example: Origin
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                message: Report Total
-                data:
-                  totals:
-                    total_quantity: 1586356.7099999993
-                    total_amount: 10001089.509999996
   /api/role:
     get:
       tags:
@@ -26602,7 +28357,8 @@ paths:
         - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '10'
         - name: search_keyword
           in: query
           schema:
@@ -26619,12 +28375,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2024-09-01'
+          example: '2025-04-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: '2025-12-01'
+          example: '2025-04-30'
         - name: minimal_response
           in: query
           schema:
@@ -27144,6 +28900,97 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/sales-return:
+    get:
+      tags:
+        - sale return
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: customer_id
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/sales-return/{id}:
+    get:
+      tags:
+        - sale return
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/site-setting:
     post:
       tags:
@@ -27290,279 +29137,6 @@ paths:
           required: true
           description: required if key is payment_mode_name else nullable
           example: cheque
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption:
-    post:
-      tags:
-        - stock consumption
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                warehouse_department_id: 1
-                stock_consumption_date: '2024-03-06'
-                note: ''
-                products:
-                  - product_id: 1
-                    rate: 100
-                    quantity: 100
-                    amount: 10000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - stock consumption
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '2'
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
-        - name: limit
-          in: query
-          schema:
-            type: string
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: string
-        - name: date[0]
-          in: query
-          schema:
-            type: string
-        - name: date[1]
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption-create-approve:
-    post:
-      tags:
-        - stock consumption
-      summary: create approve
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                warehouse_department_id: 1
-                stock_consumption_date: '2024-07-25'
-                note: ''
-                products:
-                  - product_id: 36
-                    rate: 0
-                    quantity: 1
-                    amount: 0
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption/{id}:
-    post:
-      tags:
-        - stock consumption
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                _method: patch
-                warehouse_department_id: 1
-                stock_consumption_date: '2024-03-06'
-                note: edit
-                products:
-                  - product_id: 1
-                    rate: 120
-                    quantity: 100
-                    amount: 12000
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    delete:
-      tags:
-        - stock consumption
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '10'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - stock consumption
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption/{id}/update-status:
-    post:
-      tags:
-        - stock consumption
-      summary: update status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/stock-consumption/{id}/void-status:
-    post:
-      tags:
-        - stock consumption
-      summary: void status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '11'
       responses:
         '200':
           description: Successful response
@@ -28157,6 +29731,359 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/stock-consumption:
+    post:
+      tags:
+        - stock consumption
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_consumption_date: '2024-03-06'
+                note: ''
+                products:
+                  - product_id: 1
+                    rate: 100
+                    quantity: 100
+                    amount: 10000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock consumption
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption-create-approve:
+    post:
+      tags:
+        - stock consumption
+      summary: create approve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                warehouse_department_id: 1
+                stock_consumption_date: '2024-07-25'
+                note: ''
+                products:
+                  - product_id: 36
+                    rate: 0
+                    quantity: 1
+                    amount: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption/{id}:
+    post:
+      tags:
+        - stock consumption
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: patch
+                warehouse_department_id: 1
+                stock_consumption_date: '2024-03-06'
+                note: edit
+                products:
+                  - product_id: 1
+                    rate: 120
+                    quantity: 100
+                    amount: 12000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - stock consumption
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - stock consumption
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption/{id}/update-status:
+    post:
+      tags:
+        - stock consumption
+      summary: update status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock-consumption/{id}/void-status:
+    post:
+      tags:
+        - stock consumption
+      summary: void status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/stock-consumption:
+    get:
+      tags:
+        - stock consumption
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/stock-consumption/{id}:
+    get:
+      tags:
+        - stock consumption
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3454'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/stock-return:
     post:
       tags:
@@ -28425,6 +30352,85 @@ paths:
             type: integer
           required: true
           example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/stock-return:
+    get:
+      tags:
+        - stock return
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: date[0]
+          in: query
+          schema:
+            type: string
+        - name: date[1]
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/stock-return/{id}:
+    get:
+      tags:
+        - stock return
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '133'
       responses:
         '200':
           description: Successful response
@@ -28885,6 +30891,79 @@ paths:
       tags:
         - unit
       summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/unit:
+    get:
+      tags:
+        - unit
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/unit/{id}:
+    get:
+      tags:
+        - unit
+      summary: show v2
       security:
         - bearerAuth: []
       parameters:
@@ -29928,34 +32007,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - warehouse transfer
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
     delete:
       tags:
         - warehouse transfer
@@ -29979,6 +32030,34 @@ paths:
             type: integer
           required: true
           example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - warehouse transfer
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -30012,6 +32091,84 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/warehouse-transfer:
+    get:
+      tags:
+        - warehouse transfer
+      summary: list v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: is_service
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/warehouse-transfer/{id}:
+    get:
+      tags:
+        - warehouse transfer
+      summary: show v2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5022'
       responses:
         '200':
           description: Successful response
@@ -30194,7 +32351,7 @@ paths:
     post:
       tags:
         - Link Site > Main Account > Account > Customer
-      summary: sync Hospitality Products
+      summary: sync Hospitality Customers
       requestBody:
         content: {}
       security:
@@ -30584,6 +32741,59 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/sync-customer-due-payment/{hospitality_branch_id}/{customer_payment_id}:
+    post:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: sync Hospitality Customer Due Payment
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+        - name: customer_payment_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1086'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/sync-hospitality-customers/{account_company_id}/{hospitality_branch_id}:
+    post:
+      tags:
+        - Link Site > Main Account > Link Serve
+      summary: sync Bulk Hospitality Customers Due Payments
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: account_company_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/hospitality/sync-hospitality-products/{hospitality_branch_id}/:
     post:
       tags:
@@ -30704,7 +32914,7 @@ paths:
     post:
       tags:
         - Link Site > Main Account > Link Serve
-      summary: Transfer Multiple Products Copy
+      summary: Transfer Multiple Products Copy 2
       requestBody:
         content:
           application/json:

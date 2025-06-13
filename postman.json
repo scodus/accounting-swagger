@@ -31,8 +31,11 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"exec": [],
-										"type": "text/javascript"
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -59,13 +62,13 @@
 										{
 											"key": "password",
 											"value": "P@ssw0rd",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "password",
 											"value": "password",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "email",
@@ -75,9 +78,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/login",
+									"raw": "{{localUrll}}/api/admin/login",
 									"host": [
-										"{{url}}"
+										"{{localUrll}}"
 									],
 									"path": [
 										"api",
@@ -2718,22 +2721,22 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "name",
+											"value": "test limited access",
 											"type": "text"
 										},
 										{
 											"key": "short_name",
-											"value": "",
+											"value": "limited access",
 											"type": "text"
 										},
 										{
 											"key": "address",
-											"value": "",
+											"value": "limited access",
 											"type": "text"
 										},
 										{
 											"key": "primary_email",
-											"value": "email@email",
+											"value": "limitedaccess@gmail.com",
 											"type": "text"
 										},
 										{
@@ -2795,16 +2798,20 @@
 											"key": "logo",
 											"value": "",
 											"type": "file"
+										},
+										{
+											"key": "limited_access",
+											"value": "1",
+											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company",
+									"raw": "{{localUrl}}/admin/company",
 									"host": [
-										"{{url}}"
+										"{{localUrl}}"
 									],
 									"path": [
-										"api",
 										"admin",
 										"company"
 									]
@@ -2996,16 +3003,20 @@
 											"value": "test@321",
 											"description": "test@321",
 											"type": "text"
+										},
+										{
+											"key": "limited_access",
+											"value": "0",
+											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company/:id",
+									"raw": "{{localUrl}}/admin/company/:id",
 									"host": [
-										"{{url}}"
+										"{{localUrl}}"
 									],
 									"path": [
-										"api",
 										"admin",
 										"company",
 										":id"
@@ -3145,12 +3156,11 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company?paginate=1&page=&limit=&search_keyword=&search_keyword_short_name=&status=",
+									"raw": "{{localUrl}}/admin/company?paginate=1&page=&limit=100&search_keyword=&search_keyword_short_name=&status=",
 									"host": [
-										"{{url}}"
+										"{{localUrl}}"
 									],
 									"path": [
-										"api",
 										"admin",
 										"company"
 									],
@@ -3165,7 +3175,7 @@
 										},
 										{
 											"key": "limit",
-											"value": ""
+											"value": "100"
 										},
 										{
 											"key": "search_keyword",
@@ -3212,12 +3222,11 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/company/:id",
+									"raw": "{{localUrl}}/admin/company/:id",
 									"host": [
-										"{{url}}"
+										"{{localUrl}}"
 									],
 									"path": [
-										"api",
 										"admin",
 										"company",
 										":id"
@@ -3225,7 +3234,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "1"
+											"value": "24"
 										}
 									]
 								}
@@ -5631,6 +5640,52 @@
 					]
 				},
 				{
+					"name": "AWS Files",
+					"item": [
+						{
+							"name": "File Lists",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{localUrl}}/admin/file/lists",
+									"host": [
+										"{{localUrl}}"
+									],
+									"path": [
+										"admin",
+										"file",
+										"lists"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "excel export download",
 					"request": {
 						"auth": {
@@ -7993,7 +8048,7 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -8013,7 +8068,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "40"
+									"value": "3273"
 								}
 							]
 						}
@@ -8426,7 +8481,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2700"
+									"value": "3273"
 								}
 							]
 						}
@@ -10412,6 +10467,131 @@
 								{
 									"key": "id",
 									"value": "162"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/bank?paginate=&page=&limit=&search_keyword=&cheque_status=&minimal_response=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"bank"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "cheque_status",
+									"value": "",
+									"description": "assigned"
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/bank/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"bank",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1610"
 								}
 							]
 						}
@@ -15065,7 +15245,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/total-sales?type=yearly",
+							"raw": "{{url}}/api/total-sales?type=current_month",
 							"host": [
 								"{{url}}"
 							],
@@ -15076,7 +15256,8 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "yearly"
+									"value": "current_month",
+									"description": "yearly|current_month|last_month|last_30|last_7"
 								}
 							]
 						}
@@ -15084,7 +15265,7 @@
 					"response": []
 				},
 				{
-					"name": "dashboard total receivable payable",
+					"name": "dashboard receivable payable",
 					"event": [
 						{
 							"listen": "test",
@@ -15127,7 +15308,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/accounts-receivable-payable?type=last_7",
+							"raw": "{{url}}/api/accounts-receivable-payable?type=yearly",
 							"host": [
 								"{{url}}"
 							],
@@ -15138,7 +15319,8 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "last_7"
+									"value": "yearly",
+									"description": "yearly|current_month|last_month|last_30|last_7"
 								}
 							]
 						}
@@ -15189,7 +15371,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/cashflow?type=last_7",
+							"raw": "{{url}}/api/cashflow?type=current_month",
 							"host": [
 								"{{url}}"
 							],
@@ -15200,7 +15382,314 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "last_7"
+									"value": "current_month",
+									"description": "yearly|current_month|last_month|last_30|last_7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/dashboard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard second v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/dashboard-second",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"dashboard-second"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard total sales v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/total-sales?type=last_30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"total-sales"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "last_30",
+									"description": "yearly|current_month|last_month|last_30|last_7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard receivable payable v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/accounts-receivable-payable?type=last_30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"accounts-receivable-payable"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "last_30",
+									"description": "yearly|current_month|last_month|last_30|last_7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard cashflow v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/cashflow?type=last_30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"cashflow"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "last_30",
+									"description": "yearly|current_month|last_month|last_30|last_7"
 								}
 							]
 						}
@@ -16289,6 +16778,158 @@
 								{
 									"key": "id",
 									"value": "67"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/employee?paginate=1&page=&limit=&search_keyword=YUB&payroll=&month=&year=&date=&status=&is_advance=&minimal_response=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": "YUB"
+								},
+								{
+									"key": "payroll",
+									"value": ""
+								},
+								{
+									"key": "month",
+									"value": ""
+								},
+								{
+									"key": "year",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": "",
+									"description": "date format: Y-m in BS e.g. 2081-06"
+								},
+								{
+									"key": "date",
+									"value": "",
+									"description": "date format: Y-m in AD e.g. 2024-7",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "current|terminated {nullable}"
+								},
+								{
+									"key": "is_advance",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/employee/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"employee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3745"
 								}
 							]
 						}
@@ -17599,6 +18240,106 @@
 					"response": []
 				},
 				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "approved",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/expense/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"expense",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "411"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/expense/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"expense",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "411"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -17729,7 +18470,10 @@
 					"response": []
 				},
 				{
-					"name": "update status",
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -17741,7 +18485,91 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/expense?paginate=1&page=&limit=&search_keyword=&status=&start_date=&end_date=&minimal_response=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"expense"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": ""
+								},
+								{
+									"key": "end_date",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -17754,74 +18582,23 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "approved",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/expense/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"expense",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "411"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "void status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/expense/:id/void-status",
+							"raw": "{{url}}/api/v2/expense/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
+								"v2",
 								"expense",
-								":id",
-								"void-status"
+								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "411"
+									"value": "1610"
 								}
 							]
 						}
@@ -19417,6 +20194,146 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/inventory-adjustment?paginate=1&page=&limit=&search_keyword=&status=&minimal_response=&start_date&end_date&date[0]&date[1]",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"inventory-adjustment"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": null
+								},
+								{
+									"key": "end_date",
+									"value": null
+								},
+								{
+									"key": "date[0]",
+									"value": null
+								},
+								{
+									"key": "date[1]",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/inventory-adjustment/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"inventory-adjustment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "78"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -20423,6 +21340,96 @@
 					"response": []
 				},
 				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/journal-voucher/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"journal-voucher",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/journal-voucher/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"journal-voucher",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -20549,7 +21556,10 @@
 					"response": []
 				},
 				{
-					"name": "update status",
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -20561,32 +21571,64 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{url}}/api/journal-voucher/:id/update-status",
+							"raw": "{{url}}/api/v2/journal-voucher?paginate=1&page=&limit=&search_keyword=&status=&start_date=&end_date=&minimal_response=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"journal-voucher",
-								":id",
-								"update-status"
+								"v2",
+								"journal-voucher"
 							],
-							"variable": [
+							"query": [
 								{
-									"key": "id",
-									"value": "10"
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": ""
+								},
+								{
+									"key": "end_date",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": "1"
 								}
 							]
 						}
@@ -20594,7 +21636,10 @@
 					"response": []
 				},
 				{
-					"name": "void status",
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -20606,11 +21651,15 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
@@ -20618,20 +21667,25 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/journal-voucher/:id/void-status",
+							"raw": "{{url}}/api/journal-voucher/:id?minimal_response=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"journal-voucher",
-								":id",
-								"void-status"
+								":id"
+							],
+							"query": [
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "610"
 								}
 							]
 						}
@@ -20676,7 +21730,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=10&slug=&account_head_id=2801&start_date=2025-03-21&end_date=2025-03-21",
+							"raw": "{{url}}/api/account-head-ledger?paginate=1&page=&limit=1000&slug=cash-in-hand&account_head_id=&start_date=2025-03-01&end_date=2025-03-30",
 							"host": [
 								"{{url}}"
 							],
@@ -20695,24 +21749,24 @@
 								},
 								{
 									"key": "limit",
-									"value": "10"
+									"value": "1000"
 								},
 								{
 									"key": "slug",
-									"value": "",
-									"description": "cash-in-hand"
+									"value": "cash-in-hand"
 								},
 								{
 									"key": "account_head_id",
-									"value": "2801"
+									"value": "",
+									"description": "2801"
 								},
 								{
 									"key": "start_date",
-									"value": "2025-03-21"
+									"value": "2025-03-01"
 								},
 								{
 									"key": "end_date",
-									"value": "2025-03-21"
+									"value": "2025-03-30"
 								}
 							]
 						}
@@ -20752,7 +21806,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger-grouped?paginate=1&page=&limit=10&slug=&account_head_id=2801&start_date=2025-03-21&end_date=2025-03-21",
+							"raw": "{{url}}/api/account-head-ledger-grouped?paginate=1&page=&limit=1000&slug=cash-in-hand&account_head_id=&start_date=&end_date=",
 							"host": [
 								"{{url}}"
 							],
@@ -20771,25 +21825,24 @@
 								},
 								{
 									"key": "limit",
-									"value": "10"
+									"value": "1000"
 								},
 								{
 									"key": "slug",
-									"value": "",
-									"description": "cash-in-hand"
+									"value": "cash-in-hand"
 								},
 								{
 									"key": "account_head_id",
-									"value": "2801",
-									"description": "220 or 559"
+									"value": "",
+									"description": "2801"
 								},
 								{
 									"key": "start_date",
-									"value": "2025-03-21"
+									"value": ""
 								},
 								{
 									"key": "end_date",
-									"value": "2025-03-21"
+									"value": ""
 								}
 							]
 						}
@@ -20829,7 +21882,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/account-head-ledger-transactions?paginate=1&page=&limit=10&slug=&account_head_id=2801&start_date=2025-03-20&end_date=2025-03-21",
+							"raw": "{{url}}/api/account-head-ledger-transactions?paginate=1&page=&limit=1000&slug=cash-in-hand&account_head_id=&start_date=&end_date=",
 							"host": [
 								"{{url}}"
 							],
@@ -20848,7 +21901,167 @@
 								},
 								{
 									"key": "limit",
-									"value": "10"
+									"value": "1000"
+								},
+								{
+									"key": "slug",
+									"value": "cash-in-hand"
+								},
+								{
+									"key": "account_head_id",
+									"value": "",
+									"description": "2801"
+								},
+								{
+									"key": "start_date",
+									"value": ""
+								},
+								{
+									"key": "end_date",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list account head ledger v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/account-head-ledger?paginate=1&page=&limit=15&slug=cash-in-hand&account_head_id=&start_date=2025-03-01&end_date=2025-03-30&minimal_response=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"account-head-ledger"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "15"
+								},
+								{
+									"key": "slug",
+									"value": "cash-in-hand"
+								},
+								{
+									"key": "account_head_id",
+									"value": "",
+									"description": "2801,2725,2711,2697,2833,3273"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-03-01",
+									"description": "2025-03-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-03-30",
+									"description": "2025-03-30"
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list account head ledger grouped v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/account-head-ledger-grouped?paginate=1&page=&limit=15&slug=&account_head_id=2833&start_date=&end_date=&minimal_response",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"account-head-ledger-grouped"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "15"
 								},
 								{
 									"key": "slug",
@@ -20857,16 +22070,105 @@
 								},
 								{
 									"key": "account_head_id",
-									"value": "2801",
-									"description": "220 or 559"
+									"value": "2833",
+									"description": "2801,2725,2711,2697,2833,9765,3273,"
 								},
 								{
 									"key": "start_date",
-									"value": "2025-03-20"
+									"value": "",
+									"description": "2025-03-01"
 								},
 								{
 									"key": "end_date",
-									"value": "2025-03-21"
+									"value": "",
+									"description": "2025-03-30"
+								},
+								{
+									"key": "minimal_response",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list account head ledger transactions v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/account-head-ledger-transactions?paginate=1&page=&limit=15&slug=cash-in-hand&account_head_id=&start_date=&end_date=&minimal_response",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"account-head-ledger-transactions"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "15"
+								},
+								{
+									"key": "slug",
+									"value": "cash-in-hand"
+								},
+								{
+									"key": "account_head_id",
+									"value": "",
+									"description": "2801,2725,2711,2697,2833,"
+								},
+								{
+									"key": "start_date",
+									"value": "",
+									"description": "2025-03-01"
+								},
+								{
+									"key": "end_date",
+									"value": "",
+									"description": "2025-03-30"
+								},
+								{
+									"key": "minimal_response",
+									"value": null
 								}
 							]
 						}
@@ -24090,6 +25392,138 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/product-category?paginate=&page=&limit=&search_keyword=&is_service_category=&is_product_category=&minimal_response=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"product-category"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service_category",
+									"value": ""
+								},
+								{
+									"key": "is_product_category",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/product-category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"product-category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "228"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -25843,6 +27277,99 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "store v2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vendor_id\": 220,\n    \"receiver_id\": 106,\n    \"payment_mode\": \"\",\n    \"bank_id\": \"\",\n    \"cheque_id\": \"\",\n    \"received_date\": \"2024-10-04\",\n    \"amount\": 750.00,\n    \"payment_allocation\": [\n        {\n            \"bill_id\": 24,\n            \"allocated_amount\": 750.00,\n            \"tds\":50,\n            \"payment_discount\": 100\n        }\n    ],\n    // \"payment_discount\": 50,\n    // \"tds\": null,\n    \"is_single_bill_payment\": 1,\n        \"payment_discount\": 50\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/purchase-payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status v2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/purchase-payment/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase-payment",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "122"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -26083,6 +27610,56 @@
 					"response": []
 				},
 				{
+					"name": "payment return",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account_head_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/purchase-payment-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"purchase-payment-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -26221,7 +27798,10 @@
 					"response": []
 				},
 				{
-					"name": "payment return",
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -26233,37 +27813,128 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "account_head_id",
-									"value": "3",
-									"type": "text"
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "{{url}}/api/purchase-payment-return/:id",
+							"raw": "{{url}}/api/v2/purchase-return?paginate=&page=&limit=&search_keyword=&status=&vendor_id=&date[0]=&date[1]=&start_date=&end_date=&minimal_response=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"purchase-payment-return",
+								"v2",
+								"purchase-return"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "vendor_id",
+									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": ""
+								},
+								{
+									"key": "end_date",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/purchase-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"purchase-return",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "11"
+									"value": "64"
 								}
 							]
 						}
@@ -27830,6 +29501,432 @@
 					"name": "accounting",
 					"item": [
 						{
+							"name": "report",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/report?start_date=2023-01-22&end_date=2024-08-22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"report"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2023-01-22"
+										},
+										{
+											"key": "end_date",
+											"value": "2024-08-22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "report total",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/report-total/:type?start_date=2024-01-01&end_date=2025-02-28&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"report-total",
+										":type"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2024-01-01",
+											"description": "date start"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-02-28",
+											"description": "date end"
+										},
+										{
+											"key": "warehouse_department_id",
+											"value": "",
+											"description": "warehouse_department_id \"1,2\""
+										},
+										{
+											"key": "product_id",
+											"value": "",
+											"description": "product id string \"1,2,3\" or \"1\""
+										},
+										{
+											"key": "vendor_id",
+											"value": null
+										},
+										{
+											"key": "customer_id",
+											"value": null
+										},
+										{
+											"key": "year",
+											"value": null,
+											"description": "e.g. 2081-2082"
+										},
+										{
+											"key": "type",
+											"value": null,
+											"description": "amount||quantity"
+										}
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "tds_report",
+											"description": "Report Name, e.g. stock_issue_report, stock_consumption_report, stock_returns_report, sales_summary_report, purchase_summary_report, customer_receivable_summary_report, vendor_payable_summary_report, purchase_by_item_report, sales_by_item_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "report total",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"report-total",
+												":type"
+											],
+											"query": [
+												{
+													"key": "start_date",
+													"value": "2024-06-22"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-09-22"
+												},
+												{
+													"key": "warehouse_department_id",
+													"value": ""
+												},
+												{
+													"key": "product_id",
+													"value": null
+												}
+											],
+											"variable": [
+												{
+													"key": "type",
+													"value": "stock_issue_report",
+													"description": "Report Name"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 23 Sep 2024 08:28:27 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999994"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Report Total\",\n    \"data\": {\n        \"totals\": {\n            \"total_quantity\": 1586356.7099999993,\n            \"total_amount\": 10001089.509999996\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "report excel download",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "company-id",
+										"value": "{{company-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/report-excel-download/:type?start_date=2024-02-05&end_date=2025-02-05&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"report-excel-download",
+										":type"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2024-02-05"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-02-05"
+										},
+										{
+											"key": "warehouse_department_id",
+											"value": ""
+										},
+										{
+											"key": "product_id",
+											"value": ""
+										},
+										{
+											"key": "vendor_id",
+											"value": null
+										},
+										{
+											"key": "customer_id",
+											"value": null
+										},
+										{
+											"key": "year",
+											"value": null
+										},
+										{
+											"key": "type",
+											"value": null
+										}
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "purchase_by_bill_report",
+											"description": "stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report|customer_statement|vendor_statement|vendor_payable_summary_report|customer_statement|vendor_statement"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "report total",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"report-total",
+												":type"
+											],
+											"query": [
+												{
+													"key": "start_date",
+													"value": "2024-06-22"
+												},
+												{
+													"key": "end_date",
+													"value": "2024-09-22"
+												},
+												{
+													"key": "warehouse_department_id",
+													"value": ""
+												},
+												{
+													"key": "product_id",
+													"value": null
+												}
+											],
+											"variable": [
+												{
+													"key": "type",
+													"value": "stock_issue_report",
+													"description": "Report Name"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 23 Sep 2024 08:28:27 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999994"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Report Total\",\n    \"data\": {\n        \"totals\": {\n            \"total_quantity\": 1586356.7099999993,\n            \"total_amount\": 10001089.509999996\n        }\n    }\n}"
+								}
+							]
+						},
+						{
 							"name": "transaction list",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -27853,7 +29950,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "4"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -27861,7 +29958,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/transaction-list?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-08-21&transaction_type=quotation,sales_order,invoice,purchase_bill",
+									"raw": "{{url}}/api/transaction-list?paginate=1&page=&limit=15&start_date=2025-05-15&end_date=2025-06-14&transaction_type=quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher",
 									"host": [
 										"{{url}}"
 									],
@@ -27880,19 +29977,20 @@
 										},
 										{
 											"key": "limit",
-											"value": ""
+											"value": "15"
 										},
 										{
 											"key": "start_date",
-											"value": "2024-06-01"
+											"value": "2025-05-15"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-21"
+											"value": "2025-06-14"
 										},
 										{
 											"key": "transaction_type",
-											"value": "quotation,sales_order,invoice,purchase_bill"
+											"value": "quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher",
+											"description": "quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher"
 										}
 									]
 								}
@@ -27931,7 +30029,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/journal-report?paginate=1&page=&limit=&start_date=2024-06-01&end_date=2024-11-21",
+									"raw": "{{url}}/api/journal-report?paginate=1&page=&limit=&start_date=2021-03-01&end_date=2025-03-30",
 									"host": [
 										"{{url}}"
 									],
@@ -27954,11 +30052,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2024-06-01"
+											"value": "2021-03-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-11-21"
+											"value": "2025-03-30"
 										}
 									]
 								}
@@ -27989,7 +30087,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "37"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -27997,7 +30095,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/general-ledger-summary?paginate=&page=&limit=&start_date=2024-06-01&end_date=2024-08-21",
+									"raw": "{{url}}/api/general-ledger-summary?paginate=1&page=1&limit=10&start_date=2025-03-01&end_date=2025-03-30",
 									"host": [
 										"{{url}}"
 									],
@@ -28008,23 +30106,35 @@
 									"query": [
 										{
 											"key": "paginate",
-											"value": ""
+											"value": "1"
 										},
 										{
 											"key": "page",
-											"value": ""
+											"value": "1"
 										},
 										{
 											"key": "limit",
-											"value": ""
+											"value": "10"
 										},
 										{
 											"key": "start_date",
-											"value": "2024-06-01"
+											"value": "2025-03-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-21"
+											"value": "2025-03-30"
+										},
+										{
+											"key": "account_head_id[]",
+											"value": "",
+											"description": "2697",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": null,
+											"description": "14,698,607.5",
+											"disabled": true
 										}
 									]
 								}
@@ -28063,7 +30173,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/trial-balance?start_date=2025-01-14&end_date=2025-02-12",
+									"raw": "{{url}}/api/trial-balance?start_date=2025-03-01&end_date=2025-03-30",
 									"host": [
 										"{{url}}"
 									],
@@ -28074,11 +30184,11 @@
 									"query": [
 										{
 											"key": "start_date",
-											"value": "2025-01-14"
+											"value": "2025-03-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-02-12"
+											"value": "2025-03-30"
 										}
 									]
 								}
@@ -28201,7 +30311,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/income-statement?start_date=2023-07-22&end_date=2025-01-30",
+									"raw": "{{url}}/api/income-statement?start_date=2025-03-01&end_date=2025-03-30",
 									"host": [
 										"{{url}}"
 									],
@@ -28212,11 +30322,11 @@
 									"query": [
 										{
 											"key": "start_date",
-											"value": "2023-07-22"
+											"value": "2025-03-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-01-30"
+											"value": "2025-03-30"
 										}
 									]
 								}
@@ -28247,7 +30357,7 @@
 									},
 									{
 										"key": "company-id",
-										"value": "1"
+										"value": "{{company-id}}"
 									}
 								],
 								"body": {
@@ -28255,7 +30365,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/balance-sheet?start_date=2023-1-22&end_date=2024-08-22",
+									"raw": "{{url}}/api/balance-sheet?start_date=2025-03-01&end_date=2025-03-30",
 									"host": [
 										"{{url}}"
 									],
@@ -28266,11 +30376,11 @@
 									"query": [
 										{
 											"key": "start_date",
-											"value": "2023-1-22"
+											"value": "2025-03-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-08-22"
+											"value": "2025-03-30"
 										}
 									]
 								}
@@ -28309,7 +30419,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/cashflow-summary?start_date=2025-04-11&end_date=2025-04-11",
+									"raw": "{{url}}/api/cashflow-summary?start_date=2025-05-01&end_date=2025-06-30",
 									"host": [
 										"{{url}}"
 									],
@@ -28335,11 +30445,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2025-04-11"
+											"value": "2025-05-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-04-11"
+											"value": "2025-06-30"
 										}
 									]
 								}
@@ -28444,6 +30554,452 @@
 									"body": "{\n    \"message\": \"Cashflow Summary\",\n    \"data\": {\n        \"data\": {\n            \"starting_balance\": {\n                \"cash_in\": null,\n                \"cash_out\": null,\n                \"balance\": -23830.43,\n                \"items\": [\n                    {\n                        \"name\": \"Cash in Hand\",\n                        \"id\": 106,\n                        \"cash_in\": null,\n                        \"cash_out\": null,\n                        \"balance\": 234\n                    },\n                    {\n                        \"name\": \"Rastra Bank\",\n                        \"id\": 162,\n                        \"cash_in\": null,\n                        \"cash_out\": null,\n                        \"balance\": -23330.43\n                    },\n                    {\n                        \"name\": \"Ut do mollitia sed f\",\n                        \"id\": 224,\n                        \"cash_in\": null,\n                        \"cash_out\": null,\n                        \"balance\": -734\n                    }\n                ]\n            },\n            \"received_from_customers\": {\n                \"cash_in\": 163491.63,\n                \"cash_out\": 996.59,\n                \"balance\": 162495.04,\n                \"items\": [\n                    {\n                        \"name\": \"Ad labore hic nostru\",\n                        \"id\": 562,\n                        \"cash_in\": \"855.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"855.00\"\n                    },\n                    {\n                        \"name\": \"asas\",\n                        \"id\": 558,\n                        \"cash_in\": \"8273.24\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"8273.24\"\n                    },\n                    {\n                        \"name\": \"asda\",\n                        \"id\": 554,\n                        \"cash_in\": \"1120.65\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"1120.65\"\n                    },\n                    {\n                        \"name\": \"asdasd\",\n                        \"id\": 403,\n                        \"cash_in\": \"11451.44\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"11451.44\"\n                    },\n                    {\n                        \"name\": \"Bir Bahadur\",\n                        \"id\": 216,\n                        \"cash_in\": \"944.00\",\n                        \"cash_out\": \"952.59\",\n                        \"balance\": \"-8.59\"\n                    },\n                    {\n                        \"name\": \"Darnia Gone\",\n                        \"id\": 520,\n                        \"cash_in\": \"6024.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"6024.00\"\n                    },\n                    {\n                        \"name\": \"dddd\",\n                        \"id\": 556,\n                        \"cash_in\": \"7197.61\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"7197.61\"\n                    },\n                    {\n                        \"name\": \"ds\",\n                        \"id\": 555,\n                        \"cash_in\": \"1759.65\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"1759.65\"\n                    },\n                    {\n                        \"name\": \"Eum est repellendus\",\n                        \"id\": 560,\n                        \"cash_in\": \"229.50\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"229.50\"\n                    },\n                    {\n                        \"name\": \"Exercitation volupta\",\n                        \"id\": 552,\n                        \"cash_in\": \"5330.67\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"5330.67\"\n                    },\n                    {\n                        \"name\": \"Inventore aspernatur\",\n                        \"id\": 545,\n                        \"cash_in\": \"195.58\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"195.58\"\n                    },\n                    {\n                        \"name\": \"Nulla esse aliquip f\",\n                        \"id\": 402,\n                        \"cash_in\": \"3586.74\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"3586.74\"\n                    },\n                    {\n                        \"name\": \"POS 201\",\n                        \"id\": 561,\n                        \"cash_in\": \"50000.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"50000.00\"\n                    },\n                    {\n                        \"name\": \"Qui beatae non corpo\",\n                        \"id\": 521,\n                        \"cash_in\": \"12827.85\",\n                        \"cash_out\": \"44.00\",\n                        \"balance\": \"12783.85\"\n                    },\n                    {\n                        \"name\": \"sd\",\n                        \"id\": 557,\n                        \"cash_in\": \"39521.75\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"39521.75\"\n                    },\n                    {\n                        \"name\": \"Shutter\",\n                        \"id\": 551,\n                        \"cash_in\": \"458.95\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"458.95\"\n                    },\n                    {\n                        \"name\": \"Test POS 1\",\n                        \"id\": 559,\n                        \"cash_in\": \"13715.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"13715.00\"\n                    }\n                ]\n            },\n            \"other_receipts\": {\n                \"cash_in\": 661,\n                \"cash_out\": 0,\n                \"balance\": 661,\n                \"items\": [\n                    {\n                        \"name\": \"Others(JV)\",\n                        \"id\": null,\n                        \"cash_in\": \"661.00\",\n                        \"cash_out\": \"0.00\",\n                        \"balance\": \"661.00\"\n                    }\n                ]\n            },\n            \"paid_to_suppliers\": {\n                \"cash_in\": 0,\n                \"cash_out\": 1100,\n                \"balance\": -1100,\n                \"items\": [\n                    {\n                        \"name\": \"John Petrucci\",\n                        \"id\": 161,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"300.00\",\n                        \"balance\": \"-300.00\"\n                    },\n                    {\n                        \"name\": \"Tosin Abasi\",\n                        \"id\": 160,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"800.00\",\n                        \"balance\": \"-800.00\"\n                    }\n                ]\n            },\n            \"other_payments\": {\n                \"cash_in\": 0,\n                \"cash_out\": 8595.59,\n                \"balance\": -8595.59,\n                \"items\": [\n                    {\n                        \"name\": \"Bir Bahadur\",\n                        \"id\": 216,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"952.59\",\n                        \"balance\": \"-952.59\"\n                    },\n                    {\n                        \"name\": \"Depreciation\",\n                        \"id\": 140,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"5900.00\",\n                        \"balance\": \"-5900.00\"\n                    },\n                    {\n                        \"name\": \"Discount Expense\",\n                        \"id\": 139,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"499.00\",\n                        \"balance\": \"-499.00\"\n                    },\n                    {\n                        \"name\": \"Others(JV)\",\n                        \"id\": null,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"200.00\",\n                        \"balance\": \"-200.00\"\n                    },\n                    {\n                        \"name\": \"Qui beatae non corpo\",\n                        \"id\": 521,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"44.00\",\n                        \"balance\": \"-44.00\"\n                    },\n                    {\n                        \"name\": \"Salary Expense\",\n                        \"id\": 138,\n                        \"cash_in\": \"0.00\",\n                        \"cash_out\": \"1000.00\",\n                        \"balance\": \"-1000.00\"\n                    }\n                ]\n            },\n            \"ending_balance\": {\n                \"cash_in\": null,\n                \"cash_out\": null,\n                \"balance\": 130626.60999999999,\n                \"items\": [\n                    {\n                        \"name\": \"Cash in Hand\",\n                        \"id\": 106,\n                        \"cash_in\": null,\n                        \"cash_out\": null,\n                        \"balance\": 94898.29\n                    },\n                    {\n                        \"name\": \"Rastra Bank\",\n                        \"id\": 162,\n                        \"cash_in\": null,\n                        \"cash_out\": null,\n                        \"balance\": 36662.32\n                    },\n                    {\n                        \"name\": \"Ut do mollitia sed f\",\n                        \"id\": 224,\n                        \"cash_in\": null,\n                        \"cash_out\": null,\n                        \"balance\": -934\n                    }\n                ]\n            }\n        }\n    }\n}"
 								}
 							]
+						},
+						{
+							"name": "transaction list v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/transaction-list?paginate=1&page=&limit=15&start_date=2025-05-15&end_date=2025-06-14&transaction_type=quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher,inventory_adjustment,warehouse_transfer,payroll,payroll_payment,balance_transfer,stock_issue,stock_consumption,stock_return",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"transaction-list"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": "15"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-05-15"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-06-14"
+										},
+										{
+											"key": "transaction_type",
+											"value": "quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher,inventory_adjustment,warehouse_transfer,payroll,payroll_payment,balance_transfer,stock_issue,stock_consumption,stock_return",
+											"description": "quotation,sales_order,invoice,record_payment,sales_return,quick_receipt,purchase_order,purchase_bill,supplier_payment,purchase_return,quick_payment,expense,expense_payment,journal_voucher,inventory_adjustment,warehouse_transfer,payroll,payroll_payment,balance_transfer,stock_issue,stock_consumption,stock_return"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "journal report v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/journal-report?paginate=1&page=&limit=&start_date=2021-03-01&end_date=2025-03-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"journal-report"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": ""
+										},
+										{
+											"key": "start_date",
+											"value": "2021-03-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "general ledger summary v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/general-ledger-summary?paginate=1&page=1&limit=15&start_date=2025-03-01&end_date=2025-03-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"general-ledger-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "15"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-03-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-03-30"
+										},
+										{
+											"key": "account_head_id[]",
+											"value": "2697",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "trial balance v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/trial-balance?start_date=2025-03-01&end_date=2025-03-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"trial-balance"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2025-03-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "income-statement v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/income-statement?start_date=2025-03-01&end_date=2025-03-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"income-statement"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2025-03-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "balance sheet v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/balance-sheet?start_date=2025-03-01&end_date=2025-03-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"balance-sheet"
+									],
+									"query": [
+										{
+											"key": "start_date",
+											"value": "2025-03-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-03-30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cashflow summary v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/cashflow-summary?start_date=2025-05-01&end_date=2025-06-30",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"cashflow-summary"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "start_date",
+											"value": "2025-05-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-06-30"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -28822,7 +31378,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/customer-statement?paginate=&page=1&limit=15&start_date=2023-01-01&end_date=2025-07-01&customer_id=2250",
+									"raw": "{{url}}/api/customer-statement?paginate=1&page=1&limit=15&start_date=2024-01-01&end_date=2026-01-03&customer_id=9919",
 									"host": [
 										"{{url}}"
 									],
@@ -28833,7 +31389,7 @@
 									"query": [
 										{
 											"key": "paginate",
-											"value": ""
+											"value": "1"
 										},
 										{
 											"key": "page",
@@ -28845,11 +31401,11 @@
 										},
 										{
 											"key": "start_date",
-											"value": "2023-01-01"
+											"value": "2024-01-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2025-07-01"
+											"value": "2026-01-03"
 										},
 										{
 											"key": "customer_id[0]",
@@ -28858,7 +31414,7 @@
 										},
 										{
 											"key": "customer_id",
-											"value": "2250",
+											"value": "9919",
 											"description": "216.559"
 										}
 									]
@@ -29160,6 +31716,188 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"message\": \"Customer Receivable Summary.\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 1,\n            \"path\": \"http://127.0.0.1:8000/api/customer-receivable-summary\",\n            \"per_page\": 10,\n            \"to\": 2,\n            \"total\": 2\n        },\n        \"data\": [\n            {\n                \"id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"518440.25\",\n                \"transaction_credit\": \"512401.50\",\n                \"closing_balance\": \"6038.75\"\n            },\n            {\n                \"id\": 1546,\n                \"name\": \"Outlet Customer\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"230.00\",\n                \"transaction_credit\": \"230.00\",\n                \"closing_balance\": \"0.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/customer-receivable-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/customer-receivable-summary?page=1\",\n            \"prev\": \"\",\n            \"next\": \"\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "customer statement v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/customer-statement?paginate=1&page=1&limit=15&start_date=2024-01-01&end_date=2025-12-03&customer_id=2833",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"customer-statement"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "15"
+										},
+										{
+											"key": "start_date",
+											"value": "2024-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-12-03"
+										},
+										{
+											"key": "customer_id[0]",
+											"value": "1488",
+											"disabled": true
+										},
+										{
+											"key": "customer_id",
+											"value": "2833",
+											"description": "9919"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "customer statement",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/customer-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&customer_id=1488",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"customer-statement"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-07-01"
+												},
+												{
+													"key": "customer_id[0]",
+													"value": "1488",
+													"disabled": true
+												},
+												{
+													"key": "customer_id",
+													"value": "1488"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:17:17 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999993"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Customer Statement\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 270,\n            \"path\": \"http://127.0.0.1:8000/api/customer-statement\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 2693\n        },\n        \"data\": [\n            {\n                \"entry_date\": \"2024-09-17 13:27:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 47,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-1\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"900.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:27:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 47,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-1\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"120.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:27:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 47,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-1\",\n                \"reference_number\": null,\n                \"cr_amount\": \"1020.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1440,\n                \"description\": \"Cash in Hand\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:28:30\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 48,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-2\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"3000.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 13:28:30\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 48,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-2\",\n                \"reference_number\": null,\n                \"cr_amount\": \"3000.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1440,\n                \"description\": \"Cash in Hand\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 14:19:24\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 49,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-3\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"200.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 14:19:24\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 49,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-3\",\n                \"reference_number\": null,\n                \"cr_amount\": \"200.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1440,\n                \"description\": \"Cash in Hand\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 15:50:09\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 50,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-4\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"800.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 15:50:09\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 50,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-4\",\n                \"reference_number\": null,\n                \"cr_amount\": \"800.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 1489,\n                \"description\": \"NMB Bank\"\n            },\n            {\n                \"entry_date\": \"2024-09-17 15:51:27\",\n                \"account_head_id\": 1488,\n                \"name\": \"Cash Counter\",\n                \"invoice_id\": 51,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"invoice\",\n                \"code\": \"INVO-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"0.00\",\n                \"dr_amount\": \"500.00\",\n                \"particular_id\": 1468,\n                \"description\": \"Sales Goods\"\n            }\n        ],\n        \"opening_balance\": {\n            \"total_cr_amount\": 0,\n            \"total_dr_amount\": 0,\n            \"amount\": 0\n        },\n        \"closing_balance\": {\n            \"total_cr_amount\": 0,\n            \"total_dr_amount\": 6038.75,\n            \"amount\": 6038.75\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/customer-statement?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/customer-statement?page=270\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/customer-statement?page=2\"\n        }\n    }\n}"
 								}
 							]
 						}
@@ -29540,7 +32278,7 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/vendor-statement?paginate=1&page=1&limit=10&start_date=2024-12-30&end_date=2024-12-30&vendor_id=2777",
+									"raw": "{{url}}/api/vendor-statement?paginate=1&page=1&limit=15&start_date=2025-01-01&end_date=2025-07-30&vendor_id=2765",
 									"host": [
 										"{{url}}"
 									],
@@ -29559,19 +32297,19 @@
 										},
 										{
 											"key": "limit",
-											"value": "10"
+											"value": "15"
 										},
 										{
 											"key": "start_date",
-											"value": "2024-12-30"
+											"value": "2025-01-01"
 										},
 										{
 											"key": "end_date",
-											"value": "2024-12-30"
+											"value": "2025-07-30"
 										},
 										{
 											"key": "vendor_id",
-											"value": "2777",
+											"value": "2765",
 											"description": "413.417"
 										}
 									]
@@ -29846,6 +32584,178 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"message\": \"Vendor Payable Summary.\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 5,\n            \"path\": \"http://127.0.0.1:8000/api/vendor-payable-summary\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 50\n        },\n        \"data\": [\n            {\n                \"id\": 396,\n                \"name\": \"A-CUBE ENTERPRISES\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"14640.00\",\n                \"closing_balance\": \"14640.00\"\n            },\n            {\n                \"id\": 397,\n                \"name\": \"ABC MARKETING (CIGG)\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"0.00\",\n                \"closing_balance\": \"0.00\"\n            },\n            {\n                \"id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"22500.00\",\n                \"closing_balance\": \"22500.00\"\n            },\n            {\n                \"id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"107520.89\",\n                \"closing_balance\": \"107520.89\"\n            },\n            {\n                \"id\": 400,\n                \"name\": \"BANEPALI STORE\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"0.00\",\n                \"closing_balance\": \"0.00\"\n            },\n            {\n                \"id\": 401,\n                \"name\": \"BHOJPURE DUDH DAIRY\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"157734.00\",\n                \"closing_balance\": \"157734.00\"\n            },\n            {\n                \"id\": 402,\n                \"name\": \"BIRENDRA YADAV (FRUITS)\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"262234.31\",\n                \"closing_balance\": \"251223.21\"\n            },\n            {\n                \"id\": 403,\n                \"name\": \"BLUE STAR ENTERPRISES\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"0.00\",\n                \"closing_balance\": \"0.00\"\n            },\n            {\n                \"id\": 404,\n                \"name\": \"CHANDRAMA PACKAGING AND PRINT SOLUTION PVT. LTD.\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"304940.00\",\n                \"closing_balance\": \"277335.00\"\n            },\n            {\n                \"id\": 405,\n                \"name\": \"CONSOLIDATED BRAND HOLDING PVT. LTD.\",\n                \"opening_balance\": \"0.00\",\n                \"transaction_debit\": \"0.00\",\n                \"transaction_credit\": \"44700.00\",\n                \"closing_balance\": \"44700.00\"\n            }\n        ],\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/vendor-payable-summary?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/vendor-payable-summary?page=5\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/vendor-payable-summary?page=2\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "vendor statement v2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/api/v2/vendor-statement?paginate=1&page=1&limit=15&start_date=2025-01-01&end_date=2025-07-30&vendor_id=2765",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"vendor-statement"
+									],
+									"query": [
+										{
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "15"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-01-01"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-07-30"
+										},
+										{
+											"key": "vendor_id",
+											"value": "2765",
+											"description": "413.417"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "vendor statement",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "{{company-id}}"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/vendor-statement?paginate=1&page=&limit=&start_date=2024-01-01&end_date=2025-07-01&vendor_id=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"vendor-statement"
+											],
+											"query": [
+												{
+													"key": "paginate",
+													"value": "1"
+												},
+												{
+													"key": "page",
+													"value": ""
+												},
+												{
+													"key": "limit",
+													"value": ""
+												},
+												{
+													"key": "start_date",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "end_date",
+													"value": "2025-07-01"
+												},
+												{
+													"key": "vendor_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Sep 2024 11:04:52 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999997"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor Statement\",\n    \"data\": {\n        \"meta\": {\n            \"current_page\": 1,\n            \"from\": 1,\n            \"last_page\": 272,\n            \"path\": \"http://127.0.0.1:8000/api/vendor-statement\",\n            \"per_page\": 10,\n            \"to\": 10,\n            \"total\": 2711\n        },\n        \"data\": [\n            {\n                \"entry_date\": \"2024-08-16 00:00:00\",\n                \"account_head_id\": 396,\n                \"name\": \"A-CUBE ENTERPRISES\",\n                \"bill_id\": 686,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-358\",\n                \"reference_number\": \"795\",\n                \"cr_amount\": \"14640.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 43,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-4\",\n                \"reference_number\": null,\n                \"cr_amount\": \"22500.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-16 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 1047,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-585\",\n                \"reference_number\": null,\n                \"cr_amount\": \"33750.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-16 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 1047,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-585\",\n                \"reference_number\": null,\n                \"cr_amount\": \"26006.40\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-09-16 00:00:00\",\n                \"account_head_id\": 398,\n                \"name\": \"ARPAN PAPER INDUSTRIES PVT. LTD.\",\n                \"bill_id\": 1047,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-585\",\n                \"reference_number\": null,\n                \"cr_amount\": \"15600.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"9421.57\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"13369.14\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"6849.90\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"6480.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            },\n            {\n                \"entry_date\": \"2024-08-05 00:00:00\",\n                \"account_head_id\": 399,\n                \"name\": \"B. S. B. TRADERS (POTATO/ONION)\",\n                \"bill_id\": 44,\n                \"payment_id\": null,\n                \"journal_voucher_id\": null,\n                \"type\": \"bill\",\n                \"code\": \"PB-5\",\n                \"reference_number\": null,\n                \"cr_amount\": \"3700.00\",\n                \"dr_amount\": \"0.00\",\n                \"particular_id\": 393,\n                \"description\": \"Purchase Goods\"\n            }\n        ],\n        \"opening_balance\": {\n            \"total_cr_amount\": 0,\n            \"total_dr_amount\": 0,\n            \"amount\": 0\n        },\n        \"closing_balance\": {\n            \"total_cr_amount\": 19913838.490000002,\n            \"total_dr_amount\": 0,\n            \"amount\": 19913838.490000002\n        },\n        \"links\": {\n            \"first\": \"http://127.0.0.1:8000/api/vendor-statement?page=1\",\n            \"last\": \"http://127.0.0.1:8000/api/vendor-statement?page=272\",\n            \"prev\": \"\",\n            \"next\": \"http://127.0.0.1:8000/api/vendor-statement?page=2\"\n        }\n    }\n}"
 								}
 							]
 						}
@@ -34183,432 +37093,6 @@
 							"response": []
 						}
 					]
-				},
-				{
-					"name": "report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/report?start_date=2023-01-22&end_date=2024-08-22",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"report"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2023-01-22"
-								},
-								{
-									"key": "end_date",
-									"value": "2024-08-22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "report total",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/report-total/:type?start_date=2024-01-01&end_date=2025-02-28&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"report-total",
-								":type"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2024-01-01",
-									"description": "date start"
-								},
-								{
-									"key": "end_date",
-									"value": "2025-02-28",
-									"description": "date end"
-								},
-								{
-									"key": "warehouse_department_id",
-									"value": "",
-									"description": "warehouse_department_id \"1,2\""
-								},
-								{
-									"key": "product_id",
-									"value": "",
-									"description": "product id string \"1,2,3\" or \"1\""
-								},
-								{
-									"key": "vendor_id",
-									"value": null
-								},
-								{
-									"key": "customer_id",
-									"value": null
-								},
-								{
-									"key": "year",
-									"value": null,
-									"description": "e.g. 2081-2082"
-								},
-								{
-									"key": "type",
-									"value": null,
-									"description": "amount||quantity"
-								}
-							],
-							"variable": [
-								{
-									"key": "type",
-									"value": "tds_report",
-									"description": "Report Name, e.g. stock_issue_report, stock_consumption_report, stock_returns_report, sales_summary_report, purchase_summary_report, customer_receivable_summary_report, vendor_payable_summary_report, purchase_by_item_report, sales_by_item_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "report total",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "{{company-id}}"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"report-total",
-										":type"
-									],
-									"query": [
-										{
-											"key": "start_date",
-											"value": "2024-06-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-09-22"
-										},
-										{
-											"key": "warehouse_department_id",
-											"value": ""
-										},
-										{
-											"key": "product_id",
-											"value": null
-										}
-									],
-									"variable": [
-										{
-											"key": "type",
-											"value": "stock_issue_report",
-											"description": "Report Name"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 23 Sep 2024 08:28:27 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999994"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Report Total\",\n    \"data\": {\n        \"totals\": {\n            \"total_quantity\": 1586356.7099999993,\n            \"total_amount\": 10001089.509999996\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "report excel download",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "{{company-id}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/report-excel-download/:type?start_date=2024-02-05&end_date=2025-02-05&warehouse_department_id=&product_id=&vendor_id&customer_id&year&type",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"report-excel-download",
-								":type"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2024-02-05"
-								},
-								{
-									"key": "end_date",
-									"value": "2025-02-05"
-								},
-								{
-									"key": "warehouse_department_id",
-									"value": ""
-								},
-								{
-									"key": "product_id",
-									"value": ""
-								},
-								{
-									"key": "vendor_id",
-									"value": null
-								},
-								{
-									"key": "customer_id",
-									"value": null
-								},
-								{
-									"key": "year",
-									"value": null
-								},
-								{
-									"key": "type",
-									"value": null
-								}
-							],
-							"variable": [
-								{
-									"key": "type",
-									"value": "purchase_by_bill_report",
-									"description": "stock_valuation_report|sales_register_report|sales_return_register_report|purchase_register_report|purchase_return_register_report|stock_issue_report|activity_log_report|user_log_report|customer_statement|vendor_statement|vendor_payable_summary_report|customer_statement|vendor_statement"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "report total",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id",
-										"value": "{{company-id}}"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/report-total/:type?start_date=2024-06-22&end_date=2024-09-22&warehouse_department_id=&product_id",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"report-total",
-										":type"
-									],
-									"query": [
-										{
-											"key": "start_date",
-											"value": "2024-06-22"
-										},
-										{
-											"key": "end_date",
-											"value": "2024-09-22"
-										},
-										{
-											"key": "warehouse_department_id",
-											"value": ""
-										},
-										{
-											"key": "product_id",
-											"value": null
-										}
-									],
-									"variable": [
-										{
-											"key": "type",
-											"value": "stock_issue_report",
-											"description": "Report Name"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 23 Sep 2024 08:28:27 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000000"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999994"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Report Total\",\n    \"data\": {\n        \"totals\": {\n            \"total_quantity\": 1586356.7099999993,\n            \"total_amount\": 10001089.509999996\n        }\n    }\n}"
-						}
-					]
 				}
 			]
 		},
@@ -35809,7 +38293,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/sales-payment?paginate=1&page=&limit=&search_keyword=&status=&invoice_id=&status=&start_date=2024-09-01&end_date=2025-12-01&minimal_response=1",
+							"raw": "{{url}}/api/v2/sales-payment?paginate=1&page=&limit=10&search_keyword=&status=&invoice_id=&status=&start_date=2025-04-01&end_date=2025-04-30&minimal_response=1",
 							"host": [
 								"{{url}}"
 							],
@@ -35829,7 +38313,7 @@
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "10"
 								},
 								{
 									"key": "search_keyword",
@@ -35859,11 +38343,11 @@
 								},
 								{
 									"key": "start_date",
-									"value": "2024-09-01"
+									"value": "2025-04-01"
 								},
 								{
 									"key": "end_date",
-									"value": "2025-12-01"
+									"value": "2025-04-30"
 								},
 								{
 									"key": "minimal_response",
@@ -36165,144 +38649,6 @@
 					"response": []
 				},
 				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/sales-return?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=&date[1]=&start_date=&end_date=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"sales-return"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								},
-								{
-									"key": "customer_id",
-									"value": ""
-								},
-								{
-									"key": "date[0]",
-									"value": ""
-								},
-								{
-									"key": "date[1]",
-									"value": ""
-								},
-								{
-									"key": "start_date",
-									"value": ""
-								},
-								{
-									"key": "end_date",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "{{company-id}}"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/sales-return/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"sales-return",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "payment return",
 					"request": {
 						"auth": {
@@ -36442,6 +38788,288 @@
 								"sales-return",
 								":id",
 								"print-download"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-return?paginate=1&page=&limit=&search_keyword=&status=&customer_id=&date[0]=&date[1]=&start_date=&end_date=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-return"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "customer_id",
+									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": ""
+								},
+								{
+									"key": "end_date",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/sales-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/sales-return?paginate=&page=&limit=&search_keyword=&status=&customer_id=&date[0]=&date[1]=&start_date=&end_date=&minimal_response=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"sales-return"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "customer_id",
+									"value": ""
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								},
+								{
+									"key": "start_date",
+									"value": ""
+								},
+								{
+									"key": "end_date",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/sales-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"sales-return",
+								":id"
 							],
 							"variable": [
 								{
@@ -36713,421 +39341,6 @@
 									"key": "value",
 									"value": "cheque",
 									"description": "required if key is payment_mode_name else nullable"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "stock consumption",
-			"item": [
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create approve",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "2"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-07-25\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 36,\n            \"rate\": 0,\n            \"quantity\": 1,\n            \"amount\": 0\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption-create-approve",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption-create-approve"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id/update-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id",
-								"update-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "void status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id/void-status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id",
-								"void-status"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "company-id",
-								"value": "2"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": ""
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": ""
-								},
-								{
-									"key": "multiple_status[0]",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "date[0]",
-									"value": ""
-								},
-								{
-									"key": "date[1]",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "company-id",
-								"value": "1"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/stock-consumption/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"stock-consumption",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "11"
 								}
 							]
 						}
@@ -37983,6 +40196,558 @@
 			]
 		},
 		{
+			"name": "stock consumption",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 100,\n            \"quantity\": 100,\n            \"amount\": 10000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-07-25\",\n    \"note\": \"\",\n    \"products\": [\n        {\n            \"product_id\": 36,\n            \"rate\": 0,\n            \"quantity\": 1,\n            \"amount\": 0\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption-create-approve",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption-create-approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"patch\",\n    \"warehouse_department_id\": 1,\n    \"stock_consumption_date\": \"2024-03-06\",\n    \"note\": \"edit\",\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"rate\": 120,\n            \"quantity\": 100,\n            \"amount\": 12000\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "void status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id/void-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id",
+								"void-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption?paginate=1&page=&limit=&search_keyword=&status=&date[0]=&date[1]=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/stock-consumption?paginate=&page=&limit=&search_keyword=&status=&date[0]=&date[1]=&minimal_response=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"stock-consumption"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/stock-consumption/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"stock-consumption",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3454"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "stock return",
 			"item": [
 				{
@@ -38390,6 +41155,143 @@
 								{
 									"key": "id",
 									"value": "19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/stock-return?paginate=&page=&limit=&search_keyword=&status=&date[0]=&date[1]=&minimal_response=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"stock-return"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "multiple_status[0]",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "date[0]",
+									"value": ""
+								},
+								{
+									"key": "date[1]",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/stock-return/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"stock-return",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "133"
 								}
 							]
 						}
@@ -39258,6 +42160,130 @@
 							],
 							"path": [
 								"api",
+								"unit",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "{{company-id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/unit?paginate=&page=&limit=&search_keyword=&minimal_response=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"unit"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/unit/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
 								"unit",
 								":id"
 							],
@@ -40867,6 +43893,105 @@
 					"response": []
 				},
 				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/warehouse-transfer/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"warehouse-transfer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "company-id",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "approved",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/warehouse-transfer/:id/update-status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"warehouse-transfer",
+								":id",
+								"update-status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -40989,7 +44114,10 @@
 					"response": []
 				},
 				{
-					"name": "delete",
+					"name": "list v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -41001,7 +44129,7 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -41009,27 +44137,52 @@
 							},
 							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{url}}/api/warehouse-transfer/:id",
+							"raw": "{{url}}/api/v2/warehouse-transfer?paginate=1&page=&limit=&search_keyword=&is_service=&minimal_response=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"warehouse-transfer",
-								":id"
+								"v2",
+								"warehouse-transfer"
 							],
-							"variable": [
+							"query": [
 								{
-									"key": "id",
-									"value": "5"
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "is_service",
+									"value": ""
+								},
+								{
+									"key": "minimal_response",
+									"value": "1"
 								}
 							]
 						}
@@ -41037,7 +44190,10 @@
 					"response": []
 				},
 				{
-					"name": "update status",
+					"name": "show v2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -41049,38 +44205,36 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
 								"key": "company-id",
-								"value": "1"
+								"value": "{{company-id}}"
 							}
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "status",
-									"value": "approved",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/warehouse-transfer/:id/update-status",
+							"raw": "{{url}}/api/v2/warehouse-transfer/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
+								"v2",
 								"warehouse-transfer",
-								":id",
-								"update-status"
+								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "5022"
 								}
 							]
 						}
@@ -41429,7 +44583,7 @@
 									"name": "Customer",
 									"item": [
 										{
-											"name": "sync Hospitality Products",
+											"name": "sync Hospitality Customers",
 											"request": {
 												"auth": {
 													"type": "bearer",
@@ -42098,6 +45252,98 @@
 									"response": []
 								},
 								{
+									"name": "sync Hospitality Customer Due Payment",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8001/api/accounting/sync-customer-due-payment/:hospitality_branch_id/:customer_payment_id",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"sync-customer-due-payment",
+												":hospitality_branch_id",
+												":customer_payment_id"
+											],
+											"variable": [
+												{
+													"key": "hospitality_branch_id",
+													"value": "5"
+												},
+												{
+													"key": "customer_payment_id",
+													"value": "1086"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "sync Bulk Hospitality Customers Due Payments",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8001/api/accounting/sync-hospitality-customers/:account_company_id/:hospitality_branch_id",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"sync-hospitality-customers",
+												":account_company_id",
+												":hospitality_branch_id"
+											],
+											"variable": [
+												{
+													"key": "account_company_id",
+													"value": ""
+												},
+												{
+													"key": "hospitality_branch_id",
+													"value": "22"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Update or Create Stock IssueHospitality Products",
 									"request": {
 										"auth": {
@@ -42275,6 +45521,47 @@
 								},
 								{
 									"name": "Transfer Multiple Products Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"commission\":450, //required\r\n    \"received_amount\":4500, //required\r\n    \"tds\":4.5, //nullable\r\n    \"receiver_id\":1 //required - Cash/Bank AccountHead ID\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8001/api/accounting/delivery-partner-payment/:hospitality_branch_id/:delivery_partner_id",
+											"host": [
+												"localhost"
+											],
+											"port": "8001",
+											"path": [
+												"api",
+												"accounting",
+												"delivery-partner-payment",
+												":hospitality_branch_id",
+												":delivery_partner_id"
+											],
+											"variable": [
+												{
+													"key": "hospitality_branch_id",
+													"value": ""
+												},
+												{
+													"key": "delivery_partner_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Transfer Multiple Products Copy 2",
 									"request": {
 										"method": "POST",
 										"header": [],
