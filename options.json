@@ -22,6 +22,10 @@
 	"servers": [
 		{
 			"url": "https://accounting.scoduscorp.com/",
+			"description": "accounting software staging server"
+		},
+		{
+			"url": "https://accounting-test.scoduscorp.com/",
 			"description": "accounting software test server"
 		}
 	]
