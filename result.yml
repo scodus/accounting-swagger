@@ -33249,8 +33249,10 @@ paths:
                 raw_materials:
                   - product_id: 11145
                     quantity: 1
+                    id: 11145
                   - product_id: 10068
                     quantity: 2
+                    id: 10068
                 by_products:
                   - product_id: 7285
                     percent_of_cost: 10
@@ -33638,7 +33640,9 @@ paths:
               example:
                 _method: patch
                 product_id: 14287
-                output_quantity: 1000
+                output_quantity: 10
+                date: '2025-08-20'
+                reference: ''
                 notes: safdsaf
                 raw_materials:
                   - product_id: 11145
@@ -33675,7 +33679,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -33745,7 +33749,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -33790,7 +33794,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -33835,7 +33839,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -34061,7 +34065,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '1'
       responses:
         '200':
           description: Successful response

@@ -45795,7 +45795,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"product_id\": 6871,\r\n    \"output_quantity\": 10,\r\n    \"notes\": \"safdsaf\",\r\n    \"raw_materials\": [\r\n        {\r\n            \"product_id\": 11145,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"product_id\": 10068,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"by_products\": [\r\n        {\r\n            \"product_id\": 7285,\r\n            \"percent_of_cost\": 10,\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"product_id\": 7155,\r\n            \"percent_of_cost\": 20,\r\n            \"quantity\": 4\r\n        }\r\n    ],\r\n    \"production_expenses\": [\r\n        {\r\n            \"account_head_id\": 2748,\r\n            \"amount\": 100\r\n        }\r\n    ]\r\n}",
+											"raw": "{\r\n    \"product_id\": 6871,\r\n    \"output_quantity\": 10,\r\n    \"notes\": \"safdsaf\",\r\n    \"raw_materials\": [\r\n        {\r\n            \"product_id\": 11145,\r\n            \"quantity\": 1,\r\n            \"id\":11145\r\n        },\r\n        {\r\n            \"product_id\": 10068,\r\n            \"quantity\": 2,\r\n            \"id\":10068\r\n        }\r\n    ],\r\n    \"by_products\": [\r\n        {\r\n            \"product_id\": 7285,\r\n            \"percent_of_cost\": 10,\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"product_id\": 7155,\r\n            \"percent_of_cost\": 20,\r\n            \"quantity\": 4\r\n        }\r\n    ],\r\n    \"production_expenses\": [\r\n        {\r\n            \"account_head_id\": 2748,\r\n            \"amount\": 100\r\n        }\r\n    ]\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -46227,7 +46227,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"_method\": \"patch\",\r\n    \"product_id\": 14287,\r\n    \"output_quantity\": 1000,\r\n    \"notes\": \"safdsaf\",\r\n    \"raw_materials\": [\r\n        {\r\n            \"product_id\": 11145,\r\n            \"quantity\": 10\r\n        },\r\n        {\r\n            \"product_id\": 10068,\r\n            \"quantity\": 20\r\n        }\r\n    ],\r\n    \"by_products\": [\r\n        {\r\n            \"product_id\": 7285,\r\n            \"percent_of_cost\": 10,\r\n            \"quantity\": 30\r\n        }\r\n        // ,\r\n        // {\r\n        //     \"product_id\": 7155,\r\n        //     \"percent_of_cost\": 20,\r\n        //     \"quantity\": 40\r\n        // }\r\n    ],\r\n    \"production_expenses\": [\r\n        {\r\n            \"account_head_id\": 2748,\r\n            \"amount\": 1000\r\n        }\r\n    ]\r\n}",
+											"raw": "{\r\n    \"_method\": \"patch\",\r\n    \"product_id\": 14287,\r\n    \"output_quantity\": 10,\r\n    \"date\": \"2025-08-20\",\r\n    \"reference\": \"\",\r\n    \"notes\": \"safdsaf\",\r\n    \"raw_materials\": [\r\n        {\r\n            \"product_id\": 11145,\r\n            \"quantity\": 10\r\n        },\r\n        {\r\n            \"product_id\": 10068,\r\n            \"quantity\": 20\r\n        }\r\n    ],\r\n    \"by_products\": [\r\n        {\r\n            \"product_id\": 7285,\r\n            \"percent_of_cost\": 10,\r\n            \"quantity\": 30\r\n        }\r\n        // ,\r\n        // {\r\n        //     \"product_id\": 7155,\r\n        //     \"percent_of_cost\": 20,\r\n        //     \"quantity\": 40\r\n        // }\r\n    ],\r\n    \"production_expenses\": [\r\n        {\r\n            \"account_head_id\": 2748,\r\n            \"amount\": 1000\r\n        }\r\n    ]\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -46247,7 +46247,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "6"
+													"value": "7"
 												}
 											]
 										}
@@ -46442,7 +46442,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "6"
+													"value": "7"
 												}
 											]
 										}
@@ -46504,7 +46504,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "6"
+													"value": "7"
 												}
 											]
 										}
@@ -46566,7 +46566,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "6"
+													"value": "7"
 												}
 											]
 										}
@@ -46878,7 +46878,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "6"
+													"value": "1"
 												}
 											]
 										}
