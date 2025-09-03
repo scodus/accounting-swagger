@@ -137,6 +137,9 @@ tags:
   - name: APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production Journal
   - name: APIs (Company/Accounting Firm Panel) > SMS
   - name: APIs (Company/Accounting Firm Panel) > SMS > Customers
+  - name: APIs (Company/Accounting Firm Panel) > SMS > credits
+  - name: APIs (Company/Accounting Firm Panel) > SMS > templates
+  - name: APIs (Company/Accounting Firm Panel) > SMS > dispatches
   - name: APIs SROT Integration Link Site
   - name: APIs SROT Integration Link Site > Main Account
   - name: APIs SROT Integration Link Site > Main Account > Admin
@@ -3201,10 +3204,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: bishowraut@gmail.com
+                  example: kimchifastfoods@gmail.com
                 password:
                   type: string
-                  example: P@ssw0rd123
+                  example: Kimchi@@@3
       responses:
         '200':
           description: Successful response
@@ -33231,6 +33234,64 @@ paths:
           content:
             application/json: {}
   /api/bills-of-material:
+    get:
+      tags:
+        - >-
+          APIs (Company/Accounting Firm Panel) > MANUFACTURING > Bills of
+          Material
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: ird-type
+          in: header
+          schema:
+            type: string
+          example: '{{ird-type}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: '14287'
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - >-
@@ -33286,12 +33347,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/bills-of-material/{id}:
     get:
       tags:
         - >-
           APIs (Company/Accounting Firm Panel) > MANUFACTURING > Bills of
           Material
-      summary: list
+      summary: show
       security:
         - bearerAuth: []
       parameters:
@@ -33310,36 +33372,17 @@ paths:
           schema:
             type: string
           example: '{{ird-type}}'
-        - name: paginate
-          in: query
+        - name: id
+          in: path
           schema:
             type: integer
+          required: true
           example: '1'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '10'
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: product_id
-          in: query
-          schema:
-            type: string
-          description: '14287'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/bills-of-material/{id}:
     post:
       tags:
         - >-
@@ -33424,20 +33467,20 @@ paths:
         - name: id
           in: path
           schema:
-            type: integer
+            type: string
           required: true
-          example: '5'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-    get:
+  /api/bills-of-material/delete/multiple:
+    delete:
       tags:
         - >-
           APIs (Company/Accounting Firm Panel) > MANUFACTURING > Bills of
           Material
-      summary: show
+      summary: delete multiple
       security:
         - bearerAuth: []
       parameters:
@@ -33456,12 +33499,6 @@ paths:
           schema:
             type: string
           example: '{{ird-type}}'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -33502,17 +33539,74 @@ paths:
           schema:
             type: integer
           example: '100'
-        - name: date
-          in: query
-          schema:
-            type: string
-          example: '2025-08-20'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
   /api/production-order:
+    get:
+      tags:
+        - >-
+          APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
+          Order
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: ird-type
+          in: header
+          schema:
+            type: string
+          example: '{{ird-type}}'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: product_id
+          in: query
+          schema:
+            type: string
+          description: '14287'
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - >-
@@ -33568,12 +33662,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/production-order/{id}:
     get:
       tags:
         - >-
           APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
           Order
-      summary: list
+      summary: show
       security:
         - bearerAuth: []
       parameters:
@@ -33592,40 +33687,17 @@ paths:
           schema:
             type: string
           example: '{{ird-type}}'
-        - name: paginate
-          in: query
+        - name: id
+          in: path
           schema:
             type: integer
-          example: '1'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '10'
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-        - name: product_id
-          in: query
-          schema:
-            type: string
-          description: '14287'
-        - name: status
-          in: query
-          schema:
-            type: string
+          required: true
+          example: '7'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/production-order/{id}:
     post:
       tags:
         - >-
@@ -33689,43 +33761,8 @@ paths:
       tags:
         - >-
           APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
-          Journal
-      summary: delete
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: string
-          example: '{{company-id}}'
-        - name: ird-type
-          in: header
-          schema:
-            type: string
-          example: '{{ird-type}}'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '7'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    get:
-      tags:
-        - >-
-          APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
           Order
-      summary: show
+      summary: delete
       security:
         - bearerAuth: []
       parameters:
@@ -33794,7 +33831,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '7'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -33845,47 +33882,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/production-journal:
-    post:
+  /api/production-order/delete/multiple:
+    delete:
       tags:
         - >-
           APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
-          Journal
-      summary: store
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                product_id: 6871
-                output_quantity: 10
-                date: '2025-08-20'
-                reference: ''
-                notes: safdsaf
-                raw_materials:
-                  - product_id: 11145
-                    quantity: 1
-                    rate: null
-                    amount: null
-                  - product_id: 10068
-                    quantity: 2
-                    rate: null
-                    amount: null
-                by_products:
-                  - product_id: 7285
-                    percent_of_cost: 10
-                    quantity: 3
-                    rate: null
-                    amount: null
-                  - product_id: 7155
-                    percent_of_cost: 20
-                    quantity: 4
-                    rate: null
-                    amount: null
-                production_expenses:
-                  - account_head_id: 2748
-                    amount: 100
+          Order
+      summary: delete multiple
       security:
         - bearerAuth: []
       parameters:
@@ -33909,6 +33912,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/production-journal:
     get:
       tags:
         - >-
@@ -33947,7 +33951,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '20'
         - name: search_keyword
           in: query
           schema:
@@ -33960,12 +33964,115 @@ paths:
           in: query
           schema:
             type: string
+        - name: minimal_response
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - >-
+          APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
+          Journal
+      summary: store
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                product_id: 6871
+                output_quantity: 10
+                date: '2025-08-20'
+                reference: '12345'
+                notes: ABC123
+                raw_materials:
+                  - product_id: 11145
+                    quantity: 1
+                    rate: null
+                    amount: null
+                  - product_id: 10068
+                    quantity: 2
+                    rate: null
+                    amount: null
+                by_products:
+                  - product_id: 7155
+                    percent_of_cost: 20
+                    quantity: 4
+                    rate: null
+                    amount: null
+                  - product_id: 7285
+                    percent_of_cost: 10
+                    quantity: 3
+                    rate: null
+                    amount: null
+                production_expenses:
+                  - account_head_id: 2748
+                    amount: 100
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: ird-type
+          in: header
+          schema:
+            type: string
+          example: '{{ird-type}}'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
   /api/production-journal/{id}:
+    get:
+      tags:
+        - >-
+          APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
+          Journal
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: ird-type
+          in: header
+          schema:
+            type: string
+          example: '{{ird-type}}'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
     post:
       tags:
         - >-
@@ -34030,18 +34137,18 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '5'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-    get:
+    delete:
       tags:
         - >-
           APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
           Journal
-      summary: show
+      summary: delete
       security:
         - bearerAuth: []
       parameters:
@@ -34065,7 +34172,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '7'
       responses:
         '200':
           description: Successful response
@@ -34110,7 +34217,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -34155,7 +34262,37 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '16'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/production-journal/delete/multiple:
+    delete:
+      tags:
+        - >-
+          APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production
+          Journal
+      summary: delete multiple
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: string
+          example: '{{company-id}}'
+        - name: ird-type
+          in: header
+          schema:
+            type: string
+          example: '{{ird-type}}'
       responses:
         '200':
           description: Successful response
@@ -34186,9 +34323,15 @@ paths:
       summary: send message
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          application/json:
             schema:
               type: object
+              example:
+                customer_ids:
+                  - 377
+                  - 383
+                template: Hi {{name}}, how are you doing?
+                template_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -34197,6 +34340,304 @@ paths:
           schema:
             type: integer
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/customers/evaluate:
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > Customers
+      summary: evaluate
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v3/sms/sen:
+    post:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > Customers
+      summary: send message all star
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                type: plain
+                message: Hi, Customer 1
+                recipient: '9741689372'
+                sender_id: Finora
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/credits:
+    post:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > credits
+      summary: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                amount: 500
+                rate_per_sms: 0.9
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > credits
+      summary: get all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/templates:
+    post:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > templates
+      summary: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: template 1
+                content: Some content of sms template
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > templates
+      summary: get all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/templates/{id}:
+    put:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > templates
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: template 1
+                content: Some content of sms template asd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > templates
+      summary: delete
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > templates
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/dispatches:
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > dispatches
+      summary: get all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/dispatches/{id}/resend:
+    post:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > dispatches
+      summary: resend
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -34998,7 +35439,7 @@ paths:
         - >-
           APIs SROT Integration Link Site > Main Account > Link Serve > Hotel
           Invoice
-      summary: New Request
+      summary: Store Invoice
       parameters:
         - name: hospitality_branch_id
           in: path
@@ -35011,7 +35452,32 @@ paths:
           schema:
             type: integer
           required: true
-          example: '17'
+          example: '31'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /000/api/accounting/void-hotel-invoice/{hospitality_branch_id}/{hotel_reservation_id}:
+    get:
+      tags:
+        - >-
+          APIs SROT Integration Link Site > Main Account > Link Serve > Hotel
+          Invoice
+      summary: Void Invoice / Sales Return
+      parameters:
+        - name: hospitality_branch_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+        - name: hotel_reservation_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '19'
       responses:
         '200':
           description: Successful response
