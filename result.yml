@@ -47,6 +47,7 @@ tags:
   - name: APIs SUPERADMIN PANEL > User
   - name: APIs SUPERADMIN PANEL > AWS Files
   - name: APIs SUPERADMIN PANEL > ***ADMINISTRATOR COMMANDS***
+  - name: APIs SUPERADMIN PANEL > SMS
   - name: APIs (Company/Accounting Firm Panel)
   - name: APIs (Company/Accounting Firm Panel) > Auth
   - name: APIs (Company/Accounting Firm Panel) > accounting firm
@@ -1771,29 +1772,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-    get:
-      tags:
-        - APIs SUPERADMIN PANEL > Company
-      summary: show
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '24'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/admin/company/{id}/status:
     post:
       tags:
@@ -1883,6 +1861,30 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /superadmin/company/{id}:
+    get:
+      tags:
+        - APIs SUPERADMIN PANEL > Company
+      summary: show
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '24'
       responses:
         '200':
           description: Successful response
@@ -3136,6 +3138,34 @@ paths:
           schema:
             type: string
           example: BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/sms/logs:
+    get:
+      tags:
+        - APIs SUPERADMIN PANEL > SMS
+      summary: get logs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: company_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -34396,7 +34426,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sms/credits:
+  /api/superadmin/sms/credits:
     post:
       tags:
         - APIs (Company/Accounting Firm Panel) > SMS > credits
@@ -34409,6 +34439,7 @@ paths:
               example:
                 amount: 500
                 rate_per_sms: 0.9
+                company_id: 2
       security:
         - bearerAuth: []
       parameters:
@@ -34441,6 +34472,11 @@ paths:
           example: application/json
         - name: company-id
           in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: company_id
+          in: query
           schema:
             type: integer
           example: '2'

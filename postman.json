@@ -3,8 +3,8 @@
 		"_postman_id": "9a0fc440-d4de-4cbc-8c6d-76d518f86ea5",
 		"name": "SROT Accounting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34655126",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=34655126"
+		"_exporter_id": "42517497",
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/34655126-9a0fc440-d4de-4cbc-8c6d-76d518f86ea5?action=share&source=collection_link&creator=42517497"
 	},
 	"item": [
 		{
@@ -3258,12 +3258,12 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{localUrl}}/admin/company/:id",
+									"raw": "{{localUrl}}/superadmin/company/:id",
 									"host": [
 										"{{localUrl}}"
 									],
 									"path": [
-										"admin",
+										"superadmin",
 										"company",
 										":id"
 									],
@@ -5715,6 +5715,65 @@
 										"api",
 										"admin",
 										"delete-company"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SMS",
+					"item": [
+						{
+							"name": "get logs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "company-id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/sms/logs?company_id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"sms",
+										"logs"
+									],
+									"query": [
+										{
+											"key": "company_id",
+											"value": "2"
+										}
 									]
 								}
 							},
@@ -47433,7 +47492,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"amount\": 500,\r\n    \"rate_per_sms\": 0.9\r\n}",
+											"raw": "{\r\n    \"amount\": 500,\r\n    \"rate_per_sms\": 0.9,\r\n    \"company_id\": 2\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -47441,12 +47500,13 @@
 											}
 										},
 										"url": {
-											"raw": "{{url}}/api/sms/credits",
+											"raw": "{{url}}/api/superadmin/sms/credits",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"api",
+												"superadmin",
 												"sms",
 												"credits"
 											]
@@ -47488,14 +47548,21 @@
 											"raw": ""
 										},
 										"url": {
-											"raw": "{{url}}/api/sms/credits",
+											"raw": "{{url}}/api/superadmin/sms/credits?company_id=2",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"api",
+												"superadmin",
 												"sms",
 												"credits"
+											],
+											"query": [
+												{
+													"key": "company_id",
+													"value": "2"
+												}
 											]
 										}
 									},
