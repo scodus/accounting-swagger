@@ -56,9 +56,8 @@
 									"formdata": [
 										{
 											"key": "email",
-											"value": "superadmin@gmail.com",
-											"type": "text",
-											"disabled": true
+											"value": "scodusnp@gmail.com",
+											"type": "text"
 										},
 										{
 											"key": "password",
@@ -74,7 +73,8 @@
 										{
 											"key": "email",
 											"value": "superadmin@superadmin.com",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -973,6 +973,54 @@
 											"key": "id",
 											"value": ""
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user-password-verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "ird-type",
+										"value": "",
+										"description": "IRD, NO_IRD",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "P@ssw0rd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/user/password/verification",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"user",
+										"password",
+										"verification"
 									]
 								}
 							},
@@ -5443,7 +5491,7 @@
 					"name": "***ADMINISTRATOR COMMANDS***",
 					"item": [
 						{
-							"name": "generate reset ledger confirmation token",
+							"name": "generate reset company confirmation token",
 							"event": [
 								{
 									"listen": "test",
@@ -5490,14 +5538,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/generate-reset-ledger-confirmation-token",
+									"raw": "{{url}}/api/superadmin/generate-reset-company-confirmation-token",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"admin",
-										"generate-reset-ledger-confirmation-token"
+										"superadmin",
+										"generate-reset-company-confirmation-token"
 									]
 								}
 							},
@@ -5580,7 +5628,144 @@
 							]
 						},
 						{
-							"name": "reset-ledger ***DANGER***",
+							"name": "generate delete company confirmation token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id",
+										"value": "2",
+										"description": "Company ID",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"company_id\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/generate-reset-company-confirmation-token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"generate-reset-company-confirmation-token"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "generate reset token",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "company-id",
+												"value": "1",
+												"description": "Company ID"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/generate-reset-ledger-confirmation-token",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"generate-reset-ledger-confirmation-token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 09 Sep 2024 06:30:57 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "1000000"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "999999"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Confirmation token generated. Please use this token to confirm the reset action.\",\n    \"data\": {\n        \"confirmation_token\": \"W5EiRR1sZr1ONmrOhRiazIewLptSbQ1G\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "reset-company***DANGER***",
 							"event": [
 								{
 									"listen": "test",
@@ -5640,14 +5825,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/reset-ledger",
+									"raw": "{{url}}/api/superadmin/reset-company",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"admin",
-										"reset-ledger"
+										"superadmin",
+										"reset-company"
 									]
 								}
 							},
@@ -5707,13 +5892,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/api/admin/delete-company",
+									"raw": "{{url}}/api/superadmin/delete-company",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"admin",
+										"superadmin",
 										"delete-company"
 									]
 								}
@@ -5725,6 +5910,119 @@
 				{
 					"name": "SMS",
 					"item": [
+						{
+							"name": "credits",
+							"item": [
+								{
+									"name": "create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "company-id",
+												"value": "2",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"amount\": \"500\",\r\n    \"rate_per_sms\": \"1\",\r\n    \"company_id\": \"55\",\r\n    \"purchased_credits\": \"100\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/superadmin/sms/credits",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"superadmin",
+												"sms",
+												"credits"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get all",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "company-id",
+												"value": "2",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/api/superadmin/sms/credits?company_id=55",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"superadmin",
+												"sms",
+												"credits"
+											],
+											"query": [
+												{
+													"key": "company_id",
+													"value": "55"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
 						{
 							"name": "get logs",
 							"protocolProfileBehavior": {
@@ -5773,6 +6071,177 @@
 										{
 											"key": "company_id",
 											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get companies with sms credits",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "company-id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/sms/companies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"sms",
+										"companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update rate per sms",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "company-id",
+										"value": "2",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rate_per_sms\": 1.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/sms/companies/:id/rate-per-sms",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"sms",
+										"companies",
+										":id",
+										"rate-per-sms"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get statistics",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "company-id",
+										"value": "2",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/sms/statistics?type=PURCHASED_CREDITS&type=SOLD_CREDITS",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"sms",
+										"statistics"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "PURCHASED_CREDITS"
+										},
+										{
+											"key": "type",
+											"value": "SOLD_CREDITS"
 										}
 									]
 								}
@@ -5923,24 +6392,24 @@
 										{
 											"key": "email",
 											"value": "bishowraut@gmail.com",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "password",
 											"value": "P@ssw0rd123",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "email",
 											"value": "kimchifastfoods@gmail.com",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "password",
 											"value": "Kimchi@@@3",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -6864,6 +7333,105 @@
 											"key": "id",
 											"value": "42"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user-password-verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "ird-type",
+										"value": "",
+										"description": "IRD, NO_IRD",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/user/password/verification",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"password",
+										"verification"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "company-password-verification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "ird-type",
+										"value": "",
+										"description": "IRD, NO_IRD",
+										"type": "text"
+									},
+									{
+										"key": "company-id",
+										"value": "{{company-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/company/password/verification",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"password",
+										"verification"
 									]
 								}
 							},
@@ -47335,7 +47903,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"customer_ids\": [\r\n        377,\r\n        383\r\n    ],\r\n    \"template\": \"Hi {{name}}, how are you doing?\",\r\n    \"template_id\": 1\r\n}",
+											"raw": "{\r\n    \"customer_ids\": [\r\n        377\r\n    ],\r\n    \"template\": \"Hi {{name}}, how are you doing?\",\r\n    \"template_id\": 1\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -47454,115 +48022,6 @@
 												"v3",
 												"sms",
 												"sen"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "credits",
-							"item": [
-								{
-									"name": "create",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{access_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "company-id",
-												"value": "2",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"amount\": 500,\r\n    \"rate_per_sms\": 0.9,\r\n    \"company_id\": 2\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/api/superadmin/sms/credits",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"superadmin",
-												"sms",
-												"credits"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "get all",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{access_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "company-id",
-												"value": "2",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
-										"url": {
-											"raw": "{{url}}/api/superadmin/sms/credits?company_id=2",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"superadmin",
-												"sms",
-												"credits"
-											],
-											"query": [
-												{
-													"key": "company_id",
-													"value": "2"
-												}
 											]
 										}
 									},
