@@ -49,6 +49,7 @@ tags:
   - name: APIs SUPERADMIN PANEL > ***ADMINISTRATOR COMMANDS***
   - name: APIs SUPERADMIN PANEL > SMS
   - name: APIs SUPERADMIN PANEL > SMS > credits
+  - name: APIs SUPERADMIN PANEL > SMS > companies
   - name: APIs (Company/Accounting Firm Panel)
   - name: APIs (Company/Accounting Firm Panel) > Auth
   - name: APIs (Company/Accounting Firm Panel) > accounting firm
@@ -3181,9 +3182,7 @@ paths:
             schema:
               type: object
               example:
-                amount: '500'
-                rate_per_sms: '1'
-                company_id: '55'
+                company_id: '2'
                 purchased_credits: '100'
       security:
         - bearerAuth: []
@@ -3204,6 +3203,55 @@ paths:
           schema:
             type: integer
           example: '55'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/sms/companies:
+    get:
+      tags:
+        - APIs SUPERADMIN PANEL > SMS > companies
+      summary: get all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/sms/companies/{id}:
+    post:
+      tags:
+        - APIs SUPERADMIN PANEL > SMS > companies
+      summary: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                rate_per_sms: 1.5
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -3237,29 +3285,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/superadmin/sms/companies:
-    get:
-      tags:
-        - APIs SUPERADMIN PANEL > SMS
-      summary: get companies with sms credits
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/superadmin/sms/companies/{id}/rate-per-sms:
     patch:
       tags:
@@ -3271,7 +3296,7 @@ paths:
             schema:
               type: object
               example:
-                rate_per_sms: 1.5
+                rate_per_sms: 1.2
       security:
         - bearerAuth: []
       parameters:
