@@ -46,7 +46,7 @@ tags:
   - name: APIs SUPERADMIN PANEL > Role
   - name: APIs SUPERADMIN PANEL > User
   - name: APIs SUPERADMIN PANEL > AWS Files
-  - name: APIs SUPERADMIN PANEL > ***ADMINISTRATOR COMMANDS***
+  - name: APIs SUPERADMIN PANEL > ***SUPERADMINISTRATOR COMMANDS***
   - name: APIs SUPERADMIN PANEL > SMS
   - name: APIs SUPERADMIN PANEL > SMS > credits
   - name: APIs SUPERADMIN PANEL > SMS > companies
@@ -139,9 +139,10 @@ tags:
   - name: APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production Order
   - name: APIs (Company/Accounting Firm Panel) > MANUFACTURING > Production Journal
   - name: APIs (Company/Accounting Firm Panel) > SMS
-  - name: APIs (Company/Accounting Firm Panel) > SMS > Customers
+  - name: APIs (Company/Accounting Firm Panel) > SMS > Account Head
   - name: APIs (Company/Accounting Firm Panel) > SMS > templates
   - name: APIs (Company/Accounting Firm Panel) > SMS > dispatches
+  - name: APIs (Company/Accounting Firm Panel) > SMS > Batches
   - name: APIs SROT Integration Link Site
   - name: APIs SROT Integration Link Site > Main Account
   - name: APIs SROT Integration Link Site > Main Account > Admin
@@ -3057,7 +3058,7 @@ paths:
   /api/superadmin/generate-reset-company-confirmation-token:
     post:
       tags:
-        - APIs SUPERADMIN PANEL > ***ADMINISTRATOR COMMANDS***
+        - APIs SUPERADMIN PANEL > ***SUPERADMINISTRATOR COMMANDS***
       summary: generate delete company confirmation token
       requestBody:
         content:
@@ -3125,10 +3126,18 @@ paths:
                 data:
                   confirmation_token: W5EiRR1sZr1ONmrOhRiazIewLptSbQ1G
   /api/superadmin/reset-company:
-    delete:
+    post:
       tags:
-        - APIs SUPERADMIN PANEL > ***ADMINISTRATOR COMMANDS***
-      summary: reset-company***DANGER***
+        - APIs SUPERADMIN PANEL > ***SUPERADMINISTRATOR COMMANDS***
+      summary: reset-company   ***DANGER***
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                confirmation_token: BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb
       security:
         - bearerAuth: []
       parameters:
@@ -3145,8 +3154,8 @@ paths:
   /api/superadmin/delete-company:
     delete:
       tags:
-        - APIs SUPERADMIN PANEL > ***ADMINISTRATOR COMMANDS***
-      summary: delete-company ***DANGER***
+        - APIs SUPERADMIN PANEL > ***SUPERADMINISTRATOR COMMANDS***
+      summary: delete-company   ***DANGER***
       security:
         - bearerAuth: []
       parameters:
@@ -3155,17 +3164,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          description: '1'
-          example: '1'
-        - name: confirmation-token
-          in: header
-          schema:
-            type: string
-          example: BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb
       responses:
         '200':
           description: Successful response
@@ -3257,6 +3255,37 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/superadmin/sms/companies/{id}/rate-per-sms:
+    patch:
+      tags:
+        - APIs SUPERADMIN PANEL > SMS > companies
+      summary: update rate per sms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                rate_per_sms: 1.2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/superadmin/sms/logs:
     get:
       tags:
@@ -3279,37 +3308,6 @@ paths:
           in: query
           schema:
             type: integer
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/superadmin/sms/companies/{id}/rate-per-sms:
-    patch:
-      tags:
-        - APIs SUPERADMIN PANEL > SMS
-      summary: update rate per sms
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                rate_per_sms: 1.2
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
           example: '2'
       responses:
         '200':
@@ -34553,10 +34551,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sms/customers/injection-keys:
+  /api/sms/account-heads/injection-keys:
     get:
       tags:
-        - APIs (Company/Accounting Firm Panel) > SMS > Customers
+        - APIs (Company/Accounting Firm Panel) > SMS > Account Head
       summary: get injection keys
       security:
         - bearerAuth: []
@@ -34571,10 +34569,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sms/customers/send:
+  /api/sms/account-heads/send:
     post:
       tags:
-        - APIs (Company/Accounting Firm Panel) > SMS > Customers
+        - APIs (Company/Accounting Firm Panel) > SMS > Account Head
       summary: send message
       requestBody:
         content:
@@ -34582,10 +34580,11 @@ paths:
             schema:
               type: object
               example:
-                customer_ids:
-                  - 377
-                template: Hi {{name}}, how are you doing?
-                template_id: 1
+                account_head_ids:
+                  - 86
+                  - 1320
+                template: Hi, {{date}}
+                title: Hello
       security:
         - bearerAuth: []
       parameters:
@@ -34599,10 +34598,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sms/customers/evaluate:
+  /api/sms/account-heads/evaluate:
     get:
       tags:
-        - APIs (Company/Accounting Firm Panel) > SMS > Customers
+        - APIs (Company/Accounting Firm Panel) > SMS > Account Head
       summary: evaluate
       security:
         - bearerAuth: []
@@ -34620,7 +34619,7 @@ paths:
   /api/v3/sms/sen:
     post:
       tags:
-        - APIs (Company/Accounting Firm Panel) > SMS > Customers
+        - APIs (Company/Accounting Firm Panel) > SMS > Account Head
       summary: send message all star
       requestBody:
         content:
@@ -34796,24 +34795,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/sms/dispatches:
-    get:
-      tags:
-        - APIs (Company/Accounting Firm Panel) > SMS > dispatches
-      summary: get all
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: company-id
-          in: header
-          schema:
-            type: integer
-          example: '2'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/sms/dispatches/{id}/resend:
     post:
       tags:
@@ -34838,7 +34819,102 @@ paths:
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '19'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/batches:
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > Batches
+      summary: get all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/batches/{id}/dispatches:
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > Batches
+      summary: get all dispatches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/batches/{id}/resend:
+    post:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS > Batches
+      summary: resend
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '""'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sms/statistics:
+    get:
+      tags:
+        - APIs (Company/Accounting Firm Panel) > SMS
+      summary: get statistics
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company-id
+          in: header
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response

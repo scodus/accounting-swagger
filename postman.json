@@ -20,10 +20,17 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"const response = pm.response.json()",
-											"pm.environment.set('token', response.data.access_token)",
-											"pm.environment.set('access_token', response.data.access_token)",
-											"pm.environment.set('refresh_token', response.data.refresh_token)"
+											"if (pm.response && pm.response.json) {",
+											"    const response = pm.response.json();",
+											"    pm.environment.set('token', response.data.token);",
+											"    pm.environment.set('access_token', response.data.access_token);",
+											"    pm.environment.set('refresh_token', response.data.refresh_token);",
+											"} else {",
+											"    console.log('Response is not in JSON format or pm.response is undefined');",
+											"    console.log(pm.response);",
+											"    //   throw new Error('Response is not in JSON format or pm.response is undefined');",
+											"}",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {}
@@ -5488,7 +5495,7 @@
 					]
 				},
 				{
-					"name": "***ADMINISTRATOR COMMANDS***",
+					"name": "***SUPERADMINISTRATOR COMMANDS***",
 					"item": [
 						{
 							"name": "generate reset company confirmation token",
@@ -5628,6 +5635,80 @@
 							]
 						},
 						{
+							"name": "reset-company   ***DANGER***",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "company-id1",
+										"value": "1",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "confirmation-token",
+										"value": "BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "confirmation-token",
+										"value": "",
+										"description": "CONFIRM_RESET",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"company_id\":1,\r\n    \"confirmation_token\" : \"BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/superadmin/reset-company",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"superadmin",
+										"reset-company"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "generate delete company confirmation token",
 							"event": [
 								{
@@ -5765,7 +5846,7 @@
 							]
 						},
 						{
-							"name": "reset-company***DANGER***",
+							"name": "delete-company   ***DANGER***",
 							"event": [
 								{
 									"listen": "test",
@@ -5776,73 +5857,9 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
 								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "company-id1",
-										"value": "1",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "confirmation-token",
-										"value": "BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "confirmation-token",
-										"value": "",
-										"description": "CONFIRM_RESET",
-										"type": "text",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"company_id\":1,\r\n    \"confirmation_token\" : \"BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/superadmin/reset-company",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"superadmin",
-										"reset-company"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete-company ***DANGER***",
-							"event": [
 								{
-									"listen": "test",
+									"listen": "prerequest",
 									"script": {
 										"exec": [
 											""
@@ -5872,12 +5889,14 @@
 									{
 										"key": "company-id",
 										"value": "1",
-										"description": "1"
+										"description": "1",
+										"disabled": true
 									},
 									{
 										"key": "confirmation-token",
 										"value": "BAZXTpLFsrRVUTWkSxA3ZBaBVTYALCwb",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									},
 									{
 										"key": "confirmation-token",
@@ -5888,8 +5907,13 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": []
+									"mode": "raw",
+									"raw": "{\r\n    // \"_method\":\"DELETE\"\r\n    // \"confirmation_token\":\"xyz\",\r\n    \"password\": \"P@ssw0rd\",\r\n    \"company_id\": 2\r\n    // \"company_id\": 37\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
 								"url": {
 									"raw": "{{url}}/api/superadmin/delete-company",
@@ -6132,6 +6156,65 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "update rate per sms",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "company-id",
+												"value": "2",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"rate_per_sms\": 1.2\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/superadmin/sms/companies/:id/rate-per-sms",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"superadmin",
+												"sms",
+												"companies",
+												":id",
+												"rate-per-sms"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -6182,65 +6265,6 @@
 									"query": [
 										{
 											"key": "company_id",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update rate per sms",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{access_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "company-id",
-										"value": "2",
-										"type": "text",
-										"disabled": true
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"rate_per_sms\": 1.2\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/superadmin/sms/companies/:id/rate-per-sms",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"superadmin",
-										"sms",
-										"companies",
-										":id",
-										"rate-per-sms"
-									],
-									"variable": [
-										{
-											"key": "id",
 											"value": "2"
 										}
 									]
@@ -6479,9 +6503,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{auth_url}}/api/login",
+									"raw": "{{url}}/api/login",
 									"host": [
-										"{{auth_url}}"
+										"{{url}}"
 									],
 									"path": [
 										"api",
@@ -47900,7 +47924,7 @@
 					"name": "SMS",
 					"item": [
 						{
-							"name": "Customers",
+							"name": "Account Head",
 							"item": [
 								{
 									"name": "get injection keys",
@@ -47913,7 +47937,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "{{token}}",
+													"value": "{{access_token}}",
 													"type": "string"
 												}
 											]
@@ -47931,14 +47955,14 @@
 											"urlencoded": []
 										},
 										"url": {
-											"raw": "{{url}}/api/sms/customers/injection-keys",
+											"raw": "{{url}}/api/sms/account-heads/injection-keys",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"api",
 												"sms",
-												"customers",
+												"account-heads",
 												"injection-keys"
 											]
 										}
@@ -47953,7 +47977,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "{{token}}",
+													"value": "{{access_token}}",
 													"type": "string"
 												}
 											]
@@ -47968,7 +47992,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"customer_ids\": [\r\n        377\r\n    ],\r\n    \"template\": \"Hi {{name}}, how are you doing?\",\r\n    \"template_id\": 1\r\n}",
+											"raw": "{\r\n    \"account_head_ids\": [\r\n        86,\r\n        1320\r\n    ],\r\n    // \"type\": \"CUSTOMER\",\r\n    \"template\": \"Hi, {{date}}\",\r\n    \"title\": \"Hello\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -47976,14 +48000,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{url}}/api/sms/customers/send",
+											"raw": "{{url}}/api/sms/account-heads/send",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"api",
 												"sms",
-												"customers",
+												"account-heads",
 												"send"
 											]
 										}
@@ -48001,7 +48025,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "{{token}}",
+													"value": "{{access_token}}",
 													"type": "string"
 												}
 											]
@@ -48016,7 +48040,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"customer_ids\": [\r\n        377\r\n    ],\r\n    \"template\": \"Hi, {{name}}\",\r\n    \"template_id\": 1\r\n}",
+											"raw": "{\r\n    \"account_head_ids\": [\r\n        86,\r\n        1320\r\n    ],\r\n    \"type\":\"CUSTOMER\",\r\n    \"template\": \"Hi, {{name}}\",\r\n    \"template_id\": 1\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -48024,14 +48048,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{url}}/api/sms/customers/evaluate",
+											"raw": "{{url}}/api/sms/account-heads/evaluate",
 											"host": [
 												"{{url}}"
 											],
 											"path": [
 												"api",
 												"sms",
-												"customers",
+												"account-heads",
 												"evaluate"
 											]
 										}
@@ -48360,48 +48384,6 @@
 							"name": "dispatches",
 							"item": [
 								{
-									"name": "get all",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [
-											{
-												"key": "company-id",
-												"value": "2",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
-										"url": {
-											"raw": "{{url}}/api/sms/dispatches",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"sms",
-												"dispatches"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "resend",
 									"request": {
 										"auth": {
@@ -48409,7 +48391,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "{{token}}",
+													"value": "{{access_token}}",
 													"type": "string"
 												}
 											]
@@ -48441,7 +48423,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "1"
+													"value": "19"
 												}
 											]
 										}
@@ -48449,6 +48431,204 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Batches",
+							"item": [
+								{
+									"name": "get all",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "company-id",
+												"value": "2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/api/sms/batches",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sms",
+												"batches"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get all dispatches",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "company-id",
+												"value": "2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/api/sms/batches/:id/dispatches",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sms",
+												"batches",
+												":id",
+												"dispatches"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "21"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "resend",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "company-id",
+												"value": "2",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/api/sms/batches/:id/resend",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"sms",
+												"batches",
+												":id",
+												"resend"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "21"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "get statistics",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "company-id",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/sms/statistics",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sms",
+										"statistics"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "SOLD_CREDITS",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
